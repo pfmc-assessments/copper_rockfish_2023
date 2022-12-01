@@ -53,12 +53,10 @@ ggplot(df, aes(length, fill = trip_type, color = trip_type)) +
 	geom_vline(xintercept = mean(df[, "length"]), 
 		color = 'black', lwd = 2) 
 
-
 ggplot(df, aes(length, fill = trip_type, color = trip_type)) +
   geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) +
   scale_fill_viridis_d() +
   scale_x_discrete(name = "Length (cm)")
-
 
 aggregate(length~sample_type, df2, function(x) round(quantile(x, c(0, 0.10, 0.25, 0.5, 0.75, 0.90, 1)), 1))
 # sample_type length.0% length.10% length.25% length.50% length.75% length.90% length.100%

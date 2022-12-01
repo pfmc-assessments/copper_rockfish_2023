@@ -34,4 +34,9 @@ if(file.exists("00mod.Rdata")){
   print("Model output not being read. Please run the read_model() function.")
 }
 
+general_wd <- file.path(gsub("/nca", "", getwd()), "shared_text")
+
+spp <- "copper rockfish"
+Spp <- "Copper rockfish"
+
 ```
