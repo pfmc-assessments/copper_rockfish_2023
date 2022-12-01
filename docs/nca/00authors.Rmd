@@ -1,0 +1,38 @@
+---
+author:
+  - name: Melissa H. Monk
+    code: 1
+    first: M
+    middle: H
+    family: Monk
+  - name: Chantel R. Wetzel
+    code: 2
+    first: C
+    middle: R
+    family: Wetzel
+  - name: Julia Coates
+    code: 3
+    first: J
+    middle: ''
+    family: Coates
+author_list: Monk, M.H., C.R. Wetzel, J. Coates
+affiliation:
+  - code: 1
+    address: Southwest Fisheries Science Center, U.S. Department of Commerce, National
+      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 110
+      McAllister Way, Santa Cruz, California 95060
+  - code: 2
+    address: Northwest Fisheries Science Center, U.S. Department of Commerce, National
+      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 2725
+      Montlake Boulevard East, Seattle, Washington 98112
+  - code: 3
+    address: .na.character
+address:
+  - ^1^Southwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+    and Atmospheric Administration, National Marine Fisheries Service, 110 McAllister
+    Way, Santa Cruz, California 95060
+  - ^2^Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+    and Atmospheric Administration, National Marine Fisheries Service, 2725 Montlake
+    Boulevard East, Seattle, Washington 98112
+  - ^3^NA
+---
