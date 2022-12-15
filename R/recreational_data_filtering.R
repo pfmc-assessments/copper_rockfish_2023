@@ -14,6 +14,43 @@ source(file.path(code, "recfin_modes.R"))
 
 # Recreational catch data ======================================
 # early MRFSS catch data
+mrfss_all <- read.csv(file.path(dir, "rec_catch", "MRFSS-CATCH-ESTIMATES_copper_11152022.csv"))
+
+keep <- which(mrfss_all$AGENCY_CODE == 6 & mrfss_all$RECFIN_SPECIES_CODE == "8826010108")
+mrfss <- mrfss_all[keep, ]
+
+keep <- colnames(mrfss)[which(apply(mrfss, 2, function(x) sum(is.na(x))) != dim(mrfss)[1])]
+mrfss <- mrfss[, keep]
+
+mrfss <- recfin_areas(data = mrfss, 
+			  area_grouping = list("Northern California", "Southern California"), 
+			  area_names  = c("south", "north"), 
+			  column_name = "RECFIN_SUB_REGION_NAME")
+
+mrfss <- recfin_modes(
+	data = mrfss, 
+	mode_grouping = list(c("BEACH","MAN-MADE", "SHORE"), "PARTY", "PRIVATE"), 
+	mode_names = c("shoreside", "cpfv", "private"),
+	column_name = "SOURCE_MODE_NAME")
+
+save(mrfss, file = file.path(dir, "rec_catch", "mrfss_catch_filtered.rdata"))
+
+crfss <- read.csv(file.path(dir, "rec_catch", "CTE501-CALIFORNIA-2001---2021.csv"))
+crfss <- recfin_areas(
+	data = crfss, 
+	area_grouping = list(c("CHANNEL", "SOUTH"), c("BAY AREA", "WINE", "CENTRAL", "REDWOOD")), 
+	area_names  = c("south", "north"), 
+	column_name = "RECFIN_PORT_NAME")
+
+crfss <- recfin_modes(
+	data = crfss, 
+	mode_grouping = list(c("BEACH","MAN-MADE"), "PARTY", "PRIVATE"), 
+	mode_names = c("shoreside", "cpfv", "private")
+)
+
+save(crfss, file = file.path(dir, "rec_catch", "crfss_catch_filtered.rdata"))
+
+# Recreational bds data =========================================
 
 # Using the file from 2021 due to issues of not getting the complete
 # file when downloading from RecFIN
@@ -67,22 +104,19 @@ crfss_bds <- recfin_areas(
 	data = crfss_bds,
 	area_grouping = list(c("CHANNEL", "SOUTH"), c("BAY AREA", "WINE", "CENTRAL", "REDWOOD"), "NOT KNOWN"),
 	area_names = c("south", "north", "no_area"),
-	column_name = "RECFIN_PORT_NAME"
-)
-
+	column_name = "RECFIN_PORT_NAME")
 # Remove 53 records from unknown areas
 crfss_bds <- crfss_bds[crfss_bds$area != "no_area", ]
 
 crfss_bds <- recfin_modes(
 	data = crfss_bds, 
 	mode_grouping = list(c("BEACH","MAN-MADE"), "PARTY", "PRIVATE"), 
-	mode_names = c("shoreside", "cpfv", "private")
-)
+	mode_names = c("shoreside", "cpfv", "private"))
 
 crfss_bds$year <- crfss_bds$RECFIN_YEAR
-crfss_bds$lengthcm <- crfss_bds$AGENCY_LENGTH / 10
+crfss_bds$length_cm <- crfss_bds$AGENCY_LENGTH / 10
 
-aggregate(lengthcm~mode+area, crfss_bds, quantile)
+aggregate(length_cm~mode+area, crfss_bds, quantile)
 
 
 save(crfss_bds, file = file.path(dir, "rec_bds", "crfss_bds_filtered.rdata"))
