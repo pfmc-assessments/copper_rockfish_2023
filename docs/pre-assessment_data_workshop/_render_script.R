@@ -1,5 +1,4 @@
 
-setwd("C:/Assessments/2021/copper_rockfish_2021/model_notes")
+setwd("C:/Assessments/2023/copper_rockfish_2023/docs/pre-assessment_data_workshop")
 
-rmarkdown::render("Notes.Rmd")
-rmarkdown::render("Notes_January_2021.Rmd")
+rmarkdown::render("report.Rmd")
