@@ -223,6 +223,17 @@ ggplot(pacfin, aes(y = catch, x = year, fill = PACFIN_GROUP_PORT_CODE)) +
 ggsave(filename = file.path(dir, "pacfin_catch", "plots", "CONFIDENTIAL_catch_by_cond_port_year.png"), 
       width = 13, height = 10, units = 'in')
 
+# Find where the pot caught live fish are being landed
+ind = which(pacfin$gear == "pot" & pacfin$cond == "live")
+aggregate(VESSEL_ID~PACFIN_GROUP_PORT_CODE + area, pacfin[ind,], function(x) length(unique(x)))
+# CONFIDENTIAL VIEW - 
+ggplot(pacfin[ind,], aes(y = catch, x = year, fill = PACFIN_GROUP_PORT_CODE)) +
+	geom_bar(stat = 'identity') +
+	facet_wrap(facets = c("area")) + 
+	xlab("Port") + ylab("Pot Live Landings") 
+# MRA (morro bay area) and MNA (monterey bay) ports are the
+# primary ports in recent years peaking ~ 0.2 mt / yr (441 lbs.)
+
 
 # ===============================================================================
 # Switch to looking at CRFSS era catches

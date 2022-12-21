@@ -53,7 +53,7 @@ ind <- which(data$PCID %in% north_areas)
 data$area[ind] <- "north"
 
 data$cond <- "dead"
-data$cond[data$COND == "A"] <- "alive"
+data$cond[data$COND == "A"] <- "live"
 data$count <- 1
 #        alive dead
 #  north  1099 3517
@@ -140,7 +140,6 @@ ggplot(data, aes(fill = geargroup, y = count, x = PCID)) +
 ggsave(filename = file.path(dir, "plots", "length_n_by_gear_area_port.png"),
 	width = 14, height = 7)
 
-
 ggplot(data, aes(y = lengthcm, x = year, group = year)) + 
 	geom_boxplot() + 
     xlab("Year") + ylab("Length (cm)") +
@@ -213,11 +212,18 @@ ggplot(data, aes(x = geargroup, y = count, fill = cond, color = cond)) +
 ggsave(filename = file.path(dir, "plots", "samples_by_gear_cond_area.png"),
 	width = 7, height = 7)
 
-
 ggplot(data[data$area == 'north',], aes(x = year, y = count, fill = geargroup, color = geargroup)) + 
 	geom_bar(position="stack", stat="identity") + 
     xlab("Length (cm)") + ylab("Number of Samples by Year and Port") +
     facet_wrap(facets = c("PCID")) 
+ggsave(filename = file.path(dir, "plots", "north_samples_by_gear_port_year.png"),
+	width = 7, height = 7)
+
+aggregate(count~PCID + geargroup + cond, data[data$area == 'north',], sum)
+ggplot(data[data$area == 'north',], aes(x = PCID, y = count, fill = geargroup, color = geargroup)) + 
+	geom_bar(position="stack", stat="identity") + 
+    xlab("Length (cm)") + ylab("Number of Samples by Year and Port") +
+    facet_wrap(facets = c('cond')) 
 ggsave(filename = file.path(dir, "plots", "north_samples_by_gear_port_year.png"),
 	width = 7, height = 7)
 
@@ -314,4 +320,10 @@ ggsave(filename = file.path(dir, "plots", "samples_by_year_gear_area.png"),
 # north 191 230 130 159 313 578 644 567 580 667 459  98
 # south 294 180  93 140 198 212 397 238 244 437 139 116
 
-
+aggregate(lengthcm~PCID + cond, data[data$year > 2010 & data$cond == 'dead', ], length)
+ggplot(data[data$year > 2010 & data$cond == 'dead', ], aes(y = lengthcm, fill = PCID)) + 
+	geom_boxplot(aes(fill = factor(PCID))) + 
+    xlab("Port Group") + ylab("Length (cm)")  + 
+    facet_wrap(c('area', 'cond'))
+ggsave(filename = file.path(dir, "plots", "boxplot_length_by_port_area_cond_2010_2021.png"),
+	width = 7, height = 7)
