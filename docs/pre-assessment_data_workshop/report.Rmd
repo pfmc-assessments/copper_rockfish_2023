@@ -7,10 +7,10 @@ author:
   - Julia Coates, California Department of Fish and Wildlife
 date: "`r Sys.Date()`"
 output: 
-  html_document:
+  pdf_document:
   #prettydoc::html_pretty:
-    theme: journal
-    highlight: tango
+  #  theme: journal
+  #  highlight: tango
 ---
 
 
@@ -26,49 +26,109 @@ knitr::opts_chunk$set(
 
 # Overview
 
-Detail the plan modeling approach of two separate area based models.
+Description of data being considered for use in the 2023 stock assessments for copper rockfish in California. Exploratory analysis is provided that have been used to inform modeling choices and treatment of data.
 
-# South of Point Conception {.tabset}
+# Summary of the 2021 Assessment 
 
-## Summary of the 2021 Assessment 
+In 2021, copper rockfish in California waters were modeled using two area based models split north and south of Point Conception. The estimated stock status in 2021 was estimated at 18% and 39% of unfished spawning biomass south and north of Point Conception, respectivily. 
 
-### Model Estimates
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(dir, "plots", "ca_comprare_compare2_spawnbio_uncertainty.png"), 
+caption = "Estimates of spawning biomass from each model area in California from the 2021 assessments. ",
+label = 'ssb-est')
 
-### Unresolved Questions and Issues
+``` 
 
-## Removal Data
+## Unresolved Questions and Issues
 
-### Commerical Catches & Discards
+* Growth
+    * The length-at-age relationship north of Point Conception was based on data age and length data from Oregon and Washington due to a lack of age data from California fisheries.
+    * The length-at-age relationship south of Point Conception was informed by limited ages from the NWFSC hook and line survey. Additional age data may provide a more informed estimate of growth in this area.
+* There were additional sources of data that were not included in the 2021 length-based data-moderate assessment that may be used in this year's assessments:
+    * Onboard CPFV length sample data from 1975-1979 (Collins and Crooke), 1987-1998 (Deb Wilson-Vandenberg), and 1986-1989 (Alley an Ono).
+    * California Collaborative Fisheries Research Program (CCFRP) index of abundance and biological samples.
+    * CPFV observer index of abundance.
+    * RecFIN dockside sampling index of abundance.
+    * CDFW Remotely Operated Vehicle Biomass Estimate
 
-### Recreational Catches & Discards
+# Potential Fleet Structure
 
-## Indices of Abundance
+Currently, 
 
-### Fishery-Independent 
+# Removal Data
 
-### Fishery-Dependent 
+## Commerical Catches & Discards
 
-## Composition Data
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(dir, "plots", "landings_by_fleet_area.png"), 
+caption = "Commercial landings north and south of Point Conception. The landings are separated by fish landed live verus dead. The commercial landings in the south are relatively low (less than 10 mt per year) across the majority of years excluding 1995-1998 where landings ranged from 24 to 32 mt. The commercial landings in the north are generally higher than those observed south of Point Conception, particularly since 1983 to 1998 with landings peaking in 1993 at 69 mt. (source: PacFIN, California historical catch reconstruction)",
+label = 'com-landings')
 
-## Biology
+``` 
 
-# North of Point Conception {.tabset}
+Since 1981, landings of copper rockfish have occurred from hook and line, net, pot, shrimp trawl, trawl, troll, and diving gear. The majority of landings for copper rockfish since 1981 are from hook and line gear is each area of California (south 96% and north 87%). North of Point Conception there are some proportion of landings from trawl gear (8% primarily occurring between 1982-1985) and net gear (4% primarily occurring between 1983-1986). Since 2011, 98% and 96% of the landings are coming from hook and line gear.
 
 
-## Summary of the 2021 Assessment 
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(dir, "plots", "percent_dead_landings.png"), 
+caption = "Proportion of commercial landings from fish landed dead north and south of Point Conception. (source: PacFIN)",
+width = 75,
+height = 75, 
+label = 'com-prop-dead')
 
-### Model Estimates
+``` 
 
-### Unresolved Questions and Issues
 
-## Removal Data
+In recent years, there has been an increase in the proportion of fish landed live for both areas. 
 
-## Indices of Abundance
+Only the commercial landings are shown for each area. Discard mortality across time will need to considered to determine catches.
 
-### Fishery-Independent 
+* The 2021 assessment assumed a constant discard mortality rate of 4.4% informed by WCGOP data.
+* The rate of discarding has likely varied across time. Are there particular periods of time when discarding likely increased/decreased?
+* Different factors impacting discarding practices by area?
 
-### Fishery-Dependent 
 
-## Composition Data
+## Recreational Catches & Discards
 
-## Biology
+# Indices of Abundance
+
+## Fishery-Independent 
+
+## Fishery-Dependent 
+
+# Composition Data
+
+## Commerical length compositions
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(dir, "plots", "length_samples_by_cond_area_year.png"), 
+caption = "The number of length samples by year from live and dead copper rockfish from the area south and north of Point Conception. Since 1981, there are a total of 3,517 dead and 1,099 live length samples north of Point Conception and 553  live and 2,135 dead length samples south of Point Conception (source: PacFIN).",
+label = 'com-length-n')
+
+```
+
+The majority of lengths are from hook and line gear for each area:
+
+* North of Point Conception: 4,268 out of a total of 4,616 length samples
+
+* South of Point Conception: 2,585 out of a total of 2,688 length samples
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(dir, "plots", "length_boxplot_by_cond_area_year.png"), 
+caption = "The distribution of length samples by year from live and dead copper rockfish from the area south and north of Point Conception (source: PacFIN).",
+label = 'com-length-dist')
+
+```
+
+## Recreational length compositions
+
+# Biology
+
+
+
