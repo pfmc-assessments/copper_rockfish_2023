@@ -166,10 +166,19 @@ south_u <- south[south$sex == 0, ]
 index <- grep("InputN", colnames(south_u)) + 1
 colnames(south_u)[index:ncol(south_u)] <- c(paste0('U', length_bins), paste0("U.", length_bins)) 
 
+south_ulive <- south_u[south_u$fleet == "south.live", ]
+south_udead <- south_u[south_u$fleet == "south.dead", ]
+
 nwfscSurvey::plot_comps(
-  data = south_u, 
+  data = south_ulive, 
   dir = dir, 
-  add_save_name = "south",
+  add_save_name = "south_live",
+  add_0_ylim = TRUE)
+
+nwfscSurvey::plot_comps(
+  data = south_udead, 
+  dir = dir, 
+  add_save_name = "south_dead",
   add_0_ylim = TRUE)
 
 nwfscSurvey::plot_comps(
@@ -184,10 +193,19 @@ north_u  <- north[north$sex == 0, ]
 index <- grep("InputN", colnames(north_u)) + 1
 colnames(north_u)[index:ncol(north_u)] <- c(paste0('U', length_bins), paste0("U.", length_bins)) 
 
+north_ulive <- north_u[north_u$fleet == "north.live", ]
+north_udead <- north_u[north_u$fleet == "north.dead", ]
+
 nwfscSurvey::plot_comps(
-  data = north_u, 
+  data = north_ulive, 
   dir = dir, 
-  add_save_name = "north",
+  add_save_name = "north_live",
+  add_0_ylim = TRUE)
+
+nwfscSurvey::plot_comps(
+  data = north_udead, 
+  dir = dir, 
+  add_save_name = "north_dead",
   add_0_ylim = TRUE)
 
 nwfscSurvey::plot_comps(

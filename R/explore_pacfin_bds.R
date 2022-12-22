@@ -280,6 +280,13 @@ ggplot(data, aes(lengthcm, fill = geargroup, color = geargroup)) +
 ggsave(filename = file.path(dir, "plots", "length_by_gear_area.png"),
 	width = 7, height = 7)
 
+ggplot(data, aes(lengthcm, fill = cond, color = cond)) + 
+	geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+    xlab("Length (cm)") + ylab("Density") +
+    facet_grid(area~.)
+ggsave(filename = file.path(dir, "plots", "length_denstity_by_cond_area.png"),
+	width = 7, height = 7)
+
 ggplot(data[data$geargroup == "HKL",] , aes(lengthcm, fill = area)) + 
 	geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
     xlab("Length (cm)") + ylab("Density") 
@@ -326,4 +333,23 @@ ggplot(data[data$year > 2010 & data$cond == 'dead', ], aes(y = lengthcm, fill = 
     xlab("Port Group") + ylab("Length (cm)")  + 
     facet_wrap(c('area', 'cond'))
 ggsave(filename = file.path(dir, "plots", "boxplot_length_by_port_area_cond_2010_2021.png"),
+	width = 7, height = 7)
+
+
+
+ggplot(data, aes(y = lengthcm, fill = geargroup)) + 
+	geom_boxplot(aes(fill = factor(geargroup))) + 
+    xlab("Gear") + ylab("Length (cm)")  + 
+    facet_wrap(c('area', 'cond'))
+
+table(data$PCID, data$area)
+# only keep ports with greater than 100 lengths
+keep <- c("AVL", "BDG", "CRS", "ERK", "MOS", "MRO", "PRN", 
+	"SB", "SF", "VEN")
+
+ggplot(data[data$PCID %in% keep, ], aes(y = lengthcm, fill = PCID)) + 
+	geom_boxplot(aes(fill = factor(PCID))) + 
+    xlab("Port Group") + ylab("Length (cm)")  + 
+    facet_wrap(c('area', 'cond'))
+ggsave(filename = file.path(dir, "plots", "boxplot_length_by_port_area_cond_filtered_by_100n.png"),
 	width = 7, height = 7)

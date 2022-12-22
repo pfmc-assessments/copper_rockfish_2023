@@ -9,7 +9,7 @@
 devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/nwfscSurvey")
 library(nwfscSurvey)
 
-dir <- "C:/Assessments/2023/copper_rockfish_2023/data/wcgbt"
+dir_main <- "C:/Assessments/2023/copper_rockfish_2023/data/wcgbt"
 
 #=====================================================================
 # Pull all available data
@@ -30,11 +30,12 @@ dir <- "C:/Assessments/2023/copper_rockfish_2023/data/wcgbt"
 #     common_name = "copper rockfish",
 #     survey = "NWFSC.Combo")
 
-load(file.path(dir, "catch_copper rockfish_NWFSC.Combo_2022-11-27.rdata"))
-catch <- x
-load(file.path(dir, "bio_copper rockfish_NWFSC.Combo_2022-11-27.rdata"))
-bio <- x
+load(file.path(dir_main, "catch_copper rockfish_NWFSC.Combo_2022-11-27.rdata"))
+catch_orig <- x
+load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2022-11-27.rdata"))
+bio_orig <- x
 
+PlotMap.fn(dir = dir_main, dat = catch_orig)
 #=====================================================================
 # Split the data by assessment area 
 #=====================================================================
@@ -42,11 +43,11 @@ area = "south"
 area = "north"
 
 if (area == "south"){
-    catch = catch[catch$Latitude_dd < 34.47, ]
-    bio = bio[bio$Latitude_dd < 34.47, ]
+    catch = catch_orig[catch_orig$Latitude_dd < 34.47, ]
+    bio = bio_orig[bio_orig$Latitude_dd < 34.47, ]
 } else {
-    catch = catch[catch$Latitude_dd >= 34.47 & catch$Latitude_dd < 42, ]
-    bio = bio[bio$Latitude_dd >= 34.47 & bio$Latitude_dd < 42, ]
+    catch = catch_orig[catch_orig$Latitude_dd >= 34.47 & catch_orig$Latitude_dd < 42, ]
+    bio = bio_orig[bio_orig$Latitude_dd >= 34.47 & bio_orig$Latitude_dd < 42, ]
 }
 
 dir = file.path(dir, area)
