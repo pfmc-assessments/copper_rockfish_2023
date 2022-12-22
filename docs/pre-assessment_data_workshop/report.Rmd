@@ -24,6 +24,9 @@ knitr::opts_chunk$set(
 )
 ```
 
+_Disclaimer: All data summaries and exploration presented here are preliminary and may not be indicitive of the final data that will be incorporated in the 2023 assessment models_
+
+
 # Overview
 
 Description of data being considered for use in the 2023 stock assessments for copper rockfish in California. Exploratory analysis is provided that have been used to inform modeling choices and treatment of data.
@@ -52,9 +55,20 @@ label = 'ssb-est')
     * RecFIN dockside sampling index of abundance.
     * CDFW Remotely Operated Vehicle Biomass Estimate
 
-# Potential Fleet Structure
+# Potential Model and Fleet Structure
 
-Currently, 
+Currently, the following fleet structure is being considered for modeling commerical and recreational fisheries in both area models:
+ 
+1. Commerical Passanger Fishing Vessel (CPFV, recorded as PC mode in RecFIN), 
+2. Private Rental (PR mode in RecFIN),
+3. Commerical Fleet Landing Dead Fish, and 
+4. Commercial Fleet Landing Live Fish. 
+
+Several factors have influenced the pre-liminary fleet selection. First, there is a differential in size of fish landed live versus dead, particularly north of Point Conception that supports the need for separate selectivity curves. Second, both the CPFV and PR fleets are expected to have corresponding fishery-dependent indices of abundance which requires two separate fleets. Finally, the removals from the recreational shoreside and beach banks for copper rockfish are very small and do not justify a separate fleet. The removals from these recreational modes will be added to the PR fleet to account for total mortality. 
+
+The commercial lengths by year, particularly when divided into two fleets based on the landed fish condition, are limited in recent years for each proposed model area. If there are issues estimating selectivity reliably for all model years, the two commercial fleets may be combined into a single fleet with selectivity estimated by a parameterization that would allow bimodal selectivity (multiple peaks in selectivity at size) using time blocks (e.g., one or more time blocks in recent years when the live fishery developed). 
+
+
 
 # Removal Data
 
@@ -113,9 +127,17 @@ label = 'com-length-n')
 
 The majority of lengths are from hook and line gear for each area:
 
-* North of Point Conception: 4,268 out of a total of 4,616 length samples
-
-* South of Point Conception: 2,585 out of a total of 2,688 length samples
+* North of Point Conception (total lengths = 4,616): 
+  * 4,268 from hook and line gear,
+  * 32 from net gear,
+  * 139 from pot gear,
+  * 15 from troll gear, and
+  * 162 from trawl gear.
+* South of Point Conception (total lengths = 2,688): 
+  * 2,585 from hook and line gear,
+  * 24 from net gear,
+  * 39 from trawl gear, and
+  * 36 from shrimp trawl gear.
 
 
 ```{r, results = 'asis'}
@@ -123,6 +145,22 @@ add_figure(
 filein = file.path(dir, "plots", "length_boxplot_by_cond_area_year.png"), 
 caption = "The distribution of length samples by year from live and dead copper rockfish from the area south and north of Point Conception (source: PacFIN).",
 label = 'com-length-dist')
+
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(dir, "plots", "length_denstity_by_cond_area.png"), 
+caption = "The density of size selected by landed condition for each area across all years (source: PacFIN).",
+label = 'com-marginal-length-dist')
+
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(dir, "plots", "boxplot_length_by_port_area_cond_filtered_by_100n.png"), 
+caption = "Boxplot of lengths by landed port, area, and fish condition. Only ports with greater than 100 length samples across all years are shown (source: PacFIN).",
+label = 'com-boxplot-length-port')
 
 ```
 
