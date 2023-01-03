@@ -5,11 +5,12 @@ library(sa4ss)
 # Specify the directory for the document
 dir <- "C:/Assessments/2023/copper_rockfish_2023"
 
-doc_dir <- file.path(dir, "docs", "nca")
+doc_dir <- file.path(dir, "documents", "sca")
 setwd(doc_dir)
 
 model_name <- "model name here"
 model_dir <- file.path(dir, "models", "sca", model)
+
 
 # Compile command
 if(file.exists("_main.Rmd")){
@@ -24,10 +25,10 @@ bookdown::render_book(
 
 # Create the needed items to generate the "right" template that would be based on the inputs here:
 sa4ss::draft(
-  authors = c("Melissa H. Monk", "Chantel R. Wetzel", "Julia Coates"),
+  authors = c("Chantel R. Wetzel", "Melissa H. Monk", "Julia Coates"),
   species = "Copper Rockfish",
   latin = "Sebastes caurinus",
-  coast = "California North of Pt. Conception U.S. West",
+  coast = "California South of Pt. Conception U.S. West",
   type = c("sa"),
   create_dir = FALSE,
   edit = FALSE

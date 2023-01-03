@@ -69,7 +69,6 @@ Several factors have influenced the pre-liminary fleet selection. First, there i
 The commercial lengths by year, particularly when divided into two fleets based on the landed fish condition, are limited in recent years for each proposed model area. If there are issues estimating selectivity reliably for all model years, the two commercial fleets may be combined into a single fleet with selectivity estimated by a parameterization that would allow bimodal selectivity (multiple peaks in selectivity at size) using time blocks (e.g., one or more time blocks in recent years when the live fishery developed). 
 
 
-
 # Removal Data
 
 ## Commerical Catches & Discards
@@ -82,7 +81,7 @@ label = 'com-landings')
 
 ``` 
 
-Since 1981, landings of copper rockfish have occurred from hook and line, net, pot, shrimp trawl, trawl, troll, and diving gear. The majority of landings for copper rockfish since 1981 are from hook and line gear is each area of California (south 96% and north 87%). North of Point Conception there are some proportion of landings from trawl gear (8% primarily occurring between 1982-1985) and net gear (4% primarily occurring between 1983-1986). Since 2011, 98% and 96% of the landings are coming from hook and line gear.
+Since 1981, landings of copper rockfish have occurred from hook and line, net, pot, shrimp trawl, trawl, troll, and diving gear. The majority of landings for copper rockfish since 1981 are from hook and line gear across California (south of Point Conception 96% and north 87%). North of Point Conception there are some proportion of landings from trawl gear (8% primarily occurring between 1982-1985) and net gear (4% primarily occurring between 1983-1986). Since 2011, 98% and 96% for the south and north of the landings are coming from hook and line gear, respectively.
 
 
 ```{r, results = 'asis'}
@@ -95,12 +94,13 @@ label = 'com-prop-dead')
 
 ``` 
 
+In recent years, there has been an increase in the proportion of fish landed live for both areas. In recent years, the percentage of copper rockfish landed dead north of Point Conception has been generally less than 50% within each year.
 
-In recent years, there has been an increase in the proportion of fish landed live for both areas. 
+### Additional Considerations
 
 Only the commercial landings are shown for each area. Discard mortality across time will need to considered to determine catches.
 
-* The 2021 assessment assumed a constant discard mortality rate of 4.4% informed by WCGOP data.
+* The 2021 assessment assumed a constant discard mortality rate of 4.4% informed by WCGOP data for each assessment area in California.
 * The rate of discarding has likely varied across time. Are there particular periods of time when discarding likely increased/decreased?
 * Different factors impacting discarding practices by area?
 
@@ -159,7 +159,7 @@ label = 'com-marginal-length-dist')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(dir, "plots", "boxplot_length_by_port_area_cond_filtered_by_100n.png"), 
-caption = "Boxplot of lengths by landed port, area, and fish condition. Only ports with greater than 100 length samples across all years are shown (source: PacFIN).",
+caption = "Boxplot of lengths by landed port, area, and fish condition. Only ports with greater than 100 length samples (live + dead > 100 samples) across all years are shown (source: PacFIN).",
 label = 'com-boxplot-length-port')
 
 ```
