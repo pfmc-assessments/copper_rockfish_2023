@@ -1,0 +1,33 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "plots/README-",
+  out.width = "100%"
+)
+```
+# Pre-assessment data-workshop for copper rockfish off California in 2023
+
+authors: 
+* Melissa Monk, Southwest Fisheries Science Center
+* Chantel Wetzel, Northwest Fisheries Science Center
+* Julia Coates, California Department of Fish and Wildlife
+
+
+_Disclaimer: All data summaries and exploration presented here are preliminary and may not be indicitive of the final data that will be incorporated in the 2023 assessment models_
+
+
+# Overview
+
+Description of data being considered for use in the 2023 stock assessments for copper rockfish in California. Exploratory analysis is provided that have been used to inform modeling choices and treatment of data.
+
+# Summary of the 2021 Assessment 
+
+In 2021, copper rockfish in California waters were modeled using two area based models split north and south of Point Conception. The estimated stock status in 2021 was estimated at 18% and 39% of unfished spawning biomass south and north of Point Conception, respectivily. 
+
