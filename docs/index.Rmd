@@ -95,13 +95,15 @@ Finally, each model area will have at least one fishery-independent fleet. The C
 
 ## Commerical Catches & Discards
 
-```{r, results = 'asis'}
+```{r, results = 'asis', fig.align='center'}
 add_figure(
 filein = file.path(dir, "plots", "landings_by_fleet_area.png"), 
-caption = "Commercial landings north and south of Point Conception. The landings are separated by fish landed live versus dead. The commercial landings in the south are relatively low (less than 10 mt per year) across the majority of years excluding 1995-1998 when landings ranged from 24 to 32 mt. The commercial landings in the north are generally higher than those observed south of Point Conception, particularly between 1983 to 1998 with landings peaking in 1993 at 69 mt (sources: PacFIN 1981+, California historical catch reconstruction)",
+caption = "Commercial landings north and south of Point Conception. The landings are separated by fish landed live versus dead. The commercial landings in the south are relatively low (less than 10 mt per year) across the majority of years excluding 1995-1998 when landings ranged from 24 to 32 mt. The commercial landings in the north are generally higher than those observed south of Point Conception, particularly between 1983 to 1998 with landings peaking in 1993 at 69 mt (sources: PacFIN and California historical catch reconstruction)",
 label = 'com-landings')
 
 ``` 
+
+\
 
 Since 1981, landings of copper rockfish have occurred from hook and line, net, pot, shrimp trawl, trawl, troll, and diving gear. The majority of landings for copper rockfish since 1981 are from hook and line gear across California (south of Point Conception 96% and north 87%). North of Point Conception there are some proportion of landings from trawl gear (8% primarily occurring between 1982-1985) and net gear (4% primarily occurring between 1983-1986). Since 2011, 98% and 96% for the south and north of the landings are coming from hook and line gear, respectively.
 
@@ -113,7 +115,6 @@ caption = "Proportion of commercial landings from fish landed dead north and sou
 width = 75,
 height = 75, 
 label = 'com-prop-dead')
-
 ``` 
 
 In recent years, there has been an increase in the proportion of fish landed live for both areas. In recent years, the percentage of copper rockfish landed dead north of Point Conception has been generally less than 50% within each year.
@@ -146,6 +147,7 @@ caption = "The number of length samples by year from live and dead copper rockfi
 label = 'com-length-n')
 
 ```
+\
 
 The majority of lengths are from hook and line gear for each area:
 
@@ -169,7 +171,7 @@ caption = "The distribution of length samples by year from live and dead copper 
 label = 'com-length-dist')
 
 ```
-
+\
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(dir, "plots", "length_denstity_by_cond_area.png"), 
@@ -177,7 +179,7 @@ caption = "The density of size selected by landed condition, live or dead, for e
 label = 'com-marginal-length-dist')
 
 ```
-
+\
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(dir, "plots", "boxplot_length_by_port_area_cond_filtered_by_100n.png"), 
@@ -189,6 +191,22 @@ label = 'com-boxplot-length-port')
 ## Recreational length compositions
 
 # Biology
+
+## Maturity and Fecundity
+
+## Length-Weight
+
+The length-weight relationship was estimated using all biological data available from the NWFSC West Coast Groundfish Bottom Trawl (WCGBT) and the NWFSC Hook and Line surveys. 
+
+## Length-at-Age
+
+## Natural Mortality
+
+Natural mortality was fixed in the 2021 assessments at a value of 0.108 yr^-1^ based on an assumed maximum age of 50 years. The maximum age was selected based on available age data collected within Oregon and Washington and literature values. The oldest aged observed was 51 years with two observations off of the coast of Washington and Oregon in 2019. This selection was consistent with the literature examining the longevity of copper rockfish and was supported by the observed ages that had multiple observations of fish between 44 and 51 years of age.  
+
+The input parameter value for natural mortality will be reconsidered within the 2023 assessments based on any new available age data. Additionally, the 2023 assessments will explore the ability to estimate natural mortality within the model and will conduct sensitivities and profiles to understand the information in the data on natural mortality and the impact of select values on the model estimates.
+
+
 
 
 
