@@ -93,7 +93,7 @@ Finally, each model area will have at least one fishery-independent fleet. The C
 
 # Removal Data
 
-## Commerical Catches & Discards
+## Commerical Landings & Discards
 
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
@@ -128,11 +128,25 @@ Only the commercial landings are shown for each area. Discard mortality across t
 * Different factors impacting discarding practices by area?
 
 
-## Recreational Catches & Discards
+## Recreational Landings & Discards
+
+TODO: Add the recreational landings data by proposed fleet structure
+
+### Additional Considerations
+
+TODO: Add discussion points around recreational discarding
 
 # Indices of Abundance
 
 ## Fishery-Independent 
+
+TODO: Add figure of the NWFSC Hook and Line index from last assessment.
+
+TODO: Add table of positive observations by year and area for the CCFRP survey
+
+TODO: Add table of positive observations by year from the NWFS Hook and Line 
+
+TODO: Add existing figure of observation location for copper rockfish in the NWFSC Hook and Line survey (e.g., inside vs. outside CCA)
 
 ## Fishery-Dependent 
 
@@ -190,15 +204,35 @@ label = 'com-boxplot-length-port')
 
 ## Recreational length compositions
 
+TODO: Add summaries of length samples by the proposed fleet structure.
+
+TODO: Add table and figures showing the around the number of single day and multi-day trips
+
+
+## Survey length compositions
+
+
 # Biology
 
 ## Maturity and Fecundity
+
+TODO: Add figure showing the two maturity curves from last assessment.
+
+TODO: Add fecudinty-at-length figure based on Dick et al. that was assumed in the last assessment
+
+TODO: Add information on additional maturity and fecundity samples being collected that will be used to update both maturity and fecundity if information is available in time. 
 
 ## Length-Weight
 
 The length-weight relationship was estimated using all biological data available from the NWFSC West Coast Groundfish Bottom Trawl (WCGBT) and the NWFSC Hook and Line surveys. 
 
+TODO: Add figure of length-weight by sex
+
 ## Length-at-Age
+
+TODO: Add plot showing the length-at-age of available data by area
+
+TODO: Add table of the number of additional age reads by sources that the CAP lab is working on 
 
 ## Natural Mortality
 
