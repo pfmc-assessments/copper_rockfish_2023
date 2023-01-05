@@ -95,6 +95,12 @@ Finally, each model area will have at least one fishery-independent fleet. The C
 
 ## Commerical Landings & Discards
 
+Since 1981, landings of copper rockfish have occurred from hook and line, net, pot, shrimp trawl, trawl, troll, and diving gear. The majority of landings for copper rockfish since 1981 are from hook and line gear across California (south of Point Conception 96% and north 87%). North of Point Conception there are some proportion of landings from trawl gear (8% primarily occurring between 1982-1985) and net gear (4% primarily occurring between 1983-1986). Since 2011, 98% and 96% of the landings south and north of Point Conception, respectively, are coming from hook and line gear.
+
+
+In recent years, there has been an increase in the proportion of fish landed live for both areas. In recent years, the percentage of copper rockfish landed dead north of Point Conception has been generally less than 50% within each year. Fish landed live are primarily caught with hook and line gear. However, in recent years, north of Point Conception there have been some limited landings of live fish using pot gear. 
+
+
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
 filein = file.path(dir, "plots", "landings_by_fleet_area.png"), 
@@ -103,21 +109,16 @@ label = 'com-landings')
 
 ``` 
 
-\
-
-Since 1981, landings of copper rockfish have occurred from hook and line, net, pot, shrimp trawl, trawl, troll, and diving gear. The majority of landings for copper rockfish since 1981 are from hook and line gear across California (south of Point Conception 96% and north 87%). North of Point Conception there are some proportion of landings from trawl gear (8% primarily occurring between 1982-1985) and net gear (4% primarily occurring between 1983-1986). Since 2011, 98% and 96% for the south and north of the landings are coming from hook and line gear, respectively.
-
-
-```{r, results = 'asis'}
+```{r, results = 'asis', fig.align='center'}
 add_figure(
 filein = file.path(dir, "plots", "percent_dead_landings.png"), 
 caption = "Proportion of commercial landings from fish landed dead north and south of Point Conception in recent years (source: PacFIN)",
-width = 75,
-height = 75, 
+width = 100,
+height = 50, 
 label = 'com-prop-dead')
 ``` 
+\ 
 
-In recent years, there has been an increase in the proportion of fish landed live for both areas. In recent years, the percentage of copper rockfish landed dead north of Point Conception has been generally less than 50% within each year.
 
 ### Additional Considerations
 
