@@ -37,6 +37,10 @@ add_figure(
 
 The copper rockfish assessment team has organized three informal discussion session during the month of January. The first meeting on Tuesday January 10th from 3 p.m. until 4:30 p.m. will focus on commercial fisheries. The second meeting scheduled Monday January 23rd from 3 p.m. until 4:30 p.m. will focus on recreational fisheries south of Point Conception. The third meeting scheduled Monday January 30th from 3 p.m. until 4:30 p.m. will focus on recreational fisheries south of Point Conception. Please consider joining one of these informal conversations about fisheries for copper rockfish in California.
 
+<!---
+[Meeting and Connection Information for January 2023 Discussions](https://github.com/pfmc-assessments/copper_rockfish_2023/blob/main/docs/Copper%20rockfish%20and%20the%20fisheries%20-%20virtual%20discussions.pdf)
+-->
+
 <a href="Copper rockfish and the fisheries - virtual discussions.pdf" target="_blank">Meeting and Connection Information for January 2023 Discussions</a>
 
 ### Pre-assessment Data Workshop
