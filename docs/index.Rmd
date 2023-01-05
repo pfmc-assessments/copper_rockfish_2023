@@ -45,237 +45,29 @@ setwd(dir)
 
 Description of data being considered for use in the 2023 stock assessments for copper rockfish in California. Exploratory analysis is provided that have been used to inform modeling choices and treatment of data.
 
-# Summary of the 2021 Assessment 
 
-In 2021, copper rockfish in California waters were modeled using two area based models split north and south of Point Conception. The estimated stock status in 2021 was estimated at 18% and 39% of unfished spawning output (millions of eggs) south and north of Point Conception, respectively. 
-
-The final assessment documents can be found online at the Pacific Fisheries Management Council (PFMC) website: [South of Point Conception](https://www.pcouncil.org/documents/2022/01/the-status-of-copper-rockfish-sebastes-caurinus-in-u-s-waters-off-the-coast-of-california-south-of-point-conception-in-2021-using-catch-and-length-data-december-2021.pdf/) and [North of Point Conception](https://www.pcouncil.org/documents/2022/01/the-status-of-copper-rockfish-sebastes-caurinus-in-u-s-waters-off-the-coast-of-california-north-of-point-conception-in-2021-using-catch-and-length-data-december-2021.pdf/)
-
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(dir, "plots", "ca_comprare_compare2_spawnbio_uncertainty.png"), 
-caption = "Estimates of spawning output (millions of eggs) from each model area in California from the 2021 data-moderate length-based assessments",
-label = 'ssb-est')
-
-``` 
-
-
-## Unresolved Questions and Issues from the 2021 Assessments
-
-* Growth
-    * The length-at-age relationship north of Point Conception was based on data age and length data from Oregon and Washington due to a lack of age data from California fisheries.
-    * The length-at-age relationship south of Point Conception was informed by limited ages from the NWFSC hook and line survey. 
-    
-* There were additional sources of data that were not included in the 2021 length-based data-moderate assessment that may be used in this year's assessments:
-    * Onboard Commercial Passenger Fishing Vessels (CPFV) length sample data from 1975-1979 (Collins and Crooke), 1987-1998 (Deb Wilson-Vandenberg), and 1986-1989 (Alley and Ono). These data were explored during mop-up and had limited impact on the model results.
-    * California Collaborative Fisheries Research Program (CCFRP) index of abundance and biological samples.
-    * CPFV observer index of abundance.
-    * RecFIN dockside sampling index of abundance.
-    * California Department of Fish and Wildlife (CDFW) remotely operated vehicle (ROV) biomass estimate.
-    * Any age samples from various sources that may support estimation of growth within the model.
-
-# Potential Model and Fleet Structure
-
-Currently, the following fleet structure is being considered for modeling commercial and recreational fisheries in both area models:
- 
-1. Commercial Passenger Fishing Vessel (CPFV, recorded as PC mode in RecFIN), 
-2. Private Rental (PR mode in RecFIN),
-3. Commercial Fleet Landing Dead Fish, and 
-4. Commercial Fleet Landing Live Fish. 
-
-Several factors have influenced the pre-preliminary fleet selection. First, there is a differential in size of fish landed live versus dead, particularly north of Point Conception that supports the need for separate selectivity curves. Second, both the CPFV and PR fleets are expected to have corresponding fishery-dependent indices of abundance which requires two separate fleets. Finally, the removals from the recreational shoreside and beach banks for copper rockfish are very small and do not justify a separate fleet. The removals from these recreational modes will be added to the PR fleet to account for total mortality. 
-
-The commercial lengths by year, particularly when divided into two fleets based on the landed fish condition, are limited in recent years for each proposed model area. If there are issues estimating selectivity reliably for all model years, the two commercial fleets may be combined into a single fleet with selectivity estimated by a parameterization that would allow bimodal selectivity (multiple peaks in selectivity at size) using time blocks (e.g., one or more time blocks in recent years when the live fishery developed). 
-
-Finally, each model area will have at least one fishery-independent fleet. The CCFRP survey will be included in the model north of Point Conception and potentially south of Point Conception depending upon the sample sizes. Additionally, south of Point Conception will include the NWFSC Hook and Line survey as a fleet in the model. 
-
-
-# Removal Data
-
-## Commerical Landings & Discards
-
-Since 1981, landings of copper rockfish have occurred from hook and line, net, pot, shrimp trawl, trawl, troll, and diving gear. The majority of landings for copper rockfish since 1981 are from hook and line gear across California (south of Point Conception 96% and north 87%). North of Point Conception there are some proportion of landings from trawl gear (8% primarily occurring between 1982-1985) and net gear (4% primarily occurring between 1983-1986). Since 2011, 98% and 96% of the landings south and north of Point Conception, respectively, are coming from hook and line gear.
-
-
-In recent years, there has been an increase in the proportion of fish landed live for both areas. In recent years, the percentage of copper rockfish landed dead north of Point Conception has been generally less than 50% within each year. Fish landed live are primarily caught with hook and line gear. However, in recent years, north of Point Conception there have been some limited landings of live fish using pot gear. 
-
-
-```{r, results = 'asis', fig.align='center'}
-add_figure(
-filein = file.path(dir, "plots", "landings_by_fleet_area.png"), 
-caption = "Commercial landings north and south of Point Conception. The landings are separated by fish landed live versus dead. The commercial landings in the south are relatively low (less than 10 mt per year) across the majority of years excluding 1995-1998 when landings ranged from 24 to 32 mt. The commercial landings in the north are generally higher than those observed south of Point Conception, particularly between 1983 to 1998 with landings peaking in 1993 at 69 mt (sources: PacFIN and California historical catch reconstruction)",
-label = 'com-landings')
-
-``` 
-
-```{r, results = 'asis', fig.align='center'}
-add_figure(
-filein = file.path(dir, "plots", "percent_dead_landings.png"), 
-caption = "Proportion of commercial landings from fish landed dead north and south of Point Conception in recent years (source: PacFIN)",
-width = 100,
-height = 50, 
-label = 'com-prop-dead')
-``` 
-\ 
-
-
-### Additional Considerations
-
-Only the commercial landings are shown for each area. Discard mortality across time will need to considered to determine catches.
-
-* The 2021 assessments assumed a constant discard mortality rate of 4.4% informed by WCGOP data for each area in California.
-* The rate of discarding has likely varied across time. Are there particular periods of time when discarding likely increased/decreased?
-* Different factors impacting discarding practices by area?
-
-
-## Recreational Landings & Discards
-
-TODO: Add the recreational landings data by proposed fleet structure
-
-### Additional Considerations
-
-TODO: Add discussion points around recreational discarding
-
-# Indices of Abundance
-
-## Fishery-Independent 
-
-### California Cooperative Fisheries Research Program
-
-California Collaborative Fisheries Research Program (CCFRP) is a survey that monitors groundfish populations in California’s network of Marine Protected Areas (MPAs) and adjacent reference areas. The CCFRP survey began in 2007 sampling select areas in northern California. In 2017, CCFRP expanded sampling across California. A detailed summary of the program and available sampling data for copper rockfish can be found [online](https://www.pcouncil.org/documents/2022/05/f-3-attachment-5-california-collaborative-fisheries-research-program-data-availability-for-stock-assessments.pdf/).
-
-TODO: Add table of positive observations by year and area for the CCFRP survey
-
-### NWFSC Hook and Line Survey
-
-TODO: Add figure of the NWFSC Hook and Line index from last assessment.
-
-TODO: Add table of positive observations by year from the NWFS Hook and Line 
-
-TODO: Add existing figure of observation location for copper rockfish in the NWFSC Hook and Line survey (e.g., inside vs. outside CCA)
-
-### NWFSC West Coast Groundfish Bottom Trawl Survey
-
-The NWFSC West Coast Groundfish Bottom Trawl (WCGBT) survey has been conducted across the West Coast annually since 2003 (there was no sampling conducted in 2020 due to the COVID-19 pandemic). The number of observations of copper rockfish by the NWFSC WCGBT survey are limited due to the sample gear (trawl) which is deployed on soft bottom substrate. A summary of the observations by this survey between 2003-2021 can be found [online](https://www.pcouncil.org/documents/2022/05/f-3-attachment-4-detailed-summary-of-available-data-to-support-west-coast-groundfish-stock-assessments-in-2023-electronic-only.pdf#page=111). The majority of observations of copper rockfish by the NWFSC WCGBT survey occurs south of Point Conception. The limited number of tows by year will prevented the calculation of an index of abundance. Additionally, observations using trawl gear may not be informative of population trends for rocky-habitat associated species such as copper rockfish. However, the collected biological data from this survey will be used to help inform growth.
-
-## Fishery-Dependent 
-
-# Composition Data
-
-## Commerical length compositions
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(dir, "plots", "com_length_samples_by_cond_area_year.png"), 
-caption = "The number of length samples by year from live and dead copper rockfish from the area south and north of Point Conception. Since 1981, there are a total of 3,517 dead and 1,099 live length samples north of Point Conception and 553 live and 2,135 dead length samples south of Point Conception (source: PacFIN)",
-label = 'com-length-n')
-
-```
-\
-
-The majority of lengths are from hook and line gear for each area:
-
-* North of Point Conception (total lengths = 4,616): 
-  * 4,268 from hook and line gear,
-  * 32 from net gear,
-  * 139 from pot gear,
-  * 15 from troll gear, and
-  * 162 from trawl gear.
-* South of Point Conception (total lengths = 2,688): 
-  * 2,585 from hook and line gear,
-  * 24 from net gear,
-  * 39 from trawl gear, and
-  * 36 from shrimp trawl gear.
-
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(dir, "plots", "length_boxplot_by_cond_area_year.png"), 
-caption = "The distribution of length samples by year from live and dead copper rockfish from the area south and north of Point Conception. The black horizontal line within each box indicates the median length observed that year where the median is defined as an equal number of observations from that year that are greater than and lesser than that value. The lower range of each box indicates the 25th percentile where 25 percent of observations that year are less than that length. The upper range of each box indicates the 75th percentile where 75 percent of observations that year are less than that length (source: PacFIN)",
-label = 'com-length-dist')
-
-```
-\
-
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(dir, "plots", "length_denstity_by_cond_area.png"), 
-caption = "The density of size selected by landed condition, live or dead, for each area across all years (source: PacFIN)",
-label = 'com-marginal-length-dist')
-
-```
-\
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(dir, "plots", "boxplot_length_by_port_area_cond_filtered_by_100n.png"), 
-caption = "Boxplot of lengths by landed port, area, and fish condition (live or dead).  Only ports with greater than 100 length samples (live + dead > 100 samples) across all years are shown (source: PacFIN)",
-label = 'com-boxplot-length-port')
-
+```{r child = "1_summary_of_2021_assessment.Rmd"}
 ```
 
-## Recreational length compositions
 
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(dir, "plots", "rec_length_samples_by_area_year.png"), 
-caption = "The number of length samples by year and mode for copper rockfish for areas south and north of Point Conception. Since 1980, there are a total of 11,969 CPFV and 27,025 Private/Rental length samples north of Point Conception and 23,535 CPFV and 7,501 Private/Rental length samples south of Point Conception (source: RecFIN)",
-label = 'rec-length-samples')
-
+```{r child = "2_potential_model_fleet_structure.Rmd"}
 ```
-\
 
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(dir, "plots", "all_length_dist_by_mode_area_w_mean.png"), 
-caption = "The density of size selected by mod, CPFV or Private/Rental, for each area across all years (source: RecFIN)",
-label = 'rec-length-dist')
 
+```{r child = "3_removals.Rmd"}
 ```
-\
-
-TODO: Add table and figures showing the around the number of single day and multi-day trips
 
 
-## Survey length compositions
-
-
-# Biology
-
-## Maturity and Fecundity
-
-TODO: Add figure showing the two maturity curves from last assessment.
-
-TODO: Add fecudinty-at-length figure based on Dick et al. that was assumed in the last assessment
-
-TODO: Add information on additional maturity and fecundity samples being collected that will be used to update both maturity and fecundity if information is available in time. 
-
-## Length-Weight
-
-The length-weight relationship was estimated using all biological data available from the NWFSC West Coast Groundfish Bottom Trawl (WCGBT) and the NWFSC Hook and Line surveys. 
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(dir, "plots", "doc_Length_Weight_Sex.png"), 
-caption = "Length weight relationship by sex for copper rockfish (source: NWFSC WCGBT and HKL Surveys)",
-label = 'weight-length')
-
+```{r child = "4_indices.Rmd"}
 ```
-\
 
-## Length-at-Age
 
-TODO: Add plot showing the length-at-age of available data by area
+```{r child = "5_composition_data.Rmd"}
+```
 
-TODO: Add table of the number of additional age reads by sources that the CAP lab is working on 
 
-## Natural Mortality
-
-Natural mortality was fixed in the 2021 assessments at a value of 0.108 yr^-1^ based on an assumed maximum age of 50 years. The maximum age was selected based on available age data collected within Oregon and Washington and literature values. The oldest aged observed was 51 years with two observations off of the coast of Washington and Oregon in 2019. This selection was consistent with the literature examining the longevity of copper rockfish and was supported by the observed ages that had multiple observations of fish between 44 and 51 years of age.  
-
-The input parameter value for natural mortality will be reconsidered within the 2023 assessments based on any new available age data. Additionally, the 2023 assessments will explore the ability to estimate natural mortality within the model and will conduct sensitivities and profiles to understand the information in the data on natural mortality and the impact of select values on the model estimates.
+```{r child = "6_biology.Rmd"}
+```
 
 
 
