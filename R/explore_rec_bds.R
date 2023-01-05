@@ -25,7 +25,7 @@ crfs <- crfs[-find, ]
 find <- which(crfs$lengthcm > 60) 
 # crfs[find, 'lengthcm']
 # [1] 60.3 64.6 66.8 67.0 69.0 64.8 61.5 66.8
-# while some are a bit dubious, not going to remove any records
+# while some are a bit dubious, not going to remove any records at this point
 
 
 ggplot(crfs, aes(y = lengthcm, x = year, group = year)) +
@@ -35,9 +35,12 @@ ggplot(crfs, aes(y = lengthcm, x = year, group = year)) +
 ggsave(filename = file.path(dir, "plots", "crfs_length_boxplot_by_retention_area_year.png"),
 	width = 10, height = 7)
 
-# Remove the releaseed fish since they are distinctly different
+# Remove the released fish since they are distinctly different
 # The released fish are all from CPFV model with 52 in the north and 187 in south
 crfs <- crfs[crfs$IS_RETAINED == "RETAINED", ]
+#           north south
+#  RELEASED    52   187
+#  RETAINED 33131 27344
 
 ggplot(crfs, aes(y = lengthcm, x = year, group = year)) +
 	geom_boxplot() + 
@@ -49,6 +52,10 @@ ggsave(filename = file.path(dir, "plots", "crfs_length_boxplot_by_mode_area_year
 # There are only a handful of shoreside lengths that are
 # just noise, let's remove them (north = 42, south = 18 N)
 crfs <- crfs[crfs$mode != "shoreside", ]
+#            north south
+#  cpfv       9162 21119
+#  private   23927  6207
+#  shoreside    42    18
 
 ggplot(crfs, aes(lengthcm, fill = mode, color = mode)) + 
 	geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
@@ -107,8 +114,7 @@ ggplot(mrfs, aes(y = lengthcm, x = year, group = year)) +
 ggsave(filename = file.path(dir, "plots", "mrfs_length_boxplot_by_mode_area_year.png"),
 	width = 10, height = 7)
 
-# table(mrfs$mode, mrfs$area)
-#            
+# table(mrfs$mode, mrfs$area)           
 #             north south
 #   cpfv       2809  2416
 #   private    3098  1294
@@ -129,7 +135,7 @@ ggplot(mrfs, aes(y = count, x = year))  +
     xlab("Year") + ylab("Number of Length Samples") +
     facet_wrap(facets = c("area", "mode")) + 
     scale_fill_viridis_d()
-ggsave(filename = file.path(dir, "plots", "length_samples_by_area_year.png"),
+ggsave(filename = file.path(dir, "plots", "mrfs_length_samples_by_area_year.png"),
 	width = 10, height = 7)
 
 # ==========================================================
@@ -167,12 +173,12 @@ ind = which(means_by_year$area == "north" & means_by_year$mode == "private")
 points(means_by_year[ind, 'year'], means_by_year[ind, 'lengthcm'], pch = 16, col = 'red')
 ind = which(means_by_year$area == "north" & means_by_year$mode == "cpfv")
 points(means_by_year[ind, 'year'], means_by_year[ind, 'lengthcm'], pch = 17, col = 'blue')
-abline(h = 34.3, col = 'grey', lty = 3)
-abline(h = 34.8, col = 'grey', lty = 3)
+abline(h = 34.3, col = 'grey10', lty = 3, lwd = 2)
+abline(h = 34.8, col = 'grey10', lty = 3, lwd = 2)
 legend('bottomright', bty = 'n', col = c('red', 'blue'), pch = c(1, 2, 16, 17),
 	legend = c('South Pt. Conception - Private', 'South Pt. Conception - CPFV',
 	'North Pt. Conception - Private', 'North Pt. Conception - CPFV'))
-legend('bottomleft', bty = 'n', lty = 3, col = 'grey', legend = "Length at 50% Maturity")
+legend('bottomleft', bty = 'n', lwd = 2, lty = 3, col = 'grey10', legend = "Length at 50% Maturity")
 dev.off()
 
 means <- aggregate(lengthcm ~ program + mode, data[data$area == "south",] , mean)
@@ -196,12 +202,50 @@ ggsave(filename = file.path(dir, "plots", "all_north_length_dist_by_mode.png"),
 	width = 10, height = 5)
 
 
+means <- aggregate(lengthcm ~ area + mode , data, mean)
+# program  area    mode lengthcm
+#    crfs north    cpfv 37.36482
+#    mrfs north    cpfv 37.70138
+#    crfs south    cpfv 32.15094
+#    mrfs south    cpfv 34.03356
+#    crfs north private 36.38861
+#    mrfs north private 36.09814
+#    crfs south private 32.78672
+#    mrfs south private 33.42399
+
+ggplot(data, aes(lengthcm, fill = program, color = program)) + 
+	geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+	geom_vline(data = means, aes(xintercept = lengthcm, colour = area), lwd = 2) +
+    xlab("Length (cm)") + ylab("Density") +
+    scale_fill_viridis_d() +
+    facet_wrap(c("area", "mode"))
+ggsave(filename = file.path(dir, "plots", "all_length_dist_by_mode_area_program.png"),
+	width = 10, height = 5)
+
 ggplot(data, aes(lengthcm, fill = area, color = area)) + 
 	geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+	geom_vline(data = means, aes(xintercept = lengthcm, colour = area), lwd = 2) +
     xlab("Length (cm)") + ylab("Density") +
-    facet_wrap(c("mode"))
+    scale_fill_viridis_d() +
+    facet_wrap(c("area", "mode"))
+ggsave(filename = file.path(dir, "plots", "all_length_dist_by_mode_area.png"),
+	width = 10, height = 5)
 
-ggplot(data, aes(lengthcm, fill = mode, color = mode)) + 
+
+ggplot(data, aes(lengthcm, fill = area, color = area)) + 
 	geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+	geom_vline(data = means, aes(xintercept = lengthcm, colour = area), lwd = 2) +
     xlab("Length (cm)") + ylab("Density") +
-    facet_wrap(c("area"))
+    facet_wrap(c("mode")) +
+    scale_fill_viridis_d()
+ggsave(filename = file.path(dir, "plots", "all_length_dist_by_mode_area_w_mean.png"),
+	width = 10, height = 5)
+
+data$count = 1
+ggplot(data, aes(y = count, x = year))  + 
+	geom_histogram(aes(y = count), position="stack", stat="identity") + 
+    xlab("Year") + ylab("Number of Length Samples") +
+    facet_wrap(facets = c("area", "mode")) + 
+    scale_fill_viridis_d()
+ggsave(filename = file.path(dir, "plots", "length_samples_by_area_year.png"),
+	width = 10, height = 7)
