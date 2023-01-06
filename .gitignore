@@ -7,7 +7,7 @@
 _main.utf8.md
 _main.knit.md
 _main.md
-documents/*.pdf
+documents/**/pdf
 models/
 data/
 sql_db
