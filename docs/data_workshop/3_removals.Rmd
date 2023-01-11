@@ -26,6 +26,17 @@ label = 'com-prop-dead')
 ``` 
 \ 
 
+```{r, results = 'asis', fig.align='center'}
+add_figure(
+filein = file.path(dir, "plots", "catch_by_area_year_block_gear_group.png"), 
+caption = " Landings by area, time period (grouped by decade), and gear grouping (source: PacFIN).",
+width = 100,
+height = 50, 
+label = 'com-gear-year')
+``` 
+\ 
+
+
 
 ### Additional Items for Discussion
 
