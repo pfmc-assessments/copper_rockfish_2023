@@ -1,7 +1,7 @@
 ##############################################################################################################
 #
-# 	Data explorations of landings data for
-#	  the 2023 copper rockfish assessment 
+# 	Data processing of commercial landings data for
+#		the 2023 copper rockfish assessment 
 #			  by Chantel Wetzel 
 #					
 ##############################################################################################################

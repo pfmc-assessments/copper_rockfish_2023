@@ -24,7 +24,7 @@ mrfss <- mrfss[, keep]
 
 mrfss <- recfin_areas(data = mrfss, 
 			  area_grouping = list("Northern California", "Southern California"), 
-			  area_names  = c("south", "north"), 
+			  area_names  = c("north", "south"), 
 			  column_name = "RECFIN_SUB_REGION_NAME")
 
 mrfss <- recfin_modes(
@@ -32,6 +32,13 @@ mrfss <- recfin_modes(
 	mode_grouping = list(c("BEACH","MAN-MADE", "SHORE"), "PARTY", "PRIVATE"), 
 	mode_names = c("shoreside", "cpfv", "private"),
 	column_name = "SOURCE_MODE_NAME")
+
+mrfss$year <- mrfss$YEAR_
+
+# The historical reconstruction estimate of 1980 is considered
+# better than what is included in MRFSS.
+keep <- which(mrfss$year != 1980)
+mrfss <- mrfss[keep, ]
 
 save(mrfss, file = file.path(dir, "rec_catch", "mrfss_catch_filtered.rdata"))
 
@@ -48,7 +55,10 @@ crfss <- recfin_modes(
 	mode_names = c("shoreside", "cpfv", "private")
 )
 
-save(crfss, file = file.path(dir, "rec_catch", "crfss_catch_filtered.rdata"))
+crfss$year <- crfss$RECFIN_YEAR
+crfs <- crfss
+
+save(crfs, file = file.path(dir, "rec_catch", "crfss_catch_filtered.rdata"))
 
 # Recreational bds data =========================================
 
@@ -71,7 +81,7 @@ remove <- which(is.na(mrfss_bds$LNGTH) & is.na(mrfss_bds$T_LEN))
 mrfss_bds <- mrfss_bds[-remove, ]
 
 south <- c(37, 59, 73, 37, 111, 83) # 79 is San Luis Obispo which is north
-north <- unique(mrfss_bds[!mrfss_bds$CNTY %in% sout, "CNTY"]) 
+north <- unique(mrfss_bds[!mrfss_bds$CNTY %in% south, "CNTY"]) 
 
 mrfss_bds <- recfin_areas(
 	data = mrfss_bds,
@@ -89,7 +99,23 @@ mrfss_bds <- recfin_modes(
 	column_name = "MODE_F")
 
 mrfss_bds$year <- mrfss_bds$YEAR
-mrfss_bds$length_cm <- mrfss_bds$LNGTH / 10
+
+# According to E.J. the LNGTH column are fork lengths
+# Through 1988 most are total lengths converted to fork length
+# using a conversion factor between the two. This is why they
+# have multiple decimal places but it is better to use these 
+# since the LNGTH is consistently representative of fork lengths
+# either converted or measured.
+mrfss_bds$lengthcm <- mrfss_bds$LNGTH / 10
+
+find <- which(mrfss_bds$lengthcm < 10)
+# Remove one fish of 3.8 cm
+mrfss_bds <- mrfss_bds[-find, ]
+
+find <- which(mrfss_bds$lengthcm > 60)
+# There are 24 fish greater than 60 cm
+# Only remove the one record of a 80.2 cm fish
+mrfss_bds <- mrfss_bds[mrfss_bds$lengthcm < 80, ]
 
 save(mrfss_bds, file = file.path(dir, "rec_bds", "mrfss_bds_filtered.rdata"))
 
@@ -114,9 +140,20 @@ crfss_bds <- recfin_modes(
 	mode_names = c("shoreside", "cpfv", "private"))
 
 crfss_bds$year <- crfss_bds$RECFIN_YEAR
-crfss_bds$length_cm <- crfss_bds$AGENCY_LENGTH / 10
+crfss_bds$lengthcm <- crfss_bds$AGENCY_LENGTH / 10
 
-aggregate(length_cm~mode+area, crfss_bds, quantile)
+# Let's do a quick check on lengths
+find <- which(crfss_bds$lengthcm < 10) 
+# 3 lengths of very small fish
+crfss_bds <- crfss_bds[-find, ]
 
+find <- which(crfss_bds$lengthcm > 60) 
+# crfss_bds[find, 'lengthcm']
+# [1] 60.3 64.6 66.8 67.0 69.0 64.8 61.5 66.8
+# while some are a bit dubious, not going to remove any records at this point
+
+aggregate(lengthcm ~ mode + area, crfss_bds, quantile)
+
+crfs_bds <- crfss_bds
 
 save(crfss_bds, file = file.path(dir, "rec_bds", "crfss_bds_filtered.rdata"))
