@@ -60,7 +60,11 @@ Description of data being considered for use in the 2023 stock assessments for c
 ```
 
 
-```{r child = "5_composition_data.Rmd"}
+```{r child = "5_fishery_composition_data.Rmd"}
+```
+
+
+```{r child = "5_survey_composition_data.Rmd"}
 ```
 
 
