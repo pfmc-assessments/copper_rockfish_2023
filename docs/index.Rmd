@@ -24,8 +24,8 @@ setwd(dir)
 
 ```{r, results='asis'}
 add_figure(
-  filein = file.path(dir, "copper_rockfish.png"), 
-  caption = '',
+  filein = file.path(dir, "copper_rockfish.png"), #file.path(dir, "tuttle_copper.jpg"), # 
+  caption = '',#'Photo Curtesy of Vanessa Tuttle',
   width = 60,
   height = 60,
   label = 'copper')
