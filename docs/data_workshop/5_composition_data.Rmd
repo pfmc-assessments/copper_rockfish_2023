@@ -90,3 +90,4 @@ label = 'rec-length-dist')
 TODO: Add table and figures showing the around the number of single day and multi-day trips
 
 
+## Survey length compositions
