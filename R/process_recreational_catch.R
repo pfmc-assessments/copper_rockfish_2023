@@ -102,6 +102,11 @@ ggplot(all, aes(x = year, y = catch_mt, fill = mode)) +
 	geom_bar(stat = 'identity') +
 	facet_grid(area~.)+ 
 	xlab("Year") + ylab("Landings (mt)") + 
+	theme(axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	legend.title = element_text(size = 12),
+      	legend.text = element_text(size = 12),
+      	strip.text.y = element_text(size = 14)) +
 	scale_fill_viridis_d()
 ggsave(filename = file.path(dir, "plots", "all_rec_landings_mt_mode_2x1.png"), 
       width = 13, height = 10, units = 'in')

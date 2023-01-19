@@ -34,7 +34,7 @@ catch_file <- data.frame(
 )
 
 data <- cleanPacFIN(
-	Pdata = bds.pacfin[bds.pacfin$AGENCY_CODE == "C",], 
+	Pdata = bds.pacfin, #[bds.pacfin$AGENCY_CODE == "C",], 
 	CLEAN = TRUE,
 	verbose = TRUE)
 

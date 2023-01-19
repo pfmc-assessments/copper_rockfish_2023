@@ -9,6 +9,7 @@
 dir = "C:/Assessments/2023/copper_rockfish_2023/data/pacfin_catch"
 library(ggplot2)
 
+load(file.path(dir, "PacFIN.COPP.CompFT.07.Nov.2022.RData"))
 com_hist_early <- read.csv(file.path(dir, "ca_hist_commercial_1916_1968_ej.csv"))
 com_hist_late <- read.csv(file.path(dir, "ca_hist_commercial_1969_1980_ej.csv"))
 hist_ratio <- read.csv(file.path(dir, "historical_landings_tables_2020_revised_Avila_1953.csv"))
@@ -191,8 +192,14 @@ min(conf_check$VESSEL_ID)
 ggplot(pacfin, aes(x = year_block, y = catch, fill = gear_group)) +
 	geom_bar(stat = 'identity') +
 	facet_wrap(facets = c("area")) +
+	theme(axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	legend.title = element_text(size = 12),
+      	legend.text = element_text(size = 12),
+      	strip.text.x = element_text(size = 14)) +
+	xlab("Year Blocks") + ylab("Landings (mt)") +
 	scale_fill_viridis_d()
-ggsave(filename = file.path(dir, "plots", "catch_by_area_year_block_gear_group.png"), 
+ggsave(filename = file.path(dir, "plots", "landings_by_area_year_block_gear_group.png"), 
       width = 13, height = 10, units = 'in')
 
 

@@ -7,7 +7,7 @@
 #############################################################################################
 
 devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/nwfscSurvey")
-library(nwfscSurvey)
+#library(nwfscSurvey)
 
 dir_main <- "C:/Assessments/2023/copper_rockfish_2023/data/wcgbt"
 
@@ -35,12 +35,12 @@ catch_orig <- x
 load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2022-11-27.rdata"))
 bio_orig <- x
 
-PlotMap.fn(dir = dir_main, dat = catch_orig)
+PlotMap.fn(dat = catch_orig)
 #=====================================================================
 # Split the data by assessment area 
 #=====================================================================
 area = "south"
-area = "north"
+#area = "north"
 
 if (area == "south"){
     catch = catch_orig[catch_orig$Latitude_dd < 34.47, ]
@@ -50,7 +50,7 @@ if (area == "south"){
     bio = bio_orig[bio_orig$Latitude_dd >= 34.47 & bio_orig$Latitude_dd < 42, ]
 }
 
-dir = file.path(dir, area)
+dir = file.path(dir_main, area)
 
 #=====================================================================
 # Process the data in the selected area 

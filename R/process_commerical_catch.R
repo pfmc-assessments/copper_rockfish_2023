@@ -168,10 +168,8 @@ landings_north_ss3 <- data.frame(
 write.csv(landings_south_ss3, file = file.path(dir, "forSS", "commercial_landings_south_for_ss3.csv"), row.names = FALSE)
 write.csv(landings_north_ss3, file = file.path(dir, "forSS", "commercial_landings_north_for_ss3.csv"), row.names = FALSE)
 
-catch_north_ss3 <- landings_north_ss3
-catch_north_ss3$catch <- catch_north_ss3$catch * discard_rate
-catch_south_ss3 <- landings_south_ss3
-catch_south_ss3$catch <- catch_south_ss3$catch * discard_rate
+catch_north_ss3$catch <- landings_north_ss3$catch * discard_rate
+catch_south_ss3$catch <- landings_south_ss3$catch * discard_rate
 
 write.csv(catch_south_ss3, file = file.path(dir, "forSS", "commercial_catch_south_for_ss3.csv"), row.names = FALSE)
 write.csv(catch_north_ss3, file = file.path(dir, "forSS", "commercial_catch_north_for_ss3.csv"), row.names = FALSE)
@@ -193,7 +191,12 @@ ggplot(df, aes(x = year, y = catch, fill = fleet)) +
 	geom_bar(stat = 'identity') +
 	scale_fill_viridis_d() + 
 	facet_grid('area') +
-	ylab("Catch (mt)") + xlab("Year")
+	theme(axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	legend.title = element_text(size = 12),
+      	legend.text = element_text(size = 12),
+      	strip.text.y = element_text(size = 14)) +
+	ylab("Landings (mt)") + xlab("Year")
 ggsave(filename = file.path(dir, "plots", "landings_by_fleet_area.png"), 
       width = 13, height = 10, units = 'in')
 
