@@ -1,0 +1,49 @@
+## Survey length compositions
+
+### CCFRP Survey
+
+
+### NWFSC Hook and Line survey
+
+
+```{r, results = 'asis', fig.align='center'}
+add_figure(
+  filein = file.path(dir, "plots", "hkl_site_observations.png"), 
+  caption = "Observations of copper rockfish between 2004-2021 by sampling site inside and outside of Cowcod Conservation Areas from the NWFSC Hook and Line survey (source: NWFSC Hook and Line survey)",
+  label = 'hkl-sites')
+
+``` 
+\
+
+
+```{r, results = 'asis', fig.align='center'}
+add_figure(
+  filein = file.path(dir, "plots", "hkl_observations_by_length_area.png"), 
+  caption = "Total observations by length (cm) of copper rockfish between 2004-2021 inside and outside of Cowcod Conservation Areas from the NWFSC Hook and Line survey (source: NWFSC Hook and Line survey)",
+  label = 'hkl-length-area')
+
+``` 
+\
+
+```{r, results = 'asis', fig.align='center'}
+add_figure(
+  filein = file.path(dir, "plots", "hkl_length_sex_depth.png"), 
+  caption = "Measured lengths (cm) by depth in fathoms of copper rockfish between 2004-2021 from the NWFSC Hook and Line survey (source: NWFSC Hook and Line survey)",
+  label = 'hkl-length-depth')
+
+``` 
+\
+
+
+
+### NWFSC WCGBT survey
+
+
+```{r, results = 'asis', fig.align='center'}
+add_figure(
+  filein = file.path(dir, "plots", "wcgbt_length_samples_w_otoliths_by_area.png"), 
+  caption = "Number of lengths with otoliths by length and area collected by the NWFSC WCGBT survey between 2003 - 2021. A total of 195 and 584 otoliths were collected from the areas north and south of Point Conception, respectively (source: NWFSC WCGBT survey)",
+  label = 'wcgbt-lengths')
+
+``` 
+
