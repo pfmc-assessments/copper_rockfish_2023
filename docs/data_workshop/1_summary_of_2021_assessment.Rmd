@@ -9,6 +9,8 @@ The final assessment documents can be found online at the Pacific Fisheries Mana
 add_figure(
   filein = file.path(dir, "plots", "ca_comprare_compare2_spawnbio_uncertainty.png"), 
   caption = "Estimates of spawning output (millions of eggs) from each model area in California from the 2021 data-moderate length-based assessments",
+  width = 75,
+  height = 75,
   label = 'ssb-est')
 
 ``` 
