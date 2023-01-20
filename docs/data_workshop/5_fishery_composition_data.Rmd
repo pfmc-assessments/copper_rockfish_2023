@@ -88,3 +88,16 @@ label = 'rec-length-dist')
 \
 
 TODO: Add table and figures showing the around the number of single day and multi-day trips
+
+### Potential Duration Bias
+
+Add text
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(dir, "plots", "all_length_dist_by_mode_area.png"), 
+caption = "Length frequency by duration, districts 1 & 2",
+label = 'rec-trip-length')
+
+```

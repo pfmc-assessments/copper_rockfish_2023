@@ -29,8 +29,8 @@ knitr::opts_chunk$set(
 
 library(sa4ss)
 
-dir <- "C:/Assessments/2023/copper_rockfish_2023/docs/data_workshop"
-
+dir <- "../docs/data_workshop"
+dir <- "C:/Users/jcoates/OneDrive - California Department of Fish and Wildlife/Groundfish/Copper 2022/Git/copper_rockfish_2023/docs/data_workshop"
 ```
 
 # 
