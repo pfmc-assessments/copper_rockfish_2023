@@ -89,15 +89,45 @@ label = 'rec-length-dist')
 
 TODO: Add table and figures showing the around the number of single day and multi-day trips
 
-### Potential Duration Bias
+### Potential bias in length sampling with CPFV trip duration
 
-Add text
+The CDFW California Recreational Fisheries Survey (CRFS) collects length samples from fish caught on commercial passenger fishing vessels (CPFVs).  These samples are collected by both staff on board CPFV trips and at the docks when vessels return.  On board CRFS staff are unable to sample overnight trips with as high a frequency as day trips.  In many cases, these overnight trips may reach destinations that are farther from port and therefore experience lower fishing rates and contain larger fish.  This could result in a bias in length distributions aggregated across trip durations if sites with larger fish are under-sampled.  
 
+We examined the length distributions of fish sampled on trips of varying duration by district.  Overnight trips only occur in the southern California sampling districts 1 (San Diego, Orange, and Los Angeles counties) and 2 (Ventura and Santa Barbara counties).  Some separation in copper rockfish length frequencies is observed in district 1.  
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(dir, "plots", "all_length_dist_by_mode_area.png"), 
-caption = "Length frequency by duration, districts 1 & 2",
-label = 'rec-trip-length')
+filein = file.path(dir, "plots", "CopperDurationDist12.png"), 
+caption = "Copper Rockfish Length Frequency by CPFV Trip Duration, CRFS Districts 1 & 2 (source: CRFS PC Onboard + Dockside Surveys)",
+label = 'cpfv-length-duration')
+
+```
+\
+To determine if larger fish are under-sampled, we need to compare catch rates relative to sampling rates.  A sharp increase in the number of rockfish caught on overnight CPFV trips, as well as other fish species, was observed in 2014 with catches remaining relatively high through 2020.  No increase was observed on day trips.  This was coincident with an increase in the number of overnight trips being made in 2014.  The increase in catch was likely driven by the arrival of warm water which drove increases in pelagic species.  A large proportion of the trips made in 2014 listed tuna as the target species.  Many trips targeting pelagic species will also visit sites to target groundfish, and this is the likely cause for the coincident increase in groundfish catch.      
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(dir, "plots", "cpfv_catch_multi_single.png"), 
+caption = "CPFV Catch of Rockfish and Non-Rockfish on Multi and Single-Day Trips (source: CPFV Logbooks)",
+label = 'cpfv-catch-duration')
+
+```
+\
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(dir, "plots", "cpfv_trips_multi_single.png"), 
+caption = "Multi and Single-Day CPFV Trips (source: CPFV Logbooks)",
+label = 'cpfv-trips-duration')
+
+```
+\
+We calculated the percent of copper rockfish in southern California caught on overnight trips relative to the total number of CPFV trips.  We compared this to the percent of copper rockfish length samples collected from CPFVs that were taken from overnight trips.  The lower proportion of sampling relative to catch shows that there is under-sampling of these trips.  Given this, we will consider weighting length samples from CPFVs according to trip duration to correct for this bias, particularly since 2014.    
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(dir, "plots", "cpfv_sampling_multi.png"), 
+caption = "Multi and Single-Day CPFV Trips (source: CPFV Logbooks and CRFS PC Onboard and Dockside Surveys)",
+label = 'cpfv-sampling')
 
 ```
