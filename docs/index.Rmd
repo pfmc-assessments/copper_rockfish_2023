@@ -15,9 +15,10 @@ knitr::opts_chunk$set(
 )
 
 library(sa4ss)
+library(here)
 
-dir <- "C:/Assessments/2023/copper_rockfish_2023/docs"
-setwd(dir)
+
+dir <- here()
 
 
 ```

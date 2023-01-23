@@ -8,8 +8,8 @@
 
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
-  filein = file.path(dir, "plots", "hkl_site_observations.png"), 
-  caption = "Observations of copper rockfish between 2004-2021 by sampling site inside and outside of Cowcod Conservation Areas from the NWFSC Hook and Line survey (source: NWFSC Hook and Line survey)",
+  filein = file.path(dir, "plots", "hkl_copper_by_site_count.png"), 
+  caption = "Total number of observation of copper rockfish between 2004-2021 by sampling site inside and outside of Cowcod Conservation Areas from the NWFSC Hook and Line survey (source: NWFSC Hook and Line survey)",
   label = 'hkl-sites')
 
 ``` 
