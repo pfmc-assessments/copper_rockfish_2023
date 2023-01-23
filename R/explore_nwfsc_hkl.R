@@ -20,12 +20,40 @@ hkl_all$area <- ifelse(hkl_all$site_number >= 500, "CCA", "Outside CCA")
 hkl_all$count <- 0
 ind <- which(hkl_all$common_name == "Copper Rockfish")
 hkl_all[ind, 'count'] <- 1
-hkl_all$fathom_bin <- plyr::round_any(hkl_all$drop_depth_fathoms, 2, floor)
+hkl_all$fathom_bin <- plyr::round_any(hkl_all$drop_depth_fathoms, 5, floor)
+
+hkl_all_site <- hkl_all %>%
+	group_by(site_number) %>%
+	summarise(
+		site_lat = mean(drop_latitude_degrees),
+		site_lon = -1*mean(drop_longitude_degrees),
+		site_depth = mean(drop_depth_fathoms),
+		site_area = unique(area),
+		total_count = sum(count)
+	)
+
+# Filter down to only copper obervations
 hkl <- hkl_all[ind, ]
 hkl$length_bin <- plyr::round_any(hkl$length_cm, 2, floor)
 
-aggregate(count ~ year, hkl, sum)
 
+sub_hkl_all_site <- hkl_all_site[hkl_all_site$total_count > 0, ]
+colors <- viridis::viridis(10)[c(1,5,9)]
+ggplot() +
+	geom_jitter() + 
+	geom_point(data = hkl_all_site, aes(x = site_lon, y = site_lat, col = site_area), size = 5, pch = 1) + 
+	geom_point(data = sub_hkl_all_site, aes(x = site_lon, y = site_lat, size = total_count), 
+		color = colors[2]) + 
+	scale_size_continuous("Count", breaks = c(1, 10, seq(25, 125, 25))) +
+	scale_fill_manual("Site", values = c('CCA'  = colors[1], 'Outside CCA' = colors[3])) +
+    scale_color_manual("Site", values = c('CCA' = colors[1], 'Outside CCA' = colors[3])) +
+	theme(axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	legend.title = element_text(size = 14),
+      	legend.text = element_text(size = 14)) +
+	xlab("Longitude") + ylab("Latitude") 
+ggsave(filename = file.path(dir, "plots", "hkl_copper_by_site_count.png"),
+	width = 10, height = 8)
 
 pngfun(wd = file.path(dir, "plots"), file = "hkl_site_observations.png", w = 7, h = 7, pt = 12)
 colors <- viridis::viridis(3, alpha = c(0.05, 0.05, 1))
@@ -72,6 +100,7 @@ ggplot(hkl, aes(y = count, x = year, fill = sex))  +
     scale_fill_viridis_d()
 ggsave(filename = file.path(dir, "plots", "hkl_observations_by_year_sex.png"),
 	width = 10, height = 8)
+
 
 ggplot(hkl[!is.na(hkl$otolith_number), ], aes(y = count, x = length_bin, fill = sex))  + 
 	geom_histogram(aes(y = count), position="stack", stat="identity") + 
