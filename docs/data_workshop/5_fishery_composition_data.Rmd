@@ -56,7 +56,7 @@ label = 'com-boxplot-length-port')
 
 ## Recreational length compositions
 
-The recreational length composition data summarized below represen data pulled from RecFIN collected by either the MRFSS (1980 - 2003) or CRFS (2004 - 2022) sampling programs. There are additional data sources that contain historical length samples from the CPFV fleets (1975-1979 from Collins and Crooke, 1987-1998 from Deb Wilson-Vandenberg, and 1986-1989 from Alley and Ono) that will be evaluated and used within each assessment model as appropriate but are not included here.
+The recreational length composition data summarized below represent data pulled from RecFIN collected by either the MRFSS (1980 - 2003) or CRFS (2004 - 2022) sampling programs. There are additional data sources that contain historical length samples from the CPFV fleets (1975-1979 from Collins and Crooke, 1987-1998 from Deb Wilson-Vandenberg, and 1986-1989 from Alley and Ono) that will be evaluated and used within each assessment model as appropriate but are not included here.
 
 The total number of length samples within RecFIN across MRFSS and CRFS are:
 
@@ -87,18 +87,16 @@ label = 'rec-length-dist')
 ```
 \
 
-TODO: Add table and figures showing the around the number of single day and multi-day trips
-
 ### Potential bias in length sampling with CPFV trip duration
 
-The CDFW California Recreational Fisheries Survey (CRFS) collects length samples from fish caught on commercial passenger fishing vessels (CPFVs).  These samples are collected by both staff on board CPFV trips and at the docks when vessels return.  On board CRFS staff are unable to sample overnight trips with as high a frequency as day trips.  In many cases, these overnight trips may reach destinations that are farther from port and therefore experience lower fishing rates and contain larger fish.  This could result in a bias in length distributions aggregated across trip durations if sites with larger fish are under-sampled.  
+The CDFW California Recreational Fisheries Survey (CRFS) collects length samples from fish caught on commercial passenger fishing vessels (CPFVs).  These samples are collected by both staff on board CPFV trips and at the docks when vessels return.  On board CRFS staff are unable to sample overnight trips with as high a frequency as day trips.  In many cases, these overnight trips may reach destinations that are farther from port and therefore experience lower fishing rates and contain larger fish.  This could result in a bias in length distributions aggregated across trip duration if sites with larger fish are under-sampled.  
 
 We examined the length distributions of fish sampled on trips of varying duration by district.  Overnight trips only occur in the southern California sampling districts 1 (San Diego, Orange, and Los Angeles counties) and 2 (Ventura and Santa Barbara counties).  Some separation in copper rockfish length frequencies is observed in district 1.  
 
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(dir, "plots", "CopperDurationDist12.png"), 
-caption = "Copper Rockfish Length Frequency by CPFV Trip Duration, CRFS Districts 1 & 2 (source: CRFS PC Onboard + Dockside Surveys)",
+caption = "Copper rockfish length grequency by CPFV trip duration for CRFS districts 1 & 2 (source: CRFS PC Onboard + Dockside Surveys)",
 label = 'cpfv-length-duration')
 
 ```
@@ -108,7 +106,7 @@ To determine if larger fish are under-sampled, we need to compare catch rates re
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(dir, "plots", "cpfv_catch_multi_single.png"), 
-caption = "CPFV Catch of Rockfish and Non-Rockfish on Multi and Single-Day Trips (source: CPFV Logbooks)",
+caption = "CPFV catch of rockfish and non-rockfish on multi- and single-day trips (source: CPFV Logbooks)",
 label = 'cpfv-catch-duration')
 
 ```
@@ -117,7 +115,7 @@ label = 'cpfv-catch-duration')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(dir, "plots", "cpfv_trips_multi_single.png"), 
-caption = "Multi and Single-Day CPFV Trips (source: CPFV Logbooks)",
+caption = "The number of of multi- and single-day CPFV trips (source: CPFV Logbooks)",
 label = 'cpfv-trips-duration')
 
 ```
@@ -127,7 +125,24 @@ We calculated the percent of copper rockfish in southern California caught on ov
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(dir, "plots", "cpfv_sampling_multi.png"), 
-caption = "Multi and Single-Day CPFV Trips (source: CPFV Logbooks and CRFS PC Onboard and Dockside Surveys)",
+caption = "Percentage of copper rockfish caught on multi-day the percentage of legth samples from mult-day trips (source: CPFV Logbooks and CRFS PC Onboard and Dockside Surveys)",
 label = 'cpfv-sampling')
 
 ```
+\
+
+In order to understand the potential impact of biased and unbiased sampling of trips by during a simulation analysis was conducted. The simulation analysis examined the average size of fish and the variability around that average (standard deviation) by trip type:
+
+* Single-day trip: average fish length of 31.9 cm with standard deviation of 6.1 cm, and
+* Multi-day trip: average fish length of 35.2 cm with standard deviation of 5.6 cm.
+
+A bias (over-sampling of single-day trips) and an unbiased (sampling aligns with the proportion of trip type) of a 1,000 total length sample were randomly generated based on the average length and standard deviation of observations from each sample type. The bias sampling approach was based on the observed proportion of samples coming from single-day trips. The most extreme difference in sampling proportion observed in the data was used to generate the biased sample where 980 lengths were collected from single-day trips and 20 lengths were collected from multi-day trips. The unbiased sample was based on the proportion of single-day and multi-day trips observed between 2014 - 2018 where where 81% of the trips were single-day with 810 samples were from single-day trips and 190 samples from multi-day trips. 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(dir, "plots", "cpfv_trip_sampling_bias_unbiased.png"), 
+caption = "Simulated length distribution based on biased and unbiased sampling of trip by duration (single-day or multi-day). The 10%, 50%, and 90% quartile from each sample type is show by the dashed verticle lines. The median length (50% quartile) of the unbiased sample was approximately 0.5 cm greater than the median length from the biased sample. While there are small differences in the length distribution between the biased and unbiased samples, the difference is not great enough to impact the length composition data when binned using 2 cm bins for the assessment (source: simulated samples based on CPFV Logbooks and CRFS PC Onboard and Dockside Surveys)",
+label = 'cpfv-sim-sample')
+
+```
+\
