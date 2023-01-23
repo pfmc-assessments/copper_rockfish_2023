@@ -59,6 +59,26 @@ data$count <- 1
 #  north  1099 3517
 #  south   553 2135
 
+# Create a short-cut to order the PCID 
+# Only ports with > 100 samples are ordered here
+# omitted ports are:
+# CRZ FLN MNT OLA OXN  SD  SP TRM 
+#  91  13  85   2  65  20  51  18 
+data$pcid_ordered <- NA
+data$pcid_ordered[data$PCID == "VEN"] <- "a: VEN"
+data$pcid_ordered[data$PCID == "SB"]  <- "b: SB"
+data$pcid_ordered[data$PCID == "AVL"] <- "c: AVL"
+data$pcid_ordered[data$PCID == "MRO"] <- "d: MRO"
+data$pcid_ordered[data$PCID == "MOS"] <- "e: MOS"
+data$pcid_ordered[data$PCID == "PRN"] <- "f: PRN"
+data$pcid_ordered[data$PCID == "SF"]  <- "g: SF"
+data$pcid_ordered[data$PCID == "BDG"] <- "h: BDG"
+data$pcid_ordered[data$PCID == "BRG"] <- "i: BRG"
+data$pcid_ordered[data$PCID == "ERK"] <- "j: ERK"
+data$pcid_ordered[data$PCID == "CRS"] <- "k: CRS"
+
+
+
 length_by_cond <- aggregate(length~cond + area, data, quantile)
 sd_by_cond <- aggregate(length~cond + area, data, sd)
 #  cond  area length.0% length.25% length.50% length.75% length.100%
@@ -347,9 +367,13 @@ table(data$PCID, data$area)
 keep <- c("AVL", "BDG", "CRS", "ERK", "MOS", "MRO", "PRN", 
 	"SB", "SF", "VEN")
 
-ggplot(data[data$PCID %in% keep, ], aes(y = lengthcm, fill = PCID)) + 
+ggplot(data[data$PCID %in% keep, ], aes(y = lengthcm, x = pcid_ordered)) + 
 	geom_boxplot(aes(fill = factor(PCID))) + 
     xlab("Port Group") + ylab("Length (cm)")  + 
-    facet_wrap(c('area', 'cond'))
+    theme(legend.position = 'none', 
+		axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	strip.text.y = element_text(size = 14)) +
+    facet_grid(cond~.)
 ggsave(filename = file.path(dir, "plots", "boxplot_length_by_port_area_cond_filtered_by_100n.png"),
-	width = 7, height = 7)
+	width = 10, height = 7)
