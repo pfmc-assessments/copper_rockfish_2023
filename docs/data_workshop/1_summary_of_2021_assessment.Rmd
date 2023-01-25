@@ -19,10 +19,10 @@ add_figure(
 ## Unresolved Questions and Issues from the 2021 Assessments
 
 * Growth
-* The length-at-age relationship north of Point Conception was based on data age and length data from Oregon and Washington due to a lack of age data from California fisheries.
-* The length-at-age relationship south of Point Conception was informed by limited ages from the NWFSC hook and line survey. 
+  * The length-at-age relationship north of Point Conception was based on age and length data from Oregon and Washington due to a lack of age data from northern California fisheries.
+  * The length-at-age relationship south of Point Conception was informed by limited ages from the NWFSC Hook and Line and West Coast Groundfish Trawl surveys. 
 
-* There were additional sources of data that were not included in the 2021 length-based data-moderate assessment that may be used in this year's assessments:
+* There were additional sources of data that were not included in the 2021 length-based data-moderate assessment that may be considered for use in this year's assessments:
     * Onboard Commercial Passenger Fishing Vessels (CPFV) length sample data from 1975-1979 (Collins and Crooke), 1987-1998 (Deb Wilson-Vandenberg), and 1986-1989 (Alley and Ono). These data were explored during mop-up and had limited impact on the model results.
     * California Collaborative Fisheries Research Program (CCFRP) index of abundance and biological samples.
     * CPFV observer index of abundance.
