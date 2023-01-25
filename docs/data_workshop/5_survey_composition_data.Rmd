@@ -5,18 +5,7 @@
 
 ### NWFSC Hook and Line survey
 
-The NWFSC Hook and Line survey begun sampling shelf rockfish over rocky reef habitat within the Southern California Bight in 2004 using rod and reel gear. Since, 2005, sampling has been conducted in late-September through early-October. The minimum and maximum sampling depths are set at 20 fathoms (37 meters) to 141 fathoms (257 meters). Starting in 2014, the survey added sampling sites with the Cowcod Conservation Area (CCA). The depth of sites sampled within the CCA range between 25 - 128 fathoms and the depth of sites sampled outside the CCA range between 20 -141 fathoms.  
-
-The NWFSC Hook and Line data from 2022 is not yet available and not included in these data summaries. Between 2004-2021 the NWFSC Hook and Line survey has caught a total of 1,151 copper rockfish with otoliths for ageing being collected from each fish. The majority of these observations have occurred outside the CCA (outside CCA = 1,057 and inside CCA = 94). Observations of copper rockfish have occurred across a range of depths between 22 - 66 fathoms with the median of observations occurring around 44 fathoms.  
-
-```{r, results = 'asis', fig.align='center'}
-add_figure(
-  filein = file.path(dir, "plots", "hkl_copper_by_site_count.png"), 
-  caption = "Total number of observation of copper rockfish between 2004-2021 by sampling site inside and outside of Cowcod Conservation Areas from the NWFSC Hook and Line survey (source: NWFSC Hook and Line survey)",
-  label = 'hkl-sites')
-
-``` 
-\
+Between 2004-2021 the NWFSC Hook and Line survey has caught a total of 1,151 copper rockfish with otoliths for ageing being collected from each fish. The majority of these observations have occurred outside the CCA (outside CCA = 1,057 and inside CCA = 94). Observations of copper rockfish have occurred across a range of depths between 22 - 66 fathoms with the median of observations occurring around 44 fathoms. The NWFSC Hook and Line data from 2022 is not yet available and not included in these data summaries. 
 
 
 ```{r, results = 'asis', fig.align='center'}
@@ -28,6 +17,7 @@ add_figure(
 ``` 
 \
 
+
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
   filein = file.path(dir, "plots", "hkl_length_sex_depth.png"), 
@@ -36,8 +26,6 @@ add_figure(
 
 ``` 
 \
-
-
 
 ### NWFSC WCGBT survey
 

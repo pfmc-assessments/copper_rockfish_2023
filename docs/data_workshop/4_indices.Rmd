@@ -10,15 +10,36 @@ TODO: Add table of positive observations by year and area for the CCFRP survey
 
 ### NWFSC Hook and Line Survey
 
-TODO: Add figure of the NWFSC Hook and Line index from last assessment.
+The NWFSC Hook and Line survey begun sampling shelf rockfish over rocky reef habitat within the Southern California Bight in 2004 using rod and reel gear. Since, 2005, sampling has been conducted in late-September through early-October. The minimum and maximum sampling depths are set at 20 fathoms (37 meters) to 141 fathoms (257 meters). Starting in 2014, the survey added sampling sites with the Cowcod Conservation Area (CCA). The depth of sites sampled within the CCA range between 25 - 128 fathoms and the depth of sites sampled outside the CCA range between 20 -141 fathoms. 
 
-TODO: Add table of positive observations by year from the NWFS Hook and Line 
+Between 2004-2021 the NWFSC Hook and Line survey has caught a total of 1,151 copper rockfish. The majority of these observations have occurred outside the CCA (outside CCA = 1,057 and inside CCA = 94). The NWFSC Hook and Line data from 2022 is not yet available and not included in these data summaries. 
 
-TODO: Add existing figure of observation location for copper rockfish in the NWFSC Hook and Line survey (e.g., inside vs. outside CCA)
+```{r, results = 'asis', fig.align='center'}
+add_figure(
+  filein = file.path(dir, "plots", "hkl_copper_by_site_count.png"), 
+  caption = "Total number of observation of copper rockfish between 2004-2021 by sampling site inside and outside of Cowcod Conservation Areas (CCA) from the NWFSC Hook and Line survey (source: NWFSC Hook and Line survey)",
+  label = 'hkl-sites')
+
+``` 
+\
+
+
+```{r, results = 'asis', fig.align='center'}
+add_figure(
+  filein = file.path(dir, "plots", "nwfsc_hkl_glm_negbin_main_year_site_hook_drop_and_re_Index.png"), 
+  caption = "A preliminary relative index of abundance calculated using available data between 2004-2021 estimated using a generalized linear mixed model including fixed effects for year, site, hook, and drop and angler random effects. Once data from 2022 are available estimation of the index of abundance across additional model structures will be explored (source: NWFSC Hook and Line survey)",
+  label = 'hkl-index')
+
+``` 
+\
+
+
 
 ### NWFSC West Coast Groundfish Bottom Trawl Survey
 
-The NWFSC West Coast Groundfish Bottom Trawl (WCGBT) survey has been conducted across the West Coast annually since 2003 (there was no sampling conducted in 2020 due to the COVID-19 pandemic). The number of observations of copper rockfish by the NWFSC WCGBT survey are limited due to the sample gear (trawl) which is deployed on soft bottom substrate. A summary of the observations by this survey between 2003-2021 can be found [online](https://www.pcouncil.org/documents/2022/05/f-3-attachment-4-detailed-summary-of-available-data-to-support-west-coast-groundfish-stock-assessments-in-2023-electronic-only.pdf#page=111). The majority of observations of copper rockfish by the NWFSC WCGBT survey occur south of Point Conception. The limited number of tows by year will likely prevent the calculation of an index of abundance for this survey. Additionally, observations using trawl gear may not be informative of population trends for rocky-habitat associated species such as copper rockfish. However, the collected biological data from this survey will be used to help inform growth.
+The NWFSC West Coast Groundfish Bottom Trawl (WCGBT) survey has been conducted across the West Coast annually since 2003 (there was no sampling conducted in 2020 due to the COVID-19 pandemic). The number of observations of copper rockfish by the NWFSC WCGBT survey are limited due to the sample gear (bottom trawl) which is deployed on soft bottom substrate. A summary of the observations by this survey between 2003-2021 can be found [online](https://www.pcouncil.org/documents/2022/05/f-3-attachment-4-detailed-summary-of-available-data-to-support-west-coast-groundfish-stock-assessments-in-2023-electronic-only.pdf#page=111). The majority of observations of copper rockfish by the NWFSC WCGBT survey occur south of Point Conception. The limited number of tows by year will likely prevent the calculation of an index of abundance for this survey. Additionally, observations using bottom trawl gear may not be informative of population trends for rocky-habitat and or hard-bottom associated species such as copper rockfish. However, the collected biological data from this survey will be used to help inform growth.
 
 
 ## Fishery-Dependent 
+
+Fishery-dependent indices will be explored for both the CPFV and Private (PR) fleets using onboard log-book data and dockside sampling. The indices of abundance for each fleet will only go through 2019 due to the reduction in trips and sampling in 2020 due to the COVID-19 pandemic and regulation changes in 2021.
