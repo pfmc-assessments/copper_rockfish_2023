@@ -49,7 +49,7 @@ label = 'com-marginal-length-dist')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(dir, "plots", "boxplot_length_by_port_area_cond_filtered_by_100n.png"), 
-caption = "Boxplot of lengths by landed port, area, and fish condition (live or dead).  Only ports with greater than 100 length samples (live + dead > 100 samples) across all years are shown (source: PacFIN)",
+caption = "Boxplot of lengths by landed port, area, and fish condition (live or dead) across all years.  Only ports with greater than 100 length samples (live + dead > 100 samples) across all years are shown. The Ventura (VEN) and Santa Barbara (SB) ports are south of Point Conception. The ports north of Point Conception are Avila (AVL), Morro Bay (MRO), Moss Landing (MOS), Half Moon Bay (PRN), San Francisco (SF), Bodega Bay (BDG), Eureka (ERK), Crescent City (CRS) (source: PacFIN)",
 label = 'com-boxplot-length-port')
 
 ```
@@ -89,19 +89,20 @@ label = 'rec-length-dist')
 
 ### Potential bias in length sampling with CPFV trip duration
 
-The CDFW California Recreational Fisheries Survey (CRFS) collects length samples from fish caught on commercial passenger fishing vessels (CPFVs).  These samples are collected by both staff on board CPFV trips and at the docks when vessels return.  On board CRFS staff are unable to sample overnight trips with as high a frequency as day trips.  In many cases, these overnight trips may reach destinations that are farther from port and therefore experience lower fishing rates and contain larger fish.  This could result in a bias in length distributions aggregated across trip duration if sites with larger fish are under-sampled.  
+The CDFW California Recreational Fisheries Survey (CRFS) collects length samples from fish caught on CPFVs. These samples are collected by both staff on board CPFV trips and at the docks when vessels return.  On board CRFS staff are unable to sample overnight trips with as high a frequency as day trips.  In many cases, these overnight trips may reach destinations that are farther from port and therefore experience lower fishing rates and contain larger fish.This could result in a bias in length distributions aggregated across trip duration if sites with larger fish are under-sampled.  
 
-We examined the length distributions of fish sampled on trips of varying duration by district.  Overnight trips only occur in the southern California sampling districts 1 (San Diego, Orange, and Los Angeles counties) and 2 (Ventura and Santa Barbara counties).  Some separation in copper rockfish length frequencies is observed in district 1.  
+The STAT examined the length distributions of fish sampled on trips of varying duration by district.Overnight trips only occur in the southern California sampling districts 1 (San Diego, Orange, and Los Angeles counties) and 2 (Ventura and Santa Barbara counties).Some separation in copper rockfish length frequencies is observed in district 1.  
 
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(dir, "plots", "CopperDurationDist12.png"), 
-caption = "Copper rockfish length grequency by CPFV trip duration for CRFS districts 1 & 2 (source: CRFS PC Onboard + Dockside Surveys)",
+caption = "Copper rockfish length grequency by CPFV trip duration for CRFS districts 1 & 2 for 1/2 day, 3/4 day, and overnight fishing trips (source: CRFS PC Onboard + Dockside Surveys)",
 label = 'cpfv-length-duration')
 
 ```
 \
-To determine if larger fish are under-sampled, we need to compare catch rates relative to sampling rates.  A sharp increase in the number of rockfish caught on overnight CPFV trips, as well as other fish species, was observed in 2014 with catches remaining relatively high through 2020.  No increase was observed on day trips.  This was coincident with an increase in the number of overnight trips being made in 2014.  The increase in catch was likely driven by the arrival of warm water which drove increases in pelagic species.  A large proportion of the trips made in 2014 listed tuna as the target species.  Many trips targeting pelagic species will also visit sites to target groundfish, and this is the likely cause for the coincident increase in groundfish catch.      
+
+To determine if overnight trips are under-sampled, relative to their frequency, we need to compare catch rates relative to sampling rates.  A sharp increase in the number of rockfish caught on overnight CPFV trips, as well as other fish species, was observed in 2014 with catches remaining relatively high through 2020. No increase was observed in the single day trips.  This was coincident with an increase in the number of overnight trips being made in 2014.  The increase in catch was likely driven by the arrival of warm water which drove increases in pelagic species.  A large proportion of the trips made in 2014 listed tuna as the target species.  Many trips targeting pelagic species will also visit sites to target groundfish, and this is the likely cause for the coincident increase in groundfish catch.      
 
 ```{r, results = 'asis'}
 add_figure(
@@ -120,6 +121,7 @@ label = 'cpfv-trips-duration')
 
 ```
 \
+
 We calculated the percent of copper rockfish in southern California caught on overnight trips relative to the total number of CPFV trips.  We compared this to the percent of copper rockfish length samples collected from CPFVs that were taken from overnight trips.  The lower proportion of sampling relative to catch shows that there is under-sampling of these trips.  Given this, we will consider weighting length samples from CPFVs according to trip duration to correct for this bias, particularly since 2014.    
 
 ```{r, results = 'asis'}
@@ -131,18 +133,20 @@ label = 'cpfv-sampling')
 ```
 \
 
-In order to understand the potential impact of biased and unbiased sampling of trips by during a simulation analysis was conducted. The simulation analysis examined the average size of fish and the variability around that average (standard deviation) by trip type:
+Additionally, in order to understand the potential impact of biased and unbiased sampling of trips by duration a simulation analysis was conducted. The simulation analysis examined the average size of fish and the variability around that average (standard deviation) by trip type:
 
 * Single-day trip: average fish length of 31.9 cm with standard deviation of 6.1 cm, and
 * Multi-day trip: average fish length of 35.2 cm with standard deviation of 5.6 cm.
 
-A bias (over-sampling of single-day trips) and an unbiased (sampling aligns with the proportion of trip type) of a 1,000 total length sample were randomly generated based on the average length and standard deviation of observations from each sample type. The bias sampling approach was based on the observed proportion of samples coming from single-day trips. The most extreme difference in sampling proportion observed in the data was used to generate the biased sample where 980 lengths were collected from single-day trips and 20 lengths were collected from multi-day trips. The unbiased sample was based on the proportion of single-day and multi-day trips observed between 2014 - 2018 where where 81% of the trips were single-day with 810 samples were from single-day trips and 190 samples from multi-day trips. 
+A bias (over-sampling of single-day trips) and an unbiased (sampling aligns with the proportion of trip type) of a 1,000 total length sample were randomly generated based on the average length and standard deviation of observations from each trip type. The bias sampling approach was based on the observed proportion of samples coming from single-day trips. The most extreme difference in sampling proportion observed in the data was used to generate the biased sample where 980 lengths were collected from single-day trips and 20 lengths were collected from multi-day trips. The unbiased sample was based on the proportion of single-day and multi-day trips observed between 2014 - 2018 where 81% of the trips were single-day were 810 samples were from single-day trips and 190 samples from multi-day trips were randomly generated. 
 
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(dir, "plots", "cpfv_trip_sampling_bias_unbiased.png"), 
-caption = "Simulated length distribution based on biased and unbiased sampling of trip by duration (single-day or multi-day). The 10%, 50%, and 90% quartile from each sample type is show by the dashed verticle lines. The median length (50% quartile) of the unbiased sample was approximately 0.5 cm greater than the median length from the biased sample. While there are small differences in the length distribution between the biased and unbiased samples, the difference is not great enough to impact the length composition data when binned using 2 cm bins for the assessment (source: simulated samples based on CPFV Logbooks and CRFS PC Onboard and Dockside Surveys)",
+caption = "Simulated length distribution based on biased and unbiased sampling of trip by duration (single-day or multi-day). The 10%, 50%, and 90% quartile from each sample type is show by the dashed verticle lines. The median length (50% quartile) of the unbiased sample was approximately 0.5 cm greater than the median length from the biased sample. While there are small differences in the length distribution between the biased and unbiased samples, the difference is not great enough to have a measurable impact the length composition data when binned using 2 cm bins for use in an assessment model (source: simulated samples based on CPFV Logbooks and CRFS PC Onboard and Dockside Surveys)",
 label = 'cpfv-sim-sample')
 
 ```
 \
+
+While the differences in the simulated length distribution for copper rockfish, there may be greater impacts for other species and or if the sampling bias continues (or increases) across years in the future. Additional efforts should be made to align sampling with the proportion of trip type. 
