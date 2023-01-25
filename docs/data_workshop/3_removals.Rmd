@@ -2,7 +2,7 @@
 
 ## Commerical Landings & Discards
 
-Since 1981, landings of copper rockfish have occurred from hook and line, net, pot, shrimp trawl, trawl, troll, and diving gear. The majority of landings for copper rockfish since 1981 are from hook and line gear across California (south of Point Conception 96% and north 87%). North of Point Conception there are some proportion of landings from trawl gear (8% primarily occurring between 1982-1985) and net gear (4% primarily occurring between 1983-1986). Since 2011, 98% and 96% of the landings south and north of Point Conception, respectively, are coming from hook and line gear.
+Since 1981, landings of copper rockfish have occurred from hook and line, net, pot, shrimp trawl, trawl, troll, and diving gear. The majority of these landings for copper rockfish are from hook and line gear across California (south of Point Conception 96% and north 87%). North of Point Conception there are some proportion of landings from trawl gear (8% primarily occurring between 1982-1985) and net gear (4% primarily occurring between 1983-1986). Since 2011, 98% and 96% of the landings south and north of Point Conception, respectively, are coming from hook and line gear.
 
 In recent years, there has been an increase in the proportion of fish landed live for both areas. In recent years, the percentage of copper rockfish landed dead north of Point Conception has been generally less than 50% within each year. Fish landed live are primarily caught with hook and line gear. However, in recent years, north of Point Conception there have been some limited landings of live fish using pot gear. 
 
@@ -18,9 +18,9 @@ label = 'com-landings')
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
 filein = file.path(dir, "plots", "percent_dead_landings.png"), 
-caption = "Proportion of commercial landings from fish landed dead north and south of Point Conception in recent years (source: PacFIN)",
-width = 100,
-height = 50, 
+caption = "Proportion of commercial landings from fish landed dead north and south of Point Conception in recent years. The proportion lf fish landed dead for the north are shown by a solid line with circles and the south by a dashed line with triangles. (source: PacFIN)",
+width = 75,
+height = 75, 
 label = 'com-prop-dead')
 ``` 
 \ 
@@ -28,7 +28,7 @@ label = 'com-prop-dead')
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
 filein = file.path(dir, "plots", "landings_by_area_year_block_gear_group.png"), 
-caption = " Landings by area, time period (grouped by decade), and gear grouping (source: PacFIN).",
+caption = " Landings by area, time period (grouped by decade), and gear grouping hook and line (hkl), diving gear/net/bottomfish troll/shrimp trawl combinded (msc_net_tls_tws), pot, and trawl (twl) (source: PacFIN).",
 width = 100,
 height = 50, 
 label = 'com-gear-year')
@@ -48,7 +48,7 @@ Only the commercial landings are shown for each area. Discard mortality across t
 
 ## Recreational Landings & Discards
 
-Copper rockfish is caught by the recreational fishery across California. Historically, landings of copper rockfish were highest in the areas north of Point Conception. In recent years, 1993 onward, the scale of landings of copper rockfish is similar north and south of Point Conception.  The proportion of landings by recreational modes (CPFV, private, shoreside) across all years have arise from the private fleet in both areas:
+Copper rockfish is caught by the recreational fishery across California. Historically, landings of copper rockfish were highest in the areas north of Point Conception. In recent years, 1993 onward, the scale of landings of copper rockfish is similar north and south of Point Conception.  The proportion of landings by recreational modes (CPFV, private, shoreside) across all years for each area are:
 
 * North of Point Conception:
   * CPFV 34%, 
@@ -74,14 +74,14 @@ There are some years with missing and incomplete landings that will need to be d
   
 The landings for these missing years will be allocated by fleet based on the proportion of landings by mode from the surrounding years.
 
-The 2004 landings, the first years of the CRFS program, were not available on RecFIN. These data were available on RecFIN in 2021 for the previous assessments (north = 15.6 mt, south = 13.7 mt). Inquiries have been made about the removal of these data and when the issue is resolved the appropriate landings will be used in the 2023 assessments.
+The 2004 landings, the first years of the CRFS program, are currently not available on RecFIN. These data were available on RecFIN in 2021 for the previous assessments (north = 15.6 mt, south = 13.7 mt). Inquiries have been made about the removal of these data and when the issue is resolved the appropriate landings will be used in the 2023 assessments.
 
 Finally, the landings from 2020 - 2021 are potentially incomplete due to the absence of dockside sampling due to the COVID-19 pandemic. Estimates of landings for these years have been requested from CDFW.
 
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
 filein = file.path(dir, "plots", "all_rec_landings_mt_mode_2x1.png"), 
-caption = "Recreational landings north and south of Point Conception. The landings are separated by private, CPFV and shoreside (beach and bank) modes. The landings from the CPFV fleet predominate the recreational landings in the south since 2004. In contrast, the majority of the removals north of Point Conception arise from the private fleet. Landings between 1990-1992 are missing due to a loss in fundting to MRFSS for this period. Additionally, landings from 2004 were not available in CRFS on RecFIN. Landings for these years will need to be determined and added  (sources: RecFIN and California historical catch reconstruction).",
+caption = "Recreational landings north and south of Point Conception. The landings are separated by private, CPFV and shoreside (beach and bank) modes. The landings from the CPFV fleet predominate the recreational landings in the south since 2004. In contrast, the majority of the removals north of Point Conception arise from the private fleet. Landings between 1990-1992 are missing due to a loss in fundting to MRFSS for this period. Additionally, landings from 2004 from CRFS were not available on RecFIN. Landings for these years will need to be determined and added  (sources: RecFIN and California historical catch reconstruction).",
 label = 'com-landings')
 
 ```
