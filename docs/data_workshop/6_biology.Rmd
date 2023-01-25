@@ -4,11 +4,31 @@
 
 ## Maturity and Fecundity
 
-TODO: Add figure showing the two maturity curves from last assessment.
+Currently, there is an extensive collaborative effort to collect biological samples for copper rockfish in California. These samples will support new estimates of maturity- and fecundity-at-length. These data are not yet available but are expected to be completed in time for use in the 2023 assessment of copper rockfish.  
 
-TODO: Add fecundity-at-length figure based on Dick et al. that was assumed in the last assessment
+For informational purposes, maturity and fecundity curves that were used in the 2021 assessment are shown below.
 
-TODO: Add information on additional maturity and fecundity samples being collected that will be used to update both maturity and fecundity if information is available in time. 
+```{r, results = 'asis', fig.align='center'}
+add_figure(
+  filein = file.path(dir, "plots", "maturity_2021.png"), 
+  caption = "Estimates of maturity-at-length used in the 2021 assessments of copper rockfish. The same maturity curve was used in California north of Point Conception, Oregon, and Washington. A unique maturity curve was estimated based on 111 samples from the NWFSC WCGBT and Hook and Line surveys south of Point Conception (source: Hannah, 2004; Melissa Head (NWFSC))",
+  label = 'maturity-2021')
+
+``` 
+\
+
+
+```{r, results = 'asis', fig.align='center'}
+add_figure(
+  filein = file.path(dir, "plots", "Fecundity.png"), 
+  caption = "Estimates of fecundity-at-length used in the 2021 assessments of copper rockfish. (source: Dick et al., 2017)",
+  height = 75,
+  width = 75,
+  label = 'fecundity-2021')
+
+``` 
+\
+
 
 ## Length-Weight
 
@@ -17,7 +37,9 @@ The length-weight relationship was estimated using all biological data available
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(dir, "plots", "doc_Length_Weight_Sex.png"), 
-caption = "Length weight relationship by sex for copper rockfish (source: NWFSC WCGBT and HKL Surveys)",
+caption = "Estimated length-weight relationship by sex for copper rockfish (source: NWFSC WCGBT and Hook and Line Surveys)",
+height = 75,
+width = 75,
 label = 'weight-length')
 
 ```
