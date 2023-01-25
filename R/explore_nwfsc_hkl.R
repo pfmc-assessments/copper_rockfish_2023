@@ -20,6 +20,9 @@ hkl_all$area <- ifelse(hkl_all$site_number >= 500, "CCA", "Outside CCA")
 hkl_all$count <- 0
 ind <- which(hkl_all$common_name == "Copper Rockfish")
 hkl_all[ind, 'count'] <- 1
+hkl_all$count_bocaccio <- hkl_all$count_vermilion <- 0
+hkl_all[hkl_all$common_name == "Bocaccio", 'count_bocaccio'] <- 1
+hkl_all[hkl_all$common_name == "Vermilion Rockfish", 'count_bocaccio'] <- 1
 hkl_all$fathom_bin <- plyr::round_any(hkl_all$drop_depth_fathoms, 5, floor)
 
 hkl_all_site <- hkl_all %>%
@@ -29,8 +32,13 @@ hkl_all_site <- hkl_all %>%
 		site_lon = -1*mean(drop_longitude_degrees),
 		site_depth = mean(drop_depth_fathoms),
 		site_area = unique(area),
-		total_count = sum(count)
+		total_count = sum(count),
+		total_bocaccio = sum(count_bocaccio),
+		total_vermilion = sum(count_vermilion)
 	)
+
+hkl_species <- hkl_all[hkl_all$common_name %in% c(
+	"Copper Rockfish", "Bocaccio", "Vermilion Rockfish"), ]
 
 # Filter down to only copper obervations
 hkl <- hkl_all[ind, ]
@@ -150,6 +158,44 @@ ggplot(hkl, aes(x = length_bin, fill = area))  +
       	legend.text = element_text(size = 12),
       	strip.text.y = element_text(size = 14)) +
     scale_fill_viridis_d(begin = 0, end = 0.5)
+ggsave(filename = file.path(dir, "plots", "hkl_catch_by_hook_position.png"),
+	width = 10, height = 8)
+
+ggplot(hkl, aes(x = length_bin, fill = area))  + 
+	geom_bar(position = 'fill') + 
+    xlab("Length (cm)") + ylab("Total Observations") +
+    theme(axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	legend.title = element_text(size = 12),
+      	legend.text = element_text(size = 12),
+      	strip.text.y = element_text(size = 14)) +
+    scale_fill_viridis_d(begin = 0, end = 0.5)
+
+
+ggplot(hkl, aes(x = hook_number, fill = drop_number))  + 
+	geom_bar(position="stack") + 
+    xlab("Hook Position") + ylab("Numbers Caught") +
+    theme(axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	legend.title = element_text(size = 12),
+      	legend.text = element_text(size = 12),
+      	strip.text.y = element_text(size = 14)) +
+    scale_fill_viridis_d(begin = 0, end = 0.5)
+ggsave(filename = file.path(dir, "plots", "hkl_catch_by_hook_position.png"),
+	width = 10, height = 8)
+
+ggplot(hkl, aes(x = drop_number, fill = area))  + 
+	geom_bar(position="stack") + 
+    xlab("Drop Number") + ylab("Numbers Caught") +
+    theme(axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	legend.title = element_text(size = 12),
+      	legend.text = element_text(size = 12),
+      	strip.text.y = element_text(size = 14)) +
+    scale_fill_viridis_d(begin = 0, end = 0.5)
+ggsave(filename = file.path(dir, "plots", "hkl_catch_by_drop_number.png"),
+	width = 10, height = 8)
+
 
 hkl_all$lat_round <- round(hkl_all$lat,1)
 hkl_all$lon_round <- round(hkl_all$lon,1)
