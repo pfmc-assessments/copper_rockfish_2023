@@ -67,7 +67,7 @@ The total number of length samples within RecFIN across MRFSS and CRFS are:
   * 23,535 from CPFV, and
   * 7,501 from Private/Rental vessels.
 
-In RecFIN there are lengths from shoreside modes that were not included in the analysis presented below (north of Point Conception = 148 and south = 20). All lengths below represent released fish. There were limited length observations of released fish (north = 52 and south = 187).
+In RecFIN there are lengths from shoreside modes that were not included in the analysis presented below (north of Point Conception = 148 and south = 20). All lengths below represent retained fish. There were limited length observations of released fish (north = 52 and south = 187).
 
 ```{r, results = 'asis'}
 add_figure(
