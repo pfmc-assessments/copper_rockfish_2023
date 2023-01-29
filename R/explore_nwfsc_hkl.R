@@ -149,6 +149,19 @@ ggplot(hkl, aes(y = count, x = length_bin, fill = area))  +
 ggsave(filename = file.path(dir, "plots", "hkl_observations_by_length_area.png"),
 	width = 10, height = 8)
 
+ggplot(hkl, aes(y = count, x = fathom_bin, fill = as.factor(hook_number)))  +  
+	geom_histogram(aes(y = count), position="stack", stat="identity") + 
+    xlab("Depth (fm)") + ylab("Total Observations") +
+    theme(axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	legend.title = element_text(size = 12),
+      	legend.text = element_text(size = 12),
+      	strip.text.y = element_text(size = 14)) +
+    scale_fill_viridis_d()
+ggsave(filename = file.path(dir, "plots", "hkl_observations_by_hook_number_depth.png"),
+	width = 10, height = 8)
+
+
 ggplot(hkl, aes(x = length_bin, fill = area))  + 
 	geom_bar(position = 'fill') + 
     xlab("Length (cm)") + ylab("Total Observations") +
@@ -160,6 +173,7 @@ ggplot(hkl, aes(x = length_bin, fill = area))  +
     scale_fill_viridis_d(begin = 0, end = 0.5)
 ggsave(filename = file.path(dir, "plots", "hkl_catch_by_hook_position.png"),
 	width = 10, height = 8)
+
 
 ggplot(hkl, aes(x = length_bin, fill = area))  + 
 	geom_bar(position = 'fill') + 
@@ -196,6 +210,33 @@ ggplot(hkl, aes(x = drop_number, fill = area))  +
 ggsave(filename = file.path(dir, "plots", "hkl_catch_by_drop_number.png"),
 	width = 10, height = 8)
 
+on_bottom_time_seconds
+
+ggplot(hkl, aes(y = count, x = on_bottom_time_seconds, fill = as.factor(hook_number)))  + 
+	geom_bar(aes(y = count), position="stack", stat="identity") + 
+    xlab("Time on Bottom (seconds)") + ylab("Numbers Caught") +
+    theme(axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	legend.title = element_text(size = 12),
+      	legend.text = element_text(size = 12),
+      	strip.text.y = element_text(size = 14)) +
+    scale_fill_viridis_d()
+
+ggplot(hkl, aes(y = count, x = length_bin, fill = as.factor(hook_number)))  + 
+	geom_bar(aes(y = count), position="stack", stat="identity") + 
+    xlab("Length (cm)") + ylab("Numbers Caught") +
+    theme(axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	legend.title = element_text(size = 12),
+      	legend.text = element_text(size = 12),
+      	strip.text.y = element_text(size = 14)) +
+    scale_fill_viridis_d()
+ggsave(filename = file.path(dir, "plots", "hkl_length_by_hook_number.png"),
+	width = 10, height = 8)
+
+
+
+
 
 hkl_all$lat_round <- round(hkl_all$lat,1)
 hkl_all$lon_round <- round(hkl_all$lon,1)
@@ -207,3 +248,17 @@ ggplot2::ggplot(hkl_all, aes(lon_round, lat_round, fill = count)) +
 		nwfscSurvey::draw_theme() +
       	nwfscSurvey::draw_land() +
       	nwfscSurvey::draw_USEEZ(lon_range, lat_range) 
+
+find = which(hkl_all$hook_number %in% 4:5 & hkl_all$common_name == "Copper Rockfish")
+grab = hkl_all[find,'set_id']
+sub = hkl_all[hkl_all$set_id %in% grab, ]
+
+ggplot(sub, aes(x = fathom_bin))  +  
+	geom_bar(aes(fill = common_name), position="fill") + 
+    xlab("Depth (fm)") + ylab("Total Observations") +
+    theme(axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	legend.title = element_text(size = 12),
+      	legend.text = element_text(size = 12),
+      	strip.text.y = element_text(size = 14)) +
+    scale_fill_viridis_d()

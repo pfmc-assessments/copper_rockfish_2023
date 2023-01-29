@@ -273,5 +273,3 @@ save(fit, index, file = file.path(wd, paste0(name, ".Rdata")))
 save(indices, file = file.path(wd, "all_indices.Rdata"))  
 save(metrics, file = file.path(wd, "metrics.Rdata"))
 save(run_time, file = file.path(wd, "run_time.Rdata"))
-
-
