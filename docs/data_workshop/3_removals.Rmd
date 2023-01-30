@@ -2,7 +2,7 @@
 
 ## Commerical Landings & Discards
 
-Since 1981, landings of copper rockfish have occurred from hook and line, net, pot, shrimp trawl, trawl, troll, and diving gear. The majority of these landings for copper rockfish are from hook and line gear across California (south of Point Conception 96% and north 87%). North of Point Conception there are some proportion of landings from trawl gear (8% primarily occurring between 1982-1985) and net gear (4% primarily occurring between 1983-1986). Since 2011, 98% and 96% of the landings south and north of Point Conception, respectively, are coming from hook and line gear.
+Since 1981, landings of copper rockfish have occurred from hook and line, net, pot, shrimp trawl, trawl, troll, and diving gear. The majority of these landings are from hook and line gear across California (south of Point Conception 96% and north 87%). North of Point Conception there are some proportion of landings from trawl gear (8% primarily occurring between 1982-1985) and net gear (4% primarily occurring between 1983-1986). Since 2011, 98% and 96% of the landings south and north of Point Conception, respectively, are coming from hook and line gear.
 
 In recent years, there has been an increase in the proportion of fish landed live for both areas. In recent years, the percentage of copper rockfish landed dead north of Point Conception has been generally less than 50% within each year. Fish landed live are primarily caught with hook and line gear. However, in recent years, north of Point Conception there have been some limited landings of live fish using pot gear. 
 
@@ -10,7 +10,7 @@ In recent years, there has been an increase in the proportion of fish landed liv
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
 filein = file.path(dir, "plots", "landings_by_fleet_area.png"), 
-caption = "Commercial landings north and south of Point Conception. The landings are separated by fish landed live versus dead. The commercial landings in the south are relatively low (less than 10 mt per year) across the majority of years excluding 1995-1998 when landings ranged from 24 to 32 mt. The commercial landings in the north are generally higher than those observed south of Point Conception, particularly between 1983 to 1998 with landings peaking in 1993 at 69 mt (sources: PacFIN and California historical catch reconstruction)",
+caption = "Commercial landings north and south of Point Conception. The landings are separated by fish landed live versus dead. The commercial landings in the south are relatively low (less than 10 mt per year) acr@oss the majority of years excluding 1995-1998 when landings ranged from 24 to 32 mt. The commercial landings in the north were higher than those observed south of Point Conception prior to 1995 with catches peaking at 69 mt in 1994 (sources: PacFIN and California historical catch reconstruction)",
 label = 'com-landings')
 
 ``` 

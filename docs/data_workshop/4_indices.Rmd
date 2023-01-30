@@ -37,14 +37,14 @@ add_figure(
 
 ### NWFSC West Coast Groundfish Bottom Trawl Survey
 
-The NWFSC West Coast Groundfish Bottom Trawl (WCGBT) survey has been conducted across the West Coast annually since 2003 (there was no sampling conducted in 2020 due to the COVID-19 pandemic). The number of observations of copper rockfish by the NWFSC WCGBT survey are limited due to the sample gear (bottom trawl) which is deployed on soft bottom substrate. A summary of the observations by this survey between 2003-2021 can be found [online](https://www.pcouncil.org/documents/2022/05/f-3-attachment-4-detailed-summary-of-available-data-to-support-west-coast-groundfish-stock-assessments-in-2023-electronic-only.pdf#page=111). The majority of observations of copper rockfish by the NWFSC WCGBT survey occur south of Point Conception. The limited number of tows by year will likely prevent the calculation of an index of abundance for this survey. Additionally, observations using bottom trawl gear may not be informative of population trends for rocky-habitat and or hard-bottom associated species such as copper rockfish. However, the collected biological data from this survey will be used to help inform growth.
+The NWFSC West Coast Groundfish Bottom Trawl (WCGBT) survey has been conducted across the West Coast annually since 2003 (there was no sampling conducted in 2020 due to the COVID-19 pandemic). The number of observations of copper rockfish by the NWFSC WCGBT survey are limited due to the sample gear (bottom trawl) which is deployed on soft bottom substrate. A summary of the observations by this survey between 2003-2021 can be found [online](https://www.pcouncil.org/documents/2022/05/f-3-attachment-4-detailed-summary-of-available-data-to-support-west-coast-groundfish-stock-assessments-in-2023-electronic-only.pdf#page=111). The majority of observations of copper rockfish by the NWFSC WCGBT survey occur south of Point Conception. The limited number of tows by year will likely prevent the calculation of an index of abundance for this survey. Additionally, observations using bottom trawl gear may not be informative of population trends for rocky-habitat and or hard-bottom associated species such as copper rockfish. However, the collected otolith and length data from this survey will be used to help inform growth (north = 195 samples, south = 584 samples).
 
 ### Additional Data Sources Being Considered
 
 Multiple inquiries regarding additional data that could be considered to generate indices of abundance and/or composition data have been made for the follow datasets:
 
 * SMURF data
-* [PISCO}(https://www.piscoweb.org/)
+* [PISCO](https://www.piscoweb.org/)
 * [ReefCheck](https://www.reefcheck.org/country/usa-california/)
 * CDFW ROV data
 

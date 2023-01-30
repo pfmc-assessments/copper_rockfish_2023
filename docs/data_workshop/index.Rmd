@@ -42,7 +42,7 @@ dir <- here()
 
 # Overview
 
-Description of data being considered for use in the 2023 stock assessments for copper rockfish in California. Exploratory analysis is provided that have been used to inform modeling choices and treatment of data.
+Description of data being considered for use in the 2023 stock assessments for copper rockfish in California. Exploratory analyses provided that have been used to inform modeling choices and treatment of data.
 
 
 ```{r child = "1_summary_of_2021_assessment.Rmd"}
