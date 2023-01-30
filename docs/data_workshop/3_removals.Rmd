@@ -48,8 +48,6 @@ label = 'com-port-gear')
 ``` 
 
 
-
-
 ### Additional Items for Discussion
 
 Only the commercial landings are shown for each area. Discard mortality across time will need to considered to determine catches.
@@ -94,10 +92,20 @@ Finally, the landings from 2020 - 2021 are potentially incomplete due to the abs
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
 filein = file.path(dir, "plots", "all_rec_landings_mt_mode_2x1.png"), 
-caption = "Recreational landings north and south of Point Conception. The landings are separated by private, CPFV and shoreside (beach and bank) modes. The landings from the CPFV fleet predominate the recreational landings in the south since 2004. In contrast, the majority of the removals north of Point Conception arise from the private fleet. Landings between 1990-1992 are missing due to a loss in fundting to MRFSS for this period. Additionally, landings from 2004 from CRFS were not available on RecFIN. Landings for these years will need to be determined and added  (sources: RecFIN and California historical catch reconstruction).",
+caption = "Recreational landings north and south of Point Conception. The landings are separated by private, CPFV and shoreside (beach and bank) modes. The landings from the CPFV fleet predominate the recreational landings in the south since 2004. In contrast, the majority of the removals north of Point Conception arise from the private fleet. Landings between 1990-1992 are missing due to a loss in fundting to MRFSS for this period. Landings from 2004 from CRFS were not available on RecFIN. Finally, landings in 2020 and 2021 may be incomplete due to limited sampling during the COVID-19 pandemic. Landings for these years will need to be determined and added  (sources: RecFIN and California historical catch reconstruction).",
 label = 'com-landings')
 
 ```
+
+
+```{r, results = 'asis', fig.align='center'}
+add_figure(
+filein = file.path(dir, "plots", "crfs_landings_by_port.png"), 
+caption = "Recreational landings in CRFS by port area and mode between 2005-2021. The landings from 2004 are currently not available in RecFIN and the landings in 2020 and 2021 may be incomplete due to limited sampling during the COVID-19 pandemic. Landings for these years will need to be determined and added (source: CRFS).",
+label = 'rec-port-mode')
+``` 
+
+
 
 ### Additional Items for Discussion
 
