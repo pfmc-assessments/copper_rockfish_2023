@@ -15,6 +15,8 @@ label = 'com-landings')
 
 ``` 
 
+
+
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
 filein = file.path(dir, "plots", "percent_dead_landings.png"), 
@@ -23,17 +25,28 @@ width = 75,
 height = 75, 
 label = 'com-prop-dead')
 ``` 
-\ 
+
 
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
 filein = file.path(dir, "plots", "landings_by_area_year_block_gear_group.png"), 
-caption = " Landings by area, time period (grouped by decade), and gear grouping hook and line (hkl), diving gear/net/bottomfish troll/shrimp trawl combinded (msc_net_tls_tws), pot, and trawl (twl) (source: PacFIN).",
+caption = " Landings by area, time period (grouped by decade), and gear grouping: hook and line (hkl), diving gear/net/bottomfish troll/shrimp trawl combined (msc_net_tls_tws), pot, and trawl (twl) (source: PacFIN).",
 width = 100,
 height = 50, 
 label = 'com-gear-year')
 ``` 
-\ 
+
+
+
+```{r, results = 'asis', fig.align='center'}
+add_figure(
+filein = file.path(dir, "plots", "landings_by_port_ordered_gear_group.png"), 
+caption = " Landings by subregion and gear grouping hook: and line (hkl), diving gear/net/bottomfish troll/shrimp trawl combined (msc_net_tls_tws), pot, and trawl (twl) (source: PacFIN).",
+width = 100,
+height = 50, 
+label = 'com-port-gear')
+``` 
+
 
 
 
