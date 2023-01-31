@@ -144,6 +144,7 @@ A bias (over-sampling of single-day trips) and an unbiased (sampling aligns with
 add_figure(
 filein = file.path(dir, "plots", "cpfv_trip_sampling_bias_unbiased.png"), 
 caption = "Simulated length distribution based on biased and unbiased sampling of trip by duration (single-day or multi-day). The 10%, 50%, and 90% quartile from each sample type is show by the dashed verticle lines. The median length (50% quartile) of the unbiased sample was approximately 0.5 cm greater than the median length from the biased sample. While there are small differences in the length distribution between the biased and unbiased samples, the difference is not great enough to have a measurable impact the length composition data when binned using 2 cm bins for use in an assessment model (source: simulated samples based on CPFV Logbooks and CRFS PC Onboard and Dockside Surveys)",
+height = 60,
 label = 'cpfv-sim-sample')
 
 ```

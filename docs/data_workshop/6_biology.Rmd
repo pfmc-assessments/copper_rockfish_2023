@@ -47,29 +47,28 @@ label = 'weight-length')
 
 ## Length-at-Age
 
-The NWFSC ageing lab is currently reading copper rockfish otoliths that were not aged 
-as part of the effort after the 2021 copper rockfish stock assessment.
-There are a number of new sources of copper rockfish rockfish otoliths.  The below 
-represent estimates of the number of copper rockfish ages expected to be available 
-for the 2023 assessment. 
+The NWFSC ageing lab is currently reading copper rockfish otoliths that were not aged as part of the effort for the 2021 stock assessment. There are a number of new sources of copper rockfish rockfish otoliths.  The below represent estimates of the number of copper rockfish ages expected to be available for the 2023 assessment. 
 
-* North of Point Conception: 
-  * 211 from CPFV cooperative collections
-  * 99 from Private/Rental vessels collected by CDFW
-  * 79 from commercial fisheries
-  * 87 from CCFRP
+* North of Point Conception (N ~ 1,284): 
+  * 211 from CPFV cooperative collections,
+  * 99 from Private/Rental vessels collected by CDFW,
+  * 79 from commercial fisheries,
+  * 87 from CCFRP,
+  * 423 from a research survey conducted by Don Pearson,
+  * 195 from NWFSC WCGBT survey, and
+  * 190 from historic data collections in the late-1970s and early 1980s (refugia) otoliths found by CDFW.
 
-* South of Point Conception: 
-  * 484 from CPFV cooperative collections
-  * 9 from commercial fisheries
-  * 1,073 from Harms HL survey
-  * 52 from CCFRP
+* South of Point Conception (N ~ 2,237): 
+  * 484 from CPFV cooperative collections,
+  * 9 from commercial fisheries,
+  * 1,073+ from NWFSC hook and line survey,
+  * 584 from NWFSC WCGBT survey,
+  * 52 from CCFRP, and
+  * 34 from a research survey conducted by Don Pearson.
 
-* Otoliths that need to be linked to data N/S of Conception
-  * 752 from the NWFSC bottom trawl survey
-  * 538 research otoliths (likely collected by Don Pearson)
-  * 304 recreational  from 1978, 1981, and 1984
-  * Refugia otoliths found by CDFW
+* Otoliths that need to be linked to data north and south of Conception
+  * 304 from early recreational fisheries data collections from 1978, 1981, and 1984
+
   
 ## Natural Mortality
 
