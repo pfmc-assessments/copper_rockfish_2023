@@ -2,6 +2,17 @@
 
 ### CCFRP Survey
 
+An initial look at the length distributions also suggests the survey observes larger fish in the MPAs from San Francisco and south.  The CCFRP data for 2022 are not yet available.
+
+```{r, results = 'asis', fig.align='center'}
+add_figure(
+  filein = file.path(dir, "plots", "ccfrp_copper_lengths.png"), 
+  caption = "The length distribution (cm) and sample sizes of copper rockfish encountered by CCFRP by MPA and reference pair. The combined data represent the years 2007-2021 and every fish encountered is measured (source: CCFRP)",
+  label = 'ccfrp-lengths')
+
+``` 
+\
+
 
 ### NWFSC Hook and Line survey
 

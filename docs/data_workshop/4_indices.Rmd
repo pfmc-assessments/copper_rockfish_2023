@@ -4,9 +4,20 @@
 
 ### California Cooperative Fisheries Research Program
 
-California Collaborative Fisheries Research Program (CCFRP) is a survey that monitors groundfish populations in California’s network of Marine Protected Areas (MPAs) and adjacent reference areas. The CCFRP survey began in 2007 sampling select areas in northern California. In 2017, CCFRP expanded sampling across California. A detailed summary of the program and available sampling data for copper rockfish can be found [online](https://www.pcouncil.org/documents/2022/05/f-3-attachment-5-california-collaborative-fisheries-research-program-data-availability-for-stock-assessments.pdf/).
+California Collaborative Fisheries Research Program (CCFRP) is a survey that monitors groundfish populations in California’s network of Marine Protected Areas (MPAs) and adjacent reference areas. The CCFRP survey began in 2007 sampling select areas in northern California. In 2017, CCFRP expanded sampling across California. A detailed summary of the program and available sampling data for copper rockfish can be found [online](https://www.pcouncil.org/documents/2022/05/f-3-attachment-5-california-collaborative-fisheries-research-program-data-availability-for-stock-assessments.pdf/). 
 
-TODO: Add table of positive observations by year and area for the CCFRP survey
+Copper rockfish have been observed at every monitored MPA along the California Coast at least once.  Copper rockfish are most common at the Carrington Point MPA in southern California, followed by the Point Lobos and Piedras Blancas MPAs in central California. 
+
+```{r, results = 'asis', fig.align='center'}
+add_figure(
+  filein = file.path(dir, "plots", "ccfrp_copper_table.png"), 
+  caption = "The percent of fishing drifts that encountered copper rockfish by MPA and reference pair from CCFRP as published in the June 2023 PFMC Briefing Book (source: CCFRP)",
+  label = 'ccfrp-drifts')
+
+``` 
+\
+
+
 
 ### NWFSC Hook and Line Survey
 
@@ -43,7 +54,7 @@ The NWFSC West Coast Groundfish Bottom Trawl (WCGBT) survey has been conducted a
 
 Multiple inquiries regarding additional data that could be considered to generate indices of abundance and/or composition data have been made for the follow datasets:
 
-* SMURF data
+* SMURF data 
 * [PISCO](https://www.piscoweb.org/)
 * [ReefCheck](https://www.reefcheck.org/country/usa-california/)
 * CDFW ROV data
@@ -53,4 +64,4 @@ Finally, the southern California Publicly Owned Treatment Works (POTW) dataset h
 
 ## Fishery-Dependent 
 
-Fishery-dependent indices will be explored for both the CPFV and Private (PR) fleets using onboard log-book data and dockside sampling. The indices of abundance for each fleet will only go through 2019 due to the reduction in trips and sampling in 2020 due to the COVID-19 pandemic and regulation changes in 2021.
+Fishery-dependent indices will be explored for both the CPFV (PC) and Private/Rental (PR) fleets using onboard observer data and dockside sampling, i.e., angler interviews. The indices of abundance for each fleet will likely only be developed through 2019 due to the reduction in trips and sampling in 2020 due to the COVID-19 pandemic and regulation changes in 2021. Additionally, the recreational fleet actively avoided copper rockfish in 2023.
