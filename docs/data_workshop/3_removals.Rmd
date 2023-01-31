@@ -41,7 +41,7 @@ label = 'com-gear-year')
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
 filein = file.path(dir, "plots", "landings_by_port_ordered_gear_group.png"), 
-caption = " Landings by subregion and gear grouping hook: and line (hkl), diving gear/net/bottomfish troll/shrimp trawl combined (msc_net_tls_tws), pot, and trawl (twl) (source: PacFIN).",
+caption = " Landings by subregion and gear grouping summed across 1981-2022: hook and line (hkl), diving gear/net/bottomfish troll/shrimp trawl combined (msc_net_tls_tws), pot, and trawl (twl) (source: PacFIN).",
 width = 100,
 height = 50, 
 label = 'com-port-gear')
@@ -59,7 +59,7 @@ Only the commercial landings are shown for each area. Discard mortality across t
 
 ## Recreational Landings & Discards
 
-Copper rockfish is caught by the recreational fishery across California. Historically, landings of copper rockfish were highest in the areas north of Point Conception. In recent years, 1993 onward, the scale of landings of copper rockfish is similar north and south of Point Conception.  The proportion of landings by recreational modes (CPFV, private, shoreside) across all years for each area are:
+Copper rockfish is caught by the recreational fishery across California. Historically, landings of copper rockfish were highest in the areas north of Point Conception. In recent years, 1993 onward, the scale of landings of copper rockfish is similar north and south of Point Conception. The proportion of landings by recreational modes (CPFV, private, shoreside) across all years for each area are:
 
 * North of Point Conception:
   * CPFV 34%, 
@@ -92,7 +92,7 @@ Finally, the landings from 2020 - 2021 are potentially incomplete due to the abs
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
 filein = file.path(dir, "plots", "all_rec_landings_mt_mode_2x1.png"), 
-caption = "Recreational landings north and south of Point Conception. The landings are separated by private, CPFV and shoreside (beach and bank) modes. The landings from the CPFV fleet predominate the recreational landings in the south since 2004. In contrast, the majority of the removals north of Point Conception arise from the private fleet. Landings between 1990-1992 are missing due to a loss in fundting to MRFSS for this period. Landings from 2004 from CRFS were not available on RecFIN. Finally, landings in 2020 and 2021 may be incomplete due to limited sampling during the COVID-19 pandemic. Landings for these years will need to be determined and added  (sources: RecFIN and California historical catch reconstruction).",
+caption = "Recreational landings north and south of Point Conception through 2021. The landings are separated by private/rental, CPFV, and shoreside (beach and bank) modes. The landings from the CPFV fleet predominate the recreational landings in the south since 2004. In contrast, the majority of the removals north of Point Conception arise from the private fleet. Landings between 1990-1992 are missing due to a loss in fundting to MRFSS for this period. Landings from 2004 from CRFS were not available on RecFIN. Landings in 2020 and 2021 may be incomplete due to limited sampling during the COVID-19 pandemic and the 2022 landings were not available at the time the data were pulled. Landings for these years will need to be determined and added  (sources: RecFIN and California historical catch reconstruction).",
 label = 'com-landings')
 
 ```
