@@ -6,7 +6,7 @@
 
 California Collaborative Fisheries Research Program (CCFRP) is a survey that monitors groundfish populations in California’s network of Marine Protected Areas (MPAs) and adjacent reference areas. The CCFRP survey began in 2007 sampling select areas in northern California. In 2017, CCFRP expanded sampling across California. A detailed summary of the program and available sampling data for copper rockfish can be found [online](https://www.pcouncil.org/documents/2022/05/f-3-attachment-5-california-collaborative-fisheries-research-program-data-availability-for-stock-assessments.pdf/). 
 
-Copper rockfish have been observed at every monitored MPA along the California Coast at least once.  Copper rockfish are most common at the Carrington Point MPA in southern California, followed by the Point Lobos and Piedras Blancas MPAs in central California. 
+Copper rockfish have been observed at every monitored MPA along the California Coast at least once. Copper rockfish are most common at the Carrington Point MPA in southern California, followed by the Point Lobos and Piedras Blancas MPAs in central California. 
 
 ```{r, results = 'asis', fig.align='center'}
 add_figure(

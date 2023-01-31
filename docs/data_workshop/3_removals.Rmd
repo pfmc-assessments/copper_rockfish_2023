@@ -10,7 +10,7 @@ In recent years, there has been an increase in the proportion of fish landed liv
 ```{r, results = 'asis', fig.align='center'}
 add_figure(
 filein = file.path(dir, "plots", "landings_by_fleet_area.png"), 
-caption = "Commercial landings north and south of Point Conception. The landings are separated by fish landed live versus dead. The commercial landings in the south are relatively low (less than 10 mt per year) acr@oss the majority of years excluding 1995-1998 when landings ranged from 24 to 32 mt. The commercial landings in the north were higher than those observed south of Point Conception prior to 1995 with catches peaking at 69 mt in 1994 (sources: PacFIN and California historical catch reconstruction)",
+caption = "Commercial landings north and south of Point Conception. The landings are separated by fish landed live versus dead. The commercial landings in the south are relatively low (less than 10 mt per year) across the majority of years excluding 1995-1998 when landings ranged from 24 to 32 mt. The commercial landings in the north were higher than those observed south of Point Conception prior to 1995 with catches peaking at 69 mt in 1994 (sources: PacFIN and California historical catch reconstruction)",
 label = 'com-landings')
 
 ``` 
