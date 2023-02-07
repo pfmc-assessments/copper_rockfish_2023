@@ -17,6 +17,8 @@ remove <- grep("Recreational", gemm$sector, ignore.case = TRUE)
 rec_data <- gemm[remove, ]
 gemm <- gemm[-remove, ]
 
+# GEMM data is split north and south of 4010 for commercial
+# data.
 remove <- grep("North", gemm$grouping, ignore.case = TRUE)
 gemm <- gemm[-remove, ]
 
@@ -45,10 +47,10 @@ sum(discard_sector$discard)
 
 all_landings <- aggregate(landings ~ year + sector, gemm, sum)
 sum(all_landings$landings)
-# 128.4075 mt summeda across all sectors and years
+# 128.4075 mt summed across all sectors and years
 
-sum(discard_sector$discard) / (sum(all_discard$discard) + sum(all_landings$landings))
-# 0.05110812
+sum(discard_sector$discard) / (sum(discard_sector$discard) + sum(all_landings$landings))
+# 0.065
 
 sum(discard_sector[discard_sector$year < 2019, 'discard']) / 
 	(sum(discard_sector[discard_sector$year < 2019, 'discard']) + 
@@ -75,16 +77,21 @@ sum(all_landings$landings)
 sum(all_discard$discard) / (sum(all_discard$discard) + sum(all_landings$landings))
 # 0.05255594
 
-rate_by_year <- cbind(all_discard$year, all_discard$discard / (all_discard$discard + all_catch$catch))
+rate_by_year <- cbind(all_discard$year, all_discard$discard / (all_discard$discard + all_landings$landings))
 colnames(rate_by_year) <- c("year", "rate")
 mean(rate_by_year[, 'rate'])
-# all years = 0.0506
+# all years = 0.051
+rate_by_year[,'rate'] <- round(rate_by_year[,'rate'],2)
 
 mean(rate_by_year[rate_by_year[,"year"] < 2019, 'rate'])
-# 0.0502
+# 0.057
 
 median(rate_by_year[rate_by_year[,"year"] < 2019, 'rate'])
 # 0.027
+
+gemm_data <- cbind(rate_by_year, all_landings$landings, all_discard$discard)
+colnames(gemm_data) <- c("year", "rate", "landings", "discard")
+save(gemm_data, file = file.path(dir, "gemm_processed_south_4010.Rdata"))
 
 # Let's look at the average and variance by year
 # =============================================================
@@ -97,7 +104,7 @@ all_data <- as.data.frame(cbind(ave_discard_rate_all, sd_low, sd_high))
 all_data[all_data < 0 ] <- 0
 
 table(sub_gemm$year)
-ave_discard_rate <- aggregate(rate ~ year, sub_gemm, mean)
+sub_ave_discard_rate <- aggregate(rate ~ year, sub_gemm, mean)
 
 
 
@@ -120,6 +127,7 @@ plot(0, type = "n",
   graphics::lines( all_data$year,  all_data$rate, col = 1, cex = 1, lwd = 2)
 
 
+sub_data <- sub_gemm
   cex.lab = 1.5
   plot(0, type = "n",
       xlim = range(sub_data$year),
