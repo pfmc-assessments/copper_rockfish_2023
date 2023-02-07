@@ -16,7 +16,13 @@ source(file.path(code, "recfin_modes.R"))
 # early MRFSS catch data
 mrfss_all <- read.csv(file.path(dir, "rec_catch", "MRFSS-CATCH-ESTIMATES_copper_11152022.csv"))
 
-keep <- which(mrfss_all$AGENCY_CODE == 6 & mrfss_all$RECFIN_SPECIES_CODE == "8826010108")
+subset(mrfss_all, COMMON=='whitebelly rockfish' | COMMON=='WHITEBELLY ROCKFISH') %>% group_by(YEAR_, RECFIN_SUB_REGION_CODE, SOURCE_MODE_NAME) %>% summarize(AplusB1numbers=sum(LANDING))
+subset(mrfss_all, COMMON=='whitebelly rockfish' | COMMON=='WHITEBELLY ROCKFISH') %>% group_by(YEAR_, RECFIN_SUB_REGION_CODE, SOURCE_MODE_NAME) %>% summarize(AplusB1mt=0.001 *sum(WGT_AB1))
+
+
+# The below checks for both copper rockfish and whitebelly rockfish
+# There are 757 records for copper and 11 for whitebelly
+keep <- which(mrfss_all$AGENCY_CODE == 6 & mrfss_all$RECFIN_SPECIES_CODE %in% c("8826010161", "8826010108"))
 mrfss <- mrfss_all[keep, ]
 
 keep <- colnames(mrfss)[which(apply(mrfss, 2, function(x) sum(is.na(x))) != dim(mrfss)[1])]
@@ -42,6 +48,7 @@ mrfss <- mrfss[keep, ]
 
 save(mrfss, file = file.path(dir, "rec_catch", "mrfss_catch_filtered.rdata"))
 
+# CRFS data
 crfss <- read.csv(file.path(dir, "rec_catch", "CTE501-CALIFORNIA-2001---2021.csv"))
 crfss <- recfin_areas(
 	data = crfss, 
@@ -66,7 +73,10 @@ save(crfs, file = file.path(dir, "rec_catch", "crfss_catch_filtered.rdata"))
 # file when downloading from RecFIN
 mrfss_bds_all <- read.csv(file.path(dir, "rec_bds", "ca_type3.csv"))
 
-keep <- which(mrfss_bds_all$ST == 6 & mrfss_bds_all$SP_CODE == "8826010108")
+
+subset(mrfss_bds_all, SP_CODE == "8826010161") %>% group_by(YEAR, CNTY) %>% summarize(n=sum(!is.na(T_LEN)))
+
+keep <- which(mrfss_bds_all$ST == 6 & mrfss_bds_all$SP_CODE  %in% c("8826010161", "8826010108"))
 mrfss_bds <- mrfss_bds_all[keep, ]
 
 keep <- colnames(mrfss_bds)[which(apply(mrfss_bds, 2, function(x) sum(is.na(x))) != dim(mrfss_bds)[1])]
