@@ -44,9 +44,11 @@ hkl_species <- hkl_all[hkl_all$common_name %in% c(
 hkl <- hkl_all[ind, ]
 hkl$length_bin <- plyr::round_any(hkl$length_cm, 2, floor)
 
+table(hkl$length_bin, hkl$include_fish)
 
 sub_hkl_all_site <- hkl_all_site[hkl_all_site$total_count > 0, ]
 colors <- viridis::viridis(10)[c(1,5,9)]
+
 ggplot() +
 	geom_jitter() + 
 	geom_point(data = hkl_all_site, aes(x = site_lon, y = site_lat, col = site_area), size = 5, pch = 1) + 
@@ -256,6 +258,35 @@ sub = hkl_all[hkl_all$set_id %in% grab, ]
 ggplot(sub, aes(x = fathom_bin))  +  
 	geom_bar(aes(fill = common_name), position="fill") + 
     xlab("Depth (fm)") + ylab("Total Observations") +
+    theme(axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	legend.title = element_text(size = 12),
+      	legend.text = element_text(size = 12),
+      	strip.text.y = element_text(size = 14)) +
+    scale_fill_viridis_d()
+
+ggplot(hkl, aes(x = length_cm, y = weight_kg)) +
+	geom_jitter() + 
+	geom_point(aes(col = as.factor(include_fish)), size = 2) +
+	scale_colour_viridis_d() + 
+	xlim(0, 60) + ylim(0, 3) + 
+	xlab("Length (cm)") + ylab("Weight (kg)") 
+
+ggplot(hkl, aes(y = count, x = length_bin, fill = as.factor(include_fish)))  + 
+	geom_bar(aes(y = count), position="stack", stat="identity") + 
+    xlab("Length (cm)") + ylab("Numbers Caught") +
+    theme(axis.text = element_text(size = 12),
+      	axis.title = element_text(size = 12),
+      	legend.title = element_text(size = 12),
+      	legend.text = element_text(size = 12),
+      	strip.text.y = element_text(size = 14)) +
+    scale_fill_viridis_d()
+
+table(hkl$sex, hkl$include_fish)
+
+ggplot(hkl, aes(y = count, x = sex, fill = as.factor(include_fish)))  + 
+	geom_bar(aes(y = count), position="stack", stat="identity") + 
+    xlab("Sex") + ylab("Numbers Caught") +
     theme(axis.text = element_text(size = 12),
       	axis.title = element_text(size = 12),
       	legend.title = element_text(size = 12),
