@@ -56,6 +56,8 @@ dir = file.path(dir_main, area)
 # Process the data in the selected area 
 #=====================================================================
 
+PlotMap.fn(dir = dir, dat = catch)
+
 # Observations range between 59 - 183 m 
 # South - one  observation > 400 m, North - one observation at 359 m
 # Peak observations between 75 - 105 m
@@ -100,38 +102,40 @@ plot_bio_patterns(
   bio = bio, 
   col_name = "Length_cm")
 
-plot_proportion(data = catch,
-  dim = c("depth", "lat", "sex")[1],
-  dir = dir,
-  plot_type = c("proportion", "total")[1],
-  depth_min = 50,
-  depth_max = 200,
-  depth_bin_width = 10,
-  lat_min = ifelse(area == "south", 32.0, 34.5),
-  lat_max = ifelse(area == "south", 34.5, 42.0),
-  lat_bin_width = 1.0)
+temp <- catch[catch$Depth_m < 200, ] %>%
+  dplyr::mutate(new = factor(
+    cpue_kg_km2 <= 0,
+    levels = c(FALSE, TRUE),
+    labels = c("Present", "Absent")
+  ))
 
-plot_proportion(data = catch,
-  dim = c("depth", "lat", "sex")[2],
-  dir = dir,
-  plot_type = c("proportion", "total")[1],
-  depth_min = 50,
-  depth_max = 200,
-  depth_bin_width = 10,
-  lat_min = ifelse(area == "south", 32.0, 34.5),
-  lat_max = ifelse(area == "south", 34.5, 42.0),
-  lat_bin_width = ifelse(area == "south", 0.25, 0.5))
+# Plot depth bins (50 m) by presence/absence with default colors
+plot_proportion(
+  data = temp,
+  column_factor = new,
+  column_bin = Depth_m,
+  width = 10,
+  boundary = 0,
+  bar_width = "equal"
+)
+ggplot2::ggsave(filename = file.path(dir, "plots", "proportion_by_depth.png"))
 
-plot_proportion(data = bio,
-  dim = c("depth", "lat", "sex")[3],
-  dir = dir,
-  plot_type = c("proportion", "total")[1],
-  depth_min = 50,
-  depth_max = 200,
-  depth_bin_width = 10,
-  lat_min = ifelse(area == "south", 32.0, 34.5),
-  lat_max = ifelse(area == "south", 34.5, 42.0),
-  lat_bin_width = 1)
+# In the south there are two observations > 150 m of one fish
+# at 182.7 and another at 407.8. The last one is suspect. That 
+# tow is 183 on 10-20-2008. The nearest previous tow with copper
+# occured the day before in tow 179 at 77 meters.
+plot_proportion(
+  data = bio[bio$Depth_m < 150, ] %>%
+    dplyr::mutate(Sex = codify_sex(Sex)),
+  column_factor = Sex,
+  column_bin = Depth_m,
+  width = 10,
+  boundary = 0,
+  bar_width = "equal"
+)
+ggplot2::ggsave(filename = file.path(dir, "plots", "sex_by_depth.png"))
+
+
 
 # Look at where copper are observed by location
 plot(catch$Longitude_dd, catch$Latitude_dd, pch = 16, 
@@ -140,7 +144,7 @@ pos = which(catch$cpue_kg_km2 > 0)
 points(catch$Longitude_dd[pos], catch$Latitude_dd[pos], pch = 16, col = 'red')
 legend('topright', bty = 'n', legend = c("All Tows", "Positive Tows"),
     col = c('grey', 'red'), pch = c(16, 16))
-ggsave(filename = file.path(dir, "plots", paste0('postive_copper_tows_', area, '.png')))
+ggplot2::ggsave(filename = file.path(dir, "plots", paste0('postive_copper_tows_', area, '.png')))
 
 plot_age_length_sampling(data = bio,
    xlim = c(0, 60),
