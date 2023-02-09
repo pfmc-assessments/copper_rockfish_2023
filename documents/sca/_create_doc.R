@@ -1,15 +1,18 @@
 # Install the package if needed
 # remotes::install_github("pfmc-assessments/sa4ss")
 library(sa4ss)
+library(here)
 
 # Specify the directory for the document
-dir <- "C:/Assessments/2023/copper_rockfish_2023"
+model_name <- "0_ss_exe"
 
-doc_dir <- file.path(dir, "documents", "sca")
-setwd(doc_dir)
+model_dir <- here("models", "sca", "_bridging", model_name)
+doc_dir <- here("documents")
+data_dir<- here("data")
+r_dir <- here("R")
+save(model_dir, doc_dir, data_dir, file = file.path(doc_dir, "sca", "saved_directories.Rdata"))
 
-model_name <- "model name here"
-model_dir <- file.path(dir, "models", "sca", model)
+setwd(file.path(doc_dir, "sca"))
 
 
 # Compile command
@@ -26,7 +29,7 @@ bookdown::render_book(
 # Create the needed items to generate the "right" template that would be based on the inputs here:
 sa4ss::draft(
   authors = c("Chantel R. Wetzel", "Melissa H. Monk", "Julia Coates"),
-  species = "Copper Rockfish",
+  species = "copper rockfish",
   latin = "Sebastes caurinus",
   coast = "California South of Pt. Conception U.S. West",
   type = c("sa"),
@@ -36,25 +39,25 @@ sa4ss::draft(
 
 #Create a model Rdata object
 sa4ss::read_model(
-  mod_loc = mod_dir,
+  mod_loc = model_dir,
   create_plots = FALSE, 
-  save_loc = file.path(mod_dir, "tex_tables"),
-  verbose = TRUE)
+  save_loc = file.path(model_dir, "tex_tables"))
 
-SSexecutivesummary(
-  replist = mod_dir, 
+model <- r4ss::SS_output(model_dir)
+r4ss::SSexecutivesummary(
+  replist = model, 
   format = FALSE)
 
-es_table_tex(
-  dir = mod_dir, 
-  save_loc = file.path(mod_dir, "tex_tables"), 
+sa4ss::es_table_tex(
+  dir = model_dir, 
+  save_loc = file.path(model_dir, "tex_tables"), 
   csv_name = "table_labels.csv")
 
 # Read and create tex files for tables listed in "table" folder in the doc
-es_table_tex(
-  dir = file.path(getwd(), 'tables'), 
-  save_loc = file.path(getwd(), "tex_tables"), 
-  csv_name = "all_tables.csv")
+#es_table_tex(
+#  dir = file.path(getwd(), 'tables'), 
+#  save_loc = file.path(getwd(), "tex_tables"), 
+#  csv_name = "all_tables.csv")
 
 
 

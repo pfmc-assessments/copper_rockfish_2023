@@ -26,12 +26,18 @@ knitr::knit_hooks$set(plot = function(x,options) {
         }
   })
 
+load('saved_directories.Rdata')
 load("00opts.Rdata")
+spp <- "copper rockfish"
+Spp <- "Copper rockfish"
 
 if(file.exists("00mod.Rdata")){
   load("00mod.Rdata")
 } else {
   print("Model output not being read. Please run the read_model() function.")
 }
+
+#source(file.path(r_dir, "get_derived_quants.R"))
+
 
 ```

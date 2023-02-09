@@ -3,7 +3,7 @@
 This assessment reports the status of `r spp` (*Sebastes caurinus*) off the California coast, north of Point Conception, using data through 2022.
 
 ```{r, echo=FALSE, results='asis'}
-filein <- file.path(general_wd,'1_intro_life_history_fishery_info.Rmd')
+filein <- file.path(doc_dir, "shared_text",'1_intro_life_history_fishery_info.Rmd')
 read_child(filein)
 ```
 
@@ -18,7 +18,7 @@ Replace text.
 Off the coast of California, north of Point Conception, `r spp` is caught in both commercial and recreational fisheries. Recreational removals have been the largest source of fishing mortality, comprising nearly 85 percent of total removals of `r spp` across all years (Table XX and Figure XX). The landings from the commercial fishery have been minimal by year, expect for a brief period between the mid-1980s and early-2000s. 
 
 ```{r, echo=FALSE, results='asis'}
-filein <- file.path(general_wd,'1_intro_ca_commercial.Rmd')
+filein <- file.path(doc_dir, "shared_text",'1_intro_ca_commercial.Rmd')
 read_child(filein)
 ```
 
