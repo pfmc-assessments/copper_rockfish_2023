@@ -229,34 +229,20 @@ write.csv(rbind(cpfv_north, private_north),
 # =============================================================================================
 # Plot the data
 # =============================================================================================
+all_for_model <- as.data.frame(all_for_model)
+all_for_model$catch_mt <- as.numeric(all_for_model$catch_mt)
+all_for_model$year <- as.numeric(all_for_model$year)
 
-ggplot(hist_formatted, aes(x = year, y = catch_mt, fill = mode)) +
-  geom_bar(stat = 'identity') +
-  facet_wrap(facets = c("area")) + 
-  xlab("Year") + ylab("Landings (mt)") + 
-  scale_fill_viridis_d(begin = 0, end = 0.5)
-ggsave(filename = file.path(dir, "plots", "historical_rec_landings_mt_mode.png"), 
-       width = 13, height = 10, units = 'in')
-
-
-ggplot(all, aes(x = year, y = catch_mt, fill = mode)) +
-  geom_bar(stat = 'identity') +
-  facet_wrap(facets = c("area")) + 
-  xlab("Year") + ylab("Landings (mt)") + 
-  scale_fill_viridis_d()
-ggsave(filename = file.path(dir, "plots", "all_rec_landings_mt_mode_1x2.png"), 
-       width = 13, height = 10, units = 'in')
-
-ggplot(all, aes(x = year, y = catch_mt, fill = mode)) +
+ggplot(all_for_model, aes(x = year, y = catch_mt, fill = mode)) +
   geom_bar(stat = 'identity') +
   facet_grid(area~.)+ 
-  xlab("Year") + ylab("Landings (mt)") + 
+  xlab("Year") + ylab("Catch (mt)") + 
   theme(axis.text = element_text(size = 12),
         axis.title = element_text(size = 12),
         legend.title = element_text(size = 12),
         legend.text = element_text(size = 12),
         strip.text.y = element_text(size = 14)) +
-  scale_fill_viridis_d()
-ggsave(filename = file.path(dir, "plots", "all_rec_landings_mt_mode_2x1.png"), 
+  scale_fill_viridis_d(begin = 0, end = 0.5)
+ggsave(filename = file.path(dir, "plots", "all_rec_catch_mt_mode_2x1_fed.png"), 
        width = 13, height = 10, units = 'in')
 

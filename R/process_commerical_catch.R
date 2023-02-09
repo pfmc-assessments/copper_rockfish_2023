@@ -147,7 +147,7 @@ landings_north <- data.frame(
 )
 
 write.csv(landings_south, file = file.path(pac_dir, "forSS", "commercial_landings_south_for_expansions.csv"), row.names = FALSE)
-write.csv(landings_north, file = file.path(pac_dir, "forSS", "commercial_lanidngs_north_for_expansions.csv"), row.names = FALSE)
+write.csv(landings_north, file = file.path(pac_dir, "forSS", "commercial_landings_north_for_expansions.csv"), row.names = FALSE)
 
 
 catch_south <- data.frame(
