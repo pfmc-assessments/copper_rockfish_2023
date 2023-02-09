@@ -21,3 +21,25 @@ SSplotComparisons(mysummary,
 	plotdir = file.path(wd, "_plots"),
 	print = TRUE,
 	pdf = FALSE)
+
+rec_fleet <- SS_output(file.path(wd, "0_1_rec_fleet"))
+
+modelnames <- c("2021", "Recreational Fleets")
+mysummary <- SSsummarize(list(base_2021,  rec_fleet))
+
+SSplotComparisons(mysummary,
+	filenameprefix = "0_1_rec_fleet",
+	legendlabels = modelnames, 	
+	plotdir = file.path(wd, "_plots"),
+	pdf = TRUE)
+
+com_fleet <- SS_output(file.path(wd, "0_2_com_fleet"))
+
+modelnames <- c("2021", "Recreational Fleets", "Commercial Fleets")
+mysummary <- SSsummarize(list(base_2021,  rec_fleet, com_fleet))
+
+SSplotComparisons(mysummary,
+	filenameprefix = "0_2_com_fleet",
+	legendlabels = modelnames, 	
+	plotdir = file.path(wd, "_plots"),
+	pdf = TRUE)
