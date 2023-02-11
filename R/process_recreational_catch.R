@@ -169,6 +169,16 @@ fill_2004 <- 	as.data.frame(rbind(
 ))
 colnames(fill_2004) <- c('year', 'area', 'mode', 'catch_mt')
 
+# Adjust south catches for 1987 where there are no reported 
+# removals in mrfss for waves 1-3 (first 6 months of the year)
+wave_ave <- aggregate(catch_mt ~ mode, 
+  mrfss[mrfss$area == 'south' & mrfss$year %in% c(1985:1986, 1988:1989) & mrfss$wave %in% 1:3, ], function(x) sum(x) /4 )
+find <- which(mrfss_for_ss3$year == 1987 & mrfss_for_ss3$area == 'south')
+mrfss_for_ss3[find[1], 'catch_mt'] <- 
+  as.numeric(mrfss_for_ss3[find[1], 'catch_mt']) + wave_ave[wave_ave$mode == "cpfv", 'catch_mt']
+mrfss_for_ss3[find[2], 'catch_mt'] <- 
+  as.numeric(mrfss_for_ss3[find[2], 'catch_mt']) + wave_ave[wave_ave$mode == "private", 'catch_mt']
+
 landings_to_add <- 
   as.data.frame(rbind(fill_values, fill_2004))
 
@@ -245,4 +255,16 @@ ggplot(all_for_model, aes(x = year, y = catch_mt, fill = mode)) +
   scale_fill_viridis_d(begin = 0, end = 0.5)
 ggsave(filename = file.path(dir, "plots", "all_rec_catch_mt_mode_2x1_fed.png"), 
        width = 13, height = 10, units = 'in')
+
+mrfss$wave <- as.factor(mrfss$wave)
+ggplot(mrfss, aes(x = year, y = catch_mt, fill = wave)) +
+  geom_bar(position="stack", stat="identity") +
+  facet_grid(area~.)+ 
+  xlab("Year") + ylab("Catch (mt)") + 
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 12),
+        strip.text.y = element_text(size = 14)) +
+  scale_fill_viridis_d()
 

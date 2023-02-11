@@ -57,6 +57,7 @@ pacfin$area[which(pacfin$PACFIN_PORT_CODE %in% south)] = "south"
 
 table(pacfin$area, pacfin$SUBREGION_NAME)
 table(pacfin$area, pacfin$COUNTY_NAME)
+table(pacfin$SUBREGION_NAME, pacfin$COUNTY_NAME)
 
 pacfin <- dplyr::left_join(pacfin, wcgop_discard_rate[, c("year", "rate")], by = 'year')
 pacfin$rate[is.na(pacfin$rate)] <- hist_discard_rate
@@ -180,11 +181,11 @@ ind <- which(
 
 catch_south_ss3 <- data.frame(
 	year = c(catch_south$year, pacfin_catch_by_year[ind, 'year']),
-	fleet = c(rep('dead', length(catch_south$year)),
-			rep('live', length(pacfin_by_year[ind, 'year']))),
 	season = 1,
+	fleet = c(rep('dead', length(catch_south$year)),
+			rep('live', length(pacfin_catch_by_year[ind, 'year']))),
 	catch = c(com_hist_early$catch_mt_south, com_hist_late$catch_mt_south, 
-		pacfin_catch_by_year[pacfin_by_year$cond == 'dead' & pacfin_catch_by_year$area == "south", 'catch'],
+		pacfin_catch_by_year[pacfin_catch_by_year$cond == 'dead' & pacfin_catch_by_year$area == "south", 'catch'],
 		pacfin_catch_by_year[ind, 'catch']),
 	se = 0.01
 )
@@ -197,11 +198,11 @@ ind <- which(
 
 catch_north_ss3 <- data.frame(
 	year = c(catch_north$year, pacfin_catch_by_year[ind, 'year']),
+	season = 1,
 	fleet = c(rep('dead', length(catch_north$year)),
 			rep('live', length(pacfin_catch_by_year[ind, 'year']))),
-	season = 1,
 	catch = c(com_hist_early$catch_mt_north, com_hist_late$catch_mt_north, 
-		pacfin_catch_by_year[pacfin_by_year$cond == 'dead' & pacfin_catch_by_year$area == "north", 'catch'],
+		pacfin_catch_by_year[pacfin_catch_by_year$cond == 'dead' & pacfin_catch_by_year$area == "north", 'catch'],
 		pacfin_catch_by_year[ind, 'catch']),
 	se = 0.01
 )

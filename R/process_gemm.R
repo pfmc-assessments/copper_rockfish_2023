@@ -6,9 +6,12 @@
 #					
 ##############################################################################################################
 
-dir = "C:/Assessments/2023/copper_rockfish_2023/data/gemm"
+library(here)
 
-load(file.path(dir, "gemm_Copper_rockfish.rdata"))
+dir = getwd()
+gemm_dir <- file.path(dir, "data", "gemm")
+
+load(file.path(gemm_dir, "gemm_Copper_rockfish.rdata"))
 
 # Filter out part of the data
 # ===================================================
