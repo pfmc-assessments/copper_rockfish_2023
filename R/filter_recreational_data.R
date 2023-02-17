@@ -167,3 +167,14 @@ aggregate(lengthcm ~ mode + area, crfss_bds, quantile)
 crfs_bds <- crfss_bds
 
 save(crfss_bds, file = file.path(dir, "rec_bds", "crfss_bds_filtered.rdata"))
+
+#========================================================================
+# Look at data by wave in souther california for 1987
+#========================================================================
+
+find <- which(mrfss_all$RECFIN_SUB_REGION_NAME == "Southern California" & mrfss_all$YEAR_ == 1987)
+tmp = mrfss_all[find,]
+rock = grep("ROCKFISH", tmp$COMMON)
+tmp2 = tmp[rock, ]
+wave = aggregate(TOT_CAT~WAVE, tmp2, length)
+wave[,2]/sum(wave[,2])
