@@ -30,9 +30,9 @@ dir_main <- "C:/Assessments/2023/copper_rockfish_2023/data/wcgbt"
 #     common_name = "copper rockfish",
 #     survey = "NWFSC.Combo")
 
-load(file.path(dir_main, "catch_copper rockfish_NWFSC.Combo_2022-11-27.rdata"))
+load(file.path(dir_main, "catch_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
 catch_orig <- x
-load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2022-11-27.rdata"))
+load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
 bio_orig <- x
 
 PlotMap.fn(dat = catch_orig)
@@ -65,7 +65,7 @@ PlotMap.fn(dir = dir, dat = catch)
 
 # Existing SA file only allows splits at 75, 100, 125, 155, 183
 strata = CreateStrataDF.fn(names=c("shallow", "mid"), 
-                           depths.shallow = c( 55, 100),
+                           depths.shallow = c(55, 100),
                            depths.deep    = c(100, 183),
                            lats.south     = c(32.5, 32.5),
                            lats.north     = c(34.5, 34.5))
@@ -78,9 +78,10 @@ file.rename(file.path(dir, "forSS", "strata_observations.csv"),
             file.path(dir, "forSS", paste0(area, "_strata_observations.csv")))
 
 # Calculate the design based index
-biomass = Biomass.fn(dir = dir, 
-               dat = catch,  
-               strat.df = strata) 
+biomass = Biomass.fn(
+    dir = dir, 
+    dat = catch,  
+    strat.df = strata) 
 
 file.rename(file.path(dir,  "forSS", "design_based_indices.csv"),
             file.path(dir,  "forSS", paste0(area, "_design_based_indices.csv")))
@@ -146,7 +147,8 @@ legend('topright', bty = 'n', legend = c("All Tows", "Positive Tows"),
     col = c('grey', 'red'), pch = c(16, 16))
 ggplot2::ggsave(filename = file.path(dir, "plots", paste0('postive_copper_tows_', area, '.png')))
 
-plot_age_length_sampling(data = bio,
+plot_age_length_sampling(
+   data = bio,
    xlim = c(0, 60),
    ylim = c(0, 0.25),
    dir = dir)
