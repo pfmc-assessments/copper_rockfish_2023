@@ -1,1 +1,27 @@
 ## Fishery-Dependent Data
+
+### Commercial Fishery
+
+```{r, echo=FALSE, results='asis'}
+general_wd = file.path(doc_dir, "shared_text")
+filein = file.path(general_wd,'2f_commercial_removals.Rmd')
+read_child(filein)
+```
+
+#### Landings and Discards
+
+
+#### Composition Data
+
+### Recreational Fishery
+
+#### Landings and Discards
+
+
+```{r, echo=FALSE, results='asis'}
+general_wd = file.path(doc_dir, "shared_text")
+filein = file.path(general_wd,'2f_recreational_removals.Rmd')
+read_child(filein)
+```
+
+#### Composition Data

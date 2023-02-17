@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2023.2.9)  9 FEB 2023 09:21
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2023.2.16)  16 FEB 2023 13:55
  restricted system commands enabled.
 **_main.tex
 (./_main.tex
@@ -887,7 +887,7 @@ Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 \fn@notes=\box79
 \fn@width=\dimen302
 ) (c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2022/01/23 3.85 The Babel package
+Package: babel 2023/02/13 3.86 The Babel package
 (c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/luababel.def
 \bbl@readstream=\read5
 \l@dumylang=\language2
@@ -904,7 +904,7 @@ Package babel Info: Non-standard hyphenation setup on input line 118.
 )
 Package babel Info: Main language set with 'main='. Except if you have
 (babel)             problems, prefer the default mechanism for setting
-(babel)             the main language. Reported on input line 4320.
+(babel)             the main language. Reported on input line 4332.
 (c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'british' set to \l@english
@@ -1353,7 +1353,7 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 \openout7 = _main.toc
 [5] (./tex_tables/a_Catches_ES.tex)
-<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/catch2 landings stacked.png, id=386, 469.755pt x 289.08pt>
+<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/catch2 landings stacked.png, id=391, 469.755pt x 289.08pt>
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/catch2 landings stacked.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/catch2 landings stacked.png>
 Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/catch2 landings stacked.png  used on input line 221.
@@ -1366,12 +1366,12 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.i'
 ]
 Package marginnote Info: Using workaround for absolute page number on input line 30.
 )
-<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png, id=398, 469.755pt x 289.08pt>
+<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png, id=403, 469.755pt x 289.08pt>
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png>
 Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png  used on input line 249.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts9_Relative_spawning_output_intervals.png, id=399, 469.755pt x 289.08pt>
+<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts9_Relative_spawning_output_intervals.png, id=404, 469.755pt x 289.08pt>
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts9_Relative_spawning_output_intervals.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts9_Relative_spawning_output_intervals.png>
 Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts9_Relative_spawning_output_intervals.png  used on input line 255.
@@ -1384,7 +1384,7 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.ii'
 [2<c:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/catch2 landings stacked.png><c:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png>]
 warning  (pdf backend): ignoring duplicate destination with the name 'page.iii'
 [3<c:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts9_Relative_spawning_output_intervals.png>] (./tex_tables/c_Recr_ES.tex)
-<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png, id=412, 469.755pt x 289.08pt>
+<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png, id=417, 469.755pt x 289.08pt>
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png>
 Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png  used on input line 271.
@@ -1396,17 +1396,17 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.iv'
 ]
 warning  (pdf backend): ignoring duplicate destination with the name 'page.v'
 [5<c:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png>] (./tex_tables/d_SPR_ES.tex)
-<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR2_minusSPRseries.png, id=423, 469.755pt x 289.08pt>
+<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR2_minusSPRseries.png, id=428, 469.755pt x 289.08pt>
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR2_minusSPRseries.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR2_minusSPRseries.png>
 Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR2_minusSPRseries.png  used on input line 287.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR4_phase.png, id=424, 469.755pt x 289.08pt>
+<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR4_phase.png, id=429, 469.755pt x 289.08pt>
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR4_phase.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR4_phase.png>
 Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR4_phase.png  used on input line 303.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/yield2_yield_curve_with_refpoints.png, id=425, 469.755pt x 289.08pt>
+<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/yield2_yield_curve_with_refpoints.png, id=430, 469.755pt x 289.08pt>
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/yield2_yield_curve_with_refpoints.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/yield2_yield_curve_with_refpoints.png>
 Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/yield2_yield_curve_with_refpoints.png  used on input line 309.
@@ -1421,91 +1421,101 @@ LaTeX Warning: Reference `ca-man' on page 2 undefined on input line 383.
 
 LaTeX Warning: Reference `fig:map' on page 3 undefined on input line 393.
 
-[3] [4] [5] [6] [7]
+[3] [4] [5] [6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 477--478
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 489--490
+
+ []
+
+[9] [10] [11]
 Overfull \vbox (31.63527pt too high) has occurred while \output is active []
 
-[8] [9] [10] [11
+[12] [13] [14] [15
 
-] [12] [13
+] [16] [17
 
 ]
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/catch2 landings stacked.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/catch2 landings stacked.png>
-Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/catch2 landings stacked.png  used on input line 624.
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/catch2 landings stacked.png  used on input line 687.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/data_plot.png, id=597, 469.755pt x 469.755pt>
+<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/data_plot.png, id=635, 469.755pt x 469.755pt>
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/data_plot.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/data_plot.png>
-Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/data_plot.png  used on input line 630.
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/data_plot.png  used on input line 693.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/bio1_sizeatage.png, id=598, 469.755pt x 289.08pt>
+<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/bio1_sizeatage.png, id=636, 469.755pt x 289.08pt>
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/bio1_sizeatage.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/bio1_sizeatage.png>
-Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/bio1_sizeatage.png  used on input line 636.
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/bio1_sizeatage.png  used on input line 699.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png>
-Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png  used on input line 642.
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png  used on input line 705.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SR_curve.png, id=599, 469.755pt x 469.755pt>
+<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SR_curve.png, id=637, 469.755pt x 469.755pt>
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SR_curve.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SR_curve.png>
-Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SR_curve.png  used on input line 648.
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SR_curve.png  used on input line 711.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png>
-Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png  used on input line 654.
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png  used on input line 717.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts1_Total_biomass_(mt).png, id=600, 469.755pt x 289.08pt>
+<C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts1_Total_biomass_(mt).png, id=638, 469.755pt x 289.08pt>
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts1_Total_biomass_(mt).png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts1_Total_biomass_(mt).png>
-Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts1_Total_biomass_(mt).png  used on input line 660.
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts1_Total_biomass_(mt).png  used on input line 723.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts9_Relative_spawning_output_intervals.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts9_Relative_spawning_output_intervals.png>
-Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts9_Relative_spawning_output_intervals.png  used on input line 666.
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts9_Relative_spawning_output_intervals.png  used on input line 729.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR2_minusSPRseries.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR2_minusSPRseries.png>
-Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR2_minusSPRseries.png  used on input line 672.
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR2_minusSPRseries.png  used on input line 735.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-[14
+[18
 
-] [15<c:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/data_plot.png>] [16<c:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/bio1_sizeatage.png>] [17<c:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SR_curve.png>] [18<c:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts1_Total_biomass_(mt).png>] [19]
+] [19<c:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/data_plot.png>] [20<c:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/bio1_sizeatage.png>] [21<c:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SR_curve.png>] [22<c:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/ts1_Total_biomass_(mt).png>] [23]
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR4_phase.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR4_phase.png>
-Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR4_phase.png  used on input line 680.
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/SPR4_phase.png  used on input line 743.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
 File: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/yield2_yield_curve_with_refpoints.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/yield2_yield_curve_with_refpoints.png>
-Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/yield2_yield_curve_with_refpoints.png  used on input line 686.
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/models/nca/_bridging/0_ss_exe/plots/yield2_yield_curve_with_refpoints.png  used on input line 749.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
 
 AED: lastpage setting LastPage
-[20
+[24
 
-] [21] (./_main.aux)
+] [25] (./_main.aux)
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 0A1B356584BFCE5791157759E706208D;12356.
+(rerunfilecheck)             Checksum: B7344DC9D81B9148A483460E977173A5;13346.
 )
 
 Here is how much of LuaTeX's memory you used:
- 49467 strings out of 478294
+ 49500 strings out of 478294
  100000,1977958 words of node,token memory allocated
- 728 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 2 glyph, 25 attribute, 79 glue_spec, 14 attribute_list, 5 write, 1 close, 4 pdf_action nodes
-   avail lists: 1:1,2:2675,3:530,4:126,5:448,6:177,7:7471,8:70,9:1300,10:13,11:522,12:1
- 67618 multiletter control sequences out of 65536+600000
- 67 fonts using 13768071 bytes
+ 740 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 2 glyph, 27 attribute, 79 glue_spec, 15 attribute_list, 5 write, 1 close, 5 pdf_action nodes
+   avail lists: 1:1,2:2675,3:530,4:130,5:504,6:177,7:8297,8:83,9:1300,10:21,11:551,12:1
+ 67629 multiletter control sequences out of 65536+600000
+ 67 fonts using 13768223 bytes
  115i,12n,128p,2284b,599s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf>
-Output written on _main.pdf (34 pages, 462856 bytes).
+Output written on _main.pdf (38 pages, 477335 bytes).
 
-PDF statistics: 722 PDF objects out of 1000 (max. 8388607)
- 629 compressed objects within 7 object streams
- 204 named destinations out of 1000 (max. 131072)
- 560 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 761 PDF objects out of 1000 (max. 8388607)
+ 664 compressed objects within 7 object streams
+ 226 named destinations out of 1000 (max. 131072)
+ 568 words of extra memory for PDF output out of 10000 (max. 100000000)
 
