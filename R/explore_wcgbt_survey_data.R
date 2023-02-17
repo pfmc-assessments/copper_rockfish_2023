@@ -16,9 +16,21 @@ dir_main <- "C:/Assessments/2023/copper_rockfish_2023/data/wcgbt"
 #=====================================================================
 # Pull all available data
 #=====================================================================
-load(file.path(dir_main, "catch_copper rockfish_NWFSC.Combo_2022-11-27.rdata"))
+
+# catch <- pull_catch(
+# 	dir = dir_main, 
+# 	common_name = "copper rockfish",
+# 	survey = "NWFSC.Combo"
+# )
+# 
+# bio <- pull_bio(
+# 	dir = dir_main, 
+# 	common_name = "copper rockfish",
+# 	survey = "NWFSC.Combo"
+# )
+load(file.path(dir_main, "catch_copper rockfish_NWFSC.Combo_2023-2-11.rdata"))
 catch <- x
-load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2022-11-27.rdata"))
+load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2023-2-11.rdata"))
 bio <- x
 
 # Filter down to California data only
@@ -39,21 +51,22 @@ bio$length_bin <- plyr::round_any(bio$Length_cm, 2, floor)
 
 table(catch$area[catch$total_catch_numbers > 0])
 # north south 
-#    58    99 
+#    63   107 
 
 table(catch$positive, catch$Year, catch$area)
-# north  
-# 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2021
-#  4    4    2    2    1    6    5    5    0    3    3    1    4    1    2    5    3    7
-# 
-# south
-#   
-# 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2021
-#  4    1    3    1    4    5    2    4    3   16    6    7    5    8   10    6    4   10
+# ,  = north
+
+#  
+#   2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2021 2022
+# 1    4    4    2    2    1    6    5    5    0    3    3    1    4    1    2    5    3    7    5
+# ,  = south
+#  
+#   2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2021 2022
+# 1    4    1    3    1    4    5    2    4    3   16    6    7    5    8   10    6    4   10    8
 
 table(bio$area)
 # north south 
-#   214   925 
+#   2227   971 
 
 PlotMap.fn(dat = catch, plot = 1)
 PlotMap.fn(dat = catch[catch$area == 'north',], plot = 1)
@@ -63,12 +76,12 @@ plot_bio_patterns(
   bio = bio, 
   col_name = "Length_cm")
 
-ggplot(bio, aes(Length_cm, fill = Sex, color = Sex)) + 
+ggplot(bio[bio$Sex != "U",], aes(Length_cm, fill = Sex, color = Sex)) + 
 	geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
     xlab("Length (cm)") + ylab("Density") +
     scale_fill_viridis_d() +
     facet_grid(area~.) 
-ggsave(filename = file.path(dir, "plots", ""),
+ggsave(filename = file.path(dir_main, "plots", "density_length_by_sex.png"),
 	width = 10, height = 5)
 
 
@@ -114,7 +127,7 @@ ggsave(filename = file.path(dir_main, "plots", "wcgbt_positive_tows_by_area.png"
 
 ggplot(bio, aes(y = Length_cm, x = Year, group = Year)) +
 	geom_boxplot() + 
-	facet_grid(area~.)  + 
+	facet_wrap(c('area','Sex')) + #(area~.)  + 
 	xlab("Year") + ylab("Length (cm)") 
 ggsave(filename = file.path(dir_main, "plots", "wcgbt_boxplot_lengths_by_year_area.png"),
 	width = 10, height = 8)
