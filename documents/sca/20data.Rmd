@@ -1,7 +1,6 @@
 # Data
 
-Data comprise the foundational components of stock assessment models.
-The decision to include or exclude particular data sources in an assessment model depends on many factors.
+Data comprise the foundational components of stock assessment models. The decision to include or exclude particular data sources in an assessment model depends on many factors.
 These factors often include, but are not limited to,
 the way in which data were collected (e.g., measurement method and consistency);
 the spatial and temporal coverage of the data;

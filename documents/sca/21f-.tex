@@ -1,0 +1,315 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\hypertarget{fishery-dependent-data}{%
+\subsection{Fishery-Dependent Data}\label{fishery-dependent-data}}
+
+\hypertarget{commercial-fishery}{%
+\subsubsection{Commercial Fishery}\label{commercial-fishery}}
+
+\hypertarget{landings-and-discards}{%
+\paragraph{Landings and Discards}\label{landings-and-discards}}
+
+\hfill\break
+
+Commercial landings prior to 1969 were extracted from the South West
+Fishery Science Center (SWFSC) landings reconstruction database for
+estimates from the California Catch Reconstruction
+{[}@ralston\_documentation\_2010{]}. Landings in this database are
+divided into trawl, non-trawl, and unknown gear categories. Regions 7
+and 8 as defined by Ralston et al. {[}-@ralston\_documentation\_2010{]}
+were assigned to south of Point Conception in California. Regions 2, 4,
+and 5 are associated with areas north of Point Conception. Region 6 in
+Ralston et al. {[}-@ralston\_documentation\_2010{]} included Santa
+Barbara County (mainly south of Point Conception), plus some major ports
+north of Point Conception. To allocate landings from Region 6 to the
+areas north and south of Point Conception, we followed an approach used
+by Dick et al. {[}-@dick\_status\_2007{]} for the assessment of cowcod.
+Specifically, port-specific landings of total rockfish from the CDFW
+Fish Bulletin series were used to determine the annual fraction of
+landings in Region 6 that was north and south of Point Conception (Table
+XX). Rockfish landings at that time were not reported at the species
+level. Although the use of total rockfish landings to partition landings
+in Region 6 is not ideal, we see this as the best available option in
+the absence of port-specific species composition data. Landings from
+unknown locations (Region 0) were allocated proportional to the landings
+from known regions.
+
+In September 2005, the California Cooperative Groundfish Survey (CCGS)
+incorporated newly acquired commercial landings statistics from
+1969-1980 into the CALCOM database. The data consisted of landing
+receipts (``fish tickets''), including mixed species categories for
+rockfish. In order to assign rockfish landings to individual species,
+the earliest available species composition samples were applied to the
+fish ticket data by port, gear, and quarter. These `ratio estimator'
+landings are coded (internally) as market category 977 in the CALCOM
+database, and are used in this and past assessments as the best
+available landings for the time period 1969-1980 for all port complexes.
+See Appendix A of Dick et al. {[}-@dick\_status\_2007{]} for further
+details.
+
+Commercial fishery landings from 1981-2022 were extracted from the
+Pacific Fisheries Information Network (PacFIN) database (extracted
+February 6, 2023). Landings were separated north and south of Point
+Conception based on port of landing. Commercial landings for copper
+rockfish were split into two fleets based on the fish landed condition,
+live or dead, and aggregated across gear types (Table XX and Figure XX).
+The selection of this fleet structure was based on potential differences
+in selectivity by the fishery based on fish landed condition where the
+live fish fishery may be targeting fish of particular sizes (i.e., plate
+sized). The first year where fish were observed to be landed live for
+copper rockfish in the area south of Point Conception was 1994.
+
+Discarding was not estimated within the model. The commercial catches,
+landings plus discards, were estimated external to the model based on
+data from the West Coast Groundfish Observer Program (WCGOP) data
+provided in the Groundfish Expanded Mortality Multiyear (GEMM) product.
+The GEMM provides expanded estimates of landings, discard, and catches
+based on observed trips by sector split north and south of 40\(^\circ\)
+10' N. lat. for the commercial fishery. Estimated landings and discards
+south of 40\(^\circ\) 10' N. lat. from select sectors (LE Fixed Gear DTL
+- Hook and Line, Nearshore, CS - Hook and Line, OA Fixed Gear - Hook and
+Line, OA Fixed Gear - Pot, and LE Fixed Gear DTL - Pot) were used to
+calculate a discard rate (total discard divided by the sum of landings
+and discards by year) for 2002-2021. The annual discard rates were
+applied to the total landings by year to calculate catches for both
+areas south and north of Point Conception. The median discard rate south
+of 40\(^\circ\) 10' N. lat. from the select sectors between 2002-2021 in
+the GEMM was 3 percent. This discard rate was applied to landings
+between 1916-2001 and 2022 to determine catch by year. The assumptions
+around the discard rate by year had limited impact to the assumed total
+catches given the limited scale of removals by the commercial fishery
+for copper rockfish. Across all years, 1916-2022, the landings were
+increased by 2-3 percent by area (11 mt south of Point Conception and 26
+mt north of Point Conception) to calculate the total catches.
+
+\hypertarget{recreational-fishery}{%
+\subsubsection{Recreational Fishery}\label{recreational-fishery}}
+
+\hypertarget{landings-and-discards-1}{%
+\paragraph{Landings and Discards}\label{landings-and-discards-1}}
+
+\hfill\break
+
+The recreational fishery is the main source of exploitation of copper
+rockfish across California. The recreational catches of copper rockfish
+south of Point Conception in California waters peaked in the late 1970s
+and early 1980s. Catches declined in the 1990s and early 2000s. The
+removals remained relatively low until 2015. Catches begun to increase
+in 2015, likely due to changes in harvest specifications
+{[}@cope\_data-moderate\_2013{]}. The catches decreased in 2020 due to
+COVID-19 impacts and remained relatively low in 2021 and 2022 due to
+reductions in the sub-bag limits in California for copper rockfish. The
+recreational fishery was split into two fleets based on fishing type
+(termed `modes'), a commercial passenger fishing vessel (CPFV,
+party/charter mode) fleet and a combined private or rental boats (PR
+mode) and shoreside (man-made and beach/bank modes) fleet. The catches
+associated with the shoreside mode for copper rockfish are limited and
+did not justify a separate fishing fleet within the model.
+
+Recreational landing estimates from 1928 to 1980 were obtained from the
+historical reconstruction {[}@ralston\_documentation\_2010{]}. The
+historical landings reconstruction split removals north and south of
+Point Conception and by recreational modes. CPFV landings of all
+rockfish were based on logbook data (which do not report rockfish to the
+species level), scaled by compliance estimates, while total recreational
+landings from PR vessels were based on a combination of the relative
+catch rates observed in the CPFV fleet and a linear ramp between catch
+estimates in the early 1960s and those in the early 1980s (as described
+in Ralston et al. {[}-@ralston\_documentation\_2010{]}). The species
+composition of rockfish landings was estimated using a combination of
+the 1980s Marine Recreational Fisheries Statistics Survey (MRFSS) data
+as well as limited CPFV mode species composition data from onboard
+observer programs in the late 1970s (south of Point Conception) and
+dockside recreational creel surveys in the late 1950s and early 1960s
+(north of Point Conception).
+
+Recreational removals from 1981-1989 and 1993-2003 were obtained from
+MRFSS downloaded from the Recreational Fisheries Information Network
+(RecFIN). Historically, copper rockfish were occasionally referred to as
+whitebelly rockfish in select California areas. MRFSS catches were
+pulled for both species names. MRFSS includes estimates of removals for
+1980. However, due to inconsistencies in the estimates of this year in
+MRFSS, likely due to it being the first year of the survey with low
+sample sizes, the value for recreational landings from the historical
+reconstruction were used {[}-@ralston\_documentation\_2010{]}.
+
+Some known issues with the MRFSS estimates include 1) a change in the
+spatial definition of California subregions after 1989, 2) missing or
+imprecise estimates of catch in weight for some strata that reported
+catch in numbers, and 3) a hiatus in sampling from 1990-1992 (all modes)
+and also 1993-1995 in the party/charter mode north of Point Conception.
+The STAT attempted to address each of these issues, as described below.
+CRFS estimates from 2004 were also included in the MRFSS analysis, as
+they were not available on the current RecFIN website but are included
+with the MRFSS catch estimate tables
+
+The MRFSS definition of ``Southern California'' included San Luis Obispo
+County between 1981-1989, requiring the catches from this county to be
+split out and removed from the recreational catch south of Point
+Conception. The MRFSS catches between southern and northern California
+were adjusted in a similar fashion as previous assessments split at
+Point Conception. Albin et al. {[}-@albin\_effort\_1993{]} used MRFSS
+data to estimate catch at a finer spatial scale from the
+California/Oregon border to the southern edge of San Luis Obispo (SLO)
+County. Over the period 1981-1986, numbers of copper rockfish landed in
+SLO County were found to be approximately one third (0.317) of the
+numbers of copper rockfish landed in all California counties north of
+SLO County {[}@albin\_effort\_1993{]}. Therefore, to approximate catches
+north and south of Point Conception from 1980-1989, the STAT reduced the
+`southern' subregion annual catch (which included SLO County) from
+1980-1989 by 0.317 during the same period, and added this amount to the
+northern subregion catch. On average, this `moves' the estimated SLO
+County catch from the southern region to the northern region from
+1980-1989, creating a spatially consistent time series of landings over
+the entire time series.
+
+The STAT chose to use catch in terms of weight (WGT\_AB1 column) within
+MRFSS. The catch weights were converted from kilograms to metric tons
+and any records with missing catch weights were examined. The number of
+records with missing catch weights for copper rockfish in MRFSS were
+limited (only 18 out of 713). The missing catch weights were imputed
+based on the number of fish (TOT\_CAT column) and the calculated average
+fish weight by year and area north and south of Point Conception.
+
+MRFSS sampling was halted from 1990-1992 due to funding issues. The
+survey resumed in 1993 in all modes, except for the PC boat mode which
+resumed in 1996 for counties north of Santa Barbara County. To produce
+catch estimates for the missing subregion, mode, and year combinations
+linear interpolations were used to fill in the missing data.
+
+Two additional revisions were applied to select years and modes in the
+MRFSS data based on conversations with California Department of Fish and
+Wildlife (CDFW). The catches for the PR mode north of Point Conception
+in MRFSS for 1981 were 50 to 90 percent greater than the catches in 1980
+and 1982, respectively. The high catches in this year were assumed to be
+a result of issues in the catch expansions due to limited sampling. The
+catches for the PR fleet were revised downward to be equal to the
+average removals in surrounding years (1979, 1980, 1982, and 1983). The
+catches in MRFSS south of Point Conception in 1987 were identified as
+abnormally low by CDFW (John Budrick, pers. communication, 13 to 27
+percent of catches in 1986 and 1988) which was due to no catch
+information for waves 1-3 (January - June) for either mode. Absence of
+data in 1987 for these waves was not observed across other rockfish
+species in southern California indicating that the absence of catch data
+was likely not due to closures in the fishery. The catches for this year
+and mode were set equal to the average catch by mode 2 years before and
+after 1987.
+
+Recreational landings from 2004-2019 were obtained from California
+Recreational Fisheries Survey (CRFS) available on RecFIN. This survey
+improves upon the MRFSS sampling design, employing higher sampling rates
+and producing estimates with finer spatial and temporal resolution. CRFS
+also employs onboard CPFV observers, providing spatially referenced,
+drift-level estimates of catch and discard for a subset of anglers on
+observed groundfish trips. Any CRFS records of fish caught in Mexican
+waters were removed and catch estimates were split north and south of
+Point Conception for each fleet. Due to database issues, catches for
+2004 are currently not available on RecFIN. The catches for this year
+were set equal to data pulled in 2021 for the previous assessment of
+copper rockfish.
+
+The recreational catches for 2020-2022 were provided directly by CDFW.
+During 2020 due to the COVID-19 pandemic dockside sampling by observers
+was halted April through June leading to missing catch data within the
+CRFS database for this period. Additionally, when sampling resumed a
+large number of rockfish catches were not identified to species
+(recorded as rockfish genus only) for the remainder of 2020 and 2021 due
+to social distancing for health and safety. CDFW provided proxy catch
+values that allocated a subset of the rockfish genus removals by
+recreational mode north and south of Point Conception for these years.
+Finally, the completed catch estimates for 2022 were not available for
+CRFS on RecFIN by the data deadline for this assessment and estimates
+were provided directly to the STAT from CDFW.
+
+MRFSS and CRFS both provide estimates of total mortality which combine
+observed landings plus estimates of discarded fish using depth-dependent
+mortality rates. While the recreational removals from the historical
+reconstruction from 1928-1980 account for only landed fish. There is
+limited information on historical discarding in the recreational
+fishery. A report by Miller and Gotshall {[}-@miller\_ocean\_1965{]}
+looked at the number of retained and discard fish in the recreational
+fishery in California for a select year which showed essentially no
+discarding of copper rockfish. Based on that no additional discards were
+applied to the historical data between 1926-190.
+
+\end{document}
