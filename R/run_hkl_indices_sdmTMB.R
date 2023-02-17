@@ -1,12 +1,16 @@
-
-
-
+############################################################################################
+#   Estimate index for the NWFSC hkl survey
+#           using sdmTMB
+#          November, 2022
+#           Chantel Wetzel
+############################################################################################
 
 library(dplyr)
 library(sdmTMB)
 library(sf)
 library(sp)
 library(tidyr)
+library(tmbstan)
 
 species <- "Copper Rockfish"
 dir <- "C:/Assessments/2023/copper_rockfish_2023/data/nwfsc_hkl"
@@ -83,7 +87,7 @@ grid$effort <- 75
 #uniform_grid = make_grid$xygrid
 
 # Fit negative binomial model to these data
-mesh <- make_mesh(subdata, xy_cols = c("X", "Y"), cutoff = 10)
+#mesh <- make_mesh(subdata, xy_cols = c("X", "Y"), cutoff = 10)
 
 indices <- metrics <- run_time <- NULL
 
@@ -94,20 +98,33 @@ save(subdata, mesh, grid,
 tictoc::tic()
 
 fit <- sdmTMB(
-  n ~ 0 + as.factor(year) + as.factor(site_number) ,
+  n ~ 0 + as.factor(year) + as.factor(site_number),
   data = subdata,
   offset = log(subdata$effort),
   time = "year",
   spatial="off",
   spatiotemporal = "off",
-  mesh = mesh,
+  #mesh = mesh,
   family = nbinom2(link = "log"),
   silent = TRUE,
-  do_index = TRUE,
+  do_index = FALSE, #TRUE,
   predict_args = list(newdata = grid, re_form_iid = NA),
   index_args = list(area = 1),
   control = sdmTMBcontrol(newton_loops = 1)
 )
+print(fit)
+
+# fit_stan <- tmbstan::tmbstan(
+#   obj = fit$tmb_obj,
+#   iter = 10000, 
+#   chains = 2,
+#   seed = 8217
+# )
+# 
+# plot(fit_stan)
+# pars_plot <- c("b_j[1]", "b_j[2]", "b_j[3]", "b_j[4]")
+# bayesplot::mcmc_trace(fit_stan, pars = pars_plot)
+# bayesplot::mcmc_pairs(fit_stan, pars = pars_plot)
 
 name <- "glm_negbin_main_year_site"
 index <- get_index(fit, bias_correct = TRUE)
