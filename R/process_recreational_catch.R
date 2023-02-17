@@ -6,9 +6,8 @@
 #					
 ##############################################################################################################
 
-library(here)
 
-main_dir = getwd() #"C:/Assessments/2023/copper_rockfish_2023/data/pacfin_catch"
+main_dir = here::here() #"C:/Assessments/2023/copper_rockfish_2023/data/pacfin_catch"
 dir <- file.path(main_dir, "data", "rec_catch")
 dir.create(file.path(dir, "forSS"), showWarnings = FALSE)
 
@@ -196,7 +195,7 @@ for(y in 1991:1995){
   a <- a + 1
 }
 # Replace the private removals in the north for 1981 since they are so high
-hist_year <- which(hist_formatted$year == 1980 & hist_formatted$area == "north" & hist_formatted$mode == "private")
+hist_year <- which(hist_formatted$year %in% 1979:1980 & hist_formatted$area == "north" & hist_formatted$mode == "private")
 ave_years <- which(mrfss_for_ss3$year %in% 1982:1983 & mrfss_for_ss3$area == "north" & mrfss_for_ss3$mode == "private")
 mrfss_for_ss3[mrfss_for_ss3$year == 1981 & mrfss_for_ss3$area == "north" & mrfss_for_ss3$mode == "private", "catch_mt"] <-
   mean(c(hist_formatted[hist_year, "catch_mt"], as.numeric(mrfss_for_ss3[ave_years, "catch_mt"])))    
@@ -239,6 +238,8 @@ write.csv(rbind(cpfv_north, private_north),
 # =============================================================================================
 # Plot the data
 # =============================================================================================
+library(ggplot2)
+
 all_for_model <- as.data.frame(all_for_model)
 all_for_model$catch_mt <- as.numeric(all_for_model$catch_mt)
 all_for_model$year <- as.numeric(all_for_model$year)
