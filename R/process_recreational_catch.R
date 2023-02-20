@@ -57,7 +57,7 @@ for (i in ind){
 }
 
 # Remove inland records 19.7 mt, there is 0 catch in the ""
-mrfss <- mrfss[!mrfss$SOURCE_AREA_NAME %in% c("INLAND", ""), ]
+# mrfss <- mrfss[!mrfss$SOURCE_AREA_NAME %in% c("INLAND", ""), ]
 
 # Add shoreside into the private fleet
 mrfss[mrfss$mode == "shoreside", 'mode'] <- "private"
