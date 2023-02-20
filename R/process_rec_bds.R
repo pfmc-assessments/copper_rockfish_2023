@@ -38,6 +38,10 @@ mrfs <- mrfss_bds
 deb_wv <- DebWV
 donp <- DonP
 
+# Use only retained lengths in CRFS (only 280 released lengths from cpfv) 
+crfs <- crfs[crfs$IS_RETAINED == "RETAINED", ]
+
+
 # There is an overlaop in data between Collins-Crooke and Ally in 1986-1989
 collins_rec <- collins_rec[collins_rec$year < 1986, ]
 
@@ -91,7 +95,7 @@ all_data <- rbind(
 )
 
 all_data <- all_data[!is.na(all_data$lengthcm), ]
-# Let's remove some lengths that are clearly incorrect
+# Let's remove 8 lengths that are clearly incorrect
 remove <- which(all_data$lengthcm > 65)
 all_data <- all_data[-remove, ]
 # There area 23 lengths between 60-65 which seem suspect but 
@@ -149,7 +153,7 @@ all_data$Year <- all_data$year
 all_data$Trawl_id <- 1:nrow(all_data)
 all_data$Length_cm <- all_data$lengthcm
 all_data$Sex <- all_data$sex
-length_bins <- c(seq(8, 56, 2))
+length_bins <- c(seq(10, 54, 2))
 
 # Should switch to using purr package function instead of a loop
 for(a in unique(all_data$area)) {

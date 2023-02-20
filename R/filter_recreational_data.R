@@ -6,9 +6,9 @@
 ############################################################################################
 
 # copper rockfish species code = 8826010108
-
-dir <- "C:/Assessments/2023/copper_rockfish_2023/data"
-code <- "C:/Assessments/2023/copper_rockfish_2023/R"
+library(here)
+dir <- file.path(here(), "data") #C:/Assessments/2023/copper_rockfish_2023/data"
+code <- file.path(here(), "R") #C:/Assessments/2023/copper_rockfish_2023/R"
 source(file.path(code, "recfin_areas.R"))
 source(file.path(code, "recfin_modes.R"))
 
@@ -48,8 +48,10 @@ mrfss <- mrfss[keep, ]
 
 save(mrfss, file = file.path(dir, "rec_catch", "mrfss_catch_filtered.rdata"))
 
+#=========================================================================================
 # CRFS data
-crfss <- read.csv(file.path(dir, "rec_catch", "CTE501-CALIFORNIA-2001---2021.csv"))
+#========================================================================================
+crfss <- read.csv(file.path(dir, "rec_catch", "CTE501-CALIFORNIA-2004---2022.csv"))
 crfss <- recfin_areas(
 	data = crfss, 
 	area_grouping = list(c("CHANNEL", "SOUTH"), c("BAY AREA", "WINE", "CENTRAL", "REDWOOD")), 
@@ -130,7 +132,7 @@ mrfss_bds <- mrfss_bds[mrfss_bds$lengthcm < 80, ]
 save(mrfss_bds, file = file.path(dir, "rec_bds", "mrfss_bds_filtered.rdata"))
 
 #==================================================================
-crfss_bds <- read.csv(file.path(dir, "rec_bds", "SD501-CALIFORNIA-1983---2021.csv"))
+crfss_bds <- read.csv(file.path(dir, "rec_bds", "SD501-CALIFORNIA-2004---2022.csv"))
 # Remove 7 records from 2003
 crfss_bds <- crfss_bds[crfss_bds$RECFIN_YEAR != 2003, ]
 # Remove NA lengths
@@ -141,7 +143,7 @@ crfss_bds <- recfin_areas(
 	area_grouping = list(c("CHANNEL", "SOUTH"), c("BAY AREA", "WINE", "CENTRAL", "REDWOOD"), "NOT KNOWN"),
 	area_names = c("south", "north", "no_area"),
 	column_name = "RECFIN_PORT_NAME")
-# Remove 53 records from unknown areas
+# Remove 51 records from unknown areas
 crfss_bds <- crfss_bds[crfss_bds$area != "no_area", ]
 
 crfss_bds <- recfin_modes(
@@ -167,6 +169,7 @@ aggregate(lengthcm ~ mode + area, crfss_bds, quantile)
 crfs_bds <- crfss_bds
 
 save(crfss_bds, file = file.path(dir, "rec_bds", "crfss_bds_filtered.rdata"))
+
 
 #========================================================================
 # Look at data by wave in souther california for 1987
