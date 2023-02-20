@@ -28,10 +28,114 @@ caption = "Summary of data sources used in the base model",
 label = 'data-plot')
 ```	
 
+<!-- ======================================================= -->
+<!-- *************** Commercial Data *********************** --> 
+<!-- ======================================================= -->
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "comp_lendat_bubflt1mkt2_page2.png"), 
+caption = "Length composition data from the commercial dead fleet",
+label = 'com-dead-len-data')
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "comp_lendat_data_weighting_TA1.8_Commercial_dead.png"), 
+caption = "Mean length for commercial dead fleet with 95 percent confidence intervals",
+label = 'mean-com-dead-len-data')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "comp_lendat_bubflt2mkt2_page2.png"), 
+caption = "Length composition data from the commercial live fleet",
+label = 'com-live-len-data')
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "comp_lendat_data_weighting_TA1.8_Commercial_live.png"), 
+caption = "Mean length for commercial live fleet with 95 percent confidence intervals",
+label = 'mean-com-live-len-data')
+```
+
+
+
+<!-- ======================================================= -->
+<!-- ************* Recreational Data *********************** --> 
+<!-- ======================================================= -->
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "comp_lendat_bubflt3mkt0_page2.png"), 
+caption = "Length composition data from the recreation CPFV fleet",
+label = 'rec-cpfv-len-data')
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "comp_lendat_data_weighting_TA1.8_Rec_cpfv.png"), 
+caption = "Mean length for recreational CPFV fleet with 95 percent confidence intervals",
+label = 'mean-rec-cpfv-len-data')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "comp_lendat_flt4mkt0_page2.png"), 
+caption = "Length composition data from the recreation PR fleet",
+label = 'rec-pr-len-data')
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "comp_lendat_data_weighting_TA1.8_Rec_pr.png"), 
+caption = "Mean length for recreational PR fleet with 95 percent confidence intervals",
+label = 'mean-rec-pr-len-data')
+```
 
 
 
 
+<!-- ======================================================= -->
+<!-- ***************     CCFRP           ******************* --> 
+<!-- ======================================================= -->
+
+
+
+<!-- ======================================================= -->
+<!-- ***************  NWFSC WCGBT Survey  ****************** --> 
+<!-- ======================================================= -->
+
+
+
+
+<!-- ======================================================= -->  
+<!-- ******************   Biology  ************************* --> 
+<!-- ======================================================= -->  
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "bio6_maturity.png"), 
+caption = "Maturity as a function of length",
+label = 'maturity')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "bio9_fecundity_len.png"), 
+caption = "Fecundity as a function of length",
+label = 'fecundity')
+```
 
 
 <!-- ======================================================= -->  
@@ -74,10 +178,10 @@ label = 'recruits')
 ```
 
 ```{r, results = 'asis'}
-#add_figure(
-#filein = file.path(model_dir, "plots", "recdevs2_withbars.png"), 
-#caption = "Estimated time series of recruitment deviations",
-#label = 'rec-devs')
+add_figure(
+filein = file.path(model_dir, "plots", "recdevs2_withbars.png"), 
+caption = "Estimated time series of recruitment deviations",
+label = 'rec-devs')
 ```
 
 ```{r, results = 'asis'}

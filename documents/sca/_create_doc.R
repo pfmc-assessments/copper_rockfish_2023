@@ -4,7 +4,7 @@ library(sa4ss)
 library(here)
 
 # Specify the directory for the document
-model_name <- "0_ss_exe"
+model_name <- "2.4_dw"
 
 model_dir <- here("models", "sca", "_bridging", model_name)
 doc_dir <- here("documents")
