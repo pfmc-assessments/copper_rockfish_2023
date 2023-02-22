@@ -1,0 +1,1 @@
+There were limited sex-specific observations by length or age across biological data sources. The sex ratio of `r spp` by length and age across all available data sources off the West Coast are shown in Figure \ref{fig:frac-sex-len}. The sex ratio of young fish was assumed to be 1:1. 
