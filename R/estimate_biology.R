@@ -12,6 +12,14 @@ library(ggplot2)
 
 dir <- "C:/Assessments/2023/copper_rockfish_2023/data"
 
+pngfun <- function(dir, name, w = 7,h = 7, pt = 12){
+  file <- file.path(dir, name)
+  #cat('writing PNG to',file,'\n')
+  png(filename=file,
+      width=w,height=h,
+      units='in',res=300,pointsize=pt)
+}
+
 # Load in survey data
 # NWFSC WCGBT survey data
 load(file.path(dir, "wcgbt", "bio_copper rockfish_NWFSC.Combo_2022-11-27.rdata"))
@@ -125,11 +133,43 @@ lines(length, ca_ests$A[3] * length ^ ca_ests$B[3], col = 'grey', lty = 2, lwd =
 lines(length, ca_ests$A[1] * length ^ ca_ests$B[1], col = 'red', lty = 2, lwd = 2)
 lines(length, ca_ests$A[2] * length ^ ca_ests$B[2], col = 'blue', lty = 2,lwd = 2)
 
-ggplot(all_data, aes(x = length_cm, y = weight_kg, 
-	color = source, pch = sex)) +
-	geom_point() + 
+ggplot(all_data[all_data$source %in% c('wcgbt', 'hkl'), ], aes(x = length_cm, y = weight_kg, 
+	color = sex, pch = sex)) +
+	geom_point(shape = 16, size = 2, alpha = 0.5) + 
+  theme_bw() + 
+  theme(panel.grid.major = element_blank(), 
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 12),
+    strip.text.y = element_text(size = 14),
+    panel.grid.minor = element_blank()) + 
 	ylab("Weight (kg)") + xlab("Length (cm)") +
 	scale_color_viridis_d(begin = 0, end = 0.5)
+
+lens = 1:max(all_data$length_cm, na.rm = TRUE)
+ymax = max(all_data$weight_kg, na.rm = TRUE)
+xmax = max(all_data$length_cm, na.rm = TRUE)
+line_col = c("red", 'blue', "grey")
+sex_col = c(alpha(line_col[1:2], 0.2), alpha(line_col[3], 0.20))
+
+pngfun(dir = file.path(dir, "biology", "plots"), 
+  name = "Length_Weight_All.png", w = 7, h = 7, pt = 12)
+par(mfrow = c(1, 1))
+plot(all_data[all_data$sex == 'F', "length_cm"], 
+  all_data[all_data$sex == 'F', "weight_kg"], las = 1,
+  cex.lab = 1.5, cex.axis = 1.5, cex = 1.5,
+     xlab = "Length (cm)", ylab = "Weight (kg)", main = "", 
+     ylim = c(0, ymax), xlim = c(0, xmax), pch = 16, col = sex_col[1]) 
+points(all_data[all_data$sex == 'F', "length_cm"], all_data[all_data$sex == 'F', "weight_kg"], pch = 16, col = sex_col[1])
+points(all_data[all_data$sex == 'M', "length_cm"], all_data[all_data$sex == 'M', "weight_kg"], pch = 17, col = sex_col[2])
+lines(lens, ca_ests[1, 4] * lens ^ ca_ests[1, 5], col = line_col[1], lwd = 3, lty = 2)
+lines(lens, ca_ests[2, 4] * lens ^ ca_ests[2, 5], col = line_col[2], lwd = 3, lty = 3)
+leg = c(paste0("F: a = ", signif(ca_ests[1, 3], digits = 3),  
+                " b = ", round(ca_ests[1, 4], 2) ), 
+    paste0("M: a = ", signif(ca_ests[2, 3], digits = 3),  
+                " b = ", round(ca_ests[2, 4], 2) ))
+legend("topleft", bty = 'n', legend = c("Female", "Male"), lty = c(2, 3), 
+  pch = c(16, 17), col = c(line_col[1], line_col[2]), lwd = 3, cex = 1.25)
+dev.off()
 
 #========================================================
 # Estimate age-at-length
