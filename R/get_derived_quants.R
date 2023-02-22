@@ -6,7 +6,7 @@ rnd <- 1
 sb0 = format(round(model$derived_quants[model$derived_quants$Label == "SSB_Virgin", 2], rnd), scientific = FALSE, big.mark = ",") 
 
 # Spawning Biomass at the biomass target
-sb_targ = round(index$btarg * model$derived_quants[model$derived_quants$Label == "SSB_Virgin", 2], rnd)
+sb_targ = round(model$btarg * model$derived_quants[model$derived_quants$Label == "SSB_Virgin", 2], rnd)
 
 # Final Year SSB
 endyr <- model$endyr + 1
