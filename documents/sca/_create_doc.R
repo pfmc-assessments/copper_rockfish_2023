@@ -6,11 +6,12 @@ library(here)
 # Specify the directory for the document
 model_name <- "2.4_dw"
 
+bridge_dir <- here("models", "sca", "_bridging")
 model_dir <- here("models", "sca", "_bridging", model_name)
 doc_dir <- here("documents")
 data_dir<- here("data")
 r_dir <- here("R")
-save(model_dir, doc_dir, data_dir, file = file.path(doc_dir, "sca", "saved_directories.Rdata"))
+save(model_dir, bridge_dir, doc_dir, data_dir, file = file.path(doc_dir, "sca", "saved_directories.Rdata"))
 
 setwd(file.path(doc_dir, "sca"))
 

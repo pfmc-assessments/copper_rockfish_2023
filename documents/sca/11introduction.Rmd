@@ -1,18 +1,36 @@
 # Introduction
 ## Basic Information
-`r executive[["stock"]]`
+
+This assessment reports the status of `r spp` (*Sebastes caurinus*) off the California coast, south of Point Conception, using data through 2022.
 
 ## Life History
-Replace text.
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text", '1_intro_life_history_fishery_info.Rmd')
+read_child(filein)
+```
 
 ## Ecosystem Considerations
 Replace text.
 
 ## Historical and Current Fishery Information
-Replace text.
+
+Off the coast of California south of Point Conception `r spp` is caught in both commercial and recreational fisheries. Recreational removals have been the largest source of fishing mortality of `r spp` across all years (Table \ref{tab:allcatches} and Figure \ref{fig:catch}). The recreational fishery is comprised of individual recreational fishers (Private/Rental, PR) and charter recreational private vessels (CPFV) which take groups of individuals out for day fishing trips. Across both types of recreational fishing the majority of effort occurs around rocky reefs that can be accessed via a day-trips. 
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text", '1_intro_ca_commercial.Rmd')
+read_child(filein)
+```
+
+The population of `r spp` south of Point Conception to the U.S./Mexico border is assessed here as a separate stock (Figure \ref{fig:map}).  This decision was made based on oceanographic conditions and previous assessments of `r spp`.  The stock split in California waters at Point Conception accounts for water circulation patterns that create a natural barrier between nearshore rockfish population north and south of the area. 
 
 ## Summary of Management History and Performance
-Replace text.
+
+```{r, echo=FALSE, results='asis'}
+
+filein = file.path(doc_dir, "shared_text", '1_intro_management.Rmd')
+read_child(filein)
+```
 
 ## Foreign Fisheries
 Replace text.

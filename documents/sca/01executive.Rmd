@@ -128,6 +128,8 @@ Replace text with
 management targets and definition of overfishing, including the harvest rate that brings the stock to equilibrium at $B_{40\%}$, i.e., the $B_{MSY}$ proxy and the equilibrium stock size that results from fishing at the default harvest rate, i.e., the $F_{MSY}$ proxy.
 Include Table of estimated reference points for ssb, SPR, exploitation rate, and yield based on SSB proxy for MSY, SPR proxy for MSY, and estimated MSY values.
 
+\input{tex_tables/e_ReferencePoints_ES.tex}
+
 
 ```{r, results = 'asis'}
 add_figure(
