@@ -1,15 +1,33 @@
 ## Biological Data
 
 ### Natural Mortality
+\
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'2_biology_natural_mortality.Rmd')
+read_child(filein)
+```
 
 
 ### Maturation and Fecundity
 
 
 ### Sex Ratio
+\
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'2_biology_sex_ratio.Rmd')
+read_child(filein)
+```
 
 
 ### Length-Weight Relationship
+\
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'2_biology_weight_length.Rmd')
+read_child(filein)
+```
 
 
 ### Growth (Length-at-Age)

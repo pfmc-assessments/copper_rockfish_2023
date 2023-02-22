@@ -491,14 +491,42 @@ The \Gls{s-wcgbt} is based on a random-grid design; covering the coastal waters 
 \hypertarget{natural-mortality}{%
 \subsubsection{Natural Mortality}\label{natural-mortality}}
 
+\hfill\break
+
+Natural mortality was not directly measured, so life-history based empirical relationships were used. The Natural Mortality Tool (NMT), a Shiny-based graphical user interface allowing for the application of a variety of natural mortality estimators based on measures such as longevity, size, age and growth, and maturity, was used to obtain estimates of natural mortality. The NMT currently provides 19 options, including the Hamel (\textbf{hamel\_development\_2022?}) method, which is a corrected form of the Then et al. (2015) functional regression model and is a commonly applied method for West Coast groundfish. The NMT also allows for the construction of a natural mortality prior weighted across methods by the user.
+
+The Hamel (\textbf{hamel\_development\_2022?}) method for developing a prior on natural mortality for West Coast groundfish stock assessments combines meta-analytic approaches relating the \(M\) rate to other life-history parameters such as longevity, size, growth rate, and reproductive effort to provide a prior for \(M\). The Hamel (\textbf{hamel\_development\_2022?}) method re-evaluated the data used by Then et al. (2015) by fitting the one-parameter \(A_{\text{max}}\) model under a log-log transformation (such that the slope is forced to be -1 in the transformed space (Hamel 2015), the point estimate and median of the prior for \(M\) is:
+
+\begin{centering}
+
+$M=\frac{5.4}{A_{\text{max}}}$
+
+\end{centering}
+
+\vspace{0.5cm}
+
+where \(A_{\text{max}}\) is the maximum age. The prior is defined as a lognormal distribution with mean \(ln(5.4/A_{\text{max}})\) and standard error = 0.31. Using a maximum age of 50, the point estimate and median of the prior is 0.108 yr\textsuperscript{-1}. The maximum age was selected based on available age data from all West Coast data sources and literature values. The oldest aged copper rockfish was 51 years with two observations, one each off of the coast of Washington and Oregon in 2019.
+
+ADD INFORMATION ABOUT THE OLDEST OBSERVATION IN CALIFORNIA.
+
+The maximum age in the model was set at 50 years. This selection was consistent with the literature examining the longevity of copper rockfish within California (Love 1996) and was supported by the observed ages that had multiple observations of fish between 44 and 51 years of age.
+
 \hypertarget{maturation-and-fecundity}{%
 \subsubsection{Maturation and Fecundity}\label{maturation-and-fecundity}}
 
 \hypertarget{sex-ratio}{%
 \subsubsection{Sex Ratio}\label{sex-ratio}}
 
+\hfill\break
+
+There were limited sex-specific observations by length or age across biological data sources. The sex ratio of copper rockfish by length and age across all available data sources off the West Coast are shown in Figure \ref{fig:frac-sex-len}. The sex ratio of young fish was assumed to be 1:1.
+
 \hypertarget{length-weight-relationship}{%
 \subsubsection{Length-Weight Relationship}\label{length-weight-relationship}}
+
+\hfill\break
+
+The length-weight relationship for copper rockfish was estimated outside the model using all coastwide biological data available from fishery-independent data from the \gls{s-wcgbt} and the NWFSC Hook and Line survey. The estimated length-weight relationship for female fish was W = 9.56e-06\(L\)\textsuperscript{3.19} and males 1.08e-05\(L\)\textsuperscript{3.15} where \(L\) is length in cm and W is weight in kilograms (Figure \ref{fig:weight-length}).
 
 \hypertarget{growth-length-at-age}{%
 \subsubsection{Growth (Length-at-Age)}\label{growth-length-at-age}}
@@ -632,6 +660,9 @@ Dick, E. J., Stephen Ralston, and Don E. Pearson. 2007. {``Status of Cowcod, \em
 \leavevmode\vadjust pre{\hypertarget{ref-dick_replicate_2014}{}}%
 Dick, S., J. B. Shurin, and E. B. Taylor. 2014. {``Replicate Divergence Between and Within Sounds in a Marine Fish: The Copper Rockfish ( \emph{{Sebastes} Caurinus} ).''} \emph{Molecular Ecology} 23 (3): 575--90. \url{https://doi.org/10.1111/mec.12630}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-hamel_method_2015}{}}%
+Hamel, Owen S. 2015. {``A Method for Calculating a Meta-Analytical Prior for the Natural Mortality Rate Using Multiple Life History Correlates.''} \emph{ICES Journal of Marine Science: Journal Du Conseil} 72 (1): 62--69. \url{https://doi.org/10.1093/icesjms/fsu131}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-johansson_influence_2008}{}}%
 Johansson, M. L., M. A. Banks, K. D. Glunt, H. M. Hassel-Finnegan, and V. P. Buonaccorsi. 2008. {``Influence of Habitat Discontinuity, Geographical Distance, and Oceanography on Fine-Scale Population Genetic Structure of Copper Rockfish ( \emph{{Sebastes} Caurinus} ).''} \emph{Molecular Ecology} 17 (13): 3051--61. \url{https://doi.org/10.1111/j.1365-294X.2008.03814.x}.
 
@@ -661,6 +692,9 @@ Sivasundar, Arjun, and Stephen R. Palumbi. 2010. {``Life History, Ecology and th
 
 \leavevmode\vadjust pre{\hypertarget{ref-Starr2015}{}}%
 Starr, R. M., D. E. Wendt, C. L. Barnes, C. I. Marks, D. Malone, G. Waltz, K. T. Schmidt, et al. 2015. {``Variation in Responses of Fishes Across Multiple Reserves Within a Network of Marine Protected Areas in Temperate Waters.''} \emph{PLoS One2} 10 (3): p.e0118502.
+
+\leavevmode\vadjust pre{\hypertarget{ref-then_evaluating_2015}{}}%
+Then, A. Y., J. M. Hoenig, N. G. Hall, and D. A. Hewitt. 2015. {``Evaluating the Predictive Performance of Empirical Estimators of Natural Mortality Rate Using Information on over 200 Fish Species.''} \emph{ICES Journal of Marine Science} 72 (1): 82--92. \url{https://doi.org/10.1093/icesjms/fsu136}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Wendt2009}{}}%
 Wendt, D. E., and R. M. Starr. 2009. {``Collaborative Research: An Effective Way to Collect Data for Stock Assessments and Evaluate Marine Protected Areas in {C}alifornia.''} \emph{Marine and Coastal Fisheries: Dynamics, Management, and Ecosystem Science.} 1: 315--24.
