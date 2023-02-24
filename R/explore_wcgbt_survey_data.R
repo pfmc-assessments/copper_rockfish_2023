@@ -28,10 +28,14 @@ dir_main <- "C:/Assessments/2023/copper_rockfish_2023/data/wcgbt"
 # 	common_name = "copper rockfish",
 # 	survey = "NWFSC.Combo"
 # )
-load(file.path(dir_main, "catch_copper rockfish_NWFSC.Combo_2023-2-11.rdata"))
+load(file.path(dir_main, "catch_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
 catch <- x
-load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2023-2-11.rdata"))
+load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
 bio <- x
+
+PlotSexRatio.fn(
+	dir = dir_main, 
+	dat = bio)
 
 # Filter down to California data only
 catch <- catch[catch$Latitude_dd < 42, ]

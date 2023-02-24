@@ -49,6 +49,14 @@ table(hkl$length_bin, hkl$include_fish)
 sub_hkl_all_site <- hkl_all_site[hkl_all_site$total_count > 0, ]
 colors <- viridis::viridis(10)[c(1,5,9)]
 
+library(nwfscSurvey)
+hkl$Length_cm <- hkl$length_cm
+hkl$Sex <- hkl$sex
+PlotSexRatio.fn(
+	dir = NULL, 
+	dat = hkl)
+
+
 ggplot() +
 	geom_jitter() + 
 	geom_point(data = hkl_all_site, aes(x = site_lon, y = site_lat, col = site_area), size = 5, pch = 1) + 
