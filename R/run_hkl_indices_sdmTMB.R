@@ -64,7 +64,8 @@ subdata$effort <- subdata$drop_scaled * subdata$hook_scaled * subdata$angler_sca
 
 # Create the grid
 # Year and Sites
-year_site <- expand.grid(year = unique(subdata$year),
+year_site <- expand.grid(
+  year = unique(subdata$year),
   site_number = unique(subdata$site_number))
 
 ## join in location info for all sites
@@ -91,10 +92,12 @@ grid$effort <- 75
 
 indices <- metrics <- run_time <- NULL
 
-save(subdata, mesh, grid,
-  file = file.path(wd, "data_mesh.Rdata"))
+save(subdata, grid, #mesh,
+  file = file.path(wd, "data_grid.Rdata"))
 
-# Negative-Binomial GLM with only main effects: year, site ###########################################################
+#=========================================================
+# Negative-Binomial GLM with only main effects: year, site 
+#=========================================================
 tictoc::tic()
 
 fit <- sdmTMB(
@@ -143,7 +146,9 @@ plot_indices(data = index, main_name = species,
 
 save(fit, index, file = file.path(wd, paste0(name, ".Rdata")))
 
-# Negative-Binomial GLM with only main effects: year, site, hook ###########################################################
+#================================================================
+# Negative-Binomial GLM with only main effects: year, site, hook
+#================================================================
 tictoc::tic()
 
 fit <- sdmTMB(
@@ -179,8 +184,9 @@ plot_indices(data = index, main_name = species,
 
 save(fit, index, file = file.path(wd, paste0(name, ".Rdata")))
 
-
-# Negative-Binomial GLM with only main effects: year, site, hook, drop ###########################################################
+#===============================================================================
+# Negative-Binomial GLM with only main effects: year, site, hook, drop 
+#===============================================================================
 tictoc::tic()
 
 fit <- sdmTMB(
@@ -190,7 +196,6 @@ fit <- sdmTMB(
   time = "year",
   spatial="off",
   spatiotemporal = "off",
-  mesh = mesh,
   family = nbinom2(link = "log"),
   silent = TRUE,
   do_index = TRUE,
@@ -216,7 +221,9 @@ plot_indices(data = index, main_name = species,
 
 save(fit, index, file = file.path(wd, paste0(name, ".Rdata")))
 
-# Negative-Binomial GLM with Random Effects ###########################################################
+#=========================================================
+# Negative-Binomial GLM with Random Effects 
+#=========================================================
 rm(fit, index)
 
 tictoc::tic()
@@ -227,7 +234,6 @@ fit <- sdmTMB(
   time = "year",
   spatial="off",
   spatiotemporal = "off",
-  mesh = mesh,
   family = nbinom2(link = "log"),
   silent = TRUE,
   do_index = TRUE,
@@ -253,7 +259,9 @@ plot_indices(data = index, main_name = species,
 
 save(fit, index, file = file.path(wd, paste0(name, ".Rdata")))
 
-# Delta GlM with RE ###########################################################
+#=========================================================
+# Delta GlM with RE 
+#=========================================================
 rm(fit, index)
 
 tictoc::tic()
@@ -264,7 +272,6 @@ fit <- sdmTMB(
   time = "year",
   spatial="off",
   spatiotemporal = "off",
-  mesh = mesh,
   family = delta_truncated_nbinom2(),
   do_index = TRUE,
   predict_args = list(newdata = grid, re_form_iid = NA),
@@ -281,6 +288,44 @@ run_time  = cbind(run_time, time$toc - time$tic)
 
 loglike <- logLik(fit)
 aic <- AIC(fit)
+metrics <- rbind(metrics, c(name, loglike, aic))
+
+plot_indices(data = index, main_name = species, 
+  type = name, save_loc = wd, ymax = NULL)
+
+save(fit, index, file = file.path(wd, paste0(name, ".Rdata")))
+
+#=========================================================
+# Delta GlM with RE lognormal
+#=========================================================
+rm(fit, index)
+
+tictoc::tic()
+fit <- sdmTMB(
+  n ~ 0 + as.factor(year) + as.factor(site_number) + as.factor(hook_scaled) + as.factor(drop_scaled) + (1|crew_scaled),
+  data = subdata,
+  offset = log(subdata$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = delta_lognormal(),
+  do_index = TRUE,
+  predict_args = list(newdata = grid, re_form_iid = NA),
+  index_args = list(area = 1),
+  control = sdmTMBcontrol(newton_loops = 1)
+)
+
+name <- "delta_lognormal_main_year_site_hook_drop_and_re"
+index <- get_index(fit, bias_correct = TRUE)
+index$model = name
+indices <- rbind(indices, cbind(index))
+time = tictoc::toc()
+run_time  = cbind(run_time, time$toc - time$tic)
+
+loglike <- logLik(fit)
+# 'log Lik.' -5079.454 (df=191)
+aic <- AIC(fit)
+# 10540.91
 metrics <- rbind(metrics, c(name, loglike, aic))
 
 plot_indices(data = index, main_name = species, 
