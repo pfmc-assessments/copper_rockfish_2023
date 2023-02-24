@@ -9,6 +9,9 @@
 
 library(here)
 library(nwfscSurvey)
+# Note of the nwfscSurvey package: I did revisions to the unexpandeLf.fn 
+# to work with our data. This function is available in the unexpand_comps
+# branch on github.
 library(ggplot2)
 library(tidyverse)
 
@@ -33,6 +36,7 @@ load("ally_rec_bds.rdata")
 # 1975 - 1989 - south
 load("collinsCrooke_rec_bds.rdata")
 
+
 crfs <- crfss_bds
 mrfs <- mrfss_bds
 deb_wv <- DebWV
@@ -41,8 +45,7 @@ donp <- DonP
 # Use only retained lengths in CRFS (only 280 released lengths from cpfv) 
 crfs <- crfs[crfs$IS_RETAINED == "RETAINED", ]
 
-
-# There is an overlaop in data between Collins-Crooke and Ally in 1986-1989
+# There is an overlap in data between Collins-Crooke and Ally in 1986-1989
 collins_rec <- collins_rec[collins_rec$year < 1986, ]
 
 # Add an area column for the Deb Wilson-Vanderberg data
@@ -101,6 +104,12 @@ all_data <- all_data[-remove, ]
 # There area 23 lengths between 60-65 which seem suspect but 
 # going to keep them.
 
+
+
+#==============================================================================
+# Calculate sample size by year and area 
+#==============================================================================
+
 sample_size_cpfv <- all_data %>%
   dplyr::filter(mode == 'cpfv') %>%
   dplyr::group_by(area, year, program) %>%
@@ -122,6 +131,9 @@ north[is.na(north)] <- 0
 write.csv(south, file = file.path(dir, "forSS", "rec_south_sample_size_by_program.csv"), row.names = FALSE)
 write.csv(north, file = file.path(dir, "forSS", "rec_north_sample_size_by_program.csv"), row.names = FALSE)
 
+#==============================================================================
+# Plot the data quickly
+#==============================================================================
 
 ggplot(all_data[all_data$area == "south", ], aes(y = lengthcm, x = year, group = year)) +
   geom_boxplot() + 
@@ -143,16 +155,50 @@ ggplot(all_data, aes(lengthcm, fill = mode, color = mode)) +
   facet_wrap(facets = c("area", "program")) + 
   scale_color_viridis_d()
 
+ggplot(all_data, aes(lengthcm, fill = program, color = program)) + 
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("area", "mode")) + 
+  scale_color_viridis_d()
+
+ggplot(all_data[all_data$area == 'south', ], aes(lengthcm, fill = mode, color = mode)) + 
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("program")) + 
+  scale_color_viridis_d()
+
+ggplot(all_data[all_data$area == 'north', ], aes(lengthcm, fill = mode, color = mode)) + 
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("program")) + 
+  scale_color_viridis_d()
+
+# Compare DWV and MRFSS data looking for overlap (e.g., 'mrfss' samples included in DWV data)
+tmp = all_data[all_data$year %in% c(1987:1998) & all_data$area == 'north' & all_data$mode == 'cpfv', ]
+aggregate(lengthcm~program+year, tmp, quantile)
+ggplot(tmp, aes(lengthcm, fill = program, color = program)) + 
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("year")) + 
+  scale_color_viridis_d()
+
+# Compare Ally and MRFSS data looking for overlap 
+tmp = all_data[all_data$year %in% c(1984:1989) & all_data$area == 'south' & all_data$mode == 'cpfv', ]
+aggregate(lengthcm~program+year, tmp, quantile)
+table(tmp$year, tmp$program)
+ggplot(tmp, aes(lengthcm, fill = program, color = program)) + 
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("year")) + 
+  scale_color_viridis_d()
+
+
 #==============================================================================
 # Create un-weighted composition data for recreational data sources
 #==============================================================================
 
 # Add expected column names to work with nwfscSurvey package
 # To Do: add revisions to nwfscSurvey package to dynamically check column names
-all_data$Year <- all_data$year
-all_data$Trawl_id <- 1:nrow(all_data)
-all_data$Length_cm <- all_data$lengthcm
-all_data$Sex <- all_data$sex
 length_bins <- c(seq(10, 54, 2))
 
 # Should switch to using purr package function instead of a loop
@@ -170,9 +216,7 @@ for(a in unique(all_data$area)) {
           month = 7)
         
         if(!is.null(lfs$unsexed)){
-          find = grep(paste0("U-", length_bins[1]), colnames(lfs$unsexed)):grep(paste0("U-", max(length_bins)), colnames(lfs$unsexed))
-          len_comps <- cbind(lfs$unsexed, lfs$unsexed[,find])
-          write.csv(len_comps, 
+          write.csv(lfs$unsexed, 
                     file = file.path(dir, "forSS", "data_by_program", paste0(a, "_", m, "_", p, "_sources_not_expanded_length_comp_sex_0.csv")),
                     row.names = FALSE) 
         } 
@@ -201,9 +245,7 @@ for(a in unique(all_data$area)){
       )
       
       if(!is.null(lfs$unsexed)) {
-        find = grep(paste0("U-", length_bins[1]), colnames(lfs$unsexed)):grep(paste0("U-", max(length_bins)), colnames(lfs$unsexed))
-        out <- cbind(lfs$unsexed, lfs$unsexed[,find])
-        write.csv(out, 
+        write.csv(lfs$unsexed, 
             file = file.path(dir, "forSS", paste0(a, "_", m, "_all_sources_not_expanded_length_comp_sex_0.csv")),
             row.names = FALSE) 
       } 
@@ -217,6 +259,20 @@ for(a in unique(all_data$area)){
   }
 }
 
+#=============================================================================================
+# Try to determine the number of trips in each data set
+#=============================================================================================
 
+mrfs$n <- paste0(mrfs$year, mrfs$ID_CODE, mrfs$INTSITE, mrfs$AREA_X)
+crfs$n <- paste0(crfs$RECFIN_DATE, crfs$COUNTY_NUMBER, crfs$AGENCY_WATER_AREA_NAME)
+deb_wv$n <- paste0(deb_wv$year, deb_wv$TRIP_ID)
+miller_rec
+donp
+collins_rec
+ally_rec
+
+aggregate(ID_CODE~year, mrfs, function(x) length(unique(x)))
+aggregate(n~year, crfs, function(x) length(unique(x)))
+aggregate(TRIP_ID~year, deb_wv, function(x) length(unique(x)))
 
           
