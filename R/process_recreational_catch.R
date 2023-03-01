@@ -15,6 +15,8 @@ dir.create(file.path(dir, "forSS"), showWarnings = FALSE)
 load(file.path(dir, "crfss_catch_filtered.rdata"))
 load(file.path(dir, "mrfss_catch_filtered.rdata")) 
 hist <- read.csv(file.path(dir, "2021.spp.rec.n.and.s.conception.csv"))
+# Load in the proxy values for 2020 provided by CDFW (will be added to existing removals)
+proxy_2020 <- read.csv(file.path(dir, "CDFWRec_CopperRF_AvgProxyValuesApr-Jun2020.csv"))
 
 #===============================================================================================
 # CRFS processing 
@@ -23,6 +25,13 @@ crfs[crfs$mode == "shoreside", 'mode'] <- "private"
 
 crfs$month <- crfs$RECFIN_MONTH
 crfs$catch_mt <- crfs$TOTAL_MORTALITY_MT
+
+inland <- crfs[crfs$RECFIN_WATER_AREA_NAME == "INLAND", ]
+crfs = crfs[crfs$RECFIN_WATER_AREA_NAME != "INLAND" , ]
+# 5.919705 mt of catch across all years and areas
+
+crfs$ports <- sapply(strsplit(crfs$RECFIN_PORT_NAME, '\\s*[()]'), '[',1)
+
 crfs$wave[crfs$month %in% 1:2] <- 1
 crfs$wave[crfs$month %in% 3:4] <- 2
 crfs$wave[crfs$month %in% 5:6] <- 3
@@ -35,6 +44,9 @@ crfs_wave[is.na(crfs_wave)] <- 0
 
 crfs_month <- aggregate(catch_mt ~ year + area + mode + month, crfs, sum, drop = FALSE)
 crfs_month[is.na(crfs_month)] <- 0
+
+crfs_port <- aggregate(catch_mt ~ year + area + mode + ports, crfs, sum, drop = FALSE)
+
 
 #===============================================================================================
 # MRFSS processing 
@@ -57,7 +69,7 @@ for (i in ind){
 }
 
 # Remove inland records 19.7 mt, there is 0 catch in the ""
-# mrfss <- mrfss[!mrfss$SOURCE_AREA_NAME %in% c("INLAND", ""), ]
+mrfss <- mrfss[!mrfss$SOURCE_AREA_NAME %in% c("INLAND", ""), ]
 
 # Add shoreside into the private fleet
 mrfss[mrfss$mode == "shoreside", 'mode'] <- "private"
@@ -93,6 +105,34 @@ hist_formatted <- data.frame(
 	wave = 0, 
 	catch_mt = c(hist[hist$area == 'south', 'cpfv'], hist[hist$area == 'south', 'private'],
 		hist[hist$area == 'north', 'cpfv'], hist[hist$area == 'north', 'private'])
+)
+
+#==============================================================================================
+# Proxy 2020 processing
+#==============================================================================================
+proxy_2020$year <- proxy_2020$Year
+proxy_2020$area <- 'north'
+proxy_2020$catch_mt <- proxy_2020$Proxy.Average.Value..mt.
+proxy_2020$area[proxy_2020$CRFS.District.Number %in% 1:2] <- 'south'
+
+prop_north <- crfs[crfs$year %in% 2017:2019 & crfs$area == 'north',] %>%
+  group_by(mode) %>%
+  summarise(tot_cat = sum(catch_mt)) %>%
+  mutate(prop = tot_cat / sum(tot_cat))
+
+prop_south <- crfs[crfs$year %in% 2017:2019 & crfs$area == 'south',] %>%
+  group_by(mode) %>%
+  summarise(tot_cat = sum(catch_mt)) %>%
+  mutate(prop = tot_cat / sum(tot_cat))
+
+cat_south <- cbind(prop_south[, 'mode'], prop_south[, 'prop'] * sum(proxy_2020[proxy_2020$area == 'south', 'catch_mt']))
+cat_north <- cbind(prop_north[, 'mode'], prop_north[, 'prop'] * sum(proxy_2020[proxy_2020$area == 'north', 'catch_mt']))
+
+add_2020 <- data.frame(
+  year = 2020,
+  area = c("north", "north", "south", "south"),
+  mode = c(cat_north[,'mode'], cat_south[, 'mode']),
+  catch_mt = c(cat_north[,'prop'], cat_south[, 'prop']) 
 )
 
 #===============================================================================================
@@ -200,6 +240,14 @@ ave_years <- which(mrfss_for_ss3$year %in% 1982:1983 & mrfss_for_ss3$area == "no
 mrfss_for_ss3[mrfss_for_ss3$year == 1981 & mrfss_for_ss3$area == "north" & mrfss_for_ss3$mode == "private", "catch_mt"] <-
   mean(c(hist_formatted[hist_year, "catch_mt"], as.numeric(mrfss_for_ss3[ave_years, "catch_mt"])))    
 
+# Add the CDFW proxies to 2020
+for (a in unique(crfs_for_ss3$area)){
+  for(m in unique(crfs_for_ss3$mode)){
+    ind1 <- which(crfs_for_ss3$year == '2020' & crfs_for_ss3$area == a & crfs_for_ss3$mode == m)
+    ind2 <- which(add_2020$area == a & add_2020$mode == m)
+    crfs_for_ss3[ind1, 'catch_mt'] <- crfs_for_ss3[ind1, 'catch_mt'] + add_2020[ind2, 'catch_mt']
+  }
+}
 
 all_for_model <- as.data.frame(rbind(hist_formatted[, -4], mrfss_for_ss3, crfs_for_ss3))
 
