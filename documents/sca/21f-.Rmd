@@ -7,6 +7,7 @@
 \
 
 ```{r, echo=FALSE, results='asis'}
+
 filein = file.path(doc_dir, "shared_text",'2f_commercial_removals.Rmd')
 read_child(filein)
 ```

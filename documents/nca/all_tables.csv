@@ -1,0 +1,5 @@
+caption,altcaption,label,filename,loc
+Summary of the recreational length samples by source for the CPFV and PR fleets.,NA,rec-len-samps,rec_north_sample_size_by_program.csv,//nwcfile/FRAM/Assessments/CurrentAssessments/copper_rockfish_2023/data/recreational_bds/forSS
+"Summary of the number of positive tows, lengths, and read ages by year and area collected by the NWFSC WCGBT survey.",NA,wcgbt-samps,positive_tows_and_bio_samples.csv,//nwcfile/FRAM/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/forSS
+Summary of the number of trips and length samples for fish landed dead by commercial fisheries.,NA,dead-com-len,north_dead_trips_and_samples.csv,//nwcfile/FRAM/Assessments/CurrentAssessments/copper_rockfish_2023/data/pacfin_bds/forSS
+Summary of the number of trips and length samples for fish landed live by commercial fisheries.,NA,live-com-len,north_live_trips_and_samples.csv,//nwcfile/FRAM/Assessments/CurrentAssessments/copper_rockfish_2023/data/pacfin_bds/forSS
