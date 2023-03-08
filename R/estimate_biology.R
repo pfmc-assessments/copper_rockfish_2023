@@ -9,8 +9,9 @@
 
 library(nwfscSurvey)
 library(ggplot2)
+library(here)
 
-dir <- "C:/Assessments/2023/copper_rockfish_2023/data"
+dir <- file.path(here(), "data")
 
 pngfun <- function(dir, name, w = 7,h = 7, pt = 12){
   file <- file.path(dir, name)
@@ -22,9 +23,9 @@ pngfun <- function(dir, name, w = 7,h = 7, pt = 12){
 
 # Load in survey data
 # NWFSC WCGBT survey data
-load(file.path(dir, "wcgbt", "bio_copper rockfish_NWFSC.Combo_2022-11-27.rdata"))
+load(file.path(dir, "wcgbt", "bio_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
 wcgbt <- x
-wcgbt$source <- "wcgbt"
+wcgbt$source <- "NWFSC WCGBT"
 wcgbt <- wcgbt[wcgbt$Latitude_dd < 42, ]
 wcgbt$area <- 'north'
 wcgbt[wcgbt$Latitude_dd < 34.47, 'area'] <- 'south'
@@ -33,14 +34,13 @@ wcgbt$lat <- wcgbt$latitude_dd
 wcgbt$lon <- wcgbt$longitude_dd
 
 # NWFSC HKL survey data
-hkl_all <- read.csv(file.path(dir, "nwfsc_hkl", "hookandline_2004_2021_draft_data.csv"))
-hkl <- hkl_all[hkl_all$common_name == "Copper Rockfish", ]
-hkl <- hkl[hkl$include_fish == 1, ]
-hkl$source <- "hkl"
+load(file.path(dir, "nwfsc_hkl", "nwfsc_hkl_2004-2022.rdata"))
+hkl <- hkl[hkl$common_name == "Copper Rockfish", ]
+# hkl <- hkl[hkl$include_fish == 1, ]
+hkl$source <- "NWFSC HKL"
 hkl$area <- 'south'
 hkl$lat <- hkl$drop_latitude_degrees
 hkl$lon <- hkl$drop_longitude_degrees
-
 
 # CCFRP survey data
 
@@ -60,11 +60,18 @@ age_df <- df[df$Area %in% c("North_CA", "South_CA"), ]
 colnames(age_df) <- tolower(colnames(age_df))
 age_df$area[age_df$area == "North_CA"] <- 'north'
 age_df$area[age_df$area == "South_CA"] <- 'south'
+age_df$weight_kg = NA
+age_df$lat = NA
+age_df$lon = NA
+age_df$year = NA
+colnames(age_df)[colnames(age_df)=='age'] <- 'age_years'
+age_df = age_df[!age_df$source %in% c("NWFSC_HKL", "NWFSC_WCGBT"), ]
+
 
 #=================================================
 # Create a single data frame with all of the data
 #=================================================
-data_list <- list(wcgbt, hkl)
+data_list <- list(wcgbt, hkl, age_df)
 all_data <- NULL
 for (a in 1:length(data_list)){
   tmp  <- data.frame(
@@ -76,10 +83,13 @@ for (a in 1:length(data_list)){
   	length_cm = data_list[[a]]$length_cm,
   	weight_kg = data_list[[a]]$weight_kg,
   	age    = data_list[[a]]$age_years,
-  	source = data_list[[a]]$source)
+  	Source = data_list[[a]]$source)
 	
 	all_data = rbind(all_data, tmp)			
 }
+
+all_data <- all_data[!is.na(all_data$length_cm), ]
+
 
 #=================================================
 # Estimate weight-length
@@ -143,7 +153,10 @@ ggplot(all_data[all_data$source %in% c('wcgbt', 'hkl'), ], aes(x = length_cm, y 
     strip.text.y = element_text(size = 14),
     panel.grid.minor = element_blank()) + 
 	ylab("Weight (kg)") + xlab("Length (cm)") +
-	scale_color_viridis_d(begin = 0, end = 0.5)
+	scale_color_viridis_d(begin = 0, end = 1)
+ggsave(filename = file.path(dir, "biology", "plots", "weigth_at_length.png"),
+       width = 10, height = 8)
+
 
 lens = 1:max(all_data$length_cm, na.rm = TRUE)
 ymax = max(all_data$weight_kg, na.rm = TRUE)
@@ -174,14 +187,19 @@ dev.off()
 #========================================================
 # Estimate age-at-length
 #========================================================
+age_df <- age_df[age_df$Source != "Carcass Sampling", ]
 
+age_df <- all_data[!is.na(all_data$age), ]
 age_df$Age <- age_df$age
 age_df$Length_cm <- age_df$length_cm
 age_df$Sex <- age_df$sex
+
 length_age_ests_all <- est_growth(
   dat = age_df, 
   return_df = FALSE,
   Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10))
+
+save(length_age_ests_all, file = file.path(dir, 'length_at_age_ests_all.rdata'))
 
 length_age_ests_north <- est_growth(
   dat = age_df[age_df$area == "north", ], 
@@ -197,23 +215,37 @@ ages_all <- est_growth(
   dir = NULL, 
   dat = age_df, 
   Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10),
-  sdFactor = 2)
+  sdFactor = 3)
+remove <- which(ages_all[,'length_cm'] > ages_all[,'Lhat_high'] | ages_all[,'length_cm'] < ages_all[,'Lhat_low'])
+
 
 ages_south <- est_growth(
   dir = NULL, 
   dat = age_df[age_df$area == "south", ], 
   Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10),
-  sdFactor = 2)
+  sdFactor = 3)
 
 ages_north <- est_growth(
   dir = NULL, 
   dat = age_df[age_df$area == "north", ], 
   Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10),
-  sdFactor = 2)
+  sdFactor = 3)
 
 
-ggplot(age_df, aes(y = length_cm, x = age, color = source)) +
+ggplot(age_df, aes(y = length_cm, x = age, color = Source)) +
 	geom_point() + 
+  theme_bw() + 
+  xlim(1, 50) + ylim(1, 55) +
+  theme(panel.grid.major = element_blank(), 
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        strip.text.y = element_text(size = 14),
+        panel.grid.minor = element_blank()) + 
 	facet_grid(area~.) + 
 	xlab("Age") + ylab("Length (cm)") +
-	scale_fill_viridis_d()
+  scale_color_viridis_d()
+ggsave(filename = file.path(dir, "biology", "plots", "age_at_length.png"),
+       width = 10, height = 8)
+
+
+
