@@ -7,11 +7,12 @@
 #############################################################################################
 
 devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/nwfscSurvey")
+library(here)
 library(nwfscSurvey)
 library(ggplot2)
 library(dplyr)
 
-dir_main <- "C:/Assessments/2023/copper_rockfish_2023/data/wcgbt"
+dir_main <- file.path(here(), "data", "wcgbt")
 
 #=====================================================================
 # Pull all available data
@@ -54,31 +55,32 @@ bio$count <- 1
 bio$length_bin <- plyr::round_any(bio$Length_cm, 2, floor)
 
 table(catch$area[catch$total_catch_numbers > 0])
-# north south 
+# north south aggregated positive tows across all year
 #    63   107 
 
 table(catch$positive, catch$Year, catch$area)
 # ,  = north
-
-#  
 #   2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2021 2022
-# 1    4    4    2    2    1    6    5    5    0    3    3    1    4    1    2    5    3    7    5
+#      4    4    2    2    1    6    5    5    0    3    3    1    4    1    2    5    3    7    5
 # ,  = south
-#  
 #   2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2021 2022
-# 1    4    1    3    1    4    5    2    4    3   16    6    7    5    8   10    6    4   10    8
+#      4    1    3    1    4    5    2    4    3   16    6    7    5    8   10    6    4   10    8
 
 table(bio$area)
 # north south 
 #   2227   971 
 
-PlotMap.fn(dat = catch, plot = 1)
-PlotMap.fn(dat = catch[catch$area == 'north',], plot = 1)
-PlotMap.fn(dat = catch[catch$area == 'south',], plot = 1)
+PlotMap.fn(
+  dir = file.path(dir_main, "north"), 
+  dat = catch[catch$area == 'north',], 
+  plot = 1)
+PlotMap.fn(
+  dir = file.path(dir_main, "south"),
+  dat = catch[catch$area == 'south',], 
+  plot = 1,
+  width = 10,
+  height = 7)
 
-plot_bio_patterns(
-  bio = bio, 
-  col_name = "Length_cm")
 
 ggplot(bio[bio$Sex != "U",], aes(Length_cm, fill = Sex, color = Sex)) + 
 	geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
@@ -115,6 +117,8 @@ ggplot(bio, aes(y = Length_cm, x = Age)) +
 	facet_grid(area~.)  + 
 	scale_colour_viridis_d() + 
 	xlab("Age") + ylab("Length (cm)") 
+ggsave(filename = file.path(dir_main, "plots", "wcgbt_age_at_length_by_area.png"),
+       width = 10, height = 8)
 
 ggplot(catch, aes(y = positive, x = Year))  + 
 	geom_histogram(aes(y = positive), position = "stack", stat="identity") + 
@@ -131,7 +135,7 @@ ggsave(filename = file.path(dir_main, "plots", "wcgbt_positive_tows_by_area.png"
 
 ggplot(bio, aes(y = Length_cm, x = Year, group = Year)) +
 	geom_boxplot() + 
-	facet_wrap(c('area','Sex')) + #(area~.)  + 
+	facet_wrap(c('area','Sex')) +  
 	xlab("Year") + ylab("Length (cm)") 
 ggsave(filename = file.path(dir_main, "plots", "wcgbt_boxplot_lengths_by_year_area.png"),
 	width = 10, height = 8)

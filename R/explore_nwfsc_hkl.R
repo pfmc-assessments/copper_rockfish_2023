@@ -6,16 +6,19 @@
 #
 #############################################################################################
 
+library(here)
 library(ggplot2)
 library(dplyr)
 library(HandyCode)
+library(nwfscSurvey)
 
-dir <- "C:/Assessments/2023/copper_rockfish_2023/data/nwfsc_hkl"
+dir <- file.path(here(), "data", "nwfsc_hkl")
 
-hkl_all <- read.csv(file.path(dir, "hookandline_2004_2021_draft_data.csv"))
+hkl_all <- read.csv(file.path(dir, "H&LSurveyDataThru2022_DWarehouse version_03042023.csv"))
 hkl_all$lat <- hkl_all$drop_latitude_degrees
 hkl_all$lon <- hkl_all$drop_longitude_degrees
 
+# This is also findable via the cowcod_conservation_area_indicator column
 hkl_all$area <- ifelse(hkl_all$site_number >= 500, "CCA", "Outside CCA")
 hkl_all$count <- 0
 ind <- which(hkl_all$common_name == "Copper Rockfish")
@@ -40,22 +43,22 @@ hkl_all_site <- hkl_all %>%
 hkl_species <- hkl_all[hkl_all$common_name %in% c(
 	"Copper Rockfish", "Bocaccio", "Vermilion Rockfish"), ]
 
-# Filter down to only copper obervations
+# Filter down to only copper observations
 hkl <- hkl_all[ind, ]
 hkl$length_bin <- plyr::round_any(hkl$length_cm, 2, floor)
 
-table(hkl$length_bin, hkl$include_fish)
+table(hkl$year, hkl$include_fish)
+hkl <- hkl[hkl$include_fish == 1, ]
 
 sub_hkl_all_site <- hkl_all_site[hkl_all_site$total_count > 0, ]
 colors <- viridis::viridis(10)[c(1,5,9)]
 
-library(nwfscSurvey)
 hkl$Length_cm <- hkl$length_cm
 hkl$Sex <- hkl$sex
-PlotSexRatio.fn(
-	dir = NULL, 
-	dat = hkl)
 
+nwfscSurvey::PlotSexRatio.fn(
+	dir = dir, 
+	dat = hkl)
 
 ggplot() +
 	geom_jitter() + 
@@ -65,27 +68,17 @@ ggplot() +
 	scale_size_continuous("Count", breaks = c(1, 10, seq(25, 125, 25))) +
 	scale_fill_manual("Site", values = c('CCA'  = colors[1], 'Outside CCA' = colors[3])) +
     scale_color_manual("Site", values = c('CCA' = colors[1], 'Outside CCA' = colors[3])) +
+  draw_theme() +
+  draw_projection() +
+  draw_land() +
+  draw_USEEZ(c(min(hkl_all_site$site_lon), max(hkl_all_site$site_lon)), c(min(hkl_all_site$site_lat), max(hkl_all_site$site_lat))) +
 	theme(axis.text = element_text(size = 12),
       	axis.title = element_text(size = 12),
       	legend.title = element_text(size = 14),
       	legend.text = element_text(size = 14)) +
 	xlab("Longitude") + ylab("Latitude") 
-ggsave(filename = file.path(dir, "plots", "hkl_copper_by_site_count.png"),
+ggsave(filename = file.path(dir, "plots", "hkl_copper_by_site_count_all_years.png"),
 	width = 10, height = 8)
-
-pngfun(wd = file.path(dir, "plots"), file = "hkl_site_observations.png", w = 7, h = 7, pt = 12)
-colors <- viridis::viridis(3, alpha = c(0.05, 0.05, 1))
-jitter = runif(nrow(hkl_all), 0.01, 0.1)
-plot(-1*hkl_all$lon + rev(jitter), hkl_all$lat + jitter, type = 'p', col = colors[1], 
-	xlab = "Longitude", ylab = "Latitude")
-find = which(hkl_all$area == "CCA")
-points(-1*hkl_all$lon[find] + rev(jitter[find]), hkl_all$lat[find] + jitter[find], col = colors[2])
-find = which(hkl_all$common_name == "Copper Rockfish")
-points(-1*hkl_all$lon[find] + rev(jitter[find]), hkl_all$lat[find] + jitter[find], pch = 16, col = colors[3])
-colors <- viridis::viridis(3, alpha = 1)
-legend('topright', bty = 'n', pch = c(16, 16, 16), col = colors, pt.cex = 2, 
-	legend = c("Outside CCA Sites", "Inside CCA Sites", "Sites with Copper Rockfish Observed"))
-dev.off()
 
 
 aggregate(fathom_bin~area, hkl_all, quantile)
@@ -134,7 +127,7 @@ ggsave(filename = file.path(dir, "plots", "hkl_length_samples_w_otoliths_by_area
 
 table(hkl$area)
 # CCA Outside CCA 
-#  94        1057
+# 101        1097
 ggplot(hkl, aes(length_cm, fill = area, color = area)) + 
 	geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
     xlab("Length (cm)") + ylab("Density") +
@@ -159,6 +152,9 @@ ggplot(hkl, aes(y = count, x = length_bin, fill = area))  +
 ggsave(filename = file.path(dir, "plots", "hkl_observations_by_length_area.png"),
 	width = 10, height = 8)
 
+aggregate(length_cm~area, hkl[hkl$count > 0, ], quantile)
+aggregate(fathom_bin~area, hkl[hkl$count > 0, ], quantile)
+
 ggplot(hkl, aes(y = count, x = fathom_bin, fill = as.factor(hook_number)))  +  
 	geom_histogram(aes(y = count), position="stack", stat="identity") + 
     xlab("Depth (fm)") + ylab("Total Observations") +
@@ -170,6 +166,31 @@ ggplot(hkl, aes(y = count, x = fathom_bin, fill = as.factor(hook_number)))  +
     scale_fill_viridis_d()
 ggsave(filename = file.path(dir, "plots", "hkl_observations_by_hook_number_depth.png"),
 	width = 10, height = 8)
+
+
+ggplot(hkl, aes(y = count, x = swell_height_m, fill = area))  +  
+  geom_histogram(aes(y = count), position="stack", stat="identity") + 
+  xlab("Swell Height (m)") + ylab("Total Observations") +
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 12),
+        strip.text.y = element_text(size = 14)) +
+  scale_fill_viridis_d()
+ggsave(filename = file.path(dir, "plots", "hkl_observations_by_swell_height.png"),
+       width = 10, height = 8)
+
+ggplot(hkl, aes(y = count, x = swell_height_m, fill = hook_number))  +  
+  geom_histogram(aes(y = count), position="stack", stat="identity") + 
+  xlab("Swell Height (m)") + ylab("Total Observations") +
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 12),
+        strip.text.y = element_text(size = 14)) +
+  scale_fill_viridis_d()
+ggsave(filename = file.path(dir, "plots", "hkl_observations_by_swell_height_and_hook.png"),
+       width = 10, height = 8)
 
 
 ggplot(hkl, aes(x = length_bin, fill = area))  + 
@@ -301,3 +322,100 @@ ggplot(hkl, aes(y = count, x = sex, fill = as.factor(include_fish)))  +
       	legend.text = element_text(size = 12),
       	strip.text.y = element_text(size = 14)) +
     scale_fill_viridis_d()
+
+#==============================================================================
+# look at what else is on the line when copper is on hook 5
+#==========================================================================
+
+find <- which(hkl_all$hook_number == 5 & hkl_all$common_name == "Copper Rockfish")
+hkl_all$unq_id <- paste0(hkl_all[, "set_id"], "_", hkl_all[, "drop_number"], "_", hkl_all[, "angler_number"] )
+
+data <- hkl_all[hkl_all$unq_id %in% hkl_all[find, "unq_id"], ]
+table(data$common_name)
+
+occur <- table(data$common_name)
+keep <- names(occur[occur > 1])
+occur[keep]
+
+ggplot(data[data$common_name %in% keep, ], aes(x = hook_number, fill = common_name))  + 
+  geom_bar(position="stack") + 
+  xlab("Hook Position") + ylab("Numbers Caught") +
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 12),
+        strip.text.y = element_text(size = 14)) 
+ggsave(filename = file.path(dir, "plots", "hkl_composition_with_copper_on_top_hook.png"),
+       width = 10, height = 8)
+
+
+# Look at all instances when copper is observed
+find <- which(hkl_all$common_name == "Copper Rockfish")
+unq_set_id <- hkl_all[find, "unq_id"]
+
+data <- hkl_all %>%
+  filter(unq_id %in% unq_set_id) 
+
+occur <- table(data$common_name)
+keep <- names(occur[occur > 20])
+occur[keep]
+
+ggplot(data[data$common_name %in% keep, ], aes(x = hook_number, fill = common_name))  + 
+  geom_bar(position="stack") + 
+  xlab("Hook Position") + ylab("Numbers Caught") +
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 12),
+        strip.text.y = element_text(size = 14)) 
+ggsave(filename = file.path(dir, "plots", "hkl_composition_with_copper_on_any_hook.png"),
+       width = 10, height = 8)
+
+sub_species <- which(hkl_all$common_name %in% c("Copper Rockfish", "Bocaccio", "Vermilion Rockfish"))
+data <- hkl_all[sub_species, ]
+
+ggplot(data, aes(x = year, fill = common_name))  + 
+  geom_bar(position="fill") + 
+  xlab("Year") + ylab("Numbers Caught") +
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 12),
+        strip.text.y = element_text(size = 14)) 
+ggsave(filename = file.path(dir, "plots", "hkl_prop_year_with_copper_bocaccio_vermilion.png"),
+       width = 10, height = 8)
+
+####Look at copper hook locations by lines where copper observed 
+# mhm 3/6/23
+#get lines that encountered copper
+copper_lines <- hkl %>%
+  dplyr::select(set_id, drop_number, angler_number) %>%
+  unique()
+
+#join to all data
+lines_with_copper <- left_join(copper_lines, hkl_all, 
+                               by = c("set_id", "drop_number", "angler_number"),
+                               keep = FALSE)
+
+#make sure join gets you the correct number of drops
+dat_check <- lines_with_copper %>%
+  dplyr::select(set_id, drop_number, angler_number) %>%
+  unique()
+
+#look at lines by species position
+#could turn into color coded matrix
+hook_table <- lines_with_copper %>%
+  mutate(hook_number = as.factor(hook_number),
+         common_name = ifelse(common_name == '', '0', common_name)) %>%
+  dplyr::select(set_id, drop_number, angler_number, common_name, hook_number) %>% 
+  group_by(set_id, drop_number, angler_number) %>%
+  pivot_wider(names_from = hook_number, values_from = common_name)
+View(hook_table)
+
+#how often is copper observed only on hooks 4 or 5
+copp_4_5 <- hook_table %>%
+  filter(`4` == "Copper Rockfish" | `5` =="Copper Rockfish") %>%
+  filter(`1` != "Copper Rockfish",
+         `2` != "Copper Rockfish",
+         `3` != "Copper Rockfish" )
+#only 66 total lines
