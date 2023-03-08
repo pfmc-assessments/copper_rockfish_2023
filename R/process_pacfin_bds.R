@@ -8,9 +8,11 @@
 
 library(PacFIN.Utilities)
 library(ggplot2)
+library(here)
+library(dplyr)
 
-dir <- "C:/Assessments/2023/copper_rockfish_2023/data/pacfin_bds"
-catch_dir <- "C:/Assessments/2023/copper_rockfish_2023/data/pacfin_catch"
+dir <- file.path(here(), "data", "pacfin_bds")
+catch_dir <- file.path(here(), "data", "pacfin_catch")
 dir.create(file.path(dir, "plots"))
 dir.create(file.path(dir, "forSS"))
 
@@ -96,6 +98,57 @@ sum(is.na(data$area))
 data$fleet <- paste0(data$state_area, ".", data$cond)
 
 #################################################################################
+# Length samples and trips by area and fleet
+#################################################################################
+
+trips_samples_dead <- data %>%
+  filter(fleet == "north.dead") %>%
+  group_by(fleet, year) %>%
+  summarise(
+    Trips = length(unique(SAMPLE_NO)),
+    Lengths = length(lengthcm)
+  )
+colnames(trips_samples_dead)[2] <- "Year"
+write.csv(trips_samples_dead[, -1], row.names = FALSE, file = file.path(dir, "forSS", "north_dead_trips_and_samples.csv"))
+
+trips_samples_live <- data %>%
+  filter(fleet == "north.live") %>%
+  group_by(fleet, year) %>%
+  summarise(
+    Trips = length(unique(SAMPLE_NO)),
+    Length_samples = length(lengthcm)
+  )
+colnames(trips_samples_dead)[2] <- "Year"
+write.csv(trips_samples_dead[, -1], 
+          row.names = FALSE, 
+          file = file.path(dir, "forSS", "north_live_trips_and_samples.csv"))
+
+trips_samples_dead <- data %>%
+  filter(fleet == "south.dead") %>%
+  group_by(fleet, year) %>%
+  summarise(
+    Trips = length(unique(SAMPLE_NO)),
+    Lengths = length(lengthcm)
+  )
+colnames(trips_samples_dead)[2] <- "Year"
+write.csv(trips_samples_dead[, -1], 
+          row.names = FALSE,
+          file = file.path(dir, "forSS", "south_dead_trips_and_samples.csv"))
+
+trips_samples_live <- data %>%
+  filter(fleet == "south.live") %>%
+  group_by(fleet, year) %>%
+  summarise(
+    Trips = length(unique(SAMPLE_NO)),
+    Length_samples = length(lengthcm)
+  )
+colnames(trips_samples_dead)[2] <- "Year"
+write.csv(trips_samples_dead[, -1], 
+          file = file.path(dir, "forSS", "south_live_trips_and_samples.csv"),
+          row.names = FALSE)
+
+
+#################################################################################
 # Length comp expansions
 #################################################################################
 
@@ -141,6 +194,7 @@ writeComps(
 	partition = 2, 
 	sum1 = TRUE,
 	digits = 4)
+
 
 ##############################################################################################################
 # Format and rewrite

@@ -6,6 +6,7 @@
 #					
 ##############################################################################################################
 
+library(dplyr)
 
 main_dir = here::here() #"C:/Assessments/2023/copper_rockfish_2023/data/pacfin_catch"
 dir <- file.path(main_dir, "data", "rec_catch")
@@ -114,7 +115,10 @@ proxy_2020$year <- proxy_2020$Year
 proxy_2020$area <- 'north'
 proxy_2020$catch_mt <- proxy_2020$Proxy.Average.Value..mt.
 proxy_2020$area[proxy_2020$CRFS.District.Number %in% 1:2] <- 'south'
+proxy_2020$ports <- sapply(strsplit(proxy_2020$CRFS.District.Name, '\\s*[()]'), '[',1)
 
+# The proportion based on earlier years was calculated but not used
+# CDFW recommended splitting the proxy values 50:50 by mode 
 prop_north <- crfs[crfs$year %in% 2017:2019 & crfs$area == 'north',] %>%
   group_by(mode) %>%
   summarise(tot_cat = sum(catch_mt)) %>%
@@ -125,14 +129,14 @@ prop_south <- crfs[crfs$year %in% 2017:2019 & crfs$area == 'south',] %>%
   summarise(tot_cat = sum(catch_mt)) %>%
   mutate(prop = tot_cat / sum(tot_cat))
 
-cat_south <- cbind(prop_south[, 'mode'], prop_south[, 'prop'] * sum(proxy_2020[proxy_2020$area == 'south', 'catch_mt']))
-cat_north <- cbind(prop_north[, 'mode'], prop_north[, 'prop'] * sum(proxy_2020[proxy_2020$area == 'north', 'catch_mt']))
+cat_south <- cbind(prop_south[, 'mode'], 0.50 * sum(proxy_2020[proxy_2020$area == 'south', 'catch_mt']))
+cat_north <- cbind(prop_north[, 'mode'], 0.50 * sum(proxy_2020[proxy_2020$area == 'north', 'catch_mt']))
 
 add_2020 <- data.frame(
   year = 2020,
   area = c("north", "north", "south", "south"),
   mode = c(cat_north[,'mode'], cat_south[, 'mode']),
-  catch_mt = c(cat_north[,'prop'], cat_south[, 'prop']) 
+  catch_mt = c(cat_north[,2], cat_south[, 2]) 
 )
 
 #===============================================================================================

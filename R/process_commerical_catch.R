@@ -8,7 +8,7 @@
 
 library(here)
 
-dir = here() #"C:/Assessments/2023/copper_rockfish_2023/data/pacfin_catch"
+dir = getwd() #"C:/Assessments/2023/copper_rockfish_2023/data/pacfin_catch"
 pac_dir <- file.path(dir, "data", "pacfin_catch")
 dir.create(file.path(pac_dir, "forSS"), showWarnings = FALSE)
 
@@ -61,7 +61,6 @@ table(pacfin$SUBREGION_NAME, pacfin$COUNTY_NAME)
 
 pacfin <- dplyr::left_join(pacfin, wcgop_discard_rate[, c("year", "rate")], by = 'year')
 pacfin$rate[is.na(pacfin$rate)] <- hist_discard_rate
-pacfin$discard_mt <- pacfin$rate*pacfin$landing
 pacfin$catch <- pacfin$landing + pacfin$rate*pacfin$landing
 
 pacfin_catch_by_year <- aggregate(catch ~ area + cond + year, pacfin, FUN = sum, drop = FALSE)
@@ -122,9 +121,6 @@ com_hist_early$landing_mt_north <- com_hist_early$landing_mt_north + com_hist_ea
 
 # Make sure the split catch equals the catch by area sums
 sum(com_hist_early[, 2:7]) == sum(com_hist_early$landing_mt_south + com_hist_early$landing_mt_north)
-
-est_discard_hist <- c(com_hist_early$landing_mt_south * hist_discard_rate + com_hist_early$landing_mt_north * hist_discard_rate,
-                      + hist_discard_rate*com_hist_late$landing_mt_south + + hist_discard_rate*com_hist_late$landing_mt_north)
 
 com_hist_early$catch_mt_south <- com_hist_early$landing_mt_south + com_hist_early$landing_mt_south * hist_discard_rate
 com_hist_early$catch_mt_north <- com_hist_early$landing_mt_north + com_hist_early$landing_mt_north * hist_discard_rate
