@@ -1,15 +1,17 @@
 ###################################################################################
 #
-#       Copper rockfish 2023
-#        NWFSC WCGBT survey 
-# data exploration and processing
+#        Copper rockfish 2023
+#   NWFSC WCGBT survey data processing
 #
 #############################################################################################
 
 devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/nwfscSurvey")
 #library(nwfscSurvey)
 
-dir_main <- "C:/Assessments/2023/copper_rockfish_2023/data/wcgbt"
+library(here)
+library(dplyr)
+
+dir_main <- file.path(here(), "data", "wcgbt")
 
 #=====================================================================
 # Pull all available data
@@ -35,20 +37,40 @@ catch_orig <- x
 load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
 bio_orig <- x
 
-PlotMap.fn(dat = catch_orig)
+#=====================================================================
+# Do some summaries for data available for both areas 
+#=====================================================================
+catch_orig$area <- 'north'
+catch_orig[catch_orig$Latitude_dd < 34.47, 'area'] <- 'south'
+
+bio_orig$area <- 'north'
+bio_orig[bio_orig$Latitude_dd < 34.47, 'area'] <- 'south'
+
+n_obs <- bio_orig %>%
+  group_by(area, Year) %>%
+  summarise(
+    length_samples = length(Length_cm),
+    age_samples = sum(!is.na(Age))
+  )
+
+n_tows <- catch_orig %>%
+  group_by(area, Year) %>%
+  summarise(
+    positive_tows = sum(total_catch_numbers > 0)
+  )
+
+out <- cbind(n_tows, n_obs[, c("length_samples", "age_samples")])
+colnames(out) <- c("Area", "Year", "Positive Tows", "Length Samples", "Read Ages")
+write.csv(out, row.names = FALSE, file = file.path(dir_main, "forSS", "positive_tows_and_bio_samples.csv"))
+
 #=====================================================================
 # Split the data by assessment area 
 #=====================================================================
 area = "south"
 #area = "north"
 
-if (area == "south"){
-    catch = catch_orig[catch_orig$Latitude_dd < 34.47, ]
-    bio = bio_orig[bio_orig$Latitude_dd < 34.47, ]
-} else {
-    catch = catch_orig[catch_orig$Latitude_dd >= 34.47 & catch_orig$Latitude_dd < 42, ]
-    bio = bio_orig[bio_orig$Latitude_dd >= 34.47 & bio_orig$Latitude_dd < 42, ]
-}
+catch <- catch_orig[catch_orig$area == area, ]
+bio <- bio_orig[bio_orig$area == area, ]
 
 dir = file.path(dir_main, area)
 
@@ -56,19 +78,17 @@ dir = file.path(dir_main, area)
 # Process the data in the selected area 
 #=====================================================================
 
-PlotMap.fn(dir = dir, dat = catch)
-
 # Observations range between 59 - 183 m 
 # South - one  observation > 400 m, North - one observation at 359 m
 # Peak observations between 75 - 105 m
 # hist(catch[catch$cpue_kg_per_ha_der >0, "Depth_m"], breaks = 30)
 
 # Existing SA file only allows splits at 75, 100, 125, 155, 183
-strata = CreateStrataDF.fn(names=c("shallow", "mid"), 
-                           depths.shallow = c(55, 100),
-                           depths.deep    = c(100, 183),
-                           lats.south     = c(32.5, 32.5),
-                           lats.north     = c(34.5, 34.5))
+strata = CreateStrataDF.fn(names=c("All Depths"), 
+                           depths.shallow = c(55),
+                           depths.deep    = c(183),
+                           lats.south     = c(32.5),
+                           lats.north     = c(34.5))
 
 num_strata = CheckStrata.fn(dir = dir,  
 							dat = catch, 
@@ -87,12 +107,9 @@ file.rename(file.path(dir,  "forSS", "design_based_indices.csv"),
             file.path(dir,  "forSS", paste0(area, "_design_based_indices.csv")))
 
 # Plot the biomass index
-PlotBio.fn(dir = dir, 
-    dat = biomass, 
-    main = paste0("NWFSC WCGBTS - ", area))
-
-PlotBioStrata.fn(dir = dir, 
-    dat = biomass) 
+PlotBio.fn(
+  dir = dir, 
+  dat = biomass)
 
 #=====================================================================
 # Visualize the data
@@ -110,7 +127,7 @@ temp <- catch[catch$Depth_m < 200, ] %>%
     labels = c("Present", "Absent")
   ))
 
-# Plot depth bins (50 m) by presence/absence with default colors
+# Plot depth bins (10 m) by presence/absence with default colors
 plot_proportion(
   data = temp,
   column_factor = new,
@@ -124,7 +141,7 @@ ggplot2::ggsave(filename = file.path(dir, "plots", "proportion_by_depth.png"))
 # In the south there are two observations > 150 m of one fish
 # at 182.7 and another at 407.8. The last one is suspect. That 
 # tow is 183 on 10-20-2008. The nearest previous tow with copper
-# occured the day before in tow 179 at 77 meters.
+# occurred the day before in tow 179 at 77 meters.
 plot_proportion(
   data = bio[bio$Depth_m < 150, ] %>%
     dplyr::mutate(Sex = codify_sex(Sex)),
@@ -135,7 +152,6 @@ plot_proportion(
   bar_width = "equal"
 )
 ggplot2::ggsave(filename = file.path(dir, "plots", "sex_by_depth.png"))
-
 
 
 # Look at where copper are observed by location
@@ -156,7 +172,7 @@ plot_age_length_sampling(
 #=====================================================================
 # Calculate length compositions
 #=====================================================================
-len_bin = seq(6, 60, 2)
+len_bin = seq(10, 54, 2)
 
 # Calculate the effN
 # Using the others group which is 2.43 unique samples / tow
@@ -164,54 +180,39 @@ len_bin = seq(6, 60, 2)
 
 # Process the sexed and unsexed fish separately 
 n = GetN.fn(
-    dir = dir, 
     dat = bio, 
     type = "length", 
     species = "others")
 
-file.rename(file.path(dir, "forSS", "length_SampleSize.csv"),
-            file.path(dir, "forSS", paste0(area, "_all_length_sample_size.csv")))
-
 # Process the sexed and unsexed fish separately 
 n = GetN.fn(
-    dir = dir, 
     dat = bio[bio$Sex %in% c("F", "M"), ], 
     type = "length", 
     species = "others")
 
-file.rename(file.path(dir, "forSS", "length_SampleSize.csv"),
-            file.path(dir, "forSS", paste0(area, "_sexed_length_sample_size.csv")))
-
 sexed_length_comps <- SurveyLFs.fn(
-    dir = dir, 
+  dir = dir, 
 	datL = bio[bio$Sex %in% c("F", "M"), ],
-    datTows = catch,  
-    strat.df = strata,
-    lgthBins = len_bin, 
-    month = 7, fleet = NA, 
-    sex = 3,
-    nSamps = n)
+  datTows = catch,  
+  strat.df = strata,
+  lgthBins = len_bin, 
+  month = 7, 
+  fleet = NA, 
+  sex = 3,
+  nSamps = n)
 
-plot_comps(dir = dir, 
-    add_save_name = "sexed",
-    data = sexed_length_comps)
-
-file.rename(file.path(dir, "forSS", "Survey_Sex3_Bins_6_60_LengthComps.csv"),
-            file.path(dir, "forSS", paste0(area, "_Survey_Sex3_Bins_6_60_LengthComps.csv")))
-file.rename(file.path(dir, "forSS", "Survey_Sex3_Bins_-999_60_LengthComps.csv"),
-            file.path(dir, "forSS", paste0(area, "_Survey_Sex3_Bins_-999_60_LengthComps.csv")))
+plot_comps(
+  dir = dir, 
+  add_save_name = "sexed",
+  data = sexed_length_comps)
 
 # Check for greater than one observation per year
 table(bio[bio$Sex == "U", "Year"])
 
 n = GetN.fn(
-    dir = dir, 
     dat = bio[bio$Sex == "U", ], 
     type = "length", 
     species = "others")
-
-file.rename(file.path(dir, "forSS", "length_SampleSize.csv"),
-            file.path(dir, "forSS", paste0(area, "_unsexed_length_sample_size.csv")))
 
 unsexed_length_comps <- SurveyLFs.fn(
     dir = dir, 
@@ -242,7 +243,6 @@ age_bin = 1:40
 
 # There is only one unsexed fish that has been aged
 n <- GetN.fn(
-    dir = dir, 
     dat = bio, 
     type = "age", 
     species = "others")
@@ -261,11 +261,6 @@ age_comps <- SurveyAFs.fn(
 
 plot_comps(dir = dir, 
     data = age_comps)
-
-PlotFreqData.fn(
-    dir = dir, 
-    dat = age_comps, 
-    main = paste0("NWFSC WCGBTS - ", area))
 
 # Conditional-age-at-length
 caal <- SurveyAgeAtLen.fn(
@@ -291,3 +286,32 @@ SurveyAgeAtLen.fn(dir = dir,
 PlotVarLengthAtAge.fn(
     dir = dir, 
     dat = bio)
+
+#=============================================================
+# Estimate index for copper south of pt. conceptions
+#=============================================================
+
+library(sdmTMB)
+devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/indexwc")
+
+southern_BC <- 49.0
+southern_WA <- 46.0
+southern_OR <- 42.0
+southern_CA <- 32.0
+
+setwd("C:/Users/Chantel.Wetzel/Documents/GitHub/indexwc")
+usethis::use_data(
+  southern_BC, southern_WA, southern_OR, southern_CA,
+  internal = TRUE,
+  overwrite = TRUE
+)
+
+dir <- file.path(here(), "data", "survey_indices", "wcgbt")
+setwd(dir)
+
+load(file.path(dir_main, "catch_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
+catch_orig <- x
+data <- catch_orig[catch_orig$Latitude_dd < 34.5, ]
+
+run(data, family = sdmTMB::delta_lognormal())
+run(data, family = sdmTMB::delta_lognormal_mix())

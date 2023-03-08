@@ -85,8 +85,23 @@ collins_rec$lengthcm <- collins_rec$lengthcm_tl
 ally_rec$lengthcm <- ally_rec$lengthcm_tl
 donp$lengthcm <- donp$lengthcm / 10
 
+#=============================================================================================
+# Try to determine the number of trips in each data set
+#=============================================================================================
+
+mrfs$trip <- paste0(mrfs$year, mrfs$ID_CODE, mrfs$INTSITE, mrfs$AREA_X)
+crfs$trip <- paste0(crfs$RECFIN_DATE, crfs$COUNTY_NUMBER, crfs$AGENCY_WATER_AREA_NAME)
+deb_wv$trip <- paste0(deb_wv$year, deb_wv$TRIP_ID)
+miller_rec$trip <- paste0(miller_rec$year, miller_rec$district, miller_rec$county)
+donp$trip <- paste0(donp$SAMPLE_NO)
+collins_rec$trip <- collins_rec$tripID
+ally_rec$trip <- paste0(ally_rec$year, ally_rec$complex, ally_rec$landing, ally_rec$district)
+
+#=============================================================================================
 # Put all the data into a single data frame
-col_names <- c('year', 'mode', 'area', 'program', 'lengthcm', 'sex')
+#=============================================================================================
+
+col_names <- c('year', 'mode', 'area', 'program', 'lengthcm', 'sex', 'trip')
 all_data <- rbind(
   mrfs[, col_names],
   crfs[, col_names], 
@@ -104,30 +119,49 @@ all_data <- all_data[-remove, ]
 # There area 23 lengths between 60-65 which seem suspect but 
 # going to keep them.
 
-
-
 #==============================================================================
 # Calculate sample size by year and area 
 #==============================================================================
 
+firstup <- function(x) {
+  substr(x, 1, 1) <- toupper(substr(x, 1, 1))
+  x
+}
+
 sample_size_cpfv <- all_data %>%
   dplyr::filter(mode == 'cpfv') %>%
   dplyr::group_by(area, year, program) %>%
-  dplyr::tally()
+  dplyr::summarise(
+    ntrip = length(unique(trip)),
+    n = length(lengthcm))
 
 sample_size_private <- all_data %>%
   dplyr::filter(mode == 'private') %>%
   dplyr::group_by(area, year, program) %>%
-  dplyr::tally()
+  dplyr::summarise(
+    ntrip = length(unique(trip)),
+    n = length(lengthcm))
 
-south <- dplyr::left_join(sample_size_cpfv[sample_size_cpfv$area == 'south', ],
-                         sample_size_private[sample_size_private$area == 'south', ], by = c('year', 'program', 'area'))
-colnames(south)[4:5] <- c('cpfv', 'private')
-south[is.na(south)] <- 0
-north <- dplyr::left_join(sample_size_cpfv[sample_size_cpfv$area == 'north', ],
-                          sample_size_private[sample_size_private$area == 'north', ], by = c('year', 'program', 'area'))
-colnames(north)[4:5] <- c('cpfv', 'private')
-north[is.na(north)] <- 0
+south <- dplyr::left_join(
+  sample_size_cpfv[sample_size_cpfv$area == 'south', ],
+  sample_size_private[sample_size_private$area == 'south', ], 
+  by = c('year', 'program', 'area'))
+colnames(south) <- c('Area', 'Year', 'Source', 'CPFV Trips', 'CPFV Samples', 'PR Trips', 'PR Samples')
+south <- as.data.frame(south)
+south[is.na(south)] <- "-"
+south$Source <- toupper(south$Source)
+south$Area <- firstup(south$Area)
+
+north <- dplyr::left_join(
+  sample_size_cpfv[sample_size_cpfv$area == 'north', ],
+  sample_size_private[sample_size_private$area == 'north', ], 
+  by = c('year', 'program', 'area'))
+colnames(north) <- c('Area', 'Year', 'Source', 'CPFV Trips', 'CPFV Samples', 'PR Trips', 'PR Samples')
+north <- as.data.frame(north)
+north[is.na(north)] <- "-"
+north$Source <- toupper(north$Source)
+north$Area <- firstup(north$Area)
+
 write.csv(south, file = file.path(dir, "forSS", "rec_south_sample_size_by_program.csv"), row.names = FALSE)
 write.csv(north, file = file.path(dir, "forSS", "rec_north_sample_size_by_program.csv"), row.names = FALSE)
 
@@ -191,7 +225,6 @@ ggplot(tmp, aes(lengthcm, fill = program, color = program)) +
   xlab("Length (cm)") + ylab("Density") +
   facet_wrap(facets = c("year")) + 
   scale_color_viridis_d()
-
 
 #==============================================================================
 # Create un-weighted composition data for recreational data sources
@@ -259,20 +292,6 @@ for(a in unique(all_data$area)){
   }
 }
 
-#=============================================================================================
-# Try to determine the number of trips in each data set
-#=============================================================================================
 
-mrfs$n <- paste0(mrfs$year, mrfs$ID_CODE, mrfs$INTSITE, mrfs$AREA_X)
-crfs$n <- paste0(crfs$RECFIN_DATE, crfs$COUNTY_NUMBER, crfs$AGENCY_WATER_AREA_NAME)
-deb_wv$n <- paste0(deb_wv$year, deb_wv$TRIP_ID)
-miller_rec
-donp
-collins_rec
-ally_rec
 
-aggregate(ID_CODE~year, mrfs, function(x) length(unique(x)))
-aggregate(n~year, crfs, function(x) length(unique(x)))
-aggregate(TRIP_ID~year, deb_wv, function(x) length(unique(x)))
 
-          

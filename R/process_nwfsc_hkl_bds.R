@@ -14,7 +14,8 @@ library(here)
 
 dir <- file.path(here::here(), "data", "nwfsc_hkl")
 
-hkl_all <- read.csv(file.path(dir, "hookandline_2004_2021_draft_data.csv"))
+load(file.path(dir, "nwfsc_hkl_2004-2022.rdata"))
+hkl_all <- hkl
 hkl_all$lat <- hkl_all$drop_latitude_degrees
 hkl_all$lon <- hkl_all$drop_longitude_degrees
 hkl_all$area <- ifelse(hkl_all$site_number >= 500, "CCA", "Outside CCA")
@@ -37,12 +38,10 @@ hkl_all_site <- hkl_all %>%
   )
 
 # Remove records that have been identified to have issues by the survey team
-# All fish in the data set accidently given a value of include_fish in 2021
-hkl[hkl$year == 2021, "include_fish"] <- 1
 hkl <- hkl[hkl$include_fish == 1, ]
 hkl$set_id_drop <- paste0(hkl$set_id, hkl$drop_number)
 
-# There area only 3 unsexed fish all from different years, dropping them from the comps
+# There area only 4 unsexed fish all from different years, dropping them from the comps
 hkl <- hkl[hkl$sex != "U", ]
 
 samples_area <- hkl %>%
@@ -152,22 +151,83 @@ PlotSexRatio.fn(
 )
 
 
-lbins <- seq(10, 54, 2)
-abins <- 1:20
-sim <- data.frame(
-  year = round(runif(100, 1999, 2002),0),
-  length = round(runif(100, 10, 54),0),
-  age = round(runif(100, 1, 40),0)
+#==============================================================================
+# Create marginal ages
+#==============================================================================
+age_bins <- 1:50
+source(file.path(here(), "R", "get_caal.R"))
+
+afs <-  UnexpandedAFs.fn(
+  datA = hkl, 
+  ageBins = age_bins,
+  partition = 0, 
+  fleet = 5, 
+  month = 9)
+
+afs_all <- afs$sexed
+afs$sexed[, "InputN"] <- samples_all[, "unique_set_by_site"]
+write.csv(afs$sexed, 
+          file = file.path(dir, "forSS",  "nwfsc_hkl_all_not_expanded_age_comp_sex_3.csv"),
+          row.names = FALSE) 
+
+# Observations inside CCA
+afs <-  UnexpandedAFs.fn(
+  datA = hkl[hkl$area == "CCA", ], 
+  ageBins = age_bins,
+  partition = 0, 
+  fleet = 5, 
+  month = 9)
+
+afs_cca <- afs$sexed
+afs$sexed[, "InputN"] <- samples_cca_only[, "unique_set_by_site"]
+write.csv(afs$sexed, 
+          file = file.path(dir, "forSS",  "nwfsc_hkl_cca_only_not_expanded_age_comp_sex_3.csv"),
+          row.names = FALSE) 
+
+# Observations outside CCA
+afs <-  UnexpandedAFs.fn(
+  datA = hkl[hkl$area != "CCA", ], 
+  ageBins = age_bins,
+  partition = 0, 
+  fleet = 5, 
+  month = 9)
+
+afs$sexed[, "InputN"] <- samples_non_cca_only[, "unique_set_by_site"]
+write.csv(afs$sexed, 
+          file = file.path(dir, "forSS",  "nwfsc_hkl_outside_cca_only_not_expanded_age_comp_sex_3.csv"),
+          row.names = FALSE) 
+
+#====================================================================
+# Plot the age composition data
+#====================================================================
+
+plot_comps(
+  dir = dir,
+  data = afs_all, 
+  add_save_name = "nwfsc_hkl_all_age",
+  add_0_ylim = FALSE
 )
 
-l_use_bins <- c(-999, lbins, Inf)
-a_use_bins <- c(-999, abins, Inf)
-# In case there a fish with decimal lengths round them down for processing
-sim$Ls <- l_use_bins[findInterval(sim[, "length"], l_use_bins, all.inside = T)]
-sim$As <- a_use_bins[findInterval(sim[, "age"], a_use_bins, all.inside = T)]
+plot_comps(
+  dir = dir,
+  data = afs_cca, 
+  add_save_name = "nwfsc_hkl_cca_only_age",
+  add_0_ylim = FALSE
+)
 
-test <- sim %>%
-  group_by(year) %>%
-  count(Ls, As, sort = TRUE, .drop = FALSE)
+#==============================================================================
+# Create conditional-age-at-length ages
+#==============================================================================
+
+out <- get_caal(
+  data = hkl, 
+  len_bins = length_bins,
+  age_bins = age_bins,
+  month = 9, 
+  fleet = 5)
+
+name <- paste0("CAAL_len_", min(length_bins), "_", max(length_bins), "_age_",
+  min(age_bins), "_", max(age_bins), ".csv")
+write.csv(out, file = file.path(dir, "forSS", name), row.names = FALSE)
 
 
