@@ -38,8 +38,8 @@ hkl_all_site <- hkl_all %>%
   )
 
 # Remove records that have been identified to have issues by the survey team
-hkl <- hkl[hkl$include_fish == 1, ]
 hkl$set_id_drop <- paste0(hkl$set_id, hkl$drop_number)
+hkl <- hkl[hkl$include_fish == 1, ]
 
 # There area only 4 unsexed fish all from different years, dropping them from the comps
 hkl <- hkl[hkl$sex != "U", ]
@@ -47,9 +47,10 @@ hkl <- hkl[hkl$sex != "U", ]
 samples_area <- hkl %>%
   group_by(year, area) %>%
   reframe(
-    unique_set_by_site = length(unique(set_id_drop)),
-    n_copper = sum(count)
+    Drops = length(unique(set_id_drop)),
+    Observations = sum(count)
   )
+colnames(samples_area)[1:2] <- c("Year", "Area")
 write.csv(samples_area, file = file.path(dir, "forSS", "sample_number_by_site_cca.csv"), row.names = FALSE)
 
 samples_all <- hkl %>%
@@ -230,4 +231,91 @@ name <- paste0("CAAL_len_", min(length_bins), "_", max(length_bins), "_age_",
   min(age_bins), "_", max(age_bins), ".csv")
 write.csv(out, file = file.path(dir, "forSS", name), row.names = FALSE)
 
+#====================================================================
+# create tables
+#====================================================================
+library(kableExtra)
 
+hkl_all$depth_bin <- plyr::round_any(hkl_all$drop_depth_meters, 25, floor)
+hkl_all$set_id_drop <- paste0(hkl_all$set_id, hkl_all$drop_number)
+
+dat <- hkl_all %>%
+  mutate(Targetbin = as.numeric(count > 0))
+  
+sample.sizes.depth <- dat %>%
+  dplyr::group_by(depth_bin) %>%
+  dplyr::summarise(
+    Positive.samples = sum(Targetbin),
+    Samples = length(unique(set_id_drop))
+  ) %>%
+  mutate(percent.pos = scales::percent(Positive.samples / Samples, accuracy = 1))
+
+colnames(sample.sizes.depth) <- c("Year", "Positive Samples", "Samples", "Percent Positive")
+write.csv(sample.sizes.depth, 
+    file = file.path(dir, "forSS", "positive_samples_by_depth.csv"),
+    row.names = FALSE)
+
+# make table
+table.depth <- kableExtra::kbl(sample.sizes.depth,
+  booktabs = TRUE,
+  caption = paste(
+    "Positive samples of copper rockfish in the NWFSC Hook and Line survey by depth (fm)."
+  ),
+  label = paste0("tab-depth-nwfschl")
+) %>%
+  kable_styling(latex_options = "striped", full_width = FALSE)
+
+
+#-------------------------------------------------------------------------------
+# tab-year
+# samples by year
+sample.sizes.year <- dat %>%
+  dplyr::group_by(year) %>%
+  dplyr::summarise(
+    Positive.samples = sum(Targetbin),
+    Samples = length(unique(set_id_drop))
+  ) %>%
+  mutate(percent.pos = scales::percent(Positive.samples / Samples, accuracy = 1))
+
+colnames(sample.sizes.year) <- c("Year", "Positive Samples", "Samples", "Percent Positive")
+write.csv(sample.sizes.year, 
+    file = file.path(dir, "forSS", "positive_samples_by_year.csv"),
+    row.names = FALSE)
+model.region = "NWFSC Hook and Line survey"
+# make table
+table.year <- kableExtra::kbl(sample.sizes.year,
+  booktabs = TRUE,
+  caption = paste(
+    "Samples of copper rockfish in the",
+    model.region, "by year."
+  ),
+  label = paste0("tab-year-nwfschl")
+) %>%
+  kable_styling(latex_options = "striped", full_width = FALSE)
+
+#-------------------------------------------------------------------------------
+# tab-depth by area
+# samples by year
+depth.by.site <- dat %>%
+  dplyr::group_by(area, depth_bin) %>%
+  dplyr::summarise(
+    Positive.samples = sum(Targetbin),
+    Samples = length(unique(set_id_drop))
+  ) %>%
+mutate(percent.pos = scales::percent(Positive.samples / Samples, accuracy = 1)) %>%
+  dplyr::select(area, depth_bin, percent.pos) %>%
+  tidyr::pivot_wider(names_from = depth_bin, values_from = percent.pos) %>%
+  #relocate("(25,50]", .before = "(75,100]") %>%
+  #relocate("(50,75]", .before = "(75,100]") %>%
+  rename("Area name" = area)
+
+table.depth.by.site <- kableExtra::kbl(depth.by.site,
+                                booktabs = TRUE,
+                                caption = paste(
+                                  "Samples of", params$species.name, "in the
+                                  NWFSC hook-and-line survey by area and 
+                                  depth bins (ft)."
+                                ),
+                                label = paste0("tab-depthsite-nwfschl")
+  ) %>%
+  kable_styling(latex_options = c("striped", "scale_down"), full_width = FALSE)

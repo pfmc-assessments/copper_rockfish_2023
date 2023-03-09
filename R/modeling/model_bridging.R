@@ -132,6 +132,10 @@ SSplotComparisons(mysummary,
 	pdf = TRUE)
 
 
+hkl_len <- SS_output(file.path(wd, "3.1_hkl_len"))
+hkl_age <- SS_output(file.path(wd, "3.2_hkl_ages"))
+
+
 dw_rec <- SS_output(file.path(wd, "2.4_dw_rec_devs_linf"))
 
 modelnames <- c("2021", "Recreational Fleets", "Commercial Fleets",

@@ -76,7 +76,6 @@ donp$sex[donp$sex == 9] <- "U"
 miller_rec$sex <- "U"
 deb_wv$sex <- "U"
 
-
 # Length column
 # Note: These are total lengths not fork lengths
 deb_wv$lengthcm <- deb_wv$lengthcm_tl / 10
@@ -120,6 +119,99 @@ all_data <- all_data[-remove, ]
 # going to keep them.
 
 #==============================================================================
+# Plot the data quickly
+#==============================================================================
+
+ggplot(all_data[all_data$area == "south", ], aes(y = lengthcm, x = year, group = year)) +
+  geom_boxplot() + 
+  facet_wrap(facets = c("mode", "program")) + 
+  xlab("Year") + ylab("Length (cm)") 
+ggsave(filename = file.path(dir, "plots", "rec_south_length_boxplot_by_mode_program_year.png"),
+       width = 10, height = 10)
+
+ggplot(all_data[all_data$area == "north", ], aes(y = lengthcm, x = year, group = year)) +
+  geom_boxplot() + 
+  facet_wrap(facets = c("mode", "program")) + 
+  xlab("Year") + ylab("Length (cm)") 
+ggsave(filename = file.path(dir, "plots", "rec_north_length_boxplot_by_mode_program_year.png"),
+       width = 10, height = 10)
+
+ggplot(all_data, aes(lengthcm, fill = mode, color = mode)) + 
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("area", "program")) + 
+  scale_color_viridis_d()
+
+ggplot(all_data, aes(lengthcm, fill = program, color = program)) + 
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("area", "mode")) + 
+  scale_color_viridis_d()
+
+ggplot(all_data[all_data$area == 'south', ], aes(lengthcm, fill = mode, color = mode)) + 
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("program")) + 
+  scale_color_viridis_d()
+
+ggplot(all_data[all_data$area == 'north', ], aes(lengthcm, fill = mode, color = mode)) + 
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("program")) + 
+  scale_color_viridis_d()
+
+# Compare DWV and MRFSS data looking for overlap (e.g., 'mrfss' samples included in DWV data)
+tmp = all_data[all_data$year %in% c(1987:1998) & all_data$area == 'north' & all_data$mode == 'cpfv', ]
+aggregate(lengthcm~program+year, tmp, quantile)
+comp_mrfss_dwv <- tmp %>%
+  group_by(year, program) %>%
+  summarise(
+    n = n(), 
+    len_min = min(lengthcm),
+    len_med = median(lengthcm),
+    len_mean = mean(lengthcm),
+    len_max = max(lengthcm)
+  )
+write.csv(comp_mrfss_dwv, 
+    file = file.path(dir, "forSS", "north_mrfss_dwv_comparison.csv"),
+    row.names = FALSE)
+ggplot(tmp, aes(lengthcm, fill = program, color = program)) + 
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("year")) + 
+  scale_color_viridis_d()
+ggsave(filename = file.path(dir, "plots", "rec_north_mrfss_dwv_comparison.png"),
+       width = 10, height = 10)
+
+# Compare Ally and MRFSS data looking for overlap 
+tmp = all_data[all_data$year %in% c(1984:1989) & all_data$area == 'south' & all_data$mode == 'cpfv', ]
+aggregate(lengthcm~program+year, tmp, quantile)
+comp_mrfss_ally <- tmp %>%
+  group_by(year, program) %>%
+  summarise(
+    n = n(), 
+    len_min = min(lengthcm),
+    len_med = median(lengthcm),
+    len_mean = mean(lengthcm),
+    len_max = max(lengthcm)
+  )
+write.csv(comp_mrfss_ally, 
+    file = file.path(dir, "forSS", "south_mrfss_ally_comparison.csv"),
+    row.names = FALSE)
+
+ggplot(tmp, aes(lengthcm, fill = program, color = program)) + 
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("year")) + 
+  scale_color_viridis_d()
+ggsave(filename = file.path(dir, "plots", "rec_south_mrfss_ally_comparison.png"),
+       width = 10, height = 10)
+#==============================================================================
+#  
+#==============================================================================
+
+
+#==============================================================================
 # Calculate sample size by year and area 
 #==============================================================================
 
@@ -150,6 +242,7 @@ colnames(south) <- c('Area', 'Year', 'Source', 'CPFV Trips', 'CPFV Samples', 'PR
 south <- as.data.frame(south)
 south[is.na(south)] <- "-"
 south$Source <- toupper(south$Source)
+south$Source <- gsub("_", " ", south$Source)
 south$Area <- firstup(south$Area)
 
 north <- dplyr::left_join(
@@ -160,6 +253,7 @@ colnames(north) <- c('Area', 'Year', 'Source', 'CPFV Trips', 'CPFV Samples', 'PR
 north <- as.data.frame(north)
 north[is.na(north)] <- "-"
 north$Source <- toupper(north$Source)
+north$Source <- gsub("_", " ", north$Source)
 north$Area <- firstup(north$Area)
 
 write.csv(south, file = file.path(dir, "forSS", "rec_south_sample_size_by_program.csv"), row.names = FALSE)
@@ -210,21 +304,49 @@ ggplot(all_data[all_data$area == 'north', ], aes(lengthcm, fill = mode, color = 
 # Compare DWV and MRFSS data looking for overlap (e.g., 'mrfss' samples included in DWV data)
 tmp = all_data[all_data$year %in% c(1987:1998) & all_data$area == 'north' & all_data$mode == 'cpfv', ]
 aggregate(lengthcm~program+year, tmp, quantile)
+comp_mrfss_dwv <- tmp %>%
+  group_by(year, program) %>%
+  summarise(
+    n = n(), 
+    len_min = min(lengthcm),
+    len_med = median(lengthcm),
+    len_mean = mean(lengthcm),
+    len_max = max(lengthcm)
+  )
+write.csv(comp_mrfss_dwv, 
+    file = file.path(dir, "forSS", "north_mrfss_dwv_comparison.csv"),
+    row.names = FALSE)
 ggplot(tmp, aes(lengthcm, fill = program, color = program)) + 
   geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
   xlab("Length (cm)") + ylab("Density") +
   facet_wrap(facets = c("year")) + 
   scale_color_viridis_d()
+ggsave(filename = file.path(dir, "plots", "rec_north_mrfss_dwv_comparison.png"),
+       width = 10, height = 10)
 
 # Compare Ally and MRFSS data looking for overlap 
 tmp = all_data[all_data$year %in% c(1984:1989) & all_data$area == 'south' & all_data$mode == 'cpfv', ]
 aggregate(lengthcm~program+year, tmp, quantile)
-table(tmp$year, tmp$program)
+comp_mrfss_ally <- tmp %>%
+  group_by(year, program) %>%
+  summarise(
+    n = n(), 
+    len_min = min(lengthcm),
+    len_med = median(lengthcm),
+    len_mean = mean(lengthcm),
+    len_max = max(lengthcm)
+  )
+write.csv(comp_mrfss_ally, 
+    file = file.path(dir, "forSS", "south_mrfss_ally_comparison.csv"),
+    row.names = FALSE)
+
 ggplot(tmp, aes(lengthcm, fill = program, color = program)) + 
   geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
   xlab("Length (cm)") + ylab("Density") +
   facet_wrap(facets = c("year")) + 
   scale_color_viridis_d()
+ggsave(filename = file.path(dir, "plots", "rec_south_mrfss_ally_comparison.png"),
+       width = 10, height = 10)
 
 #==============================================================================
 # Create un-weighted composition data for recreational data sources

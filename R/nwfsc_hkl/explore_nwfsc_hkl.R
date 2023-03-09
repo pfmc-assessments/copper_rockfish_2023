@@ -45,7 +45,7 @@ hkl_species <- hkl_all[hkl_all$common_name %in% c(
 
 # Filter down to only copper observations
 hkl <- hkl_all[ind, ]
-hkl$length_bin <- plyr::round_any(hkl$length_cm, 2, floor)
+hkl$length_bin <- plyr::round_any(hkl$length_cm, 1, floor)
 
 table(hkl$year, hkl$include_fish)
 hkl <- hkl[hkl$include_fish == 1, ]
@@ -139,6 +139,19 @@ ggplot(hkl, aes(length_cm, fill = area, color = area)) +
     scale_fill_viridis_d()
 ggsave(filename = file.path(dir, "plots", "hkl_density_by_area.png"),
 	width = 10, height = 8)
+
+ggplot(hkl[hkl$sex != "U",], aes(y = count, x = length_bin, fill = sex))  +  
+  geom_histogram(aes(y = count), position="stack", stat="identity") + 
+  xlab("Length (cm)") + ylab("Total Observations") +
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 12),
+        strip.text.y = element_text(size = 14)) +
+  facet_grid(area~.) + 
+  scale_fill_viridis_d(begin = 0, end = 0.5)
+ggsave(filename = file.path(dir, "plots", "hkl_observations_by_length_sex_area.png"),
+  width = 10, height = 8)
 
 ggplot(hkl, aes(y = count, x = length_bin, fill = area))  +  
 	geom_histogram(aes(y = count), position="stack", stat="identity") + 

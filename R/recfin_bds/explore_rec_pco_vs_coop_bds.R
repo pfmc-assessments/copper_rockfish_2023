@@ -10,10 +10,6 @@
 library(here)
 library(ggplot2)
 library(tidyr)
-#Chantel dir
-#dir <- "C:/Assessments/2023/copper_rockfish_2023/data/rec_bds"
-#Melissa dir
-#dir <- "S:/copper_rockfish_2023/data/rec_bds"
 dir <- file.path(here(), "data", "rec_bds")
 setwd(dir)
 dir.create(file.path(dir, "plots"), showWarnings = FALSE)
