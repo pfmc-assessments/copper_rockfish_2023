@@ -1,7 +1,7 @@
 format_index <- function(dir, index, month = 7, fleet = NA){
  
    format_index <- data.frame(
-    year = index$year,
+    year = index[,1],
     month = month,
     fleet = fleet,
     obs = index$est,

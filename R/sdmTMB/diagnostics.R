@@ -77,6 +77,26 @@ plot_qq <- function(data, dir){
   
 }
 
+plot_qq_sdm <- function(model, dir){
+  
+  resids <- residuals(model)
+  
+  grDevices::png(
+    filename = file.path(dir, "qq.png"),
+    width = 7,
+    height = 7,
+    units = "in",
+    res = 300,
+    pointsize = 12
+  )
+  stats::qqnorm(resids)
+  stats::qqline(resids)
+  dev.off()
+  
+}
+
+
+
 plot_residuals<- function(data, dir, nrow = 3, ncol = 4){
   
   year <- data$time
