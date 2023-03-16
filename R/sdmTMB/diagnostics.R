@@ -49,6 +49,19 @@ get_diag_tables <- function(fit, dir){
     conf.int = TRUE
   )
   
+  model_fixed_effects <- run_diagnostics$model_fixed_effects
+  model_fixed_effects[, 2:ncol(model_fixed_effects)] <- round(model_fixed_effects[, 2:ncol(model_fixed_effects)], 2)
+  colnames(model_fixed_effects) <- c("Term", "Estimate", "SD Error", "Low CI", "High CI")
+  write.csv(model_fixed_effects, 
+    file = file.path(dir, "fixed_effects_parameters.csv"), row.names = FALSE)
+   
+  model_random_effects <- run_diagnostics$model_random_effects
+  model_random_effects[, 2:ncol(model_random_effects)] <- round(model_random_effects[, 2:ncol(model_random_effects)], 2)
+  colnames(model_random_effects) <- c("Term", "Estimate", "SD Error", "Low CI", "High CI")
+  write.csv(model_random_effects, 
+            file = file.path(dir, "random_effects_parameters.csv"), row.names = FALSE)
+   
+  
   save(run_diagnostics, file = file.path(dir, "diagnostics.rdata"))
 }
 
@@ -59,9 +72,9 @@ save(
 
 }
 
-plot_qq <- function(data, dir){
+plot_qq <- function(fit, dir){
   
-  resids <- data$data$residuals
+  resids <- fit$data$residuals
   
   grDevices::png(
     filename = file.path(dir, "qq.png"),
@@ -77,9 +90,9 @@ plot_qq <- function(data, dir){
   
 }
 
-plot_qq_sdm <- function(model, dir){
+plot_qq_sdm <- function(fit, dir){
   
-  resids <- residuals(model)
+  resids <- residuals(fit)
   
   grDevices::png(
     filename = file.path(dir, "qq.png"),
@@ -97,11 +110,11 @@ plot_qq_sdm <- function(model, dir){
 
 
 
-plot_residuals<- function(data, dir, nrow = 3, ncol = 4){
+plot_residuals<- function(fit, dir, nrow = 3, ncol = 4){
   
-  year <- data$time
-  df <- data$data
-  num_years <- sort(unique(df[, year]))
+  year <- fit$time
+  df <- fit$data
+  num_years <- sort(unlist(unique(df[, year])))
   g <- split(
     num_years, 
     ceiling(seq_along(num_years) / (ncol * nrow))
@@ -109,6 +122,8 @@ plot_residuals<- function(data, dir, nrow = 3, ncol = 4){
   if (min(df$lon) > 0){
     lon_range <- -1 * c(min(df$lon), max(df$lon))
     df$lon <- -1 * df$lon
+  } else {
+    lon_range <- c(min(df$lon), max(df$lon))
   }
   lat_range <- c(min(df$lat), max(df$lat))
   
@@ -117,7 +132,7 @@ plot_residuals<- function(data, dir, nrow = 3, ncol = 4){
     ggplot2::ggplot(df[df$year %in% g[[page]], ], 
                     aes(lon, lat, colour = residuals)) + 
       geom_point() + 
-      scale_colour_viridis_c() +
+      scale_colour_viridis_c(option = "A") +
       nwfscSurvey::draw_theme() +
       nwfscSurvey::draw_land() +
       nwfscSurvey::draw_projection() +
@@ -134,11 +149,11 @@ plot_residuals<- function(data, dir, nrow = 3, ncol = 4){
 }
 
 
-plot_fixed_effects_para <- function(data, dir, name = "") {
+plot_fixed_effects_para <- function(fit, dir, name = "") {
   
-  est <- as.list(data$sd_report, "Estimate", report = FALSE)
-  sd  <- as.list(data$sd_report, "Std. Error", report = FALSE)
-  years <- sort(unique(data$data[, data$time]))
+  est <- as.list(fit$sd_report, "Estimate", report = FALSE)
+  sd  <- as.list(fit$sd_report, "Std. Error", report = FALSE)
+  years <- sort(unlist(unique(fit$data[, fit$time])))
   
   n_plot <- ifelse(
     "b_j2" %in% names(est),
@@ -146,7 +161,7 @@ plot_fixed_effects_para <- function(data, dir, name = "") {
     1), 1
   )
   
-  n_var <- length(data$xlevels[[1]])
+  n_var <- length(fit$xlevels[[1]])
   
   png(
     filename = file.path(dir, "fixed_effects_parameters.png"),
@@ -159,7 +174,7 @@ plot_fixed_effects_para <- function(data, dir, name = "") {
   
   par(mfrow = c(n_var, n_plot))
   
-  td <- tidy(data, model = 1)
+  td <- tidy(fit, model = 1)
   yr_i <- grep("year", td$term, ignore.case = TRUE)
   upr <- est$b_j[yr_i] + 2 * sd$b_j[yr_i]
   lwr <- est$b_j[yr_i] - 2 * sd$b_j[yr_i]
@@ -180,8 +195,8 @@ plot_fixed_effects_para <- function(data, dir, name = "") {
   if(n_var > 1){
     ind <- length(yr_i) + 1
     for(aa in 2:n_var){
-      main_text <- names(data$xlevels[[1]][aa])
-      x_val <- as.numeric(unlist(data$xlevels[[1]][aa]))[-1]
+      main_text <- names(fit$xlevels[[1]][aa])
+      x_val <- as.numeric(unlist(fit$xlevels[[1]][aa]))[-1]
       y_i <- ind:(ind + length(x_val) - 1)
       upr <- est$b_j[y_i] + 2 * sd$b_j[y_i]
       lwr <- est$b_j[y_i] - 2 * sd$b_j[y_i]
@@ -204,7 +219,7 @@ plot_fixed_effects_para <- function(data, dir, name = "") {
   }
   
   if (n_plot > 1) {
-    td <- tidy(data, model = 2)
+    td <- tidy(fit, model = 2)
     upr <- est$b_j2[yr_i] + 2 * sd$b_j2[yr_i]
     lwr <- est$b_j2[yr_i] - 2 * sd$b_j2[yr_i]
     yr_i <- grep("year", td$term, ignore.case = TRUE)

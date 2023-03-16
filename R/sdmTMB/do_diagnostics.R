@@ -1,7 +1,4 @@
-do_diagnostics <- function(dir, data){
- 
-  write.csv(tidy(fit), 
-            file = file.path(dir, "parameters.csv")) 
+do_diagnostics <- function(dir, fit){
   
   write.csv(rbind(c("pos_def_hessian", fit$pos_def_hessian),
                   c("bad_eig", fit$bad_eig)), 
@@ -14,18 +11,16 @@ do_diagnostics <- function(dir, data){
   
   fit$data$residuals <- residuals(fit)
   
-  plot_qq(data = fit, 
+  plot_qq(fit = fit, 
           dir = dir)
   
   plot_residuals(
-    data = fit, 
+    fit = fit, 
     dir = dir, 
     nrow = 3, ncol = 4)
   
-  plot_fixed_effects_para(
-    data = fit, 
-    dir = dir) 
-  
-  save(data, file = file.path(dir, "fit.rdata"))
+  #plot_fixed_effects_para(
+  #  fit = fit, 
+  #  dir = dir) 
   
 }
