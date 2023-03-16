@@ -1,0 +1,248 @@
+---
+title: "California Onboard CPFV Index, 1999-2019, for `r params$species.name` in 2021"
+author: "Melissa H. Monk"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+params:
+    Model.number: 1
+    species.name: "vermilion"
+    survey.name: "CA CPFV onboard"
+    assess.folder: "VRML"
+    index.subfolder: "CA_CPFV_onboard"
+output:
+  bookdown::pdf_document2: 
+    keep_tex: true
+    keep_md: true
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
+  - \usepackage{placeins}
+always_allow_html: true
+---
+
+```{r setup, echo = FALSE, include = FALSE, warning = FALSE, message = FALSE, cache = FALSE}
+run_delta_glm <- TRUE
+#knitr::opts_chunk$set(echo = params$printcode)
+knitr::opts_chunk$set(echo = FALSE)
+options(knitr.table.format = "latex")
+Model_region <- c("NCA", "SCA")
+spp  <- params$species.name
+Spp <- stringr::str_to_title(spp)
+model.region <- ifelse(params$Model.number==1, "northern model" , "southern model")
+index.folder = paste0("C:/Stock_Assessments/",params$assess.folder,"_Assessment_2021/Indices_of_Abundance/")
+index.path = paste0(index.folder,params$index.subfolder,"/",Model_region[params$Model.number])
+source(paste0(index.folder,"dir_recent.R"))
+model.dir <- dir_recent(dir = index.path, pattern = "2021")
+
+load(paste0(model.dir,"/",Model_region[params$Model.number],"_",params$species.name,
+                  "_",params$index.subfolder,"_deltaglm.RData"))
+
+```
+
+```{r, include= TRUE, warning = FALSE, message = FALSE}
+source("C:/Stock_Assessments/VRML_Assessment_2021/Indices_of_abundance/01-Write up universal tables and figures.R")
+```
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE }
+library(devtools)
+library(kableExtra)
+library(knitr)
+library(readxl)
+library(xfun) # numbers to words
+library(dplyr)
+library(ggplot2)
+library(rmarkdown)
+library(png)
+```
+
+**California Onboard Observer Survey, 1999-2019**
+
+The state of California implemented a statewide onboard observer sampling 
+program in 1999 [@Monk2014].  California Polytechnic State University (Cal 
+Poly) has conducted an independent onboard sampling 
+program as of 2003 for boats in Port San Luis and Morro Bay, and follows 
+the protocols established in Reilly et al. [-@Reilly1998]. 
+
+During an onboard observer trip the sampler rides along on the CPFV and records 
+location-specific catch and discard information to the species level for a subset 
+of anglers onboard the vessel. The subset of observed anglers is usually a 
+maximum of 15 people the observed anglers change during each fishing stop.  
+The catch cannot be linked to an individual, but rather 
+to a specific fishing location.  The sampler also records the starting and 
+ending time, number of anglers observed, starting and ending depth, and measures 
+discarded fish. The fine-scale catch and effort data allow us to better filter 
+the data for indices to fishing stops within suitable habitat for `r spp1` . 
+Cal Poly has modified protocols  reflect sampling changes that CDFW 
+has also adopted, e.g., observing fish as they are encountered instead of at 
+the level of a fisher’s bag. Therefore, the Cal Poly data area incorporated in 
+the same index as the CDFW data from 1999-2019.  The only difference is that 
+Cal Poly measures the length of both retained and discarded fish.  
+
+Due to the COVID-19 pandemic, there are no onboard observer samples from either 
+CDFW or Cal Poly in 2020.
+
+**California CPFV CPUE Index: Data Preparation, Filtering, and Sample Sizes**
+
+As described above the CDFW and Cal Poly onboard observer programs are identical 
+in that the same protocols are followed.  The only difference is that Cal Poly
+measures both retained and discarded fish from the observed anglers and CDFW
+measures only discarded fish from the observed anglers. CDFW measures retained 
+fish as part of the angler interview at the bag and trip level. This index 
+selectivity is mirrored to the recreational 
+fleet in the stock assessment model, which represent only retained (dead) 
+fish.  Therefore, only retained fish were modeled in this index. The length 
+from CDFW sampling are contained in the RecFIN database and included in the 
+length composition for the recreational fleet in the assessment model. 
+
+A number of filters are applied to these data.  All of the Cal Poly data were 
+QA/QC-ed once key-punched, whereas a number of errors remain in the 
+data from CDFW.  Data sheets from CDFW are not available prior to 2012 and 
+staff constraints have also prevented a quality control review of the data. 
+
+Each drift was assigned to a reef (hard bottom). Hard bottom was extracted from 
+the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html), 
+with bathymetric data from state waters available at a 2 m resolution.  Reefs were 
+developed based on a number of factors described in the supplemental material 
+("Reef Delineation"). Depth restrictions in the recreational fishery were fairly 
+consistent from 2004-2016. Starting in 2017, depth restrictions eased in districts 
+north of Point Conception and the recreational fleet targeted these depths 
+(Figure \@ref(fig:fig-depthfished-cpfvonboard)). The deeper waters (40-50 fm) are 
+outside of the mapped hard bottom habitat, but could be assigend to the larger 
+areas considered as a factor in the index.
+
+We retained `r dim(dat)[1]` drifts for index standardization, with 
+`r dim(subset(dat, Target>0))[1]` drifts encountering `r spp1` 
+(Table \@ref(tab:tab-data-filter-cpfvonboard)).  
+
+Sample sizes by factors selected to model, excluding WAVE can be found in Tables 
+\@ref(tab:tab-region-cpfvonboard), \@ref(tab:tab-depth-cpfvonboard), and \@ref(tab:tab-year-cpfvonboard).
+
+**California CPFV CPUE Index: Model Selection, Fits, and Diagnostics**
+
+We modeled retained catch per angler hour (CPUE; number of fish per angler hour) 
+a Bayesian delta-GLM model.  Indices with a year and area interaction were not 
+considered in model selection; trends in the average CPUE by region were similar 
+in the filtered data set (Figure \@ref(fig:fig-areacpue-cpfvonboard)). 
+
+A `r pos.mod.dist` model  was 
+selected over a over a `r ifelse(pos.mod.dist=="Lognormal","Gamma","Lognormal")` model for the positive observations by a $\Delta AIC$ of `r ifelse(max(logn_or_gamma_aic[c(1,3),])==99999 , NA, round(max(logn_or_gamma_aic[c(1,3),]),2)) - round(min(logn_or_gamma_aic[c(1,3),], na.rm = T),2)`, and supported by Q-Q plots of the positive observations fit to both distributions (Figure \@ref(fig:fig-dist-fits-cpfvonboard)). The delta-GLM
+method allows the linear predictors to differ between the binomial and positive models.
+Based on AIC values from maximum likelihood fits (Table \@ref(tab:tab-model-select-cpfvonboard)), 
+a main effects model including 
+`r gsub("\\+","and",Model_selection$Model[which.min(binAIC$AIC[2:length(binAIC$AIC)]) + 1])` 
+was fit for the binomial model and a main 
+effects model including 
+`r gsub("\\+","and",Model_selection$Model[which.min(posAIC$AIC[2:length(posAIC$AIC)]) + 1])` 
+was fit for the  `r pos.mod.dist` model.
+Models were fit using the “rstanarm” R package (version 2.21.1). Posterior predictive 
+checks of the Bayesian model fit for the binomial model and the positive model 
+were all reasonable (Figures \@ref(fig:fig-posterior-mean-cpfvonboard)  and 
+ \@ref(fig:fig-posterior-sd-cpfvonboard)). The binomial model generated data sets with the 
+ proportion zeros similar to the `r scales::percent(1-dim(dat %>% filter(Target>0))[1]/dim(dat)[1])`  zeroes in the observed data 
+(Figure \@ref(fig:fig-propzero-cpfvonboard)). The predicted marginal effects from 
+both the binomial and `r pos.mod.dist` models can be found in Figures \@ref(fig:fig-Dbin-marginal-cpfvonboard) and \@ref(fig:fig-Dpos-marginal-cpfvonboard). The 
+final index (Table \@ref(tab:tab-index-cpfvonboard)) 
+represents a similar trend to the arithmetic mean of the annual CPUE (Figure \@ref(fig:fig-cpue-cpfvonboard)).
+
+
+\FloatBarrier 
+
+
+<!-- ******************************* TABLES ******************************** --> 
+
+
+`r table.data.filter`
+
+\FloatBarrier
+
+`r table.depth`
+
+\FloatBarrier
+
+`r table.subregion`
+
+\FloatBarrier
+
+`r table.year`
+
+\FloatBarrier
+
+`r table.model.select`
+
+\FloatBarrier
+
+`r table.index`
+
+\FloatBarrier
+
+<!-- ****************************** FIGURES ******************************** --> 
+
+
+
+
+```{r, echo = FALSE, fig-depthfished-cpfvonboard, fig.cap = "Boxplots of depths fished by year in the filtered data."}
+depth_fished <- ggplot(subset(dat, Target > 0), aes(DEPTH, YEAR)) +
+  geom_boxplot(fill = "#1B9E77") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  labs(x = "Depth (fm)",
+        y = "Year")
+depth_fished
+```
+
+
+\FloatBarrier
+
+```{r, fig-areacpue-cpfvonboard, message = FALSE, warning = FALSE, fig.cap = paste("Arithmetic mean of CPUE by region for ", spp, "from the filtered data. The areas used are in the text.")}
+print(figure.subregion.CPUE)
+```
+
+
+```{r, echo = FALSE, fig-dist-fits-cpfvonboard, warning = FALSE, message =FALSE, fig.cap = paste("Q-Q plot (top) of the positive observations lognormal gamma distributions and fitted values vs residuals for the", pos.mod.dist,"model (bottom).")}
+ggpubr::ggarrange(pos.qq, pos.resid, ncol = 1)
+```
+
+  
+```{r, echo = FALSE, fig-posterior-mean-cpfvonboard, fig.cap = "Posterior predictive draws of the mean (x-axis) by year in replicate data sets generated by the delta model with a vertical line representing the observed mean in the data."}
+print(figure.ppc.mean.by.year)
+```
+
+\FloatBarrier
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE, fig-posterior-sd-cpfvonboard, fig.cap = "Posterior predictive draws of the standard deviation by year (x-axis) in replicate data sets generated by the delta model with a vertical line representing the observed standard deviation in the data."}
+print(figure.ppc.sd.by.year)
+```
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE, fig-propzero-cpfvonboard, fig.cap = "Posterior predictive distribution of the proportion of zero observations (x-axis) in replicate data sets generated by the delta model with a vertical line representing the observed average proportion of zeros in the data."}
+print(figure.ppc.stat.grouped)
+```
+
+
+
+\FloatBarrier
+
+```{r, fig-cpue-cpfvonboard, echo = FALSE, message = FALSE, warning = FALSE,fig.cap = "Standardized index and arithmetic mean of the CPUE from the filtered data. Each timeseries is scaled to its respective mean."}
+print(figure.CPUE)
+```
+
+
+```{r, fig-Dbin-marginal-cpfvonboard, echo = FALSE,message = FALSE, warning = FALSE, fig.cap = "Marginal effects from the binomial model of the delta-GLM."}
+# binomial model marginal components
+sjPlot::plot_grid(figure.Dbin.list, tags = TRUE, margin = c(.1, .1, .1, .1)) 
+```
+
+
+```{r, echo = FALSE, fig-Dpos-marginal-cpfvonboard,message = FALSE, warning = FALSE, fig.cap = "Marginal effects from the positive model of the delta-GLM."}
+# positive model marginal components
+sjPlot::plot_grid(figure.Dpos.list, tags = TRUE, margin = c(.1, .1, .1, .1)) 
+```
