@@ -34,12 +34,42 @@ dir_main <- file.path(here(), "data", "wcgbt")
 
 load(file.path(dir_main, "catch_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
 catch_orig <- x
-load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
-bio_orig <- x
+#load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
+#bio_orig <- x
+load(file.path(dir_main, "bio_2003-2004_w_ages.rdata"))
+
+#=====================================================================
+# Thread in the newly released ages
+#=====================================================================
+# new_ages <- read.csv(file.path(dir_main, "NWFSC_Combo_2004-2022_COPP_AgeData_20230309.csv"))
+# # There is a duplicate record in these data 102185136
+# duplicate <- new_ages[new_ages$Barcode == "102185136", ]
+# sub_ages <- new_ages[new_ages$Barcode != "102185136", ]
+# sub_ages <- rbind(sub_ages, duplicate[1,])
+# sub_ages <- sub_ages[, c("Year", "Barcode", "Age")]
+# sub_ages$Barcode <- as.character(sub_ages$Barcode)
+# colnames(sub_ages) <- c("Year", "Otosag_id", "Read_Age")
+# 
+# find = which(sub_ages$Otosag_id %in% bio_orig$Otosag_id)
+# length(find)
+# hist(sub_ages[-find, 'Read_Age'])
+# sum(!is.na(bio_orig$Age))
+# 
+# bio_orig <- dplyr::left_join(bio_orig, sub_ages[find,])
+# replace <- which(!is.na(bio_orig$Read_Age))
+# bio_orig$Age[replace] <- bio_orig$Read_Age[replace]
+# bio_orig$Age_years[replace] <- bio_orig$Read_Age[replace]
+# sum(!is.na(bio_orig$Age))
+# sum(!is.na(bio_orig$Age_years))
+# 
+# save(bio_orig, file = file.path(dir_main, "bio_2003-2004_w_ages.rdata"))
 
 #=====================================================================
 # Do some summaries for data available for both areas 
 #=====================================================================
+catch_orig <- catch_orig[catch_orig$Latitude_dd < 42, ]
+bio_orig <- bio_orig[bio_orig$Latitude_dd < 42, ]
+
 catch_orig$area <- 'north'
 catch_orig[catch_orig$Latitude_dd < 34.47, 'area'] <- 'south'
 
@@ -59,6 +89,9 @@ n_tows <- catch_orig %>%
     positive_tows = sum(total_catch_numbers > 0)
   )
 
+remove <- which(n_tows$Year == 2011)
+n_tows <- n_tows[-remove[1], ]
+
 out <- cbind(n_tows, n_obs[, c("length_samples", "age_samples")])
 colnames(out) <- c("Area", "Year", "Positive Tows", "Length Samples", "Read Ages")
 write.csv(out, row.names = FALSE, file = file.path(dir_main, "forSS", "positive_tows_and_bio_samples.csv"))
@@ -66,8 +99,8 @@ write.csv(out, row.names = FALSE, file = file.path(dir_main, "forSS", "positive_
 #=====================================================================
 # Split the data by assessment area 
 #=====================================================================
-area = "south"
-#area = "north"
+#area = "south"
+area = "north"
 
 catch <- catch_orig[catch_orig$area == area, ]
 bio <- bio_orig[bio_orig$area == area, ]
@@ -88,8 +121,22 @@ strata = CreateStrataDF.fn(names=c("All Depths"),
                            depths.shallow = c(55),
                            depths.deep    = c(183),
                            lats.south     = c(32.5),
-                           lats.north     = c(34.5))
+                           lats.north     = c(42.0))
 
+if( area == "south") {
+  strata = CreateStrataDF.fn(names=c("All Depths"), 
+                           depths.shallow = c(55),
+                           depths.deep    = c(183),
+                           lats.south     = c(32.5),
+                           lats.north     = c(34.5))
+} 
+if( area == "north") {
+strata = CreateStrataDF.fn(names=c("All Depths"), 
+                           depths.shallow = c(55),
+                           depths.deep    = c(183),
+                           lats.south     = c(34.5),
+                           lats.north     = c(42.0))
+}
 num_strata = CheckStrata.fn(dir = dir,  
 							dat = catch, 
 							strat.df = strata)
@@ -265,6 +312,7 @@ plot_comps(dir = dir,
 # Conditional-age-at-length
 caal <- SurveyAgeAtLen.fn(
     dir = dir, 
+    sex = 3,
     datAL = bio, 
     datTows = catch, 
     strat.df = strata, 
