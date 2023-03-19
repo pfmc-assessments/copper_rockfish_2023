@@ -15,6 +15,11 @@ library(nwfscSurvey)
 library(ggplot2)
 library(tidyverse)
 
+# Here's the link to the paper: https://spo.nmfs.noaa.gov/sites/default/files/pdf-content/fish-bull/echeverria.pdf
+# The paper uses "pinched" tail length for total length, so it's an overestimate of total length. 
+# (0.629+(1.01*LNGTH)) as total_length
+# Check the MRFSS length, particularly those that overlap with Deb WV lengths
+
 dir <- file.path(here(), "data", "rec_bds")
 setwd(dir)
 dir.create(file.path(dir, "plots"), showWarnings = FALSE)
@@ -76,6 +81,10 @@ donp$sex[donp$sex == 9] <- "U"
 miller_rec$sex <- "U"
 deb_wv$sex <- "U"
 
+# https://spo.nmfs.noaa.gov/sites/default/files/pdf-content/fish-bull/echeverria.pdf
+# The paper uses "pinched" tail length for total length, so it's an overestimate of total length. 
+# (0.629+(1.01*LNGTH)) as total_length
+
 # Length column
 # Note: These are total lengths not fork lengths
 deb_wv$lengthcm <- deb_wv$lengthcm_tl / 10
@@ -95,6 +104,120 @@ miller_rec$trip <- paste0(miller_rec$year, miller_rec$district, miller_rec$count
 donp$trip <- paste0(donp$SAMPLE_NO)
 collins_rec$trip <- collins_rec$tripID
 ally_rec$trip <- paste0(ally_rec$year, ally_rec$complex, ally_rec$landing, ally_rec$district)
+
+#=============================================================================================
+# CRFS mean length
+#=============================================================================================
+
+crfs_mean_length <- crfs %>%
+  mutate(district = substr(RECFIN_PORT_NAME, 1, 5)) %>%
+  group_by(RECFIN_YEAR, mode, RECFIN_PORT_NAME) %>%
+  summarize(mean = mean(lengthcm))
+
+
+ggplot(crfs_mean_length) +
+ # geom_line(size = 1) + 
+  geomtextpath::geom_textline(aes(
+    x = RECFIN_YEAR, y = mean, 
+    color = RECFIN_PORT_NAME, label = RECFIN_PORT_NAME),
+  hjust = .7,
+  size = 2,
+  linewidth = 1.2) +
+  facet_wrap(~mode) +
+  theme(legend.position = "none") +
+  xlab("Year") + ylab("Mean Length") +
+  scale_color_viridis_d() 
+ 
+
+#=============================================================================================
+# MRFSS vs Deb's exploration
+#=============================================================================================
+ #mrfss assign counties to districts for only northern ca
+   mrfs_north <- mrfs %>%
+     filter(area == "north",
+            mode=="cpfv",
+            between(year, 1987,1998)) %>%
+     mutate(district = case_when(CNTY %in% c(15, 23) ~ 6,
+         CNTY %in% c(45) ~ 5,
+              CNTY %in% c(53, 79, 87) ~ 3, 
+            CNTY %in% c(1,13,41,75,77,81,97) ~ 4))
+ col_names1 <- c('year', 'mode', 'area','district', 'program', 'lengthcm', 'trip')
+ some_dat <- rbind(
+     mrfs_north[, col_names1],
+     deb_wv[, col_names1]
+   )
+ some_data <- rbind(
+     mrfs_north[, col_names1],
+     deb_wv[, col_names1]
+   )
+ mean_length <- some_data %>%
+   group_by(program, district, year) %>%
+   summarize(mean = mean(lengthcm),
+             count = n())
+ 
+ samples1 <- some_data %>%
+   group_by(program, district, year) %>%
+   summarize(count = n())
+ 
+ samples2 <- some_data %>%
+   group_by(program, year) %>%
+   summarise(count_all = n())
+ 
+ samples3 <- inner_join(samples1,samples2) %>%
+   mutate(percent_in_district = count/count_all)
+
+ #=============================================================================================
+ # Plots for melissa's exploration
+ #=============================================================================================
+ 
+ #look at the percent of samples coming from each district by program over time
+ ggplot(samples3, aes(x = year, y = percent_in_district, 
+                      color = as.factor(district))) + 
+   geom_point() +
+   geom_path() +
+   facet_wrap(~program) +
+   scale_color_viridis_d() 
+  
+ 
+ 
+  ggplot(mean_length, aes(x = year, y = mean, color = district)) +
+   geom_line(lwd = 0.8, adjust = 0.5) + 
+   xlab("Year") + ylab("MeanLength") +
+   facet_wrap(facets = c("program")) + 
+ 
+  ggplot(some_data, aes(y = lengthcm, x = year, group = year)) +
+     geom_boxplot() + 
+     facet_wrap(facets = c("district"," program")) + 
+     xlab("Year") + ylab("Length (cm)") 
+
+
+ ggplot(some_data, aes(y = lengthcm, x = program, group = program)) +
+     geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+     xlab("Length (cm)") + ylab("Density") +
+     facet_wrap(facets = c("district")) + 
+     scale_color_viridis_d()
+ 
+ ggplot(some_data, aes(lengthcm, group = program)) +
+     geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+     xlab("Length (cm)") + ylab("Density") +
+     facet_wrap(facets = c("district")) + 
+     scale_color_viridis_d()
+ ggplot(some_data, aes(lengthcm, fill = program, color = program)) +
+     geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+     xlab("Length (cm)") + ylab("Density") +
+     facet_wrap(facets = c("district")) + 
+     scale_color_viridis_d()
+> #ggsave(filename = file.path(dir, "plots", "rec_south_length_boxplot_by_mode_program_year.png"),
+   #       width = 10, height = 10)
+ 
+    ggplot(some_data, aes(lengthcm, fill = district, color = district)) +
+     geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+     xlab("Length (cm)") + ylab("Density") +
+     facet_wrap(facets = c("program")) + 
+     scale_color_viridis_d()
+
+
+
 
 #=============================================================================================
 # Put all the data into a single data frame
@@ -162,10 +285,13 @@ ggplot(all_data[all_data$area == 'north', ], aes(lengthcm, fill = mode, color = 
 
 # Compare DWV and MRFSS data looking for overlap (e.g., 'mrfss' samples included in DWV data)
 tmp = all_data[all_data$year %in% c(1987:1998) & all_data$area == 'north' & all_data$mode == 'cpfv', ]
-aggregate(lengthcm~program+year, tmp, quantile)
+tmp$length <- tmp$lengthcm
+tmp$length[tmp$program == 'mrfss'] <- 0.629+(1.01 * tmp$length[tmp$program == 'mrfss'])
+aggregate(length~program+year, tmp, quantile)
+
 comp_mrfss_dwv <- tmp %>%
   group_by(year, program) %>%
-  summarise(
+  reframe(
     n = n(), 
     len_min = min(lengthcm),
     len_med = median(lengthcm),
@@ -316,6 +442,7 @@ comp_mrfss_dwv <- tmp %>%
 write.csv(comp_mrfss_dwv, 
     file = file.path(dir, "forSS", "north_mrfss_dwv_comparison.csv"),
     row.names = FALSE)
+
 ggplot(tmp, aes(lengthcm, fill = program, color = program)) + 
   geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
   xlab("Length (cm)") + ylab("Density") +
