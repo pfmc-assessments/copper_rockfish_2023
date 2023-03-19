@@ -107,12 +107,41 @@ label = 'mean-rec-pr-len-data')
 <!-- ***************  NWFSC HKL Survey   ******************* --> 
 <!-- ======================================================= -->
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_loc, "nwfsc_hkl", "maps", "Map_HL_Sites_lndscp.jpg"), 
+caption = "Area sampled by the NWFSC Hook and Line survey",
+label = 'nwfsc-hkl-map')
+```
+
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_loc, "nwfsc_hkl", "plots", "hkl_copper_by_site_count_all_years.png"), 
+caption = "Observations of copper rockfish by the NWFSC Hook and Line survey by sample area, inside and outside Cowcod Conservation areas (CCA)",
+label = 'nwfsc-hkl-site')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_loc, "nwfsc_hkl", "plots", "hkl_observations_by_length_sex_area.png"), 
+caption = "Observed length (cm) distribution of copper rockfish by the NWFSC Hook and Line survey by sample area, inside and outside Cowcod Conservation areas (CCA)",
+label = 'nwfsc-hkl-site-len')
+```
+
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(mod_loc, "plots", "comp_lendat_bubflt5mkt0.png"), 
 caption = "Length composition data from the NWFSC Hook and Line survey",
 label = 'hkl-len-data')
 ```
+
 
 ```{r, results = 'asis'}
 add_figure(
