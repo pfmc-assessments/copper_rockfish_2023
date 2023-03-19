@@ -23,8 +23,9 @@ pngfun <- function(dir, name, w = 7,h = 7, pt = 12){
 
 # Load in survey data
 # NWFSC WCGBT survey data
-load(file.path(dir, "wcgbt", "bio_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
-wcgbt <- x
+#load(file.path(dir, "wcgbt", "bio_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
+load(file.path(dir, "wcgbt", "bio_2003-2004_w_ages.rdata"))
+wcgbt <- bio_orig
 wcgbt$source <- "NWFSC WCGBT"
 wcgbt <- wcgbt[wcgbt$Latitude_dd < 42, ]
 wcgbt$area <- 'north'
@@ -187,54 +188,53 @@ dev.off()
 #========================================================
 # Estimate age-at-length
 #========================================================
-age_df <- age_df[age_df$Source != "Carcass Sampling", ]
 
 age_df <- all_data[!is.na(all_data$age), ]
+age_df <- age_df[age_df$Source != "Carcass Sampling", ]
+age_df <- age_df[age_df$sex != "U", ]
 age_df$Age <- age_df$age
 age_df$Length_cm <- age_df$length_cm
 age_df$Sex <- age_df$sex
-
-length_age_ests_all <- est_growth(
-  dat = age_df, 
-  return_df = FALSE,
-  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10))
-
-save(length_age_ests_all, file = file.path(dir, 'length_at_age_ests_all.rdata'))
-
-length_age_ests_north <- est_growth(
-  dat = age_df[age_df$area == "north", ], 
-  return_df = FALSE,
-  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10))
-
-length_age_ests_south <- est_growth(
-  dat = age_df[age_df$area == "south", ], 
-  return_df = FALSE,
-  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10))
 
 ages_all <- est_growth(
   dir = NULL, 
   dat = age_df, 
   Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10),
   sdFactor = 3)
+
 remove <- which(ages_all[,'length_cm'] > ages_all[,'Lhat_high'] | ages_all[,'length_cm'] < ages_all[,'Lhat_low'])
+ages_all[remove, ]
 
+plot(ages_all[remove, 'Age'], ages_all[remove, "Length_cm"], xlim = c(0,40), ylim = c(0, 50)) 
+clean_ages <- age_df[-remove, ]
 
-ages_south <- est_growth(
-  dir = NULL, 
-  dat = age_df[age_df$area == "south", ], 
-  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10),
-  sdFactor = 3)
+length_age_ests_all <- est_growth(
+  dat = clean_ages, #age_df, 
+  return_df = FALSE,
+  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10))
 
-ages_north <- est_growth(
-  dir = NULL, 
+save(length_age_ests_all, file = file.path(dir,"biology", 'length_at_age_ests_all.rdata'))
+
+length_age_ests_north <- est_growth(
   dat = age_df[age_df$area == "north", ], 
-  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10),
-  sdFactor = 3)
+  return_df = FALSE,
+  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10))
 
+
+save(length_age_ests_north, file = file.path(dir,"biology", 'length_at_age_ests_north.rdata'))
+
+
+length_age_ests_south <- est_growth(
+  dat = age_df[age_df$area == "south", ], 
+  return_df = FALSE,
+  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10))
+
+save(length_age_ests_south, file = file.path(dir,"biology", 'length_at_age_ests_south.rdata'))
 
 ggplot(age_df, aes(y = length_cm, x = age, color = Source)) +
-	geom_point() + 
+	geom_point(alpha = 0.1) + 
   theme_bw() + 
+  geom_jitter() + 
   xlim(1, 50) + ylim(1, 55) +
   theme(panel.grid.major = element_blank(), 
         axis.text = element_text(size = 12),
@@ -248,4 +248,17 @@ ggsave(filename = file.path(dir, "biology", "plots", "age_at_length.png"),
        width = 10, height = 8)
 
 
-
+ggplot(age_df, aes(y = length_cm, x = age, color = sex)) +
+  geom_point() + 
+  theme_bw() + 
+  xlim(1, 50) + ylim(1, 55) +
+  theme(panel.grid.major = element_blank(), 
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        strip.text.y = element_text(size = 14),
+        panel.grid.minor = element_blank()) + 
+  facet_grid(area~.) + 
+  xlab("Age") + ylab("Length (cm)") +
+  scale_color_viridis_d()
+ggsave(filename = file.path(dir, "biology", "plots", "age_at_length_by_sex.png"),
+       width = 10, height = 8)
