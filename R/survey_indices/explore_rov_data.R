@@ -13,8 +13,12 @@ dir <- file.path(here(), "data", "survey_indices", "rov")
 rov_orig <- read.csv(file.path(dir, "rov_data_10m_2023.csv"))
 # This new file removes records with no usable area fished calculations
 rov <- read.csv(file.path(dir, "ROVData10mMaster2023-3_1_23.csv"))
+# Transect level data provided by John Budrick
+rov_south <- read.csv(file.path(dir, "TransectNorth.csv"))
+rov_north <- read.csv(file.path(dir, "TransectSouth.csv"))
 rov_orig <- as.data.frame(rov_orig)
 rov <- as.data.frame(rov)
+
 rov$ave_depth_bin <- plyr::round_any(as.numeric(rov$Avg_Depth), 2, floor)
 rov$ave_lat_bin <- plyr::round_any(as.numeric(rov$Avg_Lat), 0.1, floor)
 rov$ave_lon_bin <- plyr::round_any(as.numeric(rov$Avg_Lon), 0.1, floor)
