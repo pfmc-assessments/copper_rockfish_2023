@@ -432,3 +432,20 @@ copp_4_5 <- hook_table %>%
          `2` != "Copper Rockfish",
          `3` != "Copper Rockfish" )
 #only 66 total lines
+
+
+raw.cpue <- hkl_all %>%
+  group_by(year) %>%
+  summarize(
+    sites = length(unique(site_number)),
+    n = sum(count),
+    effort = length(unique(angler_number)) * length(unique(hook_number)) * length(unique(drop_number)),
+    cpue = n / effort,
+    avg_cpue = mean(cpue)) 
+  
+  
+ggplot(raw.cpue) +
+  geom_line(aes(x = year, y = avg_cpue)) + 
+  geom_point(aes(x = year, y = avg_cpue), size = 2) +
+  ylim(c(0, 2))
+ggsave(file = file.path(dir, "plots", 'raw_cpue_nwfsc_hkl.png'), width = 7, height = 7)
