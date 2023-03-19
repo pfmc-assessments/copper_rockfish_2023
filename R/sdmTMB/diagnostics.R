@@ -75,6 +75,9 @@ save(
 plot_qq <- function(fit, dir){
   
   resids <- fit$data$residuals
+  # Switch to generating the Q:Q plot based on MCMC samples
+  # samps <- sdmTMBextra::predict_mle_mcmc(fit, mcmc_iter = 201, mcmc_warmup = 200)
+  # mcmc_res <- residuals(fit, type = "mle-mcmc", mcmc_samples = samps)
   
   grDevices::png(
     filename = file.path(dir, "qq.png"),

@@ -78,10 +78,10 @@ format_hkl_data <- function(
   data$crew <- as.character(data$crew)  
   data$crew <- as.factor(data$crew)
 
-  data[,'crew_scaled'] = as.numeric(data[,'crew'], as.is = FALSE) - 1
-  data[,'hook_scaled'] = as.numeric(data[,'hook_number'], as.is = FALSE) 
-  data[,'drop_scaled'] = as.numeric(data[,'drop_number'], as.is = FALSE) 
-  data[,'angler_scaled'] = as.numeric(data[,'angler_number'], as.is = FALSE) 
+  data[,'crew'] = as.numeric(data[,'crew'], as.is = FALSE) - 1
+  data[,'hook'] = as.numeric(data[,'hook_number'], as.is = FALSE) 
+  data[,'drop'] = as.numeric(data[,'drop_number'], as.is = FALSE) 
+  data[,'angler'] = as.numeric(data[,'angler_number'], as.is = FALSE) 
   data[, "moon_phase"] = as.numeric(data[,"moon_phase"], as.is = FALSE) 
   return(data)
      
