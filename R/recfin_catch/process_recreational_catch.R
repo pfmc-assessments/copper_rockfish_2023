@@ -18,6 +18,9 @@ load(file.path(dir, "mrfss_catch_filtered.rdata"))
 hist <- read.csv(file.path(dir, "2021.spp.rec.n.and.s.conception.csv"))
 # Load in the proxy values for 2020 provided by CDFW (will be added to existing removals)
 proxy_2020 <- read.csv(file.path(dir, "CDFWRec_CopperRF_AvgProxyValuesApr-Jun2020.csv"))
+# Load the 2020-21 allocation of rockfish genus catch
+genus <- read.csv(file.path(dir, "genus_allocate.csv"))
+genus <- genus[genus$orig_allocated == "allocated", ]
 
 #===============================================================================================
 # CRFS processing 
@@ -139,6 +142,24 @@ add_2020 <- data.frame(
   catch_mt = c(cat_north[,2], cat_south[, 2]) 
 )
 
+#==============================================================================================
+# Rockfish genus processing
+#==============================================================================================
+genus$area <- "north"
+genus$area[genus$district %in% 1:2] <- "south"
+
+genus_catch <- genus[genus$orig_allocated == "allocated", ] %>%
+  group_by(year, area, mode) %>%
+  reframe(
+    catch_mt = sum(0.001 * copper_kg)
+  )
+
+genus_catch$mode[genus_catch$mode == "pc"] <- "cpfv"
+genus_catch$mode[genus_catch$mode == "pr"] <- "private"
+genus_catch <- as.data.frame(genus_catch)
+
+sum(genus_catch$catch_mt) == sum(0.001 * genus$copper_kg)
+
 #===============================================================================================
 # Combine everything together 
 #===============================================================================================
@@ -179,6 +200,17 @@ crfs_for_ss3  <- aggregate(catch_mt ~ year + area + mode, crfs_month, sum)
 # Fix the catch for specific years
 # =============================================================================================
 
+# Adjust south catches for 1987 where there are no reported 
+# removals in mrfss for waves 1-3 (first 6 months of the year)
+wave_ave <- aggregate(catch_mt ~ mode, 
+                      mrfss[mrfss$area == 'south' & mrfss$year %in% c(1985:1986, 1988:1989) & mrfss$wave %in% 1:3, ], function(x) sum(x) /4 )
+find <- which(mrfss_for_ss3$year == 1987 & mrfss_for_ss3$area == 'south')
+mrfss_for_ss3[find[1], 'catch_mt'] <- 
+  as.numeric(mrfss_for_ss3[find[1], 'catch_mt']) + wave_ave[wave_ave$mode == "cpfv", 'catch_mt']
+mrfss_for_ss3[find[2], 'catch_mt'] <- 
+  as.numeric(mrfss_for_ss3[find[2], 'catch_mt']) + wave_ave[wave_ave$mode == "private", 'catch_mt']
+
+
 # North in 1993-1995 there are no cpfv removals. John Budrick proposed to fill these in by averaging
 # the cpfv removals in 1987:1989 and 1996:1998 and ramping between these values. The other fleets
 # (private-north, cpfv-south, private-south) can be averaged from removals between 1987:1989 and 
@@ -212,16 +244,6 @@ fill_2004 <- 	as.data.frame(rbind(
 ))
 colnames(fill_2004) <- c('year', 'area', 'mode', 'catch_mt')
 
-# Adjust south catches for 1987 where there are no reported 
-# removals in mrfss for waves 1-3 (first 6 months of the year)
-wave_ave <- aggregate(catch_mt ~ mode, 
-  mrfss[mrfss$area == 'south' & mrfss$year %in% c(1985:1986, 1988:1989) & mrfss$wave %in% 1:3, ], function(x) sum(x) /4 )
-find <- which(mrfss_for_ss3$year == 1987 & mrfss_for_ss3$area == 'south')
-mrfss_for_ss3[find[1], 'catch_mt'] <- 
-  as.numeric(mrfss_for_ss3[find[1], 'catch_mt']) + wave_ave[wave_ave$mode == "cpfv", 'catch_mt']
-mrfss_for_ss3[find[2], 'catch_mt'] <- 
-  as.numeric(mrfss_for_ss3[find[2], 'catch_mt']) + wave_ave[wave_ave$mode == "private", 'catch_mt']
-
 landings_to_add <- 
   as.data.frame(rbind(fill_values, fill_2004))
 
@@ -244,12 +266,23 @@ ave_years <- which(mrfss_for_ss3$year %in% 1982:1983 & mrfss_for_ss3$area == "no
 mrfss_for_ss3[mrfss_for_ss3$year == 1981 & mrfss_for_ss3$area == "north" & mrfss_for_ss3$mode == "private", "catch_mt"] <-
   mean(c(hist_formatted[hist_year, "catch_mt"], as.numeric(mrfss_for_ss3[ave_years, "catch_mt"])))    
 
-# Add the CDFW proxies to 2020
-for (a in unique(crfs_for_ss3$area)){
-  for(m in unique(crfs_for_ss3$mode)){
-    ind1 <- which(crfs_for_ss3$year == '2020' & crfs_for_ss3$area == a & crfs_for_ss3$mode == m)
-    ind2 <- which(add_2020$area == a & add_2020$mode == m)
-    crfs_for_ss3[ind1, 'catch_mt'] <- crfs_for_ss3[ind1, 'catch_mt'] + add_2020[ind2, 'catch_mt']
+# Add the CDFW proxies to 2020 & rockfish genus catch
+for (y in 2020:2021){
+  for (a in unique(crfs_for_ss3$area)){
+    for(m in unique(crfs_for_ss3$mode)){
+      ind1 <- which(crfs_for_ss3$year == y & crfs_for_ss3$area == a & crfs_for_ss3$mode == m)
+      ind2 <- which(add_2020$area == a & add_2020$mode == m)
+      ind3 <- which(genus_catch$year == y & genus_catch$area == a & genus_catch$mode == m)
+      if(y == 2020){
+        crfs_for_ss3[ind1, 'catch_mt'] <- 
+          crfs_for_ss3[ind1, 'catch_mt'] + add_2020[ind2, 'catch_mt'] + genus_catch[ind3, 'catch_mt']         
+      } else {
+        if(m == "cpfv") {
+          crfs_for_ss3[ind1, 'catch_mt'] <- 
+            crfs_for_ss3[ind1, 'catch_mt'] + genus_catch[ind3, 'catch_mt']           
+        }
+      }
+    }
   }
 }
 
