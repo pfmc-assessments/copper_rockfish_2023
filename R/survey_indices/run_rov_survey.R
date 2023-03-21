@@ -308,10 +308,10 @@ n_open <- round(0.92 * 100, 0)
 n_mpa  <- round(0.08 * 100, 0)
 
 grid_south <- NULL
-for (a in 1:(92/2)){
+for (a in 1:92){
   grid_south <- rbind(grid_south, grid[grid$designation == "Reference", ])
 }
-for(a in 1:4){
+for(a in 1:8){
   grid_south <- rbind(grid_south, grid[grid$designation == "MPA", ])
 }
 
@@ -465,6 +465,41 @@ do_diagnostics(
   fit = south_model,
   plot_resids = FALSE)
 
+name <- "delta_lognormal_south_designation_depth_soft"
+dir.create(file.path(dir, name), showWarnings = FALSE)
+
+data <- rov_south
+data$year <- data$super_year
+data$log_usable_area <- log(data$usable_area)
+
+south_model <- sdmTMB(
+  n ~ poly(depth_scaled, 2) + prop_soft_scaled + as.factor(year)*as.factor(designation), 
+  data = data,
+  offset = log(data$usable_area),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = delta_lognormal()
+)
+
+index <- calc_index(
+  dir = file.path(dir, name), 
+  fit = south_model,
+  grid = grid_south)
+
+do_diagnostics(
+  dir = file.path(dir, name), 
+  fit = south_model,
+  plot_resids = FALSE)
+
+
+# alternative approach - add area
+total_area_km2 <- 200 # dummy number, units should be in whatever your area units are
+mpa_fraction <- 0.08
+grid$area <- c(rep(mpa_fraction,2), rep(1-mpa_fraction,2)) * total_area_km2
+pred <- predict(south_model, newdata = grid, return_tmb_object = TRUE)
+index <- get_index(pred, area = grid$area, bias_correct = TRUE)
+
 #mod2 <- MASS::glm.nb(n ~ as.factor(year) + poly(depth_scaled,2) + prop_soft_scaled + 
 #                     as.factor(designation) + as.factor(year):as.factor(designation) +
 #                     offset(log_usable_area),
@@ -492,13 +527,13 @@ Dnbin<- stan_glm.nb(n ~ as.factor(year) + as.factor(designation) + poly(depth_sc
                     iter = 5000
 ) # iterations per chain
 Sys.time() - start.time
-save(Dnbin, file = file.path(dir, name, "rstan_glm_output.rdata"))
+save(Dnbin, file = file.pprath(dir, name, "rstan_glm_output.rdata"))
 
 ## pp_check
 prop_zero <- function(y) mean(y == 0)
 
 # figure of proportion zero - does good job
-figure_Dnbin_prop_zero <- pp_check(Dnbin, plotfun = "stat", stat = "prop_zero", binwidth = 0.01)
+figure_Dnbin_prop_zero <- rstanarm::pp_check(Dnbin, plotfun = "stat", stat = "prop_zero", binwidth = 0.01)
 pngfun(wd = file.path(dir, name), file = "proportion_zero_south.png")
 figure_Dnbin_prop_zero
 dev.off()
@@ -579,6 +614,33 @@ north_model <- sdmTMB(
   spatial="off",
   spatiotemporal = "off",
   family = nbinom2(link = "log")
+)
+
+index <- calc_index(
+  dir = file.path(dir, name), 
+  fit = north_model,
+  grid = grid_north)
+
+do_diagnostics(
+  dir = file.path(dir, name), 
+  fit = north_model,
+  plot_resids = FALSE)
+
+name <- "delta_lognormal_north_designation_depth_soft"
+dir.create(file.path(dir, name), showWarnings = FALSE)
+
+data <- rov_north
+data$year <- data$super_year
+data$log_usable_area <- log(data$usable_area)
+
+north_model <- sdmTMB(
+  n ~ poly(depth_scaled, 2) +  as.factor(year)*as.factor(designation), 
+  data = data,
+  offset = log(data$usable_area),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = delta_lognormal()
 )
 
 index <- calc_index(

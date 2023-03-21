@@ -605,5 +605,34 @@ write.csv(format_index,
           file = file.path(index_dir, name, "index_mcmc_forSS.csv"),
           row.names = FALSE)
 
+#===============================================================================
+# Compare the indices
+#===============================================================================
+
+load(file.path(index_dir, "glm_negbin_main_year_site_drop_swell_vermilion_bocaccio", "index.rdata")) 
+best_model <- index
+best_model$name <- "glm_negbin_main_year_site_drop_swell_vermilion_bocaccio"
+load(file.path(index_dir, "glm_negbin_main_year_site_drop_swell", "index.rdata")) 
+simple_model <- index
+simple_model$name <- "glm_negbin_main_year_site_drop_swell"
+load(file.path(index_dir, "delta_gamma_main_year_site_drop_swell", "index.rdata")) 
+delta_simple <- index
+delta_simple$name <- "delta_gamma_main_year_site_drop_swell"
+load(file.path(index_dir, "glm_negbin_main_year_site_drop_swell_vermilion_bocaccio_no_cca", "index.rdata")) 
+best_no_cca <- index
+best_no_cca$name <- "glm_negbin_main_year_site_drop_swell_vermilion_bocaccio_no_cca"
+
+index_all <- rbind(
+  best_model, simple_model, delta_simple, best_no_cca
+)
+
+
+cex.axis = 1.25
+cex.lab = 1.20
+ymax <- max(index_all$est + index_all$est *0.5)
+
+colors <- viridis::viridis(4)
+
+
 
 
