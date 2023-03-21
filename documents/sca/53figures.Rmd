@@ -34,14 +34,14 @@ label = 'data-plot')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc, "plots", "comp_lendat_bubflt1mkt2_page2.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_bubflt1mkt2_page2.png"), 
 caption = "Length composition data from the commercial dead fleet",
 label = 'com-dead-len-data')
 ```
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc, "plots", "comp_lendat_data_weighting_TA1.8_Commercial_dead.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Commercial_dead.png"), 
 caption = "Mean length for commercial dead fleet with 95 percent confidence intervals",
 label = 'mean-com-dead-len-data')
 ```
@@ -50,14 +50,14 @@ label = 'mean-com-dead-len-data')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc, "plots", "comp_lendat_bubflt2mkt2.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_bubflt2mkt2.png"), 
 caption = "Length composition data from the commercial live fleet",
 label = 'com-live-len-data')
 ```
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc, "plots", "comp_lendat_data_weighting_TA1.8_Commercial_live.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Commercial_live.png"), 
 caption = "Mean length for commercial live fleet with 95 percent confidence intervals",
 label = 'mean-com-live-len-data')
 ```
@@ -72,14 +72,14 @@ label = 'mean-com-live-len-data')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc, "plots", "comp_lendat_bubflt3mkt0_page2.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_bubflt3mkt0_page2.png"), 
 caption = "Length composition data from the recreation CPFV fleet",
 label = 'rec-cpfv-len-data')
 ```
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc, "plots", "comp_lendat_data_weighting_TA1.8_Rec_cpfv.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_cpfv.png"), 
 caption = "Mean length for recreational CPFV fleet with 95 percent confidence intervals",
 label = 'mean-rec-cpfv-len-data')
 ```
@@ -89,14 +89,14 @@ label = 'mean-rec-cpfv-len-data')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc, "plots", "comp_lendat_bubflt4mkt0_page2.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_bubflt4mkt0_page2.png"), 
 caption = "Length composition data from the recreation PR fleet",
 label = 'rec-pr-len-data')
 ```
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc, "plots", "comp_lendat_data_weighting_TA1.8_Rec_private.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_private.png"), 
 caption = "Mean length for recreational PR fleet with 95 percent confidence intervals",
 label = 'mean-rec-pr-len-data')
 ```
@@ -110,7 +110,7 @@ label = 'mean-rec-pr-len-data')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_loc, "nwfsc_hkl", "maps", "Map_HL_Sites_lndscp.jpg"), 
+filein = file.path(data_dir, "nwfsc_hkl", "maps", "Map_HL_Sites_lndscp.jpg"), 
 caption = "Area sampled by the NWFSC Hook and Line survey",
 label = 'nwfsc-hkl-map')
 ```
@@ -120,7 +120,7 @@ label = 'nwfsc-hkl-map')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_loc, "nwfsc_hkl", "plots", "hkl_copper_by_site_count_all_years.png"), 
+filein = file.path(data_dir, "nwfsc_hkl", "plots", "hkl_copper_by_site_count_all_years.png"), 
 caption = "Observations of copper rockfish by the NWFSC Hook and Line survey by sample area, inside and outside Cowcod Conservation areas (CCA)",
 label = 'nwfsc-hkl-site')
 ```
@@ -129,7 +129,7 @@ label = 'nwfsc-hkl-site')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_loc, "nwfsc_hkl", "plots", "hkl_observations_by_length_sex_area.png"), 
+filein = file.path(data_dir, "nwfsc_hkl", "plots", "hkl_observations_by_length_sex_area.png"), 
 caption = "Observed length (cm) distribution of copper rockfish by the NWFSC Hook and Line survey by sample area, inside and outside Cowcod Conservation areas (CCA)",
 label = 'nwfsc-hkl-site-len')
 ```
@@ -137,7 +137,7 @@ label = 'nwfsc-hkl-site-len')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc, "plots", "comp_lendat_bubflt5mkt0.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_bubflt5mkt0.png"), 
 caption = "Length composition data from the NWFSC Hook and Line survey",
 label = 'hkl-len-data')
 ```
@@ -145,7 +145,7 @@ label = 'hkl-len-data')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc, "plots", "comp_lendat_data_weighting_TA1.8_NWFSC_HKL.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_NWFSC_HKL.png"), 
 caption = "Mean length for NWFSC Hook and Line survey with 95 percent confidence intervals",
 label = 'mean-hkl-len-data')
 ```
@@ -172,7 +172,7 @@ label = 'mean-hkl-len-data')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc, "plots", "bio6_maturity.png"), 
+filein = file.path(model_dir, "plots", "bio6_maturity.png"), 
 caption = "Maturity as a function of length",
 label = 'maturity')
 ```
@@ -180,7 +180,7 @@ label = 'maturity')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc, "plots", "bio9_fecundity_len.png"), 
+filein = file.path(model_dir, "plots", "bio9_fecundity_len.png"), 
 caption = "Fecundity as a function of length",
 label = 'fecundity')
 ```
