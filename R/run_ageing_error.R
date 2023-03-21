@@ -6,6 +6,7 @@ devtools::install_github("nwfsc-assess/nwfscAgeingError")
 
 
 # Load package
+library(dplyr)
 library(nwfscAgeingError)
 SourceFile <- file.path(system.file("executables", package = "nwfscAgeingError"), .Platform$file.sep)
 
@@ -42,27 +43,31 @@ MinAge <- 1
 MaxAge <- max(ceiling(max(reads2[, 1:2], na.rm = TRUE) / 10) * 10)
 KnotAges = list(NA, NA)
 
-BiasOpt.mat = SigOpt.mat =matrix(0, 4, 2)
+BiasOpt.mat = SigOpt.mat =matrix(0, 6, 2)
 BiasOpt.mat[1,] =  c(0,0)
 BiasOpt.mat[2,] =  c(0,1)
-BiasOpt.mat[3,] =  c(1,0)
-BiasOpt.mat[4,] =  c(1,1)
+BiasOpt.mat[3,] =  c(0,2)
+BiasOpt.mat[4,] =  c(1,0)
+BiasOpt.mat[5,] =  c(2,0)
+BiasOpt.mat[6,] =  c(1,1)
 
 
 SigOpt.mat[1,] =c(1,-1)
 SigOpt.mat[2,] =c(2,-1)
-SigOpt.mat[3,] =c(1,-1)
-SigOpt.mat[4,] =c(2,-1)
+SigOpt.mat[3,] =c(3,-1)
+SigOpt.mat[4,] =c(1,-1)
+SigOpt.mat[5,] =c(2,-1)
+SigOpt.mat[6,] =c(3,-1)
 
 
-model.aic <- as.data.frame(matrix(NA, 4, 4))
+model.aic <- as.data.frame(matrix(NA, 6, 4))
 colnames(model.aic)<-c("Run","AIC","AICc","BIC")
-model.name<-c("B0_S1","B0_S2","B1_S1","B1_S2")
-rownames(model.aic) <- model.name[1:4]
+model.name<-c("B0_S1","B0_S2","B0_S3","B1_S1","B2_S2", "B1_S3")
+rownames(model.aic) <- model.name[1:6]
 
 #shell("agemat.exe > output.txt 2>&1")
 
-for(i in 1:4){
+for(i in 1:6){
   setwd(dir)
   DateFile = paste(getwd(),"/",model.name[i],"/",sep="")
   dir.create(DateFile, showWarnings = FALSE)
@@ -90,4 +95,8 @@ for(i in 1:4){
   model.aic[i,]<-c(run.name, Aic, Aicc, Bic)  
   setwd(dir)
 }
+
+model.aic$delta_aic <- as.numeric(model.aic[,"AIC"]) - min(as.numeric(model.aic[,"AIC"]))
+model.aic$delta_aicc <- as.numeric(model.aic[,"AICc"]) - min(as.numeric(model.aic[,"AICc"]))
+model.aic$delta_bic <- as.numeric(model.aic[,"BIC"]) - min(as.numeric(model.aic[,"BIC"]))
 save(model.aic, file = file.path(dir, "model_selection.dmp", sep = ""))
