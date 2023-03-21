@@ -75,3 +75,20 @@ ggsave(filename = file.path(dir, "plots", "nwfsc_hkl_age_at_length.png"),
        width = 10, height = 8)
 
 
+####---------------------
+###table of all available hkl ages
+###Melissa Monk 
+
+copp_otoliths <- hkl %>%
+  filter(common_name == "Copper Rockfish") %>%
+  filter(!is.na(otolith_number)) %>%
+  group_by(year) %>%
+  tally()
+
+copp_ages <- hkl %>%
+  filter(common_name == "Copper Rockfish") %>%
+  filter(!is.na(age)) %>%
+  group_by(year) %>%
+  tally()
+
+

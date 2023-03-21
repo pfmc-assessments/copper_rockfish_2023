@@ -236,7 +236,9 @@ write.csv(out, file = file.path(dir, "forSS", name), row.names = FALSE)
 #====================================================================
 library(kableExtra)
 
-hkl_all$depth_bin <- plyr::round_any(hkl_all$drop_depth_meters, 25, floor)
+doc_loc <- file.path(here(), "documents", "sca", "tex_tables")
+
+hkl_all$depth_bin <- plyr::round_any(hkl_all$drop_depth_meters, 10, floor)
 hkl_all$set_id_drop <- paste0(hkl_all$set_id, hkl_all$drop_number)
 
 dat <- hkl_all %>%
@@ -250,7 +252,7 @@ sample.sizes.depth <- dat %>%
   ) %>%
   mutate(percent.pos = scales::percent(Positive.samples / Samples, accuracy = 1))
 
-colnames(sample.sizes.depth) <- c("Year", "Positive Samples", "Samples", "Percent Positive")
+colnames(sample.sizes.depth) <- c("Depth (m)", "Positive Samples", "Samples", "Percent Positive")
 write.csv(sample.sizes.depth, 
     file = file.path(dir, "forSS", "positive_samples_by_depth.csv"),
     row.names = FALSE)
@@ -261,9 +263,10 @@ table.depth <- kableExtra::kbl(sample.sizes.depth,
   caption = paste(
     "Positive samples of copper rockfish in the NWFSC Hook and Line survey by depth (fm)."
   ),
-  label = paste0("tab-depth-nwfschl")
+  label = paste0("tab-depth-nwfschkl")
 ) %>%
   kable_styling(latex_options = "striped", full_width = FALSE)
+
 
 
 #-------------------------------------------------------------------------------
