@@ -50,7 +50,7 @@ rov_south <- rov_south %>%
     imp_year = AvgOfYears_since_imp,
     port_dist = AvgOfportdistanceM,
     n = SumOfCopper.Rockfish) %>%
-  filter(designation != "MPA/Outside") %>%
+  #filter(designation != "MPA/Outside") %>%
   mutate(
     super_year = as.factor(super_year),
     designation = as.factor(designation),
@@ -129,13 +129,14 @@ rov_north <- rov_north[-remove, ]
 filtered_data_north <- rbind(filtered_data_north,
   c(paste0("Records with depths outside ", round(min, 1), " - ", round(max, 1), " m"), length(remove)))
 
-# Remove records that area MPA/Outide (39 recordsfrom Swami)
+# Remove records that area MPA/Outide 
 filtered_data_south <- rbind(filtered_data_south,
   c("Transects that were both inside and outside MPA area", sum(rov_south$designation == "MPA/Outside")))
 
 rov_south <- rov_south[rov_south$designation != "MPA/Outside", ]
 
 obs_by_des_loc <- aggregate(LineID ~ super_year + mpa_group + designation, rov_south, length)
+
 remove_s <- which(rov_south$designation == "Reference" & rov_south$mpa_group == "Anacapa Island")
 filtered_data_south <- rbind(filtered_data_south,
   c("Rerence/MPA groups without sampling for both super years", length(remove_s)))
@@ -155,12 +156,13 @@ filtered_data_south <- rbind(filtered_data_south,
   c("Retained records", nrow(rov_south)))
 
 colnames(filtered_data_north) <- colnames(filtered_data_south) <- c("Removal reason", "Number")
-write.csv(filtered_data_north, file = file.path(dir, "forSS", "removed_records_north.csv"), row.names = FALSE)
-write.csv(filtered_data_south, file = file.path(dir, "forSS", "removed_records_south.csv"), row.names = FALSE)
+write.csv(filtered_data_north, file = file.path(dir, "forSS", "rov_removed_records_north.csv"), row.names = FALSE)
+write.csv(filtered_data_south, file = file.path(dir, "forSS", "rov_removed_records_south.csv"), row.names = FALSE)
 
 save(rov_south, file = file.path(dir, "rov_south_data_used_for_index_creation.rdata"))
 save(rov_north, file = file.path(dir, "rov_north_data_used_for_index_creation.rdata"))
 
+rov_south$designation <- droplevels(rov_south$designation)
 #=================================================================================
 # Write out tables of remaining data
 #==================================================================================
@@ -182,6 +184,11 @@ write.csv(both, file = file.path(dir, "forSS", "south_north_obs_designation_mpa_
 #==================================================================================
 
 # South ========================================================================
+ggplot(aes(x = n),
+       data = rov_south) + geom_bar() + theme_bw() + facet_grid(designation~.)
+ggsave(file = file.path(dir, "plots", "observations_south.png"), width = 7, height = 7)
+
+
 raw.cpue <- rov_south %>%
   mutate(cpue = n / usable_area) %>%
   group_by(year, designation) %>%
@@ -231,6 +238,11 @@ write.csv(n_by_site, row.names = FALSE,
           file = file.path(dir, "forSS", "south_observations_for_ccfrp_site.csv"))
 
 # North ========================================================================
+ggplot(aes(x = n),
+       data = rov_north) + geom_bar() + theme_bw() + facet_grid(designation~.)
+ggsave(file = file.path(dir, "plots", "observations_north.png"), width = 7, height = 7)
+
+
 raw.cpue <- rov_north %>%
   mutate(cpue = n / usable_area) %>%
   group_by(year, designation) %>%
@@ -626,7 +638,7 @@ do_diagnostics(
   fit = north_model,
   plot_resids = FALSE)
 
-name <- "delta_lognormal_north_designation_depth_soft"
+name <- "delta_lognormal_north_designation_depth"
 dir.create(file.path(dir, name), showWarnings = FALSE)
 
 data <- rov_north
