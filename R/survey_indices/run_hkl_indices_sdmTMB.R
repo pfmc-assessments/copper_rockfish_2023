@@ -262,6 +262,233 @@ metrics <- rbind(metrics, c(name, loglike, aic))
 save(indices, file = file.path(index_dir, "all_indices.rdata"))  
 save(metrics, file = file.path(index_dir, "metrics.rdata"))
 
+#===============================================================================
+# Negative-Binomial GLM with only main effects 
+#===============================================================================
+
+name <- "glm_negbin_main_year_site_swell"
+
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + site_number,
+  data = subdata,
+  offset = log(subdata$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = nbinom2(link = "log")
+)
+
+sanity(fit)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = grid)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+index$model <- name
+indices <- rbind(indices, index)
+loglike <- logLik(fit)
+aic <- AIC(fit)
+metrics <- rbind(metrics, c(name, loglike, aic))
+
+save(indices, file = file.path(index_dir, "all_indices.rdata"))  
+save(metrics, file = file.path(index_dir, "metrics.rdata"))
+
+#===============================================================================
+# Negative-Binomial GLM with only main effects 
+#===============================================================================
+
+name <- "glm_negbin_main_year_site"
+
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + site_number,
+  data = subdata,
+  offset = log(subdata$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = nbinom2(link = "log")
+)
+
+sanity(fit)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = grid)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+index$model <- name
+indices <- rbind(indices, index)
+loglike <- logLik(fit)
+aic <- AIC(fit)
+metrics <- rbind(metrics, c(name, loglike, aic))
+
+save(indices, file = file.path(index_dir, "all_indices.rdata"))  
+save(metrics, file = file.path(index_dir, "metrics.rdata"))
+
+
+#===============================================================================
+# Negative-Binomial GLM with main and random site effect
+#===============================================================================
+
+name <- "glm_negbin_main_year_drop_swell_re_site"
+
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + drop + swell_scaled + (1:site_number),
+  data = subdata,
+  offset = log(subdata$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = nbinom2(link = "log")
+)
+
+sanity(fit)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = grid)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+index$model <- name
+indices <- rbind(indices, index)
+loglike <- logLik(fit)
+aic <- AIC(fit)
+metrics <- rbind(metrics, c(name, loglike, aic))
+
+save(indices, file = file.path(index_dir, "all_indices.rdata"))  
+save(metrics, file = file.path(index_dir, "metrics.rdata"))
+
+#===============================================================================
+# Negative-Binomial GLM with main and random site effect
+#===============================================================================
+
+name <- "glm_negbin_main_year_drop_re_site"
+
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + drop + (1:site_number),
+  data = subdata,
+  offset = log(subdata$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = nbinom2(link = "log")
+)
+
+sanity(fit)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = grid)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+index$model <- name
+indices <- rbind(indices, index)
+loglike <- logLik(fit)
+aic <- AIC(fit)
+metrics <- rbind(metrics, c(name, loglike, aic))
+
+save(indices, file = file.path(index_dir, "all_indices.rdata"))  
+save(metrics, file = file.path(index_dir, "metrics.rdata"))
+
+#=========================================================
+# Delta-Model with main effects 
+#=========================================================
+
+name <- "delta_gamma_main_year_site_drop_swell"
+
+dir.create(file.path(index_dir, name))
+rm(fit, index)
+
+fit <- sdmTMB(
+  n  ~ 0 + year + site_number + drop + swell_scaled,
+  data = subdata,
+  offset = log(subdata$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = delta_gamma()
+)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = grid)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+index$model <- name
+indices <- rbind(indices, index)
+loglike <- logLik(fit)
+aic <- AIC(fit)
+metrics <- rbind(metrics, c(name, loglike, aic))
+
+save(indices, file = file.path(index_dir, "all_indices.rdata"))  
+save(metrics, file = file.path(index_dir, "metrics.rdata"))
+
+#=========================================================
+# Delta GlM with RE lognormal
+#=========================================================
+
+name <- "delta_lognormal_main_year_site_drop_swell"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+rm(fit, index)
+
+fit <- sdmTMB(
+  n  ~ 0 + year + site_number + drop +  swell_scaled,
+  data = subdata,
+  offset = log(subdata$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = delta_lognormal()
+)
+
+sanity(fit)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = grid)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+index$model <- name
+indices <- rbind(indices, index)
+loglike <- logLik(fit)
+aic <- AIC(fit)
+metrics <- rbind(metrics, c(name, loglike, aic))
+
+save(indices, file = file.path(index_dir, "all_indices.rdata"))  
+save(metrics, file = file.path(index_dir, "metrics.rdata"))
 
 #===============================================================================
 # Negative-Binomial GLM with only main effects excluding CCA data
@@ -373,83 +600,10 @@ loglike <- logLik(fit)
 aic <- AIC(fit)
 metrics <- rbind(metrics, c(name, loglike, aic))
 
-save(indices, file = file.path(index_dir, "all_indices.rdata"))  
-save(metrics, file = file.path(index_dir, "metrics.rdata"))
-
-#=========================================================
-# Delta-Model with main effects 
-#=========================================================
-
-name <- "delta_gamma_main_year_site_drop_swell"
-
-dir.create(file.path(index_dir, name))
-rm(fit, index)
-
-fit <- sdmTMB(
-  n  ~ 0 + year + site_number + drop + swell_scaled,
-  data = subdata,
-  offset = log(subdata$effort),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = delta_gamma()
-)
-
-index <- calc_index(
-  dir = file.path(index_dir, name), 
-  fit = fit,
-  grid = grid)
-
-do_diagnostics(
-  dir = file.path(index_dir, name), 
-  fit = fit)
-
-index$model <- name
-indices <- rbind(indices, index)
-loglike <- logLik(fit)
-aic <- AIC(fit)
-metrics <- rbind(metrics, c(name, loglike, aic))
 
 save(indices, file = file.path(index_dir, "all_indices.rdata"))  
 save(metrics, file = file.path(index_dir, "metrics.rdata"))
 
-#=========================================================
-# Delta GlM with RE lognormal
-#=========================================================
-
-name <- "delta_lognormal_main_year_site_drop_swell"
-dir.create(file.path(index_dir, name), showWarnings = FALSE)
-rm(fit, index)
-
-fit <- sdmTMB(
-  n  ~ 0 + year + site_number + drop +  swell_scaled,
-  data = subdata,
-  offset = log(subdata$effort),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = delta_lognormal()
-)
-
-sanity(fit)
-
-index <- calc_index(
-  dir = file.path(index_dir, name), 
-  fit = fit,
-  grid = grid)
-
-do_diagnostics(
-  dir = file.path(index_dir, name), 
-  fit = fit)
-
-index$model <- name
-indices <- rbind(indices, index)
-loglike <- logLik(fit)
-aic <- AIC(fit)
-metrics <- rbind(metrics, c(name, loglike, aic))
-
-save(indices, file = file.path(index_dir, "all_indices.rdata"))  
-save(metrics, file = file.path(index_dir, "metrics.rdata"))
 
 
 #===============================================================================
@@ -609,30 +763,149 @@ write.csv(format_index,
 # Compare the indices
 #===============================================================================
 
-load(file.path(index_dir, "glm_negbin_main_year_site_drop_swell_vermilion_bocaccio", "index.rdata")) 
-best_model <- index
-best_model$name <- "glm_negbin_main_year_site_drop_swell_vermilion_bocaccio"
-load(file.path(index_dir, "glm_negbin_main_year_site_drop_swell", "index.rdata")) 
-simple_model <- index
-simple_model$name <- "glm_negbin_main_year_site_drop_swell"
-load(file.path(index_dir, "delta_gamma_main_year_site_drop_swell", "index.rdata")) 
-delta_simple <- index
-delta_simple$name <- "delta_gamma_main_year_site_drop_swell"
-load(file.path(index_dir, "glm_negbin_main_year_site_drop_swell_vermilion_bocaccio_no_cca", "index.rdata")) 
-best_no_cca <- index
-best_no_cca$name <- "glm_negbin_main_year_site_drop_swell_vermilion_bocaccio_no_cca"
-
-index_all <- rbind(
-  best_model, simple_model, delta_simple, best_no_cca
-)
-
+# negative binomial with fixed effects
+all <- unique(indices$model)[1:5]
+tmp <- indices[indices$model %in% all, ]
 
 cex.axis = 1.25
 cex.lab = 1.20
-ymax <- max(index_all$est + index_all$est *0.5)
+ymax <- 2.5
+ymin <- 0
+colors <- viridis::viridis(length(all))
+years <- c(2004:2019, 2021:2022)
 
-colors <- viridis::viridis(4)
+grDevices::png(filename = file.path(index_dir, 'plots', "standarized_index_nbn_glm.png"),
+               width = 10, height = 7, units = "in", res = 300, pointsize = 12)
+x <- 0 ; ind <- 1
+for (a in all){
+  
+std <- tmp[tmp$model == a, 'est'] / mean(tmp[tmp$model == a, 'est'])
+  
+if(ind == 1){
+  plot(0, type = "n",
+       xlim = range(years),
+       ylim = c(ymin, ymax),
+       xlab = "", ylab = "", yaxs = "i",
+       main = "", cex.axis = cex.axis)
+  graphics::mtext(side = 1, "Year", cex = cex.lab, line = 3)
+  graphics::mtext(side = 2, "Standardized Index", cex = cex.lab, line = 2.5)
+}
+
+graphics::points(years + x, std, pch = 16, bg = 1, cex = 1.6, col = colors[ind])
+graphics::lines(years + x,  std, cex = 1, col = colors[ind], lty = 2)
+
+ind <- ind + 1
+}
+legend("topleft", bty = 'n', legend = all, col = colors, lty = 2, pch = 16)
+dev.off()
 
 
+# No CCA Comparison
+# negative binomial with fixed effects
+all <- unique(indices$model)[c(1, 10, 11)]
+tmp <- indices[indices$model %in% all, ]
+
+cex.axis = 1.25
+cex.lab = 1.20
+ymax <- 2
+ymin <- 0
+colors <- viridis::viridis(length(all))
+years <- c(2004:2019, 2021:2022)
+
+grDevices::png(filename = file.path(index_dir, 'plots', "standarized_ccca_comparison_index_nbn_glm.png"),
+               width = 10, height = 7, units = "in", res = 300, pointsize = 12)
+x <- 0 ; ind <- 1
+for (a in all){
+  
+  std <- tmp[tmp$model == a, 'est'] / mean(tmp[tmp$model == a, 'est'])
+  
+  if(ind == 1){
+    plot(0, type = "n",
+         xlim = range(years),
+         ylim = c(ymin, ymax),
+         xlab = "", ylab = "", yaxs = "i",
+         main = "", cex.axis = cex.axis)
+    graphics::mtext(side = 1, "Year", cex = cex.lab, line = 3)
+    graphics::mtext(side = 2, "Standardized Index", cex = cex.lab, line = 2.5)
+  }
+  
+  graphics::points(years + x, std, pch = 16, bg = 1, cex = 1.6, col = colors[ind])
+  graphics::lines(years + x,  std, cex = 1, col = colors[ind], lty = 2)
+  
+  ind <- ind + 1
+}
+legend("topleft", bty = 'n', legend = all, col = colors, lty = 2, pch = 16)
+dev.off()
+
+# Delta Compariosn
+all <- unique(indices$model)[c(1, 8, 9)]
+tmp <- indices[indices$model %in% all, ]
+
+cex.axis = 1.25
+cex.lab = 1.20
+ymax <- 2
+ymin <- 0
+colors <- viridis::viridis(length(all))
+years <- c(2004:2019, 2021:2022)
+
+grDevices::png(filename = file.path(index_dir, 'plots', "standarized_index_delta_nbn_glm.png"),
+               width = 10, height = 7, units = "in", res = 300, pointsize = 12)
+x <- 0 ; ind <- 1
+for (a in all){
+  
+  std <- tmp[tmp$model == a, 'est'] / mean(tmp[tmp$model == a, 'est'])
+  
+  if(ind == 1){
+    plot(0, type = "n",
+         xlim = range(years),
+         ylim = c(ymin, ymax),
+         xlab = "", ylab = "", yaxs = "i",
+         main = "", cex.axis = cex.axis)
+    graphics::mtext(side = 1, "Year", cex = cex.lab, line = 3)
+    graphics::mtext(side = 2, "Standardized Index", cex = cex.lab, line = 2.5)
+  }
+  
+  graphics::points(years + x, std, pch = 16, bg = 1, cex = 1.6, col = colors[ind])
+  graphics::lines(years + x,  std, cex = 1, col = colors[ind], lty = 2)
+  
+  ind <- ind + 1
+}
+legend("topleft", bty = 'n', legend = all, col = colors, lty = 2, pch = 16)
+dev.off()
 
 
+# RE Comparison
+all <- unique(indices$model)[c(1, 6, 7)]
+tmp <- indices[indices$model %in% all, ]
+
+cex.axis = 1.25
+cex.lab = 1.20
+ymax <- 2
+ymin <- 0
+colors <- viridis::viridis(length(all))
+years <- c(2004:2019, 2021:2022)
+
+grDevices::png(filename = file.path(index_dir, 'plots', "standarized_index_re_nbn_glm.png"),
+               width = 10, height = 7, units = "in", res = 300, pointsize = 12)
+x <- 0 ; ind <- 1
+for (a in all){
+  
+  std <- tmp[tmp$model == a, 'est'] / mean(tmp[tmp$model == a, 'est'])
+  
+  if(ind == 1){
+    plot(0, type = "n",
+         xlim = range(years),
+         ylim = c(ymin, ymax),
+         xlab = "", ylab = "", yaxs = "i",
+         main = "", cex.axis = cex.axis)
+    graphics::mtext(side = 1, "Year", cex = cex.lab, line = 3)
+    graphics::mtext(side = 2, "Standardized Index", cex = cex.lab, line = 2.5)
+  }
+  
+  graphics::points(years + x, std, pch = 16, bg = 1, cex = 1.6, col = colors[ind])
+  graphics::lines(years + x,  std, cex = 1, col = colors[ind], lty = 2)
+  
+  ind <- ind + 1
+}
+legend("topleft", bty = 'n', legend = all, col = colors, lty = 2, pch = 16)
+dev.off()
