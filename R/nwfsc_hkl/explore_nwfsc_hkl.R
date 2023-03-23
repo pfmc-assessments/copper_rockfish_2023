@@ -449,3 +449,34 @@ ggplot(raw.cpue) +
   geom_point(aes(x = year, y = avg_cpue), size = 2) +
   ylim(c(0, 2))
 ggsave(file = file.path(dir, "plots", 'raw_cpue_nwfsc_hkl.png'), width = 7, height = 7)
+
+raw.cpue.no.cca <- hkl_all[hkl_all$cowcod_conservation_area_indicator == 0, ] %>%
+  group_by(year) %>%
+  summarize(
+    sites = length(unique(site_number)),
+    n = sum(count),
+    effort = length(unique(angler_number)) * length(unique(hook_number)) * length(unique(drop_number)),
+    cpue = n / effort,
+    avg_cpue = mean(cpue)) %>%
+  mutate(
+    stand_cpue = avg_cpue / mean(avg_cpue)) 
+
+raw.cpue.cca <- hkl_all[hkl_all$cowcod_conservation_area_indicator == 1, ] %>%
+  group_by(year) %>%
+  summarize(
+    sites = length(unique(site_number)),
+    n = sum(count),
+    effort = length(unique(angler_number)) * length(unique(hook_number)) * length(unique(drop_number)),
+    cpue = n / effort,
+    avg_cpue = mean(cpue)) %>%
+  mutate(
+    stand_cpue = avg_cpue / mean(avg_cpue)) 
+
+
+ggplot() +
+  geom_line(data = raw.cpue.no.cca, aes(x = year, y = stand_cpue), colour = 'blue') + 
+  geom_point(data = raw.cpue.no.cca,aes(x = year, y = stand_cpue), size = 2, colour = 'blue') +
+  geom_line(data = raw.cpue.cca, aes(x = year, y = stand_cpue), colour = 'green') +
+  geom_point(data = raw.cpue.cca, aes(x = year, y = stand_cpue), size = 2, colour = 'green') +
+  ylim(c(0, 2)) + ylab("Standardized CPUE")
+ggsave(file = file.path(dir, "plots", 'raw_cpue_nwfsc_hkl_inside_outside.png'), width = 12, height = 7)
