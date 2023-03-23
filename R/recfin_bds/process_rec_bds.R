@@ -81,10 +81,6 @@ donp$sex[donp$sex == 9] <- "U"
 miller_rec$sex <- "U"
 deb_wv$sex <- "U"
 
-# https://spo.nmfs.noaa.gov/sites/default/files/pdf-content/fish-bull/echeverria.pdf
-# The paper uses "pinched" tail length for total length, so it's an overestimate of total length. 
-# (0.629+(1.01*LNGTH)) as total_length
-
 # Length column
 # Note: These are total lengths not fork lengths
 deb_wv$lengthcm <- deb_wv$lengthcm_tl / 10
@@ -100,124 +96,10 @@ donp$lengthcm <- donp$lengthcm / 10
 mrfs$trip <- paste0(mrfs$year, mrfs$ID_CODE, mrfs$INTSITE, mrfs$AREA_X)
 crfs$trip <- paste0(crfs$RECFIN_DATE, crfs$COUNTY_NUMBER, crfs$AGENCY_WATER_AREA_NAME)
 deb_wv$trip <- paste0(deb_wv$year, deb_wv$TRIP_ID)
-miller_rec$trip <- paste0(miller_rec$year, miller_rec$district, miller_rec$county)
+miller_rec$trip <- paste0(miller_rec$year, miller_rec$district, miller_rec$county, miller_rec$mode)
 donp$trip <- paste0(donp$SAMPLE_NO)
 collins_rec$trip <- collins_rec$tripID
 ally_rec$trip <- paste0(ally_rec$year, ally_rec$complex, ally_rec$landing, ally_rec$district)
-
-#=============================================================================================
-# CRFS mean length
-#=============================================================================================
-
-crfs_mean_length <- crfs %>%
-  mutate(district = substr(RECFIN_PORT_NAME, 1, 5)) %>%
-  group_by(RECFIN_YEAR, mode, RECFIN_PORT_NAME) %>%
-  summarize(mean = mean(lengthcm))
-
-
-ggplot(crfs_mean_length) +
- # geom_line(size = 1) + 
-  geomtextpath::geom_textline(aes(
-    x = RECFIN_YEAR, y = mean, 
-    color = RECFIN_PORT_NAME, label = RECFIN_PORT_NAME),
-  hjust = .7,
-  size = 2,
-  linewidth = 1.2) +
-  facet_wrap(~mode) +
-  theme(legend.position = "none") +
-  xlab("Year") + ylab("Mean Length") +
-  scale_color_viridis_d() 
- 
-
-#=============================================================================================
-# MRFSS vs Deb's exploration
-#=============================================================================================
- #mrfss assign counties to districts for only northern ca
-   mrfs_north <- mrfs %>%
-     filter(area == "north",
-            mode=="cpfv",
-            between(year, 1987,1998)) %>%
-     mutate(district = case_when(CNTY %in% c(15, 23) ~ 6,
-         CNTY %in% c(45) ~ 5,
-              CNTY %in% c(53, 79, 87) ~ 3, 
-            CNTY %in% c(1,13,41,75,77,81,97) ~ 4))
- col_names1 <- c('year', 'mode', 'area','district', 'program', 'lengthcm', 'trip')
- some_dat <- rbind(
-     mrfs_north[, col_names1],
-     deb_wv[, col_names1]
-   )
- some_data <- rbind(
-     mrfs_north[, col_names1],
-     deb_wv[, col_names1]
-   )
- mean_length <- some_data %>%
-   group_by(program, district, year) %>%
-   summarize(mean = mean(lengthcm),
-             count = n())
- 
- samples1 <- some_data %>%
-   group_by(program, district, year) %>%
-   summarize(count = n())
- 
- samples2 <- some_data %>%
-   group_by(program, year) %>%
-   summarise(count_all = n())
- 
- samples3 <- inner_join(samples1,samples2) %>%
-   mutate(percent_in_district = count/count_all)
-
- #=============================================================================================
- # Plots for melissa's exploration
- #=============================================================================================
- 
- #look at the percent of samples coming from each district by program over time
- ggplot(samples3, aes(x = year, y = percent_in_district, 
-                      color = as.factor(district))) + 
-   geom_point() +
-   geom_path() +
-   facet_wrap(~program) +
-   scale_color_viridis_d() 
-  
- 
- 
-  ggplot(mean_length, aes(x = year, y = mean, color = district)) +
-   geom_line(lwd = 0.8, adjust = 0.5) + 
-   xlab("Year") + ylab("MeanLength") +
-   facet_wrap(facets = c("program")) + 
- 
-  ggplot(some_data, aes(y = lengthcm, x = year, group = year)) +
-     geom_boxplot() + 
-     facet_wrap(facets = c("district"," program")) + 
-     xlab("Year") + ylab("Length (cm)") 
-
-
- ggplot(some_data, aes(y = lengthcm, x = program, group = program)) +
-     geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
-     xlab("Length (cm)") + ylab("Density") +
-     facet_wrap(facets = c("district")) + 
-     scale_color_viridis_d()
- 
- ggplot(some_data, aes(lengthcm, group = program)) +
-     geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
-     xlab("Length (cm)") + ylab("Density") +
-     facet_wrap(facets = c("district")) + 
-     scale_color_viridis_d()
- ggplot(some_data, aes(lengthcm, fill = program, color = program)) +
-     geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
-     xlab("Length (cm)") + ylab("Density") +
-     facet_wrap(facets = c("district")) + 
-     scale_color_viridis_d()
-> #ggsave(filename = file.path(dir, "plots", "rec_south_length_boxplot_by_mode_program_year.png"),
-   #       width = 10, height = 10)
- 
-    ggplot(some_data, aes(lengthcm, fill = district, color = district)) +
-     geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
-     xlab("Length (cm)") + ylab("Density") +
-     facet_wrap(facets = c("program")) + 
-     scale_color_viridis_d()
-
-
-
 
 #=============================================================================================
 # Put all the data into a single data frame
@@ -240,6 +122,227 @@ remove <- which(all_data$lengthcm > 65)
 all_data <- all_data[-remove, ]
 # There area 23 lengths between 60-65 which seem suspect but 
 # going to keep them.
+
+# Remove the MRFSS lengths from 1997-98 since they are the same as those in Deb's data
+remove <- which(all_data$program == "mrfss" & all_data$year %in% 1997:1998 &
+                all_data$mode == "cpfv" & all_data$area == "north")
+all_data <- all_data[-remove, ]
+
+
+#==============================================================================
+# Calculate sample size by year and area 
+#==============================================================================
+
+firstup <- function(x) {
+  substr(x, 1, 1) <- toupper(substr(x, 1, 1))
+  x
+}
+
+sample_size_cpfv <- all_data %>%
+  dplyr::filter(mode == 'cpfv') %>%
+  dplyr::group_by(area, year, program) %>%
+  dplyr::summarise(
+    ntrip = length(unique(trip)),
+    n = length(lengthcm))
+
+sample_size_private <- all_data %>%
+  dplyr::filter(mode == 'private') %>%
+  dplyr::group_by(area, year, program) %>%
+  dplyr::summarise(
+    ntrip = length(unique(trip)),
+    n = length(lengthcm))
+
+south <- dplyr::left_join(
+  sample_size_cpfv[sample_size_cpfv$area == 'south', ],
+  sample_size_private[sample_size_private$area == 'south', ], 
+  by = c('year', 'program', 'area'))
+colnames(south) <- c('Area', 'Year', 'Source', 'CPFV Trips', 'CPFV Samples', 'PR Trips', 'PR Samples')
+south <- as.data.frame(south)
+south[is.na(south)] <- "-"
+south$Source <- toupper(south$Source)
+south$Source <- gsub("_", " ", south$Source)
+south$Area <- firstup(south$Area)
+
+north <- dplyr::left_join(
+  sample_size_cpfv[sample_size_cpfv$area == 'north', ],
+  sample_size_private[sample_size_private$area == 'north', ], 
+  by = c('year', 'program', 'area'))
+colnames(north) <- c('Area', 'Year', 'Source', 'CPFV Trips', 'CPFV Samples', 'PR Trips', 'PR Samples')
+north <- as.data.frame(north)
+north[is.na(north)] <- "-"
+north$Source <- toupper(north$Source)
+north$Source <- gsub("_", " ", north$Source)
+north$Area <- firstup(north$Area)
+
+write.csv(south, file = file.path(dir, "forSS", "rec_south_sample_size_by_program.csv"), row.names = FALSE)
+write.csv(north, file = file.path(dir, "forSS", "rec_north_sample_size_by_program.csv"), row.names = FALSE)
+
+#==============================================================================
+# Create un-weighted composition data for recreational data sources
+#==============================================================================
+
+# Add expected column names to work with nwfscSurvey package
+# To Do: add revisions to nwfscSurvey package to dynamically check column names
+all_data$age = NA
+length_bins <- c(seq(10, 54, 2))
+
+all_data$sex_group <- "u"
+all_data$sex_group[all_data$sex %in% c("M", "F")] <- 'b'
+
+n <- all_data %>%
+  dplyr::group_by(area, year, program, mode, sex_group) %>%
+  dplyr::summarise(
+    ntrip = length(unique(trip)))
+
+# This creates the composition data by program just in case.
+# Should switch to using purr package function instead of a loop
+for(a in unique(all_data$area)) {
+  for(m in unique(all_data$mode)) {
+    for(p in unique(all_data$program)) {
+      
+      use_n <- n[n$area == a & n$mode == m & n$program == p, ]
+      df <- all_data[all_data$area == a & all_data$mode == m & all_data$program == p, ]
+      
+      if(dim(df)[1] > 0) {
+        fleet <- ifelse(m == "cpfv", 3, 4)
+        lfs <-  UnexpandedLFs.fn(
+          datL = df, 
+          lgthBins = length_bins,
+          partition = 0, 
+          fleet = fleet, 
+          month = 7)
+        
+        if(!is.null(lfs$unsexed)){
+          lfs$unsexed[,"InputN"] <- use_n[use_n$sex_group == "u", 'ntrip']
+          write.csv(lfs$unsexed, 
+                    file = file.path(dir, "forSS", "data_by_program", paste0(a, "_", m, "_", p, "_sources_not_expanded_length_comp_sex_0.csv")),
+                    row.names = FALSE) 
+        } 
+        if(!is.null(lfs$sexed)){
+          lfs$sexed[,"InputN"] <- use_n[use_n$sex_group == "b", 'ntrip']
+          write.csv(lfs$sexed, 
+                    file = file.path(dir, "forSS",  "data_by_program", paste0(a, "_", m, "_", p, "_sources_not_expanded_length_comp_sex_3.csv")),
+                    row.names = FALSE) 
+        }
+        lfs <- NULL
+      } #if loop from dim(df)
+    }
+  }
+}
+
+
+# Remove the MRFSS sample years that overlap with Deb's data
+find_mrfss <- which(all_data$program == "mrfss" & all_data$year %in% 1987:1998 &
+                    all_data$mode == "cpfv" & all_data$area == "north")
+tmp <- all_data[-find_mrfss, ]
+sub_mrfss <- all_data[find_mrfss, ]
+
+n <- tmp %>%
+  dplyr::group_by(area, year, mode, sex_group) %>%
+  dplyr::summarise(
+    ntrip = length(unique(trip)))
+
+for(a in unique(tmp$area)){
+  for(m in unique(tmp$mode)) {
+    
+    use_n <- n[n$area == a & n$mode == m, ]
+    df <- tmp[tmp$area == a & tmp$mode == m, ]
+    
+    if(dim(df)[1] > 0) {
+      fleet <- ifelse(m == "cpfv", 3, 4)
+      lfs <-  UnexpandedLFs.fn(
+            datL = df, 
+            lgthBins = length_bins,
+            partition = 0, 
+            fleet = fleet, 
+            month = 7)
+      
+      if(!is.null(lfs$unsexed)) {
+        lfs$unsexed[,"InputN"] <- use_n[use_n$sex_group == "u", 'ntrip']
+        write.csv(lfs$unsexed, 
+            file = file.path(dir, "forSS", paste0(a, "_", m, "_all_sources_not_expanded_length_comp_sex_0_rm_mrfss_overlap.csv")),
+            row.names = FALSE) 
+      } 
+      if(!is.null(lfs$sexed)) {
+        lfs$sexed[,"InputN"] <- use_n[use_n$sex_group == "b", 'ntrip']
+        write.csv(lfs$sexed, 
+           file = file.path(dir, "forSS", paste0(a, "_", m, "_all_sources_not_expanded_length_comp_sex_3_rm_mrfss_overlap.csv")),
+           row.names = FALSE) 
+      }
+      lfs <- NULL
+    } # close if statement
+  }
+}
+
+tmp <- sub_mrfss
+
+n <- tmp %>%
+  dplyr::group_by(area, year, mode, sex_group) %>%
+  dplyr::summarise(
+    ntrip = length(unique(trip)))
+
+for(a in unique(tmp$area)){
+  for(m in unique(tmp$mode)) {
+    use_n <- n[n$area == a & n$mode == m, ]
+    df <- tmp[tmp$area == a & tmp$mode == m, ]
+    if(dim(df)[1] > 0) {
+      fleet <- ifelse(m == "cpfv", 3, 4)
+      lfs <-  UnexpandedLFs.fn(
+        datL = df, 
+        lgthBins = length_bins,
+        partition = 0, 
+        fleet = fleet, 
+        month = 7
+      )
+      
+      if(!is.null(lfs$unsexed)) {
+        lfs$unsexed[,"InputN"] <- use_n[use_n$sex_group == "u", 'ntrip']
+        write.csv(lfs$unsexed, 
+                  file = file.path(dir, "forSS", paste0(a, "_", m, "_all_sources_not_expanded_length_comp_sex_0_mrfss_overlap_only.csv")),
+                  row.names = FALSE) 
+      } 
+      if(!is.null(lfs$sexed)) {
+        lfs$sexed[,"InputN"] <- use_n[use_n$sex_group == "b", 'ntrip']
+        write.csv(lfs$sexed, 
+                  file = file.path(dir, "forSS", paste0(a, "_", m, "_all_sources_not_expanded_length_comp_sex_3_mrfss_overlap_only.csv")),
+                  row.names = FALSE) 
+      }
+      lfs <- NULL
+    } # close if statement
+  }
+}
+
+#==============================================================================
+# Weight the CRFS lengths by district catch
+#==============================================================================
+catch <- read.csv(file = file.path(here(), "data", "rec_catch", "forSS", "crfs_catch_by_port_save.csv"))
+
+
+weight <- catch %>%
+  group_by(year, area, mode) %>%
+  reframe(
+    port = ports,
+    percent = catch_mt/sum(catch_mt)
+  )
+
+crfs$ports <- sapply(strsplit(crfs$RECFIN_PORT_NAME, '\\s*[()]'), '[',1)
+# create a subset df from the crfs data with the info I need
+crfs_subset <- crfs[, c('year', 'area', 'mode', 'ports', 'sex', 'lengthcm')]
+bins <- c(-999, length_bins, Inf)
+crfs_subset$len_bins <- bins[findInterval(crfs_subset$lengthcm, bins, all.inside = TRUE)]
+
+nlens_by_port <- crfs_subset[crfs_subset$year != 2004, ] %>%
+  group_by(year, area, mode, ports, len_bins) %>%
+  rename(port = ports) %>%
+  reframe(n = length(len_bins))
+
+lens_w_weights <- inner_join(nlens_by_port, weight, by = c('year', 'area', 'mode', 'port'))
+lens_w_weights$n_weight <- lens_w_weights$n * lens_w_weights$percent
+
+out <- lens_w_weights %>%
+  group_by(year,area, mode, len_bins) %>%
+  reframe(p = sum(n_weight))
+write.csv(out, file = file.path(dir, "forSS", "weighted_crfs_lengths.csv"), row.names = FALSE)
 
 #==============================================================================
 # Plot the data quickly
@@ -299,8 +402,8 @@ comp_mrfss_dwv <- tmp %>%
     len_max = max(lengthcm)
   )
 write.csv(comp_mrfss_dwv, 
-    file = file.path(dir, "forSS", "north_mrfss_dwv_comparison.csv"),
-    row.names = FALSE)
+          file = file.path(dir, "forSS", "north_mrfss_dwv_comparison.csv"),
+          row.names = FALSE)
 ggplot(tmp, aes(lengthcm, fill = program, color = program)) + 
   geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
   xlab("Length (cm)") + ylab("Density") +
@@ -322,8 +425,8 @@ comp_mrfss_ally <- tmp %>%
     len_max = max(lengthcm)
   )
 write.csv(comp_mrfss_ally, 
-    file = file.path(dir, "forSS", "south_mrfss_ally_comparison.csv"),
-    row.names = FALSE)
+          file = file.path(dir, "forSS", "south_mrfss_ally_comparison.csv"),
+          row.names = FALSE)
 
 ggplot(tmp, aes(lengthcm, fill = program, color = program)) + 
   geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
@@ -332,58 +435,118 @@ ggplot(tmp, aes(lengthcm, fill = program, color = program)) +
   scale_color_viridis_d()
 ggsave(filename = file.path(dir, "plots", "rec_south_mrfss_ally_comparison.png"),
        width = 10, height = 10)
-#==============================================================================
-#  
-#==============================================================================
+
+#=============================================================================================
+# CRFS mean length
+#=============================================================================================
+
+crfs_mean_length <- crfs %>%
+  mutate(district = substr(RECFIN_PORT_NAME, 1, 5)) %>%
+  group_by(RECFIN_YEAR, mode, RECFIN_PORT_NAME) %>%
+  summarize(mean = mean(lengthcm))
 
 
-#==============================================================================
-# Calculate sample size by year and area 
-#==============================================================================
+ggplot(crfs_mean_length) +
+  # geom_line(size = 1) + 
+  geomtextpath::geom_textline(aes(
+    x = RECFIN_YEAR, y = mean, 
+    color = RECFIN_PORT_NAME, label = RECFIN_PORT_NAME),
+    hjust = .7,
+    size = 2,
+    linewidth = 1.2) +
+  facet_wrap(~mode) +
+  theme(legend.position = "none") +
+  xlab("Year") + ylab("Mean Length") +
+  scale_color_viridis_d() 
+ggsave(file = file.path(dir, "plots", "crfs_mean_length_by_port.png"), width = 7, height = 7)
 
-firstup <- function(x) {
-  substr(x, 1, 1) <- toupper(substr(x, 1, 1))
-  x
-}
 
-sample_size_cpfv <- all_data %>%
-  dplyr::filter(mode == 'cpfv') %>%
-  dplyr::group_by(area, year, program) %>%
-  dplyr::summarise(
-    ntrip = length(unique(trip)),
-    n = length(lengthcm))
+#=============================================================================================
+# MRFSS vs Deb's exploration
+#=============================================================================================
+#mrfss assign counties to districts for only northern ca
+mrfs_north <- mrfs %>%
+  filter(area == "north",
+         mode=="cpfv",
+         between(year, 1987,1998)) %>%
+  mutate(district = case_when(CNTY %in% c(15, 23) ~ 6,
+                              CNTY %in% c(45) ~ 5,
+                              CNTY %in% c(53, 79, 87) ~ 3, 
+                              CNTY %in% c(1,13,41,75,77,81,97) ~ 4))
+col_names1 <- c('year', 'mode', 'area','district', 'program', 'lengthcm', 'trip')
+some_dat <- rbind(
+  mrfs_north[, col_names1],
+  deb_wv[, col_names1]
+)
+some_data <- rbind(
+  mrfs_north[, col_names1],
+  deb_wv[, col_names1]
+)
+mean_length <- some_data %>%
+  group_by(program, district, year) %>%
+  summarize(mean = mean(lengthcm),
+            count = n())
 
-sample_size_private <- all_data %>%
-  dplyr::filter(mode == 'private') %>%
-  dplyr::group_by(area, year, program) %>%
-  dplyr::summarise(
-    ntrip = length(unique(trip)),
-    n = length(lengthcm))
+samples1 <- some_data %>%
+  group_by(program, district, year) %>%
+  summarize(count = n())
 
-south <- dplyr::left_join(
-  sample_size_cpfv[sample_size_cpfv$area == 'south', ],
-  sample_size_private[sample_size_private$area == 'south', ], 
-  by = c('year', 'program', 'area'))
-colnames(south) <- c('Area', 'Year', 'Source', 'CPFV Trips', 'CPFV Samples', 'PR Trips', 'PR Samples')
-south <- as.data.frame(south)
-south[is.na(south)] <- "-"
-south$Source <- toupper(south$Source)
-south$Source <- gsub("_", " ", south$Source)
-south$Area <- firstup(south$Area)
+samples2 <- some_data %>%
+  group_by(program, year) %>%
+  summarise(count_all = n())
 
-north <- dplyr::left_join(
-  sample_size_cpfv[sample_size_cpfv$area == 'north', ],
-  sample_size_private[sample_size_private$area == 'north', ], 
-  by = c('year', 'program', 'area'))
-colnames(north) <- c('Area', 'Year', 'Source', 'CPFV Trips', 'CPFV Samples', 'PR Trips', 'PR Samples')
-north <- as.data.frame(north)
-north[is.na(north)] <- "-"
-north$Source <- toupper(north$Source)
-north$Source <- gsub("_", " ", north$Source)
-north$Area <- firstup(north$Area)
+samples3 <- inner_join(samples1,samples2) %>%
+  mutate(percent_in_district = count/count_all)
 
-write.csv(south, file = file.path(dir, "forSS", "rec_south_sample_size_by_program.csv"), row.names = FALSE)
-write.csv(north, file = file.path(dir, "forSS", "rec_north_sample_size_by_program.csv"), row.names = FALSE)
+#=============================================================================================
+# Plots for melissa's exploration
+#=============================================================================================
+
+#look at the percent of samples coming from each district by program over time
+ggplot(samples3, aes(x = year, y = percent_in_district, 
+                     color = as.factor(district))) + 
+  geom_point() +
+  geom_path() +
+  facet_wrap(~program) +
+  scale_color_viridis_d() 
+
+
+ggplot(mean_length, aes(x = year, y = mean, color = district)) +
+  geom_line(lwd = 0.8, adjust = 0.5) + 
+  xlab("Year") + ylab("MeanLength") +
+  facet_wrap(facets = c("program")) 
+
+ggplot(some_data, aes(y = lengthcm, x = year, group = year)) +
+  geom_boxplot() + 
+  facet_wrap(facets = c("district"," program")) + 
+  xlab("Year") + ylab("Length (cm)") 
+
+
+ggplot(some_data, aes(y = lengthcm, x = program, group = program)) +
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("district")) + 
+  scale_color_viridis_d()
+
+ggplot(some_data, aes(lengthcm, group = program)) +
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("district")) + 
+  scale_color_viridis_d()
+ggplot(some_data, aes(lengthcm, fill = program, color = program)) +
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("district")) + 
+  scale_color_viridis_d()
+#ggsave(filename = file.path(dir, "plots", "rec_south_length_boxplot_by_mode_program_year.png"),
+#       width = 10, height = 10)
+
+ggplot(some_data, aes(x = lengthcm, group = district, color = district)) +
+  geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
+  xlab("Length (cm)") + ylab("Density") +
+  facet_wrap(facets = c("program")) #+ 
+#scale_color_viridis_d()
+
 
 #==============================================================================
 # Plot the data quickly
@@ -440,8 +603,8 @@ comp_mrfss_dwv <- tmp %>%
     len_max = max(lengthcm)
   )
 write.csv(comp_mrfss_dwv, 
-    file = file.path(dir, "forSS", "north_mrfss_dwv_comparison.csv"),
-    row.names = FALSE)
+          file = file.path(dir, "forSS", "north_mrfss_dwv_comparison.csv"),
+          row.names = FALSE)
 
 ggplot(tmp, aes(lengthcm, fill = program, color = program)) + 
   geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
@@ -464,8 +627,8 @@ comp_mrfss_ally <- tmp %>%
     len_max = max(lengthcm)
   )
 write.csv(comp_mrfss_ally, 
-    file = file.path(dir, "forSS", "south_mrfss_ally_comparison.csv"),
-    row.names = FALSE)
+          file = file.path(dir, "forSS", "south_mrfss_ally_comparison.csv"),
+          row.names = FALSE)
 
 ggplot(tmp, aes(lengthcm, fill = program, color = program)) + 
   geom_density(alpha = 0.4, lwd = 0.8, adjust = 0.5) + 
@@ -474,73 +637,5 @@ ggplot(tmp, aes(lengthcm, fill = program, color = program)) +
   scale_color_viridis_d()
 ggsave(filename = file.path(dir, "plots", "rec_south_mrfss_ally_comparison.png"),
        width = 10, height = 10)
-
-#==============================================================================
-# Create un-weighted composition data for recreational data sources
-#==============================================================================
-
-# Add expected column names to work with nwfscSurvey package
-# To Do: add revisions to nwfscSurvey package to dynamically check column names
-length_bins <- c(seq(10, 54, 2))
-
-# Should switch to using purr package function instead of a loop
-for(a in unique(all_data$area)) {
-  for(m in unique(all_data$mode)) {
-    for(p in unique(all_data$program)) {
-      df <- all_data[all_data$area == a & all_data$mode == m & all_data$program == p, ]
-      if(dim(df)[1] > 0) {
-        fleet <- ifelse(m == "cpfv", 3, 4)
-        lfs <-  UnexpandedLFs.fn(
-          datL = df, 
-          lgthBins = length_bins,
-          partition = 0, 
-          fleet = fleet, 
-          month = 7)
-        
-        if(!is.null(lfs$unsexed)){
-          write.csv(lfs$unsexed, 
-                    file = file.path(dir, "forSS", "data_by_program", paste0(a, "_", m, "_", p, "_sources_not_expanded_length_comp_sex_0.csv")),
-                    row.names = FALSE) 
-        } 
-        if(!is.null(lfs$sexed)){
-          write.csv(lfs$sexed, 
-                    file = file.path(dir, "forSS",  "data_by_program", paste0(a, "_", m, "_", p, "_sources_not_expanded_length_comp_sex_3.csv")),
-                    row.names = FALSE) 
-        }
-        lfs <- NULL
-      } #if loop from dim(df)
-    }
-  }
-}
-
-for(a in unique(all_data$area)){
-  for(m in unique(all_data$mode)) {
-    df <- all_data[all_data$area == a & all_data$mode == m, ]
-    if(dim(df)[1] > 0) {
-      fleet <- ifelse(m == "cpfv", 3, 4)
-      lfs <-  UnexpandedLFs.fn(
-            datL = df, 
-            lgthBins = length_bins,
-            partition = 0, 
-            fleet = fleet, 
-            month = 7
-      )
-      
-      if(!is.null(lfs$unsexed)) {
-        write.csv(lfs$unsexed, 
-            file = file.path(dir, "forSS", paste0(a, "_", m, "_all_sources_not_expanded_length_comp_sex_0.csv")),
-            row.names = FALSE) 
-      } 
-      if(!is.null(lfs$sexed)) {
-        write.csv(lfs$sexed, 
-           file = file.path(dir, "forSS", paste0(a, "_", m, "_all_sources_not_expanded_length_comp_sex_3.csv")),
-           row.names = FALSE) 
-      }
-      lfs <- NULL
-    } # close if statement
-  }
-}
-
-
 
 
