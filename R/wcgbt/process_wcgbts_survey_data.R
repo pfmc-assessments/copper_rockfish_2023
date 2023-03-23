@@ -18,15 +18,15 @@ dir_main <- file.path(here(), "data", "wcgbt")
 #=====================================================================
 
 # catch = pull_catch(
-#     dir = dir, 
+#     dir = dir_main, 
 #     common_name = "copper rockfish",
 #     survey = "NWFSC.Combo",
 #     convert  = TRUE)
 # bio = pull_bio(
-#     dir = dir, 
-#     common_name = "copper rockfish",
-#     survey = "NWFSC.Combo",
-#     convert = TRUE)
+#    dir = dir_main, 
+#    common_name = "copper rockfish",
+#    survey = "NWFSC.Combo",
+#    convert = TRUE)
 # bio_samps = pull_biological_samples(
 #     dir = dir, 
 #     common_name = "copper rockfish",
@@ -94,13 +94,29 @@ n_tows <- n_tows[-remove[1], ]
 
 out <- cbind(n_tows, n_obs[, c("length_samples", "age_samples")])
 colnames(out) <- c("Area", "Year", "Positive Tows", "Length Samples", "Read Ages")
-write.csv(out, row.names = FALSE, file = file.path(dir_main, "forSS", "positive_tows_and_bio_samples.csv"))
+write.csv(out, row.names = FALSE, file = file.path(dir_main, "forSS", "wcgbt_positive_tows_and_bio_samples.csv"))
 
+#=====================================================================
+# Tabel of available and aged otoliths  - melissa
+#=====================================================================
+
+copp_otoliths_table <- bio_orig %>%
+  filter(!is.na(Otosag_id)) %>%
+  group_by(area, Year) %>%
+   summarise(avail.oto.cnt = n())
+  
+copp_age_table <- bio_orig %>%
+  filter(!is.na(Age)) %>%
+  group_by(area, Year) %>%
+  summarise(oto.aged = n())
+
+copp_age_summary <- inner_join(copp_otoliths_table,copp_age_table)
+write.csv(copp_age_summary,"copper_age_summary.csv")
 #=====================================================================
 # Split the data by assessment area 
 #=====================================================================
-#area = "south"
-area = "north"
+area = "south"
+#area = "north"
 
 catch <- catch_orig[catch_orig$area == area, ]
 bio <- bio_orig[bio_orig$area == area, ]
