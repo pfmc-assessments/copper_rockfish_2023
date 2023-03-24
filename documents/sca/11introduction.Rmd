@@ -1,7 +1,7 @@
 # Introduction
 ## Basic Information
 
-This assessment reports the status of `r spp` (*Sebastes caurinus*) off the California coast, south of Point Conception, using data through 2022.
+This assessment reports the status of `r spp` (*Sebastes caurinus*) off the California coast, south of Point Conception, using data through 2022. This assessment does not account for populations located in Mexico waters and assumes that this southern population does not contribute to the population being assessed here. 
 
 ## Life History
 
@@ -11,7 +11,13 @@ read_child(filein)
 ```
 
 ## Ecosystem Considerations
-Replace text.
+
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text", '1_ecosystem_consideration.Rmd')
+read_child(filein)
+```
+
 
 ## Historical and Current Fishery Information
 
