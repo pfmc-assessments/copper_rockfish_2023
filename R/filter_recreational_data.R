@@ -51,7 +51,7 @@ save(mrfss, file = file.path(dir, "rec_catch", "mrfss_catch_filtered.rdata"))
 #=========================================================================================
 # CRFS data
 #========================================================================================
-crfss <- read.csv(file.path(dir, "rec_catch", "CTE501-CALIFORNIA-2004---2022.csv"))
+crfss <- read.csv(file.path(dir, "rec_catch", "CTE501-CALIFORNIA-2004---2022_March2023.csv"))
 crfss <- recfin_areas(
 	data = crfss, 
 	area_grouping = list(c("CHANNEL", "SOUTH"), c("BAY AREA", "WINE", "CENTRAL", "REDWOOD")), 
@@ -67,7 +67,7 @@ crfss <- recfin_modes(
 crfss$year <- crfss$RECFIN_YEAR
 crfs <- crfss
 
-save(crfs, file = file.path(dir, "rec_catch", "crfss_catch_filtered.rdata"))
+save(crfs, file = file.path(dir, "rec_catch", "crfss_catch_filtered_march_2023.rdata"))
 
 # Recreational bds data =========================================
 
