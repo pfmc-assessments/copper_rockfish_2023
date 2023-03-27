@@ -11,9 +11,6 @@ A range of alternative model structures were explored to generate an index of ab
 
 \input{tex_tables/rov_removed_records_south.tex}
 
-\newpage
-
-\input{tex_tables/rov_south_samples_transects.tex}
 
 \newpage
 
@@ -44,14 +41,6 @@ sa4ss::table_format(x = ind,
              col_names = col_names)                         
 ```
 
-\newpage
-
-```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "plots", "south_raw_cpue_by_mpa_group.png"), 
-caption = "The trend of the calculated CPUE by each MPA and Reference group.",
-label = 'rov-raw-cpue')
-```
 
 \newpage
 
