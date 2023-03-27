@@ -479,4 +479,12 @@ ggplot() +
   geom_line(data = raw.cpue.cca, aes(x = year, y = stand_cpue), colour = 'green') +
   geom_point(data = raw.cpue.cca, aes(x = year, y = stand_cpue), size = 2, colour = 'green') +
   ylim(c(0, 2)) + ylab("Standardized CPUE")
+ggsave(file = file.path(dir, "plots", 'standardized_cpue_nwfsc_hkl_inside_outside.png'), width = 12, height = 7)
+
+ggplot() +
+  geom_line(data = raw.cpue.no.cca, aes(x = year, y = avg_cpue), colour = 'blue') + 
+  geom_point(data = raw.cpue.no.cca,aes(x = year, y = avg_cpue), size = 2, colour = 'blue') +
+  geom_line(data = raw.cpue.cca, aes(x = year, y = avg_cpue), colour = 'green') +
+  geom_point(data = raw.cpue.cca, aes(x = year, y = avg_cpue), size = 2, colour = 'green') +
+  ylim(c(0, 2)) + ylab("CPUE")
 ggsave(file = file.path(dir, "plots", 'raw_cpue_nwfsc_hkl_inside_outside.png'), width = 12, height = 7)
