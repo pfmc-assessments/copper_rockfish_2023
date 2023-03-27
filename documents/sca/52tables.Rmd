@@ -51,7 +51,27 @@ table_format(x = out,
 
 
 <!-- ======================================================= -->
-<!-- ***************   Survey  Data  *********************** --> 
+<!-- *************  NWFSC HKL  Data  *********************** --> 
+<!-- ======================================================= -->
+
+
+\input{tex_tables/nwfsc_hkl_positive_samples_by_year.tex}
+
+\pagebreak
+
+\input{tex_tables/nwfsc_hkl_positive_samples_by_depth.tex}
+
+\pagebreak
+
+\input{tex_tables/nwfsc_hkl_sample_number_by_site_cca.tex}
+
+\pagebreak
+
+\input{tex_tables/nwfsc_hkl_effn_lengths_ages.tex}
+
+
+<!-- ======================================================= -->
+<!-- *************     CDFW  ROV    *********************** --> 
 <!-- ======================================================= -->
 
 

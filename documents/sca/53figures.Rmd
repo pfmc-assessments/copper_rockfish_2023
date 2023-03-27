@@ -117,12 +117,19 @@ label = 'nwfsc-hkl-map')
 
 
 
-
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "nwfsc_hkl", "plots", "hkl_copper_by_site_count_all_years.png"), 
 caption = "Observations of copper rockfish by the NWFSC Hook and Line survey by sample area, inside and outside Cowcod Conservation areas (CCA)",
 label = 'nwfsc-hkl-site')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "rstan_full_nb_glm_year_site_drop_swell_bocaccio_vermilon", "Index.png"), 
+caption = "Estimated index of abundance for copper rockfish.",
+label = 'nwfsc-hkl-index-main')
 ```
 
 
@@ -133,6 +140,16 @@ filein = file.path(data_dir, "nwfsc_hkl", "plots", "hkl_observations_by_length_s
 caption = "Observed length (cm) distribution of copper rockfish by the NWFSC Hook and Line survey by sample area, inside and outside Cowcod Conservation areas (CCA)",
 label = 'nwfsc-hkl-site-len')
 ```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "nwfsc_hkl", "plots", "nwfsc_hkl_age_at_length.png"), 
+caption = "Age and length by sex for copper rockfish in the NWFSC Hook and Line survey.",
+label = 'nwfsc-hkl-len-age')
+```
+
 
 
 ```{r, results = 'asis'}
@@ -152,6 +169,29 @@ label = 'mean-hkl-len-data')
 
 
 <!-- ======================================================= -->
+<!-- ***************     ROV           ******************* --> 
+<!-- ======================================================= -->
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "rov", "plots", "south_raw_cpue_by_mpa_group.png"), 
+caption = "The trend of the calculated CPUE by each MPA and Reference group.",
+label = 'rov-raw-cpue')
+```
+
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "rov", "plots", "rov_length_by_area_designation.png"), 
+caption = "The distribution of lengths across all years for MPA and Reference area north and south of Point Conception.",
+label = 'rov-len')
+```
+
+
+
+<!-- ======================================================= -->
 <!-- ***************     CCFRP           ******************* --> 
 <!-- ======================================================= -->
 
@@ -161,6 +201,28 @@ label = 'mean-hkl-len-data')
 <!-- ***************  NWFSC WCGBT Survey  ****************** --> 
 <!-- ======================================================= -->
 
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "wcgbt", "south", "plots", "cpue_map.png"), 
+caption = "Location and catch-per-unit-effort by location caught south of Point Conception by the NWFSC WCGBT survey.",
+label = 'wcgbt-cpue')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "wcgbt", "south", "plots", "presence-absence_proportion_by_depth.png"), 
+caption = "Number of positive tows across all years by depth in meters.",
+label = 'wcgbt-depth')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "wcgbt", "plots", "wcgbt_south_age_at_length_by_area.png"), 
+caption = "Age and length by sex for copper rockfish caught south of Point Conception by the NWFSC WCGBT survey.",
+label = 'wcgbt-len-age')
+```
 
 
 

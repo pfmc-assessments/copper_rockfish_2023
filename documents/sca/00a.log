@@ -1,7 +1,7 @@
-This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.3.21)  26 MAR 2023 12:19
+This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.3.21)  21 MAR 2023 09:01
  restricted system commands enabled.
-**_main.tex
-(./_main.tex
+**00a.tex
+(./00a.tex
 LaTeX2e <2022-11-01> patch level 1
 Lua module: luaotfload 2022-10-03 3.23 Lua based OpenType font support
 Lua module: lualibs 2022-10-04 2.75 ConTeXt Lua standard libraries.
@@ -1030,50 +1030,29 @@ Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
 )) (c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/locale/en/babel-english.tex
 Package babel Info: Importing font and identification data for english
 (babel)             from babel-en.ini. Reported on input line 11.
-)
-\csllabelwidth=\skip102
-\cslhangindent=\skip103
-(./_main.aux
+) (./00a.aux)
+\openout1 = 00a.aux
 
-LaTeX Warning: Label `tab:allcatches' multiply defined.
-
-
-LaTeX Warning: Label `tab:allcatches' multiply defined.
-
-(./tex_tables/historical_landings_tables_2020_revised_Avila_1953.aux)
-
-LaTeX Warning: Label `tab:params' multiply defined.
-
-
-LaTeX Warning: Label `tab:params' multiply defined.
-
-(./tex_tables/likelihoods.aux) (./tex_tables/e_ReferencePoints.aux) (./tex_tables/TimeSeries.aux)
-
-LaTeX Warning: Label `fig:rov-raw-cpue' multiply defined.
-
-)
-\openout1 = _main.aux
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
 (c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count378
@@ -1135,12 +1114,12 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package backref Info: ** backref set up for natbib ** on input line 125.
-Package hyperref Info: Link coloring OFF on input line 125.
-(./_main.out) (./_main.out)
+Package backref Info: ** backref set up for natbib ** on input line 99.
+Package hyperref Info: Link coloring OFF on input line 99.
+(./00a.out) (./00a.out)
 \@outlinefile=\write6
 
-\openout6 = _main.out
+\openout6 = 00a.out
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: longtable package is loaded.
 (c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/ltcaption.sty
@@ -1148,7 +1127,7 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package soulpos Info: Loading soulutf8 on input line 125.
+Package soulpos Info: Loading soulutf8 on input line 99.
 (c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/soul/soulutf8.sty
 Package: soulutf8 2023-02-18 v3.0 Permit use of UTF-8 characters in soul (HO)
 
@@ -1176,25 +1155,25 @@ Package: soul-ori 2023-02-18 v3.0 letterspacing/underlining (mf)
 \SOUL@comma=\count385
 \SOUL@apo=\count386
 \SOUL@grave=\count387
-\SOUL@spaceskip=\skip104
+\SOUL@spaceskip=\skip102
 \SOUL@ttwidth=\dimen322
 \SOUL@uldp=\dimen323
 \SOUL@ulht=\dimen324
 ))
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 125.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 99.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 125.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 99.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 125.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 99.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 125.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 99.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 125.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 99.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 125.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 99.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 125.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 99.
 
 Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
 
@@ -1225,7 +1204,7 @@ Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
 (fontspec)             \__um_luatex_copy_fontdimens: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 125.
+(Font)              scaled to size 10.95pt on input line 99.
 
 Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
 
@@ -1262,15 +1241,15 @@ Package fontspec Info: Font family 'latinmodern-math.otf(1)' created for font
 (fontspec)             \__um_luatex_copy_fontdimens: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 125.
+(Font)              scaled to size 10.95pt on input line 99.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 125.
+(Font)              `operators' in the math version `normal' on input line 99.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 125.
+(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 99.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 125.
+(Font)              `operators' in the math version `bold' on input line 99.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 125.
+(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 99.
 
 Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
 
@@ -1352,13 +1331,13 @@ Package fontspec Info: Font family 'latinmodern-math.otf(2)' created for font
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 125.
+(Font)              `symbols' in the math version `normal' on input line 99.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 125.
+(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 99.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 125.
+(Font)              `symbols' in the math version `bold' on input line 99.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 125.
+(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 99.
 
 Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
 
@@ -1422,756 +1401,94 @@ Package fontspec Info: Font family 'latinmodern-math.otf(3)' created for font
 (fontspec)             \fontdimen 13\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 125.
+(Font)              `largesymbols' in the math version `normal' on input line 99.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 125.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 99.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 125.
+(Font)              `largesymbols' in the math version `bold' on input line 99.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 125.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 99.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.665pt on input line 125.
+(Font)              scaled to size 7.665pt on input line 99.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.475pt on input line 125.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 125.
+(Font)              scaled to size 5.475pt on input line 99.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 99.
 (c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.95099pt on input line 125.
+(Font)              scaled to size 10.95099pt on input line 99.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.66568pt on input line 125.
+(Font)              scaled to size 7.66568pt on input line 99.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.4755pt on input line 125.
+(Font)              scaled to size 5.4755pt on input line 99.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.94882pt on input line 125.
+(Font)              scaled to size 10.94882pt on input line 99.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.66417pt on input line 125.
+(Font)              scaled to size 7.66417pt on input line 99.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.47441pt on input line 125.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 125.
+(Font)              scaled to size 5.47441pt on input line 99.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 99.
 (c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 125.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 99.
 (c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Info: Redefining \microtypecontext on input line 125.
-Package microtype Info: Applying patch `item' on input line 125.
-Package microtype Info: Applying patch `toc' on input line 125.
-Package microtype Info: Applying patch `eqnum' on input line 125.
-Package microtype Info: Applying patch `footnote' on input line 125.
-Package microtype Info: Applying patch `verbatim' on input line 125.
+LaTeX Info: Redefining \microtypecontext on input line 99.
+Package microtype Info: Applying patch `item' on input line 99.
+Package microtype Info: Applying patch `toc' on input line 99.
+Package microtype Info: Applying patch `eqnum' on input line 99.
+Package microtype Info: Applying patch `footnote' on input line 99.
+Package microtype Info: Applying patch `verbatim' on input line 99.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 125.
+LaTeX Info: Redefining \showhyphens on input line 99.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of spacing.
 Package microtype Info: No adjustment of kerning.
 (c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
 File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Modern Roman (RS)
-)
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 143.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 143.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 143.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 143.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 143.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 143.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 143.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 143.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 143.
-(c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
-File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-) (c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
-File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1
 
 
-\openout5 = _main.upa
+\openout5 = 00a.upa
 {c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
 
-] (./_main.toc [3
-
-] [4])
+] (./00a.toc)
 \tf@toc=\write7
 
-\openout7 = _main.toc
-[5] (./tex_tables/a_Catches_ES.tex)
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/catch2 landings stacked.png, id=456, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/catch2 landings stacked.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/catch2 landings stacked.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/catch2 landings stacked.png  used on input line 221.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-(./tex_tables/b_SSB_ES.tex
-warning  (pdf backend): ignoring duplicate destination with the name 'page.i'
-[1
+\openout7 = 00a.toc
+[3
 
-
-]
-Package marginnote Info: Using workaround for absolute page number on input line 30.
-)
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png, id=468, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png  used on input line 249.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts9_Relative_spawning_output_intervals.png, id=469, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts9_Relative_spawning_output_intervals.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts9_Relative_spawning_output_intervals.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts9_Relative_spawning_output_intervals.png  used on input line 255.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-
-Overfull \vbox (237.82426pt too high) has occurred while \output is active []
-
-
-warning  (pdf backend): ignoring duplicate destination with the name 'page.ii'
-[2<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/catch2 landings stacked.png><n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png>]
-warning  (pdf backend): ignoring duplicate destination with the name 'page.iii'
-[3<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts9_Relative_spawning_output_intervals.png>] (./tex_tables/c_Recr_ES.tex)
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png, id=482, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png  used on input line 271.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-
-warning  (pdf backend): ignoring duplicate destination with the name 'page.iv'
-[4
-
-]
-warning  (pdf backend): ignoring duplicate destination with the name 'page.v'
-[5<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png>] (./tex_tables/d_SPR_ES.tex)
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR2_minusSPRseries.png, id=494, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR2_minusSPRseries.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR2_minusSPRseries.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR2_minusSPRseries.png  used on input line 287.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-(./tex_tables/e_ReferencePoints_ES.tex
-Overfull \hbox (41.71796pt too wide) in alignment at lines 4--9
- [][][][] 
- []
-
-
-Overfull \hbox (41.71796pt too wide) in alignment at lines 9--14
- [][][][] 
- []
-
-
-Overfull \hbox (41.71796pt too wide) in alignment at lines 14--16
- [][][][] 
- []
-
-
-Overfull \hbox (41.71796pt too wide) in alignment at lines 16--18
- [][][][] 
- []
-
-
-Overfull \hbox (41.71796pt too wide) in alignment at lines 18--39
- [][][][] 
- []
-
-[6
-
-])
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR4_phase.png, id=507, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR4_phase.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR4_phase.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR4_phase.png  used on input line 307.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/yield2_yield_curve_with_refpoints.png, id=508, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/yield2_yield_curve_with_refpoints.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/yield2_yield_curve_with_refpoints.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/yield2_yield_curve_with_refpoints.png  used on input line 313.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-[7] [8<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR2_minusSPRseries.png><n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR4_phase.png>] [9<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/yield2_yield_curve_with_refpoints.png>] [1]
-Package marginnote Info: Using workaround for absolute page number on input line 380.
-
-LaTeX Warning: Reference `ca-man' on page 2 undefined on input line 387.
-
-[2]
-
-LaTeX Warning: Reference `fig:map' on page 3 undefined on input line 397.
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 425--426
-
- []
-
-[4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 444--445
-
- []
-
-[6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 487--488
-
- []
-
-[9]
-
-LaTeX Warning: Reference `length-data' on page 10 undefined on input line 500.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 508--509
-
- []
-
-[10] [11]
-
-LaTeX Warning: Reference `tab:wcgbt-samps ' on page 12 undefined on input line 540.
-
-[12] [13] [14]
-
-LaTeX Warning: Reference `tab:sensitivities1' on page 15 undefined on input line 654.
-
-
-LaTeX Warning: Reference `tab:sensitivities2' on page 15 undefined on input line 654.
-
-[15] [16] [17] [18
-
-] [19] [20]
-warning  (pdf backend): ignoring duplicate destination with the name 'table.1'
-[21
-
-] [22] [23]
-\openout2 = tex_tables/historical_landings_tables_2020_revised_Avila_1953.aux
- (./tex_tables/historical_landings_tables_2020_revised_Avila_1953.tex
-warning  (pdf backend): ignoring duplicate destination with the name 'table.2'
-[24
-
-]) [25] (./tex_tables/nwfsc_hkl_positive_samples_by_year.tex
-warning  (pdf backend): ignoring duplicate destination with the name 'table.3'
-) [26
-
-
-] (./tex_tables/nwfsc_hkl_positive_samples_by_depth.tex
-warning  (pdf backend): ignoring duplicate destination with the name 'table.4'
-) [27] (./tex_tables/nwfsc_hkl_sample_number_by_site_cca.tex
-warning  (pdf backend): ignoring duplicate destination with the name 'table.5'
-[28]) [29] (./tex_tables/nwfsc_hkl_effn_lengths_ages.tex) [30] [31
-
-] [32] [33]
-\openout2 = tex_tables/likelihoods.aux
- (./tex_tables/likelihoods.tex) [34
-
-
-]
-\openout2 = tex_tables/e_ReferencePoints.aux
-
-No file tex_tables/e_ReferencePoints.tex.
-
-\openout2 = tex_tables/TimeSeries.aux
-(./tex_tables/TimeSeries.tex
-Overfull \hbox (0.63622pt too wide) in paragraph at lines 7--7
- \TU/lmr/m/n/10 Biomass 
- []
-
-
-Overfull \hbox (0.63622pt too wide) in paragraph at lines 7--7
- \TU/lmr/m/n/10 Biomass 
- []
-
-
-Overfull \hbox (7.39053pt too wide) in alignment at lines 4--9
- [][][][][][][][][] 
- []
-
-
-Overfull \hbox (0.63622pt too wide) in paragraph at lines 12--12
- \TU/lmr/m/n/10 Biomass 
- []
-
-
-Overfull \hbox (0.63622pt too wide) in paragraph at lines 12--12
- \TU/lmr/m/n/10 Biomass 
- []
-
-
-Overfull \hbox (7.39053pt too wide) in alignment at lines 9--14
- [][][][][][][][][] 
- []
-
-
-Overfull \hbox (7.39053pt too wide) in alignment at lines 14--16
- [][][][][][][][][] 
- []
-
-
-Overfull \hbox (7.39053pt too wide) in alignment at lines 16--18
- [][][][][][][][][] 
- []
-
-
-Overfull \hbox (7.39053pt too wide) in alignment at lines 18--136
- [][][][][][][][][] 
- []
-
-[35
-
-
-
-
-
-
-] [36] [37]) [38]
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/catch2 landings stacked.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/catch2 landings stacked.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/catch2 landings stacked.png  used on input line 1067.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/data_plot.png, id=889, 469.755pt x 469.755pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/data_plot.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/data_plot.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/data_plot.png  used on input line 1073.
-(luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt1mkt2_page2.png, id=890, 469.755pt x 469.755pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt1mkt2_page2.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt1mkt2_page2.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt1mkt2_page2.png  used on input line 1079.
-(luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Commercial_dead.png, id=891, 469.755pt x 469.755pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Commercial_dead.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Commercial_dead.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Commercial_dead.png  used on input line 1085.
-(luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt2mkt2.png, id=892, 469.755pt x 469.755pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt2mkt2.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt2mkt2.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt2mkt2.png  used on input line 1091.
-(luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Commercial_live.png, id=893, 469.755pt x 469.755pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Commercial_live.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Commercial_live.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Commercial_live.png  used on input line 1097.
-(luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt3mkt0_page2.png, id=894, 469.755pt x 469.755pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt3mkt0_page2.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt3mkt0_page2.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt3mkt0_page2.png  used on input line 1103.
-(luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Rec_cpfv.png, id=895, 469.755pt x 469.755pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Rec_cpfv.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Rec_cpfv.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Rec_cpfv.png  used on input line 1109.
-(luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt4mkt0_page2.png, id=896, 469.755pt x 469.755pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt4mkt0_page2.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt4mkt0_page2.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt4mkt0_page2.png  used on input line 1115.
-(luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Rec_private.png, id=897, 469.755pt x 469.755pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Rec_private.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Rec_private.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Rec_private.png  used on input line 1121.
-(luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/maps/Map_HL_Sites_lndscp.jpg, id=898, 1027.84pt x 794.97pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/maps/Map_HL_Sites_lndscp.jpg Graphic file (type jpg)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/maps/Map_HL_Sites_lndscp.jpg>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/maps/Map_HL_Sites_lndscp.jpg  used on input line 1127.
-(luatex.def)             Requested size: 398.34662pt x 308.0962pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/hkl_copper_by_site_count_all_years.png, id=899, 722.7pt x 578.16pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/hkl_copper_by_site_count_all_years.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/hkl_copper_by_site_count_all_years.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/hkl_copper_by_site_count_all_years.png  used on input line 1133.
-(luatex.def)             Requested size: 398.33534pt x 318.66827pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/rstan_full_nb_glm_year_site_drop_swell_bocaccio_vermilon/Index.png, id=900, 722.7pt x 505.89pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/rstan_full_nb_glm_year_site_drop_swell_bocaccio_vermilon/Index.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/rstan_full_nb_glm_year_site_drop_swell_bocaccio_vermilon/Index.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/rstan_full_nb_glm_year_site_drop_swell_bocaccio_vermilon/Index.png  used on input line 1139.
-(luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/hkl_observations_by_length_sex_area.png, id=901, 722.7pt x 578.16pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/hkl_observations_by_length_sex_area.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/hkl_observations_by_length_sex_area.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/hkl_observations_by_length_sex_area.png  used on input line 1145.
-(luatex.def)             Requested size: 398.33534pt x 318.66827pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/nwfsc_hkl_age_at_length.png, id=902, 722.7pt x 578.16pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/nwfsc_hkl_age_at_length.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/nwfsc_hkl_age_at_length.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/nwfsc_hkl_age_at_length.png  used on input line 1151.
-(luatex.def)             Requested size: 398.33534pt x 318.66827pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt5mkt0.png, id=903, 469.755pt x 469.755pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt5mkt0.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt5mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt5mkt0.png  used on input line 1157.
-(luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_NWFSC_HKL.png, id=904, 469.755pt x 469.755pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_NWFSC_HKL.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_NWFSC_HKL.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_NWFSC_HKL.png  used on input line 1163.
-(luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/south_raw_cpue_by_mpa_group.png, id=905, 505.89pt x 505.89pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/south_raw_cpue_by_mpa_group.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/south_raw_cpue_by_mpa_group.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/south_raw_cpue_by_mpa_group.png  used on input line 1169.
-(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_length_by_area_designation.png, id=906, 722.7pt x 722.7pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_length_by_area_designation.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_length_by_area_designation.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_length_by_area_designation.png  used on input line 1175.
-(luatex.def)             Requested size: 398.33534pt x 398.33534pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/south/plots/cpue_map.png, id=907, 722.7pt x 505.89pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/south/plots/cpue_map.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/south/plots/cpue_map.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/south/plots/cpue_map.png  used on input line 1181.
-(luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/south/plots/presence-absence_proportion_by_depth.png, id=908, 505.89pt x 505.89pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/south/plots/presence-absence_proportion_by_depth.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/south/plots/presence-absence_proportion_by_depth.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/south/plots/presence-absence_proportion_by_depth.png  used on input line 1187.
-(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/wcgbt_south_age_at_length_by_area.png, id=909, 578.16pt x 578.16pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/wcgbt_south_age_at_length_by_area.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/wcgbt_south_age_at_length_by_area.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/wcgbt_south_age_at_length_by_area.png  used on input line 1193.
-(luatex.def)             Requested size: 398.33975pt x 398.33975pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio6_maturity.png, id=910, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio6_maturity.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio6_maturity.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio6_maturity.png  used on input line 1199.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio9_fecundity_len.png, id=911, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio9_fecundity_len.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio9_fecundity_len.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio9_fecundity_len.png  used on input line 1205.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/length_fraction_female.png, id=912, 505.89pt x 505.89pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/length_fraction_female.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/length_fraction_female.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/length_fraction_female.png  used on input line 1211.
-(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png, id=913, 505.89pt x 505.89pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png  used on input line 1217.
-(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/_plots/0_model_convert_compare2_spawnbio_uncertainty.png, id=914, 469.755pt x 361.35pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/_plots/0_model_convert_compare2_spawnbio_uncertainty.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/_plots/0_model_convert_compare2_spawnbio_uncertainty.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/_plots/0_model_convert_compare2_spawnbio_uncertainty.png  used on input line 1223.
-(luatex.def)             Requested size: 398.34032pt x 306.41562pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/_plots/0_model_convert_compare4_Bratio_uncertainty.png, id=915, 469.755pt x 361.35pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/_plots/0_model_convert_compare4_Bratio_uncertainty.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/_plots/0_model_convert_compare4_Bratio_uncertainty.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/_plots/0_model_convert_compare4_Bratio_uncertainty.png  used on input line 1229.
-(luatex.def)             Requested size: 398.34032pt x 306.41562pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio1_sizeatage.png, id=916, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio1_sizeatage.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio1_sizeatage.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio1_sizeatage.png  used on input line 1235.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png  used on input line 1241.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SR_curve.png, id=917, 469.755pt x 469.755pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SR_curve.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SR_curve.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SR_curve.png  used on input line 1247.
-(luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png  used on input line 1253.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts1_Total_biomass_(mt).png, id=918, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts1_Total_biomass_(mt).png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts1_Total_biomass_(mt).png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts1_Total_biomass_(mt).png  used on input line 1259.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts9_Relative_spawning_output_intervals.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts9_Relative_spawning_output_intervals.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts9_Relative_spawning_output_intervals.png  used on input line 1265.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR2_minusSPRseries.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR2_minusSPRseries.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR2_minusSPRseries.png  used on input line 1271.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-[39
-
-
-
-] [40<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/data_plot.png>] [41<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt1mkt2_page2.png>] [42<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Commercial_dead.png>] [43<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt2mkt2.png>] [44<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Commercial_live.png>] [45<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt3mkt0_page2.png>] [46<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Rec_cpfv.png>] [47<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt4mkt0_page2.png>] [48<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_Rec_private.png>] [49<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/maps/Map_HL_Sites_lndscp.jpg>] [50<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/hkl_copper_by_site_count_all_years.png>] [51<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/rstan_full_nb_glm_year_site_drop_swell_bocaccio_vermilon/Index.png>] [52<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/hkl_observations_by_length_sex_area.png>] [53<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/nwfsc_hkl_age_at_length.png>] [54<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_bubflt5mkt0.png>] [55<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/comp_lendat_data_weighting_TA1.8_NWFSC_HKL.png>] [56<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/south_raw_cpue_by_mpa_group.png>] [57<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_length_by_area_designation.png>] [58<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/south/plots/cpue_map.png>] [59<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/south/plots/presence-absence_proportion_by_depth.png>] [60<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/wcgbt_south_age_at_length_by_area.png>] [61<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio6_maturity.png><n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio9_fecundity_len.png>] [62<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/length_fraction_female.png>] [63<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png>] [64<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/_plots/0_model_convert_compare2_spawnbio_uncertainty.png>] [65<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/_plots/0_model_convert_compare4_Bratio_uncertainty.png>] [66<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/bio1_sizeatage.png>] [67<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SR_curve.png>] [68<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/ts1_Total_biomass_(mt).png>] [69]
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR4_phase.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR4_phase.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/SPR4_phase.png  used on input line 1279.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/yield2_yield_curve_with_refpoints.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/yield2_yield_curve_with_refpoints.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/_bridging/2.4_dw/plots/yield2_yield_curve_with_refpoints.png  used on input line 1285.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-[70
-
-] [71]
-
-LaTeX Warning: Reference `fig:nwfsc-hkl-index' on page 72 undefined on input line 1320.
-
-
-LaTeX Warning: Reference `tab:nwfsc-hkl-index' on page 72 undefined on input line 1320.
-
-[72] [73] (./tex_tables/nwfsc_hkl_model_selection.tex
-Overfull \hbox (56.64888pt too wide) in alignment at lines 4--9
- [][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (56.64888pt too wide) in alignment at lines 9--14
- [][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (56.64888pt too wide) in alignment at lines 14--16
- [][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (56.64888pt too wide) in alignment at lines 16--18
- [][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (56.64888pt too wide) in alignment at lines 18--35
- [][][][][][][][][][][] 
- []
-
-)
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/standardized_cpue_nwfsc_hkl_inside_outside.png, id=1119, 867.24pt x 505.89pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/standardized_cpue_nwfsc_hkl_inside_outside.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/standardized_cpue_nwfsc_hkl_inside_outside.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/standardized_cpue_nwfsc_hkl_inside_outside.png  used on input line 1328.
-(luatex.def)             Requested size: 398.33977pt x 232.36485pt.
-[74<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/nwfsc_hkl/plots/standardized_cpue_nwfsc_hkl_inside_outside.png>]
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/plots/stand_index_raw_versus_est.png, id=1125, 722.7pt x 505.89pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/plots/stand_index_raw_versus_est.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/plots/stand_index_raw_versus_est.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/plots/stand_index_raw_versus_est.png  used on input line 1336.
-(luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-[75<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/plots/stand_index_raw_versus_est.png>]
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/rstan_full_nb_glm_year_site_drop_swell_bocaccio_vermilon/Index.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/rstan_full_nb_glm_year_site_drop_swell_bocaccio_vermilon/Index.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/rstan_full_nb_glm_year_site_drop_swell_bocaccio_vermilon/Index.png  used on input line 1344.
-(luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-[76] [77] (./tex_tables/rov_removed_records_south.tex) [78] (./tex_tables/rov_south_samples_transects.tex [79]) [80]
-Overfull \hbox (15.06406pt too wide) in paragraph at lines 1374--1374
-[]|\TU/lmr/m/n/7 Depth.Poly- 
- []
-
-
-Overfull \hbox (11.88966pt too wide) in paragraph at lines 1374--1374
-[]|\TU/lmr/m/n/7 Prop..Hard|  
- []
-
-
-Overfull \hbox (16.01253pt too wide) in paragraph at lines 1374--1374
-[]|\TU/lmr/m/n/7 Prop..Mixed|  
- []
-
-
-Overfull \hbox (8.53513pt too wide) in paragraph at lines 1374--1374
-[]|\TU/lmr/m/n/7 Prop..Soft|  
- []
-
-
-Overfull \hbox (2.7076pt too wide) in paragraph at lines 1374--1374
-\TU/lmr/m/n/7 per.Year|  
- []
-
-
-Overfull \hbox (0.8451pt too wide) in paragraph at lines 1374--1374
-\TU/lmr/m/n/7 tion.Su- 
- []
-
-
-Overfull \hbox (5.04337pt too wide) in paragraph at lines 1374--1374
-\TU/lmr/m/n/7 per_year|  
- []
-
-
-Overfull \hbox (8.00691pt too wide) in paragraph at lines 1374--1374
-\TU/lmr/m/n/7 set.log.us- 
- []
-
-
-Overfull \hbox (6.53883pt too wide) in paragraph at lines 1374--1374
-\TU/lmr/m/n/7 able.area.|  
- []
-
-
-Overfull \hbox (0.51395pt too wide) in paragraph at lines 1374--1374
-[]|\TU/lmr/m/n/7 log.like- 
- []
-
-
-Overfull \hbox (15.06406pt too wide) in paragraph at lines 1379--1379
-[]|\TU/lmr/m/n/7 Depth.Poly- 
- []
-
-
-Overfull \hbox (11.88966pt too wide) in paragraph at lines 1379--1379
-[]|\TU/lmr/m/n/7 Prop..Hard|  
- []
-
-
-Overfull \hbox (16.01253pt too wide) in paragraph at lines 1379--1379
-[]|\TU/lmr/m/n/7 Prop..Mixed|  
- []
-
-
-Overfull \hbox (8.53513pt too wide) in paragraph at lines 1379--1379
-[]|\TU/lmr/m/n/7 Prop..Soft|  
- []
-
-
-Overfull \hbox (2.7076pt too wide) in paragraph at lines 1379--1379
-\TU/lmr/m/n/7 per.Year|  
- []
-
-
-Overfull \hbox (0.8451pt too wide) in paragraph at lines 1379--1379
-\TU/lmr/m/n/7 tion.Su- 
- []
-
-
-Overfull \hbox (5.04337pt too wide) in paragraph at lines 1379--1379
-\TU/lmr/m/n/7 per_year|  
- []
-
-
-Overfull \hbox (8.00691pt too wide) in paragraph at lines 1379--1379
-\TU/lmr/m/n/7 set.log.us- 
- []
-
-
-Overfull \hbox (6.53883pt too wide) in paragraph at lines 1379--1379
-\TU/lmr/m/n/7 able.area.|  
- []
-
-
-Overfull \hbox (0.51395pt too wide) in paragraph at lines 1379--1379
-[]|\TU/lmr/m/n/7 log.like- 
- []
-
-
-Overfull \hbox (18.97598pt too wide) in paragraph at lines 1391--1391
-[]|\TU/lmr/m/n/7 101334179.47|  
- []
-
-
-Overfull \hbox (18.97598pt too wide) in paragraph at lines 1391--1391
-[]|\TU/lmr/m/n/7 101334179.37|  
- []
-
-
-Overfull \hbox (18.97598pt too wide) in paragraph at lines 1391--1391
-[]|\TU/lmr/m/n/7 101334177.71|  
- []
-
-
-Overfull \hbox (15.07265pt too wide) in paragraph at lines 1395--1395
-[]|\TU/lmr/m/n/7 99217437.47|  
- []
-
-
-Overfull \hbox (15.07265pt too wide) in paragraph at lines 1395--1395
-[]|\TU/lmr/m/n/7 99217437.37|  
- []
-
-
-Overfull \hbox (15.07265pt too wide) in paragraph at lines 1395--1395
-[]|\TU/lmr/m/n/7 99217435.71|  
- []
-
-
-Overfull \hbox (18.97598pt too wide) in paragraph at lines 1407--1407
-[]|\TU/lmr/m/n/7 102962691.18|  
- []
-
-
-Overfull \hbox (8.95354pt too wide) in paragraph at lines 1407--1407
-[]|\TU/lmr/m/n/7 102962691|  
- []
-
-
-Overfull \hbox (18.97598pt too wide) in paragraph at lines 1407--1407
-[]|\TU/lmr/m/n/7 102962689.48|  
- []
-
-
-Overfull \hbox (18.97598pt too wide) in paragraph at lines 1411--1411
-[]|\TU/lmr/m/n/7 100001585.01|  
- []
-
-
-Overfull \hbox (18.97598pt too wide) in paragraph at lines 1411--1411
-[]|\TU/lmr/m/n/7 100001584.84|  
- []
-
-
-Overfull \hbox (18.97598pt too wide) in paragraph at lines 1411--1411
-[]|\TU/lmr/m/n/7 100001583.31|  
- []
-
-[81
-
-] [82
-
-]
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/south_raw_cpue_by_mpa_group.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/south_raw_cpue_by_mpa_group.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/south_raw_cpue_by_mpa_group.png  used on input line 1453.
-(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-[83]
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/delta_lognormal_south_designation_depth_soft/qq.png, id=1179, 505.89pt x 505.89pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/delta_lognormal_south_designation_depth_soft/qq.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/delta_lognormal_south_designation_depth_soft/qq.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/delta_lognormal_south_designation_depth_soft/qq.png  used on input line 1461.
-(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-[84<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/delta_lognormal_south_designation_depth_soft/qq.png>]
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/delta_lognormal_south_designation_depth_soft/Index.png, id=1186, 722.7pt x 505.89pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/delta_lognormal_south_designation_depth_soft/Index.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/delta_lognormal_south_designation_depth_soft/Index.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/delta_lognormal_south_designation_depth_soft/Index.png  used on input line 1469.
-(luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-[85<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/delta_lognormal_south_designation_depth_soft/Index.png>] 
+] 
 enddocument/afterlastpage: lastpage setting LastPage.
-(./_main.aux (./tex_tables/historical_landings_tables_2020_revised_Avila_1953.aux) (./tex_tables/likelihoods.aux) (./tex_tables/e_ReferencePoints.aux) (./tex_tables/TimeSeries.aux) * soulpos - computing points - it may take a few seconds *
-\openout5 = _main.upb
- (./_main.upa))
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: E99165333DE24B30F91918FD4E3D0351;16221.
+(./00a.aux)
+Package rerunfilecheck Info: File `00a.out' has not changed.
+(rerunfilecheck)             Checksum: 32C260CB314633E74DFA9CAFB36B622F;79.
 )
 
 Here is how much of LuaTeX's memory you used:
- 51347 strings out of 478285
- 381539,1977958 words of node,token memory allocated
- 782 words of node memory still in use:
-   8 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 4 glyph, 27 attribute, 80 glue_spec, 15 attribute_list, 3 write, 5 pdf_action nodes
-   avail lists: 1:11,2:15291,3:3828,4:161,5:539,6:1892,7:26168,8:70,9:12189,10:21,11:604
- 68890 multiletter control sequences out of 65536+600000
- 69 fonts using 19918355 bytes
- 115i,12n,128p,2284b,628s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman5-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf>
-Output written on _main.pdf (99 pages, 3599468 bytes).
+ 49708 strings out of 478285
+ 100000,1977958 words of node,token memory allocated
+ 749 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 5 glue, 4 kern, 1 penalty, 4 glyph, 23 attribute, 77 glue_spec, 14 attribute_list, 7 write, 1 close nodes
+   avail lists: 1:2,2:184,3:29,4:30,5:46,6:14,7:446,9:112,10:6,11:36
+ 68170 multiletter control sequences out of 65536+600000
+ 42 fonts using 11259415 bytes
+ 115i,11n,128p,2282b,363s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-PDF statistics: 1282 PDF objects out of 1440 (max. 8388607)
- 1065 compressed objects within 11 object streams
- 373 named destinations out of 1000 (max. 131072)
- 672 words of extra memory for PDF output out of 10000 (max. 100000000)
+warning  (pdf backend): unreferenced destination with name 'page.0'
+<c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf>
+Output written on 00a.pdf (3 pages, 9148 bytes).
+
+PDF statistics: 47 PDF objects out of 1000 (max. 8388607)
+ 35 compressed objects within 1 object stream
+ 7 named destinations out of 1000 (max. 131072)
+ 24 words of extra memory for PDF output out of 10000 (max. 100000000)
 

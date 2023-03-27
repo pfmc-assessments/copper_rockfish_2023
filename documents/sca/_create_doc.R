@@ -55,12 +55,10 @@ sa4ss::es_table_tex(
   csv_name = "table_labels.csv")
 
 # Read and create tex files for tables listed in "table" folder in the doc
-#es_table_tex(
-#  dir = file.path(getwd(), 'tables'), 
-#  save_loc = file.path(getwd(), "tex_tables"), 
-#  csv_name = "all_tables.csv")
-
-
+es_table_tex(
+  dir = file.path(getwd()), 
+  save_loc = file.path(getwd(), "tex_tables"), 
+  csv_name = "all_tables.csv")
 
 
 # Render the pdf

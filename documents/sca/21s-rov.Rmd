@@ -1,0 +1,15 @@
+### California Department of Fish and Wildlife Remotely Operated Vehicle Survey
+
+#### Index of Abundance 
+
+The California Department of Fish and Wildlife (CDFW) in collaboration with Marine Applied Research and Exploration (MARE) have been conducting remotely operated vehicle (ROV) surveys along the California coast in Marine Protected Areas (MPAs) and reference sites adjacent to them since 2004 for the purposes of long-term monitoring of changes in size, density (fish/square meter) and length of fish and invertebrate species along the California coast. Surveys of the entire coast have now been undertaken twice, each taking three years to complete, 2014-2016 and again in 2019-2021. The survey conducted multiple 500 meter transects across rocky reef survey sites. Sample sites were selected by first randomly selecting the deepest transect at a given site, then selecting transects on a constant interval into shallower depths. Transects were designed to be oriented parallel to general depth contours, though they were carried out using a fixed bearing that crossed depths in some cases.
+
+
+Figure \ref{fig:rov-raw-cpue}
+
+
+#### Composition Data
+
+Length measurement were made from images taken with stereo-cameras by the CDFW ROV survey in 2014, 2019, 2020, and 2021. 
+
+Figure \ref{fig:rov-len}

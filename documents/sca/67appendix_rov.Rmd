@@ -1,26 +1,21 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
+
 # Appendix G. CDFW ROV Index of Abundance
 
-The California Department of Fish and Wildlife (CDFW) in collaboration with Marine Applied Research and Exploration (MARE) have been conducting remotely operated vehicle (ROV) surveys along the California coast in Marine Protected Areas (MPAs) and reference sites adjacent to them since 2004 for the purposes of long-term monitoring of changes in size, density (fish/square meter) and length of fish and invertebrate species along the California coast. Surveys of the entire coast have now been undertaken twice, each taking three years to complete and each resulting in data combined into super years of 2015 (2014-2016) and 2020 (2019-2021) available for analysis to examine the changes over five years. The 500 m strip survey transects in each rocky reef sample site were selected by first randomly selecting the deepest transect at a given site, then selecting transects on a constant interval into shallower depths. Transects were designed to be oriented parallel to general depth contours, though they were carried out using a fixed bearing that crossed depths in some cases.
+The California Department of Fish and Wildlife (CDFW) in collaboration with Marine Applied Research and Exploration (MARE) have been conducting remotely operated vehicle (ROV) surveys along the California coast in Marine Protected Areas (MPAs) and reference sites adjacent to them since 2004 for the purposes of long-term monitoring of changes in size, density (fish/square meter) and length of fish and invertebrate species along the California coast. Surveys of the entire coast have now been undertaken twice, each taking three years to complete, 2014-2016 and again in 2019-2021. The survey conducted multiple 500 meter transects across rocky reef survey sites. Sample sites were selected by first randomly selecting the deepest transect at a given site, then selecting transects on a constant interval into shallower depths. Transects were designed to be oriented parallel to general depth contours, though they were carried out using a fixed bearing that crossed depths in some cases.
 
+Given that each pass of the California coast took a three year period, the STAT opted to explore using the data with super years. The selected super years were 2015 and 2020. Given the life history of `r spp` an the limited movement of adult `r spp` especially given the range of the survey area each year, the super year application was deemed reasonable in order to consider these data within the model. Minimal filtering were done to the data. Transects were removed based on four factors: 1)  extreme estimates of effort (the estimated area of view below the ROV termed usable area), 2) any locations that were not sampled by both super year periods, 3) transect that were conducted across MPA and reference areas, and 4) transect conducted across depths that never observed `r spp` within the survey (Table \ref{tab:rov-filtered}). Once the data were filtered the average calculated CPUE for each MPA and Reference groups were plotted to visualize the data (Table \ref{tab:rov-obs} and Figure \ref{fig:rov-raw-cpue}).
 
+A range of alternative model structures were explored to generate an index of abundances including alternative error structures, covariates, and factors were considered when exploring how best to model these data. Based on model selection a model with super year, site designation (MPA or Reference), proportion soft terrain, and super year site designation interaction was selected (Table \ref{tab:rov-model-selection}). A delta-lognormal model was selected based on the distribution of the data and diagnostics (Figure \ref{fig:rov-qq}) using sdmTMB [@anderson_sdmtmb_2022]. The model estimates were then area-weighted based on the estimated percent of habitat within MPAs. An estimate of 8% of rocky habitat within MPAs south of Point Conception and 92% open to fishing were provided by John Budrick (CDFW). The estimated relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
 
-Table \ref{tab:rov-filtered}
-
-Table \ref{tab:rov-obs}
-
-Table \ref{tab:rov-model-selection}
-
-
+\newpage
 
 \input{tex_tables/rov_removed_records_south.tex}
 
+\newpage
 
 \input{tex_tables/rov_south_samples_transects.tex}
+
+\newpage
 
 ```{r, results = 'asis'}
 
@@ -35,12 +30,44 @@ sa4ss::table_format(x = tab,
              landscape = TRUE)                         
 ```
 
-\input{tex_tables/rov_south_model_selection.tex}
+\newpage
 
+```{r, results = 'asis'}
+
+ind <- read.csv(file.path(data_dir, "survey_indices", "rov", "delta_lognormal_south_designation_depth_soft", "index_forSS.csv"))
+ind <- ind[, c(1,4,5)]
+col_names = c("Year", "Estimate", "logSE")
+
+sa4ss::table_format(x = ind,
+             caption = "Estimated relative index of abundance for the ROV survey.",
+             label = "rov-index",
+             col_names = col_names)                         
+```
+
+\newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "glm_negbin_south_designation_depth_soft", "Index.png"), 
-caption = "Weighted relative index of abundance estimated south of Point Conception for the CDFW ROV survey.",
-label = 'rov-indices')
+filein = file.path(data_dir, "survey_indices", "rov", "plots", "south_raw_cpue_by_mpa_group.png"), 
+caption = "The trend of the calculated CPUE by each MPA and Reference group.",
+label = 'rov-raw-cpue')
 ```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "rov", "delta_lognormal_south_designation_depth_soft", "qq.png"), 
+caption = "QQ-plot for the ROV survey.",
+label = 'rov-qq')
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "rov", "delta_lognormal_south_designation_depth_soft", "Index.png"), 
+caption = "The weighted relative index of abundance.",
+label = 'rov-index')
+```
+
