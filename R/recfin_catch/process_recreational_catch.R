@@ -8,12 +8,12 @@
 
 library(dplyr)
 
-main_dir = here::here() #"C:/Assessments/2023/copper_rockfish_2023/data/pacfin_catch"
+main_dir = here::here() 
 dir <- file.path(main_dir, "data", "rec_catch")
 dir.create(file.path(dir, "forSS"), showWarnings = FALSE)
 
 # Load the data items
-load(file.path(dir, "crfss_catch_filtered.rdata"))
+load(file.path(dir, "crfss_catch_filtered_march_2023.rdata"))
 load(file.path(dir, "mrfss_catch_filtered.rdata")) 
 hist <- read.csv(file.path(dir, "2021.spp.rec.n.and.s.conception.csv"))
 # Load in the proxy values for 2020 provided by CDFW (will be added to existing removals)
@@ -50,7 +50,8 @@ crfs_month <- aggregate(catch_mt ~ year + area + mode + month, crfs, sum, drop =
 crfs_month[is.na(crfs_month)] <- 0
 
 crfs_port <- aggregate(catch_mt ~ year + area + mode + ports, crfs, sum, drop = FALSE)
-
+crfs_port[is.na(crfs_port)] <- 0
+write.csv(crfs_port, file = file.path(dir, "forSS", "crfs_catch_by_port.csv"), row.names = FALSE)
 
 #===============================================================================================
 # MRFSS processing 
