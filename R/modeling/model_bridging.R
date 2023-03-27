@@ -132,22 +132,33 @@ SSplotComparisons(mysummary,
 	pdf = TRUE)
 
 
-hkl_len <- SS_output(file.path(wd, "3.1_hkl_len"))
+hkl_len <- SS_output(file.path(wd, "3.1_hkl_index_len"))
 hkl_age <- SS_output(file.path(wd, "3.2_hkl_ages"))
+hkl_dw <- SS_output(file.path(wd, "3.3_hkl_dw"))
 
 
-dw_rec <- SS_output(file.path(wd, "2.4_dw_rec_devs_linf"))
-
-modelnames <- c("2021", "Recreational Fleets", "Commercial Fleets",
-	"+ Commercial Catch", "+ Recreational Catch",
-	"+ PacFIN Lengths", "+ Rec. CPFV Lengths", "+ Rec. PR Lengths",
-	"+ Reweight", "+ Rec. Devs, Linf")
+modelnames <- c("2021", "Update Com. & Rec. - DW",
+"+ NWFSC HKL index and lengths", "+ NWFSC HKL CAAL",
+"Data Weighted")
 mysummary <- SSsummarize(list(base_2021,  
-	rec_fleet, com_fleet, com_catch, rec_catch, 
-	com_lengths, cpfv_lengths, pr_lengths, dw_len, dw_rec))
+dw_len, hkl_len, hkl_age, hkl_dw))
 
 SSplotComparisons(mysummary,
-	filenameprefix = "2.4_recr_linf",
+	filenameprefix = "3_nwfsc_hkl",
+	legendlabels = modelnames, 	
+	plotdir = file.path(wd, "_plots"),
+	pdf = TRUE)
+
+rov <- SS_output(file.path(wd, "4.1_rov_index"))
+rov_dw <- SS_output(file.path(wd, "4.2_rov_index_dw"))
+
+modelnames <- c("2021", "Update Com. & Rec. - DW",
+"NWFSC HKL - DW", "+ ROV Index and Lengths - DW")
+mysummary <- SSsummarize(list(base_2021,  
+dw_len, hkl_dw, rov_dw))
+
+SSplotComparisons(mysummary,
+	filenameprefix = "4_rov",
 	legendlabels = modelnames, 	
 	plotdir = file.path(wd, "_plots"),
 	pdf = TRUE)
