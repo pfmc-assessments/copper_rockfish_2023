@@ -53,6 +53,17 @@ samples_area <- hkl %>%
 colnames(samples_area)[1:2] <- c("Year", "Area")
 write.csv(samples_area, file = file.path(dir, "forSS", "sample_number_by_site_cca.csv"), row.names = FALSE)
 
+
+sample_summary <- hkl %>%
+  group_by(year) %>%
+  reframe(
+    unique_set_by_site = length(unique(set_id_drop)),
+    lengths = sum(!is.na(length_cm)),
+    ages = sum(!is.na(age_years))
+  )
+colnames(sample_summary) <- c("Year", "Effective Sample Size", "Lengths", "Ages")
+write.csv(sample_summary, file = file.path(dir, "forSS", "nwfsc_hkl_effn_lengths_ages.csv"), row.names = FALSE)
+
 samples_all <- hkl %>%
   group_by(year) %>%
   reframe(
@@ -322,3 +333,6 @@ table.depth.by.site <- kableExtra::kbl(depth.by.site,
                                 label = paste0("tab-depthsite-nwfschl")
   ) %>%
   kable_styling(latex_options = c("striped", "scale_down"), full_width = FALSE)
+
+
+#================================================================================
