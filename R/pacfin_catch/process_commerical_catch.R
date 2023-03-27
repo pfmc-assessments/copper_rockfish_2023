@@ -8,12 +8,14 @@
 
 library(here)
 
-dir = getwd() #"C:/Assessments/2023/copper_rockfish_2023/data/pacfin_catch"
+dir = here() #"C:/Assessments/2023/copper_rockfish_2023/data/pacfin_catch"
 pac_dir <- file.path(dir, "data", "pacfin_catch")
 dir.create(file.path(pac_dir, "forSS"), showWarnings = FALSE)
 
 # Load the data items
 load(file.path(pac_dir, "PacFIN.COPP.CompFT.06.Feb.2023.RData"))
+# old = catch.pacfin
+#load(file.path(pac_dir, "PacFIN.COPP.CompFT.20.Mar.2023.RData"))
 
 # Areas in historical commercial reconstruction:
 # region: defined as the CDFW block / 100
@@ -126,6 +128,18 @@ com_hist_early$catch_mt_south <- com_hist_early$landing_mt_south + com_hist_earl
 com_hist_early$catch_mt_north <- com_hist_early$landing_mt_north + com_hist_early$landing_mt_north * hist_discard_rate
 
 com_hist_early$catch_live <- 0
+
+# =============================================================================
+# Revise the 2022 estimates based on feedback from Mel Mandrup
+# =============================================================================
+
+# South of Pt. Conception: total mortality of 4.1 dead and 1.3 for live
+# North of Pt. Conception: total mortality of 3.3 dead and 5.4 for live
+s <- which(pacfin_landing_by_year$year == 2022 & pacfin_landing_by_year$area == "south")
+pacfin_landing_by_year[s, "landing"] <- c(4.1, 1.3)
+
+n <- which(pacfin_landing_by_year$year == 2022 & pacfin_landing_by_year$area == "north")
+pacfin_landing_by_year[n, "landing"] <- c(3.3, 5.4)
 
 # ========================================================================
 # Combine the catch from each period into area data frames needed for expansions
