@@ -569,7 +569,7 @@ modmat <- modmat[c('1','56', '2','55'),]
 vals <- data[c(1, 56, 2, 55),c("year", "designation")]
 # vals (rows of modmat) need to be sorted by year, then designation, for weighting to work later
 
-predmat <- modmat %*%t (coefmat)
+predmat <- modmat %*% t(coefmat)
 predmatbt <- exp(predmat)
 vals$pmed <- apply(predmatbt, 1, median)
 vals$pmedl <- apply(predmatbt, 1, quantile, 0.025)
