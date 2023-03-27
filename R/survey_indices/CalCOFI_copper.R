@@ -1,12 +1,14 @@
 # Explore CalCOFI larval copper rockfish data
 # Julia Coates, February 2023
 
+library(HandyCode)
 library(dplyr)
 library(rnaturalearth)
 library(tidyverse)
 library(car)
 library(rstanarm)
-setwd("C:/Users/jcoates/OneDrive - California Department of Fish and Wildlife/Groundfish/Copper 2022/CalCOFI")
+library(here)
+setwd(file.path(here(), "data", "survey_indices", "calcofi"))
 
 dat <- read.csv("CalCOFI.larvaldata.copper.csv")
 dat <- dat[,1:26]
@@ -52,16 +54,22 @@ with(subset(index.df, binary>0), table(line_station))
 with(subset(index.df, binary>0), table(year, line_station))
 
 # tables
-as.data.frame(index.df %>% group_by(year) %>% summarise(N.tows = length(binary), N.pos = sum(binary),
+out <- as.data.frame(index.df %>% group_by(year) %>% summarise(N.tows = length(binary), N.pos = sum(binary),
                                                         Prop.pos = sum(binary)/length(binary)))
+colnames(out) <- c("Year", "Tows", "Positive", "Proportion")
+write.csv(out, file = file.path(getwd(), "forSS", "calcofi_positive_tows.csv"), row.names = FALSE)
 
 as.data.frame(index.df %>% group_by(line_station) %>% summarise(N.tows = length(binary), N.pos = sum(binary),
                                                                 Prop.pos = sum(binary)/length(binary)))
 
-with(as.data.frame(index.df %>%
+trend <- as.data.frame(index.df %>%
                      group_by(year) %>%
-                     summarise(prop.pos = sum(binary)/length(binary))),
-     plot(year, prop.pos, type='o'))
+                     summarise(prop.pos = sum(binary)/length(binary)))
+
+pngfun(wd = file.path(getwd(), "plots"), file = "calcofi_trend.png")
+plot(trend$year, trend$prop.pos, type='b', lwd = 2, pch = 16, ylim = c(0, max(trend$prop.pos) + 0.2),
+     xlab = "Year", ylab = "Proportion Positive")
+dev.off()
 
 as.data.frame(index.df %>% group_by(year) %>% summarise(N.tows = length(caurinus), sum_copper = sum(caurinus),
                                                         ave.copper = sum(caurinus)/length(caurinus)))
@@ -104,8 +112,9 @@ print(
            xlim = c(-121.5, -117), 
            ylim = c(31.5, 34.5))
 )
+ggsave(file = file.path(getwd(), "plots", "calcofi_map.png"), width = 7, height = 7)
 
 # Print the map
-png("CalCOFI_site_map_copper.png", width=7, height=7, units="in", res=600)
-map
-dev.off()
+#png("CalCOFI_site_map_copper.png", width=7, height=7, units="in", res=600)
+#map
+#dev.off()
