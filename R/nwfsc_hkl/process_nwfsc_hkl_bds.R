@@ -20,6 +20,7 @@ hkl_all$lat <- hkl_all$drop_latitude_degrees
 hkl_all$lon <- hkl_all$drop_longitude_degrees
 hkl_all$area <- ifelse(hkl_all$site_number >= 500, "CCA", "Outside CCA")
 hkl_all$fathom_bin <- plyr::round_any(hkl_all$drop_depth_fathoms, 5, floor)
+hkl_all$depth_bin <- plyr::round_any(hkl_all$drop_depth_meters, 5, floor)
 #hkl_all$length_bin <- plyr::round_any(hkl_all$length_cm, 2, floor)
 hkl_all$count <- 0
 ind <- which(hkl_all$common_name == "Copper Rockfish")
@@ -336,3 +337,16 @@ table.depth.by.site <- kableExtra::kbl(depth.by.site,
 
 
 #================================================================================
+
+
+ggplot(hkl, aes(x = depth_bin, fill = area)) +
+  geom_bar(position="stack") + 
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 14)) +
+  scale_fill_viridis_d(begin = 0, end = 0.50) +
+  xlim(c(25, 130)) + 
+  xlab("Depth (m)") + ylab("Number of Observations")
+ggsave(file = file.path(dir, "plots", "nwfsc_hkl_observations_by_depth.png"),
+       width = 7, height = 7)
