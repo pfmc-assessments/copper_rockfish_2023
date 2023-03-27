@@ -1,5 +1,5 @@
 #########################################################################
-### Explore the CDFW PR data for an index of abundance
+### Process the CDFW PR data for an index of abundance
 ### Copper assessment 2023
 ### Melissa Monk
 #########################################################################
@@ -9,11 +9,13 @@ library(RColorBrewer)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(here)
+library(glue)
 
 #species and area identifiers - eventually put in function
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
-modelArea = "north"
+modelArea = "south"
 
 
 #setwd to the north or the south
@@ -24,108 +26,163 @@ out.dir <- glue::glue(getwd(),'/',modelArea,'/')
 
 #load data for processing
 load("crfs_pr_dat_to_process.RData")
-
-
+trip.identifiers <- c("ANGLER_ID", "RECFIN_YEAR", "RECFIN_MONTH", 
+                      "RECFIN_DAY", "RECFIN_PORT_CODE")
+# Data filter dataframe
+filter.num <- 1
+dataFilters <- data.frame(matrix(vector(), 10, 4,
+                                 dimnames = list(c(), c(
+                                   "Filter", "Description", "Samples",
+                                   "Positive_Samples"
+                                 ))), stringsAsFactors = F)
 #-------------------------------------------------------------------------------
 #Filter to north or south
 #Need to get the individual trips
 #remove blank species names
-prDat <- prDat %>% 
-  filter(!PACFIN_SPECIES_CODE %in% c('NOT KNOWN','')) %>%
+cdfwpr <- prDat %>% 
   mutate(area = ifelse(RECFIN_PORT_CODE > 2, "north", "south")) %>%
   filter(area == modelArea)
-           
-#get unique trips
-prTrips <- prDat %>%
-  dplyr::select(ANGLER_ID, INT_COUNTY_NAME, RECFIN_YEAR, RECFIN_MONTH, 
-                RECFIN_DAY, NUMBER_OF_ANGLERS, RECFIN_PORT_CODE, WAVE,
-                PRIMARY_TARGET_SPECIES_NAME, SECONDARY_TARGET_SPECIES_NAME) %>%
-  unique()
-
-# Add copper observations to the trip table
-targetKept <- prDat %>%
-  filter(PACFIN_SPECIES_CODE == pacfinSpecies,
-         NUMBER_KEPT_OBSERVED > 0) %>%
-  dplyr::select(ANGLER_ID, NUMBER_KEPT_OBSERVED)
-
-prTrips <- left_join(prTrips, targetKept) %>%
-  mutate(targetKeptObs = ifelse(is.na(NUMBER_KEPT_OBSERVED), 0, NUMBER_KEPT_OBSERVED)) %>%
-  mutate(targetPresence = ifelse(targetKeptObs == 0 , 0, 1))
 #-------------------------------------------------------------------------------
-# Data filter dataframe
-filter.num <- 1
-dataFilters <- data.frame(matrix(vector(), 10, 4,
-  dimnames = list(c(), c(
-    "Filter", "Description", "Samples",
-    "Positive_Samples"
-  ))
-),
-stringsAsFactors = F
-)
-
 # Add to filter dataframe
 dataFilters$Filter[filter.num] <- c("All data")
-dataFilters$Description[filter.num] <- c("Pre-filtered for drifts with marked for exclusion")
-dataFilters$Samples[filter.num] <- length(unique(prTrips$ANGLER_ID))
-dataFilters$Positive_Samples[filter.num] <- dim(subset(prTrips, targetKeptObs > 0))[1]
-filter.num <- filter.num + 1
-
-#Remove 2020, 2021, 2022
-prTrips <- prTrips %>%
-  filter(RECFIN_YEAR < 2020)
-
-prDat <- prDat %>%
-  filter(RECFIN_YEAR < 2020)
-
-# Add to filter dataframe
-dataFilters$Filter[filter.num] <- c("Year 2020-2022")
-dataFilters$Description[filter.num] <- c("Remove 2020 due to decreased sampling.")
-dataFilters$Samples[filter.num] <- length(unique(prTrips$ANGLER_ID))
-dataFilters$Positive_Samples[filter.num] <- dim(subset(prTrips, targetKeptObs > 0))[1]
+dataFilters$Description[filter.num] <- c("Pre-filtered data for years 2014-2019, 2022")
+dataFilters$Samples[filter.num] <- cdfwpr %>% dplyr::select(all_of(trip.identifiers)) %>% unique %>% tally()
+dataFilters$Positive_Samples[filter.num] <- cdfwpr %>% 
+  filter(grepl(pacfinSpecies,SPECIES_NAME), NUMBER_KEPT_OBSERVED>0) %>%
+  dplyr::select(all_of(trip.identifiers)) %>% unique %>% tally()
 filter.num <- filter.num + 1
 #-------------------------------------------------------------------------------
-#Look at waves
-#remove wave 1 - no rockfishing these months 
-with(prDat, table(RECFIN_YEAR, WAVE))
-
-prTrips <- prTrips %>%
-  filter(WAVE != 1) %>%
-  droplevels
-
-#update prDat 
-prDat <- prDat %>%
-  filter(ANGLER_ID %in% prTrips$ANGLER_ID)
-
-# Add to filter dataframe
-dataFilters$Filter[filter.num] <- c("Waves")
-dataFilters$Description[filter.num] <- paste0("Remove Jan/Feb due to small sample sizes and fishery closures.")
-dataFilters$Samples[filter.num] <- length(unique(prTrips$ANGLER_ID))
-dataFilters$Positive_Samples[filter.num] <- dim(subset(prTrips, targetKeptObs > 0))[1]
-filter.num <- filter.num + 1
-
+#Remove trips with no observed catch
+cdfwpr <- cdfwpr %>%
+  filter(NUMBER_KEPT_OBSERVED>0)
 #-------------------------------------------------------------------------------
+# Add to filter dataframe
+dataFilters$Filter[filter.num] <- c("No observed catch")
+dataFilters$Description[filter.num] <- c("Retain trips with at least 1 observed fish")
+dataFilters$Samples[filter.num] <- cdfwpr %>% dplyr::select(all_of(trip.identifiers)) %>% unique %>% tally()
+dataFilters$Positive_Samples[filter.num] <- cdfwpr %>% 
+  filter(grepl(pacfinSpecies,SPECIES_NAME), NUMBER_KEPT_OBSERVED>0) %>%
+  dplyr::select(all_of(trip.identifiers)) %>% unique %>% tally()
+filter.num <- filter.num + 1
+#-------------------------------------------------------------------------------
+#Look at number of anglers
+summary(cdfwpr$NUMBER_OF_ANGLERS)
+#all ok - no filter needed
+
+#Look at ports
+summary(cdfwpr$RECFIN_PORT_CODE)
+#all ok - no filter needed
+
+#look at water area and target species by water area
+cdfwpr %>%
+  dplyr::select(all_of(trip.identifiers), RECFIN_WATER_AREA_NAME) %>%
+  unique() %>%
+  group_by(RECFIN_WATER_AREA_NAME) %>%
+  tally()
+
+cdfwpr %>%
+  filter(grepl(pacfinSpecies,SPECIES_NAME), NUMBER_KEPT_OBSERVED>0) %>%
+  dplyr::select(all_of(trip.identifiers), RECFIN_WATER_AREA_NAME) %>%
+  unique() %>%
+  group_by(RECFIN_WATER_AREA_NAME) %>%
+  tally()
+#Only 75 trips with observed copper in inland, out of 18,978 inland trips in the north
+#Only 7 from inland in the south
+#remove inland, mexico and not known - not representative of the trips with copper
+cdfwpr <- cdfwpr %>%
+  filter(RECFIN_WATER_AREA_CODE %in% c(1,2,3))
+#-------------------------------------------------------------------------------
+# Add to filter dataframe
+dataFilters$Filter[filter.num] <- c("Areas fished")
+dataFilters$Description[filter.num] <- c("Retain trips occuring in ocean areas")
+dataFilters$Samples[filter.num] <- cdfwpr %>% dplyr::select(all_of(trip.identifiers)) %>% unique %>% tally()
+dataFilters$Positive_Samples[filter.num] <- cdfwpr %>% 
+  filter(grepl(pacfinSpecies,SPECIES_NAME), NUMBER_KEPT_OBSERVED>0) %>%
+  dplyr::select(all_of(trip.identifiers)) %>% unique %>% tally()
+filter.num <- filter.num + 1
+#-------------------------------------------------------------------------------
+#look at county or district to make sure we have one or the other
+summary(as.factor(cdfwpr$INT_COUNTY_NAME))
+summary(as.factor(cdfwpr$RECFIN_PORT_CODE))
+#all ok - no filter needed
+
+#look at time of year
+summary(as.factor(cdfwpr$RECFIN_MONTH))
+
+#remove Jan-March no rockfishing these months
+if(modelArea =="north"){
+cdfwpr <- cdfwpr %>%
+  filter(RECFIN_MONTH > 3)
+} else {
+  cdfwpr <- cdfwpr %>%
+    filter(RECFIN_MONTH > 2)
+}
+#-------------------------------------------------------------------------------
+# Add to filter dataframe
+dataFilters$Filter[filter.num] <- c("Months fished")
+dataFilters$Description[filter.num] <- c("Remove Jan-March; fishery closed")
+dataFilters$Samples[filter.num] <- cdfwpr %>% dplyr::select(all_of(trip.identifiers)) %>% unique %>% tally()
+dataFilters$Positive_Samples[filter.num] <- cdfwpr %>% 
+  filter(grepl(pacfinSpecies,SPECIES_NAME), NUMBER_KEPT_OBSERVED>0) %>%
+  dplyr::select(all_of(trip.identifiers)) %>% unique %>% tally()
+filter.num <- filter.num + 1
+#-------------------------------------------------------------------------------
+#look at survey and copper in pr1 vs pr2
+
+#look at water area and target species by water area
+cdfwpr %>%
+  dplyr::select(all_of(trip.identifiers), SURVEY) %>%
+  unique() %>%
+  group_by(SURVEY) %>%
+  tally()
+
+cdfwpr %>%
+  filter(grepl(pacfinSpecies,SPECIES_NAME), NUMBER_KEPT_OBSERVED>0) %>%
+  dplyr::select(all_of(trip.identifiers), SURVEY) %>%
+  unique() %>%
+  group_by(SURVEY) %>%
+  tally()
+#about the same fraction to keep pr2
+
 #LOOK AT THE TARGET SPECIES 
 #trips by target species and put all rockfish entries in the rockfish genus 
-
-tripTargets <- prTrips %>%
+cdfwpr <- cdfwpr %>%
   mutate(SECONDARY_TARGET_SPECIES_NAME = 
            ifelse(SECONDARY_TARGET_SPECIES_NAME == '', "UNKNOWN", SECONDARY_TARGET_SPECIES_NAME)) %>%
   mutate(PRIMARY_TARGET_SPECIES_NAME = 
            ifelse(PRIMARY_TARGET_SPECIES_NAME == '', "UNKNOWN", PRIMARY_TARGET_SPECIES_NAME)) 
 
 #trips with lingcod in bottomfish
-tripTargets$PRIMARY_TARGET_SPECIES_NAME[grepl("rockfish",tripTargets$PRIMARY_TARGET_SPECIES_NAME)] <- "rockfish genus"
-tripTargets$SECONDARY_TARGET_SPECIES_NAME[grepl("rockfish",tripTargets$SECONDARY_TARGET_SPECIES_NAME)] <- "rockfish genus"
-tripTargets$PRIMARY_TARGET_SPECIES_NAME[grepl("lingcod",tripTargets$PRIMARY_TARGET_SPECIES_NAME)] <- "bottomfish (groundfish)"
-tripTargets$SECONDARY_TARGET_SPECIES_NAME[grepl("lingcod",tripTargets$SECONDARY_TARGET_SPECIES_NAME)] <- "bottomfish (groundfish)"
+cdfwpr$PRIMARY_TARGET_SPECIES_NAME[grepl("rockfish",cdfwpr$PRIMARY_TARGET_SPECIES_NAME)] <- "rockfish genus"
+cdfwpr$SECONDARY_TARGET_SPECIES_NAME[grepl("rockfish",cdfwpr$SECONDARY_TARGET_SPECIES_NAME)] <- "rockfish genus"
+cdfwpr$PRIMARY_TARGET_SPECIES_NAME[grepl("lingcod",cdfwpr$PRIMARY_TARGET_SPECIES_NAME)] <- "bottomfish (groundfish)"
+cdfwpr$SECONDARY_TARGET_SPECIES_NAME[grepl("lingcod",cdfwpr$SECONDARY_TARGET_SPECIES_NAME)] <- "bottomfish (groundfish)"
+
+#Get the Trip level table and then merge in the sum of the target presence
+#look at water area and target species by water area
+trips <- cdfwpr %>%
+  dplyr::select(ANGLER_ID, INT_COUNTY_NAME, RECFIN_YEAR, RECFIN_MONTH, 
+                RECFIN_DAY, NUMBER_OF_ANGLERS, WAVE, SURVEY, 
+                RECFIN_PORT_CODE, INTERVIEW_SITE_NAME, 
+                PRIMARY_TARGET_SPECIES_NAME, 
+                SECONDARY_TARGET_SPECIES_NAME) %>%
+  unique() 
+
+postrips <- cdfwpr %>%
+  filter(grepl(pacfinSpecies,SPECIES_NAME), NUMBER_KEPT_OBSERVED>0) %>%
+  group_by(ANGLER_ID, RECFIN_YEAR, RECFIN_MONTH, 
+           RECFIN_DAY, RECFIN_PORT_CODE) %>%
+ summarise(targetCatch = sum(NUMBER_KEPT_OBSERVED))
+tripData <- left_join(trips, postrips) %>%
+  mutate(targetCatch = replace_na(targetCatch, 0))
 
  
 
 #primary target species only
-tripTargets <- tripTargets %>%
+tripTargets <- tripData %>%
   group_by(PRIMARY_TARGET_SPECIES_NAME) %>%
-  summarise(tripsWithTarget = sum(targetPresence),
-            tripsWOTarget = sum(targetPresence == 0)) %>%
+  summarise(tripsWithTarget = sum(targetCatch),
+            tripsWOTarget = sum(targetCatch == 0)) %>%
   mutate(totalTrips = tripsWithTarget+tripsWOTarget,
     percentpos = tripsWithTarget/(tripsWithTarget+tripsWOTarget)) # %>%
 # pivot_wider(names_from = SECONDARY_TARGET_SPECIES_NAME, values_from = percentpos)
@@ -136,52 +193,47 @@ tripTargetFilter <- tripTargets %>%
          percentpos >= 0.1)
 
 #look at secondary trip target for unidentified fish
-unIDTarget <- prTrips %>%
+unIDTarget <- tripData %>%
   mutate(SECONDARY_TARGET_SPECIES_NAME = 
            ifelse(SECONDARY_TARGET_SPECIES_NAME == '', "UNKNOWN", SECONDARY_TARGET_SPECIES_NAME)) %>%
   filter(PRIMARY_TARGET_SPECIES_NAME == 'unidentified fish') %>%
   group_by(SECONDARY_TARGET_SPECIES_NAME) %>%
-    summarise(tripsWithTarget = sum(targetPresence),
-              tripsWOTarget = sum(targetPresence == 0)) %>%
+    summarise(tripsWithTarget = sum(targetCatch),
+              tripsWOTarget = sum(targetCatch == 0)) %>%
     mutate(totalTrips = tripsWithTarget+tripsWOTarget,
            percentpos = tripsWithTarget/(tripsWithTarget+tripsWOTarget))
 
-#exploratory
-#for now remove unknown and unidentified fish trips
-dd <- prDat %>%
-  filter(PRIMARY_TARGET_SPECIES_NAME %in% c('UNKNOWN', 'unidentified fish')) %>%
-  group_by(ANGLER_ID, SPECIES_NAME) %>%
-  summarise(fish = sum(NUMBER_KEPT_OBSERVED)) %>%
-  pivot_wider(names_from = SPECIES_NAME, values_from = fish)
+
 #-------------------------------------------------------------------------------
-#Remove trips with just the primary species left in the tripTargetFilter
+#Retain trips with just the primary species being bottom fish or rockfish
+#want to try and avoid mixed trip effort
+#Could change this - esp. for the south...more mixed trips, but really want just
+#trips with rockfihs effort
 tripTargetFilter <- tripTargetFilter %>%
   filter(PRIMARY_TARGET_SPECIES_NAME %in% c('bottomfish (groundfish)', 'rockfish genus'))
 
-
-prTrips <- prTrips %>%
+tripData <- tripData %>%
   filter(PRIMARY_TARGET_SPECIES_NAME %in% tripTargetFilter$PRIMARY_TARGET_SPECIES_NAME)
 
-summary(as.factor(prTrips$PRIMARY_TARGET_SPECIES_NAME))
-
+summary(as.factor(tripData$PRIMARY_TARGET_SPECIES_NAME))
+#-------------------------------------------------------------------------------
 # Add to filter dataframe
-dataFilters$Filter[filter.num] <- c("Groundfish")
-dataFilters$Description[filter.num] <- c("Removed trips not targetting groundfish")
-dataFilters$Samples[filter.num] <- length(unique(prTrips$ANGLER_ID))
-dataFilters$Positive_Samples[filter.num] <- dim(subset(prTrips, targetKeptObs > 0))[1]
+dataFilters$Filter[filter.num] <- c("Target species")
+dataFilters$Description[filter.num] <- c("Retain trips with primary rockfish or bottomfish target")
+dataFilters$Samples[filter.num] <- tripData %>% unique %>% tally()
+dataFilters$Positive_Samples[filter.num] <- tripData %>% filter(targetCatch>0) %>% unique %>% tally()
 filter.num <- filter.num + 1
+#-------------------------------------------------------------------------------
 
+with(tripData, table(RECFIN_YEAR, INT_COUNTY_NAME))
+with(tripData, table(RECFIN_YEAR, RECFIN_PORT_CODE))
+with(tripData, table(RECFIN_YEAR, RECFIN_MONTH))
+with(tripData, table(RECFIN_YEAR, WAVE))
+round(with(subset(tripData, targetCatch > 0), table(RECFIN_MONTH, RECFIN_PORT_CODE)) / 
+        with(tripData, table(RECFIN_MONTH, RECFIN_PORT_CODE)), 2)
+round(with(subset(tripData, targetCatch > 0), table(RECFIN_YEAR, RECFIN_PORT_CODE)) / 
+        with(tripData, table(RECFIN_YEAR, RECFIN_PORT_CODE)), 2)
 
-with(prTrips, table(RECFIN_YEAR, INT_COUNTY_NAME))
-with(prTrips, table(RECFIN_YEAR, RECFIN_PORT_CODE))
-with(prTrips, table(RECFIN_YEAR, RECFIN_MONTH))
-with(prTrips, table(RECFIN_YEAR, WAVE))
-round(with(subset(prTrips, targetKeptObs > 0), table(WAVE, RECFIN_PORT_CODE)) / with(prTrips, table(WAVE, RECFIN_PORT_CODE)), 2)
-round(with(subset(prTrips, targetKeptObs > 0), table(RECFIN_YEAR, RECFIN_PORT_CODE)) / with(prTrips, table(RECFIN_YEAR, RECFIN_PORT_CODE)), 2)
-
-
-
-save(prTrips, dataFilters, file = glue(
-  out.dir, "crfs_pr_dockside_data_for_GLM_", speciesName,
-  "_", modelArea, ".RData"
+save(tripData, dataFilters, file = glue(
+  out.dir, "crfs_pr_dockside_data_for_GLM.RData"
 ))
