@@ -31,8 +31,11 @@ dir_main <- file.path(here(), "data", "wcgbt")
 # )
 load(file.path(dir_main, "catch_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
 catch <- x
-load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
-bio <- x
+#load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
+#bio <- x
+load(file.path(dir_main, "bio_2003-2004_w_ages.rdata"))
+bio <- bio_orig
+
 
 PlotSexRatio.fn(
 	dir = dir_main, 
@@ -119,6 +122,23 @@ ggplot(bio, aes(y = Length_cm, x = Age)) +
 	xlab("Age") + ylab("Length (cm)") 
 ggsave(filename = file.path(dir_main, "plots", "wcgbt_age_at_length_by_area.png"),
        width = 10, height = 8)
+
+
+ggplot(bio[bio$area == "south", ], aes(y = Length_cm, x = Age)) +
+  geom_point(aes(col = Sex)) + 
+  scale_colour_viridis_d() + 
+  xlim(c(0, 45)) + ylim(c(0, 55)) + 
+  xlab("Age") + ylab("Length (cm)") 
+ggsave(filename = file.path(dir_main, "plots", "wcgbt_south_age_at_length_by_area.png"),
+       width = 8, height = 8)
+
+ggplot(bio[bio$area == "north", ], aes(y = Length_cm, x = Age)) +
+  geom_point(aes(col = Sex)) + 
+  scale_colour_viridis_d() + 
+  xlim(c(0, 45)) + ylim(c(0, 55)) + 
+  xlab("Age") + ylab("Length (cm)") 
+ggsave(filename = file.path(dir_main, "plots", "wcgbt_north_age_at_length_by_area.png"),
+       width = 8, height = 8)
 
 ggplot(catch, aes(y = positive, x = Year))  + 
 	geom_histogram(aes(y = positive), position = "stack", stat="identity") + 
