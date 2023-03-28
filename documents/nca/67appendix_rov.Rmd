@@ -5,7 +5,7 @@ The California Department of Fish and Wildlife (CDFW) in collaboration with Mari
 
 Given that each pass of the California coast took a three year period, the STAT opted to explore using the data with super years. The selected super years were 2015 and 2020. Given the life history of `r spp` an the limited movement of adult `r spp` especially given the range of the survey area each year, the super year application was deemed reasonable in order to consider these data within the model. Minimal filtering were done to the data. Transects were removed based on four factors: 1)  extreme estimates of effort (the estimated area of view below the ROV termed usable area), 2) any locations that were not sampled by both super year periods, 3) transect that were conducted across MPA and reference areas, and 4) transect conducted across depths that never observed `r spp` within the survey (Table \ref{tab:rov-filtered}). Once the data were filtered the average calculated CPUE for each MPA and Reference groups were plotted to visualize the data (Table \ref{tab:rov-obs} and Figure \ref{fig:rov-raw-cpue}).
 
-A range of alternative model structures were explored to generate an index of abundances including alternative error structures, covariates, and factors were considered when exploring how best to model these data. Based on model selection a model with super year, site designation (MPA or Reference), proportion soft terrain, and super year site designation interaction was selected (Table \ref{tab:rov-model-selection}). A delta-lognormal model was selected based on the distribution of the data and diagnostics (Figure \ref{fig:rov-qq}) using sdmTMB [@anderson_sdmtmb_2022]. The model estimates were then area-weighted based on the estimated percent of habitat within MPAs. An estimate of 8% of rocky habitat within MPAs south of Point Conception and 92% open to fishing were provided by John Budrick (CDFW). The estimated relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
+A range of alternative model structures were explored to generate an index of abundances including alternative error structures, covariates, and factors were considered when exploring how best to model these data. Based on model selection a model with super year, site designation (MPA or Reference), and super year site designation interaction was selected (Table \ref{tab:rov-model-selection}). A delta-lognormal model was selected based on the distribution of the data and diagnostics (Figure \ref{fig:rov-qq}) using sdmTMB [@anderson_sdmtmb_2022]. The model estimates were then area-weighted based on the estimated percent of habitat within MPAs. An estimate of 8% of rocky habitat within MPAs south of Point Conception and 92% open to fishing were provided by John Budrick (CDFW). The estimated relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
 
 \newpage
 
@@ -16,7 +16,7 @@ A range of alternative model structures were explored to generate an index of ab
 
 ```{r, results = 'asis'}
 
-tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", "rov_south_model_selection.csv"))
+tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", "rov_north_model_selection.csv"))
 
 sa4ss::table_format(x = tab,
              caption = "Model selection for the ROV survey.",
@@ -31,7 +31,7 @@ sa4ss::table_format(x = tab,
 
 ```{r, results = 'asis'}
 
-ind <- read.csv(file.path(data_dir, "survey_indices", "rov", "delta_lognormal_south_designation_depth_soft", "index_forSS.csv"))
+ind <- read.csv(file.path(data_dir, "survey_indices", "rov", "delta_lognormal_north_designation_depth", "index_forSS.csv"))
 ind <- ind[, c(1,4,5)]
 col_names = c("Year", "Estimate", "logSE")
 
@@ -46,7 +46,7 @@ sa4ss::table_format(x = ind,
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "delta_lognormal_south_designation_depth_soft", "qq.png"), 
+filein = file.path(data_dir, "survey_indices", "rov", "delta_lognormal_north_designation_depth", "qq.png"), 
 caption = "QQ-plot for the ROV survey.",
 label = 'rov-qq')
 ```
@@ -55,7 +55,7 @@ label = 'rov-qq')
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "delta_lognormal_south_designation_depth_soft", "Index.png"), 
+filein = file.path(data_dir, "survey_indices", "rov", "delta_lognormal_north_designation_depth", "Index.png"), 
 caption = "The weighted relative index of abundance.",
 label = 'rov-index')
 ```
