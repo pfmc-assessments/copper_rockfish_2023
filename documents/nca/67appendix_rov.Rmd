@@ -9,14 +9,14 @@ A range of alternative model structures were explored to generate an index of ab
 
 \newpage
 
-\input{tex_tables/rov_removed_records_south.tex}
+\input{tex_tables/rov_removed_records_north.tex}
 
 
 \newpage
 
 ```{r, results = 'asis'}
 
-tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", "rov_north_model_selection.csv"))
+tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", "north_model_selection.csv"))
 
 sa4ss::table_format(x = tab,
              caption = "Model selection for the ROV survey.",

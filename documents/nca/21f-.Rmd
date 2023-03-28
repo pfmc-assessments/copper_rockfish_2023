@@ -2,13 +2,14 @@
 
 ### Commercial Fishery
 
+#### Landings and Discards
+\
+
 ```{r, echo=FALSE, results='asis'}
 general_wd = file.path(doc_dir, "shared_text")
 filein = file.path(general_wd,'2f_commercial_removals.Rmd')
 read_child(filein)
 ```
-
-#### Landings and Discards
 
 
 #### Composition Data
@@ -16,7 +17,7 @@ read_child(filein)
 ### Recreational Fishery
 
 #### Landings and Discards
-
+\
 
 ```{r, echo=FALSE, results='asis'}
 general_wd = file.path(doc_dir, "shared_text")
@@ -25,13 +26,37 @@ read_child(filein)
 ```
 
 #### Indices of Abundance
+\
 
-Appendix Section \ref{#mrfs-index}
+Appendix Section \ref{mrfs-index}
 
-Appendix Section \ref{#onboard-cpfv-index}
+Appendix Section \ref{onboard-cpfv-index}
 
-Appendix Section \ref{#dwv-cpfv-index}
+Appendix Section \ref{dwv-cpfv-index}
 
-Appendix Section \ref{#crfs-pr-index}
+Appendix Section \ref{crfs-pr-index}
 
 #### Composition Data
+
+Length compositions were available from the following sources: 
+
+* Recreational party/charter mode (CPFV/PC)
+
+  + Miller and Goshall dockside survey (1959-1960)
+  + Don Pearson onboard PC survey (1978-1984)
+  + MRFSS CPFV/PC dockside survey (1980-1989, 1993-2003)
+  + CRFS CPFV/PC onboard dockside survey (2004-2019)
+  + Deb-Wilson Vandenberg onboard CPFV survey (1988-1998)
+
+* Recreation private/rental mode (PR)
+
+  + Miller and Gotshall dockside PR survey (1959)
+  + MRFSS dockside PR survey (1980-1989, 1993-2003)
+  + CRFS dockside PR survey (2004-2019)
+  
+  
+The number of available fish and unique trips by year and fleet are in Tables XX and XX. Length composition data can be found in Figure XX for the recreational PC retained fleet and Figure XX for the recreational PC discard fleet, Figure XX for the recreational PR fleet, and Figure XX for the Deb Wilson-Vandenberg CPFV
+onboard survey.
+
+
+

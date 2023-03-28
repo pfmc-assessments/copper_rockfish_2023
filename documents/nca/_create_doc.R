@@ -16,7 +16,7 @@ if( grepl("Chantel", user) ){
 # Based on the user
 doc_dir <- file.path(user_dir, "documents")
 
-bridge_dir <- here("models", "sca", "_bridging")
+bridge_dir <- here("models", "nca", "_bridging")
 model_dir <- here("models", "nca", "_bridging", model_name)
 data_dir<- here("data")
 r_dir <- here("R")
