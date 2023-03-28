@@ -317,7 +317,6 @@ for(a in unique(tmp$area)){
 #==============================================================================
 catch <- read.csv(file = file.path(here(), "data", "rec_catch", "forSS", "crfs_catch_by_port_save.csv"))
 
-
 weight <- catch %>%
   group_by(year, area, mode) %>%
   reframe(
@@ -343,6 +342,203 @@ out <- lens_w_weights %>%
   group_by(year,area, mode, len_bins) %>%
   reframe(p = sum(n_weight))
 write.csv(out, file = file.path(dir, "forSS", "weighted_crfs_lengths.csv"), row.names = FALSE)
+
+samples_by_port <- crfs_subset[crfs_subset$year != 2004, ] %>%
+  group_by(year, area, mode, ports) %>%
+  rename(port = ports) %>%
+  reframe(
+    n = length(len_bins)) %>%
+  group_by(year, area, mode) %>%
+  mutate(
+    length_percent = n / sum(n))
+
+test <- inner_join(samples_by_port, weight, by = c('year', 'area', 'mode', 'port'))
+colnames(test)[7] <- "catch_percent"
+write.csv(test, file = file.path(dir, "forSS", "comparison_length_and_catch_percent_by_port.csv"),
+      row.names = FALSE)
+
+#==============================================================================
+# Plot the weighted comps and compare to the unweighted
+#==============================================================================
+weighted_south <- read.csv(file = file.path(dir, "forSS", "weighted_crfs_lengths_south.csv"))
+weighted_south_cpfv <- weighted_south[weighted_south$fleet == 3, 1:29]
+weighted_south_pr <- weighted_south[weighted_south$fleet == 4, 1:29]
+weighted_north <- read.csv(file = file.path(dir, "forSS", "weighted_crfs_lengths_north.csv"))
+weighted_north_cpfv <- weighted_north[weighted_north$fleet == 3, 1:29]
+weighted_north_pr <- weighted_north[weighted_north$fleet == 4, 1:29]
+
+unweighted_north_cpfv <- read.csv(file = file.path(dir, "forSS", "north_cpfv_all_sources_not_expanded_length_comp_sex_0_rm_mrfss_overlap.csv"))
+unweighted_north_pr <- read.csv(file = file.path(dir, "forSS", "north_private_all_sources_not_expanded_length_comp_sex_0_rm_mrfss_overlap.csv"))
+unweighted_north_cpfv <- unweighted_north_cpfv[unweighted_north_cpfv$year > 2004, 1:29]
+unweighted_north_pr <- unweighted_north_pr[unweighted_north_pr$year > 2004, 1:29]
+
+unweighted_north_cpfv <- cbind(unweighted_north_cpfv[, 1:6], 100*unweighted_north_cpfv[,7:29]/apply(unweighted_north_cpfv[,7:29], 1, sum))
+unweighted_north_pr <- cbind(unweighted_north_pr[, 1:6], 100*unweighted_north_pr[,7:29]/apply(unweighted_north_pr[,7:29], 1, sum))
+
+unweighted_south_cpfv <- read.csv(file = file.path(dir, "forSS", "south_cpfv_all_sources_not_expanded_length_comp_sex_0_rm_mrfss_overlap.csv"))
+unweighted_south_pr <- read.csv(file = file.path(dir, "forSS", "south_private_all_sources_not_expanded_length_comp_sex_0_rm_mrfss_overlap.csv"))
+unweighted_south_cpfv <- unweighted_south_cpfv[unweighted_south_cpfv$year > 2004, 1:29]
+unweighted_south_pr   <- unweighted_south_pr[unweighted_south_pr$year > 2004, 1:29]
+
+unweighted_south_cpfv <- cbind(unweighted_south_cpfv[, 1:6], 100*unweighted_south_cpfv[,7:29]/apply(unweighted_south_cpfv[,7:29], 1, sum))
+unweighted_south_pr   <- cbind(unweighted_south_pr[, 1:6], 100*unweighted_south_pr[,7:29]/apply(unweighted_south_pr[,7:29], 1, sum))
+
+library(HandyCode)
+
+pngfun(wd = file.path(dir, "plots"), file = "comparison_of_weighted_lengths_south_cpfv.png", w = 12, h = 12)
+par(mfrow = c(4, 5), mar = c(1, 1,1,1), oma = c(2,2,2, 2))
+for(y in unique(year)){
+  plot(0, bty = 'n', ylim = c(0,25), xlim = c(10, 54), ylab = "Density", xlab = "Length (cm)")
+  lines(length_bins, unweighted_south_cpfv[unweighted_south_cpfv$year == y, 7:29], lty = 1, lwd = 2)
+  lines(length_bins, weighted_south_cpfv[weighted_south_cpfv$year == y, 7:29], lty = 2, lwd = 2, col = 'blue')
+}
+legend('topright', bty = 'n', col = c(1, 'blue'), legend = c("unweighted", "weighted"), lwd = 2, lty = c(1,2), 
+       cex = 2)
+dev.off()
+
+
+pngfun(wd = file.path(dir, "plots"), file = "comparison_of_weighted_lengths_south_pr.png", w = 12, h = 12)
+par(mfrow = c(4, 5), mar = c(1, 1,1,1), oma = c(2,2,2, 2))
+for(y in unique(year)){
+  plot(0, bty = 'n', ylim = c(0,25), xlim = c(10, 54), ylab = "Density", xlab = "Length (cm)")
+  lines(length_bins, unweighted_south_pr[unweighted_south_pr$year == y, 7:29], lty = 1, lwd = 2)
+  lines(length_bins, weighted_south_pr[weighted_south_pr$year == y, 7:29], lty = 2, lwd = 2, col = 'blue')
+}
+legend('topright', bty = 'n', col = c(1, 'blue'), legend = c("unweighted", "weighted"), lwd = 2, lty = c(1,2), 
+       cex = 2)
+dev.off()
+
+
+pngfun(wd = file.path(dir, "plots"), file = "comparison_of_weighted_lengths_north_pr.png", w = 12, h = 12)
+par(mfrow = c(4, 5), mar = c(1, 1,1,1), oma = c(2,2,2, 2))
+for(y in unique(year)){
+  plot(0, bty = 'n', ylim = c(0,25), xlim = c(10, 54), ylab = "Density", xlab = "Length (cm)")
+  lines(length_bins, unweighted_north_pr[unweighted_north_pr$year == y, 7:29], lty = 1, lwd = 2)
+  lines(length_bins, weighted_north_pr[weighted_north_pr$year == y, 7:29], lty = 2, lwd = 2, col = 'blue')
+}
+legend('topright', bty = 'n', col = c(1, 'blue'), legend = c("unweighted", "weighted"), lwd = 2, lty = c(1,2), 
+       cex = 2)
+dev.off()
+
+pngfun(wd = file.path(dir, "plots"), file = "comparison_of_weighted_lengths_north_cpfv.png", w = 12, h = 12)
+par(mfrow = c(4, 5), mar = c(1, 1,1,1), oma = c(2,2,2, 2))
+for(y in unique(year)){
+  plot(0, bty = 'n', ylim = c(0,25), xlim = c(10, 54), ylab = "Density", xlab = "Length (cm)")
+  lines(length_bins, unweighted_north_cpfv[unweighted_north_cpfv$year == y, 7:29], lty = 1, lwd = 2)
+  lines(length_bins, weighted_north_cpfv[weighted_north_cpfv$year == y, 7:29], lty = 2, lwd = 2, col = 'blue')
+}
+legend('topright', bty = 'n', col = c(1, 'blue'), legend = c("unweighted", "weighted"), lwd = 2, lty = c(1,2), 
+       cex = 2)
+dev.off()
+
+ggplot(test[test$area == "south", ], alpha = 0.2) +
+  geom_point(aes(x = year, y = -0.25, size = length_percent), color = 'blue') + 
+  geom_point(aes(x = year, y = 0.25, size = catch_percent), color = 'orange') + 
+  facet_wrap('port') +
+  ylim(c(-0.5, 0.5)) +
+  theme(axis.text = element_text(size = 0),
+        axis.title = element_text(size = 12),
+        legend.title = element_text(size = 0),
+        legend.text = element_text(size = 0),
+        strip.text.y = element_text(size = 14))
+
+ggplot(crfs_subset, aes(x = lengthcm, color = as.factor(year))) +
+  geom_density() +
+  facet_wrap("ports")
+
+plot_comps(
+  data = weighted_south[weighted_south$fleet == 4, ],
+  plot = 2,
+  dir = dir,
+  add_save_name = "south_pr_weighted"
+)
+
+plot_comps(
+  data = weighted_south[weighted_south$fleet == 3, ],
+  plot = 2,
+  dir = dir,
+  add_save_name = "south_cpfv_weighted"
+)
+
+plot_comps(
+  data = unweighted_south_pr,
+  plot = 2,
+  dir = dir,
+  add_save_name = "south_pr_unweighted"
+)
+
+plot_comps(
+  data = unweighted_south_cpfv,
+  plot = 2,
+  dir = dir,
+  add_save_name = "south_cpfv_unweighted"
+)
+
+data <- unweighted_south_pr
+sex_type <- unique(data$sex) 
+N <- data[, "InputN"]
+year <- as.numeric(as.character(data$year))
+sex <- unique(data$sex)
+comps <- data[, -c(1:6)]
+
+# Check to see if the unsexed or single sexed comps are 
+# double printed
+if (sum(grepl(".", colnames(comps), fixed = TRUE)) > 0 ) {
+  comps <- comps[, !grepl(".", colnames(comps), fixed = TRUE)]
+}
+num <- ncol(comps) / ifelse(sex == 3, 2, 1)
+
+# Determine if entries are proportions (e.g., sum to 1 or 100)
+# and convert if needed
+comps <- 100 * comps / apply(comps, 1, sum)
+
+mod_comps <- cbind(year, comps)
+df <- reshape2::melt(mod_comps, id = "year")
+df$year <- factor(df$year, levels = unique(df$year))
+df$sex  <- substr(df$variable, 1, 1)
+df$sex  <- replace(df$sex, df$sex == "F", "FEMALE")
+df$sex  <- replace(df$sex, df$sex == "M", "MALE")
+df$sex  <- replace(df$sex, df$sex == "U", "UNSEXED")
+df$sex  <- factor(df$sex, levels = unique(df$sex))
+df$variable <- utils::type.convert(gsub('[FMU]', '', df$variable), as.is = TRUE)
+df$n <- 0; a <- 1
+for(y in year){
+  df$n[df$year == y] <- N[a]
+  a <- a + 1
+}
+
+ylabel <- "Length (cm)"
+bub_step <- ifelse(max(df$value) < 50, 5, 10)
+bub_range <- c(1, seq(bub_step, floor(max(df$value)), bub_step))
+max_range <- 15
+if(max(df$variable) - min(df$variable) > 40 ){
+  y_axis <- seq(min(df$variable), max(df$variable), by = 10)
+} else {
+  y_axis <- seq(min(df$variable), max(df$variable), by = 5)
+}
+
+df2 <- df
+df2$value <- df2$value / 100
+df2[df2$sex == "MALE", 'value'] <- -1 * df2[df2$sex == "MALE", 'value']
+
+p2 <- ggplot2::ggplot(df2, aes(x = variable, y = value)) +
+  geom_line(aes(colour = sex), lwd = 1.1) +
+  facet_wrap(facets = "year") +
+  scale_fill_manual(values = c('FEMALE' = 'red', 'MALE' = 'blue', 'UNSEXED' = "darkseagreen")) +
+  scale_color_manual(values = c('FEMALE' = 'darkred', 'MALE' = 'darkblue', 'UNSEXED' = "darkgreen")) +
+  labs(x = ylabel, y = "Proportion") +
+  geom_hline(yintercept = 0) +
+  theme(legend.key = element_blank(), 
+        axis.title.x = element_text (size = 12),
+        axis.title.y = element_text (size = 12),
+        axis.text.x = element_text(colour = "black", size = 12, angle = 90, vjust = 0.3, hjust = 1), 
+        axis.text.y = element_text(colour = "black", size = 12), 
+        legend.text = element_text(size = 10, colour ="black"), 
+        legend.title = element_text(size = 12), 
+        panel.background = element_blank(), 
+        panel.border = element_rect(colour = "black", fill = NA, linewidth = 1), 
+        legend.position = "right")
+print(p2) 
 
 #==============================================================================
 # Plot the data quickly
