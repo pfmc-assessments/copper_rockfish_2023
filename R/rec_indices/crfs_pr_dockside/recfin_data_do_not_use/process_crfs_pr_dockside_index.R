@@ -142,6 +142,12 @@ cdfwpr %>%
   unique() %>%
   group_by(SURVEY) %>%
   tally()
+
+coppers_year_district <- cdfwpr %>%
+  filter(grepl(pacfinSpecies,SPECIES_NAME), NUMBER_KEPT_OBSERVED>0) %>%
+  group_by(RECFIN_PORT_CODE, RECFIN_YEAR) %>%
+  summarise(tot.coppers = sum(NUMBER_KEPT_OBSERVED)) %>%
+  pivot_wider(names_from = RECFIN_PORT_CODE, values_from = tot.coppers)
 #about the same fraction to keep pr2
 
 #LOOK AT THE TARGET SPECIES 

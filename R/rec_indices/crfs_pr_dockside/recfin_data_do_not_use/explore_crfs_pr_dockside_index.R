@@ -28,7 +28,7 @@ load("ca_comprehensive_rec_sample.RData")
 #look at where coppers caught
 cdfw_crfs %>% 
   filter(PACFIN_SPECIES_CODE == 'COPP') %>%
-  group_by(RECFIN_MODE_NAME) %>%
+  group_by(RECFIN_MODE_NAME, YEAR) %>%
   summarise(numberfish = sum(NUMBER_KEPT_OBSERVED))
 
 #only a handful from beach/bank and man-made/jetty
@@ -58,11 +58,12 @@ cdfwpr <- cdfw_crfs %>%
 
 #how many trips per year and district
 YearDistrict <- cdfwpr %>%
-  group_by(ANGLER_ID, RECFIN_YEAR, RECFIN_MONTH, 
-                           RECFIN_DAY, RECFIN_PORT_CODE) %>% 
+  group_by(RECFIN_YEAR, RECFIN_PORT_CODE) %>% 
   tally() %>%
   rename(total.trips = n) %>%
   pivot_wider(names_from = RECFIN_PORT_CODE, values_from = total.trips)
+
+
 
 # look at number of fish and cpue for qa qc
 cdfwTarget.qaqc <- cdfwpr %>%
