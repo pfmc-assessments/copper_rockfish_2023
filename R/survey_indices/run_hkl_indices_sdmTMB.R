@@ -19,9 +19,17 @@ options(mc.cores = parallel::detectCores())
 data_dir <- file.path(here(), "data", "nwfsc_hkl")
 index_dir <- file.path(here(), "data", "survey_indices", "nwfsc_hkl")
 
+user <- Sys.getenv("USERNAME")
+if( grepl("Chantel", user) ){
+  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
+} else {
+  # Fill in Melissa's document directory below
+  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
+}
+
 # Load in some helper functions for processing and plotting the data
-all <- list.files(file.path(here(), "R", "sdmTMB"))
-for (a in 1:length(all)) { source(file.path(here(), "R", "sdmTMB", all[a]))}
+all <- list.files(file.path(user_dir, "R", "sdmTMB"))
+for (a in 1:length(all)) { source(file.path(user_dir, "R", "sdmTMB", all[a]))}
 
 species <- "Copper Rockfish"
 d <- read.csv(file.path(data_dir, "H&LSurveyDataThru2022_DWarehouse version_03042023.csv"))
@@ -37,6 +45,7 @@ for (aa in unique(d$site_number)) {
 species_data <- format_hkl_data(
   common_name = species, 
   data = d)
+save(species_data, file = file.path(data_dir, "filtered_species_data_nwfsc_hkl.rdata"))
 
 # Does not include wave height, moon phase, or angler location on the vessel (angler)
 subdata <- species_data %>%
