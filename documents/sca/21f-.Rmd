@@ -26,4 +26,14 @@ filein = file.path(doc_dir, "shared_text",'2f_recreational_removals.Rmd')
 read_child(filein)
 ```
 
+#### Indices of Abundance
+
+
+Appendix Section \ref{mrfss-index}
+
+
+Appendix Section \ref{onboard-cpfv-index}
+
+Appendix Section \ref{crfs-pr-index}
+
 #### Composition Data

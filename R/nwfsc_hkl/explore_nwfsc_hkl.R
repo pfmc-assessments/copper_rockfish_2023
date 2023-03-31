@@ -488,3 +488,55 @@ ggplot() +
   geom_point(data = raw.cpue.cca, aes(x = year, y = avg_cpue), size = 2, colour = 'green') +
   ylim(c(0, 2)) + ylab("CPUE")
 ggsave(file = file.path(dir, "plots", 'raw_cpue_nwfsc_hkl_inside_outside.png'), width = 12, height = 7)
+
+#==============================================================================
+# Filter down to sites that align with the CCFRP survey
+#==============================================================================
+
+# Did not filter out based on the include fish column
+cp <- c(287, 398, 399, 402, 365)
+ai <- c(45, 43, 40)
+lj <- c(292, 293, 291)
+
+test <- data %>%
+  group_by(year, location) %>%
+  reframe(
+    sites = length(unique(site_number)),
+    angler = length(unique(drop_number))
+  )
+
+keep_sites <- c(cp, ai, lj)
+
+data <- hkl_all[hkl_all$site_number %in% keep_sites, ]
+data$location[data$site_number %in% cp] <- "CP"
+data$location[data$site_number %in% ai] <- "AI"
+data$location[data$site_number %in% lj] <- "LJ"
+
+raw.cpue <- data %>%
+  group_by(year, location) %>%
+  summarize(
+    n = sum(count),
+    effort = length(unique(site_number)) * 75,
+    cpue = n / effort) 
+
+ggplot() +
+  geom_line(data = raw.cpue[raw.cpue$year > 2016, ], aes(x = year, y = cpue, colour = location)) + 
+  geom_point(size = 2) +
+  ylim(c(0, 0.2)) + ylab("Raw CPUE")
+
+ggplot() +
+  geom_line(data = raw.cpue, aes(x = year, y = cpue, colour = location)) + 
+  geom_point(size = 2) +
+  ylim(c(0, 0.2)) + ylab("Raw CPUE")
+
+ggplot() +
+  geom_line(data = raw.cpue, aes(x = year, y = n, colour = location)) + 
+  geom_point(size = 2) +
+  ylab("Number Observed")
+
+ccfrp_sites <- aggregate(count~year, data, sum)
+all_sites <- aggregate(count~year, hkl_all, sum)
+tmp <- cbind(ccfrp_sites, all_sites[, 2], ccfrp_sites[,2] / all_sites[,2])
+plot(tmp$year, tmp[,4], type = 'l', lwd = 2, ylim = c(0, 1), xlab = "Year",
+     ylab = "Percent of total observations", main = "CCFRP locations")
+abline(h = 0.5, lty = 2, col = 'grey')

@@ -6,9 +6,18 @@ library(here)
 # Specify the directory for the document
 model_name <- "2.4_dw"
 
-bridge_dir <- here("models", "sca", "_bridging")
+user <- Sys.getenv("USERNAME")
+if( grepl("Chantel", user) ){
+  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
+} else {
+  # Fill in Melissa's document directory below
+  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
+}
+# Based on the user
+doc_dir <- file.path(user_dir, "documents")
+
+bridge_dir <- here("models", "nca", "_bridging")
 model_dir <- here("models", "nca", "_bridging", model_name)
-doc_dir <- here("documents")
 data_dir<- here("data")
 r_dir <- here("R")
 save(bridge_dir, model_dir, doc_dir, data_dir, file = file.path(doc_dir, "nca", "saved_directories.Rdata"))
@@ -55,8 +64,8 @@ sa4ss::es_table_tex(
   csv_name = "table_labels.csv")
 
 # Read and create tex files for tables listed in "table" folder in the doc
-#es_table_tex(
-#  dir = file.path(getwd(), 'tables'), 
-#  save_loc = file.path(getwd(), "tex_tables"), 
-#  csv_name = "all_tables.csv")
+es_table_tex(
+  dir = getwd(), 
+  save_loc = file.path(getwd(), "tex_tables"), 
+  csv_name = "all_tables.csv")
 

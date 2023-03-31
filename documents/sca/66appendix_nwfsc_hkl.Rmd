@@ -1,4 +1,4 @@
-# Appendix F. NWFSC Hook and Line Index of Abundance
+# Appendix F. NWFSC Hook and Line Index of Abundance {#nwfsc-hkl-index}
 
 Since 2004, the NWFSC has conducted an annual hook and line survey targeting shelf rockfish in the genus *Sebastes* at fixed stations (e.g., sites, Figure \ref{fig:nwfsc-hkl-map}) in the Southern California Bight. Key species of rockfish targeted by the `r hkl` are bocaccio (*S. paucispinis*), cowcod (*S. levis*), greenspotted (*S. chlorostictus*), and vermilion/sunset (*S. miniatus* and *S. crocotulus*) rockfishes, although a wide range of rockfish species have been observed by this survey. During each site visit, three deckhands simultaneously deploy 5-hook sampling rigs (this is referred to as a single drop) for a maximum of 5 minutes per line, but individual lines may be retrieved sooner at the angler's discretion (e.g., to avoid losing fish). Five drops are attempted at each site for a maximum possible catch of 75 fish per site per year (3 anglers x 5 hooks x 5 drops). Further details regarding the sample frame, site selection, and survey methodology are described by Harms et al. [-@harms_noaa_2008]. 
 

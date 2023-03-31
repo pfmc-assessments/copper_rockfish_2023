@@ -195,7 +195,7 @@ label = 'mean-hkl-len-data')
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "plots", "rov_transect_collapsed_copper_north_protection_count.png"), 
+filein = file.path(data_dir, "survey_indices", "rov", "plots", "rov_transect_collapsed_copper_south_protection_count.png"), 
 caption = "The location and size of observations across all years and transects.",
 label = 'rov-obs-loc')
 ```

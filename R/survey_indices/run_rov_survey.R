@@ -20,8 +20,15 @@ library(gridExtra)
 library(fitdistrplus)
 
 # Load in some helper functions for processing and plotting the data
-all <- list.files(file.path(here(), "R", "sdmTMB"))
-for (a in 1:length(all)) { source(file.path(here(), "R", "sdmTMB", all[a]))}
+user <- Sys.getenv("USERNAME")
+if( grepl("Chantel", user) ){
+  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
+} else {
+  # Fill in Melissa's document directory below
+  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
+}
+all <- list.files(file.path(user_dir, "R", "sdmTMB"))
+for (a in 1:length(all)) { source(file.path(user_dir, "R", "sdmTMB", all[a]))}
 
 dir <- file.path(here(), "data", "survey_indices", "rov")
 # Transect level data provided by John Budrick
@@ -185,16 +192,17 @@ write.csv(both, file = file.path(dir, "forSS", "south_north_obs_designation_mpa_
 
 # South ========================================================================
 ggplot(aes(x = n),
-       data = rov_south) + geom_bar() + theme_bw() + facet_grid(designation~.)
+       data = rov_south) + geom_bar() + theme_bw() + facet_wrap(designation~.) +
+  xlab("Total Copper Rockfish Observed") + ylab("Total")
 ggsave(file = file.path(dir, "plots", "observations_south.png"), width = 7, height = 7)
 
 
 raw.cpue <- rov_south %>%
   mutate(cpue = n / usable_area) %>%
-  group_by(year, designation) %>%
+  group_by(super_year, designation) %>%
   summarize(avg_cpue = mean(cpue))
 
-ggplot(aes(y = avg_cpue, x = year, colour = designation),
+ggplot(aes(y = avg_cpue, x = super_year, colour = designation),
        data = raw.cpue) + geom_point(size = 3) + theme_bw() +
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.006)) + 
   scale_color_viridis_d()
@@ -207,8 +215,9 @@ raw.cpue <- rov_south %>%
   summarize(avg_cpue = round(mean(cpue), 4), sd_cpue = sd(cpue))
 
 ggplot(data = raw.cpue, aes(y = avg_cpue, x = super_year, colour = mpa_group)) + 
-  geom_point(size = 3) + theme_bw() + facet_grid(designation~.) + 
+  geom_point(size = 3) + theme_bw() + 
   geom_line(aes(x = super_year, y = avg_cpue, colour = mpa_group)) +
+  facet_wrap('designation') +
   #geom_errorbar(aes( ymin = avg_cpue - sd_cpue, ymax = avg_cpue + sd_cpue)) + 
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.015)) + 
   scale_color_viridis_d()
@@ -506,11 +515,11 @@ do_diagnostics(
 
 
 # alternative approach - add area
-total_area_km2 <- 200 # dummy number, units should be in whatever your area units are
-mpa_fraction <- 0.08
-grid$area <- c(rep(mpa_fraction,2), rep(1-mpa_fraction,2)) * total_area_km2
-pred <- predict(south_model, newdata = grid, return_tmb_object = TRUE)
-index <- get_index(pred, area = grid$area, bias_correct = TRUE)
+# total_area_km2 <- 200 # dummy number, units should be in whatever your area units are
+# mpa_fraction <- 0.08
+# grid$area <- c(rep(mpa_fraction,2), rep(1-mpa_fraction,2)) * total_area_km2
+# pred <- predict(south_model, newdata = grid, return_tmb_object = TRUE)
+# index <- get_index(pred, area = grid$area, bias_correct = TRUE)
 
 #mod2 <- MASS::glm.nb(n ~ as.factor(year) + poly(depth_scaled,2) + prop_soft_scaled + 
 #                     as.factor(designation) + as.factor(year):as.factor(designation) +
