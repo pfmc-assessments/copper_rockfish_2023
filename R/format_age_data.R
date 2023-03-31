@@ -10,14 +10,6 @@ library(lubridate)
 library(here)
 
 dir <- here("data", "ages", "formatted_age_files")
-user <- Sys.getenv("USERNAME")
-if( grepl("Chantel", user) ){
-  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
-} else {
-  # Fill in Melissa's document directory below
-  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
-}
-source(file.path(user_dir, "R", "get_caal.R"))
 
 # Load in all the age data files - this does not include any ages associatted with
 # the NWFSC HKL or WCGBT surveys.
