@@ -19,8 +19,10 @@ speciesName <- "copper"
 modelArea = "north"
 ccfrpSpeciesCode <- "CPR"
 #setwd to the north or the south
-setwd(glue::glue(here(),"/data/survey_indices/ccfrp/"))
 
+#setwd(glue::glue(here(),"/data/survey_indices/ccfrp/"))
+dir <- file.path("S:/copper_rockfish_2023/data/survey_indices/ccfrp")
+setwd(dir)
 
 #-------------------------------------------------------------------------------
 #Read in data and basic cleanup
@@ -43,7 +45,7 @@ areas <- sqlQuery(channel, "SELECT * FROM [Monitoring Areas]")
 tagReturns <- sqlQuery(channel, "SELECT * FROM [Returned Tags Data]")
 #cell locations
 cellLocation <- sqlQuery(channel, "SELECT * FROM [Grid Cell Locations]")
-
+#close the channel
 odbcClose(channel)
 
 #columns have spaces - remove all spaces here
@@ -150,8 +152,11 @@ dat <- dat %>%
     area = substring(driftID, 1, 2)
   ) %>%
   mutate(effort = anglers * driftTime) %>%
-  mutate(cpue = Target / effort)
+  mutate(cpue = Target / effort) %>%
+  rename(site = site.x)
 
+
+#DO NOT use these length cart blanche if your species has a forked tail!
 lengths <- catches %>%
   filter(!is.na(lengthcm),
          speciesCode == ccfrpSpeciesCode)
@@ -169,20 +174,11 @@ summary(as.factor(aa$monitoringGroup))
 #mostly humboldt that doesn't have depth
 #cell could be included and accounts for depth likely
 
-#exploratory plots
-ggplot(dat %>% filter(cpue>0), aes(x = startDepthft , y = cpue )) +
-  geom_point(alpha = .5)
-
-
-ggplot(lengths, aes(lengthcm, color = name, fill = name)) +
-  geom_density(alpha = .5) +
-  facet_wrap(~region)
-
-
-#how many drifts with coppers by MPA
+#how many drifts with target species by MPA
 total_effort <- dat %>% group_by(name) %>%
   summarise(total_effort = sum(effort, na.rm=TRUE))
-#total coppers 
+
+#total of the target species 
 total_target <- dat %>% group_by(name) %>%
   summarise(total_target = sum(Target))
 totals <- inner_join(total_effort, total_target) %>%
@@ -193,10 +189,79 @@ sites_sampled <- dat %>%
   group_by(name, year) %>%
   tally() %>%
   pivot_wider(names_from = name, values_from = n)
-#remove Laguna Beach, Pt. C, Farallons, Trinidad 
+
+#-------------------------------------------------------------------------------
+#exploratory plots
+ggplot(dat %>% filter(cpue>0), aes(x = startDepthft/6 ,
+ y = cpue,fill = name, colour = name)) +
+  geom_point(alpha = .5) +
+  xlab("Start depth (fm)") + ylab("CPUE") 
+    scale_color_viridis_d()
+ggsave(file = file.path(dir, "plots", "cpue_depth.png"), width = 7, height = 7)
+
+ggplot(dat %>% filter(cpue>0), aes(cpue, fill = name)) +
+  geom_boxplot() +
+    scale_color_viridis_d()
+ggsave(file = file.path(dir, "plots", "cpue_name.png"), width = 7, height = 7)
+
+#see how much depth changes within a drift
+ggplot(dat, aes(x = startDepthft , y = endDepthft, color = name)) +
+  geom_point(alpha = .5) +
+   xlab("Start depth (ft)") + ylab(" End depth (ft)") +
+ 
+    scale_color_viridis_d()
+ggsave(file = file.path(dir, "plots", "start_end_depth.png"), width = 7, height = 7)
+
+#absolute differences
+#HSU doesn't record depth
+ggplot(dat %>% mutate(depthdiff = abs(startDepthft-endDepthft)), 
+aes(depthdiff, color = name, fill = name)) +
+  geom_density(alpha = .5) +
+    xlab("Abs. difference in start and end depth") + ylab("Density") +
+    scale_color_viridis_d()
+ggsave(file = file.path(dir, "plots", "depth_range_drift.png"), width = 7, height = 7)
 
 
+#anacapa has questionable depths - confirmed these are correct w/Chris Honeyman
+ggplot(dat %>% filter(name=='Anacapa Island'), aes(x = startDepthft , 
+y = cpue, color = name)) +
+  geom_point(alpha = .5) +
+    scale_color_viridis_d()
+ggsave(file = file.path(dir, "plots", "anacapa_depth.png"), width = 7, height = 7)
+
+#removing
+name.remove = c("SE Farallon Islands", "Trinidad", 
+"Point Conception", "Laguna Beach")
+#average cpue
+cpue_summary <- dat %>% 
+group_by(year,name,site) %>%
+ mutate(avg_cpue = mean(cpue))
+#plot
+ggplot(cpue_summary %>% filter(!name %in% name.remove), aes(x = year , y = avg_cpue, color = site)) +
+geom_point(size = 1) +
+geom_line() +
+facet_wrap(~name) +
+ xlab("Year") + ylab("Average CPUE") +
+scale_color_viridis_d(begin = .5, end = .8)
+ggsave(file = file.path(dir, "plots", "cpue_site_name.png"), width = 7, height = 7)
 
 
-save(areas, catches, cellLocation, dat, drifts, specieslu,
+ggplot(lengths%>% filter(!name %in% name.remove), aes(lengthcm, fill = site.x)) +
+  geom_density(alpha = .5) +
+  facet_wrap(~name) +
+  xlab("Length cm") + ylab("Density") +
+  scale_fill_viridis_d("Site")
+ggsave(file = file.path(dir, "plots", "lengths_by_mpa.png"), width = 7, height = 7)
+
+
+ggplot(dat %>% filter(!name %in% name.remove), 
+aes(x = startDepthft/6, fill = gridCellID, colour=site)) +
+  geom_boxplot(show.legend = FALSE) + #alpha = .5, show.legend = FALSE, adjust = 5) +
+  facet_wrap(~name) +
+  xlab("Depth (fm)") + ylab("Density") +
+  scale_fill_viridis_d()
+ggsave(file = file.path(dir, "plots", "depth_by_cell.png"), width = 7, height = 7)
+
+
+save(dat, areas, catches, lengths, cellLocation, drifts, specieslu,
      tagReturns, dat, file = file.path(getwd(),"ccfrp.RData"))

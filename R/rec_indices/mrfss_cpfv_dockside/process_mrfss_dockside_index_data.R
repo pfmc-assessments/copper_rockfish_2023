@@ -19,12 +19,15 @@ options(scipen=999)
 #species and area identifiers - eventually put in function
 targetSpecies <- 'Copper_Rockfish'
 speciesName = "copper"
-modelArea = 'north'
+modelArea = 'south'
 
 #set working directory
-dir <- file.path(here(), "data", "rec_indices", "mrfss_cpfv_dockside",modelArea)
+dir <- file.path("S:/copper_rockfish_2023/data/rec_indices/mrfss_cpfv_dockside",modelArea)
 setwd(dir)
-out.dir <- getwd()
+#set working directory
+#dir <- file.path(here(), "data", "rec_indices", "mrfss_cpfv_dockside",modelArea)
+#setwd(dir)
+#out.dir <- getwd()
 #plots.dir <- glue::glue(out.dir,"/plots")
 
 #Read in data
@@ -238,10 +241,10 @@ dataFilters$Positive_Samples[filter.num] <- dim(subset(area.dat.sm, Target > 0))
 filter.num <- filter.num + 1
 
 save(area.dat.sm, dataFilters, best.thresh, file = glue(
-  out.dir, "/mrfss_cpfv_dockside_data_for_GLM.RData"
+  dir, "/data_for_GLM.RData"
 ))
 
-save.image(paste0(out.dir,"/SM_processed_MRFSSdockside.RData"))
+save.image(paste0(dir,"/SM_processed_MRFSSdockside.RData"))
 
 
 

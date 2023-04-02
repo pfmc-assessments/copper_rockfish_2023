@@ -13,7 +13,7 @@ library(dplyr)
 library(tidyr)
 library(here)
 #-------------------------------------------------------------------------------
-dir <-file.path(here(),"data","rec_indices","crfs_pr_dockside")
+#dir <-file.path(here(),"data","rec_indices","crfs_pr_dockside")
 #setwd(dir)
 setwd("S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside")
 speciesNODC = 8826010108
@@ -100,6 +100,15 @@ trips <- i1samples %>%
   unique()  
 #201,319 - indicates that isamples are now "trips"
 #-------------------------------------------------------------------------------
+#Collapse i2 files - this allows a better look at a bag analysis by including 
+#the angler-reported catches.
+#putting on the back burner and will add after indices are done!
+
+
+
+
+
+#-------------------------------------------------------------------------------
 #Collapse i3 records to id_codes in i1samples
 #filter to species of interest
 i3samples <- i3file %>%
@@ -136,10 +145,12 @@ coppers <- pr_data %>%
 #all coppers in area_x = 1
 
 #-------------------------------------------------------------------------------
-#####read newer PR data from 2015-2020
-PR_catch_all <- read.csv("C:/Users/melissa.monk/Documents/CDFW data/PR_data_stitched_together/PR_Catch.csv")
-PR_effort_all <- read.csv("C:/Users/melissa.monk/Documents/CDFW data/PR_data_stitched_together/PR_Effort.csv")
-PR_header <- read.csv("C:/Users/melissa.monk/Documents/CDFW data/PR_data_stitched_together/PR_Header.csv")
+#####read newer PR data from 2015-2022
+#data location
+PR_files <-"C:/Users/melissa.monk/Documents/CDFW data/PR_data_stitched_together/through_2022"
+PR_catch_all <- read.csv(file.path(PR_files, "PR_Catch.csv"))
+PR_effort_all <- read.csv(file.path(PR_files,"PR_Effort.csv"))
+PR_header <- read.csv(file.path(PR_files,"PR_Header.csv"))
 
 # Merge ineeded header into to effort
 PR_header_info <- PR_header %>% 
@@ -195,14 +206,15 @@ PR_trips <- PR_effort %>%
 PR_catch_target <- PR_catch %>%
   filter(Species == newCdfwSpecies,
          Kept>0)
-#41,568 coppers kept
+# coppers kept
+#49,360
 
 PR_data <- left_join(PR_effort, PR_catch_target, by = "ID")
 #-------------------------------------------------------------------------------
 #USE the i file data for 2004-2014
-#USE the PR_raw data files for 2015-2019
+#USE the PR_raw data files for 2015-2022
 
-#start with the pr_data 175,100 rows
+#start with the pr_data 201,316 rows
 i_data <- pr_data %>%
   filter(YEAR < 2015) %>%
   rename(ID = ID_CODE,
@@ -220,6 +232,10 @@ i_data <- pr_data %>%
          !prim1 %in% c('NFOTH','NFCOM','NFPC6','NFSHL')) %>% #remove records with no primary1 indicator
   mutate_at(vars(prim1), as.numeric)
 #primary species are NODC numbers
+#how many coppers do you lose
+sum(i_data$kept,na.rm=T) #28,017
+sum(pr_data$FSHINSP, na.rm=T) #34,366 - only losing the coppers in 2015
+
 
 #rename columns #61,798 rows
 raw_data <- PR_data %>%
