@@ -208,6 +208,18 @@ ggplot(aes(y = avg_cpue, x = super_year, colour = designation),
   scale_color_viridis_d()
 ggsave(file = file.path(dir, "plots", "south_raw_cpue.png"), width = 7, height = 7)
 
+raw.cpue <- rov_south %>%
+  mutate(cpue = n / usable_area) %>%
+  group_by(year, designation) %>%
+  summarize(avg_cpue = mean(cpue))
+
+ggplot(aes(y = avg_cpue, x = year, colour = designation),
+       data = raw.cpue) + geom_point(size = 3) + theme_bw() +
+  geom_line(aes(x = year, y = avg_cpue, colour = designation)) +
+  xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.0075)) + 
+  scale_color_viridis_d()
+ggsave(file = file.path(dir, "plots", "south_raw_cpue_by_year.png"), width = 7, height = 7)
+
 
 raw.cpue <- rov_south %>%
   mutate(cpue = n / usable_area) %>%
@@ -222,6 +234,20 @@ ggplot(data = raw.cpue, aes(y = avg_cpue, x = super_year, colour = mpa_group)) +
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.015)) + 
   scale_color_viridis_d()
 ggsave(file = file.path(dir, "plots", "south_raw_cpue_by_mpa_group.png"), width = 7, height = 7)
+
+raw.cpue <- rov_south %>%
+  mutate(cpue = n / usable_area) %>%
+  group_by(year, mpa_group, designation) %>%
+  summarize(avg_cpue = round(mean(cpue), 4), sd_cpue = sd(cpue))
+
+ggplot(data = raw.cpue, aes(y = avg_cpue, x = year, colour = mpa_group)) + 
+  geom_point(size = 3) + theme_bw() + 
+  geom_line(aes(x = year, y = avg_cpue, colour = mpa_group)) +
+  facet_wrap('designation') +
+  xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.0155)) + 
+  scale_color_viridis_d()
+ggsave(file = file.path(dir, "plots", "south_raw_cpue_by_mpa_group_by_year.png"), width = 7, height = 7)
+
 
 raw.cpue <- rov_south %>%
   filter(mpa_group %in% c("Anacapa Island", "Carrington Point", "South La Jolla", "Point Conception", "Swami's")) %>%
@@ -251,6 +277,16 @@ ggplot(aes(x = n),
        data = rov_north) + geom_bar() + theme_bw() + facet_grid(designation~.)
 ggsave(file = file.path(dir, "plots", "observations_north.png"), width = 7, height = 7)
 
+raw.cpue <- rov_north %>%
+  mutate(cpue = n / usable_area) %>%
+  group_by(super_year, designation) %>%
+  summarize(avg_cpue = mean(cpue))
+
+ggplot(aes(y = avg_cpue, x = super_year, colour = designation),
+       data = raw.cpue) + geom_point(size = 3) + theme_bw() +
+  xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.006)) + 
+  scale_color_viridis_d()
+ggsave(file = file.path(dir, "plots", "north_raw_cpue.png"), width = 7, height = 7)
 
 raw.cpue <- rov_north %>%
   mutate(cpue = n / usable_area) %>%
@@ -259,9 +295,10 @@ raw.cpue <- rov_north %>%
 
 ggplot(aes(y = avg_cpue, x = year, colour = designation),
        data = raw.cpue) + geom_point(size = 3) + theme_bw() +
+  geom_line(aes(x = year, y = avg_cpue, colour = designation)) +
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.006)) + 
   scale_color_viridis_d()
-ggsave(file = file.path(dir, "plots", "north_raw_cpue.png"), width = 7, height = 7)
+ggsave(file = file.path(dir, "plots", "north_raw_cpue_by_year.png"), width = 7, height = 7)
 
 raw.cpue <- rov_north %>%
   mutate(cpue = n / usable_area) %>%
@@ -275,6 +312,20 @@ ggplot(data = raw.cpue, aes(y = avg_cpue, x = super_year, colour = mpa_group)) +
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.005)) + 
   scale_color_viridis_d()
 ggsave(file = file.path(dir, "plots", "north_raw_cpue_by_mpa_group.png"), width = 7, height = 7)
+
+raw.cpue <- rov_north %>%
+  mutate(cpue = n / usable_area) %>%
+  group_by(year, mpa_group, designation) %>%
+  summarize(avg_cpue = round(mean(cpue), 4), sd_cpue = sd(cpue))
+
+ggplot(data = raw.cpue, aes(y = avg_cpue, x = year, colour = mpa_group)) + 
+  geom_point(size = 3) + theme_bw() + facet_grid(designation~.) + 
+  geom_line(aes(x = year, y = avg_cpue, colour = mpa_group)) +
+  #geom_errorbar(aes( ymin = avg_cpue - sd_cpue, ymax = avg_cpue + sd_cpue)) + 
+  xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.005)) + 
+  scale_color_viridis_d()
+ggsave(file = file.path(dir, "plots", "north_raw_cpue_by_mpa_group_by_year.png"), width = 7, height = 7)
+
 
 raw.cpue <- rov_north %>%
   filter(mpa_group %in% c("Ano Nuevo", "Bodega Bay", "Piedras Blancas", "Point Buchon", "Point Lobos", "Ten Mile")) %>%
@@ -521,20 +572,6 @@ do_diagnostics(
 # pred <- predict(south_model, newdata = grid, return_tmb_object = TRUE)
 # index <- get_index(pred, area = grid$area, bias_correct = TRUE)
 
-#mod2 <- MASS::glm.nb(n ~ as.factor(year) + poly(depth_scaled,2) + prop_soft_scaled + 
-#                     as.factor(designation) + as.factor(year):as.factor(designation) +
-#                     offset(log_usable_area),
-#                     data = data)
-
-# This is not correct...
-# out <- tidy(south)
-# protect <- 0.08; open <- 0.92
-# index_2015 <-(exp(out$estimate[1]) * open) +
-#   (exp(out$estimate[1]  + out$estimate[6]) * protect)
-# index_2020 <- (exp(out$estimate[1] + out$estimate[2]) * open) +
-#   (exp(out$estimate[1] + out$estimate[2]  + out$estimate[7]) * protect)
-# index <- c(index_2015 /(index_2015 + index_2020), index_2020 / (index_2015 + index_2020))
-
 # South STAN Model Run
 start.time <- Sys.time()
 # use STAN to see how well 'best model' fits the data
@@ -760,30 +797,26 @@ ggsave(file = file.path(dir, name, "north_weighted_stan_index.png"), width = 7, 
 
 
 
+#=================================================================================
+# Analyze the data on a yearly basis
+#
+# Create Predictions Grids for Each Area
+#==================================================================================
 
 
+#===============================================================================
+# Negative-Binomial GLM model selection
+#===============================================================================
 
-
-
-
-
-
-
-
-
-#======================================================================================
-# Old defunct code below - do not run
-#======================================================================================
-
-# South MPA ===========================================================================
-
-data = rov_south[rov_south$designation == "MPA", ]
+# South ========================================================================
+data = rov_south
 
 # Create data set to use in estimating the indices
-covars <- c("super_year", "poly(depth, 2)", "mpa_group", "prop_hard", "prop_soft", "prop_mixed",
+covars <- c("year", "poly(depth_scaled, 2)", "designation", "prop_hard_scaled", 
+            "prop_soft_scaled", "prop_mixed_scaled", "year:designation",
             "offset(log(usable_area))")
 
-model.full <- MASS::glm.nb(as.formula(
+model.full <- MASS::loglm(as.formula(
   paste("n", 
         paste(0, "+", paste(covars, collapse = " + ")), 
         sep = " ~ ")),
@@ -792,7 +825,7 @@ model.full <- MASS::glm.nb(as.formula(
 
 model.suite <- MuMIn::dredge(model.full,
                              rank = "AICc", 
-                             fixed= c("offset(log(usable_area))", "super_year", "mpa_group"))
+                             fixed= c("offset(log(usable_area))", "year", "designation"))
 
 
 #Create model selection dataframe for the document
@@ -803,25 +836,24 @@ best.model <- MuMIn::get.models(model.suite,subset = delta == 0)
 best.formula <- best.model$ `8`$call$formula
 
 save(model.suite, 
-     file = file.path(dir, "model_output", "nbglm_model_selection_south_mpa.rdata"))
-save(Model_selection, file = file.path(dir, "model_output", "model_formula_south_mpa.rdata"))
+     file = file.path(dir, "nbglm_model_selection_south.rdata"))
+save(Model_selection, file = file.path(dir, "model_formula_south.rdata"))
 
 #format table for the document
 out <- Model_selection[, -ncol(Model_selection)]
 out[, 9:11] <- round(out[ , 9:11],1)
-out[, c('prop_hard', 'prop_mixed', 'prop_soft', "super_year")] <- round(out[ ,c('prop_hard', 'prop_mixed', 'prop_soft', "super_year")] ,2)
-colnames(out) <- c("Area", "Depth Polynomial", "Prop. Hard", "Prop. Mixed", "Prop. Soft", "Super Year",
+out[, 12] <- round(out[, 12], 2)
+out[, c('prop_hard_scaled', 'prop_mixed_scaled', 'prop_soft_scaled')] <- round(out[ ,c('prop_hard_scaled', 'prop_mixed_scaled', 'prop_soft_scaled')] ,2)
+
+out[is.na(out)] <- "N.A."
+colnames(out) <- c("Designation", "Depth Polynomial", "Prop. Hard", "Prop. Mixed", "Prop. Soft", "Super Year", "Designation:Super_year",
                    "offset-log(usable area)", "DF", "log-likelihood", "AICc", "Delta")
-write.csv(out, file = file.path(dir, "model_output", "south_mpa_model_selection.csv"), row.names = FALSE)
+write.csv(out, file = file.path(dir, "forSS", "south_model_selection.csv"), row.names = FALSE)
 
 
-# North Reference ==============================================================
+# North ==========================================================================
 
-data = rov_north[rov_north$designation == "Reference", ]
-
-# Create data set to use in estimating the indices
-covars <- c("super_year", "poly(depth, 2)", "mpa_group", "prop_hard", "prop_soft", "prop_mixed",
-            "offset(log(usable_area))")
+data = rov_north
 
 model.full <- MASS::glm.nb(as.formula(
   paste("n", 
@@ -832,7 +864,7 @@ model.full <- MASS::glm.nb(as.formula(
 
 model.suite <- MuMIn::dredge(model.full,
                              rank = "AICc", 
-                             fixed= c("offset(log(usable_area))", "super_year", "mpa_group"))
+                             fixed= c("offset(log(usable_area))", "super_year", "designation"))
 
 
 #Create model selection dataframe for the document
@@ -843,258 +875,153 @@ best.model <- MuMIn::get.models(model.suite,subset = delta == 0)
 best.formula <- best.model$ `8`$call$formula
 
 save(model.suite, 
-     file = file.path(dir, "model_output", "nbglm_model_selection_north_reference.rdata"))
-save(Model_selection, file = file.path(dir, "model_output", "model_formula_north_reference.rdata"))
+     file = file.path(dir, "nbglm_model_selection_north.rdata"))
+save(Model_selection, file = file.path(dir, "model_formula_north.rdata"))
 
 #format table for the document
 out <- Model_selection[, -ncol(Model_selection)]
-out[, 9:11] <- round(out[ , 9:11],1)
-out[, c('prop_hard', 'prop_mixed', 'prop_soft', "super_year")] <- round(out[ ,c('prop_hard', 'prop_mixed', 'prop_soft', "super_year")] ,2)
-colnames(out) <- c("Area", "Depth Polynomial", "Prop. Hard", "Prop. Mixed", "Prop. Soft", "Super Year",
+out[, 9:11] <- round(out[ , 9:11], 1)
+out[, 12] <- round(out[, 12], 2)
+out[, c('prop_hard_scaled', 'prop_mixed_scaled', 'prop_soft_scaled')] <- round(out[ ,c('prop_hard_scaled', 'prop_mixed_scaled', 'prop_soft_scaled')] ,2)
+
+out[is.na(out)] <- "N.A."
+colnames(out) <- c("Designation", "Depth Polynomial", "Prop. Hard", "Prop. Mixed", "Prop. Soft", "Super Year", "Designation:Super_year",
                    "offset-log(usable area)", "DF", "log-likelihood", "AICc", "Delta")
-write.csv(out, file = file.path(dir, "model_output", "north_reference_model_selection.csv"), row.names = FALSE)
+write.csv(out, file = file.path(dir, "forSS", "north_model_selection.csv"), row.names = FALSE)
 
-# North MPA ======================================================================
+#====================================================================================================
+# Create the grid
+# Year and Sites
+#====================================================================================================
+grid <- expand.grid(
+  year = unique(rov_south$year),
+  #site = unique(rov_south$mpa_group),
+  designation = unique(rov_south$designation))
 
-data = rov_north[rov_north$designation == "MPA", ]
+## join in location info for all sites
+locs <- rov_south %>% 
+  dplyr::group_by(year, designation) %>%
+  dplyr::summarise(
+    lat = lat[1],
+    lon = lon[1],
+    depth_scaled = depth_scaled[1],
+    depth_scaled_2 = depth_scaled_2[1],
+    prop_soft_scaled = prop_soft_scaled[1])
 
-# Create data set to use in estimating the indices
-covars <- c("super_year", "poly(depth, 2)", "mpa_group", "prop_hard", "prop_soft", "prop_mixed",
-            "offset(log(usable_area))")
+grid <- dplyr::left_join(grid, locs) %>%
+  dplyr::filter(!is.na(lat + lon))
 
-model.full <- MASS::glm.nb(as.formula(
-  paste("n", 
-        paste(0, "+", paste(covars, collapse = " + ")), 
-        sep = " ~ ")),
-  data = data,
-  na.action = "na.fail")
+grid$mpa_group_year <- 1
 
-model.suite <- MuMIn::dredge(model.full,
-                             rank = "AICc", 
-                             fixed= c("offset(log(usable_area))", "super_year", "mpa_group"))
+n_open <- round(0.92 * 100, 0)
+n_mpa  <- round(0.08 * 100, 0)
 
-
-#Create model selection dataframe for the document
-Model_selection <- as.data.frame(model.suite)
-Model_selection
-#pull out the best model
-best.model <- MuMIn::get.models(model.suite,subset = delta == 0)
-best.formula <- best.model$ `8`$call$formula
-
-save(model.suite, 
-     file = file.path(dir, "model_output", "nbglm_model_selection_north_mpa.rdata"))
-save(Model_selection, file = file.path(dir, "model_output", "model_formula_north_mpa.rdata"))
-
-#format table for the document
-out <- Model_selection[, -ncol(Model_selection)]
-out[, 9:11] <- round(out[ , 9:11],1)
-out[, c('prop_hard', 'prop_mixed', 'prop_soft', "super_year")] <- round(out[ ,c('prop_hard', 'prop_mixed', 'prop_soft', "super_year")] ,2)
-colnames(out) <- c("Area", "Depth Polynomial", "Prop. Hard", "Prop. Mixed", "Prop. Soft", "Super Year",
-                   "offset-log(usable area)", "DF", "log-likelihood", "AICc", "Delta")
-write.csv(out, file = file.path(dir, "model_output", "north_mpa_model_selection.csv"), row.names = FALSE)
-
-
-#============================================================================
-# Run separate models for each area and protection
-# super year, site, poly(depth, 2), prop_soft
-#============================================================================
-
-name <- "glm_negbin_south_mpa"
-dir.create(file.path(dir, name), showWarnings = FALSE)
-
-data <- rov_south[rov_south$designation == "MPA", ]
-data$year <- data$super_year
-
-
-south_mpa <- sdmTMB(
-  n ~ 0 + as.factor(year) + as.factor(mpa_group)  + poly(depth, 2) + prop_soft, 
-  data = data,
-  offset = log(data$usable_area),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = nbinom2(link = "log")
-)
-
-index <- calc_index(
-  dir = file.path(dir, name), 
-  fit = south_mpa)
-
-do_diagnostics(
-  dir = file.path(dir, name), 
-  fit = south_mpa)
-
-# South Reference ================================================
-name <- "glm_negbin_south_reference"
-dir.create(file.path(dir, name), showWarnings = FALSE)
-
-data <- rov_south[rov_south$designation == "Reference", ]
-data$year <- data$super_year
-
-south_reference <- sdmTMB(
-  n ~ 0 + as.factor(year) + as.factor(mpa_group) + poly(depth, 2) + prop_soft,
-  data = data,
-  offset = log(data$usable_area),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = nbinom2(link = "log")
-)
-
-index <- calc_index(
-  dir = file.path(dir, name), 
-  fit = south_reference)
-
-do_diagnostics(
-  dir = file.path(dir, name), 
-  fit = south_reference)
-
-# North MPA =========================================
-
-name <- "glm_negbin_north_mpa"
-dir.create(file.path(dir, name), showWarnings = FALSE)
-
-data <- rov_north[rov_north$designation == "MPA", ]
-data$year <- data$super_year
-
-north_mpa <- sdmTMB(
-  n ~ 0 + as.factor(year) + as.factor(mpa_group) + poly(depth, 2) + prop_soft,
-  data = data,
-  offset = log(data$usable_area),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = nbinom2(link = "log")
-)
-
-index <- calc_index(
-  dir = file.path(dir, name), 
-  fit = north_mpa)
-
-do_diagnostics(
-  dir = file.path(dir, name), 
-  fit = north_mpa)
-
-# North Reference ================================================
-
-name <- "glm_negbin_north_reference"
-dir.create(file.path(dir, name), showWarnings = FALSE)
-
-data <- rov_north[rov_north$designation == "Reference", ]
-data$year <- data$super_year
-
-north_reference <- sdmTMB(
-  n ~ 0 + as.factor(year) + as.factor(mpa_group) + poly(depth, 2), # + prop_soft,
-  data = data,
-  offset = log(data$usable_area),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = nbinom2(link = "log")
-)
-
-index <- calc_index(
-  dir = file.path(dir, name), 
-  fit = north_reference)
-
-do_diagnostics(
-  dir = file.path(dir, name), 
-  fit = north_reference)
-
-
-#======================================================================
-# Weight the indices based on the open and closed areas
-#======================================================================
-
-south_mpa <- read.csv(file = file.path(dir, "glm_negbin_south_mpa", "index_forSS.csv"))
-south_ref <- read.csv(file = file.path(dir, "glm_negbin_south_reference", "index_forSS.csv"))
-
-north_mpa <- read.csv(file = file.path(dir, "glm_negbin_north_mpa", "index_forSS.csv"))
-north_ref <- read.csv(file = file.path(dir, "glm_negbin_north_reference", "index_forSS.csv"))
-
-prot <- c(0.20, 0.20)
-open <- c(0.80, 0.80)
-
-ind <- north_mpa$obs*prot + north_ref$obs*open
-se <- north_mpa$logse * prot + north_ref$logse * open
-
-out <- cbind(north_mpa[,1:3], ind, se)
-colnames(out) <- c("Year", "Month", "Fleet", "Obs.", "SE")
-write.csv(out, file = file.path(dir, "forSS", "weighted_rov_index_north.csv"), row.names = FALSE)
-
-cols <- viridis::viridis(3)
-pngfun(wd = file.path(dir, "plots"), file = "weighted_rov_index_north.png")
-plot(north_mpa$year, north_mpa$obs, type = 'b', col = cols[1], lwd = 2, ylim = c(0, 0.7),
-    xlab = "Year", ylab = "Relative Index")
-points(north_mpa$year, north_mpa$obs, pch = 16, col = cols[1])
-lines(north_ref$year, north_ref$obs, lty= 1, lwd = 2, col = cols[2])
-points(north_ref$year, north_ref$obs, pch = 16, col = cols[2])
-lines(north_ref$year, ind, lty= 2, lwd = 2, col = cols[3])
-points(north_ref$year, ind, pch = 16, col = cols[3])
-legend('topleft', bty = 'n', legend = c("MPA", "Reference", "Weighted"), col = cols,
-       lty = c(1, 1, 2), lwd = 2)
-dev.off()
-
-cols <- viridis::viridis(5)
-pngfun(wd = file.path(dir, "plots"), file = "weighted_rov_index_north_sensitivity.png")
-aa <- 1
-for (a in seq(0.5, 0.9, 0.10)){
-  p = 1 - a
-  o = a
-  i <- north_mpa$obs*p + north_ref$obs*o
-  if (aa == 1) {
-    plot(north_mpa$year, i, type = 'b', col = cols[aa], lwd = 2, ylim = c(0, 0.7),
-       xlab = "Year", ylab = "Relative Index")
-  } else {
-    lines(north_mpa$year, i, pch = 16, col = cols[aa])
-  }
-  points(north_mpa$year, i, pch = 16, col = cols[aa])
-  aa <- aa + 1
+grid_south <- NULL
+for (a in 1:92){
+  grid_south <- rbind(grid_south, grid[grid$designation == "Reference", ])
 }
-legend('topleft', bty = 'n', legend = c(paste0("Open Area ", seq(50, 90, 10), "%")), col = cols,
-       lty = 1, lwd = 2)
-dev.off()
-
-
-# South =======================================================================
-ind <- south_mpa$obs*prot + south_ref$obs*open
-se  <- south_mpa$logse * prot + south_ref$logse * open
-
-out <- cbind(south_mpa[,1:3], ind, se)
-colnames(out) <- c("Year", "Month", "Fleet", "Obs.", "SE")
-write.csv(out, file = file.path(dir, "forSS", "weighted_rov_index_south.csv"), row.names = FALSE)
-
-
-cols <- viridis::viridis(3)
-pngfun(wd = file.path(dir, "plots"), file = "weighted_rov_index_south.png")
-plot(south_mpa$year, south_mpa$obs, type = 'b', col = cols[1], lwd = 2, ylim = c(0, 1.30),
-     xlab = "Year", ylab = "Relative Index")
-points(south_mpa$year, south_mpa$obs, pch = 16, col = cols[1])
-lines(south_ref$year,  south_ref$obs, lty= 1, lwd = 2, col = cols[2])
-points(south_ref$year, south_ref$obs, pch = 16, col = cols[2])
-lines(south_ref$year, ind, lty= 2, lwd = 2, col = cols[3])
-points(north_ref$year, ind, pch = 16, col = cols[3])
-legend('topleft', bty = 'n', legend = c("MPA", "Reference", "Weighted"), col = cols,
-       lty = c(1, 1, 2), lwd = 2)
-dev.off()
-
-cols <- viridis::viridis(5)
-pngfun(wd = file.path(dir, "plots"), file = "weighted_rov_index_south_sensitivity.png")
-aa <- 1
-for (a in seq(0.5, 0.9, 0.10)){
-  p = 1 - a
-  o = a
-  i <- south_mpa$obs*p + south_ref$obs*o
-  if (aa == 1) {
-    plot(north_mpa$year, i, type = 'b', col = cols[aa], lwd = 2, ylim = c(0, 1.0),
-         xlab = "Year", ylab = "Relative Index")
-  } else {
-    lines(north_mpa$year, i, pch = 16, col = cols[aa])
-  }
-  points(north_mpa$year, i, pch = 16, col = cols[aa])
-  aa <- aa + 1
+for(a in 1:8){
+  grid_south <- rbind(grid_south, grid[grid$designation == "MPA", ])
 }
-legend('topleft', bty = 'n', legend = c(paste0("Open Area ", seq(50, 90, 10), "%")), col = cols,
-       lty = 1, lwd = 2)
-dev.off()
 
+
+# North grid ===========================
+
+grid <- expand.grid(
+  super_year = unique(rov_north$year),
+  #site = unique(rov_south$mpa_group),
+  designation = unique(rov_north$designation))
+
+## join in location info for all sites
+locs <- rov_north %>% 
+  dplyr::group_by(year, designation) %>%
+  dplyr::summarise(
+    lat = lat[1],
+    lon = lon[1],
+    depth_scaled = depth_scaled[1],
+    depth_scaled_2 = depth_scaled_2[1],
+    prop_soft_scaled = prop_soft_scaled[1])
+
+grid <- dplyr::left_join(grid, locs) %>%
+  dplyr::filter(!is.na(lat + lon))
+grid$mpa_group_year <- 1
+
+grid_north <- NULL
+for (a in 1:8){
+  grid_north <- rbind(grid_north, grid[grid$designation == "Reference", ])
+}
+for(a in 1:2){
+  grid_north <- rbind(grid_north, grid[grid$designation == "MPA", ])
+}
+
+#=================================================================================
+# South Model
+#==================================================================================
+
+name <- "delta_lognormal_south_designation_depth_year"
+dir.create(file.path(dir, name), showWarnings = FALSE)
+
+data <- rov_south
+data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
+data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
+
+south_model <- sdmTMB(
+  n ~ as.factor(year) + poly(depth_scaled, 2) +  as.factor(year)*as.factor(designation) + (1|mpa_group_year), 
+  data = data,
+  offset = log(data$usable_area),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = delta_lognormal()
+)
+
+index <- calc_index(
+  dir = file.path(dir, name), 
+  fit = south_model,
+  grid = grid_south)
+
+do_diagnostics(
+  dir = file.path(dir, name), 
+  fit = south_model,
+  plot_resids = FALSE)
+
+#=================================================================================
+# North Model
+#==================================================================================
+
+name <- "delta_lognormal_north_designation_depth_year"
+dir.create(file.path(dir, name), showWarnings = FALSE)
+
+data <- rov_north
+data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
+data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
+data$log_usable_area <- log(data$usable_area)
+
+north_model <- sdmTMB(
+  n ~ as.factor(year) + poly(depth_scaled, 2) +  as.factor(year)*as.factor(designation) + (1|mpa_group_year), 
+  data = data,
+  offset = log(data$usable_area),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = delta_lognormal(),
+  control = sdmTMBcontrol(newton_loops = 1)
+)
+
+
+index <- calc_index(
+  dir = file.path(dir, name), 
+  fit = north_model,
+  grid = grid_north)
+
+do_diagnostics(
+  dir = file.path(dir, name), 
+  fit = north_model,
+  plot_resids = FALSE)
+
+# Example test
+# mod2 <- lme4::glmer.nb(n ~ as.factor(year) + poly(depth_scaled,2) + prop_soft_scaled + 
+#                         as.factor(designation) + as.factor(year):as.factor(designation) +
+#                         (1|mpa_group_year) +
+#                         offset(log_usable_area),
+#                       data = data)

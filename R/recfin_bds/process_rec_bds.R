@@ -540,6 +540,113 @@ p2 <- ggplot2::ggplot(df2, aes(x = variable, y = value)) +
         legend.position = "right")
 print(p2) 
 
+#=============================================================================================
+# Look at weighting the CRFS lengths based on retained and released
+#=============================================================================================
+
+load(file.path(here(), "data", "rec_catch", "crfss_catch_filtered_march_2023.rdata"))
+catch <- crfs
+catch$catch_mt <- catch$TOTAL_MORTALITY_MT
+catch$retained <- catch$RETAINED_MT
+catch$discard <- catch$RELEASED_DEAD_MT
+
+# Going to include the amount of fish recorded as released alive. There could be
+# an argument otherwise. The real question is whether the released lengths come from
+# dead fish only or a combination of fish that are determined to live or die. I assume
+# it is both since the released alive is probably simply being estimated based on the
+# discard mortality rate.
+tmp <- catch %>%
+  filter(mode == 'cpfv', RECFIN_WATER_AREA_NAME != "INLAND") %>%
+  group_by(area, year) %>%
+  reframe(
+    retained = sum(retained),
+    released = sum(RELEASED_ALIVE_MT) + sum(discard),
+    total = retained + released,
+  ) %>%
+  mutate(
+    per_rel = released / total,
+    per_ret =  1 - per_rel
+  )
+
+bds <- crfss_bds
+bds <- bds %>% filter(mode == 'cpfv')
+table(bds$year, bds$IS_RETAINED, bds$area)
+
+ggplot(tmp) +
+  geom_point(aes(x = year, y = per_rel, color = area)) +
+  geom_line(aes(x = year, y = per_rel, color = area))
+
+length_bins <- c(seq(10, 54, 2))
+tmp_len <- bds %>% 
+  filter(year == 2022) %>%
+  reframe(
+    area = area,
+    age = NA,
+    year = year,
+    length_cm = lengthcm,
+    is_retained = IS_RETAINED,
+    sex = "U",
+    trip = paste0(RECFIN_DATE, COUNTY_NUMBER, AGENCY_WATER_AREA_NAME)
+  )
+
+n <- tmp_len %>%
+  dplyr::group_by(area, year, sex, is_retained) %>%
+  dplyr::summarise(
+    ntrip = length(unique(trip)))
+
+lfs_ret <-  UnexpandedLFs.fn(
+  datL = tmp_len[tmp_len$area == "north" & tmp_len$is_retained == "RETAINED", ], 
+  lgthBins = length_bins,
+  partition = 0, 
+  fleet = 3, 
+  month = 7
+)$unsexed
+
+lfs_rel <-  UnexpandedLFs.fn(
+  datL = tmp_len[tmp_len$area == "north" & tmp_len$is_retained == "RELEASED", ], 
+  lgthBins = length_bins,
+  partition = 0, 
+  fleet = 3, 
+  month = 7
+)$unsexed
+
+wght <- tmp %>% filter(year == 2022, area == "north")
+comp <- wght$per_ret * lfs_ret[,7:ncol(lfs_ret)] + wght$per_rel * lfs_rel[,7:ncol(lfs_rel)]
+comp <- 100* comp[,1:23] / sum(comp[,1:23])
+out <- cbind(lfs_ret[, 1:6], comp, comp)
+out$InputN <- floor(sum(n[n$area == "north" & n$is_retained == "RETAINED", "ntrip"] * wght$per_ret +
+                  n[n$area == "north" & n$is_retained == "RELEASED", "ntrip"] * wght$per_rel))
+write.csv(out, file = file.path(dir, "forSS", "weighted_release_retained_comp_north_cpfv_2022.csv"), row.names = FALSE)
+
+plot(length_bins, 100 * lfs_ret[, 7:29] / sum(lfs_ret[, 7:29]), type = 'l', lwd = 2)
+lines(length_bins, comp, lty = 2,  lwd = 2, col = 'blue')
+
+lfs_ret <-  UnexpandedLFs.fn(
+  datL = tmp_len[tmp_len$area == "south" & tmp_len$is_retained == "RETAINED", ], 
+  lgthBins = length_bins,
+  partition = 0, 
+  fleet = 3, 
+  month = 7
+)$unsexed
+
+lfs_rel <-  UnexpandedLFs.fn(
+  datL = tmp_len[tmp_len$area == "south" & tmp_len$is_retained == "RELEASED", ], 
+  lgthBins = length_bins,
+  partition = 0, 
+  fleet = 3, 
+  month = 7
+)$unsexed
+
+wght <- tmp %>% filter(year == 2022, area == "south")
+comp <- wght$per_ret * lfs_ret[,7:ncol(lfs_ret)] + wght$per_rel * lfs_rel[,7:ncol(lfs_rel)]
+comp <- 100* comp[,1:23] / sum(comp[,1:23])
+out <- cbind(lfs_ret[, 1:6], comp, comp)
+out$InputN <- floor(sum(n[n$area == "south" & n$is_retained == "RETAINED", "ntrip"] * wght$per_ret +
+                        n[n$area == "south" & n$is_retained == "RELEASED", "ntrip"] * wght$per_rel))
+write.csv(out, file = file.path(dir, "forSS", "weighted_release_retained_comp_south_cpfv_2022.csv"), row.names = FALSE)
+
+plot(length_bins, 100 * lfs_ret[, 7:29] / sum(lfs_ret[, 7:29]), type = 'l', lwd = 2)
+lines(length_bins, comp, lty = 2,  lwd = 2, col = 'blue')
 #==============================================================================
 # Plot the data quickly
 #==============================================================================

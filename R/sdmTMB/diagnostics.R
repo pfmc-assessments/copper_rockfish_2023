@@ -12,7 +12,7 @@ get_diag_tables <- function(fit, dir){
     row.names = FALSE
   )
 
-  if (length(grepl("delta", run_diagnostics$model)) > 0) {
+if (length(grepl("delta", run_diagnostics$model)) > 0) {
     run_diagnostics$model1_fixed_effects <- tidy(
      fit, 
      model = 1, 
@@ -37,6 +37,31 @@ get_diag_tables <- function(fit, dir){
     effects = 'ran_pars',
     conf.int = TRUE
   )
+  
+  model_fixed_effects <- run_diagnostics$model1_fixed_effects
+  model_fixed_effects[, 2:ncol(model_fixed_effects)] <- round(model_fixed_effects[, 2:ncol(model_fixed_effects)], 2)
+  colnames(model_fixed_effects) <- c("Term", "Estimate", "SD Error", "Low CI", "High CI")
+  write.csv(model_fixed_effects, 
+            file = file.path(dir, "model1_fixed_effects_parameters.csv"), row.names = FALSE)
+  
+  model_fixed_effects <- run_diagnostics$model2_fixed_effects
+  model_fixed_effects[, 2:ncol(model_fixed_effects)] <- round(model_fixed_effects[, 2:ncol(model_fixed_effects)], 2)
+  colnames(model_fixed_effects) <- c("Term", "Estimate", "SD Error", "Low CI", "High CI")
+  write.csv(model_fixed_effects, 
+            file = file.path(dir, "model2_fixed_effects_parameters.csv"), row.names = FALSE)
+  
+  model_random_effects <- run_diagnostics$model1_random_effects
+  model_random_effects[, 2:ncol(model_random_effects)] <- round(model_random_effects[, 2:ncol(model_random_effects)], 2)
+  colnames(model_random_effects) <- c("Term", "Estimate", "SD Error", "Low CI", "High CI")
+  write.csv(model_random_effects, 
+            file = file.path(dir, "model1_random_effects_parameters.csv"), row.names = FALSE)
+  
+  model_random_effects <- run_diagnostics$model2_random_effects
+  model_random_effects[, 2:ncol(model_random_effects)] <- round(model_random_effects[, 2:ncol(model_random_effects)], 2)
+  colnames(model_random_effects) <- c("Term", "Estimate", "SD Error", "Low CI", "High CI")
+  write.csv(model_random_effects, 
+            file = file.path(dir, "model2_random_effects_parameters.csv"), row.names = FALSE)
+  
 } else {
   run_diagnostics$model_fixed_effects <- tidy(
     fit, 
@@ -60,10 +85,14 @@ get_diag_tables <- function(fit, dir){
   colnames(model_random_effects) <- c("Term", "Estimate", "SD Error", "Low CI", "High CI")
   write.csv(model_random_effects, 
             file = file.path(dir, "random_effects_parameters.csv"), row.names = FALSE)
-   
-  
-  save(run_diagnostics, file = file.path(dir, "diagnostics.rdata"))
 }
+
+s <- sanity(fit, big_sd_log10 = 2, gradient_thresh = 0.001)
+write.csv(s, file = file.path(dir, "sanity.csv"), row.names = FALSE)
+
+sink(file = file.path(dir, "fit.txt"))
+fit
+sink()
 
 save(
   run_diagnostics, 

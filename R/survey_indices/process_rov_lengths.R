@@ -60,7 +60,9 @@ ggplot(removed_lengths, aes(x = length_cm, fill = designation)) +
 
 lengths_all <- rov_length
 lengths_sub <- rov_length[-remove_flag, ]
-table(lengths_sub$year, lengths_sub$area)
+table(lengths_sub$year, lengths_sub$area, lengths_sub$designation)
+
+table(rov_length$year, rov_length$area, rov_length$designation)
 
 #===========================================================================
 # Visualize the data

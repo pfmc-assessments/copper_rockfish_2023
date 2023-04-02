@@ -1,5 +1,5 @@
 
-get_caal <- function(data, len_bins, age_bins, month = 7, fleet = "fill", partition = 0){
+get_caal <- function(data, len_bins, age_bins, month = 7, fleet = "fill", ageing_error = NA, partition = 0){
 
 len_col <- colnames(data)[grep("length", colnames(data), ignore.case = TRUE)][1]  
 age_col <- colnames(data)[grep("age", colnames(data), ignore.case = TRUE)][1] 
@@ -30,9 +30,9 @@ sex_loop <- unique(data[, sex_col])
             'year' = y, 
             'month' = month, 
             'fleet'= fleet, 
-            'sex' = ifelse(s == "F", 1, 2), 
+            'sex' = ifelse(s == "F", 1, ifelse(s == "M", 2, 0)), 
             'partition' = partition, 
-            'age_error' = NA, 
+            'age_error' = ageing_error, 
             'lbin_lo' = l, 
             'lbin_hi' = l, 
             'input_n'= NA)
