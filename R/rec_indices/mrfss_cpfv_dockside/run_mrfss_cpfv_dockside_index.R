@@ -55,7 +55,7 @@ geom_point(size = 3)  + theme_bw() +
 geom_line(aes(x = year, y = average_cpue, colour = county, group = county)) +
 xlab("Year") + ylab("Average CPUE") + ylim(c(0, .8)) + 
 scale_color_viridis_d()
-ggsave(file = file.path(dir, "plots", "raw_cpue_by_cnty.png"), width = 7, height = 7)
+ggsave(file = file.path(dir, "plots", "average_cpue_by_cnty.png"), width = 7, height = 7)
 
 cpue_wave <- dat %>% group_by(year, wave) %>% 
 summarise(average_cpue = mean(cpue))
