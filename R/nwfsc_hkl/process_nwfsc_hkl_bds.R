@@ -86,6 +86,17 @@ samples_cca_only <- hkl[hkl$area == "CCA", ] %>%
     n_copper = sum(count)
   )
 
+samp_weights <- hkl_all %>%
+  filter(year > 2013) %>%
+  group_by(year) %>%
+  reframe(
+    all_sites = length(unique(site_number)),
+    cca_sites = length(unique(site_number[area == "CCA"]))
+  ) %>%
+  mutate(
+    cca_percent = cca_sites/all_sites,
+    noncca_percent = 1 - cca_percent
+  )
 
 #==================================================================
 # Create unexpanded length composition data
@@ -117,9 +128,9 @@ lfs <-  UnexpandedLFs.fn(
   month = 9)
 lfs_cca <- lfs$sexed
 
-lfs$sexed[, "InputN"] <- samples_cca_only[, "unique_set_by_site"]
+lfs_cca[, "InputN"] <- samples_cca_only[, "unique_set_by_site"]
 
-write.csv(lfs$sexed, 
+write.csv(lfs_cca, 
           file = file.path(dir, "forSS",  "nwfsc_hkl_cca_only_not_expanded_length_comp_sex_3.csv"),
           row.names = FALSE) 
 
@@ -137,6 +148,18 @@ write.csv(lfs$sexed,
           file = file.path(dir, "forSS",  "nwfsc_hkl_outside_cca_only_not_expanded_length_comp_sex_3.csv"),
           row.names = FALSE) 
 
+# Explore weighting length samples based on % of sample sites within CCA and outside
+cca_comps <- lfs_cca[, 6:52] * as.vector(samp_weights[, "cca_percent"])
+noncca_comps <- lfs$sexed[lfs$sexed$year > 2013, 6:52] * as.vector(samp_weights[, "noncca_percent"])
+# Combine the comps and then standardize
+weighted_comps <- cca_comps + noncca_comps
+standardized <- round(100 * weighted_comps[,2:ncol(weighted_comps)] / apply( weighted_comps[,2:ncol(weighted_comps)], 1, sum), 4)
+
+out <- cbind(lfs$sexed[lfs$sexed$year > 2013, 1:5], floor(weighted_comps[,1]), standardized)
+colnames(out) <- colnames(lfs$sexed)
+out <- rbind(lfs$sexed[lfs$sexed$year < 2014, ], out)
+write.csv(out, file = file.path(dir, "forSS", "cca_effort_weighted_length_composition.csv"), row.names = FALSE)
+
 #====================================================================
 # Plot the composition data
 #====================================================================
@@ -152,6 +175,13 @@ plot_comps(
   dir = dir,
   data = lfs_cca, 
   add_save_name = "nwfsc_hkl_cca_only",
+  add_0_ylim = FALSE
+)
+
+plot_comps(
+  dir = dir,
+  data = out, 
+  add_save_name = "nwfsc_hkl_weighted",
   add_0_ylim = FALSE
 )
 
