@@ -262,3 +262,88 @@ ggplot(age_df, aes(y = length_cm, x = age, color = sex)) +
   scale_color_viridis_d()
 ggsave(filename = file.path(dir, "biology", "plots", "age_at_length_by_sex.png"),
        width = 10, height = 8)
+
+
+#========================================================
+# Load in all ages available as of 4/2/2023
+#========================================================
+load(file.path(dir, "ages", "formatted_age_files", "all_copper_ages.rdata"))
+
+all_ages$Age <- all_ages$age
+all_ages$Length_cm <- all_ages$length_cm
+all_ages$Sex <- all_ages$sex
+all_ages <- all_ages[!is.na(all_ages$age), ]
+
+ages_all <- nwfscSurvey::est_growth(
+  dir = NULL, 
+  dat = all_ages, 
+  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10),
+  sdFactor = 3)
+
+remove <- which(ages_all[,'length_cm'] > ages_all[,'Lhat_high'] | ages_all[,'length_cm'] < ages_all[,'Lhat_low'])
+ages_all[remove, ]
+
+HandyCode::pngfun(wd = file.path(dir,"ages", "formatted_age_files", "plots"), file = "bad_ages.png")
+plot(ages_all[, 'Age'], ages_all[, "Length_cm"], xlim = c(0, 55), ylim = c(0, 60), col = 'grey') 
+points(ages_all[remove, 'Age'], ages_all[remove, "Length_cm"], xlim = c(0,40), pch = 16, ylim = c(0, 50), col = 'red') 
+dev.off()
+
+sink(file = file.path(dir, "ages", "formatted_age_files", "ages_for_removal.txt"))
+ages_all[remove, ]
+sink()
+
+clean_ages <- all_ages[-remove, ]
+
+length_age_ests_all <- est_growth(
+  dat = clean_ages, #age_df, 
+  return_df = FALSE,
+  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10))
+
+save(length_age_ests_all, file = file.path(dir, "biology", 'length_at_age_ests_all_4.2.2023.rdata'))
+
+length_age_ests_north <- est_growth(
+  dat = clean_ages[clean_ages$area == "north", ], 
+  return_df = FALSE,
+  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10))
+
+save(length_age_ests_north, file = file.path(dir,"biology", 'length_at_age_ests_north_4.2.2023.rdata'))
+
+
+length_age_ests_south <- est_growth(
+  dat = clean_ages[clean_ages$area == "south", ], 
+  return_df = FALSE,
+  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10))
+
+save(length_age_ests_south, file = file.path(dir,"biology", 'length_at_age_ests_south_4.2.2023.rdata'))
+
+ggplot(clean_ages, aes(y = length_cm, x = age, color = program)) +
+  geom_point(alpha = 0.1) + 
+  theme_bw() + 
+  geom_jitter() + 
+  xlim(1, 50) + ylim(1, 55) +
+  theme(panel.grid.major = element_blank(), 
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        strip.text.y = element_text(size = 14),
+        panel.grid.minor = element_blank()) + 
+  facet_grid(area~.) + 
+  xlab("Age") + ylab("Length (cm)") +
+  scale_color_viridis_d()
+ggsave(filename = file.path(dir, "biology", "plots", "age_at_length_04022023.png"),
+       width = 10, height = 12)
+
+save(clean_ages, file = file.path(dir, "ages", "formatted_age_files", "cleaned_all_copper_ages.rdata"))
+ggplot(age_df, aes(y = length_cm, x = age, color = sex)) +
+  geom_point() + 
+  theme_bw() + 
+  xlim(1, 50) + ylim(1, 55) +
+  theme(panel.grid.major = element_blank(), 
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        strip.text.y = element_text(size = 14),
+        panel.grid.minor = element_blank()) + 
+  facet_grid(area~.) + 
+  xlab("Age") + ylab("Length (cm)") +
+  scale_color_viridis_d()
+ggsave(filename = file.path(dir, "biology", "plots", "age_at_length_by_sex.png"),
+       width = 10, height = 8)
