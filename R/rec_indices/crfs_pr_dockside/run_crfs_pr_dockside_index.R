@@ -21,38 +21,31 @@ library(dplyr)
 #species and area identifiers - eventually put in function
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
-modelArea = "north"
+modelArea = "south"
 indexName <-  "crfs_pr_dockside"
-covars <- c("month", "district", "year", "targetSpecies")
+covars <- c("month", "district", "year", "prim1Common", "geara")
 
-# Load in some helper functions for processing and plotting the data
-all <- list.files(file.path(here(), "R", "sdmTMB"))
-for (a in 1:length(all)) { source(file.path(here(), "R", "sdmTMB", all[a]))}
 
 # Set working directories
-dir <- file.path(here(),"data","rec_indices", indexName, modelArea)
+#set working directory
+dir <- file.path("S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside",modelArea)
+
+#dir <- file.path(here(),"data","rec_indices", indexName, modelArea)
 setwd(dir)
-# create output directory for each model
-plots.dir <- glue(getwd(),"/plots")
 
 # load data
-load(glue(getwd(),"/",indexName,"_data_for_GLM.RData"))
+load("data_for_GLM.RData")
 
 #Ensure columns named appropriately and covariates are factors
-dat <- tripData %>%
-  rename(effort = NUMBER_OF_ANGLERS,
-         year = RECFIN_YEAR,
-         month = RECFIN_MONTH,
-         district = RECFIN_PORT_CODE,
-         targetSpecies = PRIMARY_TARGET_SPECIES_NAME,
-         catch = targetCatch) %>%
-  mutate(logEffort = log(effort)) %>%
+dat <- cdfwpr %>%
+rename(Effort = anglers) %>%
+  mutate(logEffort = log(Effort)) %>%
   mutate_at(covars, as.factor) # make sure covariates are factors
 
 #Model selection
 #full model
 model.full <- MASS::glm.nb(
-  catch ~ year + district + month + targetSpecies + offset(logEffort),
+  kept ~ year + district + month + prim1Common + geara + offset(logEffort),
   data = dat,
   na.action = "na.fail")
 summary(model.full)
@@ -65,10 +58,9 @@ model.suite <- MuMIn::dredge(model.full,
                              fixed= c("offset(logEffort)", "year"))
 
 #Create model selection dataframe for the document
-Model_selection <- as.data.frame(model.suite)
+Model_selection <- as.data.frame(model.suite) %>%
+dplyr::select(-weight)
 Model_selection
-#pull out the best model
-best.model <- get.models(model.suite,subset = delta == 0)
 
 
 if(modelArea=="north"){
@@ -81,8 +73,8 @@ grid <- expand.grid(
   logEffort = log(0.85)
 )
 
-fit <- sdmTMB(
-  catch ~ year + district + month + targetSpecies,
+fit.nb <- sdmTMB(
+  kept ~ year + district + month + prim1Common,
   data = dat,
   offset = dat$logEffort,
   time = "year",
@@ -100,12 +92,12 @@ fit <- sdmTMB(
   grid <- expand.grid(
     year = unique(dat$year),
     district = levels(dat$district)[1],
- #   Month = levels(dat$Month)[1],
-    logEffort = log(0.85)
+    month = levels(dat$month)[1],
+    prim1Common = levels(dat$prim1Common)[1]
   )
   
-  fit <- sdmTMB(
-    catch ~ year + district,
+  fit.nb <- sdmTMB(
+   kept ~ year + district + month + prim1Common,
     data = dat,
     offset = dat$logEffort,
     time = "year",
@@ -120,21 +112,56 @@ fit <- sdmTMB(
   )
 }
 
-sanity(fit)
 
-index <- calc_index(
-  dir = dir, 
-  fit = fit,
-  grid = grid)
 
+#-------------------------------------------------------------------------------
+pred <- predict(fit.nb, return_tmb_object = TRUE, newdata = grid)
+index <- get_index(pred, bias_correct = TRUE)
+index
+
+#-------------------------------------------------------------------------------
+# Load in some helper functions for processing and plotting the data
+all <- list.files(file.path(here(), "R", "sdmTMB"))
+for (a in 1:length(all)) { source(file.path(here(), "R", "sdmTMB", all[a]))}
+
+#Get diagnostics and index for SS
 do_diagnostics(
   dir = dir, 
-  fit = fit)
+  fit = fit.nb)
 
-loglike <- logLik(fit)
-aic <- AIC(fit)
-metrics <- rbind(c(indexName, loglike, aic))
+calc_index(
+  dir = file.path(dir, "forSS"), 
+  fit = fit.nb,
+  grid = grid)
 
-save(index, file = file.path(dir, "index.rdata"))  
-save(metrics, file = file.path(dir, "metrics.rdata"))
+#-------------------------------------------------------------------------------
+#Format data filtering table and the model selection table for document
+View(dataFilters)
+dataFilters <- dataFilters %>%
+rowwise() %>%
+filter(!all(is.na(across((everything()))))) %>%
+ungroup() %>%
+rename(`Positive Samples` = Positive_Samples) %>%
+as.data.frame()
 
+write.csv(dataFilters, 
+file = file.path(dir, "forSS", "data_filters.csv"), 
+row.names = FALSE)
+
+View(Model_selection)
+#format table for the document
+out <- Model_selection %>%
+dplyr::select(-`(Intercept)`) %>%
+mutate_at(vars(covars,"year","offset(logEffort)"), as.character) %>%
+mutate(across(c("logLik","AICc","delta"), round, 1)) %>%
+replace_na(list(district = "Excluded", geara = "Excluded",
+          prim1Common = "Excluded", month = "Excluded")) %>%
+mutate_at(c(covars,"year","offset(logEffort)"), 
+       funs(stringr::str_replace(.,"\\+","Included"))) %>%
+rename(`Effort offset` = `offset(logEffort)`, 
+`log-likelihood` = logLik,
+`Primary target species` = prim1Common,
+`Primary gear` = geara) %>%
+rename_with(stringr::str_to_title,-AICc)
+View(out)
+write.csv(out, file = file.path(dir, "forSS", "model_selection.csv"), row.names = FALSE)
