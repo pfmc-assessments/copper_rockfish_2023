@@ -4,6 +4,7 @@
 #           
 ##################################################################
 
+library(ggplot2)
 library(here)
 
 user <- Sys.getenv("USERNAME")
@@ -27,6 +28,10 @@ load(file.path(dir, "commercial_ages.rdata"))
 load(file.path(dir, "historical_rec_ages.rdata"))
 load(file.path(dir, "unknown_historical_ages.rdata"))
 
+crfs_ages <- crfs_ages[!is.na(crfs_ages$age), ]
+crfs_non_random <- crfs_ages[crfs_ages$year == 2021, ]
+crfs_ages <- crfs_ages[crfs_ages$year != 2021, ]
+
 # Reset the directory to a lower level folder
 dir <- here("data")
 load(file.path(dir, "wcgbt", "wcgbt_ages_with_area.rdata"))
@@ -49,7 +54,8 @@ growth_ages <- rbind(
   pearson_ages[, col_names],
   cdfw_ages[, col_names],
   coop_ages[, col_names],
-  wcgbt[, col_names]
+  wcgbt[, col_names],
+  crfs_non_random [crfs_ages$year == 2021, col_names]
   #unknown_ages[, col_names] <- Leave these out for now since not sure if they link rec. fleet
 )
 growth_ages <- growth_ages[!is.na(growth_ages$length_cm), ]
@@ -60,6 +66,8 @@ growth_ages <- growth_ages[!is.na(growth_ages$length_cm), ]
 
 ggplot(growth_ages) + geom_bar(aes(x = age, color = sex)) + facet_grid(area~.)
 ggsave(file = file.path(dir, "plots", "growth_ages_by_area.png"), width = 7, height = 7)
+ggplot(growth_ages) + geom_bar(aes(x = age, color = program)) + facet_grid(area~.)
+ggsave(file = file.path(dir, "plots", "growth_ages_by_area_program.png"), width = 7, height = 7)
 
 growth_north <- get_caal(
   data = growth_ages[growth_ages$area == "north", ], 
@@ -136,7 +144,6 @@ write.csv(ccfrp_south,
 # CRFS 
 #===============================================================================
 # There are some NA records
-crfs_ages <- crfs_ages[!is.na(crfs_ages$age), ]
 
 # All records are for PR north with 3 unsexed records 
 
