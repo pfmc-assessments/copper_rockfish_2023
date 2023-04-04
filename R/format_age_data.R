@@ -103,6 +103,10 @@ coop_ages <- data.frame(
 )
 coop_ages <- coop_ages %>%
   tidyr::separate(date, sep="/", into = c("day", "month", "year"))
+coop_ages$area <- "south"
+coop_ages$area[coop_ages$vessel %in% c("Legacy", "Salty Lady", "Sea Wolf")] <- "north"
+rm <- which(is.na(coop_ages$length_cm) & is.na(coop_ages$carcass_length_cm)) # <- 1 fish no length
+coop_ages <- coop_ages[-rm, ]
 
 save(coop_ages, file = file.path(dir, "coop_ages.rdata"))
 
@@ -122,6 +126,7 @@ pearson_ages <- data.frame(
   notes = pearson$Notes
 )
 pearson_ages$area[pearson_ages$latitude < 34.47] <- "south"
+pearson_ages <- pearson_ages[!is.na(pearson_ages$age), ] #3 fish unable to be aged
 save(pearson_ages, file = file.path(dir, "pearson_ages.rdata"))
 
 # CRFS ages

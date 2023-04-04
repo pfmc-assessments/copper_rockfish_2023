@@ -22,11 +22,11 @@ dir_main <- file.path(here(), "data", "wcgbt")
 #     common_name = "copper rockfish",
 #     survey = "NWFSC.Combo",
 #     convert  = TRUE)
-# bio = pull_bio(
-#    dir = dir_main, 
-#    common_name = "copper rockfish",
-#    survey = "NWFSC.Combo",
-#    convert = TRUE)
+#bio = pull_bio(
+#   dir = dir_main, 
+#   common_name = "copper rockfish",
+#   survey = "NWFSC.Combo",
+#   convert = TRUE)
 # bio_samps = pull_biological_samples(
 #     dir = dir, 
 #     common_name = "copper rockfish",
@@ -34,9 +34,8 @@ dir_main <- file.path(here(), "data", "wcgbt")
 
 load(file.path(dir_main, "catch_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
 catch_orig <- x
-#load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2023-02-11.rdata"))
-#bio_orig <- x
-load(file.path(dir_main, "bio_2003-2004_w_ages.rdata"))
+load(file.path(dir_main, "bio_copper rockfish_NWFSC.Combo_2023-04-03.rdata"))
+bio_orig <- x
 
 #=====================================================================
 # Thread in the newly released ages
@@ -76,6 +75,8 @@ catch_orig[catch_orig$Latitude_dd < 34.47, 'area'] <- 'south'
 bio_orig$area <- 'north'
 bio_orig[bio_orig$Latitude_dd < 34.47, 'area'] <- 'south'
 
+save(bio_orig, file = file.path(dir_main, "wcgbt_ages_with_area.rdata"))
+
 n_obs <- bio_orig %>%
   group_by(area, Year) %>%
   summarise(
@@ -97,7 +98,7 @@ colnames(out) <- c("Area", "Year", "Positive Tows", "Length Samples", "Read Ages
 write.csv(out, row.names = FALSE, file = file.path(dir_main, "forSS", "wcgbt_positive_tows_and_bio_samples.csv"))
 
 #=====================================================================
-# Tabel of available and aged otoliths  - melissa
+# Table of available and aged otoliths - melissa
 #=====================================================================
 
 copp_otoliths_table <- bio_orig %>%
@@ -112,6 +113,7 @@ copp_age_table <- bio_orig %>%
 
 copp_age_summary <- inner_join(copp_otoliths_table,copp_age_table)
 write.csv(copp_age_summary,"copper_age_summary.csv")
+
 #=====================================================================
 # Split the data by assessment area 
 #=====================================================================
@@ -302,7 +304,7 @@ PlotSexRatio.fn(dir = dir,
 #=====================================================================
 # Calculate age compositions
 #=====================================================================
-age_bin = 1:40
+age_bin = 0:40
 
 # There is only one unsexed fish that has been aged
 n <- GetN.fn(
@@ -328,12 +330,13 @@ plot_comps(dir = dir,
 # Conditional-age-at-length
 caal <- SurveyAgeAtLen.fn(
     dir = dir, 
-    sex = 3,
+    ageErr = 1, 
     datAL = bio, 
     datTows = catch, 
     strat.df = strata, 
     lgthBins = len_bin, 
     ageBins = age_bin)
+
 
 # Condense to a single year
 caal = bio

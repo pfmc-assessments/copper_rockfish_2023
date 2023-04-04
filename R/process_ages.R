@@ -18,20 +18,94 @@ dir <- here("data", "ages", "formatted_age_files")
 
 # Read in the growth ages
 load(file.path(dir, "abrams_ages.rdata"))
-load(file.path(dir, "ccfrp_ages.rdata"))
+load(file.path(dir, "ccfrp_ages.rdata")) 
 load(file.path(dir, "cdfw_ages.rdata"))
 load(file.path(dir, "coop_ages.rdata"))
 load(file.path(dir, "pearson_ages.rdata"))
 load(file.path(dir, "crfs_ages.rdata"))
+load(file.path(dir, "commercial_ages.rdata"))
+load(file.path(dir, "historical_rec_ages.rdata"))
+load(file.path(dir, "unknown_historical_ages.rdata"))
 
 # Reset the directory to a lower level folder
 dir <- here("data")
+load(file.path(dir, "wcgbt", "wcgbt_ages_with_area.rdata"))
+wcgbt <- bio_orig[!is.na(bio_orig$Age), ]
+colnames(wcgbt) <- tolower(colnames(wcgbt))
+wcgbt$program <- "NWFSC_WCGBT"
+
 
 length_bins <- seq(10, 54, 2)
-age_bins <- 1:50
+age_bins <- 0:50
 
-# CCFRP ========================================================================
-# There are 4 unsexed fish that will not be included
+#===============================================================================
+# Add all age sources that will be used in a growth fleet to a single df
+# The CCFRP, CRFS and historical rec., and commercial ages will be link to fleets.
+#===============================================================================
+
+col_names <- c('program', 'year', 'area', 'sex', 'length_cm', 'age')
+growth_ages <- rbind(
+  abrams_ages[, col_names],
+  pearson_ages[, col_names],
+  cdfw_ages[, col_names],
+  coop_ages[, col_names],
+  wcgbt[, col_names]
+  #unknown_ages[, col_names] <- Leave these out for now since not sure if they link rec. fleet
+)
+growth_ages <- growth_ages[!is.na(growth_ages$length_cm), ]
+# There are ages ranging between 0-50 years of age in this df 
+#        F   M   U
+#north 467 493  28
+#south 728 725  59
+
+ggplot(growth_ages) + geom_bar(aes(x = age, color = sex)) + facet_grid(area~.)
+ggsave(file = file.path(dir, "plots", "growth_ages_by_area.png"), width = 7, height = 7)
+
+growth_north <- get_caal(
+  data = growth_ages[growth_ages$area == "north", ], 
+  len_bins = length_bins, 
+  age_bins = age_bins, 
+  month = 7, 
+  ageing_error = 1,
+  fleet = "growth", 
+  partition = 0)
+
+write.csv(growth_north, 
+          file = file.path(dir, "ages", "forSS", "growth_caal_north.csv"),
+          row.names = FALSE) 
+
+growth_south <- get_caal(
+  data = growth_ages[growth_ages$area == "south", ], 
+  len_bins = length_bins, 
+  age_bins = age_bins, 
+  month = 7, 
+  ageing_error = 1,
+  fleet = "growth", 
+  partition = 0)
+
+write.csv(growth_south, 
+          file = file.path(dir, "ages", "forSS", "growth_caal_south.csv"),
+          row.names = FALSE) 
+
+# There are 40 carcass lengths in the north and 2 in the south
+tmp <- coop_ages[, c("area", "year", "sex", "carcass_length_cm", "age")]
+carcass_north <- get_caal(
+  data = tmp[tmp$area == "north", ], 
+  len_bins = length_bins, 
+  age_bins = age_bins, 
+  month = 7, 
+  ageing_error = 1,
+  fleet = "growth", 
+  partition = 0)
+
+write.csv(carcass_north, 
+          file = file.path(dir, "ages", "forSS", "growth_carcass_caal_north.csv"),
+          row.names = FALSE) 
+
+#===============================================================================
+# CCFRP 
+#===============================================================================
+
 ccfrp_north <- get_caal(
   data = ccfrp_ages[ccfrp_ages$area == "north", ], 
   len_bins = length_bins, 
@@ -58,12 +132,98 @@ write.csv(ccfrp_south,
   file = file.path(dir, "ages", "forSS", "ccfrp_caal_south.csv"),
   row.names = FALSE) 
 
-# COOP Ages ====================================================================
-# Need to identify which area the ages are from by vessel
+#===============================================================================
+# CRFS 
+#===============================================================================
+# There are some NA records
+crfs_ages <- crfs_ages[!is.na(crfs_ages$age), ]
 
-coop_ages$area <- "south"
-coop_ages$area[coop_ages$vessel %in% c("Legacy", "Salty Lady", "Sea Wolf")] <- "north"
-coop_ages$sex[!coop_ages$sex %in% c("F","M")] <- "U"
+# All records are for PR north with 3 unsexed records 
+
+pr_north <- get_caal(
+  data = crfs_ages[crfs_ages$area == "north" & crfs_ages$mode == "PR", ], 
+  len_bins = length_bins, 
+  age_bins = age_bins, 
+  month = 7, 
+  ageing_error = 1,
+  fleet = "private", 
+  partition = 0)
+
+write.csv(pr_north, 
+          file = file.path(dir, "ages", "forSS", "crfs_private_caal_north.csv"),
+          row.names = FALSE) 
+
+#===============================================================================
+# Historical Recreational Samples
+#===============================================================================
+
+
+
+#===============================================================================
+# Commercial 
+#===============================================================================
+commercial_ages <- commercial_ages[!is.na(commercial_ages$age), ]
+
+com_north <- get_caal(
+  data = commercial_ages[commercial_ages$area == "north", ], 
+  len_bins = length_bins, 
+  age_bins = age_bins, 
+  month = 7, 
+  ageing_error = 1,
+  fleet = 1, 
+  partition = 0)
+
+write.csv(com_north, 
+          file = file.path(dir, "ages", "forSS", "commercial_age_caal_north.csv"),
+          row.names = FALSE)  
+
+com_south <- get_caal(
+  data = commercial_ages[commercial_ages$area == "south", ], 
+  len_bins = length_bins, 
+  age_bins = age_bins, 
+  month = 7, 
+  ageing_error = 1,
+  fleet = 1, 
+  partition = 0)
+
+write.csv(com_south, 
+          file = file.path(dir, "ages", "forSS", "commercial_age_caal_south.csv"),
+          row.names = FALSE) 
+
+#===============================================================================
+# WCGBT 
+#===============================================================================
+wcgbt <- wcgbt[, !colnames(wcgbt) %in% c("age_years", "ageing_lab")]
+
+wcgbt_north <- get_caal(
+  data = wcgbt[wcgbt$area == "north", ], 
+  len_bins = length_bins, 
+  age_bins = age_bins, 
+  month = 7, 
+  ageing_error = 1,
+  fleet = "wcgbt", 
+  partition = 0)
+
+write.csv(wcgbt_north, 
+          file = file.path(dir, "ages", "forSS", "by_source", "wcgbt_caal_north.csv"),
+          row.names = FALSE)  
+
+wcgbt_south <- get_caal(
+  data = wcgbt[wcgbt$area == "south", ], 
+  len_bins = length_bins, 
+  age_bins = age_bins, 
+  month = 7, 
+  ageing_error = 1,
+  fleet = "wcgbt", 
+  partition = 0)
+
+write.csv(wcgbt_south, 
+          file = file.path(dir, "ages", "forSS", "by_source", "wcgbt_caal_south.csv"),
+          row.names = FALSE) 
+
+#===============================================================================
+# COOP Ages 
+#===============================================================================
 
 # Remove the "stage" column because the get_caal function fails to find the age column
 coop_ages <- coop_ages[, -which(colnames(coop_ages) == "stage")]
@@ -81,7 +241,7 @@ coop_north <- get_caal(
   partition = 0)
 
 write.csv(coop_north, 
-          file = file.path(dir, "ages", "forSS", "coop_cpfv_caal_north.csv"),
+          file = file.path(dir, "ages", "forSS", "by_source", "coop_cpfv_caal_north.csv"),
           row.names = FALSE)  
 
 coop_south <- get_caal(
@@ -94,7 +254,7 @@ coop_south <- get_caal(
   partition = 0)
 
 write.csv(coop_south, 
-          file = file.path(dir, "ages", "forSS", "coop_cpfv_caal_south.csv"),
+          file = file.path(dir, "ages", "forSS", "by_source", "coop_cpfv_caal_south.csv"),
           row.names = FALSE) 
 
 tmp <- coop_ages[, -which(colnames(coop_ages) == "length_cm")]
@@ -109,10 +269,12 @@ carcass_north <- get_caal(
   partition = 0)
 
 write.csv(pearson_south, 
-          file = file.path(dir, "ages", "forSS", "coop_cpfv_carcass_caal_north.csv"),
+          file = file.path(dir, "ages", "forSS", "by_source", "coop_cpfv_carcass_caal_north.csv"),
           row.names = FALSE) 
 
-# Pearson Research =============================================================
+#===============================================================================
+# Pearson Research 
+#===============================================================================
 # All fish are male or female
 pearson_north <- get_caal(
   data = pearson_ages[pearson_ages$area == "north", ], 
@@ -124,7 +286,7 @@ pearson_north <- get_caal(
   partition = 0)
 
 write.csv(pearson_north, 
-          file = file.path(dir, "ages", "forSS", "pearson_caal_north.csv"),
+          file = file.path(dir, "ages", "forSS", "by_source", "pearson_caal_north.csv"),
           row.names = FALSE)  
 
 pearson_south <- get_caal(
@@ -133,16 +295,16 @@ pearson_south <- get_caal(
   age_bins = age_bins, 
   month = 7, 
   ageing_error = 1,
-  fleet = "ccfrp", 
+  fleet = "pearson", 
   partition = 0)
 
 write.csv(pearson_south, 
-          file = file.path(dir, "ages", "forSS", "pearson_caal_south.csv"),
+          file = file.path(dir, "ages", "forSS", "by_source", "pearson_caal_south.csv"),
           row.names = FALSE) 
 
-
-# Abrams Research =============================================================
-
+#===============================================================================
+# Abrams Research
+#===============================================================================
 # All fish are male or female
 
 abrams_north <- get_caal(
@@ -155,11 +317,12 @@ abrams_north <- get_caal(
   partition = 0)
 
 write.csv(abrams_north, 
-          file = file.path(dir, "ages", "forSS", "abrams_caal_north.csv"),
+          file = file.path(dir, "ages", "forSS", "by_source", "abrams_caal_north.csv"),
           row.names = FALSE)  
 
-# CDFW Special Collections =====================================================
-
+#===============================================================================
+# CDFW Special Collections 
+#===============================================================================
 # One unsexed fish
 
 cdfw_north <- get_caal(
@@ -172,27 +335,10 @@ cdfw_north <- get_caal(
   partition = 0)
 
 write.csv(cdfw_north, 
-          file = file.path(dir, "ages", "forSS", "cdfw_special_collections_caal_north.csv"),
+          file = file.path(dir, "ages", "forSS","by_source", "cdfw_special_collections_caal_north.csv"),
           row.names = FALSE)  
 
-# CRFS =========================================================================
-# There are some NA records
-crfs_ages <- crfs_ages[!is.na(crfs_ages$age), ]
 
-# All records are for PR north with 3 unsexed records 
-
-pr_north <- get_caal(
-  data = crfs_ages[crfs_ages$area == "north" & crfs_ages$mode == "PR", ], 
-  len_bins = length_bins, 
-  age_bins = age_bins, 
-  month = 7, 
-  ageing_error = 1,
-  fleet = "private", 
-  partition = 0)
-
-write.csv(pr_north, 
-          file = file.path(dir, "ages", "forSS", "crfs_private_caal_north.csv"),
-          row.names = FALSE)  
 
 
 
