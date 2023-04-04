@@ -142,7 +142,10 @@ summary(as.factor(cdfwpr$geara))
 #keep only hook and line - explore keeping troll as well
 gears.to.keep <- c('H','Hook and Line', 'T', 'Troll')
 cdfwpr <- cdfwpr %>%
-  filter(geara %in% gears.to.keep)
+  filter(geara %in% gears.to.keep) %>%
+  mutate(geara = case_when(geara == "H" ~ "Hook and Line",
+                           geara == "T" ~ "Troll",
+                           TRUE ~ geara))
 
 target <- cdfwpr %>% filter(kept>0)
 summary(as.factor(target$geara))
@@ -288,14 +291,23 @@ View(trip2Targets)
 #trips with rockfihs effort
 prim2north <- c('bottomfish (groundfish)', 'rockfish genus')
 prim2south <- c('rockfish genus')
+if(modelArea=="north"){
+  prim2keep <- prim2north 
+} else{
+  prim2keep = prim2south
+}
+
 cdfwpr <- cdfwpr %>%
 mutate(keep.trip = ifelse(
   prim1Common %in% c('bottomfish (groundfish)', 'rockfish genus') |
-  prim2Common %in% c('bottomfish (groundfish)', 'rockfish genus'), 1,0)) %>%
+  prim2Common %in% prim2keep , 1,0)) %>%
   filter(keep.trip==1)
  
-
-
+cdfwpr <- cdfwpr %>%
+mutate(targetSpecies = prim1Common) %>%
+mutate(targetSpecies = 
+case_when(!targetSpecies %in% c('bottomfish (groundfish)', 'rockfish genus') ~ "other",
+TRUE ~ targetSpecies))
 #-------------------------------------------------------------------------------
 # Add to filter dataframe
 dataFilters$Filter[filter.num] <- c("Target species")
