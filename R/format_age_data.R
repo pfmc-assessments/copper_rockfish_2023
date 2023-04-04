@@ -13,7 +13,7 @@ dir <- here("data", "ages", "formatted_age_files")
 
 # Load in all the age data files - this does not include any ages associatted with
 # the NWFSC HKL or WCGBT surveys.
-crfs <- read.csv(file = file.path(dir, "copper_crfs_recreational_rfg.csv"))
+crfs <- read.csv(file = file.path(dir, "copper_crfs_recreational_rfbg_2021-2022.csv"))
 abrams <- read.csv(file = file.path(dir, "copper_abrams_research_ages_2010-2011.csv"))
 ccfrp <- read.csv(file = file.path(dir, "copper_ccfrp_ages_2017-2022.csv"))
 cdfw <- read.csv(file = file.path(dir, "copper_cdfw_pilot_efi_carcass_ages_2018_2019_2021.csv"))
@@ -103,6 +103,10 @@ coop_ages <- data.frame(
 )
 coop_ages <- coop_ages %>%
   tidyr::separate(date, sep="/", into = c("day", "month", "year"))
+coop_ages$area <- "south"
+coop_ages$area[coop_ages$vessel %in% c("Legacy", "Salty Lady", "Sea Wolf")] <- "north"
+rm <- which(is.na(coop_ages$length_cm) & is.na(coop_ages$carcass_length_cm)) # <- 1 fish no length
+coop_ages <- coop_ages[-rm, ]
 
 save(coop_ages, file = file.path(dir, "coop_ages.rdata"))
 
@@ -122,6 +126,7 @@ pearson_ages <- data.frame(
   notes = pearson$Notes
 )
 pearson_ages$area[pearson_ages$latitude < 34.47] <- "south"
+pearson_ages <- pearson_ages[!is.na(pearson_ages$age), ] #3 fish unable to be aged
 save(pearson_ages, file = file.path(dir, "pearson_ages.rdata"))
 
 # CRFS ages
@@ -197,7 +202,7 @@ hist_rec_ages <- data.frame(
   program = hist_rec$sample_type,
   sample_id = hist_rec$sample_id,
   area = "unknown",
-  date = hist_rec$Year,
+  year = hist_rec$Year,
   sex = hist_rec$Sex,
   length_cm = hist_rec$Fork_Length_cm,
   age = hist_rec$Best_Age
@@ -214,7 +219,7 @@ unknown_ages <- data.frame(
   program = unknown$sample_type,
   sample_id = unknown$sample_id,
   area = "unknown",
-  date = unknown$Year,
+  year = unknown$Year,
   sex = unknown$Sex,
   length_cm = unknown$Fork_Length_cm,
   age = unknown$Best_Age
@@ -323,7 +328,7 @@ ggsave(file = file.path(dir, "plots", "nwfsc_hkl_ages.png"), height = 7, width =
 # Throw everything into a single data frame for visualization
 #===============================================================================
 
-col_names <- c('program', 'area', 'sex', 'length_cm', 'age')
+col_names <- c('program', 'year', 'area', 'sex', 'length_cm', 'age')
 all_ages <- rbind(
   ccfrp_ages[, col_names],
   hkl[, col_names], 

@@ -41,14 +41,13 @@ load("ally_rec_bds.rdata")
 # 1975 - 1989 - south
 load("collinsCrooke_rec_bds.rdata")
 
-
 crfs <- crfss_bds
 mrfs <- mrfss_bds
 deb_wv <- DebWV
 donp <- DonP
 
 # Use only retained lengths in CRFS (only 280 released lengths from cpfv) 
-crfs <- crfs[crfs$IS_RETAINED == "RETAINED", ]
+# crfs <- crfs[crfs$IS_RETAINED == "RETAINED", ]
 
 # There is an overlap in data between Collins-Crooke and Ally in 1986-1989
 collins_rec <- collins_rec[collins_rec$year < 1986, ]
@@ -93,8 +92,8 @@ donp$lengthcm <- donp$lengthcm / 10
 # Try to determine the number of trips in each data set
 #=============================================================================================
 
-mrfs$trip <- paste0(mrfs$year, mrfs$ID_CODE, mrfs$INTSITE, mrfs$AREA_X)
-crfs$trip <- paste0(crfs$RECFIN_DATE, crfs$COUNTY_NUMBER, crfs$AGENCY_WATER_AREA_NAME)
+mrfs$trip <- paste0(mrfs$year, mrfs$WAVE, mrfs$ID_CODE, mrfs$INTSITE, mrfs$AREA_X, mrfs$mode)
+crfs$trip <- paste0(crfs$RECFIN_DATE, crfs$COUNTY_NUMBER, crfs$AGENCY_WATER_AREA_NAME, crfs$INTERVIEW_SITE, crfs$RECFIN_MODE_NAME)
 deb_wv$trip <- paste0(deb_wv$year, deb_wv$TRIP_ID)
 miller_rec$trip <- paste0(miller_rec$year, miller_rec$district, miller_rec$county, miller_rec$mode)
 donp$trip <- paste0(donp$SAMPLE_NO)
@@ -122,12 +121,17 @@ remove <- which(all_data$lengthcm > 65)
 all_data <- all_data[-remove, ]
 # There area 23 lengths between 60-65 which seem suspect but 
 # going to keep them.
+# remove <- which(all_data$lengthcm >= 60)
+
+# Rename the lenth column to match the form expected by the unexpandedLF.fn
+# colnames(all_data[colnames(all_data) == "lengthcm"]) <- "length_cm"
 
 # Remove the MRFSS lengths from 1997-98 since they are the same as those in Deb's data
 remove <- which(all_data$program == "mrfss" & all_data$year %in% 1997:1998 &
                 all_data$mode == "cpfv" & all_data$area == "north")
 all_data <- all_data[-remove, ]
 
+save(all_data, file = file.path(dir, "all_rec_length_data.rdata"))
 
 #==============================================================================
 # Calculate sample size by year and area 
@@ -183,7 +187,7 @@ write.csv(north, file = file.path(dir, "forSS", "rec_north_sample_size_by_progra
 
 # Add expected column names to work with nwfscSurvey package
 # To Do: add revisions to nwfscSurvey package to dynamically check column names
-all_data$age = NA
+all_data$age <- NA
 length_bins <- c(seq(10, 54, 2))
 
 all_data$sex_group <- "u"
@@ -260,13 +264,13 @@ for(a in unique(tmp$area)){
       if(!is.null(lfs$unsexed)) {
         lfs$unsexed[,"InputN"] <- use_n[use_n$sex_group == "u", 'ntrip']
         write.csv(lfs$unsexed, 
-            file = file.path(dir, "forSS", paste0(a, "_", m, "_all_sources_not_expanded_length_comp_sex_0_rm_mrfss_overlap.csv")),
+            file = file.path(dir, "forSS", paste0(a, "_", m, "_all_sources_not_expanded_length_comp_sex_0.csv")),
             row.names = FALSE) 
       } 
       if(!is.null(lfs$sexed)) {
         lfs$sexed[,"InputN"] <- use_n[use_n$sex_group == "b", 'ntrip']
         write.csv(lfs$sexed, 
-           file = file.path(dir, "forSS", paste0(a, "_", m, "_all_sources_not_expanded_length_comp_sex_3_rm_mrfss_overlap.csv")),
+           file = file.path(dir, "forSS", paste0(a, "_", m, "_all_sources_not_expanded_length_comp_sex_3.csv")),
            row.names = FALSE) 
       }
       lfs <- NULL
@@ -298,19 +302,53 @@ for(a in unique(tmp$area)){
       if(!is.null(lfs$unsexed)) {
         lfs$unsexed[,"InputN"] <- use_n[use_n$sex_group == "u", 'ntrip']
         write.csv(lfs$unsexed, 
-                  file = file.path(dir, "forSS", paste0(a, "_", m, "_all_sources_not_expanded_length_comp_sex_0_mrfss_overlap_only.csv")),
+                  file = file.path(dir, "forSS", paste0(a, "_", m, "_mrfss_1987-1998_not_expanded_length_comp_sex_0.csv")),
                   row.names = FALSE) 
       } 
       if(!is.null(lfs$sexed)) {
         lfs$sexed[,"InputN"] <- use_n[use_n$sex_group == "b", 'ntrip']
         write.csv(lfs$sexed, 
-                  file = file.path(dir, "forSS", paste0(a, "_", m, "_all_sources_not_expanded_length_comp_sex_3_mrfss_overlap_only.csv")),
+                  file = file.path(dir, "forSS", paste0(a, "_", m, "__mrfss_1987-1998_not_expanded_length_comp_sex_3.csv")),
                   row.names = FALSE) 
       }
       lfs <- NULL
     } # close if statement
   }
 }
+
+#==============================================================================
+# Compare the early length to the length of aged fish in the historical ages
+#==============================================================================
+load(here("data", "ages", "formatted_age_files", "historical_rec_ages.rdata"))
+load(here("data", "ages", "formatted_age_files", "unknown_historical_ages.rdata"))
+
+age_df <- rbind(
+  hist_rec_ages[, c('program', 'year', 'sex', 'length_cm', 'age')],
+  unknown_ages [, c('program', 'year', 'sex', 'length_cm', 'age')]
+)
+age_df$lengthcm <- age_df$length_cm
+age_df <- as.data.frame(age_df)
+age_df$type = "age"
+age_df$area = "unknown-area-ages"
+
+df <- all_data[all_data$year %in% age_df$year, ]
+df$type = "bds"
+
+tmp <- rbind(
+  df[, c('year', 'area', 'lengthcm', 'type')],
+  age_df[, c('year', 'area', 'lengthcm', 'type')])
+
+ggplot(tmp) +
+  geom_density(aes(x = lengthcm, color = area)) +
+  #geom_density(tmp[tmp$type == "bds", ], aes(x = lengthcm, color = area)) +
+  facet_wrap('year')
+ggsave(width = 10, height = 7,
+  file = here("data", "ages", "formatted_age_files", "plots", "compare_hist_bds_len_and_len_of_aged_fish.png"))
+# Sample size of ages by year
+# 1975 1978 1981 1984 
+#   84  209   63   91 
+
+
 
 #==============================================================================
 # Weight the CRFS lengths by district catch

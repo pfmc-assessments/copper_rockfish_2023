@@ -6,9 +6,12 @@ age_col <- colnames(data)[grep("age", colnames(data), ignore.case = TRUE)][1]
 sex_col <- colnames(data)[grep("sex", colnames(data), ignore.case = TRUE)][1]
 year_col <- colnames(data)[grep("year", colnames(data), ignore.case = TRUE)][1]
     
+ls <- c(-999, len_bins, Inf)
+as <- c(-999, age_bins, Inf)
+
 # Start matrix to save results
-data$allLs <- len_bins[findInterval(data[, len_col], len_bins, all.inside = TRUE)]
-data$allAs <- age_bins[findInterval(data[, age_col], age_bins, all.inside = TRUE)]
+data$allLs <- ls[findInterval(data[, len_col], ls, all.inside = TRUE)]
+data$allAs <- as[findInterval(data[, age_col], as, all.inside = TRUE)]
 
 Results = NULL
 sex_loop <- unique(data[, sex_col])
@@ -22,7 +25,15 @@ sex_loop <- unique(data[, sex_col])
       # Loop across Length-bins
       for(l in len_bins){
         # Identify relevant rows
-        find = which(data[, sex_col] == s & data[, year_col] == y & data[,'allLs'] == l)
+        if(l == min(len_bins)) {
+          find = which(data[, sex_col] == s & data[, year_col] == y & data[,'allLs'] %in% c(-999, l))
+        } 
+        if(l == max(len_bins)){
+          find = which(data[, sex_col] == s & data[, year_col] == y & data[,'allLs'] %in% c(Inf, l))
+        }  
+        if(!l %in% c(min(len_bins), max(len_bins))){
+          find = which(data[, sex_col] == s & data[, year_col] == y & data[,'allLs'] == l)
+        }
         # Skip this year unless there are rows
         if(length(find) > 0){
           # Format reference stuff

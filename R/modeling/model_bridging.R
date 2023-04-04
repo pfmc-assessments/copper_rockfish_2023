@@ -3,9 +3,23 @@
 ################################################
 
 library(r4ss)
-area <- "sca"
-# area <- "nca"
-wd <- paste0("C:/Assessments/2023/copper_rockfish_2023/models/", area,"/_bridging")
+#area <- "sca"
+area <- "nca"
+
+user <- Sys.getenv("USERNAME")
+if( grepl("Chantel", user) ){
+  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
+} else {
+  # Fill in Melissa's document directory below
+  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
+}
+source(file.path(user_dir, "R", "get_caal.R"))
+
+wd <- file.path(user_dir, "models", area,"_bridging")
+
+#===============================================================================
+# Compare the converted SS3 version
+#===============================================================================
 
 base_2021 <- SS_output(file.path(wd, "00_2021_base"))
 ss_exe <- SS_output(file.path(wd, "0_0_ss_exe"))
@@ -20,6 +34,10 @@ SSplotComparisons(mysummary,
 	plotdir = file.path(wd, "_plots"),
 	print = TRUE,
 	pdf = FALSE)
+
+#===============================================================================
+# 0_ move to new fleet structure
+#===============================================================================
 
 rec_fleet <- SS_output(file.path(wd, "0_1_rec_fleet"))
 
@@ -42,6 +60,11 @@ SSplotComparisons(mysummary,
 	legendlabels = modelnames, 	
 	plotdir = file.path(wd, "_plots"),
 	pdf = TRUE)
+
+
+#===============================================================================
+# 1.+ Update removals
+#===============================================================================
 
 com_catch <- SS_output(file.path(wd, "1.1_com_catch"))
 
@@ -67,6 +90,10 @@ SSplotComparisons(mysummary,
 	legendlabels = modelnames, 	
 	plotdir = file.path(wd, "_plots"),
 	pdf = TRUE)
+
+#===============================================================================
+# 2.+ Add new length data
+#===============================================================================
 
 com_lengths <- SS_output(file.path(wd, "2.1_com_lengths"))
 
@@ -131,6 +158,9 @@ SSplotComparisons(mysummary,
 	plotdir = file.path(wd, "_plots"),
 	pdf = TRUE)
 
+#===============================================================================
+# 3.+ NWFSC HKL data - south only
+#===============================================================================
 
 hkl_len <- SS_output(file.path(wd, "3.1_hkl_index_len"))
 hkl_age <- SS_output(file.path(wd, "3.2_hkl_ages"))
@@ -149,6 +179,10 @@ SSplotComparisons(mysummary,
 	plotdir = file.path(wd, "_plots"),
 	pdf = TRUE)
 
+#===============================================================================
+# 4.+ ROV survey data
+#===============================================================================
+
 rov <- SS_output(file.path(wd, "4.1_rov_index"))
 rov_dw <- SS_output(file.path(wd, "4.2_rov_index_dw"))
 
@@ -162,3 +196,7 @@ SSplotComparisons(mysummary,
 	legendlabels = modelnames, 	
 	plotdir = file.path(wd, "_plots"),
 	pdf = TRUE)
+
+#===============================================================================
+#
+#===============================================================================
