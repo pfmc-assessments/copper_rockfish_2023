@@ -4,6 +4,7 @@
 #           
 ##################################################################
 
+library(dplyr)
 library(ggplot2)
 library(here)
 
@@ -86,7 +87,7 @@ write.csv(samples[samples$area == "north", colnames(samples) != "area"],
           row.names = FALSE)
 
 write.csv(samples[samples$area == "south", colnames(samples) != "area"],
-          file =file.path(dir,  "ages", "forSS", "north_growth_age_samples.csv"),
+          file =file.path(dir,  "ages", "forSS", "south_growth_age_samples.csv"),
           row.names = FALSE)
 
 growth_north <- get_caal(

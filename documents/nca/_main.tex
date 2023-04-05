@@ -114,13 +114,15 @@
 \date{}
 \newcommand{\trTitle}{Status of Copper Rockfish (\emph{Sebastes caurinus}) along the California North of Pt. Conception U.S. West coast in 2022}
 \newcommand{\trYear}{2023}
-\newcommand{\trMonth}{March}
+\newcommand{\trMonth}{April}
 \newcommand{\trAuthsLong}{truetruetrue}
 \newcommand{\trAuthsBack}{Monk, M.H., C.R. Wetzel, J. Coates}
 \newcommand{\trCitation}{
 \begin{hangparas}{1em}{1}
 \trAuthsBack{}. \trYear{}. \trTitle{}. \glsentrylong{pfmc}, Portland, Oregon. \pageref{LastPage}{}\,p.
 \end{hangparas}}
+
+\newcommand\includegraphicsifexists[2][width=\linewidth]{\IfFileExists{#2}{\includegraphics[#1]{#2}}{}}
 
 \begin{document}
 
@@ -138,6 +140,8 @@
 % \textnormal{\MakeTextUppercase{\trTitle{}}}
 \vspace{1.5cm}
 {\Large\textbf\newline{Status of Copper Rockfish (\emph{Sebastes caurinus}) along the California North of Pt. Conception U.S. West coast in 2022}}
+
+\includegraphicsifexists[width=4in]{figure_title.png}
 \vfill
 by\\
 Melissa H. Monk\textsuperscript{1}\\
@@ -214,7 +218,11 @@ This assessment reports the status of copper rockfish (\emph{Sebastes caurinus})
 
 Replace text with trends and current levels. Include Table for last 10 years. Include Figure with long-term estimates.
 
+I am testing references of Table \ref{tab:removalsES} and \ref{tab:north-removalsES}
+
 \input{tex_tables/a_Catches_ES.tex}
+
+\input{tex_tables/north_a_Catches_ES.tex}
 
 \begin{figure}
 \centering
@@ -415,18 +423,16 @@ Data from a wide range of programs were available for possible inclusion in the 
 \hypertarget{commercial-fishery}{%
 \subsubsection{Commercial Fishery}\label{commercial-fishery}}
 
+\hypertarget{landings-and-discards}{%
+\paragraph{Landings and Discards}\label{landings-and-discards}}
+
 \hfill\break
 
 Commercial landings prior to 1969 were extracted from the Southwest Fisheries Science Center (SWFSC) landings reconstruction database for estimates from the California Catch Reconstruction (Ralston et al. 2010). Landings in this database are divided into trawl, non-trawl, and unknown gear categories. Regions 7 and 8 as defined by Ralston et al. (2010) were assigned to south of Point Conception in California. Regions 2, 4, and 5 are associated with areas north of Point Conception. Region 6 in Ralston et al. (2010) included Santa Barbara County (mainly south of Point Conception), plus some major ports north of Point Conception. To allocate landings from Region 6 to the areas north and south of Point Conception, we followed an approach used by Dick et al. (2007) for the assessment of cowcod. Specifically, port-specific landings of total rockfish from the CDFW Fish Bulletin series were used to determine the annual fraction of landings in Region 6 that was north and south of Point Conception (Table \ref{tab:com-ratio}). Rockfish landings at that time were not reported at the species level. Although the use of total rockfish landings to partition landings in Region 6 is not ideal, we see this as the best available option in the absence of port-specific species composition data. Landings from unknown locations (Region 0) were allocated proportional to the landings from known regions.
 
-In September 2005, the California Cooperative Groundfish Survey (CCGS) incorporated newly acquired commercial landings statistics from 1969-1980 into the CALCOM database (Pearson, Erwin, and Key 2008). The data consisted of landing receipts (``fish tickets''), including mixed species categories for rockfish. In order to assign rockfish landings to individual species, the earliest available species composition samples were applied to the fish ticket data by port, gear, and quarter. These `ratio estimator' landings are coded (internally) as market category 977 in the CALCOM database, and are used in this and past assessments as the best available landings for the time period 1969-1980 for all port complexes. See Appendix A of Dick et al. (2007) for further details.
-
-Commercial fishery landings from 1981-2022 were extracted from the Pacific Fisheries Information Network (PacFIN) database (extracted February 6, 2023). Landings were separated north and south of Point Conception based on port of landing. Commercial landings for copper rockfish were split into two fleets based on the fish landed condition, live or dead, and aggregated across gear types (Table \ref{tab:allcatches} and Figure \ref{fig:catch}). The selection of this fleet structure was based on potential differences in selectivity by the fishery based on fish landed condition where the live fish fishery may be targeting fish of particular sizes (i.e., plate sized). The first year where fish were observed to be landed live for copper rockfish in the area south of Point Conception was 1994.
+In September 2005, the California Cooperative Groundfish Survey (CCGS) incorporated newly acquired commercial landings statistics from 1969-1980 into the CALCOM database (Pearson, Erwin, and Key 2008). The data consisted of landing receipts (``fish tickets''), including mixed species categories for rockfish. In order to assign rockfish landings to individual species, the earliest available species composition samples were applied to the fish ticket data by port, gear, and quarter. These `ratio estimator' landings are coded (internally) as market category 977 in the CALCOM database, and are used in this and past assessments as the best available landings for the time period 1969-1980 for all port complexes. See Appendix A of Dick et al. (2007) for further details. Commercial fishery landings from 1981-2022 were extracted from the Pacific Fisheries Information Network (PacFIN) database (extracted February 6, 2023). Landings were separated north and south of Point Conception based on port of landing. Commercial landings for copper rockfish were split into two fleets based on the fish landed condition, live or dead, and aggregated across gear types (Table \ref{tab:allcatches} and Figure \ref{fig:catch}). The selection of this fleet structure was based on potential differences in selectivity by the fishery based on fish landed condition where the live fish fishery may be targeting fish of particular sizes (i.e., plate sized). The first year where fish were observed to be landed live for copper rockfish in the area south of Point Conception was 1994.
 
 Discarding was not estimated within the model. The commercial catches, landings plus discards, were estimated external to the model based on data from the West Coast Groundfish Observer Program (WCGOP) data provided in the Groundfish Expanded Mortality Multiyear (GEMM) product. The GEMM provides expanded estimates of landings, discard, and catches based on observed trips by sector split north and south of 40\(^\circ\) 10' N. lat. for the commercial fishery. Estimated landings and discards south of 40\(^\circ\) 10' N. lat. from select sectors (LE Fixed Gear DTL - Hook and Line, Nearshore, CS - Hook and Line, OA Fixed Gear - Hook and Line, OA Fixed Gear - Pot, and LE Fixed Gear DTL - Pot) were used to calculate a discard rate (total discard divided by the sum of landings and discards by year) for 2002-2021. The annual discard rates were applied to the total landings by year to calculate catches for both areas south and north of Point Conception. The median discard rate south of 40\(^\circ\) 10' N. lat. from the select sectors between 2002-2021 in the GEMM was 3 percent. This discard rate was applied to landings between 1916-2001 and 2022 to determine catch by year. The assumptions around the discard rate by year had limited impact to the assumed total catches given the limited scale of removals by the commercial fishery for copper rockfish. Across all years, 1916-2022, the landings were increased by 2-3 percent by area (11 mt south of Point Conception and 26 mt north of Point Conception) to calculate the total catches.
-
-\hypertarget{landings-and-discards}{%
-\paragraph{Landings and Discards}\label{landings-and-discards}}
 
 \hypertarget{composition-data}{%
 \paragraph{Composition Data}\label{composition-data}}
@@ -476,6 +482,41 @@ Appendix Section \ref{crfs-pr-index}
 
 \hypertarget{composition-data-1}{%
 \paragraph{Composition Data}\label{composition-data-1}}
+
+Length compositions were available from the following sources:
+
+\begin{itemize}
+\item
+  Recreational party/charter mode (CPFV/PC)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Miller and Goshall dockside survey (1959-1960)
+  \item
+    Don Pearson onboard PC survey (1978-1984)
+  \item
+    MRFSS CPFV/PC dockside survey (1980-1989, 1993-2003)
+  \item
+    CRFS CPFV/PC onboard dockside survey (2004-2019)
+  \item
+    Deb-Wilson Vandenberg onboard CPFV survey (1988-1998)
+  \end{itemize}
+\item
+  Recreation private/rental mode (PR)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Miller and Gotshall dockside PR survey (1959)
+  \item
+    MRFSS dockside PR survey (1980-1989, 1993-2003)
+  \item
+    CRFS dockside PR survey (2004-2019)
+  \end{itemize}
+\end{itemize}
+
+The number of available fish and unique trips by year and fleet are in Tables XX and XX. Length composition data can be found in Figure XX for the recreational PC retained fleet and Figure XX for the recreational PC discard fleet, Figure XX for the recreational PR fleet, and Figure XX for the Deb Wilson-Vandenberg CPFV onboard survey.
 
 \hypertarget{fishery-independent-data}{%
 \subsection{Fishery-Independent Data}\label{fishery-independent-data}}
@@ -543,9 +584,9 @@ The \Gls{s-wcgbt} is based on a random-grid design; covering the coastal waters 
 
 \hfill\break
 
-Natural mortality was not directly measured, so life-history based empirical relationships were used. The Natural Mortality Tool (NMT), a Shiny-based graphical user interface allowing for the application of a variety of natural mortality estimators based on measures such as longevity, size, age and growth, and maturity, was used to obtain estimates of natural mortality. The NMT currently provides 19 options, including the Hamel (\textbf{hamel\_development\_2022?}) method, which is a corrected form of the Then et al. (2015) functional regression model and is a commonly applied method for West Coast groundfish. The NMT also allows for the construction of a natural mortality prior weighted across methods by the user.
+Natural mortality was not directly measured, so life-history based empirical relationships were used. The Natural Mortality Tool (NMT), a Shiny-based graphical user interface allowing for the application of a variety of natural mortality estimators based on measures such as longevity, size, age and growth, and maturity, was used to obtain estimates of natural mortality. The NMT currently provides 19 options, including the Hamel (2022) method, which is a corrected form of the Then et al. (2015) functional regression model and is a commonly applied method for West Coast groundfish. The NMT also allows for the construction of a natural mortality prior weighted across methods by the user.
 
-The Hamel (\textbf{hamel\_development\_2022?}) method for developing a prior on natural mortality for West Coast groundfish stock assessments combines meta-analytic approaches relating the \(M\) rate to other life-history parameters such as longevity, size, growth rate, and reproductive effort to provide a prior for \(M\). The Hamel (\textbf{hamel\_development\_2022?}) method re-evaluated the data used by Then et al. (2015) by fitting the one-parameter \(A_{\text{max}}\) model under a log-log transformation (such that the slope is forced to be -1 in the transformed space (Hamel 2015), the point estimate and median of the prior for \(M\) is:
+The Hamel (2022) method for developing a prior on natural mortality for West Coast groundfish stock assessments combines meta-analytic approaches relating the \(M\) rate to other life-history parameters such as longevity, size, growth rate, and reproductive effort to provide a prior for \(M\). The Hamel (2022) method re-evaluated the data used by Then et al. (2015) by fitting the one-parameter \(A_{\text{max}}\) model under a log-log transformation (such that the slope is forced to be -1 in the transformed space (Hamel 2015), the point estimate and median of the prior for \(M\) is:
 
 \begin{centering}
 
@@ -555,14 +596,20 @@ $M=\frac{5.4}{A_{\text{max}}}$
 
 \vspace{0.5cm}
 
-where \(A_{\text{max}}\) is the maximum age. The prior is defined as a lognormal distribution with mean \(ln(5.4/A_{\text{max}})\) and standard error = 0.31. Using a maximum age of 50, the point estimate and median of the prior is 0.108 yr\textsuperscript{-1}. The maximum age was selected based on available age data from all West Coast data sources and literature values. The oldest aged copper rockfish was 51 years with two observations, one each off of the coast of Washington and Oregon in 2019.
+where \(A_{\text{max}}\) is the maximum age. The prior is defined as a lognormal distribution with mean \(ln(5.4/A_{\text{max}})\) and standard error = 0.31. Using a maximum age of 50, the point estimate and median of the prior is 0.108 yr\textsuperscript{-1}. The maximum age was selected based on available age data from all West Coast data sources and literature values. The oldest aged copper rockfish observed in California waters was 52 years of age sampled in 2020 in northern California with 15 additional fish aged to be 40 years and older across all data sources.
 
-ADD INFORMATION ABOUT THE OLDEST OBSERVATION IN CALIFORNIA.
-
-The maximum age in the model was set at 50 years. This selection was consistent with the literature examining the longevity of copper rockfish within California (Love 1996) and was supported by the observed ages that had multiple observations of fish between 44 and 51 years of age.
+The maximum age in the model was set at 50 years. This selection was consistent with the literature examining the longevity of copper rockfish within California (Love 1996) and was supported by the observed ages that had multiple observations of fish between 40 and 52 years of age.
 
 \hypertarget{maturation-and-fecundity}{%
 \subsubsection{Maturation and Fecundity}\label{maturation-and-fecundity}}
+
+Maturity-at-length was based on maturity reads conducted by Melissa Head at the NWFSC examining a total of 112 samples (18 north of Point Conception and 94 south of Point Conception) collected across California by the NWFSC Hook and Line survey and \Gls{s-wcgbt} collected in September and October. Given the limited sample size north of Point Conception, all samples were pooled across California to inform maturity north of Point Conception, while only samples south of Point Conception were used to inform maturity in this region.
+
+The maturity-at-length curve is based on an estimate of functional maturity rather than biological maturity. Biological maturity can include multiple behaviors that functional will exclude (e.g., abortive maturation and skip spawning). Biological maturity indicates that some energy reserves were used to create vitellogenin, but it does not mean that eggs will continue to develop and successfully spawn. This includes juvenile abortive maturation. Female rockfish commonly go through the first stages of spawning the year before they reach actual spawning capability. This is most likely a factor related to their complicated reproductive process of releasing live young. A subset of oocytes will develop early yolk, and then get aborted during the spawning season. Biological maturity also does not account for the proportion of oocytes in atresia (cellular breakdown and reabsorption), which means that fish that were skipping spawning for the season could be listed as biologically mature and functionally immature (Melissa Head, personal communication, NWFSC, NOAA).
+
+The 50 percent size-at-maturity was estimated at 34.8 cm with a slope of -0.6 (Figure \ref{fig:maturity}). This area-specific maturity-at-length estimate is relatively similar but with fish maturing at a slightly larger size compared to the biological maturity curve assumed for copper rockfish south of Point Conception. Additionally, these values are both slightly smaller compared to estimates by Hannah (2014) for fish observed in Oregon waters (34.8 cm) which estimated the 50 percent size-at-maturity of and slope of -0.60.
+
+The fecundity-at-length was based on research from Dick et al. (2017). The fecundity relationship for copper rockfish was estimated equal to 3.362e-07\(L\)\textsuperscript{3.68} in millions of eggs where \(L\) is length in cm. Fecundity-at-length is shown in Figure \ref{fig:fecundity}.
 
 \hypertarget{sex-ratio}{%
 \subsubsection{Sex Ratio}\label{sex-ratio}}
@@ -689,6 +736,9 @@ Here are all the mad props!
 \leavevmode\vadjust pre{\hypertarget{ref-albin_effort_1993}{}}%
 Albin, Douglas P, Konstantin A Karpov, and Wade H. Van Buskirk. 1993. {``Effort and Catch Estimates for {Northern} and {Central} {California} Marine Recreational Fisheries, 1981-1986.''} Administrative Report No. 93-3. State of California The Resources Agency Department of Fish; Game.
 
+\leavevmode\vadjust pre{\hypertarget{ref-anderson_sdmtmb_2022}{}}%
+Anderson, Sean C., Eric J. Ward, Philina A. English, and Lewis A. K. Barnett. 2022. {``{sdmTMB}: An {R} Package for Fast, Flexible, and User-Friendly Generalized Linear Mixed Effects Models with Spatial and Spatiotemporal Random Fields.''} Preprint. Ecology. \url{https://doi.org/10.1101/2022.03.24.485545}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-bizzarro_diet_2017-1}{}}%
 Bizzarro, Joseph J., Mary M. Yoklavich, and W. Waldo Wakefield. 2017. {``Diet Composition and Foraging Ecology of {U}.{S}. {Pacific} {Coast} Groundfishes with Applications for Fisheries Management.''} \emph{Environmental Biology of Fishes} 100 (4): 375--93. \url{https://doi.org/10.1007/s10641-016-0529-2}.
 
@@ -704,6 +754,9 @@ Cope, Jason M., John DeVore, E. J. Dick, Kelly Ames, John Budrick, Daniel L. Eri
 \leavevmode\vadjust pre{\hypertarget{ref-cope_data-moderate_2013}{}}%
 Cope, Jason, E. J. Dick, Alec MacCall, Melissa Monk, Braden Soper, and Chantel Wetzel. 2013. {``Data-Moderate Stock Assessments for Brown, {China}, Copper, Sharpchin, Stripetail, and Yellowtail Rockfishes and {English} and Rex Soles in 2013.''} 7700 Ambassador Place NE, Suite 200, Portland, OR: Pacific Fishery Management Council. \url{http://www.academia.edu/download/44999856/CopeetalDataModerate2013.pdf}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-dick_meta-analysis_2017}{}}%
+Dick, E. J., Sabrina Beyer, Marc Mangel, and Stephen Ralston. 2017. {``A Meta-Analysis of Fecundity in Rockfishes (Genus \emph{Sebastes}).''} \emph{Fisheries Research} 187 (March): 73--85. \url{https://doi.org/10.1016/j.fishres.2016.11.009}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-dick_status_2007}{}}%
 Dick, E. J., Stephen Ralston, and Don E. Pearson. 2007. {``Status of Cowcod, \emph{{Sebastes} Levis}, in the {Southern} {California} {Bight}.''} Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220.
 
@@ -712,6 +765,12 @@ Dick, S., J. B. Shurin, and E. B. Taylor. 2014. {``Replicate Divergence Between 
 
 \leavevmode\vadjust pre{\hypertarget{ref-hamel_method_2015}{}}%
 Hamel, Owen S. 2015. {``A Method for Calculating a Meta-Analytical Prior for the Natural Mortality Rate Using Multiple Life History Correlates.''} \emph{ICES Journal of Marine Science: Journal Du Conseil} 72 (1): 62--69. \url{https://doi.org/10.1093/icesjms/fsu131}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-hamel_development_2022}{}}%
+Hamel, Owen S., and Jason M. Cope. 2022. {``Development and Considerations for Application of a Longevity-Based Prior for the Natural Mortality Rate.''} \emph{Fisheries Research} 256 (December): 106477. \url{https://doi.org/10.1016/j.fishres.2022.106477}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-hannah_length_2014}{}}%
+Hannah, Robert W. 2014. {``Length and Age at Maturity of Female Copper Rockfish (\emph{{Sebastes} Caurinus}) from {Oregon} Waters Based on Histological Evaluation of Ovaries.''} Information \{Reports\} 2014-04. Oregon Department of Fish; Wildlife.
 
 \leavevmode\vadjust pre{\hypertarget{ref-johansson_influence_2008}{}}%
 Johansson, M. L., M. A. Banks, K. D. Glunt, H. M. Hassel-Finnegan, and V. P. Buonaccorsi. 2008. {``Influence of Habitat Discontinuity, Geographical Distance, and Oceanography on Fine-Scale Population Genetic Structure of Copper Rockfish ( \emph{{Sebastes} Caurinus} ).''} \emph{Molecular Ecology} 17 (13): 3051--61. \url{https://doi.org/10.1111/j.1365-294X.2008.03814.x}.
@@ -1283,7 +1342,7 @@ The California Department of Fish and Wildlife (CDFW) in collaboration with Mari
 
 Given that each pass of the California coast took a three year period, the STAT opted to explore using the data with super years. The selected super years were 2015 and 2020. Given the life history of copper rockfish an the limited movement of adult copper rockfish especially given the range of the survey area each year, the super year application was deemed reasonable in order to consider these data within the model. Minimal filtering were done to the data. Transects were removed based on four factors: 1) extreme estimates of effort (the estimated area of view below the ROV termed usable area), 2) any locations that were not sampled by both super year periods, 3) transect that were conducted across MPA and reference areas, and 4) transect conducted across depths that never observed copper rockfish within the survey (Table \ref{tab:rov-filtered}). Once the data were filtered the average calculated CPUE for each MPA and Reference groups were plotted to visualize the data (Table \ref{tab:rov-obs} and Figure \ref{fig:rov-raw-cpue}).
 
-A range of alternative model structures were explored to generate an index of abundances including alternative error structures, covariates, and factors were considered when exploring how best to model these data. Based on model selection a model with super year, site designation (MPA or Reference), and super year site designation interaction was selected (Table \ref{tab:rov-model-selection}). A delta-lognormal model was selected based on the distribution of the data and diagnostics (Figure \ref{fig:rov-qq}) using sdmTMB (\textbf{anderson\_sdmtmb\_2022?}). The model estimates were then area-weighted based on the estimated percent of habitat within MPAs. An estimate of 8\% of rocky habitat within MPAs south of Point Conception and 92\% open to fishing were provided by John Budrick (CDFW). The estimated relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
+A range of alternative model structures were explored to generate an index of abundances including alternative error structures, covariates, and factors were considered when exploring how best to model these data. Based on model selection a model with super year, site designation (MPA or Reference), and super year site designation interaction was selected (Table \ref{tab:rov-model-selection}). A delta-lognormal model was selected based on the distribution of the data and diagnostics (Figure \ref{fig:rov-qq}) using sdmTMB (Anderson et al. 2022). The model estimates were then area-weighted based on the estimated percent of habitat within MPAs. An estimate of 8\% of rocky habitat within MPAs south of Point Conception and 92\% open to fishing were provided by John Budrick (CDFW). The estimated relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
 
 \newpage
 

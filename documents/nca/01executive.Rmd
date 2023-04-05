@@ -18,8 +18,12 @@ trends and current levels.
 Include Table for last 10 years.
 Include Figure with long-term estimates.
 
+I am testing references of Table \ref{tab:removalsES} and \ref{tab:north-removalsES}
 
 \input{tex_tables/a_Catches_ES.tex}
+
+
+\input{tex_tables/north_a_Catches_ES.tex}
 
 ```{r, results = 'asis'}
 add_figure(

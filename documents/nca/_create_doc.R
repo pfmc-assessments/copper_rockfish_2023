@@ -61,6 +61,7 @@ r4ss::SSexecutivesummary(
 sa4ss::es_table_tex(
   dir = model_dir, 
   save_loc = file.path(model_dir, "tex_tables"), 
+  add_prefix = "north",
   csv_name = "table_labels.csv")
 
 # Read and create tex files for tables listed in "table" folder in the doc

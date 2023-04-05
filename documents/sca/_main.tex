@@ -114,13 +114,15 @@
 \date{}
 \newcommand{\trTitle}{Status of copper rockfish (\emph{Sebastes caurinus}) along the California South of Pt. Conception U.S. West coast in 2023}
 \newcommand{\trYear}{2023}
-\newcommand{\trMonth}{March}
+\newcommand{\trMonth}{April}
 \newcommand{\trAuthsLong}{truetruetrue}
 \newcommand{\trAuthsBack}{Wetzel, C.R., M.H. Monk, J. Coates}
 \newcommand{\trCitation}{
 \begin{hangparas}{1em}{1}
 \trAuthsBack{}. \trYear{}. \trTitle{}. \glsentrylong{pfmc}, Portland, Oregon. \pageref{LastPage}{}\,p.
 \end{hangparas}}
+
+\newcommand\includegraphicsifexists[2][width=\linewidth]{\IfFileExists{#2}{\includegraphics[#1]{#2}}{}}
 
 \begin{document}
 
@@ -138,6 +140,8 @@
 % \textnormal{\MakeTextUppercase{\trTitle{}}}
 \vspace{1.5cm}
 {\Large\textbf\newline{Status of copper rockfish (\emph{Sebastes caurinus}) along the California South of Pt. Conception U.S. West coast in 2023}}
+
+\includegraphicsifexists[width=4in]{figure_title.png}
 \vfill
 by\\
 Chantel R. Wetzel\textsuperscript{1}\\
@@ -426,9 +430,7 @@ Data from a wide range of programs were available for possible inclusion in the 
 
 Commercial landings prior to 1969 were extracted from the Southwest Fisheries Science Center (SWFSC) landings reconstruction database for estimates from the California Catch Reconstruction (Ralston et al. 2010). Landings in this database are divided into trawl, non-trawl, and unknown gear categories. Regions 7 and 8 as defined by Ralston et al. (2010) were assigned to south of Point Conception in California. Regions 2, 4, and 5 are associated with areas north of Point Conception. Region 6 in Ralston et al. (2010) included Santa Barbara County (mainly south of Point Conception), plus some major ports north of Point Conception. To allocate landings from Region 6 to the areas north and south of Point Conception, we followed an approach used by Dick et al. (2007) for the assessment of cowcod. Specifically, port-specific landings of total rockfish from the CDFW Fish Bulletin series were used to determine the annual fraction of landings in Region 6 that was north and south of Point Conception (Table \ref{tab:com-ratio}). Rockfish landings at that time were not reported at the species level. Although the use of total rockfish landings to partition landings in Region 6 is not ideal, we see this as the best available option in the absence of port-specific species composition data. Landings from unknown locations (Region 0) were allocated proportional to the landings from known regions.
 
-In September 2005, the California Cooperative Groundfish Survey (CCGS) incorporated newly acquired commercial landings statistics from 1969-1980 into the CALCOM database (Pearson, Erwin, and Key 2008). The data consisted of landing receipts (``fish tickets''), including mixed species categories for rockfish. In order to assign rockfish landings to individual species, the earliest available species composition samples were applied to the fish ticket data by port, gear, and quarter. These `ratio estimator' landings are coded (internally) as market category 977 in the CALCOM database, and are used in this and past assessments as the best available landings for the time period 1969-1980 for all port complexes. See Appendix A of Dick et al. (2007) for further details.
-
-Commercial fishery landings from 1981-2022 were extracted from the Pacific Fisheries Information Network (PacFIN) database (extracted February 6, 2023). Landings were separated north and south of Point Conception based on port of landing. Commercial landings for copper rockfish were split into two fleets based on the fish landed condition, live or dead, and aggregated across gear types (Table \ref{tab:allcatches} and Figure \ref{fig:catch}). The selection of this fleet structure was based on potential differences in selectivity by the fishery based on fish landed condition where the live fish fishery may be targeting fish of particular sizes (i.e., plate sized). The first year where fish were observed to be landed live for copper rockfish in the area south of Point Conception was 1994.
+In September 2005, the California Cooperative Groundfish Survey (CCGS) incorporated newly acquired commercial landings statistics from 1969-1980 into the CALCOM database (Pearson, Erwin, and Key 2008). The data consisted of landing receipts (``fish tickets''), including mixed species categories for rockfish. In order to assign rockfish landings to individual species, the earliest available species composition samples were applied to the fish ticket data by port, gear, and quarter. These `ratio estimator' landings are coded (internally) as market category 977 in the CALCOM database, and are used in this and past assessments as the best available landings for the time period 1969-1980 for all port complexes. See Appendix A of Dick et al. (2007) for further details. Commercial fishery landings from 1981-2022 were extracted from the Pacific Fisheries Information Network (PacFIN) database (extracted February 6, 2023). Landings were separated north and south of Point Conception based on port of landing. Commercial landings for copper rockfish were split into two fleets based on the fish landed condition, live or dead, and aggregated across gear types (Table \ref{tab:allcatches} and Figure \ref{fig:catch}). The selection of this fleet structure was based on potential differences in selectivity by the fishery based on fish landed condition where the live fish fishery may be targeting fish of particular sizes (i.e., plate sized). The first year where fish were observed to be landed live for copper rockfish in the area south of Point Conception was 1994.
 
 Discarding was not estimated within the model. The commercial catches, landings plus discards, were estimated external to the model based on data from the West Coast Groundfish Observer Program (WCGOP) data provided in the Groundfish Expanded Mortality Multiyear (GEMM) product. The GEMM provides expanded estimates of landings, discard, and catches based on observed trips by sector split north and south of 40\(^\circ\) 10' N. lat. for the commercial fishery. Estimated landings and discards south of 40\(^\circ\) 10' N. lat. from select sectors (LE Fixed Gear DTL - Hook and Line, Nearshore, CS - Hook and Line, OA Fixed Gear - Hook and Line, OA Fixed Gear - Pot, and LE Fixed Gear DTL - Pot) were used to calculate a discard rate (total discard divided by the sum of landings and discards by year) for 2002-2021. The annual discard rates were applied to the total landings by year to calculate catches for both areas south and north of Point Conception. The median discard rate south of 40\(^\circ\) 10' N. lat. from the select sectors between 2002-2021 in the GEMM was 3 percent. This discard rate was applied to landings between 1916-2001 and 2022 to determine catch by year. The assumptions around the discard rate by year had limited impact to the assumed total catches given the limited scale of removals by the commercial fishery for copper rockfish. Across all years, 1916-2022, the landings were increased by 2-3 percent by area (11 mt south of Point Conception and 26 mt north of Point Conception) to calculate the total catches.
 
@@ -507,7 +509,7 @@ Since 2004, the NWFSC has conducted an annual hook and line survey targeting she
 
 From 2004 through 2013, sampling was conducted only outside the Cowcod Conservation Areas (CCAs). Beginning in 2014, 40 sites inside the CCAs were sampled, and roughly another 40 sites have been added in subsequent years inside the CCAs. The survey currently has 201 sites (79 inside and 122 outside the CCAs).Copper rockfish have been observed at multiple sampling sites by the NWFSC Hook and Line survey each year between 2004 - 2022 (Table \ref{tab:nwfsc-hkl-obs}). Across all sample years and sample sites the NWFSC Hook and Line survey has observed a total of 1,213 copper rockfish. While copper rockfish have been observed both outside and inside the CCA (Figures \ref{fig:nwfsc-hkl-site}), the vast majority of observations of copper rockfish have been in open areas (1,111 observations, Table \ref{tab:nwfsc-hkl-obs}). The limited number of copper rockfish observations within the CCA, a total of 102 fish, constrained the ability to detect whether the CCA impacted the frequency and or sizes observed compared to the opens areas sampled. However, the trend in the standardized catch-per-unit effort data between inside and outside the CCAs were generally similar (Figure \ref{fig:nwfsc-hkl-cca-main}).
 
-While copper rockfish have not been encountered is large numbers similar to some of the other commonly encountered species (vermilion/sunset, bocaccio, greenspotted rockfish) in the NWFSC Hook and Line survey, copper rockfish has been observed every year that the survey has been conducted (Table \ref{tab:nwfsc-hkl-pos-year}). Observations of copper rockfish commonly occur across a range of depths between 30 - 120 m with observations peaking around 80 m (Table \ref{tab:nwfsc-hkl-pos-depth} and Figure \ref{fig:nwfsc-hkl-depth}). The STAT explored alternative model structures to generate a standardized index of relative abundance. The final model selected was a model with a negative binomial distribution with factors of year, site, and drop and covariates of swell height and number of vermilion and bocaccio observed. A single index of abundance was calculated using observations both inside and outside the CCA (Figure \ref{fig:nwfsc-hkl-index-main}). Details regarding the index of abundance, sample sizes and model selection can be found in the Appendix Section \ref{nwfsc-hkl-index}.
+While copper rockfish have not been encountered is large numbers similar to some of the other commonly encountered species (vermilion/sunset, bocaccio, greenspotted rockfish) in the NWFSC Hook and Line survey, copper rockfish has been observed every year that the survey has been conducted (Table \ref{tab:nwfsc-hkl-pos-year}). Observations of copper rockfish commonly occur across a range of depths between 30 - 120 m with observations peaking around 80 m (Table \ref{tab:nwfsc-hkl-pos-depth} and Figure \ref{fig:nwfsc-hkl-depth}). The STAT explored alternative model structures to generate a standardized index of relative abundance. The final model selected was a model with a negative binomial distribution with factors of year, site, and drop and covariates of swell height and number of vermilion and bocaccio observed. A single index of abundance was calculated using observations both inside and outside the CCA (Figure \ref{fig:nwfsc-hkl-index-main}). Details regarding the index of abundance, sample sizes and model selection can be found in the Appendix Section \ref{nwfsc-hkl-model}.
 
 \hypertarget{composition-data-3}{%
 \paragraph{Composition Data}\label{composition-data-3}}
@@ -548,8 +550,7 @@ Figure \ref{fig:rov-len}
 
 The Northwest Fisheries Science Center (NWFSC) West Coast Groundfish Bottom Trawl (WCGBT) survey is based on a random-grid design; covering the coastal waters from a depth of 55-1,280 m (Bradburn, Keller, and Horness 2011). This design generally uses four industry-chartered vessels per year assigned to a roughly equal number of randomly selected grid cells and divided into two `passes' of the coast. Two vessels fish from north to south during each pass between late May to early October. This design therefore incorporates both vessel-to-vessel differences in catchability, as well as variance associated with selecting a relatively small number (approximately 700) of possible cells from a very large set of possible cells spread from the Mexican to the Canadian borders.
 
-The observations of copper rockfish by the NWFSC WCGBT survey were limited (Table \ref{tab:wcgbt-samps
-}). The NWFSC WCGBT survey uses trawl gear to sample sandy bottom areas off the West Coast and \emph{a priori} it would not be expected to be an informative data source for copper rockfish, which are generally more closely associated with rock substrate. The NWFSC WCGBT survey had limited positive tows by year where copper rockfish were observed within this area, preventing the calculation of an index of abundance for copper rockfish. The catch-per-unit-effort across all years for the NWFSC WCGBT survey is generally small, excluding one single tow from 2012 where 1.9 mt of copper rockfish were caught (Figure \ref{fig:wcgbt-cpue}). The observations of copper rockfish by the NWFSC WCGBT survey commonly occur between 50 - 120 meters (Figure \ref{fig:wcgbt-depth}). However, the NWFSC WCGBT survey has regularly collected length and age samples from positive tows for copper rockfish (Figure \ref{fig:wcgbt-len-age}). These data were used as conditional-age-at-length data to inform the estimation of growth within the model.
+The observations of copper rockfish by the NWFSC WCGBT survey are limited. The NWFSC WCGBT survey uses trawl gear to sample sandy bottom areas off the West Coast and \emph{a priori} it would not be expected to be an informative data source for copper rockfish, which are generally more closely associated with rock substrate. The NWFSC WCGBT survey had limited positive tows by year where copper rockfish were observed within this area, preventing the calculation of an index of abundance for copper rockfish (Table \ref{tab:wcgbt-pos-tows}). The catch-per-unit-effort across all years for the NWFSC WCGBT survey is generally small, excluding one single tow from 2012 where 1.9 mt of copper rockfish were caught (Figure \ref{fig:wcgbt-cpue}). The observations of copper rockfish by the NWFSC WCGBT survey commonly occur between 50 - 120 meters (Figure \ref{fig:wcgbt-depth}). However, the NWFSC WCGBT survey has regularly collected length and age samples from positive tows for copper rockfish (Figure \ref{fig:wcgbt-len-age}). These data were used as conditional-age-at-length data to inform the estimation of growth within the model (Table \ref{tab:growth-age-samps}).
 
 \hypertarget{biological-data}{%
 \subsection{Biological Data}\label{biological-data}}
@@ -569,14 +570,20 @@ $M=\frac{5.4}{A_{\text{max}}}$
 
 \vspace{0.5cm}
 
-where \(A_{\text{max}}\) is the maximum age. The prior is defined as a lognormal distribution with mean \(ln(5.4/A_{\text{max}})\) and standard error = 0.31. Using a maximum age of 50, the point estimate and median of the prior is 0.108 yr\textsuperscript{-1}. The maximum age was selected based on available age data from all West Coast data sources and literature values. The oldest aged copper rockfish was 51 years with two observations, one each off of the coast of Washington and Oregon in 2019.
+where \(A_{\text{max}}\) is the maximum age. The prior is defined as a lognormal distribution with mean \(ln(5.4/A_{\text{max}})\) and standard error = 0.31. Using a maximum age of 50, the point estimate and median of the prior is 0.108 yr\textsuperscript{-1}. The maximum age was selected based on available age data from all West Coast data sources and literature values. The oldest aged copper rockfish observed in California waters was 52 years of age sampled in 2020 in northern California with 15 additional fish aged to be 40 years and older across all data sources.
 
-ADD INFORMATION ABOUT THE OLDEST OBSERVATION IN CALIFORNIA.
-
-The maximum age in the model was set at 50 years. This selection was consistent with the literature examining the longevity of copper rockfish within California (Love 1996) and was supported by the observed ages that had multiple observations of fish between 44 and 51 years of age.
+The maximum age in the model was set at 50 years. This selection was consistent with the literature examining the longevity of copper rockfish within California (Love 1996) and was supported by the observed ages that had multiple observations of fish between 40 and 52 years of age.
 
 \hypertarget{maturation-and-fecundity}{%
 \subsubsection{Maturation and Fecundity}\label{maturation-and-fecundity}}
+
+Maturity-at-length was based on maturity reads conducted by Melissa Head at the NWFSC examining a total of 112 samples (18 north of Point Conception and 94 south of Point Conception) collected across California by the NWFSC Hook and Line survey and \Gls{s-wcgbt} collected in September and October. Given the limited sample size north of Point Conception, all samples were pooled across California to inform maturity north of Point Conception, while only samples south of Point Conception were used to inform maturity in this region.
+
+The maturity-at-length curve is based on an estimate of functional maturity rather than biological maturity. Biological maturity can include multiple behaviors that functional will exclude (e.g., abortive maturation and skip spawning). Biological maturity indicates that some energy reserves were used to create vitellogenin, but it does not mean that eggs will continue to develop and successfully spawn. This includes juvenile abortive maturation. Female rockfish commonly go through the first stages of spawning the year before they reach actual spawning capability. This is most likely a factor related to their complicated reproductive process of releasing live young. A subset of oocytes will develop early yolk, and then get aborted during the spawning season. Biological maturity also does not account for the proportion of oocytes in atresia (cellular breakdown and reabsorption), which means that fish that were skipping spawning for the season could be listed as biologically mature and functionally immature (Melissa Head, personal communication, NWFSC, NOAA).
+
+The 50 percent size-at-maturity was estimated at 34.3 cm with a slope of -0.37 (Figure \ref{fig:maturity}). This area-specific maturity-at-length estimate is relatively similar but with fish maturing at a slightly smaller size compared to the biological maturity curve assumed for copper rockfish north of Point Conception. Additionally, these values are both slightly smaller compared to estimates by Hannah (2014) for fish observed in Oregon waters (34.8 cm) which estimated the 50 percent size-at-maturity of and slope of -0.60.
+
+The fecundity-at-length was based on research from Dick et al. (2017). The fecundity relationship for copper rockfish was estimated equal to 3.362e-07\(L\)\textsuperscript{3.68} in millions of eggs where \(L\) is length in cm. Fecundity-at-length is shown in Figure \ref{fig:fecundity}.
 
 \hypertarget{sex-ratio}{%
 \subsubsection{Sex Ratio}\label{sex-ratio}}
@@ -764,6 +771,9 @@ Cope, Jason M., John DeVore, E. J. Dick, Kelly Ames, John Budrick, Daniel L. Eri
 \leavevmode\vadjust pre{\hypertarget{ref-cope_data-moderate_2013}{}}%
 Cope, Jason, E. J. Dick, Alec MacCall, Melissa Monk, Braden Soper, and Chantel Wetzel. 2013. {``Data-Moderate Stock Assessments for Brown, {China}, Copper, Sharpchin, Stripetail, and Yellowtail Rockfishes and {English} and Rex Soles in 2013.''} 7700 Ambassador Place NE, Suite 200, Portland, OR: Pacific Fishery Management Council. \url{http://www.academia.edu/download/44999856/CopeetalDataModerate2013.pdf}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-dick_meta-analysis_2017}{}}%
+Dick, E. J., Sabrina Beyer, Marc Mangel, and Stephen Ralston. 2017. {``A Meta-Analysis of Fecundity in Rockfishes (Genus \emph{Sebastes}).''} \emph{Fisheries Research} 187 (March): 73--85. \url{https://doi.org/10.1016/j.fishres.2016.11.009}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-dick_status_2007}{}}%
 Dick, E. J., Stephen Ralston, and Don E. Pearson. 2007. {``Status of Cowcod, \emph{{Sebastes} Levis}, in the {Southern} {California} {Bight}.''} Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220.
 
@@ -775,6 +785,9 @@ Hamel, Owen S. 2015. {``A Method for Calculating a Meta-Analytical Prior for the
 
 \leavevmode\vadjust pre{\hypertarget{ref-hamel_development_2022}{}}%
 Hamel, Owen S., and Jason M. Cope. 2022. {``Development and Considerations for Application of a Longevity-Based Prior for the Natural Mortality Rate.''} \emph{Fisheries Research} 256 (December): 106477. \url{https://doi.org/10.1016/j.fishres.2022.106477}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-hannah_length_2014}{}}%
+Hannah, Robert W. 2014. {``Length and Age at Maturity of Female Copper Rockfish (\emph{{Sebastes} Caurinus}) from {Oregon} Waters Based on Histological Evaluation of Ovaries.''} Information \{Reports\} 2014-04. Oregon Department of Fish; Wildlife.
 
 \leavevmode\vadjust pre{\hypertarget{ref-harms_noaa_2008}{}}%
 Harms, John, James Benante, and R Matthew Barnhart. 2008. {``{NOAA} {Technical} {Memorandum} {NMFS}-{NWFSC}-95. {The} 2004-2007 {Hook} and {Line} {Survey} of {Shelf} {Rockfish} in the {Southern} {California} {Bight}: {Estimates} of {Distribution}, {Abundance}, and {Length} {Composition}.''} U.\{S\}. \{Dept\}. \{Commer\}., \{NOAA\} \{Tech\}. \{Memo\}. NMFS-NWFSC-95.
@@ -979,6 +992,10 @@ Year & Commercial (Dead) & Commercial (Live) & Rec. CPFV & Rec. PR & Total Landi
 \input{tex_tables/nwfsc_hkl_effn_lengths_ages.tex}
 
 \input{tex_tables/rov_south_samples_transects.tex}
+
+\input{tex_tables/south_strata_observations.tex}
+
+\input{tex_tables/south_growth_age_samples.tex}
 
 \begingroup\fontsize{9}{11}\selectfont
 
@@ -1192,7 +1209,7 @@ Size DblN end logit NWFSC HKL(5) & 10.000 & -4 & (-10, 10) & NA & NA & None\\*
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_transect_collapsed_copper_north_protection_count.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_transect_collapsed_copper_south_protection_count.png}
 \caption{The location and size of observations across all years and transects.\label{fig:rov-obs-loc}}
 \end{figure}
 
@@ -1342,18 +1359,20 @@ Size DblN end logit NWFSC HKL(5) & 10.000 & -4 & (-10, 10) & NA & NA & None\\*
 \hypertarget{ccfrp-index}{%
 \section{Appendix E. CCFRP Index of Abundance}\label{ccfrp-index}}
 
-\hypertarget{nwfsc-hkl-index}{%
-\section{Appendix F. NWFSC Hook and Line Index of Abundance}\label{nwfsc-hkl-index}}
+\hypertarget{nwfsc-hkl-model}{%
+\section{Appendix F. NWFSC Hook and Line Index of Abundance}\label{nwfsc-hkl-model}}
 
 Since 2004, the NWFSC has conducted an annual hook and line survey targeting shelf rockfish in the genus \emph{Sebastes} at fixed stations (e.g., sites, Figure \ref{fig:nwfsc-hkl-map}) in the Southern California Bight. Key species of rockfish targeted by the NWFSC Hook and Line survey are bocaccio (\emph{S. paucispinis}), cowcod (\emph{S. levis}), greenspotted (\emph{S. chlorostictus}), and vermilion/sunset (\emph{S. miniatus} and \emph{S. crocotulus}) rockfishes, although a wide range of rockfish species have been observed by this survey. During each site visit, three deckhands simultaneously deploy 5-hook sampling rigs (this is referred to as a single drop) for a maximum of 5 minutes per line, but individual lines may be retrieved sooner at the angler's discretion (e.g., to avoid losing fish). Five drops are attempted at each site for a maximum possible catch of 75 fish per site per year (3 anglers x 5 hooks x 5 drops). Further details regarding the sample frame, site selection, and survey methodology are described by Harms et al. (2008).
 
 The sites considered for the creation of a relative index of abundance were limited to sites that have caught at least 1 copper rockfish across all years. A range of alternative model structures were explored to generate an index of abundances. This included alternative levels of aggregation (hook, drop, or site), probability distributions (negative binomial, delta-gamma, or delta-lognormal), and covariates (year, site number, depth, swell height, inside/outside CCA, and/or the number of vermilion/sunset or bocaccio rockfishes observed, Table ref\{tab:nwfsc-hkl-model-selection\}). The overall trend in the index of abundance were highly similar across the explored probability distributions and model configurations. The number of observation in copper rockfish in the CCA were limited. The calculated CPUE inside and outside the CCA were similar for copper rockfish (Figure \ref{fig:nwfsc-hkl-cca}). Given this, the index selected for the base model include all observations of copper rockfish across all sampled sites. Sensitivities to excluding the CCA observations were conducted.
 
-All modeling was initially conducted using sdmTMB (Anderson et al. 2022) with the final selected model fit using the ``rstanarm'' R package (v. 2.21.3). All diagnostics appearred reasonable. The final selected model was a negative binomial model that included covariates terms for year, site number, drop, swell height, and the number of bocaccio and vermilion/sunset rockfishes separately. A comparison between the standardized estimated relative index of abundance compared with the calculated raw catch-per-unit-effort (CPUE) is show Figure \ref{fig:nwfsc-hkl-index-raw}. The final index of abundance is shown in Figure \ref{fig:nwfsc-hkl-index} and Table \ref{tab:nwfsc-hkl-index}
+All modeling was initially conducted using sdmTMB (Anderson et al. 2022) with the final selected model fit using the ``rstanarm'' R package (v. 2.21.3). All diagnostics appeared reasonable (Figure \ref{fig:nwfsc-hkl-qq} and \ref{fig:nwfsc-hkl-prop-zero}). The final selected model was a negative binomial model that included covariates terms for year, site number, drop, swell height, and the number vermilion/sunset rockfishes caught within the same drop. The model with the lowest AIC also included the number of bocaccio caught within a drop, however, the effect was small with uncertainty that included 0 so the slightly simpler model was selected. A comparison between the standardized estimated relative index of abundance compared with the calculated raw catch-per-unit-effort (CPUE) is show Figure \ref{fig:nwfsc-hkl-index-raw}. The final index of abundance is shown in Figure \ref{fig:nwfsc-hkl-index} and Table \ref{tab:nwfsc-hkl-index}
 
 \pagebreak
 
 \input{tex_tables/nwfsc_hkl_model_selection.tex}
+
+\input{tex_tables/nwfsc_hkl_formatted_index.tex}
 
 \begin{figure}
 \centering
@@ -1373,9 +1392,23 @@ All modeling was initially conducted using sdmTMB (Anderson et al. 2022) with th
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/rstan_full_nb_glm_year_site_drop_swell_bocaccio_vermilon/Index.png}
-\caption{Estimated index of abundance for copper rockfish.\label{fig:nwfsc-hkl-indices}}
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/rstan_full_nb_glm_year_site_drop_swell_vermilion/Index.png}
+\caption{Estimated index of abundance for copper rockfish.\label{fig:nwfsc-hkl-index}}
 \end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_negbin_main_year_site_drop_swell_vermilion/qq.png}
+\caption{QQ plot.\label{fig:nwfsc-hkl-qq}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/rstan_full_nb_glm_year_site_drop_swell_vermilion/proportion_zero_south.png}
+\caption{Predicted zero compared to observed zeros.\label{fig:nwfsc-hkl-prop-zero}}
+\end{figure}
+
+\newpage
 
 \hypertarget{cdfw-rov-index}{%
 \section{Appendix G. CDFW ROV Index of Abundance}\label{cdfw-rov-index}}

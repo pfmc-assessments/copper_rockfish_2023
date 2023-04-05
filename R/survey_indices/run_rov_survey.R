@@ -186,6 +186,16 @@ both <- cbind(transects, copper_obs$n)
 colnames(both) <- c("Super Year", "Area",  "Designation", "Transects", "Observations")
 write.csv(both, file = file.path(dir, "forSS", "south_north_obs_designation_mpa_group_super_year.csv"),  row.names = FALSE)
 
+south_samples <- rov_south %>%
+  group_by(year, mpa_group, designation) %>%
+  reframe(
+    transect = length(unique(LineID)),
+    n = sum(n)
+  )
+colnames(south_samples) <- c("Year", "Location", "Designation", "Transect", "Obs.")
+write.csv(south_samples, file = file.path(dir, "forSS", "south_sout_obs_designation_mpa_group_year.csv"),  row.names = FALSE)
+
+
 #=================================================================================
 # Create some visualization of the data
 #==================================================================================
@@ -955,10 +965,10 @@ for(a in 1:2){
 }
 
 #=================================================================================
-# South Model
+# South Model - Neg. Binomial Model
 #==================================================================================
 
-name <- "delta_lognormal_south_designation_depth_year"
+name <- "glm_negbin_south_designation_depth_year_soft"
 dir.create(file.path(dir, name), showWarnings = FALSE)
 
 data <- rov_south
@@ -966,7 +976,38 @@ data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
 data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
 
 south_model <- sdmTMB(
-  n ~ as.factor(year) + poly(depth_scaled, 2) +  as.factor(year)*as.factor(designation) + (1|mpa_group_year), 
+  n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation) + (1|mpa_group_year), 
+  data = data,
+  offset = log(data$usable_area),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = nbinom2(link = "log")
+)
+
+index <- calc_index(
+  dir = file.path(dir, name), 
+  fit = south_model,
+  grid = grid_south)
+
+do_diagnostics(
+  dir = file.path(dir, name), 
+  fit = south_model,
+  plot_resids = FALSE)
+
+#=================================================================================
+# South Model - Delta Lognormal
+#==================================================================================
+
+name <- "delta_lognormal_south_designation_depth_year_soft"
+dir.create(file.path(dir, name), showWarnings = FALSE)
+
+data <- rov_south
+data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
+data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
+
+south_model <- sdmTMB(
+  n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation) + (1|mpa_group_year), 
   data = data,
   offset = log(data$usable_area),
   time = "year",
