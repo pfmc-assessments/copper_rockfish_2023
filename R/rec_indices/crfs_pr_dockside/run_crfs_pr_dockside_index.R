@@ -18,12 +18,22 @@ library(here)
 library(glue)
 library(tidyr)
 library(dplyr)
+library(rstanarm)
+options(mc.cores = parallel::detectCores())
+library(ggplot2)
+library(bayesplot)
+library(grid)
+library(devtools)
+library(ggeffects)
+library(tidybayes)
+library(gridExtra)
+library(fitdistrplus)
 #species and area identifiers - eventually put in function
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
-modelArea = "south"
+modelArea = "north"
 indexName <-  "crfs_pr_dockside"
-covars <- c("month", "district", "year", "prim1Common", "geara")
+covars <- c("month", "district", "year", "targetSpecies", "geara")
 
 
 # Set working directories
@@ -36,6 +46,8 @@ setwd(dir)
 # load data
 load("data_for_GLM.RData")
 
+
+
 #Ensure columns named appropriately and covariates are factors
 dat <- cdfwpr %>%
 rename(Effort = anglers) %>%
@@ -45,7 +57,7 @@ rename(Effort = anglers) %>%
 #Model selection
 #full model
 model.full <- MASS::glm.nb(
-  kept ~ year + district + month + prim1Common + geara + offset(logEffort),
+  kept ~ year + district + month + targetSpecies + offset(logEffort),
   data = dat,
   na.action = "na.fail")
 summary(model.full)
@@ -67,14 +79,12 @@ if(modelArea=="north"){
 #set the grid
 grid <- expand.grid(
   year = unique(dat$year),
-  district = levels(dat$district)[1],
-  targetSpecies = levels(dat$targetSpecies)[1],
-  month = levels(dat$month)[1],
-  logEffort = log(0.85)
-)
+  district = levels(dat$district)[1])#,
+ # targetSpecies = levels(dat$targetSpecies)[1],
+ # month = levels(dat$month)[1])
 
 fit.nb <- sdmTMB(
-  kept ~ year + district + month + prim1Common,
+  kept ~ year + district,# + month + targetSpecies,
   data = dat,
   offset = dat$logEffort,
   time = "year",
@@ -85,19 +95,18 @@ fit.nb <- sdmTMB(
   do_index = TRUE,
   predict_args = list(newdata = grid, re_form_iid = NA),   
   index_args = list(area = 1),
-  control = sdmTMBcontrol(newton_loops = 1)
-)
+  control = sdmTMBcontrol(newton_loops = 1))
 } else {
   #set the grid
   grid <- expand.grid(
     year = unique(dat$year),
     district = levels(dat$district)[1],
     month = levels(dat$month)[1],
-    prim1Common = levels(dat$prim1Common)[1]
+    targetSpecies = levels(dat$targetSpecies)[1]
   )
   
   fit.nb <- sdmTMB(
-   kept ~ year + district + month + prim1Common,
+   kept ~ year + district + month + targetSpecies,
     data = dat,
     offset = dat$logEffort,
     time = "year",
@@ -155,13 +164,119 @@ dplyr::select(-`(Intercept)`) %>%
 mutate_at(vars(covars,"year","offset(logEffort)"), as.character) %>%
 mutate(across(c("logLik","AICc","delta"), round, 1)) %>%
 replace_na(list(district = "Excluded", geara = "Excluded",
-          prim1Common = "Excluded", month = "Excluded")) %>%
+          targetSpecies = "Excluded", month = "Excluded")) %>%
 mutate_at(c(covars,"year","offset(logEffort)"), 
        funs(stringr::str_replace(.,"\\+","Included"))) %>%
 rename(`Effort offset` = `offset(logEffort)`, 
 `log-likelihood` = logLik,
-`Primary target species` = prim1Common,
+`Primary target species` = targetSpecies,
 `Primary gear` = geara) %>%
 rename_with(stringr::str_to_title,-AICc)
 View(out)
 write.csv(out, file = file.path(dir, "forSS", "model_selection.csv"), row.names = FALSE)
+
+#summary of trips and  percent pos per year
+summaries <- cdfwpr %>%
+  group_by(year) %>%
+  summarise(tripsWithTarget = sum(kept>0),
+            tripsWOTarget = sum(kept==0)) %>%
+  mutate(totalTrips = tripsWithTarget+tripsWOTarget,
+         percentpos = tripsWithTarget/(tripsWithTarget+tripsWOTarget)) 
+View(summaries)
+write.csv(summaries, 
+file.path(getwd(),"forSS","prim1summary.csv"),
+row.names=FALSE)
+
+#-------------------------------------------------------------------------------
+#Bayesian area-weighted index for the 
+#fraction of rocky habitat by district in state waters only
+north_district_weights <- data.frame(district = c(3,4,5,6),
+                                  area_weight = c(0.3227, 0.321, 0.162, 0.1943))
+
+#4/4/23 taking way too long to run on Melissa's computer
+#diagnostic of prop zero without the interaction looks good!
+#so I know the negativ binomial fits
+# # Source delta glm plotting functions
+# source(file.path(here(),"R","rec_indices", "Delta_bayes_functions.R"))
+#  # use STAN to see how well 'best model' fits the data
+#   Dnbin <- stan_glm.nb(
+#     kept ~ year + district + month + targetSpecies + year:district,
+#   offset = logEffort,
+#   data = dat,
+#   prior_intercept = normal(location = 0, scale = 10),
+#   prior = normal(location = 0, scale = 10),
+#   prior_aux = cauchy(0, 5),
+#   chains = 4,
+#   iter = 5000) # iterations per chain
+#   Sys.time() - start.time
+#   save(Dnbin, file = "Dnbin.RData")
+
+# load("Dnbin.RData")
+#   # nb Model checks
+#   # Create index
+#   yearvar <- "year"
+#   yrvec <- as.numeric(levels(droplevels(dat$year))) # years
+#   yrvecin <- as.numeric(levels(droplevels(dat$year))) # years
+
+#   # Create index
+#   ppnb <- posterior_predict(Dnbin, draws = 1000)
+#   inb <- plotindex_bayes(Dnbin, yrvec,
+#     backtrans = "exp", standardize = F,
+#     title = "negative binomial"
+#   )
+
+
+#   nbin.draws <- as.data.frame(Dnbin)
+#   nbin.yrs <- cbind.data.frame(nbin.draws[, 1], nbin.draws[, 1] + nbin.draws[, 2:length(yrvec)])
+#   colnames(nbin.yrs)[1] <- paste0(yearvar, yrvec[1])
+#   index.draws <- exp(nbin.yrs)
+
+
+#   # calculate the index and sd
+#   # logSD goes into the model
+#   Index <- apply(index.draws, 2, mean) # mean(x)
+#   SDIndex <- apply(index.draws, 2, sd) # sd(x)
+#   int95 <- apply(index.draws, 2, quantile, probs = c(0.025, 0.975))
+#   outdf <- cbind.data.frame(Year = yrvec, Index, SDIndex, t(int95))
+#   # index draws already backtransformed
+#   outdf$logIndex <- log(outdf$Index)
+#   outdf$logmean <- apply(index.draws, 2, function(x) {
+#     mean(log(x))
+#   })
+#   outdf$logSD <- apply(index.draws, 2, function(x) {
+#     sd(log(x))
+#   })
+
+#   # add raw standardized index to outdf
+#   raw.cpue.year <- dat %>%
+#     group_by(YEAR) %>%
+#     summarise(avg_cpue = mean(CPUE)) %>%
+#     mutate(std.raw.cpue = avg_cpue / mean(avg_cpue))
+
+#   outdf$stdzd.raw.cpue <- raw.cpue.year$std.raw.cpue
+#   outdf$stdzd.Index <- outdf$Index / mean(outdf$Index)
+#   # write csv
+#   write.csv(outdf, paste0(
+#     out.dir, "/", Model_region[Model.number], "_negativebinomial_",
+#     species.name, "_",
+#     survey.name, "_Index.csv"
+#   ))
+
+#   ## pp_check
+#   prop_zero <- function(y) mean(y == 0)
+#   # figure of proportion zero
+#   figure_Dnbin_prop_zero <- pp_check(Dnbin, 
+#   plotfun = "stat", stat = "prop_zero", binwidth = 0.001)
+#   figure_Dnbin_prop_zero
+#  ggsave(paste0(dir, "/negbin_prop_zero.png"))
+# # figure of mean and sd from model
+#   pp_check(Dnbin, plotfun = "stat_2d", stat = c("mean", "sd"))
+#   ggsave(paste0(out.dir, "/negbin_pp_stat_mean_sd.png"))
+
+# # boxplot of the posterior draws (light blue) compared to data (in dark blue)
+#   pp_check(Dnbin, plotfun = "boxplot", nreps = 10, notch = FALSE) +
+#     ggtitle("negative binomial model")
+
+# # plot of mean and sd together  from posterior predictive
+#   ppc_stat_2d(y = dat$kept, yrep = ppnb, stat = c("mean", "sd")) + ggtitle("Negative Binomial")
+

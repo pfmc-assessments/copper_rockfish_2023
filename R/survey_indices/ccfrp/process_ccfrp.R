@@ -201,10 +201,26 @@ round(with(subset(dat, Target > 0), table(area, site)) / with(dat, table(area, s
 
 round(with(subset(dat, Target > 0), table(site)) / with(dat, table(site)), 2)
 
+
+#-------------------------------------------------------------------------------
+#write out length data
+target_lengths <- lengths %>%
+dplyr::select(fishID, driftID, lengthcm,sex,speciesCode,
+monitoringGroup, name, site.x) %>%
+rename(site = site.x) %>%
+filter(driftID %in% dat$driftID)
+
+save(target_lengths, file = file.path(dir,"CCFRP_lengths.RData"))
+write.csv(target_lengths,  
+file = file.path(dir,"CCFRP_lengths.csv"), row.names = FALSE)
+
+
+
 #-------------------------------------------------------------------------------
 #map of copper locations
 #do later
 
 
 save(dat, data_filters,file = file.path(dir,"Filtered_data_CCFRP.RData"))
+
 
