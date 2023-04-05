@@ -37,7 +37,12 @@ dir <- here("data")
 load(file.path(dir, "wcgbt", "wcgbt_ages_with_area.rdata"))
 wcgbt <- bio_orig[!is.na(bio_orig$Age), ]
 colnames(wcgbt) <- tolower(colnames(wcgbt))
-wcgbt$program <- "NWFSC_WCGBT"
+wcgbt$program <- "NWFSC WCGBT"
+
+# Fix up program names for table
+abrams_ages$program = "Abrams"
+coop_ages$program <- "SWFSC/CPFV Coop."
+cdfw_ages$program <- "CDFW"
 
 
 length_bins <- seq(10, 54, 2)
@@ -58,6 +63,7 @@ growth_ages <- rbind(
   crfs_non_random [crfs_ages$year == 2021, col_names]
   #unknown_ages[, col_names] <- Leave these out for now since not sure if they link rec. fleet
 )
+
 growth_ages <- growth_ages[!is.na(growth_ages$length_cm), ]
 # There are ages ranging between 0-50 years of age in this df 
 #        F   M   U
@@ -68,6 +74,20 @@ ggplot(growth_ages) + geom_bar(aes(x = age, color = sex)) + facet_grid(area~.)
 ggsave(file = file.path(dir, "plots", "growth_ages_by_area.png"), width = 7, height = 7)
 ggplot(growth_ages) + geom_bar(aes(x = age, color = program)) + facet_grid(area~.)
 ggsave(file = file.path(dir, "plots", "growth_ages_by_area_program.png"), width = 7, height = 7)
+
+samples <- growth_ages %>%
+  group_by(year, area, program) %>%
+  reframe(
+    n_ages = length(age)
+  )
+colnames(samples) <- c("Year", "area", "Source", "Ages")
+write.csv(samples[samples$area == "north", colnames(samples) != "area"],
+          file =file.path(dir,  "ages", "forSS", "north_growth_age_samples.csv"),
+          row.names = FALSE)
+
+write.csv(samples[samples$area == "south", colnames(samples) != "area"],
+          file =file.path(dir,  "ages", "forSS", "north_growth_age_samples.csv"),
+          row.names = FALSE)
 
 growth_north <- get_caal(
   data = growth_ages[growth_ages$area == "north", ], 
@@ -124,7 +144,7 @@ ccfrp_north <- get_caal(
   partition = 0)
 
 write.csv(ccfrp_north, 
-  file = file.path(dir, "ages", "forSS", "ccfrp_caal_north.csv"),
+  file = file.path(dir, "survey_indices", "ccfrp", "north", "forSS", "ccfrp_caal_north.csv"),
   row.names = FALSE)  
 
 ccfrp_south <- get_caal(
@@ -137,7 +157,7 @@ ccfrp_south <- get_caal(
   partition = 0)
 
 write.csv(ccfrp_south, 
-  file = file.path(dir, "ages", "forSS", "ccfrp_caal_south.csv"),
+  file = file.path(dir, "survey_indices", "ccfrp", "north", "forSS", "ccfrp_caal_south.csv"),
   row.names = FALSE) 
 
 #===============================================================================
@@ -146,6 +166,13 @@ write.csv(ccfrp_south,
 # There are some NA records
 
 # All records are for PR north with 3 unsexed records 
+samples <- crfs_ages %>%
+  group_by(year, area, mode) %>%
+  reframe(samples = length(age))
+colnames(samples) <- c("Year", "area", "Fleet", "Ages")
+write.csv(samples[samples$area == "north", colnames(samples) != "area"],
+          file =file.path(dir,  "ages", "forSS", "crfs_north_age_samples.csv"),
+          row.names = FALSE)
 
 pr_north <- get_caal(
   data = crfs_ages[crfs_ages$area == "north" & crfs_ages$mode == "PR", ], 
@@ -170,6 +197,19 @@ write.csv(pr_north,
 # Commercial 
 #===============================================================================
 commercial_ages <- commercial_ages[!is.na(commercial_ages$age), ]
+
+samples <- commercial_ages %>%
+  group_by(year, area) %>%
+  reframe(
+    Fleet = "Commercial Dead",
+    samples = length(age))
+colnames(samples) <- c("Year", "area", "Fleet", "Ages")
+write.csv(samples[samples$area == "north", colnames(samples) != "area"],
+          file =file.path(dir,  "ages", "forSS", "com_dead_north_age_samples.csv"),
+          row.names = FALSE)
+write.csv(samples[samples$area == "south", colnames(samples) != "area"],
+          file =file.path(dir,  "ages", "forSS", "com_dead_south_age_samples.csv"),
+          row.names = FALSE)
 
 com_north <- get_caal(
   data = commercial_ages[commercial_ages$area == "north", ], 

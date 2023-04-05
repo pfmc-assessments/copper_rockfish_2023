@@ -52,6 +52,7 @@ table(ccfrp[ccfrp$Newport.ID %in% duplicate, "Fork.Length_mm"],
 ccfrp_ages <- data.frame(
   program = ccfrp$Program,
   institution = ccfrp$Institution,
+  location = ccfrp$source_location,
   area = "north",
   date = ccfrp$Date,
   month = ccfrp$Month,
