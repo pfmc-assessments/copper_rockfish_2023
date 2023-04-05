@@ -123,13 +123,14 @@ obs.prop.df.fall <- as.data.frame(data_cert_fall %>% group_by(FL_2cm) %>%
                                          s=sum(Functional_maturity),
                                          obs.prop=mean(Functional_maturity)))
 obs.prop.df.fall
+HandyCode::pngfun(wd = dir, file = "ca_fall_maturity_curve.png", w = 7, h = 7)
 with(obs.prop.df.fall, plot(FL_2cm+1, obs.prop, 
                        xlim=c(0,65), bty='l', 
                        xlab="Fork Length [cm]", 
                        ylab="Proportion Mature"))
-curve(f,0,65,add=TRUE)
-text(10,0.8,paste0("L50 = ",round(L50_fall[[1]],2)))
-
+curve(f, 0,65,add=TRUE)
+text(10, 0.8, paste0("L50 = ",round(L50_fall[[1]],2)))
+dev.off()
 #-------------------------------------------------------------------------------
 #####Look at north and south
 with(data_cert_fall, table(area))
@@ -155,8 +156,6 @@ L50_south <- deltaMethod(data.glm.south, "-b0/b1",
                          parameterNames= paste("b", 0:1, sep=""))
 L50_south
 
-
-
 #-------------------------------------------------------------------------------
 #####Look at north and south fall only
 ##north
@@ -172,11 +171,10 @@ L50_north_fall
 data.glm.south.fall <- glm(Functional_maturity ~ Length, 
                       data = data_cert_fall %>% filter(area=="south"), 
                       family = binomial(link ="logit"))
-summary(data.glm.south)
+summary(data.glm.south.fall)
 L50_south_fall <- deltaMethod(data.glm.south.fall, "-b0/b1", 
                          parameterNames=paste("b", 0:1, sep=""))
 L50_south_fall
-
 
 
 #combine all estimates in a dataframe
@@ -195,7 +193,26 @@ sample_size <- data_cert %>%
   summarise(SampleSize = n())
 sample_size
 
-#Leaning towards exluding the summer samples since the notes in Melissa Head's
+
+obs.prop.df.fall.south <- as.data.frame(data_cert_fall %>% 
+                                  filter(area == "south") %>% 
+                                    group_by(FL_2cm) %>% 
+                                    summarize(n=length(Functional_maturity),
+                                              s=sum(Functional_maturity),
+                                              obs.prop=mean(Functional_maturity)))
+
+
+HandyCode::pngfun(wd = dir, file = "ca_south_maturity_curve.png", w = 7, h = 7)
+with(obs.prop.df.fall.south, plot(FL_2cm+1, obs.prop, 
+                            xlim=c(0,65), bty='l', 
+                            xlab="Fork Length [cm]", 
+                            ylab="Proportion Mature"))
+curve(f, 0,65,add=TRUE)
+text(10, 0.8, paste0("L50 = ",round(L50_south_fall[[1]],2)))
+dev.off()
+
+
+#Leaning towards excluding the summer samples since the notes in Melissa Head's
 #file indicates that the certainty is lower in the summer months; 
 #18 fish from 34.5 to 48 marked as uncertain, but she couldn't tell if they 
 #had spawned or were resting; 
@@ -224,3 +241,10 @@ sample_size
 # v.first
 # s.first
 # int.first.95
+
+mid.len <- 1:50
+ohm3 <- -0.425; ohm4 <- 33.7
+mature.len <- 1 / (1 + exp((ohm3) * (mid.len-ohm4)))
+mature.len.alt <- 1 / (1 + exp((-0.60) * (mid.len-ohm4)))
+plot(mid.len, mature.len)
+lines(mid.len, mature.len.alt, col = 'green')
