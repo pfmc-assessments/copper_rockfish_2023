@@ -15,6 +15,22 @@ read_child(filein)
 
 #### Composition Data
 
+Biological data were extracted from the PacFIN Biological Data System on March 20, 2023. Length data for the commercial fleets were extracted from the PacFIN Biological Data System (BDS) with samples for south of Point Conception beginning in 1983 for the dead fish fishery(Table \ref{tab:dead-com-len}) and 1999 for the live fish fishery (Table \ref{tab:live-com-len}). 
+
+The number of total lengths available was highly variable ranging from 2 to 542 samples per year. 
+
+The majority of lengths observed by the commercial fleet were between approximately 25 - 45 cm (Figure XX), with relatively low observations of fish larger than 45 cm (detailed length compositions by year can be found in the Appendix, Section \ref{length-data}. The mean length observed by year ranged between 32 - 39 cm (Figure XX). The mean length across commercial lengths was the smallest in 2014 (around 32 cm) and has generally incrementally increased in the subsequent years.
+
+The input sample sizes were calculated via the Stewart method (Ian Stewart, personal communication) based on a combination of trips and fish sampled:
+
+\begin{centering}
+
+Input effN = $N_{\text{trips}} + 0.138 * N_{\text{fish}}$ if $N_{\text{fish}}/N_{\text{trips}}$ is $<$ 44
+
+Input effN = $7.06 * N_{\text{trips}}$ if $N_{\text{fish}}/N_{\text{trips}}$ is $\geq$ 44
+
+\end{centering}
+
 ### Recreational Fishery
 
 #### Landings and Discards

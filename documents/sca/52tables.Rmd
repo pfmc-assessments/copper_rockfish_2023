@@ -42,6 +42,12 @@ table_format(x = out,
 
 \newpage
 
+\include{tex_tables/south_dead_trips_and_samples.tex}
+
+\newpage
+
+\include{tex_tables/south_live_trips_and_samples.tex}
+
 
 <!-- ======================================================= -->
 <!-- ***************   Discard Data  *********************** --> 
