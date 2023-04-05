@@ -96,14 +96,6 @@ locs <- dplyr::group_by(subdata, site_number) %>%
 
 grid <- dplyr::left_join(year_site, locs) %>%
   dplyr::filter(!is.na(lat + lon))
-#grid$moon_scaled <- 0
-#grid$wave_scaled <- 0
-#grid$swell_scaled <- 0
-#grid$depth_scaled <- 0
-#grid$depth_scaled2 <- 0
-#grid$vermilion_scaled <- 0
-#grid$bocaccio_scaled <- 0
-#grid$drop <- as.factor(3)
 
 save(subdata, grid, 
   file = file.path(index_dir, "data_grid.Rdata"))
@@ -165,6 +157,45 @@ dir.create(file.path(index_dir, name), showWarnings = FALSE)
 
 fit <- sdmTMB(
   n ~ 0 + year + site_number + drop + swell_scaled + vermilion_scaled + bocaccio_scaled,
+  data = subdata,
+  offset = log(subdata$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = nbinom2(link = "log"),
+  control = sdmTMBcontrol(newton_loops = 1)
+)
+
+sanity(fit)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = grid)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+index$model <- name
+indices <- rbind(indices, index)
+loglike <- logLik(fit)
+aic <- AIC(fit)
+metrics <- rbind(metrics, c(name, loglike, aic))
+
+save(indices, file = file.path(index_dir, "all_indices.rdata"))  
+save(metrics, file = file.path(index_dir, "metrics.rdata"))
+
+#===============================================================================
+# Negative-Binomial GLM with only main effects: year, site, swell, vermillion
+#===============================================================================
+
+name <- "glm_negbin_main_year_site_drop_swell_vermilion"
+
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + site_number + drop + swell_scaled + vermilion_scaled,
   data = subdata,
   offset = log(subdata$effort),
   time = "year",
@@ -733,7 +764,224 @@ graphics::lines(outdf$Year,  outdf$Index, cex = 1, col = 'blue', lty = 2)
 
 dev.off()
 
+#=========================================================================================
+# Stan: year + site + drop + swell_scaled
+#========================================================================================
+name <- "rstan_full_nb_glm_year_site_drop_swell_vermilion"
+dir.create(file.path(index_dir, name))
 
+start.time <- Sys.time()
+stan <- stan_glm.nb(n ~ 0 + year + site_number + drop + swell_scaled  + vermilion_scaled,
+                    data = subdata,
+                    offset = log(subdata$effort),
+                    prior_intercept = normal(location = 0, scale = 10),
+                    prior = normal(location = 0, scale = 10),
+                    prior_aux = cauchy(0, 5),
+                    chains = 4,
+                    iter = 8000
+) # iterations per chain
+Sys.time() - start.time
+save(stan, file = file.path(index_dir, name, "rstan_nb_glm_output.rdata"))
+
+## pp_check
+prop_zero <- function(y) mean(y == 0)
+
+# figure of proportion zero - does good job
+HandyCode::pngfun(wd = file.path(index_dir, name), file = "proportion_zero_south.png")
+rstanarm::pp_check(stan, plotfun = "stat", stat = "prop_zero")
+dev.off()
+
+HandyCode::pngfun(wd = file.path(index_dir, name), file = "proportion_scatterplot.png")
+rstanarm::pp_check(stan, plotfun = "stat_2d", stat = c('mean', 'sd'))
+dev.off()
+
+#pp_check(stan, plotfun = "stat_grouped", stat = "median", group = "year", binwidth = 50)
+#pp_check(stan, plotfun = "intervals", x = "year") + ggplot2::xlab("Year")
+
+y <- subdata$n
+yrep <- posterior_predict(stan)
+loo1 <- loo::loo(stan, save_psis = TRUE, cores = 4)
+psis1 <- loo1$psis_object
+lw <- weights(psis1)
+bayesplot::ppc_loo_pit_qq(y, yrep, lw = lw, compare = 'normal')
+
+keep_obs <- 1:50
+ppc_loo_intervals(y, yrep, psis_object = psis1, subset = keep_obs)
+
+pp_check(stan, plotfun = "hist", nreps = 5, binwidth = 5) + 
+  geom_vline(xintercept = 0) + 
+  xlab("laws")
+
+yearvar <- "year"
+yrvec <- as.numeric(levels(droplevels(subdata$year))) # years
+yrvecin <- as.numeric(levels(droplevels(subdata$year))) # years
+
+# Create index
+# the plotindex_bayes function is from Melissa's Delta_bayes_function file
+ppnb <- posterior_predict(stan, draws = 1000)
+index <- plotindex_bayes(stan, yrvec,
+                         backtrans = "exp", standardize = F,
+                         title = "negative binomial")
+
+nbin.draws <- as.data.frame(stan)
+nbin.yrs <- data.frame(nbin.draws[, 1:length(yrvec)])
+index.draws <- exp(nbin.yrs)
+
+# calculate the index and sd
+# logSD goes into the model
+Index <- apply(index.draws, 2, mean) # mean(x)
+SDIndex <- apply(index.draws, 2, sd) # sd(x)
+int95 <- apply(index.draws, 2, quantile, probs = c(0.025, 0.975))
+outdf <- cbind.data.frame(Year = yrvec, Index, SDIndex, t(int95))
+# index draws already backtransformed
+outdf$logIndex <- log(outdf$Index)
+outdf$logmean <- apply(index.draws, 2, function(x) {
+  mean(log(x))
+})
+outdf$logSD <- apply(index.draws, 2, function(x) {
+  sd(log(x))
+})
+
+format <- cbind(outdf$Year, 9, "fleet", round(outdf$Index,5), round(outdf$logSD,3))
+colnames(format) <- c("Year", "Month", "Fleet", "Estimate", "logSD")
+write.csv(format, file = file.path(index_dir, name, "index_forSS.csv"), row.names = FALSE)
+
+
+out_file = file.path(index_dir, name, "Index.png")
+grDevices::png(filename = out_file,
+               width = 10, height = 7, units = "in", res = 300, pointsize = 12)
+
+cex.axis = 1.25
+cex.lab = 1.20
+ymax = max(outdf[,"97.5%"]) + 0.10 * max(outdf[,"97.5%"])
+
+plot(0, type = "n",
+     xlim = range(outdf$Year),
+     ylim = c(0, ymax),
+     xlab = "", ylab = "", yaxs = "i",
+     main = "", cex.axis = cex.axis)
+
+graphics::mtext(side = 1, "Year", cex = cex.lab, line = 3)
+graphics::mtext(side = 2, "Relative Index", cex = cex.lab, line = 2.5)
+
+graphics::arrows(x0 = outdf$Year, y0 = outdf[,"2.5%"], x1 = outdf$Year, y1 = outdf[,"97.5%"], 
+                 angle = 90, code = 3, length = 0.01, col = "blue",
+                 lty = 2)
+graphics::points(outdf$Year, outdf$Index, pch = 16, bg = 1, cex = 1.6, col = 'blue')
+graphics::lines(outdf$Year,  outdf$Index, cex = 1, col = 'blue', lty = 2)
+
+dev.off()
+
+#=========================================================================================
+# Simple Stan Model
+#========================================================================================
+name <- "rstan_full_nb_glm_year_site_drop_swell"
+dir.create(file.path(index_dir, name))
+
+start.time <- Sys.time()
+stan <- stan_glm.nb(n ~ 0 + year + site_number + drop + swell_scaled,
+                    data = subdata,
+                    offset = log(subdata$effort),
+                    prior_intercept = normal(location = 0, scale = 10),
+                    prior = normal(location = 0, scale = 10),
+                    prior_aux = cauchy(0, 5),
+                    chains = 4,
+                    iter = 5000
+) # iterations per chain
+Sys.time() - start.time
+save(stan, file = file.path(index_dir, name, "rstan_nb_glm_output.rdata"))
+
+## pp_check
+prop_zero <- function(y) mean(y == 0)
+
+# figure of proportion zero - does good job
+HandyCode::pngfun(wd = file.path(index_dir, name), file = "proportion_zero_south.png")
+rstanarm::pp_check(stan, plotfun = "stat", stat = "prop_zero")
+dev.off()
+
+HandyCode::pngfun(wd = file.path(index_dir, name), file = "proportion_scatterplot.png")
+rstanarm::pp_check(stan, plotfun = "stat_2d", stat = c('mean', 'sd'))
+dev.off()
+
+pp_check(stan, plotfun = "stat_grouped", stat = "median", group = "year", binwidth = 50)
+pp_check(stan, plotfun = "intervals", x = "year") + ggplot2::xlab("Year")
+
+y <- subdata$n
+yrep <- posterior_predict(stan)
+loo1 <- loo::loo(stan, save_psis = TRUE, cores = 4)
+psis1 <- loo1$psis_object
+lw <- weights(psis1)
+bayesplot::ppc_loo_pit_qq(y, yrep, lw = lw, compare = 'normal')
+
+keep_obs <- 1:50
+ppc_loo_intervals(y, yrep, psis_object = psis1, subset = keep_obs)
+
+pp_check(stan, plotfun = "hist", nreps = 5, binwidth = 5) + 
+  geom_vline(xintercept = 0) + 
+  xlab("laws")
+
+yearvar <- "year"
+yrvec <- as.numeric(levels(droplevels(subdata$year))) # years
+yrvecin <- as.numeric(levels(droplevels(subdata$year))) # years
+
+# Create index
+# the plotindex_bayes function is from Melissa's Delta_bayes_function file
+ppnb <- posterior_predict(stan, draws = 1000)
+index <- plotindex_bayes(stan, yrvec,
+                         backtrans = "exp", standardize = F,
+                         title = "negative binomial")
+
+nbin.draws <- as.data.frame(stan)
+nbin.yrs <- data.frame(nbin.draws[, 1:length(yrvec)])
+index.draws <- exp(nbin.yrs)
+
+# calculate the index and sd
+# logSD goes into the model
+Index <- apply(index.draws, 2, mean) # mean(x)
+SDIndex <- apply(index.draws, 2, sd) # sd(x)
+int95 <- apply(index.draws, 2, quantile, probs = c(0.025, 0.975))
+outdf <- cbind.data.frame(Year = yrvec, Index, SDIndex, t(int95))
+# index draws already backtransformed
+outdf$logIndex <- log(outdf$Index)
+outdf$logmean <- apply(index.draws, 2, function(x) {
+  mean(log(x))
+})
+outdf$logSD <- apply(index.draws, 2, function(x) {
+  sd(log(x))
+})
+
+format <- cbind(outdf$Year, 9, "fleet", round(outdf$Index,5), round(outdf$logSD,3))
+colnames(format) <- c("Year", "Month", "Fleet", "Estimate", "logSD")
+write.csv(format, file = file.path(index_dir, name, "index_forSS.csv"), row.names = FALSE)
+
+
+out_file = file.path(index_dir, name, "Index.png")
+grDevices::png(filename = out_file,
+               width = 10, height = 7, units = "in", res = 300, pointsize = 12)
+
+cex.axis = 1.25
+cex.lab = 1.20
+ymax = max(outdf[,"97.5%"]) + 0.10 * max(outdf[,"97.5%"])
+
+plot(0, type = "n",
+     xlim = range(outdf$Year),
+     ylim = c(0, ymax),
+     xlab = "", ylab = "", yaxs = "i",
+     main = "", cex.axis = cex.axis)
+
+graphics::mtext(side = 1, "Year", cex = cex.lab, line = 3)
+graphics::mtext(side = 2, "Relative Index", cex = cex.lab, line = 2.5)
+
+graphics::arrows(x0 = outdf$Year, y0 = outdf[,"2.5%"], x1 = outdf$Year, y1 = outdf[,"97.5%"], 
+                 angle = 90, code = 3, length = 0.01, col = "blue",
+                 lty = 2)
+graphics::points(outdf$Year, outdf$Index, pch = 16, bg = 1, cex = 1.6, col = 'blue')
+graphics::lines(outdf$Year,  outdf$Index, cex = 1, col = 'blue', lty = 2)
+
+dev.off()
+
+
+#========================================================================================
 
 raw.cpue <- as.data.frame(species_data) %>%
   group_by(year) %>%
@@ -916,7 +1164,7 @@ write.csv(format_index,
 #===============================================================================
 
 # negative binomial with fixed effects
-all <- unique(indices$model)[1:5]
+all <- unique(indices$model)[1:6]
 tmp <- indices[indices$model %in% all, ]
 
 cex.axis = 1.25
@@ -954,7 +1202,7 @@ dev.off()
 
 # No CCA Comparison
 # negative binomial with fixed effects
-all <- unique(indices$model)[c(1, 10, 11)]
+all <- unique(indices$model)[c(1, 11, 12)]
 tmp <- indices[indices$model %in% all, ]
 
 cex.axis = 1.25
@@ -990,7 +1238,7 @@ legend("topleft", bty = 'n', legend = all, col = colors, lty = 2, pch = 16)
 dev.off()
 
 # Delta Compariosn
-all <- unique(indices$model)[c(1, 8, 9)]
+all <- unique(indices$model)[c(1, 9, 10)]
 tmp <- indices[indices$model %in% all, ]
 
 cex.axis = 1.25
@@ -1027,7 +1275,7 @@ dev.off()
 
 
 # RE Comparison
-all <- unique(indices$model)[c(1, 6, 7)]
+all <- unique(indices$model)[c(1, 7, 8)]
 tmp <- indices[indices$model %in% all, ]
 
 cex.axis = 1.25
