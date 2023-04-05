@@ -16,15 +16,15 @@ catch_dir <- file.path(here(), "data", "pacfin_catch")
 dir.create(file.path(dir, "plots"))
 dir.create(file.path(dir, "forSS"))
 
-bds.file <- "PacFIN.COPP.bds.06.Feb.2023.RData"
+bds.file <- "PacFIN.COPP.bds.20.Mar.2023.RData"
 load(file.path(dir, bds.file))
 # Filter down to only California
 bds.pacfin <- bds.pacfin[bds.pacfin$AGENCY_CODE == "C", ]
 
 # Load in the current weight-at-length estimates by sex
 # These estimates were created in 2021 from survey data
-fa = 9.56e-6; fb = 3.19 
-ma = 1.08e-5; mb = 3.15    
+fa = 9.60e-6; fb = 3.19 
+ma = 1.012e-5; mb = 3.15    
 ua = (fa + ma)/2;  ub = (fb + mb)/2        
 
 catch_north = read.csv(file.path(catch_dir, "forSS", "commercial_landings_north_for_expansions.csv"))
@@ -116,10 +116,10 @@ trips_samples_live <- data %>%
   group_by(fleet, year) %>%
   summarise(
     Trips = length(unique(SAMPLE_NO)),
-    Length_samples = length(lengthcm)
+    Lengths = length(lengthcm)
   )
-colnames(trips_samples_dead)[2] <- "Year"
-write.csv(trips_samples_dead[, -1], 
+colnames(trips_samples_live)[2] <- "Year"
+write.csv(trips_samples_live[, -1], 
           row.names = FALSE, 
           file = file.path(dir, "forSS", "north_live_trips_and_samples.csv"))
 
@@ -140,10 +140,10 @@ trips_samples_live <- data %>%
   group_by(fleet, year) %>%
   summarise(
     Trips = length(unique(SAMPLE_NO)),
-    Length_samples = length(lengthcm)
+    Lengths = length(lengthcm)
   )
-colnames(trips_samples_dead)[2] <- "Year"
-write.csv(trips_samples_dead[, -1], 
+colnames(trips_samples_live)[2] <- "Year"
+write.csv(trips_samples_live[, -1], 
           file = file.path(dir, "forSS", "south_live_trips_and_samples.csv"),
           row.names = FALSE)
 
@@ -171,16 +171,16 @@ data_exp$Final_Sample_Size <- capValues(
 # Maximum expansion capped at 0.8 quantile: 77.3078 
 
 # Look for consistency between lengths and ages of sampled fish
-length_bins <- c(seq(8, 56, 2))
+length_bins <- seq(10, 54, 2)
 
 # There are very few sexed fish in California
 # table(data_exp$year, data$state_area, data_exp$SEX)
 # table(data_exp$fleet, data_exp$SEX)
 #                F    M    U
-#  north.dead  136  132 3269
-#  north.live    0    0 1354
-#  south.dead    2    7 2126
-#  south.live    0    0  554
+#  north.dead  178  169 3249
+#  north.live    0    0 1139
+#  south.dead   10    7 2145
+#  south.live    0    0  557
 # The majority of sexed fish occur in the north in 2019+
 
 Lcomps = getComps(
