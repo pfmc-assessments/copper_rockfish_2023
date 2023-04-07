@@ -127,9 +127,11 @@ all_data <- all_data[-remove, ]
 # colnames(all_data[colnames(all_data) == "lengthcm"]) <- "length_cm"
 
 # Remove the MRFSS lengths from 1997-98 since they are the same as those in Deb's data
-remove <- which(all_data$program == "mrfss" & all_data$year %in% 1997:1998 &
-                all_data$mode == "cpfv" & all_data$area == "north")
-all_data <- all_data[-remove, ]
+#remove <- which(all_data$program == "mrfss" & all_data$year %in% 1997:1998 &
+#                  all_data$mode == "cpfv" & all_data$area == "north")
+#all_data <- all_data[-remove, ]
+# The above lines are commented out in order to keep the numbers in the summary tables
+# below and then are removed later on when processing the length comp data.
 
 save(all_data, file = file.path(dir, "all_rec_length_data.rdata"))
 
