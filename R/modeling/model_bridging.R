@@ -13,7 +13,6 @@ if( grepl("Chantel", user) ){
   # Fill in Melissa's document directory below
   user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
 }
-source(file.path(user_dir, "R", "get_caal.R"))
 
 wd <- file.path(user_dir, "models", area,"_bridging")
 
@@ -66,11 +65,13 @@ SSplotComparisons(mysummary,
 # 1.+ Update removals
 #===============================================================================
 
+biology <- SS_output(file.path(wd, "1.0_biology"))
+
 com_catch <- SS_output(file.path(wd, "1.1_com_catch"))
 
-modelnames <- c("2021", "Recreational Fleets", "Commercial Fleets",
+modelnames <- c("2021", "Recreational Fleets", "Commercial Fleets", "Biology",
 				"+ Commercial Catch")
-mysummary <- SSsummarize(list(base_2021,  rec_fleet, com_fleet, com_catch))
+mysummary <- SSsummarize(list(base_2021,  rec_fleet, com_fleet, biology, com_catch))
 
 SSplotComparisons(mysummary,
 	filenameprefix = "1.1_catch",
@@ -80,10 +81,10 @@ SSplotComparisons(mysummary,
 
 rec_catch <- SS_output(file.path(wd, "1.2_rec_catch"))
 
-modelnames <- c("2021", "Recreational Fleets", "Commercial Fleets",
+modelnames <- c("2021", "Updated Fleets", "Update WL & Mat.",
 				"+ Commercial Catch", "+ Recreational Catch")
 mysummary <- SSsummarize(list(base_2021,  
-	rec_fleet, com_fleet, com_catch, rec_catch))
+	biology, com_fleet, com_catch, rec_catch))
 
 SSplotComparisons(mysummary,
 	filenameprefix = "1.2_catch",
@@ -110,8 +111,6 @@ SSplotComparisons(mysummary,
 	plotdir = file.path(wd, "_plots"),
 	pdf = TRUE)
 
-
-
 cpfv_lengths <- SS_output(file.path(wd, "2.2_cpfv_lengths"))
 
 modelnames <- c("2021", "Recreational Fleets", "Commercial Fleets",
@@ -129,11 +128,11 @@ SSplotComparisons(mysummary,
 
 pr_lengths <- SS_output(file.path(wd, "2.3_pr_lengths"))
 
-modelnames <- c("2021", "Recreational Fleets", "Commercial Fleets",
+modelnames <- c("2021", "Fleets", "Biology",
 	"+ Commercial Catch", "+ Recreational Catch",
 	"+ PacFIN Lengths", "+ Rec. CPFV Lengths", "+ Rec. PR Lengths")
 mysummary <- SSsummarize(list(base_2021,  
-	rec_fleet, com_fleet, com_catch, rec_catch, 
+	com_fleet, biology, com_catch, rec_catch, 
 	com_lengths, cpfv_lengths, pr_lengths))
 
 SSplotComparisons(mysummary,
@@ -144,16 +143,16 @@ SSplotComparisons(mysummary,
 
 dw_len <- SS_output(file.path(wd, "2.4_dw"))
 
-modelnames <- c("2021", "Recreational Fleets", "Commercial Fleets",
+modelnames <- c("2021", 
 	"+ Commercial Catch", "+ Recreational Catch",
-	"+ PacFIN Lengths", "+ Rec. CPFV Lengths", "+ Rec. PR Lengths",
+	"+ Com. Lengths", "+ Rec. CPFV Lengths", "+ Rec. PR Lengths",
 	"+ Reweight")
 mysummary <- SSsummarize(list(base_2021,  
-	rec_fleet, com_fleet, com_catch, rec_catch, 
-	com_lengths, cpfv_lengths, pr_lengths, dw_len))
+	com_catch, rec_catch, 
+	com_ages, cpfv_lengths, pr_lengths, dw_len))
 
 SSplotComparisons(mysummary,
-	filenameprefix = "2.4_all_length",
+	filenameprefix = "2.4_all_comps",
 	legendlabels = modelnames, 	
 	plotdir = file.path(wd, "_plots"),
 	pdf = TRUE)
@@ -187,9 +186,11 @@ rov <- SS_output(file.path(wd, "4.1_rov_index"))
 rov_dw <- SS_output(file.path(wd, "4.2_rov_index_dw"))
 
 modelnames <- c("2021", "Update Com. & Rec. - DW",
-"NWFSC HKL - DW", "+ ROV Index and Lengths - DW")
+#"NWFSC HKL - DW", 
+"+ ROV Index and Lengths - DW")
 mysummary <- SSsummarize(list(base_2021,  
-dw_len, hkl_dw, rov_dw))
+dw_len, #hkl_dw, 
+rov_dw))
 
 SSplotComparisons(mysummary,
 	filenameprefix = "4_rov",
@@ -198,5 +199,18 @@ SSplotComparisons(mysummary,
 	pdf = TRUE)
 
 #===============================================================================
-#
+# Recreational indices
 #===============================================================================
+mrfss_pc <- SS_output(file.path(wd, "5.1_mrfss_pc_index"))
+crfs_pr <- SS_output(file.path(wd, "5.2_crfs_pr_index"))
+
+
+modelnames <- c("2021", "+ ROV Index and Lengths - DW", "+ MRFSS PC Index", "+ CRFS PR Index")
+mysummary <- SSsummarize(list(base_2021,  
+                             rov_dw, mrfss_pc, crfs_pr))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "5_rec_indices",
+                  legendlabels = modelnames, 	
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
