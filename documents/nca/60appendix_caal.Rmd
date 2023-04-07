@@ -1,9 +1,9 @@
 # Appendix A {#detailed-fit-comps}
 
-## Detailed Fit to Length Composition Data
+## Detailed Fit to Length Composition Data {#length-data}
 
 
-## Detailed Fit to Age Composition Data
+## Detailed Fit to Age Composition Data {#age-data}
 
 
-## Detailed Fit to Conditional-Age-at-Length Composition Data
+## Detailed Fit to Conditional-Age-at-Length Composition Data {#caal-data}

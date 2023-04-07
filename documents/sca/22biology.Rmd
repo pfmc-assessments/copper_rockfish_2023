@@ -23,8 +23,6 @@ read_child(filein)
 ```
 
 
-
-
 ### Sex Ratio
 
 ```{r, echo=FALSE, results='asis'}
@@ -41,7 +39,28 @@ read_child(filein)
 ```
 
 
-### Growth (Length-at-Age)
+### Growth (Length-at-Age) {#length-at-age}
 
+Length-at-age was estimated for male and female `r spp` informed by age data from the NWFSC Hook and Line survey, the CCFRP survey, and independent age data collected effort from three programs `area` since 2003: 621 otoliths collected by the NWFSC WCGBT survey, 33 otoliths collected by a research survey conducted by Don Pearson, and 506 otoliths collected by a cooperative research survey by the SWFSC and CPFV funded by the Sportfishing Association of California (Table \ref{tab:growth-age-samps}). The ages collected by these three sources were included in the model as a "growth" fleet that was not associated with removals or an index of abundance. 
+Length-at-age was estimated for male and female `r spp` informed by age data from the fisheries, the CCFRP survey, and independent age data collected effort from three programs `area` since 2002: 207 otoliths collected by the NWFSC WCGBT survey, 427 otoliths collected by a research survey conducted by Don Pearson, 77 from a research survey conducted by Abrams, and 210 otoliths collected by a cooperative research survey by the SWFSC and CPFV funded by the Sportfishing Association of California (Table \ref{tab:growth-age-samps}). The ages collected by these three sources were included in the model as a "growth" fleet that was not associated with removals or an index of abundance. 
 
+Sex-specific growth parameters `area` were initially estimated external to the model at the following values:
+
+\begin{centering}
+
+Females $L_{\infty}$ = 45.1; $L1$ = 1.13 cm; $k$ = 0.257 per year
+
+Males $L_{\infty}$ = 44.8 cm; $L1$ = 4.75 cm; $k$ = 0.262 per year
+
+\end{centering}
+
+\vspace{0.50cm}
+
+These values were used as starting parameter values within the base model prior to estimating each parameter for male and female `r spp`.
 ### Ageing Precision and Bias
+
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'2_biology_ageing_error.Rmd')
+read_child(filein)
+```

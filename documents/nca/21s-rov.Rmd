@@ -20,7 +20,6 @@ Details regarding the index of abundance, sample sizes and model selection can b
 
 
 #### Composition Data
-\
 
 Length measurement were made from images taken with stereo-cameras by the CDFW ROV survey in 2016, 2019, 2020, and 2021. 
 

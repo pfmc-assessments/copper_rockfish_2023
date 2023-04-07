@@ -11,8 +11,12 @@ All modeling was initially conducted using sdmTMB [@anderson_sdmtmb_2022] with t
 
 \input{tex_tables/nwfsc_hkl_model_selection.tex}
 
+\newpage
+
 
 \input{tex_tables/nwfsc_hkl_formatted_index.tex}
+
+\newpage
 
 
 ```{r, results = 'asis'}

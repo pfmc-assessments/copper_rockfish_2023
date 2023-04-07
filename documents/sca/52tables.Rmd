@@ -42,11 +42,23 @@ table_format(x = out,
 
 \newpage
 
+<!-- ======================================================= -->
+<!-- *************** Commercial Data *********************** --> 
+<!-- ======================================================= -->
+
 \include{tex_tables/south_dead_trips_and_samples.tex}
+
+\include{tex_tables/south_live_trips_and_samples.tex}
+
+<!-- ======================================================= -->
+<!-- ************* Recreational Data *********************** --> 
+<!-- ======================================================= -->
+
+\include{tex_tables/rec_south_sample_size_by_program.tex}
+
 
 \newpage
 
-\include{tex_tables/south_live_trips_and_samples.tex}
 
 
 <!-- ======================================================= -->
@@ -89,13 +101,12 @@ table_format(x = out,
 
 \input{tex_tables/south_strata_observations.tex}
 
-\input{tex_tables/south_growth_age_samples.tex}
 
 <!-- ======================================================= -->
 <!-- *************    Growth Ages    *********************** --> 
 <!-- ======================================================= -->
 
-
+\input{tex_tables/south_growth_age_samples.tex}
 
 <!-- ======================================================= -->
 <!-- ***********   Model Structure      ******************** --> 
