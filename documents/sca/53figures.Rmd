@@ -34,7 +34,7 @@ label = 'data-plot')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "comp_lendat_bubflt1mkt2_page2.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_bubflt1mkt0_page2.png"), 
 caption = "Length composition data from the commercial dead fleet",
 label = 'com-dead-len-data')
 ```
@@ -50,7 +50,7 @@ label = 'mean-com-dead-len-data')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "comp_lendat_bubflt2mkt2.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_bubflt2mkt0.png"), 
 caption = "Length composition data from the commercial live fleet",
 label = 'com-live-len-data')
 ```
@@ -79,7 +79,7 @@ label = 'rec-cpfv-len-data')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_cpfv.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_CPFV.png"), 
 caption = "Mean length for recreational CPFV fleet with 95 percent confidence intervals",
 label = 'mean-rec-cpfv-len-data')
 ```
@@ -96,7 +96,7 @@ label = 'rec-pr-len-data')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_private.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_Private.png"), 
 caption = "Mean length for recreational PR fleet with 95 percent confidence intervals",
 label = 'mean-rec-pr-len-data')
 ```
@@ -173,7 +173,7 @@ label = 'nwfsc-hkl-len-age')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "comp_lendat_bubflt5mkt0.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_bubflt7mkt0.png"), 
 caption = "Length composition data from the NWFSC Hook and Line survey",
 label = 'hkl-len-data')
 ```
@@ -188,7 +188,7 @@ label = 'mean-hkl-len-data')
 
 
 <!-- ======================================================= -->
-<!-- ***************     ROV           ******************* --> 
+<!-- ***************     ROV             ******************* --> 
 <!-- ======================================================= -->
 
 
@@ -217,6 +217,25 @@ filein = file.path(data_dir, "survey_indices", "rov", "plots", "rov_length_by_ar
 caption = "The distribution of lengths across all years for MPA and Reference area north and south of Point Conception.",
 label = 'rov-len')
 ```
+
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_bubflt6mkt0.png"), 
+caption = "Length composition data from the CDFW ROV survey",
+label = 'rov-len-data')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_CDFW_ROV.png"), 
+caption = "Mean length for the CDFW ROV survey with 95 percent confidence intervals",
+label = 'mean-rov-len-data')
+```
+
 
 
 
@@ -290,6 +309,32 @@ add_figure(
 filein = file.path(data_dir, "biology", "plots", "Length_Weight_All.png"), 
 caption = "Estimated weight-at-length",
 label = 'weight-length')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "ages", "ageing_error", "B0_S3", "Reader_1_vs_Reader_2.png"), 
+caption = "Distribution of double reads between age reader 1 and 2.",
+label = 'age-error-dist')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots",  "numbers5_ageerrorSD.png"), 
+caption = "Ageing imprecision standard deviation of observed age in years.",
+label = 'age-error')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots",  "numbers10_ageerror_matrix_1.png"), 
+caption = "Distribution of observed age at true age for ageing error type 1.",
+label = 'age-error-matrix')
 ```
 
 

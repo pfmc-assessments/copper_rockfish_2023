@@ -33,6 +33,7 @@ spp <- "copper rockfish"
 Spp <- "Copper rockfish"
 hkl <- "NWFSC Hook and Line survey"
 wcgbt <- "NWFSC WCGBT survey"
+area <- "south of Point Conception"
 
 if(file.exists("00mod.Rdata")){
   load("00mod.Rdata")

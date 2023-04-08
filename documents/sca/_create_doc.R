@@ -4,7 +4,7 @@ library(sa4ss)
 library(here)
 
 # Specify the directory for the document
-model_name <- "2.4_dw"
+model_name <- "5.2_crfs_pr_index"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -28,7 +28,10 @@ save(model_dir, bridge_dir, doc_dir, data_dir,
 setwd(file.path(doc_dir, "sca"))
 
 
+#===============================================================================
 # Compile command
+#===============================================================================
+
 if(file.exists("_main.Rmd")){
   file.remove("_main.Rmd")
 }
@@ -39,7 +42,11 @@ bookdown::render_book(
   output_dir = getwd()
 )
 
+
+#==================================================================================================
+# Initial Document Creation
 # Create the needed items to generate the "right" template that would be based on the inputs here:
+#==================================================================================================
 sa4ss::draft(
   authors = c("Chantel R. Wetzel", "Melissa H. Monk", "Julia Coates"),
   species = "copper rockfish",
@@ -50,7 +57,11 @@ sa4ss::draft(
   edit = FALSE
 )
 
-#Create a model Rdata object
+#==================================================================================================
+# Read in a new model
+# Create a model Rdata object and executive summary ES tex files
+#==================================================================================================
+
 sa4ss::read_model(
   mod_loc = model_dir,
   create_plots = FALSE, 

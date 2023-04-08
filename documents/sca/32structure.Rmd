@@ -4,11 +4,33 @@
 ### Model Changes from the Last Assessment 
 
 
+
 ### Modeling Platform and Structure
-General model specifications (e.g., executable version, model structure, definition of fleets and areas)
+
+The assessment was conducted used Stock Synthesis version 3.30.20 developed by Dr. Richard Methot at the NOAA, NWFSC [@methot_stock_2013]. This most recent version was used because it included improvements and corrections to older model versions.  The previous assessment of `r spp` also used Stock Synthesis but an earlier version, 3..30.16; model bridging was performed between both versions of Stock Synthesis and discussed below.  The R package [r4ss](https://github.com/r4ss/r4ss), version 1.38.0, along with R version 4.0.1 were used to investigate and plot model fits. 
+
+### Model Selection and Evaluation
+
+The base assessment model for `r spp` was developed to balance parsimony and realism, and the goal was to estimate a spawning output trajectory for the population of `r spp` off the west coast of the U.S. The model contains many assumptions to achieve parsimony and uses many different sources of data to estimate reality. A series of investigative model runs were done to achieve the final base model.
+
+### Bridging Analysis
+
+The exploration of models began by bridging from the 2021 data-moderate assessment to Stock Synthesis version 3.30.20, which produced the same estimates for spawning biomass and depletion across the time series (Figures \ref{fig:bridge-ssb} and \ref{fig:bridge-depl}). 
+
+### Key Assumptions and Structural Choices
+
+
+### Priors
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'31_model_priors.Rmd')
+read_child(filein)
+```
+
+
+### Data Weighting
+
 
 
 ### Model Parameters
 Describe estimated vs. fixed parameters, priors
-
-### Key Assumptions and Structural Choices

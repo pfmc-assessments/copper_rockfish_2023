@@ -71,10 +71,43 @@ growth_ages <- growth_ages[!is.na(growth_ages$length_cm), ]
 #north 467 493  28
 #south 728 725  59
 
+# Check for outlier ages
+growth_ages$Sex <- growth_ages$sex
+growth_ages$Length_cm <- growth_ages$length_cm
+growth_ages$Age <- growth_ages$age
+
+growth_ages <- nwfscSurvey::est_growth(
+  dir = NULL, 
+  dat = growth_ages, 
+  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10),
+  sdFactor = 3)
+
+remove <- which(growth_ages[,'length_cm'] > growth_ages[,'Lhat_high'] | growth_ages[,'length_cm'] < growth_ages[,'Lhat_low'])
+plot(growth_ages$age, growth_ages$length_cm, type = 'p', col = 1)
+points(growth_ages$age[remove], growth_ages$length_cm[remove], col = 'red', pch = 16)
+
+growth_ages <- growth_ages[-remove, ]
+
 ggplot(growth_ages) + geom_bar(aes(x = age, color = sex)) + facet_grid(area~.)
-ggsave(file = file.path(dir, "plots", "growth_ages_by_area.png"), width = 7, height = 7)
+ggsave(file = file.path(dir,"ages", "formatted_age_files", "plots", "growth_ages_by_area.png"), width = 7, height = 7)
 ggplot(growth_ages) + geom_bar(aes(x = age, color = program)) + facet_grid(area~.)
-ggsave(file = file.path(dir, "plots", "growth_ages_by_area_program.png"), width = 7, height = 7)
+ggsave(file = file.path(dir,"ages", "formatted_age_files", "plots", "growth_ages_by_area_program.png"), width = 7, height = 7)
+
+ggplot(growth_ages[growth_ages$area == "south", ]) + 
+  geom_point(aes(x = age, y = length_cm, color = sex)) + 
+  xlab("Age") + ylab("Length (cm)") + 
+  xlim(c(0, 50)) + ylim(c(0, 60)) + 
+  theme_bw() +
+  scale_color_viridis_d()
+ggsave(file = file.path(dir, "ages", "formatted_age_files", "plots", "south_growth_ages_by_sex.png"), width = 7, height = 7)
+
+ggplot(growth_ages[growth_ages$area == "north", ]) + 
+  geom_point(aes(x = age, y = length_cm, color = sex)) + 
+  xlab("Age") + ylab("Length (cm)") + 
+  xlim(c(0, 50)) + ylim(c(0, 60)) + 
+  theme_bw() +
+  scale_color_viridis_d()
+ggsave(file = file.path(dir, "ages", "formatted_age_files", "plots", "north_growth_ages_by_sex.png"), width = 7, height = 7)
 
 samples <- growth_ages %>%
   group_by(year, area, program) %>%

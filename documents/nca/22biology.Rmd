@@ -1,7 +1,6 @@
 ## Biological Data
 
 ### Natural Mortality
-\
 
 ```{r, echo=FALSE, results='asis'}
 filein = file.path(doc_dir, "shared_text",'2_biology_natural_mortality.Rmd')
@@ -25,9 +24,7 @@ read_child(filein)
 ```
 
 
-
 ### Sex Ratio
-\
 
 ```{r, echo=FALSE, results='asis'}
 filein = file.path(doc_dir, "shared_text",'2_biology_sex_ratio.Rmd')
@@ -36,7 +33,6 @@ read_child(filein)
 
 
 ### Length-Weight Relationship
-\
 
 ```{r, echo=FALSE, results='asis'}
 filein = file.path(doc_dir, "shared_text",'2_biology_weight_length.Rmd')
@@ -44,7 +40,27 @@ read_child(filein)
 ```
 
 
-### Growth (Length-at-Age)
+### Growth (Length-at-Age) {#length-at-age}
 
+Length-at-age was estimated for male and female `r spp` informed by age data from the fisheries, the CCFRP survey, and independent age data collected effort from three programs `area` since 2002: 207 otoliths collected by the NWFSC WCGBT survey, 426 otoliths collected by a research survey conducted by Don Pearson, 74 from a research survey conducted by Abrams, 45 from CDFW special collections, and 210 otoliths collected by a cooperative research survey by the SWFSC and CPFV funded by the Sportfishing Association of California (Table \ref{tab:growth-age-samps}). The ages collected by these three sources were included in the model as a "growth" fleet that was not associated with removals or an index of abundance. 
+
+Sex-specific growth parameters `area` were initially estimated external to the model at the following values:
+
+\begin{centering}
+
+Females $L_{\infty}$ = 48.5 cm; $L_1$ = 9.1 cm; $k$ = 0.174 per year
+
+Males $L_{\infty}$ = 46.8 cm; $L_1$ = 5.3 cm; $k$ = 0.207 per year
+
+\end{centering}
+
+\vspace{0.50cm}
+
+These values were used as starting parameter values within the base model prior to estimating each parameter for male and female `r spp`.
 
 ### Ageing Precision and Bias
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'2_biology_ageing_error.Rmd')
+read_child(filein)
+```

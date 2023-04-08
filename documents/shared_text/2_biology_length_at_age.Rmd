@@ -1,0 +1,28 @@
+
+The estimated growth used in this assessment had females reach marginally larger asymptotic sizes compared to males. Sex-specific growth parameters were estimated at the following values:
+
+\begin{centering}
+
+Females $L_{\infty}$ = `r round(model$MGparmAdj$L_at_Amax_Fem_GP_1[1], 1)` cm; $k$ = `r round(model$MGparmAdj$VonBert_K_Fem_GP_1[1], 3)`
+
+Males $L_{\infty}$ = `r round(model$MGparmAdj$L_at_Amax_Mal_GP_1[1], 1)` cm; $k$ = `r round(model$MGparmAdj$VonBert_K_Mal_GP_1[1], 3)`
+
+\end{centering}
+
+\vspace{0.5cm}
+
+The coefficient of variation (CV) around young and old fish by sex were each estimated within the model with the CV around younger ages being estimated higher relative to the CV around older ages.  
+
+\begin{centering}
+
+Females $CV_{young}$ = `r round(model$MGparmAdj$CV_young_Fem_GP_1[1], 2)`; $CV_{old}$ = `r round(model$MGparmAdj$CV_old_Fem_GP_1[1], 2)`
+
+Males $CV_{young}$ = `r round(model$MGparmAdj$CV_young_Mal_GP_1[1], 2)`; $CV_{old}$ = `r round(model$MGparmAdj$CV_old_Mal_GP_1[1], 2)`
+
+\end{centering}
+
+\vspace{0.5cm}
+
+The length-at-age curve with the CV around length-at-age by sex is shown in Figure \ref{fig:length-at-age}.  
+
+ 

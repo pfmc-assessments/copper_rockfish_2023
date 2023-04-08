@@ -60,3 +60,4 @@ caption = "The weighted relative index of abundance.",
 label = 'rov-index')
 ```
 
+\newpage
