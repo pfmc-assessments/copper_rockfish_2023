@@ -184,7 +184,7 @@ summaries <- cdfwpr %>%
          percentpos = tripsWithTarget/(tripsWithTarget+tripsWOTarget)) 
 View(summaries)
 write.csv(summaries, 
-file.path(getwd(),"forSS","prim1summary.csv"),
+file.path(getwd(),"forSS","percent_pos.csv"),
 row.names=FALSE)
 
 #-------------------------------------------------------------------------------
