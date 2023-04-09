@@ -443,9 +443,9 @@ EDIT IF REMOVE OR RETAIN SPECIFIC YEARS!!!!!!!!!!!!!!!!!!
 
 During model explorations these low sample years appeared to have a disproportionate impact on selectivity estimates and were therefore removed from the base model (see \protect\hyperlink{append_a}{Appendix A} for implied fits to these lengths).
 
-The majority of lengths observed by the commercial fleet landed dead copper rockfish ranged between approximately 25 - 50 cm (Figure \ref{fig:com-len-data}, detailed length compositions by year can be found in the Appendix, Section \ref{length-data}). Notably, in the early years of data prior to 1990 observed few smaller fish compared to later years. The mean length observed by year ranged between approximately 30 - 45 cm (Figure \ref{fig:mean-com-len-data}). The mean observed length since 2010 slowly increase through 2018 with a drop in the mean observed age in the most recent years data.
+The majority of lengths observed by the commercial fleet landed dead copper rockfish ranged between approximately 25 - 50 cm (Figure \ref{fig:com-dead-len-data}, detailed length compositions by year can be found in the Appendix, Section \ref{length-data}). Notably, in the early years of data prior to 1990 observed few smaller fish compared to later years. The mean length observed by year ranged between approximately 30 - 45 cm (Figure \ref{fig:mean-com-dead-len-data}). The mean observed length since 2010 slowly increase through 2018 with a drop in the mean observed age in the most recent years data.
 
-The observed distribution of sizes sampled from the commercial live fish fleet were generally variable prior to 2011 with the length distributions since indicating a smaller range of sizes being landed after 2011 (Figure \ref{fig:com-live-len-data}). The observed mean length of fish landed live also clearly shows a drop in average sizes being landing starting in 2011 (Figure \ref{fig:mean-com-live-len-dat}).
+The observed distribution of sizes sampled from the commercial live fish fleet were generally variable prior to 2011 with the length distributions since indicating a smaller range of sizes being landed after 2011 (Figure \ref{fig:com-live-len-data}). The observed mean length of fish landed live also clearly shows a drop in average sizes being landing starting in 2011 (Figure \ref{fig:mean-com-live-len-data}).
 
 The input sample sizes for all commercial data were calculated based on a combination of trips and fish sampled:
 
@@ -559,7 +559,7 @@ Since 2007, the \gls{s-ccfrp} has monitored several areas in California to evalu
 
 Surveys consist of fishing with hook-and-line gear for 30-45 minutes within randomly chosen 500 by 500 m grid cells within and outside \glspl{mpa}. Prior to 2017, all fish were measured for length and release or descended to depth; since then, some were sampled for otoliths and fin clips.
 
-Appendix Section \ref{#ccfrp-index}
+Appendix Section \ref{ccfrp-index}
 
 \hypertarget{composition-data-2}{%
 \paragraph{Composition Data}\label{composition-data-2}}
@@ -574,24 +574,14 @@ Appendix Section \ref{#ccfrp-index}
 
 The California Department of Fish and Wildlife (CDFW) in collaboration with Marine Applied Research and Exploration (MARE) have been conducting remotely operated vehicle (ROV) surveys along the California coast in Marine Protected Areas (MPAs) and reference sites adjacent to them since 2004 for the purposes of long-term monitoring of changes in size, density (fish/square meter) and length of fish and invertebrate species along the California coast. Surveys of the entire coast have now been undertaken twice, each taking three years to complete, 2014-2016 and again in 2019-2021. The survey conducted multiple 500 meter transects across rocky reef survey sites. Sample sites were selected by first randomly selecting the deepest transect at a given site, then selecting transects on a constant interval into shallower depths. Transects were designed to be oriented parallel to general depth contours, though they were carried out using a fixed bearing that crossed depths in some cases.
 
-The data were explored using a super year approach where the central years, 2015 and 2020, were designated as the super year and the data were split north and south of Point Conception. The effort of the survey were split roughly equally between sites that were within MPAs or areas open to fishing (referred to as ``Reference'') with sampling across most sites (termed ``MPA group'') within each super year. The number of transects and the number of copper rockfish by site and super year are shown in Table \ref{tab:rov-obs}.
+The data were explored using a super year approach where the central years, 2015 and 2020, were designated as the super year and the data were split north and south of Point Conception. The effort of the survey were split roughly equally between sites that were within MPAs or areas open to fishing (referred to as ``Reference'') with sampling across most sites (termed ``MPA group'') within each super year. The number of transects and the number of copper rockfish by site and super year are shown in Table \ref{tab:rov-obs} with the number of observations across all years by location shown in Figure \ref{fig:rov-obs-loc}. The trend in the calculated catch-per-unit-effort based on the data alone was highly variable across sampling locations and by MPA or Reference area (Figure \ref{fig:rov-raw-cpue}).
 
-Figure \ref{fig:rov-obs-loc}
-
-he trend in the calculated catch-per-unit-effort based on the data alone was highly variable across sampling locations and by MPA or Reference area (Figure \ref{fig:rov-raw-cpue}).
-
-CDFW provided an initial analysis of the CDFW ROV survey data which helped form the considered modeling approaches for these data.
-
-The STAT explored alternative model structures to generate a standardized index of relative abundance for this survey. The final model selected was a model
-
-Details regarding the index of abundance, sample sizes and model selection can be found in the Appendix Section \ref{cdfw-rov-index}.
+CDFW provided an initial analysis of the CDFW ROV survey data which helped form the considered modeling approaches for these data. The final selected model was assumed a negative binomial error structure with covariates for super year, site designation (MPA or Reference), and super year site designation interaction. The estimated index of abundance based on the proportion of hard substrate either in MPA (20 percent) or Reference (80 percent) areas in California \texttt{r}area`. The weighted index of abundance increases between the two super years 2015 and 2020 (Figure \ref{fig:rov-index-main}). Details regarding the index of abundance, sample sizes, and model selection can be found in the Appendix Section \ref{cdfw-rov-index}.
 
 \hypertarget{composition-data-3}{%
 \paragraph{Composition Data}\label{composition-data-3}}
 
-Length measurement were made from images taken with stereo-cameras by the CDFW ROV survey in 2016, 2019, 2020, and 2021.
-
-Figure \ref{fig:rov-len}
+CDFW provided annual fish length measurement made from images taken with stereo-cameras in 2016, 2019, 2020, and 2021 (Figure \ref{fig:rov-len}). The corresponding length data were weighted by MPA/Reference area and were grouped by super year (Figure \ref{fig:rov-len-data}). The input sample size was set equal to the weighted number of unique transects \texttt{r}area`.
 
 \hypertarget{additional-considered-data-sources}{%
 \subsection{Additional Considered Data Sources}\label{additional-considered-data-sources}}
@@ -647,15 +637,15 @@ The length-weight relationship for copper rockfish was estimated outside the mod
 \hypertarget{length-at-age}{%
 \subsubsection{Growth (Length-at-Age)}\label{length-at-age}}
 
-Length-at-age was estimated for male and female copper rockfish informed by age data from the fisheries, the CCFRP survey, and independent age data collected effort from three programs \texttt{area} since 2002: 207 otoliths collected by the NWFSC WCGBT survey, 427 otoliths collected by a research survey conducted by Don Pearson, 77 from a research survey conducted by Abrams, and 210 otoliths collected by a cooperative research survey by the SWFSC and CPFV funded by the Sportfishing Association of California (Table \ref{tab:growth-age-samps}). The ages collected by these three sources were included in the model as a ``growth'' fleet that was not associated with removals or an index of abundance.
+Length-at-age was estimated for male and female copper rockfish informed by age data from the fisheries, the CCFRP survey, and independent age data collected effort from three programs \texttt{area} since 2002: 207 otoliths collected by the NWFSC WCGBT survey, 426 otoliths collected by a research survey conducted by Don Pearson, 74 from a research survey conducted by Abrams, 45 from CDFW special collections, and 210 otoliths collected by a cooperative research survey by the SWFSC and CPFV funded by the Sportfishing Association of California (Table \ref{tab:growth-age-samps}). The ages collected by these three sources were included in the model as a ``growth'' fleet that was not associated with removals or an index of abundance.
 
 Sex-specific growth parameters \texttt{area} were initially estimated external to the model at the following values:
 
 \begin{centering}
 
-Females $L_{\infty}$ = 48.5; $L1$ = 9.1 cm; $k$ = 0.072 per year
+Females $L_{\infty}$ = 48.5 cm; $L_1$ = 9.1 cm; $k$ = 0.174 per year
 
-Males $L_{\infty}$ = 46.8 cm; $L1$ = 5.3 cm; $k$ = 0.207 per year
+Males $L_{\infty}$ = 46.8 cm; $L_1$ = 5.3 cm; $k$ = 0.207 per year
 
 \end{centering}
 
@@ -1025,6 +1015,8 @@ Year & Commercial (Dead) & Commercial (Live) & Rec. CPFV & Rec. PR & Total Landi
 
 \include{tex_tables/rec_north_sample_size_by_program.tex}
 
+\include{tex_tables/north_growth_age_samples.tex}
+
 \begingroup\fontsize{9}{11}\selectfont
 
 \begin{landscape}\begingroup\fontsize{9}{11}\selectfont
@@ -1298,8 +1290,14 @@ Size DblN end logit Commercial dead(1) BLK1repl 1916 & 10.000 & -4 & (-10, 10) &
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/south_raw_cpue_by_mpa_group.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/north_raw_cpue_by_mpa_group.png}
 \caption{The trend of the calculated CPUE by each MPA and Reference group.\label{fig:rov-raw-cpue}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png}
+\caption{The estimated weighted relative index of abundance.\label{fig:rov-index-main}}
 \end{figure}
 
 \begin{figure}
@@ -1484,11 +1482,15 @@ The California Department of Fish and Wildlife (CDFW) in collaboration with Mari
 
 Given that each pass of the California coast took a three year period, the STAT opted to explore using the data with super years. The selected super years were 2015 and 2020. Given the life history of copper rockfish an the limited movement of adult copper rockfish especially given the range of the survey area each year, the super year application was deemed reasonable in order to consider these data within the model. Minimal filtering were done to the data. Transects were removed based on four factors: 1) extreme estimates of effort (the estimated area of view below the ROV termed usable area), 2) any locations that were not sampled by both super year periods, 3) transect that were conducted across MPA and reference areas, and 4) transect conducted across depths that never observed copper rockfish within the survey (Table \ref{tab:rov-filtered}). Once the data were filtered the average calculated CPUE for each MPA and Reference groups were plotted to visualize the data (Table \ref{tab:rov-obs} and Figure \ref{fig:rov-raw-cpue}).
 
-A range of alternative model structures were explored to generate an index of abundances including alternative error structures, covariates, and factors were considered when exploring how best to model these data. Based on model selection a model with super year, site designation (MPA or Reference), and super year site designation interaction was selected (Table \ref{tab:rov-model-selection}). A delta-lognormal model was selected based on the distribution of the data and diagnostics (Figure \ref{fig:rov-qq}) using sdmTMB (Anderson et al. 2022). The model estimates were then area-weighted based on the estimated percent of habitat within MPAs. An estimate of 8\% of rocky habitat within MPAs south of Point Conception and 92\% open to fishing were provided by John Budrick (CDFW). The estimated relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
+A range of alternative model structures were explored to generate an index of abundances including alternative error structures, covariates, and factors were considered when exploring how best to model these data. Based on model selection a model with super year, site designation (MPA or Reference), and super year site designation interaction was selected (Table \ref{tab:rov-model-selection}). A negative-binomial model was selected based on the distribution of the data and diagnostics (Figures \ref{fig:rov-qq} and \ref{fig:rov-prop-zero}) using sdmTMB (Anderson et al. 2022). The model estimates were then area-weighted based on the estimated percent of habitat within MPAs based on habitat mapping. An estimate of 20\% of rocky habitat within MPAs north of Point Conception and 80\% open to fishing were provided by John Budrick (CDFW). The estimated relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
 
 \newpage
 
 \input{tex_tables/rov_removed_records_north.tex}
+
+\newpage
+
+\input{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
 
 \newpage
 
@@ -1518,7 +1520,7 @@ Designation & Depth.Polynomial & Prop..Hard & Prop..Mixed & Prop..Soft & Super.Y
 + & + & N.A. & 0.46 & 0.02 & + & + & + & 9 & -1256.3 & 2530.7 & 2.10\\
 + & + & -0.02 & 0.44 & N.A. & + & + & + & 9 & -1256.3 & 2530.7 & 2.10\\
 + & + & -0.46 & N.A. & -0.44 & + & + & + & 9 & -1256.3 & 2530.7 & 2.10\\
-+ & + & 12390456.41 & 12390456.86 & 12390456.42 & + & + & + & 10 & -1256.3 & 2532.8 & 4.13\\
++ & + & 1.2E+07 & 1.2E+07 & 1.2E+07 & + & + & + & 10 & -1256.3 & 2532.8 & 4.13\\
 + & + & N.A. & 0.49 & N.A. & + & NA & + & 7 & -1260.4 & 2535.0 & 6.34\\
 + & + & N.A. & N.A. & N.A. & + & NA & + & 6 & -1261.6 & 2535.2 & 6.60\\
 + & + & -0.23 & N.A. & N.A. & + & NA & + & 7 & -1261.1 & 2536.3 & 7.71\\
@@ -1526,7 +1528,7 @@ Designation & Depth.Polynomial & Prop..Hard & Prop..Mixed & Prop..Soft & Super.Y
 + & + & -0.09 & 0.44 & N.A. & + & NA & + & 8 & -1260.4 & 2536.9 & 8.25\\
 + & + & -0.53 & N.A. & -0.44 & + & NA & + & 8 & -1260.4 & 2536.9 & 8.25\\
 + & + & N.A. & N.A. & -0.05 & + & NA & + & 7 & -1261.5 & 2537.2 & 8.60\\
-+ & + & 7762678.03 & 7762678.56 & 7762678.12 & + & NA & + & 9 & -1260.4 & 2538.9 & 10.29\\
++ & + & 7.8E+06 & 7.8E+06 & 7.8E+06 & + & NA & + & 9 & -1260.4 & 2538.9 & 10.29\\
 + & NA & -0.43 & N.A. & N.A. & + & + & + & 6 & -1271.3 & 2554.8 & 26.12\\
 + & NA & N.A. & 0.62 & 0.37 & + & + & + & 7 & -1271.1 & 2556.3 & 27.66\\
 + & NA & -0.37 & 0.24 & N.A. & + & + & + & 7 & -1271.1 & 2556.3 & 27.66\\
@@ -1534,7 +1536,7 @@ Designation & Depth.Polynomial & Prop..Hard & Prop..Mixed & Prop..Soft & Super.Y
 + & NA & N.A. & N.A. & N.A. & + & + & + & 5 & -1273.2 & 2556.5 & 27.82\\
 + & NA & N.A. & 0.42 & N.A. & + & + & + & 6 & -1272.3 & 2556.8 & 28.15\\
 + & NA & N.A. & N.A. & 0.22 & + & + & + & 6 & -1272.7 & 2557.5 & 28.83\\
-+ & NA & 14425294.28 & 14425294.89 & 14425294.65 & + & + & + & 8 & -1271.1 & 2558.3 & 29.67\\
++ & NA & 1.4E+07 & 1.4E+07 & 1.4E+07 & + & + & + & 8 & -1271.1 & 2558.3 & 29.67\\
 + & NA & -0.5 & N.A. & N.A. & + & NA & + & 5 & -1275.6 & 2561.2 & 32.62\\
 + & NA & N.A. & 0.69 & 0.44 & + & NA & + & 6 & -1275.3 & 2562.7 & 34.11\\
 + & NA & -0.44 & 0.25 & N.A. & + & NA & + & 6 & -1275.3 & 2562.7 & 34.11\\
@@ -1542,7 +1544,7 @@ Designation & Depth.Polynomial & Prop..Hard & Prop..Mixed & Prop..Soft & Super.Y
 + & NA & N.A. & 0.46 & N.A. & + & NA & + & 5 & -1277.0 & 2564.1 & 35.47\\
 + & NA & N.A. & N.A. & N.A. & + & NA & + & 4 & -1278.1 & 2564.2 & 35.52\\
 + & NA & N.A. & N.A. & 0.27 & + & NA & + & 5 & -1277.3 & 2564.7 & 36.07\\
-+ & NA & 10396430.27 & 10396430.95 & 10396430.7 & + & NA & + & 7 & -1275.3 & 2564.8 & 36.13\\*
++ & NA & 1.0E+07 & 1.0E+07 & 1.0E+07 & + & NA & + & 7 & -1275.3 & 2564.8 & 36.13\\*
 \end{longtable}
 \endgroup{}
 \end{landscape}
@@ -1568,8 +1570,8 @@ Year & Estimate & logSE\\
 \endfoot
 \bottomrule
 \endlastfoot
-2015 & 0.0248909 & 0.1359515\\
-2020 & 0.0384396 & 0.0775755\\*
+2015 & 0.0258229 & 0.1191350\\
+2020 & 0.0428021 & 0.0701096\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -1578,7 +1580,7 @@ Year & Estimate & logSE\\
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/delta_lognormal_north_designation_depth/qq.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/qq.png}
 \caption{QQ-plot for the ROV survey.\label{fig:rov-qq}}
 \end{figure}
 
@@ -1586,7 +1588,15 @@ Year & Estimate & logSE\\
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/delta_lognormal_north_designation_depth/Index.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/proportion_zero.png}
+\caption{Predicted zeros based on the data and replicates from a Stan model.\label{fig:rov-prop-zero}}
+\end{figure}
+
+\newpage
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png}
 \caption{The weighted relative index of abundance.\label{fig:rov-index}}
 \end{figure}
 \end{document}

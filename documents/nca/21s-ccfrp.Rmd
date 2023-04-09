@@ -8,6 +8,6 @@ Fish are collected by volunteer anglers aboard \glspl{cpfv} guided by one of the
 
 Surveys consist of fishing with hook-and-line gear for 30-45 minutes within randomly chosen 500 by 500 m grid cells within and outside \glspl{mpa}. Prior to 2017, all fish were measured for length and release or descended to depth; since then, some were sampled for otoliths and fin clips.
 
-Appendix Section \ref{#ccfrp-index}
+Appendix Section \ref{ccfrp-index}
 
 #### Composition Data
