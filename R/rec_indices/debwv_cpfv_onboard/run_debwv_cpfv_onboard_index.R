@@ -20,7 +20,8 @@ library(tidybayes)
 library(gridExtra)
 library(fitdistrplus)
 library(MuMIn)
-
+library(here)
+library(glue)
 #species and area identifiers - eventually put in function
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
@@ -31,166 +32,184 @@ indexName <-  "debwv_cpfv_onboard"
 dir <- file.path(here(),"data","rec_indices", indexName)
 setwd(dir)
 
-# create output directory
-out.dir <- getwd()
-plots.dir <- glue(getwd(),"/plots")
 
 load('COPP_filtered_data.RData')
-source(file.path(here(), "R","rec_indices","Delta_bayes_functions.R"))
+r_code_location <- "C:/Users/melissa.monk/Documents/Github/copper_rockfish_2023/R"
+source(file.path(bayes_function, "rec_indices","Delta_bayes_functions.R"))
 #-------------------------------------------------------------------------------
-covars <- c("YEAR", "MegaReef", "WAVE", "DEPTH_bin")
+covars <- c("year", "reef", "wave", "depth")
 #rename effort and catch columns
   dat <- dat %>%
     rename(Effort = ANGHRS) %>%
-    rename(Target = KEPT) %>%
-    mutate(SubRegion = MegaReef) %>%
+    rename(Target = KEPT,
+           year = YEAR,
+           wave = WAVE,
+           depth = DEPTH_bin,
+           cpue = CPUE) %>%
+    mutate(reef = MegaReef) %>%
     mutate(logEffort = log(Effort)) %>%
   mutate_at(covars, as.factor)
 
 
 #-------------------------------------------------------------------------------
 # What's the percent positive in the raw data
-Percent_pos <- as.data.frame(round(with(subset(dat, Target > 0), table(YEAR)) /
-  with(dat, table(YEAR)), 2))
+Percent_pos <- as.data.frame(round(with(subset(dat, Target > 0), table(year)) /
+  with(dat, table(year)), 2))
 Percent_pos
+
+#CPUE plot by reef 
+ggplot(dat %>% group_by(reef, year) %>% summarise(average_cpue = mean(cpue)), 
+       aes(x = year, y = average_cpue, colour = reef, group = reef)) +
+  geom_line()+
+  geom_point(size = 3)  + theme_bw() +
+  geom_line(aes(x = year, y = average_cpue, 
+                colour = reef)) +
+  xlab("Year") + ylab("Average CPUE") + ylim(c(0, .4)) + 
+  scale_color_viridis_d()
+ggsave(file = file.path(getwd(),modelArea, "average_cpue_by_reef.png"), width = 7, height = 7)
+
+
+
+summary(dat$wave)
+summary(dat$year)
+summary(dat$reef)
+summary(dat$depth)
 
 
 #Model selection
 #full model
 model.full <- MASS::glm.nb(
-  Target ~ YEAR + WAVE + MegaReef + DEPTH_bin + offset(logEffort),
+  Target ~ year + wave + reef + depth + offset(logEffort),
   data = dat,
   na.action = "na.fail")
 summary(model.full)
 anova(model.full)
 
-aa <- ggpredict(model.full, terms = "YEAR", back.transform = TRUE)
+aa <- ggpredict(model.full, terms = "year", back.transform = TRUE)
 
 #MuMIn will fit all models and then rank them by AICc
 model.suite <- MuMIn::dredge(model.full,
                              rank = "AICc", 
-                             fixed= c("offset(logEffort)", "YEAR"))
+                             fixed= c("offset(logEffort)", "year"))
 
 #Create model selection dataframe for the document
-Model_selection <- as.data.frame(model.suite)
+Model_selection <- as.data.frame(model.suite) %>%
+  dplyr::select(-weight)
 Model_selection
-#pull out the best model
-best.model <- get.models(model.suite,subset = delta == 0)
-#have to change manually
-best.formula <- best.model$`8`$call$formula
+
 
 #-------------------------------------------------------------------------------
 # Negative binomial
 ### Negative binomial model
 ## Fit the main effects model in STAN and save workspace
-  start.time <- Sys.time()
-  
-  # use STAN to see how well 'best model' fits the data
-  Dnbin <- stan_glm.nb(
-    Target ~ YEAR + WAVE + MegaReef + DEPTH_bin ,
-  offset = dat$logEffort,
-  data = dat,
-#  prior_intercept = normal(location = 0, scale = 10),
-#  prior = normal(location = 0, scale = 10),
-#  prior_aux = cauchy(0, 5),
-  chains = 4,
-  iter = 5000
-  ) # iterations per chain
-  Sys.time() - start.time
-
-  # nb Model checks
-  # Create index
-  yearvar <- "year"
-  yrvec <- as.numeric(levels(droplevels(dat$YEAR))) # years
-  yrvecin <- as.numeric(levels(droplevels(dat$YEAR))) # years
-
-  # Create index
-  ppnb <- posterior_predict(Dnbin, draws = 1000)
-  inb <- plotindex_bayes(Dnbin, yrvec,
-    backtrans = "exp", standardize = F,
-    title = "negative binomial"
-  )
-
-
-  nbin.draws <- as.data.frame(Dnbin)
-  nbin.yrs <- cbind.data.frame(nbin.draws[, 1], nbin.draws[, 1] + nbin.draws[, 2:length(yrvec)])
-  colnames(nbin.yrs)[1] <- paste0(yearvar, yrvec[1])
-  index.draws <- exp(nbin.yrs)
-
-
-  # calculate the index and sd
-  # logSD goes into the model
-  Index <- apply(index.draws, 2, mean) # mean(x)
-  SDIndex <- apply(index.draws, 2, sd) # sd(x)
-  int95 <- apply(index.draws, 2, quantile, probs = c(0.025, 0.975))
-  outdf <- cbind.data.frame(Year = yrvec, Index, SDIndex, t(int95))
-  # index draws already backtransformed
-  outdf$logIndex <- log(outdf$Index)
-  outdf$logmean <- apply(index.draws, 2, function(x) {
-    mean(log(x))
-  })
-  outdf$logSD <- apply(index.draws, 2, function(x) {
-    sd(log(x))
-  })
-
-  # add raw standardized index to outdf
-  raw.cpue.year <- dat %>%
-    group_by(YEAR) %>%
-    summarise(avg_cpue = mean(CPUE)) %>%
-    mutate(std.raw.cpue = avg_cpue / mean(avg_cpue))
-
-  outdf$stdzd.raw.cpue <- raw.cpue.year$std.raw.cpue
-  outdf$stdzd.Index <- outdf$Index / mean(outdf$Index)
-  # write csv
-  save(outdf, file = file.path(out.dir,"negativebinomial_Index.RData"))
-
-  ## pp_check
-  prop_zero <- function(y) mean(y == 0)
-  # figure of proportion zero
-  figure_Dnbin_prop_zero <- pp_check(Dnbin, plotfun = "stat", stat = "prop_zero", binwidth = 0.01)
-  figure_Dnbin_prop_zero
-
-  ppc_stat_grouped(dat$Target, ppnb, group = dat$YEAR, stat = "prop_zero")
-  ggsave(paste0(plots.dir, "prop_zero_by_year.png"))
-  
-  # figure of mean and sd from model
-  pp_check(Dnbin, plotfun = "stat_2d", stat = c("mean", "sd"))
-  ggsave(paste0(plots.dir, "/negbin_pp_stat_mean_sd.png"))
-
-  # boxplot of the posterior draws (light blue) compared to data (in dark blue)
-  pp_check(Dnbin, plotfun = "boxplot", nreps = 10, notch = FALSE) +
-    ggtitle("negative binomial model")
-
-  # plot of mean and sd together  from posterior predictive
-  ppc_stat_2d(y = dat$Target, yrep = ppnb, stat = c("mean", "sd")) + ggtitle("Negative Binomial")
-
-
-  # find max mean and sd for plotting by year
-  max_mean1 <- dat %>%
-    group_by(YEAR) %>%
-    summarise(max_mean = mean(CPUE))
-  max_mean <- max(max_mean1$max_mean)
-  max_sd1 <- dat %>%
-    group_by(YEAR) %>%
-    summarise(max_sd = max(sd(CPUE)))
-  max_sd <- max(max_sd1$max_sd)
-  figure.ppc.mean.by.year <- ppc_stat_grouped(
-    y = dat$Target, yrep = ppnb,
-    group = dat$YEAR, binwidth = 1
-  ) +
-    ggtitle("Negative Binomial") +
-    coord_cartesian(xlim = c(0, max_mean * 1.8))
-  ggsave(paste0(plots.dir, "/negbin_pp_stat_mean_grouped.png"))
-
-  figure.ppc.sd.by.year <- ppc_stat_grouped(
-    y = dat$Target, yrep = ppnb,
-    group = dat$YEAR, stat = "sd",
-    binwidth = 1
-  ) +
-    coord_cartesian(xlim = c(0, max_sd * 1.8))
-  ggtitle("negative binomial")
-  ggsave(paste0(plots.dir, "/negbin_pp_stat_sd_grouped.png"))
-
+#   start.time <- Sys.time()
+#   
+#   # use STAN to see how well 'best model' fits the data
+#   Dnbin <- stan_glm.nb(
+#     Target ~ year + wave + reef + depth ,
+#   offset = dat$logEffort,
+#   data = dat,
+# #  prior_intercept = normal(location = 0, scale = 10),
+# #  prior = normal(location = 0, scale = 10),
+# #  prior_aux = cauchy(0, 5),
+#   chains = 4,
+#   iter = 5000
+#   ) # iterations per chain
+#   Sys.time() - start.time
+# save(Dnbin, file = file.path(getwd(),"Dnbin.Rdata"))
+#   # nb Model checks
+#   # Create index
+#   yearvar <- "year"
+#   yrvec <- as.numeric(levels(droplevels(dat$year))) # years
+#   yrvecin <- as.numeric(levels(droplevels(dat$year))) # years
+# 
+#   # Create index
+#   ppnb <- posterior_predict(Dnbin, draws = 1000)
+#   inb <- plotindex_bayes(Dnbin, yrvec,
+#     backtrans = "exp", standardize = F,
+#     title = "negative binomial"
+#   )
+# 
+# 
+#   nbin.draws <- as.data.frame(Dnbin)
+#   nbin.yrs <- cbind.data.frame(nbin.draws[, 1], nbin.draws[, 1] + nbin.draws[, 2:length(yrvec)])
+#   colnames(nbin.yrs)[1] <- paste0(yearvar, yrvec[1])
+#   index.draws <- exp(nbin.yrs)
+# 
+# 
+#   # calculate the index and sd
+#   # logSD goes into the model
+#   Index <- apply(index.draws, 2, mean) # mean(x)
+#   SDIndex <- apply(index.draws, 2, sd) # sd(x)
+#   int95 <- apply(index.draws, 2, quantile, probs = c(0.025, 0.975))
+#   outdf <- cbind.data.frame(year = yrvec, Index, SDIndex, t(int95))
+#   # index draws already backtransformed
+#   outdf$logIndex <- log(outdf$Index)
+#   outdf$logmean <- apply(index.draws, 2, function(x) {
+#     mean(log(x))
+#   })
+#   outdf$logSD <- apply(index.draws, 2, function(x) {
+#     sd(log(x))
+#   })
+# 
+#   # add raw standardized index to outdf
+#   raw.cpue.year <- dat %>%
+#     group_by(year) %>%
+#     summarise(avg_cpue = mean(CPUE)) %>%
+#     mutate(std.raw.cpue = avg_cpue / mean(avg_cpue))
+# 
+#   outdf$stdzd.raw.cpue <- raw.cpue.year$std.raw.cpue
+#   outdf$stdzd.Index <- outdf$Index / mean(outdf$Index)
+#   # write csv
+#   save(outdf, file = file.path(out.dir,"negativebinomial_Index.RData"))
+# 
+#   ## pp_check
+#   prop_zero <- function(y) mean(y == 0)
+#   # figure of proportion zero
+#   figure_Dnbin_prop_zero <- pp_check(Dnbin, plotfun = "stat", stat = "prop_zero", binwidth = 0.01)
+#   figure_Dnbin_prop_zero
+# 
+#   ppc_stat_grouped(dat$Target, ppnb, group = dat$year, stat = "prop_zero")
+#   ggsave(paste0(plots.dir, "prop_zero_by_year.png"))
+#   
+#   # figure of mean and sd from model
+#   pp_check(Dnbin, plotfun = "stat_2d", stat = c("mean", "sd"))
+#   ggsave(paste0(plots.dir, "/negbin_pp_stat_mean_sd.png"))
+# 
+#   # boxplot of the posterior draws (light blue) compared to data (in dark blue)
+#   pp_check(Dnbin, plotfun = "boxplot", nreps = 10, notch = FALSE) +
+#     ggtitle("negative binomial model")
+# 
+#   # plot of mean and sd together  from posterior predictive
+#   ppc_stat_2d(y = dat$Target, yrep = ppnb, stat = c("mean", "sd")) + ggtitle("Negative Binomial")
+# 
+# 
+#   # find max mean and sd for plotting by year
+#   max_mean1 <- dat %>%
+#     group_by(year) %>%
+#     summarise(max_mean = mean(CPUE))
+#   max_mean <- max(max_mean1$max_mean)
+#   max_sd1 <- dat %>%
+#     group_by(year) %>%
+#     summarise(max_sd = max(sd(CPUE)))
+#   max_sd <- max(max_sd1$max_sd)
+#   figure.ppc.mean.by.year <- ppc_stat_grouped(
+#     y = dat$Target, yrep = ppnb,
+#     group = dat$year, binwidth = 1
+#   ) +
+#     ggtitle("Negative Binomial") +
+#     coord_cartesian(xlim = c(0, max_mean * 1.8))
+#   ggsave(paste0(plots.dir, "/negbin_pp_stat_mean_grouped.png"))
+# 
+#   figure.ppc.sd.by.year <- ppc_stat_grouped(
+#     y = dat$Target, yrep = ppnb,
+#     group = dat$year, stat = "sd",
+#     binwidth = 1
+#   ) +
+#     coord_cartesian(xlim = c(0, max_sd * 1.8))
+#   ggtitle("negative binomial")
+#   ggsave(paste0(plots.dir, "/negbin_pp_stat_sd_grouped.png"))
+# 
   
 #-------------------------------------------------------------------------------
 #Also run as sdmtmb - looks very different - yikes!
@@ -199,33 +218,87 @@ best.formula <- best.model$`8`$call$formula
   library(sdmTMBextra)
 
   grid <- expand.grid(
-    YEAR = unique(dat$YEAR),
-    WAVE = levels(dat$WAVE)[1], 
-    MegaReef = levels(dat$MegaReef)[1],
-    DEPTH_bin = levels(dat$DEPTH_bin)[1],
-    logEffort = log(1.54)
+    year = unique(dat$year),
+    wave = levels(dat$wave)[1], 
+    reef = levels(dat$reef)[1],
+    depth = levels(dat$depth)[1]
   )
   
   fit.nb <- sdmTMB(
-    Target ~ YEAR + WAVE + MegaReef + DEPTH_bin,
+    Target ~ year + wave + reef + depth,
     data = dat,
     offset = dat$logEffort,
-    time = "YEAR",
+    time = "year",
     spatial="off",
     spatiotemporal = "off",
     family = nbinom2(link = "log"),
     silent = TRUE,
     do_index = TRUE,
     predict_args = list(newdata = grid, re_form_iid = NA),   
-    index_args = list(area = 1)
-  )
+    index_args = list(area = 1),
+    control = sdmTMBcontrol(newton_loops = 1)) #not entirely sure what this does
   
+  
+#-------------------------------------------------------------------------------
   pred <- predict(fit.nb, return_tmb_object = TRUE, newdata = grid)
-  
   index <- get_index(pred, bias_correct = TRUE)
   index
-
+  
 #-------------------------------------------------------------------------------
-
-save.image(file.path(out.dir, "debwv_cpfv_onboard_index.RData")
+  # Load in some helper functions for processing and plotting the data
+  all <- list.files(file.path(r_code_location, "sdmTMB"))
+  for (a in 1:length(all)) { source(file.path(r_code_location, "sdmTMB", all[a]))}
+  
+  #Get diagnostics and index for SS
+  do_diagnostics(
+    dir = dir, 
+    fit = fit.nb)
+  
+  calc_index(
+    dir = file.path(dir, "forSS"), 
+    fit = fit.nb,
+    grid = grid)
+  
+  #-------------------------------------------------------------------------------
+  #Format data filtering table and the model selection table for document
+  View(dataFilters)
+  dataFilters <- data_filters %>%
+    rowwise() %>%
+    filter(!all(is.na(across((everything()))))) %>%
+    ungroup() %>%
+    rename(`Positive Samples` = Positive_Samples) %>%
+    as.data.frame()
+  
+  write.csv(dataFilters, 
+            file = file.path(dir, "forSS", "data_filters.csv"), 
+            row.names = FALSE)
+  
+  View(Model_selection)
+  #format table for the document
+  out <- Model_selection %>%
+    dplyr::select(-`(Intercept)`) %>%
+    mutate_at(vars(covars,"year","offset(logEffort)"), as.character) %>%
+    mutate(across(c("logLik","AICc","delta"), round, 1)) %>%
+    replace_na(list(depth = "Excluded", wave = "Excluded",
+                    reef = "Excluded")) %>%
+    mutate_at(c(covars,"year","offset(logEffort)"), 
+              funs(stringr::str_replace(.,"\\+","Included"))) %>%
+    rename(`Effort offset` = `offset(logEffort)`, 
+           `log-likelihood` = logLik) %>%
+    rename_with(stringr::str_to_title,-AICc)
+  View(out)
+  write.csv(out, file = file.path(dir, "forSS", "model_selection.csv"), row.names = FALSE)
+  
+  #summary of trips and  percent pos per year
+  summaries <- dat %>%
+    group_by(year) %>%
+    summarise(tripsWithTarget = sum(Target>0),
+              tripsWOTarget = sum(Target==0)) %>%
+    mutate(totalTrips = tripsWithTarget+tripsWOTarget,
+           percentpos = tripsWithTarget/(tripsWithTarget+tripsWOTarget)) 
+  View(summaries)
+  write.csv(summaries, 
+            file.path(getwd(),"forSS","percent_pos.csv"),
+            row.names=FALSE)
+  
 
