@@ -150,7 +150,8 @@ filtered_data_south <- rbind(filtered_data_south,
 
 
 obs_by_des_loc <- aggregate(LineID ~ super_year + mpa_group + designation, rov_north, length)
-remove_n <- which(rov_north$designation == "Reference" & rov_north$mpa_group %in% c("N Farallon Islands", "Piedras Blancas"))
+remove_n <- c(which(rov_north$designation == "Reference" & rov_north$mpa_group %in% c("Piedras Blancas")),
+              which(rov_north$mpa_group %in% c("N Farallon Islands")))
 filtered_data_north <- rbind(filtered_data_north,
  c("Rerence/MPA groups without sampling for both super years", length(remove_n)))
 
@@ -184,7 +185,7 @@ copper_obs <- aggregate(n ~ super_year + mpa_group + designation, rov_north, sum
 transects <- aggregate(LineID ~  super_year + mpa_group + designation, rov_north, length)
 both <- cbind(transects, copper_obs$n)
 colnames(both) <- c("Super Year", "Area",  "Designation", "Transects", "Observations")
-write.csv(both, file = file.path(dir, "forSS", "south_north_obs_designation_mpa_group_super_year.csv"),  row.names = FALSE)
+write.csv(both, file = file.path(dir, "forSS", "north_copper_obs_designation_mpa_group_super_year.csv"),  row.names = FALSE)
 
 south_samples <- rov_south %>%
   group_by(year, mpa_group, designation) %>%
@@ -193,7 +194,16 @@ south_samples <- rov_south %>%
     n = sum(n)
   )
 colnames(south_samples) <- c("Year", "Location", "Designation", "Transect", "Obs.")
-write.csv(south_samples, file = file.path(dir, "forSS", "south_sout_obs_designation_mpa_group_year.csv"),  row.names = FALSE)
+write.csv(south_samples, file = file.path(dir, "forSS", "south_obs_designation_mpa_group_year.csv"),  row.names = FALSE)
+
+transects_by_area <- rov_south %>%
+  group_by(mpa_group, year) %>%
+  reframe(
+    n_mpa = sum(designation == "MPA"),
+    n_ref = sum(designation == "Reference")
+  )
+colnames(transects_by_area) <- c("Location", "Year", "MPA", "Reference")
+write.csv(transects_by_area, file = file.path(dir, "forSS", "south_obs_mpa_group_year.csv"),  row.names = FALSE)
 
 
 #=================================================================================
@@ -386,14 +396,14 @@ grid <- dplyr::left_join(grid, locs) %>%
   dplyr::filter(!is.na(lat + lon))
 grid$year <- grid$super_year
 
-n_open <- round(0.92 * 100, 0)
-n_mpa  <- round(0.08 * 100, 0)
+n_open <- round(0.80 * 100, 0)
+n_mpa  <- round(0.20 * 100, 0)
 
 grid_south <- NULL
-for (a in 1:92){
+for (a in 1:80){
   grid_south <- rbind(grid_south, grid[grid$designation == "Reference", ])
 }
-for(a in 1:8){
+for(a in 1:20){
   grid_south <- rbind(grid_south, grid[grid$designation == "MPA", ])
 }
 
@@ -694,40 +704,6 @@ do_diagnostics(
   fit = north_model,
   plot_resids = FALSE)
 
-name <- "delta_lognormal_north_designation_depth"
-dir.create(file.path(dir, name), showWarnings = FALSE)
-
-data <- rov_north
-data$year <- data$super_year
-data$log_usable_area <- log(data$usable_area)
-
-north_model <- sdmTMB(
-  n ~ poly(depth_scaled, 2) +  as.factor(year)*as.factor(designation), 
-  data = data,
-  offset = log(data$usable_area),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = delta_lognormal()
-)
-
-index <- calc_index(
-  dir = file.path(dir, name), 
-  fit = north_model,
-  grid = grid_north)
-
-do_diagnostics(
-  dir = file.path(dir, name), 
-  fit = north_model,
-  plot_resids = FALSE)
-
-# north STAN Model Run
-mod2 <- MASS::glm.nb(n ~ as.factor(year) + poly(depth_scaled,2) +
-                     as.factor(designation) + as.factor(year):as.factor(designation) +
-                     offset(log_usable_area),
-                     data = data)
-
-
 start.time <- Sys.time()
 # use STAN to see how well 'best model' fits the data
 Dnbin<- stan_glm.nb(n ~ as.factor(year) + as.factor(designation) + poly(depth_scaled,2) + as.factor(year):as.factor(designation),
@@ -806,6 +782,40 @@ ggplot(data = wres, aes(x=year, y=wpmed)) +
 ggsave(file = file.path(dir, name, "north_weighted_stan_index.png"), width = 7, height = 7)
 
 
+
+
+name <- "delta_lognormal_north_designation_depth"
+dir.create(file.path(dir, name), showWarnings = FALSE)
+
+data <- rov_north
+data$year <- data$super_year
+data$log_usable_area <- log(data$usable_area)
+
+north_model <- sdmTMB(
+  n ~ poly(depth_scaled, 2) +  as.factor(year)*as.factor(designation), 
+  data = data,
+  offset = log(data$usable_area),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = delta_lognormal()
+)
+
+index <- calc_index(
+  dir = file.path(dir, name), 
+  fit = north_model,
+  grid = grid_north)
+
+do_diagnostics(
+  dir = file.path(dir, name), 
+  fit = north_model,
+  plot_resids = FALSE)
+
+# north STAN Model Run
+mod2 <- MASS::glm.nb(n ~ as.factor(year) + poly(depth_scaled,2) +
+                     as.factor(designation) + as.factor(year):as.factor(designation) +
+                     offset(log_usable_area),
+                     data = data)
 
 #=================================================================================
 # Analyze the data on a yearly basis
@@ -923,14 +933,14 @@ grid <- dplyr::left_join(grid, locs) %>%
 
 grid$mpa_group_year <- 1
 
-n_open <- round(0.92 * 100, 0)
-n_mpa  <- round(0.08 * 100, 0)
+n_open <- round(0.80 * 100, 0)
+n_mpa  <- round(0.20 * 100, 0)
 
 grid_south <- NULL
-for (a in 1:92){
+for (a in 1:80){
   grid_south <- rbind(grid_south, grid[grid$designation == "Reference", ])
 }
-for(a in 1:8){
+for(a in 1:20){
   grid_south <- rbind(grid_south, grid[grid$designation == "MPA", ])
 }
 
@@ -994,6 +1004,29 @@ do_diagnostics(
   dir = file.path(dir, name), 
   fit = south_model,
   plot_resids = FALSE)
+
+# Check the proportion zero for the negative binomial model
+start.time <- Sys.time()
+# use STAN to see how well 'best model' fits the data
+Dnbin<- stan_glmer.nb(n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation) + (1|mpa_group_year),
+                  data = data,
+                  offset = log(data$usable_area),
+                  prior_intercept = normal(location = 0, scale = 10),
+                  prior = normal(location = 0, scale = 10),
+                  prior_aux = cauchy(0, 5),
+                  chains = 4,
+                  iter = 5000
+) # iterations per chain
+Sys.time() - start.time
+
+## pp_check
+prop_zero <- function(y) mean(y == 0)
+
+# figure of proportion zero - does good job
+figure_Dnbin_prop_zero <- pp_check(Dnbin, plotfun = "stat", stat = "prop_zero", binwidth = 0.01)
+pngfun(wd = file.path(dir, name), file = "proportion_zero.png")
+figure_Dnbin_prop_zero
+dev.off()
 
 #=================================================================================
 # South Model - Delta Lognormal

@@ -124,11 +124,18 @@ label = 'rov-obs-loc')
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "plots", "south_raw_cpue_by_mpa_group.png"), 
+filein = file.path(data_dir, "survey_indices", "rov", "plots", "north_raw_cpue_by_mpa_group.png"), 
 caption = "The trend of the calculated CPUE by each MPA and Reference group.",
 label = 'rov-raw-cpue')
 ```
 
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "rov", "glm_negbin_north_designation_depth", "Index.png"), 
+caption = "The estimated weighted relative index of abundance.",
+label = 'rov-index-main')
+```
 
 
 ```{r, results = 'asis'}
@@ -321,7 +328,7 @@ filein = file.path(model_dir, "plots", "index5_logcpuefit_CDFW_ROV.png"),
 caption = "Fit to log index data on log scale for CDFW ROV. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
 label = 'mrfss-cpfv-index')
 ```
-○
+
 
 ```{r, results = 'asis'}
 add_figure(
@@ -382,7 +389,7 @@ label = 'phase')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "yield2_yield_curve_with_refpoints.png"), 
-caption = "Equilibrium yield curve for the base case model. Values are based on the 2020
-fishery selectivities and with steepness fixed at 0.80",
+caption = "Equilibrium yield curve for the base case model. Values are based on the 2022
+fishery selectivities and with steepness fixed at 0.72",
 label = 'yield')
 ```
