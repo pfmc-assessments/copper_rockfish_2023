@@ -24,7 +24,7 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
 } else {
   # Fill in Melissa's document directory below
-  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
+  user_dir <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
 }
 
 # Load in some helper functions for processing and plotting the data
@@ -388,7 +388,7 @@ name <- "glm_negbin_main_year_drop_swell_re_site"
 dir.create(file.path(index_dir, name), showWarnings = FALSE)
 
 fit <- sdmTMB(
-  n ~ 0 + year + drop + swell_scaled + (1:site_number),
+  n ~ 0 + year + drop + swell_scaled + (1|site_number),
   data = subdata,
   offset = log(subdata$effort),
   time = "year",
@@ -426,7 +426,7 @@ name <- "glm_negbin_main_year_drop_re_site"
 dir.create(file.path(index_dir, name), showWarnings = FALSE)
 
 fit <- sdmTMB(
-  n ~ 0 + year + drop + (1:site_number),
+  n ~ 0 + year + drop + (1|site_number),
   data = subdata,
   offset = log(subdata$effort),
   time = "year",
