@@ -328,7 +328,7 @@ filein = file.path(model_dir, "plots", "index5_logcpuefit_CDFW_ROV.png"),
 caption = "Fit to log index data on log scale for CDFW ROV. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
 label = 'mrfss-cpfv-index')
 ```
-○
+
 
 ```{r, results = 'asis'}
 add_figure(
@@ -389,7 +389,7 @@ label = 'phase')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "yield2_yield_curve_with_refpoints.png"), 
-caption = "Equilibrium yield curve for the base case model. Values are based on the 2020
-fishery selectivities and with steepness fixed at 0.80",
+caption = "Equilibrium yield curve for the base case model. Values are based on the 2022
+fishery selectivities and with steepness fixed at 0.72",
 label = 'yield')
 ```
