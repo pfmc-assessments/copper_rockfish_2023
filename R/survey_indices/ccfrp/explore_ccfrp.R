@@ -12,6 +12,7 @@ library(tidyr)
 library(ggplot2)
 library(RODBC)
 library(here)
+library(readxl)
 
 #species and area identifiers - eventually put in function
 pacfinSpecies <- 'COPP'
@@ -23,6 +24,30 @@ ccfrpSpeciesCode <- "CPR"
 #setwd(glue::glue(here(),"/data/survey_indices/ccfrp/"))
 dir <- file.path("S:/copper_rockfish_2023/data/survey_indices/ccfrp")
 setwd(dir)
+
+#read in the GIS intepretted depths
+gis.start.depth1 <- read_excel("ccfrp_for_arc_Start_copy.xlsx")
+
+gis.start.depth <- gis.start.depth1 %>%
+  dplyr::select(Drift_ID, Depth_2m, Depth90m) %>%
+  mutate_at(vars(Depth_2m), as.numeric) %>%
+  mutate(Depth_2mft = -Depth_2m * 3.281,
+         Depth90mft = -Depth90m * 3.281) %>%
+  rename(gis.start.2mtoft = Depth_2mft,
+         gis.start.90mtoft = Depth90mft) 
+
+gis.end.depth1 <- read_excel("ccfrp_for_arc_End_copy.xlsx") 
+
+gis.end.depth <- gis.end.depth1 %>%
+  dplyr::select(Drift_ID, Depth2m, Depth90m) %>%
+  mutate(Depth2mft = -Depth2m * 3.281,
+         Depth90mft = -Depth90m * 3.281) %>%
+  rename(gis.end.2mtoft = Depth2mft,
+         gis.end.90mtoft = Depth90mft)  
+
+gis.depth <- left_join(gis.start.depth, gis.end.depth) %>%
+  rename(driftID = Drift_ID)
+
 
 #-------------------------------------------------------------------------------
 #Read in data and basic cleanup
@@ -162,7 +187,7 @@ lengths <- catches %>%
          speciesCode == ccfrpSpeciesCode)
 lengths <- inner_join(lengths, drifts_trip_area, by = "driftID")
 #-------------------------------------------------------------------------------
-###look at depth data
+#look at depth data
 summary(dat$startDepthft)
 #NAs for 823 sites
 summary(dat$endDepthft)
@@ -173,6 +198,61 @@ aa <- subset(dat, is.na(startDepthft))
 summary(as.factor(aa$monitoringGroup))
 #mostly humboldt that doesn't have depth
 #cell could be included and accounts for depth likely
+
+
+#merge in the gis depths
+
+dat <- left_join(dat, gis.depth) 
+
+#pull out just the depth info to look at
+all.depths <- dat %>%
+  dplyr::select(driftID, startDepthft, endDepthft, 
+                gis.end.2mtoft, gis.end.90mtoft,
+                gis.start.2mtoft, gis.start.90mtoft) %>%
+  mutate(start.diff = gis.start.2mtoft - startDepthft)
+
+
+summary(all.depths)
+#gis startdpeth  90m only has 82 NAs
+
+ggplot(all.depths, aes(start.diff)) +
+  geom_density()
+
+
+ggplot(all.depths, aes(startDepthft, gis.start.2mtoft))+
+  geom_point(alpha = .5)
+#2m resolution has good agreement with the recorded start depths
+
+need_depths <- dat %>%
+  filter(is.na(startDepthft)) %>%
+  filter(is.na(gis.start.2mtoft))
+#only 18 drifts
+
+#look at the average cell depth for the ones missing depth
+need_depth_cells <- need_depths %>%
+  dplyr::select(gridCellID) %>%
+  unique()
+
+#get the average depth if you want to fill in the last 18
+#better ways to do this probably if you want to
+#I'm dropping the 18 drifts for now
+grid_cell_avg_depth <- dat %>%
+  filter(!is.na(startDepthft)) %>%
+  filter(gridCellID %in% need_depth_cells$gridCellID) %>%
+  group_by(gridCellID) %>%
+  summarise(avg_depth = mean(startDepthft),
+            min_depth = min(startDepthft),
+            max_depth = max(startDepthft),
+            count = n(),
+            avg_gis_depth = mean(gis.start.2mtoft))
+
+#assign depths
+#rules - take recorded depth when possible, if not take the 2m depth
+dat <- dat %>%
+  mutate(depth = ifelse(is.na(startDepthft) & gis.start.2mtoft > 0, gis.start.2mtoft, startDepthft)) %>%
+  filter(!is.na(depth))
+
+
 
 #how many drifts with target species by MPA
 total_effort <- dat %>% group_by(name) %>%
@@ -192,10 +272,10 @@ sites_sampled <- dat %>%
 
 #-------------------------------------------------------------------------------
 #exploratory plots
-ggplot(dat %>% filter(cpue>0), aes(x = startDepthft/6 ,
+ggplot(dat %>% filter(cpue>0), aes(x = depth/6 ,
  y = cpue,fill = name, colour = name)) +
   geom_point(alpha = .5) +
-  xlab("Start depth (fm)") + ylab("CPUE") 
+  xlab("Start depth (fm)") + ylab("CPUE") +
     scale_color_viridis_d()
 ggsave(file = file.path(dir, "plots", "cpue_depth.png"), width = 7, height = 7)
 
@@ -204,30 +284,29 @@ ggplot(dat %>% filter(cpue>0), aes(cpue, fill = name)) +
     scale_color_viridis_d()
 ggsave(file = file.path(dir, "plots", "cpue_name.png"), width = 7, height = 7)
 
-#see how much depth changes within a drift
+#see how much depth changes within a drift when available
 ggplot(dat, aes(x = startDepthft , y = endDepthft, color = name)) +
   geom_point(alpha = .5) +
    xlab("Start depth (ft)") + ylab(" End depth (ft)") +
- 
     scale_color_viridis_d()
 ggsave(file = file.path(dir, "plots", "start_end_depth.png"), width = 7, height = 7)
 
-#absolute differences
-#HSU doesn't record depth
-ggplot(dat %>% mutate(depthdiff = abs(startDepthft-endDepthft)), 
-aes(depthdiff, color = name, fill = name)) +
-  geom_density(alpha = .5) +
-    xlab("Abs. difference in start and end depth") + ylab("Density") +
-    scale_color_viridis_d()
-ggsave(file = file.path(dir, "plots", "depth_range_drift.png"), width = 7, height = 7)
+# #absolute differences
+# #HSU doesn't record depth
+# ggplot(dat %>% mutate(depthdiff = abs(startDepthft-endDepthft)), 
+# aes(depthdiff, color = name, fill = name)) +
+#   geom_density(alpha = .5) +
+#     xlab("Abs. difference in start and end depth") + ylab("Density") +
+#     scale_color_viridis_d()
+# ggsave(file = file.path(dir, "plots", "depth_range_drift.png"), width = 7, height = 7)
 
 
-#anacapa has questionable depths - confirmed these are correct w/Chris Honeyman
-ggplot(dat %>% filter(name=='Anacapa Island'), aes(x = startDepthft , 
-y = cpue, color = name)) +
-  geom_point(alpha = .5) +
-    scale_color_viridis_d()
-ggsave(file = file.path(dir, "plots", "anacapa_depth.png"), width = 7, height = 7)
+# #anacapa has questionable depths - confirmed these are correct w/Chris Honeyman
+# ggplot(dat %>% filter(name=='Anacapa Island'), aes(x = startDepthft , 
+# y = cpue, color = name)) +
+#   geom_point(alpha = .5) +
+#     scale_color_viridis_d()
+# ggsave(file = file.path(dir, "plots", "anacapa_depth.png"), width = 7, height = 7)
 
 #removing
 name.remove = c("SE Farallon Islands", "Trinidad", 
@@ -246,7 +325,7 @@ scale_color_viridis_d(begin = .5, end = .8)
 ggsave(file = file.path(dir, "plots", "cpue_site_name.png"), width = 7, height = 7)
 
 
-ggplot(lengths%>% filter(!name %in% name.remove), aes(lengthcm, fill = site.x)) +
+ggplot(lengths %>% filter(!name %in% name.remove), aes(lengthcm, fill = site.x)) +
   geom_density(alpha = .5) +
   facet_wrap(~name) +
   xlab("Length cm") + ylab("Density") +
@@ -255,7 +334,7 @@ ggsave(file = file.path(dir, "plots", "lengths_by_mpa.png"), width = 7, height =
 
 
 ggplot(dat %>% filter(!name %in% name.remove), 
-aes(x = startDepthft/6, fill = gridCellID, colour=site)) +
+aes(x = depth/6, fill = gridCellID, colour=site)) +
   geom_boxplot(show.legend = FALSE) + #alpha = .5, show.legend = FALSE, adjust = 5) +
   facet_wrap(~name) +
   xlab("Depth (fm)") + ylab("Density") +

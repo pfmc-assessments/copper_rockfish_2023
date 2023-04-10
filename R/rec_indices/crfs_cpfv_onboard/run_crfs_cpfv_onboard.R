@@ -1,10 +1,9 @@
 #########################################################################
-### Run the CDFW PR dockside data to get an index of abundance
+### Run the CDFW CRFS onboard observer index of abundance
 ### Copper assessment 2023
 ### Melissa Monk
 #########################################################################
-# Run the MRFSS cpfv dockside index
-# Melissa Monk June 2021; modified for copper 2023
+# Run the CRFS onboard index
 
 rm(list = ls(all = TRUE))
 graphics.off()
@@ -30,10 +29,13 @@ library(fitdistrplus)
 #species and area identifiers - eventually put in function
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
-modelArea = "north"
-indexName <-  "crfs_pr_dockside"
-covars <- c("month", "district", "year", "targetSpecies", "geara")
-covars <- c("month", "district", "year", "targetSpecies", "district:year")
+modelArea = "south"
+indexName <-  "crfs_cpfv_onboard"
+
+#keep depth as continuous
+covars <- c("month", "region", "year")
+
+
 # Load in some helper functions for processing and plotting the data
 #R path
 github_path <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
@@ -41,7 +43,7 @@ all <- list.files(file.path(github_path, "R", "sdmTMB"))
 for (a in 1:length(all)) { source(file.path(github_path, "R", "sdmTMB", all[a]))}
 # Set working directories
 #set working directory
-dir <- file.path("S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside",modelArea)
+dir <- file.path(here(), "data", "rec_indices", "crfs_cpfv_onboard", modelArea)
 
 #dir <- file.path(here(),"data","rec_indices", indexName, modelArea)
 setwd(dir)
@@ -51,17 +53,24 @@ load("data_for_GLM.RData")
 
 
 #Ensure columns named appropriately and covariates are factors
-dat <- cdfwpr %>%
-rename(Effort = anglers) %>%
-  mutate(logEffort = log(Effort)) %>%
-  mutate_at(covars, as.factor) # make sure covariates are factors
+dat <- onboard %>%
+  mutate(logEffort = log(effort)) %>%
+  mutate_at(covars, as.factor) %>% # make sure covariates are factors
+  mutate(depth_2 = depth^2)
 
+
+if(modelArea == "north"){
+#going to have to combine 4-6
+dat <- dat %>%
+  mutate(region = ifelse(region %in% c(4,5,6), "4_6", "3")) %>%
+  mutate_at(vars(region), as.factor)
+}
 #-------------------------------------------------------------------------------
 #Main effects model
 #Model selection
 #full model
 model.full <- MASS::glm.nb(
-  kept ~ year + district + month + targetSpecies + offset(logEffort),
+  number.fish ~ year + region + month + depth + depth_2 + offset(logEffort),
   data = dat,
   na.action = "na.fail")
 summary(model.full)
@@ -77,17 +86,20 @@ Model_selection <- as.data.frame(model.suite) %>%
 dplyr::select(-weight)
 Model_selection
 
-
+#drop month and depth^2
 if(modelArea=="north"){
+ 
 #set the grid
+  #dropping month - difference in AIC is 7.8
 grid <- expand.grid(
   year = unique(dat$year),
-  district = levels(dat$district)[1],
-  targetSpecies = levels(dat$targetSpecies)[1],
-  month = levels(dat$month)[1])
+  region = levels(dat$region)[1],
+  depth = dat$depth[1],
+  depth_2 = dat$depth_2[1])
+
 
 fit.nb <- sdmTMB(
-  kept ~ year + district + month + targetSpecies,
+  number.fish ~ year + region + poly(depth, 2),
   data = dat,
   offset = dat$logEffort,
   time = "year",
@@ -95,17 +107,20 @@ fit.nb <- sdmTMB(
   spatiotemporal = "off",
   family = nbinom2(link = "log"),
   control = sdmTMBcontrol(newton_loops = 1))
+
 } else {
-  #set the grid
+  
+  #set the grid for the south
   grid <- expand.grid(
     year = unique(dat$year),
-    district = levels(dat$district)[1],
+    region = levels(dat$region)[1],
     month = levels(dat$month)[1],
-    targetSpecies = levels(dat$targetSpecies)[1]
-  )
+    depth = dat$depth[1],
+    depth_2 = dat$depth_2[1])
+    
   
   fit.nb <- sdmTMB(
-   kept ~ year + district + month + targetSpecies,
+    number.fish ~ year + poly(depth, 2) + month + region,
     data = dat,
     offset = dat$logEffort,
     time = "year",
@@ -138,33 +153,34 @@ dataFilters <- dataFilters %>%
 rowwise() %>%
 filter(!all(is.na(across((everything()))))) %>%
 ungroup() %>%
-rename(`Positive Samples` = Positive_Samples) %>%
+  mutate()
+rename(`Positive Samples` = Positive_Samples) %>% 
 as.data.frame()
 
-write.csv(dataFilters, 
-file = file.path(dir, "main_effects", "data_filters.csv"), 
-row.names = FALSE)
+write.csv(dataFilters, file = file.path(dir, "main_effects", "data_filters.csv"), row.names = FALSE)
 
 View(Model_selection)
 #format table for the document
 out <- Model_selection %>%
 dplyr::select(-`(Intercept)`) %>%
-mutate_at(vars(covars,"year","offset(logEffort)"), as.character) %>%
+  mutate(depth = round(depth, 3),
+         depth_2 = round(depth_2), 3) %>%
+  rename(DepthSquared = depth_2,
+         Depth = depth) %>%
+mutate_at(vars(covars,"year","offset(logEffort)" ,"DepthSquared",  "Depth"), as.character) %>%
 mutate(across(c("logLik","AICc","delta"), round, 1)) %>%
-replace_na(list(district = "Excluded", geara = "Excluded",
-          targetSpecies = "Excluded", month = "Excluded")) %>%
-mutate_at(c(covars,"year","offset(logEffort)"), 
+replace_na(list(month = "Excluded", region = "Excluded", Depth = "Excluded" ,DepthSquared = "Excluded")) %>%
+mutate_at(c(covars,"year","offset(logEffort)", "DepthSquared"), 
        funs(stringr::str_replace(.,"\\+","Included"))) %>%
 rename(`Effort offset` = `offset(logEffort)`, 
        `log-likelihood` = logLik,
-        `Primary target species` = targetSpecies,
-       `Primary gear` = geara) %>%
+        `Depth squared` = DepthSquared) %>%
 rename_with(stringr::str_to_title,-AICc)
 View(out)
 write.csv(out, file = file.path(dir, "main_effects", "model_selection.csv"), row.names = FALSE)
 
 #summary of trips and  percent pos per year
-summaries <- cdfwpr %>%
+summaries <- dat %>%
   group_by(year) %>%
   summarise(tripsWithTarget = sum(kept>0),
             tripsWOTarget = sum(kept==0)) %>%
@@ -181,15 +197,16 @@ row.names=FALSE)
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
-
+#sdmTMB - NORTH only
 #fraction of rocky habitat by district in state waters only
 north_district_weights <- data.frame(district = c(3,4,5,6),
                                   area_weight = c(0.3227, 0.321, 0.162, 0.1943))
 
+
 #Model selection
 #full model
 model.full <- MASS::glm.nb(
-  kept ~ year + district + month + targetSpecies + year:district + offset(logEffort),
+  number.fish ~ year + region + depth + depth_2 + year:region + offset(logEffort),
   data = dat,
   na.action = "na.fail")
 summary(model.full)
@@ -208,41 +225,36 @@ Model_selection
 
 # if(modelArea=="north"){
   #set the grid
-  grid <- expand.grid(
-    year = unique(dat$year),
-    district = levels(dat$district),
-    targetSpecies = levels(dat$targetSpecies)[1],
-    month = levels(dat$month)[1])
+grid <- expand.grid(
+  year = unique(dat$year),
+  region = levels(dat$region)[1],
+  depth = dat$depth[1],
+  depth_2 = dat$depth_2[1])
 
  grid$district_year <- 1
 
  district3 <- round(0.32 * 100, 0)
- district4 <- round(0.32 * 100, 0)
- district5 <- round(0.16 * 100, 0)
- district6 <- round(0.20 * 100, 0)
+ district4_6 <- round(0.68 * 100, 0)
+
  
  grid_north <- NULL
  for (a in 1:32){
-   grid_north <- rbind(grid_north, grid[grid$district == 3, ])
+   grid_north <- rbind(grid_north, grid[grid$region == "3", ])
  }
- for (a in 1:32){
-   grid_north <- rbind(grid_north, grid[grid$district == 4, ])
+ for (a in 1:68){
+   grid_north <- rbind(grid_north, grid[grid$region == "4_6", ])
  }
- for (a in 1:16){
-   grid_north <- rbind(grid_north, grid[grid$district == 5, ])
- }
- for (a in 1:20){
-   grid_north <- rbind(grid_north, grid[grid$district == 6, ])
- }
+
   
   fit.nb <- sdmTMB(
-    kept ~ year + district + month + targetSpecies + year:district,
+    kept ~ year + region + poly(depth, 2) + year:region,
     data = dat,
     offset = dat$logEffort,
     time = "year",
     spatial="off",
     spatiotemporal = "off",
-    family = nbinom2(link = "log"))
+    family = nbinom2(link = "log"),
+    control = sdmTMBcontrol(newton_loops = 1))
  
   do_diagnostics(
     dir = file.path(dir, "area_weighted"), 
@@ -304,41 +316,43 @@ View(Model_selection)
 #format table for the document
 out <- Model_selection %>%
   dplyr::select(-`(Intercept)`) %>%
-  mutate_at(vars(covars,"year","offset(logEffort)"), as.character) %>%
+  mutate(depth = round(depth, 3),
+         depth_2 = round(depth_2, 3)) %>%
+  mutate_at(vars("year","offset(logEffort)", "depth", "depth_2", "region", "region:year"), as.character) %>%
   mutate(across(c("logLik","AICc","delta"), round, 1)) %>%
-  replace_na(list(district = "Excluded", `district:year` = "Excluded",
-                  targetSpecies = "Excluded", month = "Excluded")) %>%
-  mutate_at(c(covars,"year","offset(logEffort)"), 
+  replace_na(list(region = "Excluded", `region:year` = "Excluded",
+                  depth = "Excluded", depth_2 = "Excluded")) %>%
+  mutate_at(c("year","offset(logEffort)", "depth", "depth_2", "region", "region:year"), 
             funs(stringr::str_replace(.,"\\+","Included"))) %>%
   rename(`Effort offset` = `offset(logEffort)`, 
          `log-likelihood` = logLik,
-         `Primary target species` = targetSpecies,
-         `Interaction` = `district:year`) %>%
+         `Depth squared` = depth_2,
+         `Interaction` = `region:year`,
+          Depth = depth) %>%
   rename_with(stringr::str_to_title,-AICc)
 View(out)
 write.csv(out, file = file.path(dir, "area_weighted", "model_selection.csv"), 
           row.names = FALSE)
 
-#-------------------------------------------------------------------------------
-#4/4/23 taking way too long to run on Melissa's computer
-#diagnostic of prop zero without the interaction looks good!
-#so I know the negativ binomial fits
-# # Source delta glm plotting functions
-# source(file.path(here(),"R","rec_indices", "Delta_bayes_functions.R"))
-#  # use STAN to see how well 'best model' fits the data
-#   Dnbin <- stan_glm.nb(
-#     kept ~ year + district + month + targetSpecies + year:district,
-#   offset = logEffort,
-#   data = dat,
-#   prior_intercept = normal(location = 0, scale = 10),
-#   prior = normal(location = 0, scale = 10),
-#   prior_aux = cauchy(0, 5),
-#   chains = 4,
-#   iter = 5000) # iterations per chain
-#   Sys.time() - start.time
-#   save(Dnbin, file = "Dnbin.RData")
 
-# load("Dnbin.RData")
+#-------------------------------------------------------------------------------
+#not running on melissa's machine
+# Source delta glm plotting functions
+ # source(file.path(github_path, "R", "rec_indices", "Delta_bayes_functions.R"))
+ #  # use STAN to see how well 'best model' fits the data
+ #  Dnbin <- stan_glm.nb(
+ #     number.fish ~ year + depth + region + year:region,
+ #   offset = logEffort,
+ #   data = dat,
+ #   prior_intercept = normal(location = 0, scale = 10),
+ #   prior = normal(location = 0, scale = 10),
+ #   prior_aux = cauchy(0, 5),
+ #   chains = 4,
+ #   iter = 5000) # iterations per chain
+ #   Sys.time() - start.time
+ #   save(Dnbin, file.path(dir, "area_weighted_bayesian", "Dnbin.RData"))
+ # 
+
 #   # nb Model checks
 #   # Create index
 #   yearvar <- "year"
@@ -392,7 +406,7 @@ write.csv(out, file = file.path(dir, "area_weighted", "model_selection.csv"),
 #   ## pp_check
 #   prop_zero <- function(y) mean(y == 0)
 #   # figure of proportion zero
-#   figure_Dnbin_prop_zero <- pp_check(Dnbin, 
+#   figure_Dnbin_prop_zero <- pp_check(Dnbin,
 #   plotfun = "stat", stat = "prop_zero", binwidth = 0.001)
 #   figure_Dnbin_prop_zero
 #  ggsave(paste0(dir, "/negbin_prop_zero.png"))

@@ -197,7 +197,8 @@ ggsave(paste0(dir, "/Average CPUE by year and site.png"),
 with(dat, table(year, site))
 with(dat, table(year, area))
 
-round(with(subset(dat, Target > 0), table(area, site)) / with(dat, table(area, site)), 2)
+percent_pos <-round(with(subset(dat, Target > 0), table(area, site)) / with(dat, table(area, site)), 2)
+write.csv(percent_pos, file.path(dir, "percent_pos.csv"))
 
 round(with(subset(dat, Target > 0), table(site)) / with(dat, table(site)), 2)
 
