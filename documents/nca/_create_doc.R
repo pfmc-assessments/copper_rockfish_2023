@@ -11,7 +11,7 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
 } else {
   # Fill in Melissa's document directory below
-  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
+  user_dir <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
 }
 # Based on the user
 doc_dir <- file.path(user_dir, "documents")
