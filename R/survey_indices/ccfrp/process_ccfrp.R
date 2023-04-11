@@ -16,7 +16,7 @@ library(here)
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
 ccfrpSpeciesCode <- "CPR"
-modelArea = "north"
+modelArea = "south"
 
 #setwd to the north or the south
 #dir <- file.path(here(),"data","survey_indices","ccfrp")
@@ -206,8 +206,8 @@ round(with(subset(dat, Target > 0), table(site)) / with(dat, table(site)), 2)
 #-------------------------------------------------------------------------------
 #write out length data
 target_lengths <- lengths %>%
-dplyr::select(fishID, driftID, lengthcm,sex,speciesCode,
-monitoringGroup, name, site.x) %>%
+dplyr::select(fishID, driftID, lengthcm, sex, speciesCode, monitoringGroup, name, 
+              site.x, tripID, year, name) %>%
 rename(site = site.x) %>%
 filter(driftID %in% dat$driftID)
 
