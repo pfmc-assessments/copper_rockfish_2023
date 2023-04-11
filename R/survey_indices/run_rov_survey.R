@@ -584,7 +584,6 @@ do_diagnostics(
   fit = south_model,
   plot_resids = FALSE)
 
-
 # alternative approach - add area
 # total_area_km2 <- 200 # dummy number, units should be in whatever your area units are
 # mpa_fraction <- 0.08
@@ -870,6 +869,75 @@ colnames(out) <- c("Designation", "Depth Polynomial", "Prop. Hard", "Prop. Mixed
                    "offset-log(usable area)", "DF", "log-likelihood", "AICc", "Delta")
 write.csv(out, file = file.path(dir, "forSS", "south_model_selection.csv"), row.names = FALSE)
 
+# Delta log-normal model selection
+data_pos = rov_south[rov_south$n > 0, ]
+data_present = rov_south
+data_present$pa <- 0
+data_present$pa[data_present$n > 0] <- 1
+
+b1 <- as.formula(paste("pa", paste(covars, collapse=" + "), sep=" ~ "))
+b2 <- as.formula(paste("pa", paste(covars[c(1, 2, 3, 5, 7, 8)], collapse=" + "), sep=" ~ "))
+b3 <- as.formula(paste("pa", paste(covars[c(1, 3, 5, 7, 8)], collapse=" + "), sep=" ~ "))
+b4 <- as.formula(paste("pa", paste(covars[c(1, 2, 7, 8)], collapse=" + "), sep=" ~ "))
+
+bin.mod1 <- glm(b1, data=data_present,family=binomial)
+summary(bin.mod1)
+anova(bin.mod1, test="Chi")
+bin.mod2 <- glm(b2, data=data_present,family=binomial)
+summary(bin.mod2)
+anova(bin.mod2, test="Chi")
+bin.mod3 <- glm(b3, data=data_present,family=binomial)
+summary(bin.mod3)
+anova(bin.mod3, test="Chi")
+bin.mod4 <- glm(b4, data=data_present,family=binomial)
+summary(bin.mod4)
+anova(bin.mod4, test="Chi")
+binAIC <- AIC(bin.mod1, bin.mod2, bin.mod3, bin.mod4)
+
+logn.full <- tryCatch(glm(as.formula(paste("n", 
+                                           paste(covars[c(1:length(covars))], collapse=" + "), sep=" ~ ")), 
+                          data = data_pos, 
+                          family = gaussian),
+                      error=function(e) NA)
+
+summary(logn.full)
+anova(logn.full, test = "Chisq")
+
+gamma.full <- tryCatch(glm(as.formula(paste("n", 
+                                            paste(covars[c(1:length(covars))], collapse=" + "), sep=" ~ ")), 
+                           data = data_pos, 
+                           family = Gamma(link ="log")),
+                       error=function(e) NA)
+summary(gamma.full)
+anova(gamma.full, test = "Chisq")
+
+logn_or_gamma_aic <- c(logn.full$aic, gamma.full$aic)
+logn_or_gamma_aic
+pos.mod.dist <- ifelse(logn_or_gamma_aic[1]<logn_or_gamma_aic[2],
+                       "Lognormal", "Gamma")
+
+g1 <- as.formula(paste("n", paste(covars, collapse=" + "), sep=" ~ "))
+g2 <- as.formula(paste("n", paste(covars[c(1, 2, 3, 5, 7, 8)], collapse=" + "), sep=" ~ "))
+g3 <- as.formula(paste("n", paste(covars[c(1, 3, 5, 7, 8)], collapse=" + "), sep=" ~ "))
+g4 <- as.formula(paste("n", paste(covars[c(1, 2, 7, 8)], collapse=" + "), sep=" ~ "))
+
+gamma.mod1 <- glm(g1, data = data_pos, family = Gamma(link ="log"))
+anova(gamma.mod1, test = "Chisq")
+gamma.mod2 <- glm(g2, data = data_pos, family = Gamma(link ="log"))
+anova(gamma.mod2, test <- "Chisq")
+gamma.mod3 <- glm(g3, data = data_pos, family = Gamma(link ="log"))
+anova(gamma.mod3, test = "Chisq")
+gamma.mod4 <- glm(g4, data = data_pos, family = Gamma(link ="log"))
+summary(gamma.mod4)
+anova(gamma.mod4, test = "Chisq")
+posAIC <- AIC(gamma.mod1, gamma.mod2, gamma.mod3, gamma.mod4)
+
+Models <- as.data.frame(rbind(b1, b2, b3, b4))
+Model_selection <- as.data.frame(cbind(Models$V3,
+                                       round(binAIC$AIC,4),
+                                       round(posAIC$AIC,4)))
+colnames(Model_selection) <- c('Model', 'Binomial AIC', 'Gamma AIC')
+
 
 # North ==========================================================================
 
@@ -978,6 +1046,34 @@ for(a in 1:2){
 # South Model - Neg. Binomial Model
 #==================================================================================
 
+name <- "glm_negbin_south_designation_year"
+dir.create(file.path(dir, name), showWarnings = FALSE)
+
+data <- rov_south
+data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
+data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
+
+south_model <- sdmTMB(
+  n ~ 0 + as.factor(year) + as.factor(year)*as.factor(designation), # + (1|mpa_group_year), 
+  data = data,
+  offset = log(data$usable_area),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = nbinom2(link = "log"),
+  control = sdmTMBcontrol(newton_loops = 1)
+)
+
+index <- calc_index(
+  dir = file.path(dir, name), 
+  fit = south_model,
+  grid = grid_south)
+
+do_diagnostics(
+  dir = file.path(dir, name), 
+  fit = south_model,
+  plot_resids = FALSE)
+
 name <- "glm_negbin_south_designation_depth_year_soft"
 dir.create(file.path(dir, name), showWarnings = FALSE)
 
@@ -1004,6 +1100,7 @@ do_diagnostics(
   dir = file.path(dir, name), 
   fit = south_model,
   plot_resids = FALSE)
+
 
 # Check the proportion zero for the negative binomial model
 start.time <- Sys.time()
@@ -1047,6 +1144,59 @@ south_model <- sdmTMB(
   spatial="off",
   spatiotemporal = "off",
   family = delta_lognormal()
+)
+
+index <- calc_index(
+  dir = file.path(dir, name), 
+  fit = south_model,
+  grid = grid_south)
+
+do_diagnostics(
+  dir = file.path(dir, name), 
+  fit = south_model,
+  plot_resids = FALSE)
+
+
+name <- "delta_lognormal_south_designation_depth_year_soft_no_re"
+dir.create(file.path(dir, name), showWarnings = FALSE)
+
+data <- rov_south
+
+south_model <- sdmTMB(
+  n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation), 
+  data = data,
+  offset = log(data$usable_area),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = delta_lognormal()
+)
+
+index <- calc_index(
+  dir = file.path(dir, name), 
+  fit = south_model,
+  grid = grid_south)
+
+do_diagnostics(
+  dir = file.path(dir, name), 
+  fit = south_model,
+  plot_resids = FALSE)
+
+name <- "delta_gamma_south_designation_depth_year_soft"
+dir.create(file.path(dir, name), showWarnings = FALSE)
+
+data <- rov_south
+data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
+data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
+
+south_model <- sdmTMB(
+  n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation) + (1|mpa_group_year), 
+  data = data,
+  offset = log(data$usable_area),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = delta_gamma()
 )
 
 index <- calc_index(
