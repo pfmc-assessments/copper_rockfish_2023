@@ -27,7 +27,6 @@ load(file.path(dir, "pearson_ages.rdata"))
 load(file.path(dir, "crfs_ages.rdata"))
 load(file.path(dir, "commercial_ages.rdata"))
 load(file.path(dir, "historical_rec_ages.rdata"))
-load(file.path(dir, "unknown_historical_ages.rdata"))
 
 crfs_ages <- crfs_ages[!is.na(crfs_ages$age), ]
 crfs_non_random <- crfs_ages[crfs_ages$year == 2021, ]
@@ -45,7 +44,6 @@ abrams_ages$program = "Abrams"
 coop_ages$program <- "SWFSC/CPFV Coop."
 cdfw_ages$program <- "CDFW"
 
-
 length_bins <- seq(10, 54, 2)
 age_bins <- 0:50
 
@@ -62,7 +60,6 @@ growth_ages <- rbind(
   coop_ages[, col_names],
   wcgbt[, col_names],
   crfs_non_random [crfs_ages$year == 2021, col_names]
-  #unknown_ages[, col_names] <- Leave these out for now since not sure if they link rec. fleet
 )
 
 growth_ages <- growth_ages[!is.na(growth_ages$length_cm), ]
@@ -164,6 +161,35 @@ write.csv(carcass_north,
           file = file.path(dir, "ages", "forSS", "growth_carcass_caal_north.csv"),
           row.names = FALSE) 
 
+ages <-  UnexpandedAFs.fn(
+  datA = growth_ages[growth_ages$area == "north", ], 
+  ageBins = age_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 1, 
+  month = 7)
+write.csv(ages$sexed, 
+          file = file.path(dir, "ages", "forSS", "growth_age_marginal_sexed_north.csv"),
+          row.names = FALSE)
+write.csv(ages$unsexed, 
+          file = file.path(dir, "ages", "forSS", "growth_age_marginal_unsexed_north.csv"),
+          row.names = FALSE)
+
+ages <-  UnexpandedAFs.fn(
+  datA = growth_ages[growth_ages$area == "south", ], 
+  ageBins = age_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 1, 
+  month = 7)
+write.csv(ages$sexed, 
+          file = file.path(dir, "ages", "forSS", "growth_age_marginal_sexed_south.csv"),
+          row.names = FALSE)
+write.csv(ages$unsexed, 
+          file = file.path(dir, "ages", "forSS", "growth_age_marginal_unsexed_south.csv"),
+          row.names = FALSE)
+
+
 #===============================================================================
 # CCFRP 
 #===============================================================================
@@ -225,7 +251,70 @@ write.csv(pr_north,
 # Historical Recreational Samples
 #===============================================================================
 
+samples <- hist_rec_ages %>%
+  group_by(year, area) %>%
+  reframe(
+    Fleet = "Recreational CPFV",
+    samples = length(age))
+colnames(samples) <- c("Year", "area", "Fleet", "Ages")
+write.csv(samples[samples$area == "north", colnames(samples) != "area"],
+          file =file.path(dir,  "ages", "forSS", "rec_cpfv_north_age_samples.csv"),
+          row.names = FALSE)
+write.csv(samples[samples$area == "south", colnames(samples) != "area"],
+          file =file.path(dir,  "ages", "forSS", "rec_cpfv_south_age_samples.csv"),
+          row.names = FALSE)
 
+rec_north <- get_caal(
+  data = hist_rec_ages[hist_rec_ages$area == "north", ], 
+  len_bins = length_bins, 
+  age_bins = age_bins, 
+  month = 7, 
+  ageing_error = 1,
+  fleet = 3, 
+  partition = 0)
+
+write.csv(rec_north, 
+          file = file.path(dir, "ages", "forSS", "recreational_cpfv_age_caal_north.csv"),
+          row.names = FALSE)  
+
+ages <-  UnexpandedAFs.fn(
+  datA = hist_rec_ages[hist_rec_ages$area == "north", ], 
+  ageBins = age_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 3, 
+  month = 7)
+write.csv(ages$unsexed, 
+          file = file.path(dir, "ages", "forSS", "recreational_cpfv_age_marginal_unsexed_north.csv"),
+          row.names = FALSE)
+write.csv(ages$sexed, 
+          file = file.path(dir, "ages", "forSS", "recreational_cpfv_age_marginal_sexed_north.csv"),
+          row.names = FALSE)
+
+rec_south <- get_caal(
+  data = hist_rec_ages[hist_rec_ages$area == "south", ], 
+  len_bins = length_bins, 
+  age_bins = age_bins, 
+  month = 7, 
+  ageing_error = 1,
+  fleet = 3, 
+  partition = 0)
+
+write.csv(rec_south, 
+          file = file.path(dir, "ages", "forSS", "recreational_cpfv_age_caal_south.csv"),
+          row.names = FALSE) 
+
+
+ages <-  UnexpandedAFs.fn(
+  datA = hist_rec_ages[hist_rec_ages$area == "south", ], 
+  ageBins = age_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 3, 
+  month = 7)
+write.csv(ages$unsexed, 
+          file = file.path(dir, "ages", "forSS", "recreational_cpfv_age_marginal_south.csv"),
+          row.names = FALSE)
 
 #===============================================================================
 # Commercial 
@@ -270,6 +359,28 @@ com_south <- get_caal(
 write.csv(com_south, 
           file = file.path(dir, "ages", "forSS", "commercial_age_caal_south.csv"),
           row.names = FALSE) 
+
+ages <-  UnexpandedAFs.fn(
+  datA = commercial_ages[commercial_ages$area == "south", ], 
+  ageBins = age_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 1, 
+  month = 7)
+write.csv(ages$sexed, 
+          file = file.path(dir, "ages", "forSS", "commercial_daed_age_marginal_sexed_south.csv"),
+          row.names = FALSE)
+
+ages <-  UnexpandedAFs.fn(
+  datA = commercial_ages[commercial_ages$area == "north", ], 
+  ageBins = age_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 1, 
+  month = 7)
+write.csv(ages$sexed, 
+          file = file.path(dir, "ages", "forSS", "commercial_dead_age_marginal_sexed_north.csv"),
+          row.names = FALSE)
 
 #===============================================================================
 # WCGBT 

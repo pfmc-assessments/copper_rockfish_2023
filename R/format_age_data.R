@@ -19,10 +19,8 @@ ccfrp <- read.csv(file = file.path(dir, "copper_ccfrp_ages_2017-2022.csv"))
 cdfw <- read.csv(file = file.path(dir, "copper_cdfw_pilot_efi_carcass_ages_2018_2019_2021.csv"))
 coop <- read.csv(file = file.path(dir, "copper_cpfv_coop_ages_2022.csv"))
 pearson <- read.csv(file = file.path(dir, "copper_don_pearson_research_ages_2001-2007.csv"))
-
 commercial <-  read.csv(file = file.path(dir, "copper_commercial_ages_2018-2022.csv"))
-hist_rec <-  read.csv(file = file.path(dir, "copper_historical_rec_1975_1978_1981_1984.csv"))
-unknown <- read.csv(file = file.path(dir, "copper_unknown_source_ages_1978.csv"))
+hist_rec <-  read.csv(file = file.path(dir, "copper_historical_rec_1975_1978_1981_1984_v2.csv"))
 
 # Check all the data for duplicate records
 length(unique(crfs$Newport.ID)) == dim(crfs)[1]
@@ -33,8 +31,7 @@ length(unique(coop$Newport.Structure.ID)) == dim(coop)[1]
 length(unique(pearson$Newport.Specimen.ID)) == dim(pearson)[1]
 length(unique(commercial$Newport.ID)) == dim(commercial)[1]
 length(unique(hist_rec$specimen_id)) == dim(hist_rec)[1]
-length(unique(unknown$specimen_id)) == dim(unknown)[1]
-unique(hist_rec$specimen_id) %in% unique(unknown$specimen_id)
+
 
 # Looks like the CCFRP samples with the same Newport.ID are unique
 # and may be based on sample day
@@ -200,45 +197,27 @@ save(commercial_ages, file = file.path(dir, "commercial_ages.rdata"))
 
 # Historical Recreational Samples
 hist_rec_ages <- data.frame(
-  program = hist_rec$sample_type,
-  sample_id = hist_rec$sample_id,
-  area = "unknown",
-  year = hist_rec$Year,
-  sex = hist_rec$Sex,
-  length_cm = hist_rec$Fork_Length_cm,
-  age = hist_rec$Best_Age
+  program = "recreational",
+  mode = hist_rec$mode,
+  sample_id = hist_rec$SAMPLE_NO,
+  area = hist_rec$Area,
+  year = hist_rec$year,
+  sex = hist_rec$SEX,
+  length_cm = hist_rec$FLENGTH / 10,
+  age = hist_rec$Age
 )
-
-hist_rec_ages$sex[hist_rec_ages$sex == 3] <- "U"
-hist_rec_ages$sex[hist_rec_ages$sex == 1] <- "M"
-hist_rec_ages$sex[hist_rec_ages$sex == 2] <- "F"
 
 save(hist_rec_ages, file = file.path(dir, "historical_rec_ages.rdata"))
 
-# Unknown Historical Samples
-unknown_ages <- data.frame(
-  program = unknown$sample_type,
-  sample_id = unknown$sample_id,
-  area = "unknown",
-  year = unknown$Year,
-  sex = unknown$Sex,
-  length_cm = unknown$Fork_Length_cm,
-  age = unknown$Best_Age
-)
-
-unknown_ages$sex[unknown_ages$sex == 1] <- "M"
-unknown_ages$sex[unknown_ages$sex == 2] <- "F"
-
-save(unknown_ages, file = file.path(dir, "unknown_historical_ages.rdata"))
 
 
 # Lets total up the number of read ages
 nrow(coop_ages) + nrow(pearson_ages) + nrow(ccfrp_ages) + nrow(cdfw_ages) + nrow(crfs_ages) + 
-  nrow(abrams_ages) + nrow(commercial_ages) + nrow(hist_rec_ages) + nrow(unknown_ages)
-# 2,340 which does not include either of the NWFSC survey ages 
+  nrow(abrams_ages) + nrow(commercial_ages) + nrow(hist_rec_ages)
+# 2,363 which does not include either of the NWFSC survey ages 
 # NWFSC HKL = 1,151
 # NWFSC WCGBT = 864
-# 4,355 ages total
+# 4,378 ages total
 
 #===============================================================================
 # Create visualization of the data to see if there are specific records that we
@@ -286,11 +265,6 @@ ggplot(hist_rec_ages) + geom_point(aes(y = length_cm, x = age, color = sex)) +
   ylim(c(0, 60)) + xlim(c(0, 55)) + xlab("Age") + ylab("Length (cm)") + facet_grid(area~.)
 ggsave(file = file.path(dir, "plots", "historical_rec_ages.png"), height = 7, width = 10)
 
-ggplot(unknown_ages) + geom_point(aes(y = length_cm, x = age, color = sex)) +
-  scale_color_viridis_d() +
-  ylim(c(0, 60)) + xlim(c(0, 55)) + xlab("Age") + ylab("Length (cm)") + facet_grid(area~.)
-ggsave(file = file.path(dir, "plots", "unknown_source_ages.png"), height = 7, width = 10)
-
 #===============================================================================
 # Read in the NWFSC survey ages and visualize
 #===============================================================================
@@ -304,6 +278,7 @@ bio_orig$program <- "NWFSC_WCGBT"
 bio_orig$sex <- bio_orig$Sex
 bio_orig$length_cm <- bio_orig$Length_cm
 bio_orig$age <- bio_orig$Age
+bio_orig$year <- bio_orig$Year
 
 ggplot(bio_orig) + geom_point(aes(y = Length_cm, x = Age, color = Sex)) +
   scale_color_viridis_d() +
@@ -313,9 +288,9 @@ ggsave(file = file.path(dir, "plots", "wcgbt_ages.png"), height = 7, width = 10)
 
 hkl_dir <- file.path(here::here(), "data", "nwfsc_hkl")
 load(file.path(hkl_dir, "nwfsc_hkl_2004-2022.rdata"))
-ind <- which(hkl_all$common_name == "Copper Rockfish")
-hkl_all[ind, 'count'] <- 1
-hkl <- hkl_all[ind, ]
+ind <- which(hkl$common_name == "Copper Rockfish")
+hkl[ind, 'count'] <- 1
+hkl <- hkl[ind, ]
 hkl <- hkl[hkl$include_fish == 1, ]
 hkl$area <- 'south'
 hkl$program <- "NWFSC_HKL"
@@ -340,8 +315,7 @@ all_ages <- rbind(
   crfs_ages[, col_names],
   coop_ages[, col_names],
   commercial_ages[, col_names],
-  hist_rec_ages[, col_names],
-  unknown_ages[, col_names]
+  hist_rec_ages[, col_names]
 )
 save(all_ages, file = file.path(dir, "all_copper_ages.rdata"))
 
@@ -350,3 +324,25 @@ ggplot(all_ages) + geom_point(aes(y = length_cm, x = age, color = sex)) +
   ylim(c(0, 60)) + xlim(c(0, 55)) + xlab("Age") + ylab("Length (cm)") + facet_grid(area~.)
 ggsave(file = file.path(dir, "plots", "all_ages.png"), height = 7, width = 10)
 
+all_ages <- all_ages[!is.na(all_ages$length_cm), ]
+# There are ages ranging between 0-50 years of age in this df 
+#        F   M   U
+#north 467 493  28
+#south 728 725  59
+
+# Check for outlier ages
+all_ages$Sex <- all_ages$sex
+all_ages$Length_cm <- all_ages$length_cm
+all_ages$Age <- all_ages$age
+
+all_ages <- nwfscSurvey::est_growth(
+  dir = NULL, 
+  dat = all_ages, 
+  Par = data.frame(K = 0.13, Linf = 55, L0 = 15, CV0 = 0.10, CV1 = 0.10),
+  sdFactor = 3)
+
+remove1 <- which(all_ages[,'length_cm'] > all_ages[,'Lhat_high'] | all_ages[,'length_cm'] < all_ages[,'Lhat_low'])
+plot(all_ages$age, all_ages$length_cm, type = 'p', col = 1)
+points(all_ages$age[remove], all_ages$length_cm[remove], col = 'red', pch = 16)
+
+save(all_ages, file = file.path(dir, "cleaned_all_copper_ages.rdata"))
