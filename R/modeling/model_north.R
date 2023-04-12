@@ -1,9 +1,9 @@
 ###############################################
-# Southern Modeling Explorations
+# Northern Modeling Explorations
 ################################################
 
 library(r4ss)
-area <- "sca"
+area <- "nca"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -16,4 +16,3 @@ if( grepl("Chantel", user) ){
 wd <- file.path(user_dir, "models", area)
 
 int_model <- SS_output(file.path(wd, "0.1_init_model"))
-SS_plots(int_model)
