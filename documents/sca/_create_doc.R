@@ -4,7 +4,7 @@ library(sa4ss)
 library(here)
 
 # Specify the directory for the document
-model_name <- "5.2_crfs_pr_index"
+model_name <- "0.1_init_model"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -17,7 +17,7 @@ if( grepl("Chantel", user) ){
 doc_dir <- file.path(user_dir, "documents")
 # Currently points to the network location but could be revised
 bridge_dir <- here("models", "sca", "_bridging")
-model_dir <- here("models", "sca", "_bridging", model_name)
+model_dir <- here("models", "sca", model_name)
 # Points to the network
 data_dir<- here("data")
 r_dir <- here("R")
