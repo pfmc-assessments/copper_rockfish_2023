@@ -23,11 +23,11 @@ base_name <- "2.0_mi_dw"
 
 # Specify the parameters and the space to profile
 get = get_settings_profile(
-  parameters =  c("NatM_p_1_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)",  "L_at_Amax_Fem_GP_1",  "L_at_Amax_Mal_GP_1"),
-  low =  c(0.08, 0.30, -0.5, 43.0, 43.0),
-  high = c(0.14, 0.95,  1.5, 52.0, 52.0),
-  step_size = c(0.005, 0.05, 0.10, 0.5, 0.5),
-  param_space = c('real', 'real', 'relative', 'real', 'real'),
+  parameters =  c( "L_at_Amax_Fem_GP_1",  "L_at_Amax_Mal_GP_1", "NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
+  low =  c( 43.0, 43.0, 0.08, 0.30, -0.5),
+  high = c( 52.0, 52.0, 0.14, 0.95,  1.5),
+  step_size = c(0.5, 0.5, 0.005, 0.05, 0.10),
+  param_space = c('real', 'real', 'real', 'real', 'relative'),
   use_prior_like = c(0, 0, 0, 0, 0)
 )
 
@@ -36,7 +36,7 @@ model_settings = get_settings(
   settings = list(
     base_name = base_name,
     profile_details = get,
-    run = c("profile", "retro"), #, "jitter"),
+    run = c("profile"), #"retro"), #, "jitter"),
     retro_yrs = -1:-10,
     jitter_fraction = 0.10))
 
