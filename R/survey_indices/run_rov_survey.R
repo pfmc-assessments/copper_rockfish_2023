@@ -396,14 +396,14 @@ grid <- dplyr::left_join(grid, locs) %>%
   dplyr::filter(!is.na(lat + lon))
 grid$year <- grid$super_year
 
-n_open <- round(0.80 * 100, 0)
-n_mpa  <- round(0.20 * 100, 0)
+n_open <- round(0.73 * 100, 0)
+n_mpa  <- round(0.27 * 100, 0)
 
 grid_south <- NULL
-for (a in 1:80){
+for (a in 1:n_open){
   grid_south <- rbind(grid_south, grid[grid$designation == "Reference", ])
 }
-for(a in 1:20){
+for(a in 1:n_mpa){
   grid_south <- rbind(grid_south, grid[grid$designation == "MPA", ])
 }
 
@@ -557,7 +557,7 @@ do_diagnostics(
   fit = south_model,
   plot_resids = FALSE)
 
-name <- "delta_lognormal_south_designation_depth_soft"
+name <- "delta_lognormal_south_designation_depth_soft_73_27"
 dir.create(file.path(dir, name), showWarnings = FALSE)
 
 data <- rov_south
@@ -869,7 +869,7 @@ colnames(out) <- c("Designation", "Depth Polynomial", "Prop. Hard", "Prop. Mixed
                    "offset-log(usable area)", "DF", "log-likelihood", "AICc", "Delta")
 write.csv(out, file = file.path(dir, "forSS", "south_model_selection.csv"), row.names = FALSE)
 
-# Delta log-normal model selection
+# Delta log-normal model selection ===============================================================
 data_pos = rov_south[rov_south$n > 0, ]
 data_present = rov_south
 data_present$pa <- 0
@@ -1001,14 +1001,14 @@ grid <- dplyr::left_join(grid, locs) %>%
 
 grid$mpa_group_year <- 1
 
-n_open <- round(0.80 * 100, 0)
-n_mpa  <- round(0.20 * 100, 0)
+n_open <- round(0.73 * 100, 0)
+n_mpa  <- round(0.27 * 100, 0)
 
 grid_south <- NULL
-for (a in 1:80){
+for (a in 1:n_open){
   grid_south <- rbind(grid_south, grid[grid$designation == "Reference", ])
 }
-for(a in 1:20){
+for(a in 1:n_mpa){
   grid_south <- rbind(grid_south, grid[grid$designation == "MPA", ])
 }
 
@@ -1129,7 +1129,7 @@ dev.off()
 # South Model - Delta Lognormal
 #==================================================================================
 
-name <- "delta_lognormal_south_designation_depth_year_soft"
+name <- "delta_lognormal_south_designation_depth_year_soft_73_27"
 dir.create(file.path(dir, name), showWarnings = FALSE)
 
 data <- rov_south
@@ -1157,7 +1157,7 @@ do_diagnostics(
   plot_resids = FALSE)
 
 
-name <- "delta_lognormal_south_designation_depth_year_soft_no_re"
+name <- "delta_lognormal_south_designation_depth_year_soft_no_re_73_27"
 dir.create(file.path(dir, name), showWarnings = FALSE)
 
 data <- rov_south
@@ -1182,7 +1182,7 @@ do_diagnostics(
   fit = south_model,
   plot_resids = FALSE)
 
-name <- "delta_gamma_south_designation_depth_year_soft"
+name <- "delta_gamma_south_designation_depth_year_soft_73_27"
 dir.create(file.path(dir, name), showWarnings = FALSE)
 
 data <- rov_south
