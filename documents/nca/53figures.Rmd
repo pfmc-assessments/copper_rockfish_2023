@@ -5,6 +5,13 @@
 <!-- *******************    Assessment Map      *************************** --> 
 <!-- ====================================================================== --> 
 
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "map.png"), 
+caption = "Map of management area and the 2023 assessments areas for copper rockfish",
+label = 'ca-map')
+```
+
 
 <!-- ====================================================================== -->  
 <!-- ****************** Catches Used in the Model ************************* --> 
@@ -250,6 +257,23 @@ label = 'bridge-depl')
 ```
 
 
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(bridge_dir, "_plots", "full_bridge_compare2_spawnbio_uncertainty.png"),
+caption = "Model structure and data bridging comparison of estimated spawning output",
+label = 'data-bridge-ssb')
+```
+
+```{r, results = 'asis'}
+
+add_figure(
+filein = file.path(bridge_dir, "_plots", "full_bridge_compare4_Bratio_uncertainty.png"),
+caption = "Model structure and data bridging comparison of estimated fraction unfished",
+label = 'data-bridge-depl')
+```
+
+
+
 <!-- ====================================================================== -->
 <!-- *********************    Priors            ********************** --> 
 <!-- ====================================================================== -->
@@ -301,6 +325,13 @@ label = 'bh-curve')
 
 
 <!-- ====================================================================== -->
+<!-- *************** Fit to the Length & Age Data  ************************ --> 
+<!-- ====================================================================== -->
+
+
+
+
+<!-- ====================================================================== -->
 <!-- ****************** Fit to the Index Data  **************************** --> 
 <!-- ====================================================================== -->
 
@@ -308,16 +339,46 @@ label = 'bh-curve')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_CPFV.png"), 
-caption = "Fit to log index data on log scale for recreational(MRFSS) CPFV. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-label = 'mrfss-cpfv-index')
+caption = "Fit to log index data on log scale for recreational (MRFSS) CPFV. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
+label = 'mrfss-cpfv-index-fit')
+```
+
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "index5_logcpuefit_DWV_CPFV.png"), 
+caption = "Fit to log index data on log scale for Deb Wilson-Vandenberg CPFV survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
+label = 'dwv-cpfv-index-fit')
+```
+
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "index5_logcpuefit_CRFS_CPFV.png"), 
+caption = "Fit to log index data on log scale for CRFS CPFV survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
+label = 'crfs-cpfv-index-fit')
 ```
 
 
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_PR.png"), 
-caption = "Fit to log index data on log scale for recreational(CRFS) PR. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-label = 'crfs-pr-index')
+caption = "Fit to log index data on log scale for recreational (CRFS) PR. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
+label = 'crfs-pr-index-fit')
+```
+
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "index5_logcpuefit_CCFRP.png"), 
+caption = "Fit to log index data on log scale for CCFRP survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
+label = 'ccfrp-index-fit')
 ```
 
 
@@ -325,8 +386,8 @@ label = 'crfs-pr-index')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_CDFW_ROV.png"), 
-caption = "Fit to log index data on log scale for CDFW ROV. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-label = 'mrfss-cpfv-index')
+caption = "Fit to log index data on log scale for CDFW ROV survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
+label = 'rov-index-fit')
 ```
 
 
