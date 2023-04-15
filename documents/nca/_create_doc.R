@@ -20,7 +20,9 @@ bridge_dir <- here("models", "nca", "_bridging")
 model_dir <- here("models", "nca", model_name)
 data_dir<- here("data")
 r_dir <- here("R")
-save(bridge_dir, model_dir, doc_dir, data_dir, file = file.path(doc_dir, "nca", "saved_directories.Rdata"))
+management_dir <- here("management")
+save(bridge_dir, model_dir, doc_dir, data_dir, r_dir, management_dir,
+     file = file.path(doc_dir, "nca", "saved_directories.Rdata"))
 
 setwd(file.path(doc_dir, "nca"))
 load('saved_directories.Rdata')

@@ -153,6 +153,20 @@ overfishing levels,
 actual catch and discard.
 Include OFL (encountered), OFL (retained), and OFL (dead) if different due to discard and discard mortality.
 
+
+```{r, results = 'asis'}
+
+create_management_table(
+  management_dir = management_dir, 
+  doc_dir = doc_dir, 
+  doc_names = c("nca", 'sca'),
+  years = 2012:2022,
+  table_names = c("copper_ca_north.csv", "copper_ca_south.csv"),
+  prefix = "es")
+
+```
+
+
 ## Unresolved problems and major uncertainties{-}
 
 
@@ -166,6 +180,22 @@ read_child(filein)
 Replace text with
 projected yields (OFL, ABC, and ACL), spawning biomass, and stock depletion levels for each year.
 OFL calculations should be based on the assumption that future catches equal ABCs and not OFLs.
+
+
+```{r, results = 'asis'}
+
+create_projection_table(
+    management_dir = management_dir, 
+    doc_dir = doc_dir, 
+    fixed_removals = c(70, 70),
+    doc_names = c("nca", 'sca'),
+    years = 2023:2034,
+    table_names = c("copper_ca_north.csv", "copper_ca_south.csv"),
+    prefix = 'es')
+
+```
+
+
 
 ## Scientific uncertainty{-}
 

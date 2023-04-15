@@ -21,7 +21,7 @@ All modeling was initially conducted using sdmTMB [@anderson_sdmtmb_2022] with t
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir,  "nwfsc_hkl", "plots", "standardized_cpue_nwfsc_hkl_inside_outside.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "standardized_cpue_nwfsc_hkl_inside_outside.png"), 
 caption = "Standardized CPUE inside and outside the CCA.",
 label = 'nwfsc-hkl-cca')
 ```
@@ -47,7 +47,7 @@ label = 'nwfsc-hkl-index')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_negbin_main_year_site_drop_swell_vermilion", "qq.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "alternative_models", "glm_negbin_main_year_site_drop_swell_vermilion", "qq.png"), 
 caption = "QQ plot.",
 label = 'nwfsc-hkl-qq')
 ```
