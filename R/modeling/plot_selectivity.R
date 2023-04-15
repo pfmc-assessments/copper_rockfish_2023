@@ -23,3 +23,7 @@ info2 <- SSplotSelex(model, fleets = 2, fleetnames = fleets[2], subplot = 1, yea
 
 info3 <- SSplotSelex(model, fleets = 3, fleetnames = fleets[3], subplot = 1, year = c(1999, 2021, 2022))
 info1$infotable$col <- rich.colors.short(8)[c(1,1)]
+
+
+info4 <- SSplotSelex(model, fleets = 4, fleetnames = fleets[4], subplot = 1, year = c(1999, 2021, 2022))
+info1$infotable$col <- rich.colors.short(8)[c(1,1)]
