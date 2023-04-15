@@ -2,8 +2,82 @@
 
 ## Detailed Fit to Length Composition Data {#length-data}
 
+```{r, results='asis'}
+plot_info = read.csv(file.path(model_dir, "plots", "plotinfotable_for_doc.csv"))
+len_fit = plot_info[which(plot_info$category == "LenComp"), ]
+plot.vec = grep("comp_lenfit_flt", len_fit$label)
+filein = file.path(model_dir, "plots")
+for (a in plot.vec){
+	cap = len_fit$caption[a]
+	lab = len_fit$label[a]
+	add_figure(filein = file.path(filein, len_fit$file[a]), 
+			   caption = cap, 
+			   label = lab)
+}
+```
+
+\newpage
 
 ## Detailed Fit to Age Composition Data {#age-data}
 
 
+```{r, results='asis'}
+plot_info = read.csv(file.path(model_dir, "plots", "plotinfotable_for_doc.csv"))
+len_fit = plot_info[which(plot_info$category == "AgeComp"), ]
+plot.vec = grep("comp_agefit_flt", len_fit$label)
+filein = file.path(model_dir, "plots")
+for (a in plot.vec){
+	cap = len_fit$caption[a]
+	lab = len_fit$label[a]
+	add_figure(filein = file.path(filein, len_fit$file[a]), 
+			   caption = cap, 
+			   label = lab)
+}
+```
+
+\newpage
+
+
+
 ## Detailed Fit to Conditional-Age-at-Length Composition Data {#caal-data}
+
+
+```{r, results='asis'}
+plot_info = read.csv(file.path(model_dir, "plots", "plotinfotable_for_doc.csv"))
+len_fit = plot_info[which(plot_info$category == "A@LComp"), ]
+plot.vec = c(grep("comp_condAALfit_residsflt5mkt0", len_fit$label),
+  grep("comp_condAALfit_residsflt7mkt0", len_fit$label),
+	grep("comp_condAALfit_residsflt9mkt0", len_fit$label))
+find = sort(len_fit$label[plot.vec], index.return = TRUE)$ix
+plot.vec = plot.vec[find[2:length(find)]]
+filein = file.path(model_dir, "plots")
+for (a in plot.vec){
+	cap = len_fit$caption[a]
+	lab = len_fit$label[a]
+	add_figure(filein = file.path(filein, len_fit$file[a]), 
+			   caption = cap, 
+			   label = lab)
+}
+```
+
+
+```{r, results='asis'}
+plot_info = read.csv(file.path(model_dir, "plots", "plotinfotable_for_doc.csv"))
+len_fit = plot_info[which(plot_info$category == "A@LComp"), ]
+plot.vec = c(grep("comp_condAALfit_Andre_plotsflt5mkt0", len_fit$label),
+  grep("comp_condAALfit_Andre_plotsflt7mkt0", len_fit$label),
+	grep("comp_condAALfit_Andre_plotsflt9mkt0", len_fit$label))
+find = sort(len_fit$label[plot.vec], index.return = TRUE)$ix
+plot.vec = plot.vec[find[2:length(find)]]
+filein = file.path(model_dir, "plots")
+for (a in plot.vec){
+	cap = len_fit$caption[a]
+	lab = len_fit$label[a]
+	add_figure(filein = file.path(filein, len_fit$file[a]), 
+			   caption = cap, 
+			   label = lab)
+}
+
+```
+
+\newpage
