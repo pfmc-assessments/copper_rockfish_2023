@@ -163,3 +163,179 @@ SSplotComparisons(mysummary,
                   legendlabels = modelnames, 	
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+#===============================================================================
+# Dig into growth options
+#==============================================================================
+
+L2 <-  SS_output(file.path(wd, "2.3_L2"))
+get_model_quants(repfile = L2)
+SS_plots(L2)
+# NLL = 2018.4 vs. 2019 from 2.0_mi_dw model
+# This does reduce the Linf estimate since it is now linked to the size at age 20
+# where females are still reaching ~ 48 cm by age 50
+
+sd_laa <- SS_output(file.path(wd, "2.4_sd_laa"))
+SS_plots(sd_laa, plot = c(1, 4, 16))
+# NLL > 4800
+
+cv_age <- SS_output(file.path(wd, "2.5_cv_age"))
+get_model_quants(repfile = cv_age)
+# NLL = 2039 worse than the CV(LAA) model
+
+growth_platoons <- SS_output(file.path(wd, "2.6_growth_platoons"))
+get_model_quants(repfile = growth_platoons)
+SS_plots(growth_platoons)
+
+# Remove the unsexed CAAL for larger fish from the growth fleet and switch both
+# of the fishery ages to marginals because fleet 1 only has a few ages in 2022
+# and the early recreational ages are all unsexed.
+ages <- SS_output(file.path(wd, "3.0_ages"))
+SS_plots(ages, plot = c(2, 16:18))
+get_model_quants(repfile = ages)
+#Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#1986.81   -31.0703    681.264 1331.74  5.4943   204.393 31.4678               0.153957
+#Natural Mortality - Female Length at Amax - Female Natural Mortality - Male Length at Amax - Male
+#      0.108                 46.8461                    0.108                 44.39
+
+# Remove years by fleet where the numbr of fish sampled is < 10
+rm_len <- SS_output(file.path(wd, "3.1_rm_low_n"))
+SS_plots(rm_len, plot = c(2, 16:18))
+get_model_quants(repfile = rm_len)
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+# 1969.32   -31.0554    664.123 1331.19 5.49389    204.41 31.7731               0.155438
+# Natural Mortality - Female Length at Amax - Female Natural Mortality - Male Length at Amax - Male
+#                      0.108                 46.8494                    0.108               44.3858
+
+# Increase the age that Lmin is estimated relative to try to improve stability of the model.
+# Estiamte the hessian on this run to understand how the Lmin is being estimated
+L1 <- SS_output(file.path(wd, "3.2_L1_age2"))
+SS_plots(L1)
+get_model_quants(repfile = L1)
+#Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#  1971.49   -31.1485    665.649 1331.65 5.48879   203.238 34.3151               0.168842
+#Natural Mortality - Female Length at Amax - Female Natural Mortality - Male Length at Amax - Male
+#                    0.108                 46.6653                    0.108               44.4732
+
+# Estimate a length based selectivity for the growth fleet
+growth_len_sex <- SS_output(file.path(wd, "3.3_growth_len_selex"))
+SS_plots(growth_len_sex, plot = c(1:2, 16:18))
+get_model_quants(repfile = growth_len_sex)
+# Selectivity estimated is highly domed on a narrow length range
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#   1971.74   -31.1678    665.876  1331.7 5.48836   202.992 33.2028               0.163567
+# Natural Mortality - Female Length at Amax - Female Natural Mortality - Male Length at Amax - Male
+#                      0.108                 46.6698                    0.108                44.498
+
+# Add age base selectivity for the growth fleet
+growth_age_selex <- SS_output(file.path(wd, "3.4_growth_age_selex"))
+SS_plots(growth_age_selex, plot = c(1:4, 16:18))
+get_model_quants(repfile = growth_age_selex)
+# Total NLL  Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#   1996.21   -30.9827    667.066 1356.61 5.48922   206.492 28.5993               0.138501
+# Natural Mortality - Female Length at Amax - Female Natural Mortality - Male Length at Amax - Male
+#                     0.108                 46.5961                    0.108                44.386
+
+growth_age_len <- SS_output(file.path(wd, "3.5_growth_len_age_selex"))
+SS_plots(growth_age_len, plot = c(1:4, 17:20))
+get_model_quants(repfile = growth_age_len)
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#    1996.3   -30.9806    666.906 1356.34 5.49916   208.264 27.1163               0.130201
+# Natural Mortality - Female Length at Amax - Female Natural Mortality - Male Length at Amax - Male
+#                      0.108                 46.6741                    0.108                44.365
+
+# Allow for the estimation of init selectivity for the growth fleet
+growth_age <- SS_output(file.path(wd, "3.6_growth_age_selex_init_dw"))
+get_model_quants(repfile = growth_age)
+SS_plots(growth_age)
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#    2094.6   -30.6148    806.764 1314.08 5.48157   202.188 33.2238               0.164321
+# Natural Mortality - Female Length at Amax - Female Natural Mortality - Male Length at Amax - Male
+#                      0.108                 46.5676                    0.108               44.4103
+
+# Split out the 2022 ages into a separate fleet mirroring to the CPFV fleet selectivity
+coop_selex <- SS_output(file.path(wd, "3.7_add_coop_fleet"))
+get_model_quants(repfile = coop_selex)
+SS_plots(coop_selex, plot = c(2, 17:20))
+# Growth LL for growth & coop = 355.908 95.5284 = 451.4 (vs. 438.385 for selex = 1 and 426.26 for a single growth fleet)
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#   1983.05   -30.7875    663.524 1346.25 5.49045   202.447  35.057               0.173166
+# Natural Mortality - Female Length at Amax - Female Natural Mortality - Male Length at Amax - Male
+#                      0.108                 46.5478                    0.108               44.4322
+
+coop_selex2 <- SS_output(file.path(wd, "3.8_coop_age_selex"))
+get_model_quants(repfile = coop_selex2)
+# NLL = 1959.3
+
+coop_selex3 <- SS_output(file.path(wd, "3.9_coop_age_selex_dw"))
+get_model_quants(repfile = coop_selex3)
+SS_plots(coop_selex3)
+# NLL = 2278.9
+
+# Not a base but a clean starting point for additional explorations,
+# incorporating selectivity explorations for the growth fleet where all
+# growth are in a single fleet (coop not split out) and estimating age based selectivity.
+base <- SS_output(file.path(wd, "4.0_base"))
+SS_plots(base)
+get_model_quants(base)
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+# 2094.57   -30.6142    806.744 1314.08 5.48159   202.203 33.2776               0.164575
+# Natural Mortality - Female Length at Amax - Female Natural Mortality - Male
+#                      0.108                 46.5675                    0.108
+# Length at Amax - Male
+#               44.4094
+
+modelnames <- c("2021", "MI", "L1 = 2", "Coop. Selex", "Growth Age Selex", "L1, L2, & Growth Selex")
+mysummary <- SSsummarize(list(base_2021, mi_dw_2.0, L1, coop_selex3, base))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "3_growth_selex_",
+                  legendlabels = modelnames, 	
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+#========================================================================================
+# Explore how to stabilize the commercial selectivity
+#========================================================================================
+
+# 4.0_base 
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+# 2094.57   -30.6142    806.744 1314.08 5.48159   202.203 33.2776               0.164575
+
+# Allow for dome-shaped selectivity in the early period
+early_dome <- SS_output(file.path(wd, "4.1_est_com_selex6"))
+SS_plots(early_dome, plot = 2)
+get_model_quants(early_dome)
+# NLL = 2095.22
+
+# Remove the 2002-2016 block since it is being estimated essentially the same as the 
+# early period for the commercial dead fishery
+rm_com_block <- SS_output(file.path(wd, "4.2_rm_com_selex_early_block"))
+SS_plots(rm_com_block, plot = 2)
+get_model_quants(rm_com_block)
+# NLL = 2094.82
+20947.
+# Phase 6 is sluggish in estimation turning off the forecast deviations
+# Fix the ascending limb at the estimated value for the commercial dead fishery
+com_asc <- SS_output(file.path(wd, "4.3_fix_com_asc_selex"))
+SS_plots(com_asc)
+get_model_quants(com_asc)
+# NLL = 2094.87
+
+rec_asc <- SS_output(file.path(wd, "4.4_fix_rec_2022_asc_desc"))
+SS_plots(rec_asc)
+get_model_quants(rec_asc)
+
+rov <- SS_output(file.path(wd, "5.0_update_rov_data"))
+SS_plots(rov, plot = c(2, 16))
+get_model_quants(rov)
+
+modelnames <- c("ROV 80/20", "ROV 73/27 & New Lengths")
+mysummary <- SSsummarize(list(com_asc, rov))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "5_rov_newdata_",
+                  legendlabels = modelnames, 	
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
