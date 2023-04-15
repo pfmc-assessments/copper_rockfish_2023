@@ -327,15 +327,66 @@ rec_asc <- SS_output(file.path(wd, "4.4_fix_rec_2022_asc_desc"))
 SS_plots(rec_asc)
 get_model_quants(rec_asc)
 
+# Start the model from the par file from the jitter run with the lowest NLL
+mle <- SS_output(file.path(wd, "4.5_mle"))
+get_model_quants(mle)
+# NLL = 2094.63 R0 = 5.486 Depl = 0.166304
+
 rov <- SS_output(file.path(wd, "5.0_update_rov_data"))
 SS_plots(rov, plot = c(2, 16))
 get_model_quants(rov)
+# NLL = 2122.95
 
 modelnames <- c("ROV 80/20", "ROV 73/27 & New Lengths")
-mysummary <- SSsummarize(list(com_asc, rov))
+mysummary <- SSsummarize(list(mle, rov))
 
 SSplotComparisons(mysummary,
                   filenameprefix = "5_rov_newdata_",
+                  legendlabels = modelnames, 	
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+# Change the settlement timing to July - Marginal improvement in the fit to the length data ~ 1 NLL
+# Significantly worse fit to the age data 1353 here vs. 1316 in the rov model
+timing <- SS_output(file.path(wd, "5.1_settlement"))
+get_model_quants(timing)
+SS_plots(timing, plot = c(16,18, 19))
+# NLL = 2158.65 R0 = 5.43268, Depl = 0.133
+
+# Increase L1 to age 3 since the size at settlement is now mid year at a smaller size
+L1_3 <- SS_output(file.path(wd, "5.2_L1=3"))
+get_model_quants(L1_3)
+SS_plots(L1_3, plot = c(1, 2, 16,18))
+# NLL = 2184
+
+# Remove any years with < 20 length samples from the fishing fleets - reweight the mode
+# Apply Francis data weigths
+rm_low_samps_dw <- SS_output(file.path(wd, "5.3_rm_low_samps"))
+tune_comps(replist = rm_low_samps_dw, dir = file.path(wd, "5.3_rm_low_samps"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+get_model_quants(rm_low_samps_dw)
+# NLL = 2290.72, R0 = 5.424, Depl = 0.197
+
+# Fixing the value of Lmin and CV1 for each sex to try to improve model stability
+fix_L1 <- SS_output(file.path(wd, "5.4_fix_L1_CV1"))
+get_model_quants(fix_L1)
+SS_plots(fix_L1)
+# NLL = 2196.06 R0 = 5.48 Depl = 0.20
+
+# Explore estimation of M where male is set to equal female M
+est_m <- SS_output(file.path(wd, "5.5_est_m"))
+SS_plots(est_m)
+get_model_quants(est_m)
+tune_comps(replist = est_m, dir = file.path(wd, "5.5_est_m"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+# NLL = 2139.24 R0 = 5.6, Depl = 0.293, Linf F = 46.7
+# Natural Mortality F =  0.117 M = 0.129 
+
+modelnames <- c("MLE", "ROV 73/27 & New Lengths", "Rm < 20 Samps", "Fix L1 & CV1", "Est. M")
+mysummary <- SSsummarize(list(mle, rov, rm_low_samps_dw, fix_L1, est_m))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "5_fixed_est_parameters_",
                   legendlabels = modelnames, 	
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
