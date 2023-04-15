@@ -4,7 +4,7 @@ library(sa4ss)
 library(here)
 
 # Specify the directory for the document
-model_name <- "0.1_init_model"
+model_name <- "5.5_est_m"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
