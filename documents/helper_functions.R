@@ -133,7 +133,7 @@ create_projection_table <- function(
   sa4ss::table_format(
     x = out,
     caption = "The estimated spawning biomass in number of million eggs across California and fraction unfished by year.",
-    label = paste0(prefix, "ca-status"),
+    label = paste0(prefix, "ca-proj"),
     landscape = TRUE,
     col_names = col_names
   )  
