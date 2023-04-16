@@ -118,7 +118,7 @@ samp_north_ref <- sample_size[sample_size$area == "north" & sample_size$designat
 samp_south_mpa <- sample_size[sample_size$area == "south" & sample_size$designation == "MPA", 'transect']
 samp_south_ref <- sample_size[sample_size$area == "south" & sample_size$designation == "Reference", 'transect']
 
-colnames(sample_size) <- c("Area", "Designation",  "Year", "Transects", "Samples")
+colnames(sample_size) <- c("Area", "Designation",  "Year", "Transects", "Lengths")
 write.csv(sample_size, file = file.path(dir, "forSS", "sample_size_april_data.csv"))
 
 #===========================================================================

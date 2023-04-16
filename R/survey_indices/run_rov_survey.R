@@ -146,14 +146,14 @@ obs_by_des_loc <- aggregate(LineID ~ super_year + mpa_group + designation, rov_s
 
 remove_s <- which(rov_south$designation == "Reference" & rov_south$mpa_group == "Anacapa Island")
 filtered_data_south <- rbind(filtered_data_south,
-  c("Rerence/MPA groups without sampling for both super years", length(remove_s)))
+  c("Reference or MPA locations without sampling for at least three years", length(remove_s)))
 
 
 obs_by_des_loc <- aggregate(LineID ~ super_year + mpa_group + designation, rov_north, length)
 remove_n <- c(which(rov_north$designation == "Reference" & rov_north$mpa_group %in% c("Piedras Blancas")),
               which(rov_north$mpa_group %in% c("N Farallon Islands")))
 filtered_data_north <- rbind(filtered_data_north,
- c("Rerence/MPA groups without sampling for both super years", length(remove_n)))
+ c("Reference or MPA locations without sampling for both super years", length(remove_n)))
 
 rov_south <- rov_south[-remove_s, ]
 rov_north <- rov_north[-remove_n, ]
@@ -205,6 +205,15 @@ transects_by_area <- rov_south %>%
 colnames(transects_by_area) <- c("Location", "Year", "MPA", "Reference")
 write.csv(transects_by_area, file = file.path(dir, "forSS", "south_obs_mpa_group_year.csv"),  row.names = FALSE)
 
+transects_by_area <- rov_north %>%
+  group_by(mpa_group, year) %>%
+  reframe(
+    n_mpa = sum(designation == "MPA"),
+    n_ref = sum(designation == "Reference")
+  )
+colnames(transects_by_area) <- c("Location", "Year", "MPA", "Reference")
+write.csv(transects_by_area, file = file.path(dir, "forSS", "north_obs_mpa_group_year.csv"),  row.names = FALSE)
+
 
 #=================================================================================
 # Create some visualization of the data
@@ -212,9 +221,10 @@ write.csv(transects_by_area, file = file.path(dir, "forSS", "south_obs_mpa_group
 
 # South ========================================================================
 ggplot(aes(x = n),
-       data = rov_south) + geom_bar() + theme_bw() + facet_wrap(designation~.) +
-  xlab("Total Copper Rockfish Observed") + ylab("Total")
-ggsave(file = file.path(dir, "plots", "observations_south.png"), width = 7, height = 7)
+       data = rov_south) + geom_bar() + theme_bw() + 
+  facet_wrap(c("designation")) +
+  xlab("Numbers Observed by Transect") + ylab("Count")
+ggsave(file = file.path(dir, "plots", "observations_south.png"), width =10, height = 7)
 
 
 raw.cpue <- rov_south %>%
@@ -294,7 +304,8 @@ write.csv(n_by_site, row.names = FALSE,
 
 # North ========================================================================
 ggplot(aes(x = n),
-       data = rov_north) + geom_bar() + theme_bw() + facet_grid(designation~.)
+       data = rov_north) + geom_bar() + theme_bw() + facet_grid(designation~.) +
+  xlab("Numbers Observed by Transect") + ylab("Count")
 ggsave(file = file.path(dir, "plots", "observations_north.png"), width = 7, height = 7)
 
 raw.cpue <- rov_north %>%
