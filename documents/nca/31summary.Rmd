@@ -1,10 +1,26 @@
 ## Summary of Previous Assessments and Reviews
 
 
-### History of Modeling Approaches (not required for an update assessment)
+### History of Modeling Approaches 
+
+```{r, echo=FALSE, results='asis'}
+
+filein = file.path(doc_dir, "shared_text", '31_summary_previous_assessments.Rmd')
+read_child(filein)
+```
 
 
-### Most Recent STAR Panel and SSC Recommendations (not required for an update assessment)
+### Most Recent STAR Panel and SSC Recommendations
 
 
-### Response to Groundfish Subcommittee Requests (not required in draft)
+```{r, echo=FALSE, results='asis'}
+
+filein = file.path(doc_dir, "shared_text", '31_ssc_summary.Rmd')
+read_child(filein)
+```
+
+
+
+### Response to Groundfish Subcommittee Requests
+
+To be completed post-STAR panel.
