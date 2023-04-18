@@ -14,9 +14,9 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
 }
 
-model_dir <- file.path(user_dir, "models", "sca")
-base_name <- "2.0_mi_dw"
-retro.folder <- file.path(user_dir, "models", "sca", paste0(base_name, "_retro"))
+model_dir <- file.path(user_dir, "models", "nca")
+base_name <- "5.1_non_zero_centered_devs"
+retro.folder <- file.path(user_dir, "models", "nca", paste0(base_name, "_retro"))
 
 
 # Read in the retrospective runs
@@ -31,24 +31,34 @@ retro7 = SS_output(file.path(retro.folder, "retro", "retro-7"), printstats = FAL
 retro8 = SS_output(file.path(retro.folder, "retro", "retro-8"), printstats = FALSE, verbose = FALSE, covar = FALSE)
 retro9 = SS_output(file.path(retro.folder, "retro", "retro-9"), printstats = FALSE, verbose = FALSE, covar = FALSE)
 retro10 = SS_output(file.path(retro.folder, "retro", "retro-10"), printstats = FALSE, verbose = FALSE, covar = FALSE)
+retro11 = SS_output(file.path(retro.folder, "retro", "retro-11"), printstats = FALSE, verbose = FALSE, covar = FALSE)
+retro12 = SS_output(file.path(retro.folder, "retro", "retro-12"), printstats = FALSE, verbose = FALSE, covar = FALSE)
 
 
-modelnames <- c("Base Model", paste0("Retro -", 1:10))
+modelnames <- c("Base Model", paste0("Retro -", 1:12))
 
 # Summarize the results across models
 mysummary <- SSsummarize(list(base, retro1, retro2, retro3, retro4, retro5,
-                              retro6, retro7, retro8, retro9, retro10))
+                              retro6, retro7, retro8, retro9, retro10, retro11, retro12))
 
 HandyCode::pngfun(wd = retro.folder, file = "Squid_RecDevs.png", h = 7, w = 7)
 SSplotRetroRecruits(retroSummary = mysummary,
-                    endyrvec = rev(2013:2023),
-                    cohorts = 2005:2021,
+                    endyrvec = rev(2010:2023),
+                    cohorts = 2000:2021,
                     ylim=NULL,uncertainty=FALSE,
                     labels=c('Recruitment deviation', 'Recruitment (billions)', 'relative to recent estimate', 'Age'),
                     main="",
                     mcmcVec=FALSE,devs=TRUE,
                     relative=FALSE,labelyears=TRUE,legend=FALSE,leg.ncols=4)
 dev.off()
+
+
+#SSplotComparisons(mysummary,
+#                  filenameprefix = "Retrospective_",
+#                  endyrvec = rev(2010:2023),
+#                  legendlabels = modelnames, 	
+#                  plotdir = retro.folder,
+#                  pdf = TRUE)
 
 #=====================================================================================================
 # Create a table of parameter values to understand what is changing across retrospective runs

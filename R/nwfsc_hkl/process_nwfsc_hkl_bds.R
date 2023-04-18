@@ -12,7 +12,7 @@ library(dplyr)
 library(HandyCode)
 library(here)
 
-dir <- file.path(here::here(), "data", "nwfsc_hkl")
+dir <- file.path(here::here(), "data", "survey_indices", "nwfsc_hkl")
 
 load(file.path(dir, "nwfsc_hkl_2004-2022.rdata"))
 hkl_all <- hkl
@@ -25,7 +25,7 @@ hkl_all$depth_bin <- plyr::round_any(hkl_all$drop_depth_meters, 5, floor)
 hkl_all$count <- 0
 ind <- which(hkl_all$common_name == "Copper Rockfish")
 hkl_all[ind, 'count'] <- 1
-# Filter down to only copper obervations
+# Filter down to only copper obaervations
 hkl <- hkl_all[ind, ]
 
 hkl_all_site <- hkl_all %>%
@@ -108,7 +108,7 @@ lfs <-  UnexpandedLFs.fn(
   datL = hkl, 
   lgthBins = length_bins,
   partition = 0, 
-  fleet = 5, 
+  fleet = 8, 
   month = 9)
 
 lfs_all <- lfs$sexed
@@ -124,7 +124,7 @@ lfs <-  UnexpandedLFs.fn(
   datL = hkl[hkl$area == "CCA", ], 
   lgthBins = length_bins,
   partition = 0, 
-  fleet = 5, 
+  fleet = 8, 
   month = 9)
 lfs_cca <- lfs$sexed
 
@@ -139,7 +139,7 @@ lfs <-  UnexpandedLFs.fn(
   datL = hkl[hkl$area != "CCA", ], 
   lgthBins = length_bins,
   partition = 0, 
-  fleet = 5, 
+  fleet = 8, 
   month = 9)
 
 lfs$sexed[, "InputN"] <- samples_non_cca_only[, "unique_set_by_site"]
@@ -197,14 +197,14 @@ PlotSexRatio.fn(
 #==============================================================================
 # Create marginal ages
 #==============================================================================
-age_bins <- 1:50
+age_bins <- 0:50
 source(file.path(here(), "R", "get_caal.R"))
 
 afs <-  UnexpandedAFs.fn(
   datA = hkl, 
   ageBins = age_bins,
   partition = 0, 
-  fleet = 5, 
+  fleet = 8, 
   month = 9)
 
 afs_all <- afs$sexed

@@ -12,6 +12,14 @@ read_child(filein)
 
 ### Most Recent STAR Panel and SSC Recommendations 
 
+
+```{r, echo=FALSE, results='asis'}
+
+filein = file.path(doc_dir, "shared_text", '31_ssc_summary.Rmd')
+read_child(filein)
+```
+
+
 ### Response to Groundfish Subcommittee Requests
 
-To be completed post-STAR panel
+To be completed post-STAR panel.

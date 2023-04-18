@@ -5,6 +5,12 @@
 <!-- *******************    Assessment Map      *************************** --> 
 <!-- ====================================================================== --> 
 
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "map.png"), 
+caption = "Map of management area and the 2023 assessments areas for copper rockfish",
+label = 'map')
+```
 
 <!-- ====================================================================== -->  
 <!-- ****************** Catches Used in the Model ************************* --> 
@@ -34,7 +40,7 @@ label = 'data-plot')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "comp_lendat_bubflt1mkt0_page2.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_bubflt1mkt0.png"), 
 caption = "Length composition data from the commercial dead fleet",
 label = 'com-dead-len-data')
 ```
@@ -45,7 +51,6 @@ filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Commerc
 caption = "Mean length for commercial dead fleet with 95 percent confidence intervals",
 label = 'mean-com-dead-len-data')
 ```
-
 
 
 ```{r, results = 'asis'}
@@ -73,7 +78,7 @@ label = 'mean-com-live-len-data')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_bubflt3mkt0_page2.png"), 
-caption = "Length composition data from the recreation CPFV fleet",
+caption = "Length composition data from the recreational CPFV fleet",
 label = 'rec-cpfv-len-data')
 ```
 
@@ -83,8 +88,6 @@ filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_CPF
 caption = "Mean length for recreational CPFV fleet with 95 percent confidence intervals",
 label = 'mean-rec-cpfv-len-data')
 ```
-
-
 
 
 ```{r, results = 'asis'}
@@ -110,7 +113,7 @@ label = 'mean-rec-pr-len-data')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "nwfsc_hkl", "maps", "Map_HL_Sites_lndscp.jpg"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "maps", "Map_HL_Sites_lndscp.jpg"), 
 caption = "Area sampled by the NWFSC Hook and Line survey",
 label = 'nwfsc-hkl-map')
 ```
@@ -119,7 +122,7 @@ label = 'nwfsc-hkl-map')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "nwfsc_hkl", "plots", "hkl_copper_by_site_count_all_years.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "hkl_copper_by_site_count_all_years.png"), 
 caption = "Observations of copper rockfish by the NWFSC Hook and Line survey by sample area, inside and outside Cowcod Conservation areas (CCA)",
 label = 'nwfsc-hkl-site')
 ```
@@ -128,16 +131,15 @@ label = 'nwfsc-hkl-site')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir,  "nwfsc_hkl", "plots", "standardized_cpue_nwfsc_hkl_inside_outside.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "standardized_cpue_nwfsc_hkl_inside_outside.png"), 
 caption = "Standardized CPUE inside and outside the CCA.",
 label = 'nwfsc-hkl-cca-main')
 ```
 
 
-
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir,  "nwfsc_hkl", "plots", "nwfsc_hkl_observations_by_depth.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "nwfsc_hkl_observations_by_depth.png"), 
 caption = "Number of observations by depth (m) inside and outside the CCAs.",
 label = 'nwfsc-hkl-depth')
 ```
@@ -146,7 +148,7 @@ label = 'nwfsc-hkl-depth')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "rstan_full_nb_glm_year_site_drop_swell_bocaccio_vermilon", "Index.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "rstan_full_nb_glm_year_site_drop_swell_vermilion", "Index.png"), 
 caption = "Estimated index of abundance for copper rockfish.",
 label = 'nwfsc-hkl-index-main')
 ```
@@ -155,16 +157,15 @@ label = 'nwfsc-hkl-index-main')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "nwfsc_hkl", "plots", "hkl_observations_by_length_sex_area.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "hkl_observations_by_length_sex_area.png"), 
 caption = "Observed length (cm) distribution of copper rockfish by the NWFSC Hook and Line survey by sample area, inside and outside Cowcod Conservation areas (CCA)",
 label = 'nwfsc-hkl-site-len')
 ```
 
 
-
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "nwfsc_hkl", "plots", "nwfsc_hkl_age_at_length.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "nwfsc_hkl_age_at_length.png"), 
 caption = "Age and length by sex for copper rockfish in the NWFSC Hook and Line survey.",
 label = 'nwfsc-hkl-len-age')
 ```
@@ -204,8 +205,8 @@ label = 'rov-obs-loc')
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "plots", "south_raw_cpue_by_mpa_group.png"), 
-caption = "The trend of the calculated CPUE by each MPA and Reference group.",
+filein = file.path(data_dir, "survey_indices", "rov", "plots", "south_raw_cpue_by_mpa_group_by_year.png"), 
+caption = "The trend of the calculated CPUE by each MPA and Reference group by year.",
 label = 'rov-raw-cpue')
 ```
 
@@ -213,12 +214,10 @@ label = 'rov-raw-cpue')
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "plots", "rov_length_by_area_designation.png"), 
-caption = "The distribution of lengths across all years for MPA and Reference area north and south of Point Conception.",
+filein = file.path(data_dir, "survey_indices", "rov", "plots", "rov_length_by_area_designation_april_data.png"), 
+caption = "The distribution of lengths across all years for MPA and Reference areas north and south of Point Conception.",
 label = 'rov-len')
 ```
-
-
 
 
 ```{r, results = 'asis'}
@@ -237,12 +236,26 @@ label = 'mean-rov-len-data')
 ```
 
 
-
-
 <!-- ======================================================= -->
 <!-- ***************     CCFRP           ******************* --> 
 <!-- ======================================================= -->
 
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_bubflt5mkt0.png"), 
+caption = "Length composition data from the CCFRP survey",
+label = 'ccfrp-len-data')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_CCFRP.png"), 
+caption = "Mean length for the CCFRP survey with 95 percent confidence intervals",
+label = 'mean-ccfrp-len-data')
+```
 
 
 <!-- ======================================================= -->
@@ -271,7 +284,6 @@ filein = file.path(data_dir, "wcgbt", "plots", "wcgbt_south_age_at_length_by_are
 caption = "Age and length by sex for copper rockfish caught south of Point Conception by the NWFSC WCGBT survey.",
 label = 'wcgbt-len-age')
 ```
-
 
 
 <!-- ======================================================= -->  
@@ -359,6 +371,22 @@ label = 'bridge-depl')
 ```
 
 
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(bridge_dir, "_plots", "full_bridge_compare2_spawnbio_uncertainty.png"),
+caption = "Model structure and data bridging comparison of estimated spawning output",
+label = 'data-bridge-ssb')
+```
+
+```{r, results = 'asis'}
+
+add_figure(
+filein = file.path(bridge_dir, "_plots", "full_bridge_compare4_Bratio_uncertainty.png"),
+caption = "Model structure and data bridging comparison of estimated fraction unfished",
+label = 'data-bridge-depl')
+```
+
+
 <!-- ====================================================================== -->
 <!-- *********************    Priors            ********************** --> 
 <!-- ====================================================================== -->
@@ -393,12 +421,14 @@ caption = "Estimated time series of age-0 recruits (1000s)",
 label = 'recruits')
 ```
 
+
 ```{r, results = 'asis'}
-#add_figure(
-#filein = file.path(model_dir, "plots", "recdevs2_withbars.png"), 
-#caption = "Estimated time series of recruitment deviations",
-#label = 'rec-devs')
+add_figure(
+filein = file.path(model_dir, "plots", "recdevs2_withbars.png"), 
+caption = "Estimated time series of recruitment deviations",
+label = 'rec-devs')
 ```
+
 
 ```{r, results = 'asis'}
 add_figure(
@@ -408,13 +438,275 @@ label = 'bh-curve')
 ```
 
 
-
 <!-- ====================================================================== -->
-<!-- ****************** Fit to the Index Data  **************************** --> 
+<!-- *************** Fit to the Length & Age Data  ************************ --> 
 <!-- ====================================================================== -->
 
 
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt1mkt0.png"), 
+caption = "Pearson residuals for commercial fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'com-dead-pearson')
+```
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Commercial_dead.png"), 
+caption = "Mean length for commercial dead lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'com-dead-mean-len-fit')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_agefit__aggregated_across_time.png"), 
+caption = "Age composition data aggregated across time by fleet.",
+label = 'agg-marg-age-fit')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_agefit_residsflt1mkt0.png"), 
+caption = "Pearson residuals for commercial dead age data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'com-dead-age-pearson')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt2mkt0.png"), 
+caption = "Pearson residuals for commercial live fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'com-live-pearson')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Commercial_live.png"), 
+caption = "Mean length for commercial live fish lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'com-live-mean-len-fit')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt3mkt0_page2.png"), 
+caption = "Pearson residuals for recreational CPFV fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'rec-cpfv-pearson')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Rec_CPFV.png"), 
+caption = "Mean length for recreational CPFV lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'rec-cpfv-mean-len-fit')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_agefit_residsflt3mkt0.png"), 
+caption = "Pearson residuals for recreational CPFV age data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'rec-cpfv-age-pearson')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt4mkt0_page2.png"), 
+caption = "Pearson residuals for recreational private/rental fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'rec-pr-pearson')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Rec_Private.png"), 
+caption = "Mean length for recreational private/rental lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'rec-pr-mean-len-fit')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt5mkt0.png"), 
+caption = "Pearson residuals for CCFRP survey length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'ccfrp-len-pearson')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_CCFRP.png"), 
+caption = "Mean length for CCFRP survey lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'ccfrp-mean-len-fit')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAAlfit_residsflt5mkt0.png"), 
+caption = "Pearson residuals for CCFRP survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'ccfrp-age-pearson')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt6mkt0.png"), 
+caption = "Pearson residuals for CDFW ROV survey length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'rov-pearson')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_CDFW_ROV.png"), 
+caption = "Mean length for CDFW ROV survey lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'rov-mean-len-fit')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt7mkt0.png"), 
+caption = "Pearson residuals for NWFSC Hook and Line survey length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'nwfsc-hkl-pearson')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_NWFSC_HKL.png"), 
+caption = "Mean length for NWFSC Hook and Line survey lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'nwfsc-hkl-mean-len-fit')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt7mkt0_page1.png"), 
+caption = "Pearson residuals for NWFSC Hook and Line survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'nwfsc-hkl-age-pearson-1')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt7mkt0_page2.png"), 
+caption = "Pearson residuals for NWFSC Hook and Line survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'nwfsc-hkl-age-pearson-2')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt7mkt0_page3.png"), 
+caption = "Pearson residuals for NWFSC Hook and Line survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'nwfsc-hkl-age-pearson-3')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAALfit_data_weighting_TA1.8_condAgeNWFSC_HKL.png"), 
+caption = "Mean age for NWFSC Hook and Line survey age data with 95 percent confidence intervals based on current samples sizes",
+label = 'nwfsc-hkl-mean-age-fit')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt9mkt0_page1.png"), 
+caption = "Pearson residuals for the growth conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'growth-age-pearson-1')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt9mkt0_page2.png"), 
+caption = "Pearson residuals for the growth conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'growth-age-pearson-2')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt9mkt0_page3.png"), 
+caption = "Pearson residuals for the growth conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'growth-age-pearson-3')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAALfit_data_weighting_TA1.8_condAgeGrowth.png"), 
+caption = "Mean age for the growth age data with 95 percent confidence intervals based on current samples sizes",
+label = 'growth-mean-age-fit')
+```
+
+<!-- ======================================================= -->  
+<!-- ************* Fit to the Indices ********************** --> 
+<!-- ======================================================= -->
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_CPFV.png"), 
+caption = "Fit to log index data on log scale for the recreational (MRFSS) CPFV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+label = 'mrfss-cpfv-index-fit')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "index5_logcpuefit_CRFS_CPFV.png"), 
+caption = "Fit to log index data on log scale for the recreational CRFS CPFV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+label = 'crfs-cpfv-index-fit')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_Private.png"), 
+caption = "Fit to log index data on log scale for the recreational private index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+label = 'crfs-pr-index-fit')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "index5_logcpuefit_CCFRP.png"), 
+caption = "Fit to log index data on log scale for the CCFRP index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+label = 'ccfrp-index-fit')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "index5_logcpuefit_CDFW_ROV.png"), 
+caption = "Fit to log index data on log scale for the CDFW ROV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+label = 'rov-index-fit')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "index5_logcpuefit_NWFSC_HKL.png"), 
+caption = "Fit to log index data on log scale for the NWFSC Hook and Line index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+label = 'nwfsc-hkl-index-fit')
+```
 
 
 <!-- ======================================================= -->  
@@ -445,6 +737,32 @@ label = 'depl')
 
 
 <!-- ====================================================================== -->
+<!-- ******************      Sensitivities    ***************************** --> 
+<!-- ====================================================================== -->
+
+
+
+
+<!-- ====================================================================== -->
+<!-- ******************     Retrospectives    ***************************** --> 
+<!-- ====================================================================== -->
+
+
+
+
+<!-- ====================================================================== -->
+<!-- ******************       Profile         ***************************** --> 
+<!-- ====================================================================== -->
+
+
+
+
+<!-- ====================================================================== -->
+<!-- ************* Comparison w/ Previous Assessments ********************** --> 
+<!-- ====================================================================== -->
+
+
+<!-- ====================================================================== -->
 <!-- ******************    Reference Points    **************************** --> 
 <!-- ====================================================================== -->
 
@@ -464,6 +782,7 @@ filein = file.path(model_dir, "plots", "SPR4_phase.png"),
 caption = "Phase plot of the relative biomass (also referred to as fraction unfished) versus the SPR ratio where each point represents the biomass ratio at the start of the year and the relative fishing intensity in that same year. Lines through the final point show the 95 percent intervals based on the asymptotic uncertainty for each dimension. The shaded ellipse is a 95 percent region which accounts for the estimated correlations between the biomass ratio and SPR ratio",
 label = 'phase')
 ```
+
 
 ```{r, results = 'asis'}
 add_figure(

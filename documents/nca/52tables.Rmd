@@ -29,10 +29,23 @@ table_format(x = out,
              col_names = col_names)
 ```
 
+\newpage
+
 <!-- ======================================================= --> 
 <!-- *********** Removals vs. OFL/ACL   ******************** --> 
 <!-- ======================================================= --> 
 
+```{r, results = 'asis'}
+
+create_management_table(
+  management_dir = management_dir, 
+  doc_dir = doc_dir, 
+  doc_names = c("nca", 'sca'),
+  years = 2012:2022,
+  table_names = c("copper_ca_north.csv", "copper_ca_south.csv"),
+  prefix = NULL)
+
+```
 
 <!-- ======================================================= -->
 <!-- *************** Com. Catch Ratio  ********************* --> 
@@ -140,6 +153,22 @@ table_format(x = mod_params,
 
 \include{tex_tables/e_ReferencePoints.tex}
 
+\newpage
+
+
+```{r, results = 'asis'}
+
+create_projection_table(
+    management_dir = management_dir, 
+    doc_dir = doc_dir, 
+    fixed_removals = c(70, 70),
+    doc_names = c("nca", 'sca'),
+    years = 2023:2034,
+    table_names = c("copper_ca_north.csv", "copper_ca_south.csv"),
+    prefix = NULL)
+
+```
+
 <!-- ======================================================= -->
 <!-- ***********       Time Series      ******************** --> 
 <!-- ======================================================= -->
@@ -147,6 +176,16 @@ table_format(x = mod_params,
 \include{tex_tables/TimeSeries.tex}
 
 \newpage
+
+
+```{r, results = 'asis'}
+create_biomass_table(
+    doc_dir = doc_dir, 
+    prefix = NULL,
+    doc_names = c("nca", 'sca'),
+    years = 2013:2023)
+
+```
 
 
 <!-- ======================================================= -->

@@ -19,7 +19,7 @@ if( grepl("Chantel", user) ){
 
 model_dir <- file.path(user_dir, "models", "sca")
 # Specify why model you would like to profile, retro, and/or jitter
-base_name <- "2.0_mi_dw"
+base_name <- "5.6_est_m_fix_asc_desc"
 
 # Specify the parameters and the space to profile
 get = get_settings_profile(
@@ -31,13 +31,24 @@ get = get_settings_profile(
   use_prior_like = c(0, 0, 0, 0, 0)
 )
 
+get = get_settings_profile(
+  parameters =  c("L_at_Amin_Fem_GP_1", "L_at_Amin_Mal_GP_1", "NatM_uniform_Fem_GP_1",
+                   "Size_DblN_peak_Commercial_dead(1)"),
+  low =  c(14, 14, 0.08, 38),
+  high = c(20, 20, 0.13, 47),
+  step_size = c(0.5, 0.5,  0.01, 1),
+  param_space = c('real', 'real', 'real', 'real'),
+  use_prior_like = c(0, 0, 0, 0)
+)
+
 # This specifies to run ALL the diagnostics, if you want to do only some of them revise the "run" input line
 model_settings = get_settings(
   settings = list(
     base_name = base_name,
     profile_details = get,
-    run = c("profile"), #"retro"), #, "jitter"),
+    run = "jitter", #c("profile", "jitter"), #"retro"), #, "jitter"),
     retro_yrs = -1:-10,
+    Njitter = 25,
     jitter_fraction = 0.10))
 
 # Run line

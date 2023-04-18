@@ -39,6 +39,8 @@ if(file.exists("00mod.Rdata")){
   print("Model output not being read. Please run the read_model() function.")
 }
 
+source(file.path(doc_dir, "helper_functions.R"))
+
 hkl <- "NWFSC Hook and Line survey"
 
 #source(file.path(r_dir, "get_derived_quants.R"))

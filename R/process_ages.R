@@ -16,17 +16,17 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
 }
 source(file.path(user_dir, "R", "get_caal.R"))
-dir <- here("data", "ages", "formatted_age_files")
+dir <- here("data")
 
 # Read in the growth ages
-load(file.path(dir, "abrams_ages.rdata"))
-load(file.path(dir, "ccfrp_ages.rdata")) 
-load(file.path(dir, "cdfw_ages.rdata"))
-load(file.path(dir, "coop_ages.rdata"))
-load(file.path(dir, "pearson_ages.rdata"))
-load(file.path(dir, "crfs_ages.rdata"))
-load(file.path(dir, "commercial_ages.rdata"))
-load(file.path(dir, "historical_rec_ages.rdata"))
+load(file.path(dir, "ages", "formatted_age_files", "abrams_ages.rdata"))
+load(file.path(dir, "survey_indices", "ccfrp", "ccfrp_ages.rdata")) 
+load(file.path(dir, "ages", "formatted_age_files", "cdfw_ages.rdata"))
+load(file.path(dir, "ages", "formatted_age_files", "coop_ages.rdata"))
+load(file.path(dir, "ages", "formatted_age_files", "pearson_ages.rdata"))
+load(file.path(dir, "rec_bds", "crfs_ages.rdata"))
+load(file.path(dir, "pacfin_bds", "commercial_ages.rdata"))
+load(file.path(dir, "rec_bds", "historical_rec_ages.rdata"))
 
 crfs_ages <- crfs_ages[!is.na(crfs_ages$age), ]
 crfs_non_random <- crfs_ages[crfs_ages$year == 2021, ]
@@ -57,7 +57,7 @@ growth_ages <- rbind(
   abrams_ages[, col_names],
   pearson_ages[, col_names],
   cdfw_ages[, col_names],
-  coop_ages[, col_names],
+  #coop_ages[, col_names],
   wcgbt[, col_names],
   crfs_non_random [crfs_ages$year == 2021, col_names]
 )
@@ -72,6 +72,10 @@ growth_ages <- growth_ages[!is.na(growth_ages$length_cm), ]
 growth_ages$Sex <- growth_ages$sex
 growth_ages$Length_cm <- growth_ages$length_cm
 growth_ages$Age <- growth_ages$age
+
+coop_ages$Sex <- coop_ages$sex
+coop_ages$Length_cm <- coop_ages$length_cm
+coop_ages$Age <- coop_ages$age
 
 growth_ages <- nwfscSurvey::est_growth(
   dir = NULL, 
@@ -130,7 +134,7 @@ growth_north <- get_caal(
   partition = 0)
 
 write.csv(growth_north, 
-          file = file.path(dir, "ages", "forSS", "growth_caal_north.csv"),
+          file = file.path(dir, "ages", "forSS", "growth_caal_north_rm_coop.csv"),
           row.names = FALSE) 
 
 growth_south <- get_caal(
@@ -143,8 +147,35 @@ growth_south <- get_caal(
   partition = 0)
 
 write.csv(growth_south, 
-          file = file.path(dir, "ages", "forSS", "growth_caal_south.csv"),
+          file = file.path(dir, "ages", "forSS", "growth_caal_south_rm_coop.csv"),
           row.names = FALSE) 
+
+coop_south <- get_caal(
+  data = coop_ages[coop_ages$area == "south", c("year", "sex", "length_cm", "age")], 
+  len_bins = length_bins, 
+  age_bins = age_bins, 
+  month = 7, 
+  ageing_error = 1,
+  fleet = "coop", 
+  partition = 0)
+
+write.csv(coop_south, 
+          file = file.path(dir, "ages", "forSS", "growth_caal_south_coop_only.csv"),
+          row.names = FALSE)
+
+coop_north <- get_caal(
+  data = coop_ages[coop_ages$area == "north", c("year", "sex", "length_cm", "age")], 
+  len_bins = length_bins, 
+  age_bins = age_bins, 
+  month = 7, 
+  ageing_error = 1,
+  fleet = "coop", 
+  partition = 0)
+
+write.csv(coop_north, 
+          file = file.path(dir, "ages", "forSS", "growth_caal_north_coop_only.csv"),
+          row.names = FALSE)
+
 
 # There are 40 carcass lengths in the north and 2 in the south
 tmp <- coop_ages[, c("area", "year", "sex", "carcass_length_cm", "age")]
