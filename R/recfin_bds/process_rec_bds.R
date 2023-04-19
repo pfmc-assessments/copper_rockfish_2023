@@ -121,7 +121,7 @@ remove <- which(all_data$lengthcm > 65)
 all_data <- all_data[-remove, ]
 # There area 23 lengths between 60-65 which seem suspect but 
 # going to keep them.
-# remove <- which(all_data$lengthcm >= 60)
+# remove <- which(all_data$lengthcm >= 54)
 
 # Rename the lenth column to match the form expected by the unexpandedLF.fn
 # colnames(all_data[colnames(all_data) == "lengthcm"]) <- "length_cm"

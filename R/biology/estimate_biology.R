@@ -268,6 +268,14 @@ ggsave(filename = file.path(dir, "biology", "plots", "age_at_length_by_sex.png")
 # Load in all ages available as of 4/2/2023
 #========================================================
 load(file.path(dir, "ages", "formatted_age_files", "all_copper_ages.rdata"))
+all_ages$program[all_ages$program == "abrams"] <- "Abrams"
+all_ages$program[all_ages$program == "Pearson Research'"] <- "Pearson"
+all_ages$program[all_ages$program %in% c("CCFRP", "CPOP")] <- "CCFRP"
+all_ages$program[all_ages$program %in% c("Commercial - EFI", "Commercial - Pilot Sampling", "Whole")] <- "CDFW"
+all_ages$program[all_ages$program == "commercial"] <- "Commercial"
+all_ages$program[all_ages$program %in% c("Recreation", "Unknown")] <- "CRFS"
+all_ages$area[all_ages$area == "unknown"] <- "north" 
+
 
 all_ages$Age <- all_ages$age
 all_ages$Length_cm <- all_ages$length_cm
@@ -316,7 +324,7 @@ length_age_ests_south <- est_growth(
 
 save(length_age_ests_south, file = file.path(dir,"biology", 'length_at_age_ests_south_4.2.2023.rdata'))
 
-ggplot(clean_ages, aes(y = length_cm, x = age, color = program)) +
+ggplot(all_ages, aes(y = Length_cm, x = Age, color = program)) +
   geom_point(alpha = 0.1) + 
   theme_bw() + 
   geom_jitter() + 
@@ -347,3 +355,38 @@ ggplot(age_df, aes(y = length_cm, x = age, color = sex)) +
   scale_color_viridis_d()
 ggsave(filename = file.path(dir, "biology", "plots", "age_at_length_by_sex.png"),
        width = 10, height = 8)
+
+
+ggplot(all_ages, aes(y = length_cm, x = age, color = program)) +
+  geom_point(alpha = 0.1) + 
+  theme_bw() + 
+  geom_jitter() + 
+  xlim(1, 50) + ylim(1, 55) +
+  theme(panel.grid.major = element_blank(), 
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        strip.text.y = element_text(size = 14),
+        panel.grid.minor = element_blank()) + 
+  facet_grid(area~.) + 
+  xlab("Age") + ylab("Length (cm)") +
+  scale_color_viridis_d()
+ggsave(filename = file.path(dir, "biology", "plots", "age_at_length_by_all_programs.png"),
+       width = 10, height = 12)
+
+
+tmp <- all_ages[all_ages$sex %in% c("F", "M") & all_ages$program %in% c("CCFRP", "NWFSC_WCGBT", "NWFSC_HKL", "Pearson", "CPFV_COOP_collections") & all_ages$area == "south", ]
+ggplot(tmp, aes(y = Length_cm, x = Age, color = program, shape = program)) +
+  geom_point(alpha = 0.1) + 
+  theme_bw() + 
+  geom_jitter() + 
+  xlim(1, 50) + ylim(1, 55) +
+  theme(panel.grid.major = element_blank(), 
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        strip.text.y = element_text(size = 14),
+        panel.grid.minor = element_blank()) + 
+  xlab("Age") + ylab("Length (cm)") +
+  facet_grid(sex~.) +
+  scale_color_viridis_d()
+ggsave(filename = file.path(dir, "biology", "plots", "south_age_at_length_by_growth_source.png"),
+       width = 10, height = 13)
