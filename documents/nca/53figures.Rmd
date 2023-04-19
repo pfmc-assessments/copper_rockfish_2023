@@ -75,12 +75,10 @@ label = 'mean-com-live-len-data')
 <!-- ************* Recreational Data *********************** --> 
 <!-- ======================================================= -->
 
-
-
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_bubflt3mkt0_page2.png"), 
-caption = "Length composition data from the recreation CPFV fleet",
+caption = "Length composition data from the recreational CPFV fleet",
 label = 'rec-cpfv-len-data')
 ```
 
@@ -91,6 +89,45 @@ caption = "Mean length for recreational CPFV fleet with 95 percent confidence in
 label = 'mean-rec-cpfv-len-data')
 ```
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_agedat__multi-fleet_comparison.png"), 
+caption = "Age composition data from the recreational CPFV fleet",
+label = 'rec-cpfv-age-data')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_agedat_data_weighting_TA1.8_Rec_CPFV.png"), 
+caption = "Mean age for recreational CPFV fleet with 95 percent confidence intervals",
+label = 'mean-rec-cpfv-age-data')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAALdat_bubflt3mkt0.png"), 
+caption = "Conditional age-at-length data for recreational CPFV collected in 2022",
+label = 'rec-cpfv-caal-data')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "ages", "plots", "coop_crfs_length_comparison.png"), 
+caption = "Comparison of all length collected by the CRFS sampling program for the CPFV fleet to the lengths from the fish with ages from the cooperative sampling program. The length distributions in the area north of Point Conception are in general agreement while the distribution of lengths collected by this program does not align with the length samples from CRFS.",
+label = 'coop-len-comparison')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAALdat_bubflt4mkt0.png"), 
+caption = "Conditional age-at-length data for recreational PR collected in 2022",
+label = 'rec-pr-caal-data')
+```
 
 
 ```{r, results = 'asis'}
