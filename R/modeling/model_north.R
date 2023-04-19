@@ -238,3 +238,196 @@ SSplotComparisons(mysummary,
                   legendlabels = modelnames, 	
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+non_centered_devs_fix_selex <- SS_output(file.path(wd, "5.2_non_zero_centered_dev_fix_some_selex"))
+SS_plots(non_centered_devs_fix_selex)
+
+# Add the COOP CPFV carcass marginal ages
+add_carcass_ages <- SS_output(file.path(wd, "5.3_add_carcass_marginals"))
+SS_plots(add_carcass_ages)
+# Add new CAAL plots from r4ss
+SS_plots(add_carcass_ages, aalyear = 2022, plot = 18)
+get_model_quants(repfile = add_carcass_ages)
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#   970.894   -47.4422     413.38 598.117 6.28448   488.226 267.073               0.547027
+# Natural Mortality - Female Length at Amax - Female Natural Mortality - Male Length at Amax - Male
+#                    0.108                 48.5926                    0.108               46.7995
+
+# Add the COOP CPFV length data
+add_coop_lens <- SS_output(file.path(wd, "5.4_add_coop_lengths"))
+SS_plots(add_coop_lens, plot = c(2, 16))
+get_model_quants(repfile = add_coop_lens)
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#   977.565   -47.4746    422.547 595.619 6.28532   488.814 266.712                0.54563
+# Natural Mortality - Female Length at Amax - Female Natural Mortality - Male Length at Amax - Male
+#                      0.108                 48.5938                    0.108               46.7474
+tune_comps(replist = add_coop_lens, dir = file.path(wd, "5.4_add_coop_lengths"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+
+# Add new CAAL plots from r4ss
+dw <- SS_output(file.path(wd, "5.5_francis_dw"))
+SS_plots(dw)
+SS_plots(dw, aalyear = 2022, plot = 18)
+SS_plots(dw, aalyear = c(2019:2022), aalbin = c(38, 40))
+get_model_quants(repfile = dw)
+# NLL =  952.144   Survey = -47.4459    Length = 402.232 Age = 590.974 R0 = 6.28979
+
+modelnames <- c("Non-Centered Devs.", "Add CPFV-Coop. Carc. Marginals", "Add CPFV-Coop. Lengths", "Francis DW")
+mysummary <- SSsummarize(list(non_centered_devs, add_carcass_ages, add_coop_lens, dw))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "5_add_coop_data_",
+                  legendlabels = modelnames, 	
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+# I don't think is appropriate since the index was calculated as one time-series but just looking at the
+# impact of splitting the index.
+q_block <- SS_output(file.path(wd, "6.0_ccrfp_q_time_block"))
+SS_plots(q_block)
+get_model_quants(repfile = q_block)
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#   950.023   -49.3189    402.466 590.816 6.26956   480.537 244.357               0.508509
+# Natural Mortality - Female Length at Amax - Female Natural Mortality - Male Length at Amax - Male
+#                      0.108                 48.5708                    0.108               46.7397
+
+# F-type option 4 - just made guess values for the init F values, should be refined
+f_type <- SS_output(file.path(wd, "6.1_f_type"))
+SS_plots(f_type)
+get_model_quants(repfile = f_type)
+# NLL = 958.3 with Fs estimated for all fleets
+
+# Revisit the CCFRP selectivity
+# Don't block the peak and ascending 
+ccfrp_selex <- SS_output(file.path(wd, "6.2_ccfrp_selex"))
+SS_plots(ccfrp_selex)
+get_model_quants(repfile = ccfrp_selex)
+# NLL = 952.099 vs. 952.144 from the dw model
+
+# Lower sigma R based on suggested values
+sigmaR <- SS_output(file.path(wd, "6.3_tune_sigmaR"))
+SS_plots(sigmaR, plot = 4)
+get_model_quants(repfile = sigmaR)
+# The new suggested values are even lower from 0.45 to now 0.42 but minor
+# NLL = 956.1
+
+# Add back in the come live block on select to see how the rec devs  change
+# The fit to all the length data improves by ~ 8 units however the visual to the 
+# aggregated length comps does not look better has a higher effN
+live_selex <- SS_output(file.path(wd, "6.4_com_live_selex"))
+SS_plots(live_selex, plot = c(2, 4, 16))
+# NLL  = 948.062   -47.2889    396.267 592.635 R0 =  6.27617   depl = 0.558296
+get_model_quants(repfile = live_selex)
+tune_comps(replist = live_selex, dir = file.path(wd, "6.4_com_live_selex"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+
+selex_francis_dw <- SS_output(file.path(wd, "6.5_francis_dw"))
+
+modelnames <- c("5.5 Francis DW", "CCFRP Selex", "SigmaR = 0.5",  "Com. Live Selex", "Updated DW")
+mysummary <- SSsummarize(list(dw, ccfrp_selex, sigmaR, live_selex, selex_francis_dw))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "6_selex_",
+                  legendlabels = modelnames, 
+                  legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+# 6.6 Move 2020 in negative phase forecast, pin hist. com live selex asmptotic
+# Estimate box sex M values
+est_m <- SS_output(file.path(wd, "6.6_est_m"))
+get_model_quants(repfile = est_m)
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#  939.193   -49.9995    411.085  577.33 5.66394   610.167 136.352               0.223466
+# Natural Mortality - Female Length at Amax - Female Natural Mortality - Male
+#                 0.0682519                 48.3917                0.0731751
+# Length at Amax - Male
+#              46.5975
+
+est_h <- SS_output(file.path(wd, "6.7_est_h"))
+get_model_quants(repfile = est_h)
+# NLL 948.231
+
+
+modelnames <- c("6.5 Francis DW", "Est. M", "Est. h")
+mysummary <- SSsummarize(list(selex_francis_dw, est_m, est_h))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "6_est_m_h_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+dw <- SS_output(file.path(wd, "6.8"))
+SS_plots(dw)
+get_model_quants(repfile = dw)
+tune_comps(replist = dw, dir = file.path(wd, "6.8"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+
+lambda_growth <- SS_output(file.path(wd, "6.9_lambda_growth"))
+SS_plots(lambda_growth)
+lambda_pr <- SS_output(file.path(wd, "6.10_lambda_pr_len_ages"))
+SS_plots(lambda_pr)
+lambda_cpfv <- SS_output(file.path(wd, "6.11_lambda_cpfv_len_ages"))
+SS_plots(lambda_cpfv)
+
+modelnames <- c("6.6", "Lambda Growth", "Lambda PR", "Lambda CPFV")
+mysummary <- SSsummarize(list(dw, lambda_growth, lambda_pr, lambda_cpfv))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "6_lambda_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+# Decrease the min value for the peak parameter and allow the init selec (para 5)
+# to be estimated.
+rov <- SS_output(file.path(wd, "6.12_rov_selex"))
+SS_plots(rov, plot = c(2, 16))
+get_model_quants(repfile = rov)
+# NLL = 948.308 Length = 414.43
+
+# Grab the MLE par file from jitter and rerun
+mle <- SS_output(file.path(wd, "7.0_mle"))
+get_model_quants(repfile = mle)
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#   947.967   -47.3407    414.311 574.992 6.28443   490.505 280.495               0.571849
+
+settlement <- SS_output(file.path(wd, "7.1_fix_lmin_settlement"))
+get_model_quants(repfile = settlement)
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#   947.706   -47.3337    413.578 575.516 6.33266   487.716 276.289               0.566496
+
+# Fix the ascending parameter in the PR fleet in the 2017 block
+fix_selex <- SS_output(file.path(wd, "7.2_fix_desc_pr_2017"))
+get_model_quants(repfile = fix_selex)
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#   947.212   -47.3987    413.628 575.161 6.33682   489.601 278.766               0.569373
+
+modelnames <- c("6.6", "7.0 MLE", "Settlement & Lmin", "Fix PR Asc. 2017")
+mysummary <- SSsummarize(list(dw, mle, settlement, fix_selex))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "7_mle_fix_params_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+rm_mrfss_cpfv <- SS_output(file.path(wd, "7.3_rm_mrfss_cpfv_data"))
+get_model_quants(repfile = rm_mrfss_cpfv)
+SS_plots(rm_mrfss_cpfv)
+
+modelnames <- c("7.3", "Remove MRFSS Era CPFV Data")
+mysummary <- SSsummarize(list(fix_selex, rm_mrfss_cpfv))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "7.3_rm_mrfss_data_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
