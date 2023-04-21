@@ -9,6 +9,7 @@ output:
   bookdown::pdf_document2:
     keep_tex: true
 lang: en
+bibilography: [sa4ss.bib,copper.bib]
 papersize: letter
 ---
 
