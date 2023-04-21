@@ -390,3 +390,158 @@ SSplotComparisons(mysummary,
                   legendlabels = modelnames, 	
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+fix_selex <- SS_output(file.path(wd, "5.7_fix_asc_desc"))
+get_model_quants(fix_selex)
+# NLL = 2141
+rm_block <- SS_output(file.path(wd, "5.8_rm_2022_rec_block"))
+get_model_quants(rm_block)
+# NLL = 2142.73with 7 fewer parameters
+
+modelnames <- c("5.7", "Remove CPFV/PR 2022 Block")
+mysummary <- SSsummarize(list(fix_selex, rm_block))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "5.7_rm_rec_block_",
+                  legendlabels = modelnames, 
+                  endyr = 2034,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+exe <- SS_output(file.path(wd, "6.0_exe"))
+SS_plots(exe,aalyear = 2003:2022)
+
+modelnames <- c("5.8 Rec. Simple Blocks", "3.30.21")
+mysummary <- SSsummarize(list(rm_block, exe))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "6.0_exe_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+non_zero_centered <- SS_output(file.path(wd, "6.1_non_zero_centered_devs"))
+SS_plots(non_zero_centered, plot = 4)
+
+modelnames <- c("6.0 Zero-Centered Devs", "6.1 Non-zero-Centered Devs.")
+mysummary <- SSsummarize(list(exe, non_zero_centered))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "6.1_centered_devs_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+update_pr_index <- SS_output(file.path(wd, "6.2_update_pr_index"))
+modelnames <- c( "6.1 Non-zero-Centered Devs.", "6.2 Update PR Index")
+mysummary <- SSsummarize(list(non_zero_centered, update_pr_index))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "6.2_update_pr_index",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+coop_wcgbt <- SS_output(file.path(wd, "6.3_coop_wcgbt"))
+SS_plots(coop_wcgbt, aalyear = 2003:2022, plot = c(2, 16:18))
+tune_comps(replist = coop_wcgbt, dir = file.path(wd, "6.3_coop_wcgbt"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+
+
+modelnames <- c("6.2 Update PR Index", "6.3 Seperate COOP & WCGBT")
+mysummary <- SSsummarize(list(update_pr_index, coop_wcgbt))
+SSplotComparisons(mysummary,
+                  filenameprefix = "6.3_separate_coop_wcgbt",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+pearson <- SS_output(file.path(wd, "6.4_pearson"))
+SS_plots(pearson, plot = 2)
+tune_comps(replist = pearson, dir = file.path(wd, "6.4_pearson"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+
+modelnames <- c("6.2 Update PR Index", "6.3 Seperate COOP & WCGBT", "6.4 Add Pearson Data")
+mysummary <- SSsummarize(list(update_pr_index, coop_wcgbt, pearson))
+SSplotComparisons(mysummary,
+                  filenameprefix = "6.4_separate_ages_all_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+coop_selex <- SS_output(file.path(wd, "6.5_coop_len_selex"))
+SS_plots(coop_selex)
+tune_comps(replist = coop_selex, dir = file.path(wd, "6.5_coop_len_selex"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+
+modelnames <- c("6.2 Update PR Index", "6.3 Seperate COOP & WCGBT", "6.4 Add Pearson Data", "6.5 COOP Selex")
+mysummary <- SSsummarize(list(update_pr_index, coop_wcgbt, pearson, coop_selex))
+SSplotComparisons(mysummary,
+                  filenameprefix = "6.5_separate_ages_all_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+rm_early_ages <- SS_output(file.path(wd, "6.6_rm_hist_ages"))
+SS_plots(rm_early_lens, plot = 4)
+get_model_quants(rm_early_lens)
+# After exploration it appears that both the early recreational CPFV lengths and these historical
+# ages are contributing to that giant recruitment. If you remove both the early length and age data
+# the large recruitment goes away and if you just remove the ages there is still a peak but less so and spread
+# across multiple years in the late 60s.
+rm_early_data <- SS_output(file.path(wd, "6.6_rm_hist_ages_lens"))
+
+modelnames <- c("6.5 COOP Selex", "Remove pre-MRFSS Lengths & Ages", "Remove Only Ages")
+mysummary <- SSsummarize(list(coop_selex, rm_early_data, rm_early_ages))
+SSplotComparisons(mysummary,
+                  filenameprefix = "6.6_rm_early_data_",
+                  ylimAdj = 1.25,
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+# Increased the sigmaR to 0.70 which then revises the suggested sigmaR back to 0.60
+sigmaR <- SS_output(file.path(wd, "6.7_sigmaR"))
+SS_plots(sigmaR, plot = 4)
+
+# This feels like a better end place for those early devs.
+early_devs <- SS_output(file.path(wd, "6.8_change_early_devs"))
+SS_plots(early_devs, plot = 4)
+tune_comps(replist = early_devs, dir = file.path(wd, "6.8_change_early_devs"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+
+
+mi <- SS_output(file.path(wd, "6.9_early_devs_mi"))
+francis <- SS_output(file.path(wd, "6.10_early_devs_francis"))
+
+modelnames <- c("6.5 COOP Selex", "MI", "Francis")
+mysummary <- SSsummarize(list(coop_selex, mi, francis))
+SSplotComparisons(mysummary,
+                  filenameprefix = "6.9_data_weight_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+wcgbt_lens <- SS_output(file.path(wd, "6.11_unexpanded_wcgbt_lens"))
+SS_plots(wcgbt_lens, plot = c(2, 16:18))
+tune_comps(replist = wcgbt_lens, dir = file.path(wd, "6.11_unexpanded_wcgbt_lens"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+modelnames <- c("6.5 COOP Selex", "MI", "Francis", "Update WCGBT Lengths - Francis")
+mysummary <- SSsummarize(list(coop_selex, mi, francis, wcgbt_lens))
+SSplotComparisons(mysummary,
+                  filenameprefix = "6.11_wcgbt_lengths_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)

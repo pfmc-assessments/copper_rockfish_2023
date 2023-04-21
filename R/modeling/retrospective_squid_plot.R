@@ -14,9 +14,9 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
 }
 
-model_dir <- file.path(user_dir, "models", "nca")
-base_name <- "5.1_non_zero_centered_devs"
-retro.folder <- file.path(user_dir, "models", "nca", paste0(base_name, "_retro"))
+model_dir <- file.path(user_dir, "models", "sca")
+base_name <- "6.0_exe"
+retro.folder <- file.path(user_dir, "models", "sca", paste0(base_name, "_retro"))
 
 
 # Read in the retrospective runs
@@ -33,18 +33,26 @@ retro9 = SS_output(file.path(retro.folder, "retro", "retro-9"), printstats = FAL
 retro10 = SS_output(file.path(retro.folder, "retro", "retro-10"), printstats = FALSE, verbose = FALSE, covar = FALSE)
 retro11 = SS_output(file.path(retro.folder, "retro", "retro-11"), printstats = FALSE, verbose = FALSE, covar = FALSE)
 retro12 = SS_output(file.path(retro.folder, "retro", "retro-12"), printstats = FALSE, verbose = FALSE, covar = FALSE)
+retro13 = SS_output(file.path(retro.folder, "retro", "retro-1"), printstats = FALSE, verbose = FALSE, covar = FALSE)
+retro14 = SS_output(file.path(retro.folder, "retro", "retro-2"), printstats = FALSE, verbose = FALSE, covar = FALSE)
+retro15 = SS_output(file.path(retro.folder, "retro", "retro-3"), printstats = FALSE, verbose = FALSE, covar = FALSE)
+retro16 = SS_output(file.path(retro.folder, "retro", "retro-4"), printstats = FALSE, verbose = FALSE, covar = FALSE)
+retro17 = SS_output(file.path(retro.folder, "retro", "retro-5"), printstats = FALSE, verbose = FALSE, covar = FALSE)
+retro18 = SS_output(file.path(retro.folder, "retro", "retro-6"), printstats = FALSE, verbose = FALSE, covar = FALSE)
+retro19 = SS_output(file.path(retro.folder, "retro", "retro-7"), printstats = FALSE, verbose = FALSE, covar = FALSE)
+retro20 = SS_output(file.path(retro.folder, "retro", "retro-8"), printstats = FALSE, verbose = FALSE, covar = FALSE)
 
-
-modelnames <- c("Base Model", paste0("Retro -", 1:12))
+modelnames <- c("Base Model", paste0("Retro -", 1:15))
 
 # Summarize the results across models
 mysummary <- SSsummarize(list(base, retro1, retro2, retro3, retro4, retro5,
-                              retro6, retro7, retro8, retro9, retro10, retro11, retro12))
+                              retro6, retro7, retro8, retro9, retro10, retro11, retro12,
+                              retro13, retro14, retro15))#, retro16, retro17, retro18, retro19, retro20))
 
-HandyCode::pngfun(wd = retro.folder, file = "Squid_RecDevs.png", h = 7, w = 7)
+HandyCode::pngfun(wd = retro.folder, file = "Squid_RecDevs_short.png", h = 7, w = 7)
 SSplotRetroRecruits(retroSummary = mysummary,
-                    endyrvec = rev(2010:2023),
-                    cohorts = 2000:2021,
+                    endyrvec = rev(2008:2023),
+                    cohorts = 2008:2021,
                     ylim=NULL,uncertainty=FALSE,
                     labels=c('Recruitment deviation', 'Recruitment (billions)', 'relative to recent estimate', 'Age'),
                     main="",
@@ -53,12 +61,12 @@ SSplotRetroRecruits(retroSummary = mysummary,
 dev.off()
 
 
-#SSplotComparisons(mysummary,
-#                  filenameprefix = "Retrospective_",
-#                  endyrvec = rev(2010:2023),
-#                  legendlabels = modelnames, 	
-#                  plotdir = retro.folder,
-#                  pdf = TRUE)
+SSplotComparisons(mysummary,
+                  filenameprefix = "Retrospective_",
+                  endyrvec = rev(2002:2023),
+                  legendlabels = modelnames, 	
+                  plotdir = retro.folder,
+                  pdf = TRUE)
 
 #=====================================================================================================
 # Create a table of parameter values to understand what is changing across retrospective runs
