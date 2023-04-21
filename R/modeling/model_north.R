@@ -15,6 +15,7 @@ if( grepl("Chantel", user) ){
 
 wd <- file.path(user_dir, "models", area)
 
+<<<<<<< Updated upstream
 #=================================================================================
 # 2021 Base Model 
 #=================================================================================
@@ -238,6 +239,7 @@ SSplotComparisons(mysummary,
                   legendlabels = modelnames, 	
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+<<<<<<< Updated upstream
 
 non_centered_devs_fix_selex <- SS_output(file.path(wd, "5.2_non_zero_centered_dev_fix_some_selex"))
 SS_plots(non_centered_devs_fix_selex)
@@ -431,3 +433,192 @@ SSplotComparisons(mysummary,
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
 
+=======
+=======
+init_model <- SS_output(file.path(wd, "0.1_init_model"))
+get_model_quants(init_model)
+
+###I'm working through the control file to look at minor changes to see if anything
+###moves and to undersatnd hte model a bit better
+
+# Change L2 to 30 from 999 which was Lmax
+growth_L2 <-  SS_output(file.path(wd, "0.2_growth_L2"))
+SS_plots(growth_L2)
+get_model_quants(growth_L2)
+
+
+#Change exponential decay to 0.1 - was 0.01
+growth_decay <-  SS_output(file.path(wd, "0.3_growth_expdecay_.1"))
+SS_plots(growth_decay, plot = c(1))
+get_model_quants(growth_decay)
+
+#Change age at first maturity from 0 to 2
+first_mature <-  SS_output(file.path(wd, "0.4_first_mature"))
+SS_plots(first_mature, plot = c(1))
+get_model_quants(first_mature)
+
+#Change settlement from january to july
+settle_july <-  SS_output(file.path(wd, "0.5_settle_july"))
+SS_plots(settle_july, plot = c(1))
+get_model_quants(settle_july)
+
+#Changed first year of main devs to 1965 phase to 4
+#last yer no bias to 1962, year full bias 1979
+rec_devs_minor <-  SS_output(file.path(wd, "0.6_recdev_minoradjustment"))
+#SS_plots(rec_devs_minor, plot = c(1))
+get_model_quants(rec_devs_minor)
+
+#Last year of main devs to 2022; 
+rec_devs_minor2 <-  SS_output(file.path(wd, "0.7_recdev_minoradjustment2"))
+SS_plots(rec_devs_minor2, plot = c(1))
+get_model_quants(rec_devs_minor2)
+
+
+# Change L1 to 0 
+growth_L1 <-  SS_output(file.path(wd, "0.8_growth_L1"))
+SS_plots(growth_L1)
+get_model_quants(growth_L1)
+
+
+# Change L1 to 0 
+growth_L1 <-  SS_output(file.path(wd, "0.8_growth_L1"))
+SS_plots(growth_L1)
+get_model_quants(growth_L1)
+
+# Change age age maturity back to 0
+first_mature <-  SS_output(file.path(wd, "0.9_first_mature"))
+SS_plots(first_mature, plot = c(1))
+get_model_quants(first_mature)
+
+#-----------------------------------------------------------
+# 1.0_com_length_sample_size
+#Turn off (fleet negative) when <20 fish sampled in the commercial data
+rm_low_com_sample_size <-  SS_output(file.path(wd, "1.0_com_length_sample_size"))
+SS_plots(rm_low_com_sample_size, plot = c(1, 2))
+get_model_quants(rm_low_com_sample_size)
+
+# 1.1_rec_length_sample_size
+#Turn off (fleet negative) when <20 fish sampled in the recreational data
+rm_low_rec_sample_size <-  SS_output(file.path(wd, "1.1_rec_length_sample_size"))
+SS_plots(rm_low_rec_sample_size)
+get_model_quants(rm_low_rec_sample_size)
+
+
+
+# 1.2_no_age_error
+#Turn off (fleet negative) when <20 fish sampled in the recreational data
+no_age_error <-  SS_output(file.path(wd, "1.2_no_age_error"))
+get_model_quants(no_age_error)
+SS_plots(no_age_error, plot = c(1, 16))
+#ageing error matrix does make a difference
+
+
+#1.3_move_coop_ages
+#coop cpfv ages were in the growth fleet - move to cpfv fleet
+#reweighted with MI
+move_coop <- SS_output(file.path(wd, "1.3_move_coop_ages"))
+get_model_quants(move_coop)
+SS_plots(move_coop) #, plot = c(1, 2, 14, 16))
+
+tune_comps(dir = file.path(wd, "1.3_move_coop_ages"), 
+           option = "MI", write = TRUE, allow_up_tuning = TRUE)
+
+
+#1.4_
+com_live_selex <- SS_output(file.path(wd, "1.4_"))
+get_model_quants(com_live_selex)
+SS_plots(com_live_selex)#, plot = c(1, 2, 14, 16))
+tune_comps(dir = file.path(wd, "1.4_"), 
+           option = "Francis", write = TRUE, allow_up_tuning = FALSE)
+
+
+#2_rm_ages_lowN
+rm_ages <- SS_output(file.path(wd, "2.0_rm_ages_lowN"))
+get_model_quants(rm_ages)
+SS_plots(rm_ages)#, plot = c(1, 2, 14, 16))
+tune_comps(dir = file.path(wd, "1.4_"), 
+           option = "Francis", write = TRUE, allow_up_tuning = FALSE)
+
+#dome shaped selectivity
+# com_live_selex <- SS_output(file.path(wd, "1.0_com_live_selex"))
+# SS_plots(com_live_selex, plot = c(2, 13))
+# get_model_quants(com_live_selex)
+
+# Attempting to remove the 2008 time block for the commercial live fleet
+# Changed to 1916 2021 to see if the new regulations and additional data help
+
+
+#======================================================================================
+# Do a quick progress comparison
+#======================================================================================
+modelnames <- c("2021", "All New Data", "Selectivity", "NWFSC HKL & Growth CAAL", "- 2022 Coop. Ages")
+mysummary <- SSsummarize(list(base_2021, int_model,  mi_dw , dw_caal, rm_coop_ages))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "1_selex_caal_",
+                  legendlabels = modelnames, 	
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+#======================================================================================
+
+tune_comps(replist = mi_dw, dir = file.path(wd, "2.0_mi_dw"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+
+# All ages being used as conditional ages
+mi_dw_2.0 <- SS_output(file.path(wd, "2.0_mi_dw"))
+SS_plots(mi_dw_2.0)
+# LIKELIHOOD report:2 2019.14
+# Linf F = 48.1, M = 44.8 cm
+
+frances_dw <- SS_output(file.path(wd, "2.1_frances_dw"))
+SS_plots(frances_dw)
+# Linf F = 47.2, M = 46.9 
+# The dirichlet parameters are hitting the upper bounds - would need to revise
+# the input sample size to be equal to the number of fish
+
+dirichlet_dw <-  SS_output(file.path(wd, "2.2_dirichlet_dw"))
+# Linf F = 46.9 cm, M = 46.6 
+
+modelnames <- c("2021", "MI", "Frances", "Dirichlet (Param on Upper Bound)")
+mysummary <- SSsummarize(list(base_2021, mi_dw_2.0, frances_dw, dirichlet_dw))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "2_dw_growth_",
+                  legendlabels = modelnames, 	
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+
+#See if freeing up growth helps this at all
+
+# Numbers for r4ss plots
+# 1. Biology
+# 2. Selectivity and retention
+# 3. Timeseries
+# 4. Recruitment deviations
+# 5. Recruitment bias adjustment
+# 6. Spawner-recruit
+# 7. Catch
+# 8. SPR
+# 9. Discards
+# 10.Mean weight
+# 11.Indices
+# 12.Numbers at age
+# 13.Length comp data (and generalized size comp data)
+# 14.Age comp data
+# 15.Conditional age-at-length data
+# 16.Length comp fits (and generalized size comp fits)
+# 17.Age comp fits
+# 18.Conditional age-at-length fits
+# 19.Francis and Punt conditional age-at-length comp fits
+# 20.Mean length-at-age and mean weight-at-age
+# 21.Tags
+# 22.Yield
+# 23.Movement
+# 24.Data range
+# 25.Parameter distributions
+# 26.Diagnostic tables
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes

@@ -30,10 +30,11 @@ library(fitdistrplus)
 #species and area identifiers - eventually put in function
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
-modelArea = "north"
+modelArea = "south"
 indexName <-  "crfs_pr_dockside"
-covars <- c("month", "district", "year", "targetSpecies", "geara")
-covars <- c("month", "district", "year", "targetSpecies", "district:year")
+modelName <- "rm_last2yrs_area_weighted"
+covars <- c("month", "district", "year", "targetSpecies")#, "geara")
+covars_weighted <- c("month", "district", "year", "targetSpecies", "district:year")
 # Load in some helper functions for processing and plotting the data
 #R path
 github_path <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
@@ -41,7 +42,8 @@ all <- list.files(file.path(github_path, "R", "sdmTMB"))
 for (a in 1:length(all)) { source(file.path(github_path, "R", "sdmTMB", all[a]))}
 # Set working directories
 #set working directory
-dir <- file.path("S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside",modelArea)
+dir <- file.path("S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside",
+                 modelArea, modelName)
 
 #dir <- file.path(here(),"data","rec_indices", indexName, modelArea)
 setwd(dir)
@@ -95,7 +97,9 @@ fit.nb <- sdmTMB(
   spatiotemporal = "off",
   family = nbinom2(link = "log"),
   control = sdmTMBcontrol(newton_loops = 1))
+
 } else {
+  
   #set the grid
   grid <- expand.grid(
     year = unique(dat$year),
@@ -116,17 +120,17 @@ fit.nb <- sdmTMB(
     do_index = TRUE,
     predict_args = list(newdata = grid, re_form_iid = NA),   
     index_args = list(area = 1),
-    control = sdmTMBcontrol(newton_loops = 1) #not entirely sure what this does
-  )
+    control = sdmTMBcontrol(newton_loops = 1)) #not entirely sure what this does
+  
 }
 
 #Get diagnostics and index for SS
 do_diagnostics(
-  dir = file.path(dir, "main_effects"), 
+  dir = file.path(dir), 
   fit = fit.nb)
 
 calc_index(
-  dir = file.path(dir, "main_effects"), 
+  dir = file.path(dir), 
   fit = fit.nb,
   grid = grid)
 
@@ -138,30 +142,27 @@ dataFilters <- dataFilters %>%
 rowwise() %>%
 filter(!all(is.na(across((everything()))))) %>%
 ungroup() %>%
-rename(`Positive Samples` = Positive_Samples) %>%
-as.data.frame()
+rename(`Positive Samples` = Positive_Samples)
+dataFilters <- data.frame(lapply(dataFilters, as.character), stringsasFactors = FALSE)
 
-write.csv(dataFilters, 
-file = file.path(dir, "main_effects", "data_filters.csv"), 
-row.names = FALSE)
+write.csv(dataFilters, file = file.path(dir, "data_filters.csv"), row.names = FALSE)
 
-View(Model_selection)
+#View(Model_selection)
 #format table for the document
 out <- Model_selection %>%
 dplyr::select(-`(Intercept)`) %>%
 mutate_at(vars(covars,"year","offset(logEffort)"), as.character) %>%
 mutate(across(c("logLik","AICc","delta"), round, 1)) %>%
-replace_na(list(district = "Excluded", geara = "Excluded",
+replace_na(list(district = "Excluded", 
           targetSpecies = "Excluded", month = "Excluded")) %>%
 mutate_at(c(covars,"year","offset(logEffort)"), 
        funs(stringr::str_replace(.,"\\+","Included"))) %>%
 rename(`Effort offset` = `offset(logEffort)`, 
        `log-likelihood` = logLik,
-        `Primary target species` = targetSpecies,
-       `Primary gear` = geara) %>%
+        `Primary target species` = targetSpecies) %>%
 rename_with(stringr::str_to_title,-AICc)
-View(out)
-write.csv(out, file = file.path(dir, "main_effects", "model_selection.csv"), row.names = FALSE)
+#View(out)
+write.csv(out, file = file.path(dir,  "model_selection.csv"), row.names = FALSE)
 
 #summary of trips and  percent pos per year
 summaries <- cdfwpr %>%
@@ -172,7 +173,7 @@ summaries <- cdfwpr %>%
          percentpos = tripsWithTarget/(tripsWithTarget+tripsWOTarget)) 
 View(summaries)
 write.csv(summaries, 
-file.path(dir, "main_effects", "percent_pos.csv"),
+file.path(dir,  "percent_pos.csv"),
 row.names=FALSE)
 
 #-------------------------------------------------------------------------------
@@ -181,7 +182,7 @@ row.names=FALSE)
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
-
+if(grepl("area_weighted", modelName) == TRUE){
 #fraction of rocky habitat by district in state waters only
 north_district_weights <- data.frame(district = c(3,4,5,6),
                                   area_weight = c(0.3227, 0.321, 0.162, 0.1943))
@@ -242,15 +243,16 @@ Model_selection
     time = "year",
     spatial="off",
     spatiotemporal = "off",
-    family = nbinom2(link = "log"))
+    family = nbinom2(link = "log"),
+    control = sdmTMBcontrol(newton_loops = 1))
  
   do_diagnostics(
-    dir = file.path(dir, "area_weighted"), 
+    dir = file.path(dir), 
     fit = fit.nb,
     plot_resid = FALSE)
   
   calc_index(
-    dir = file.path(dir, "area_weighted"), 
+    dir = file.path(dir), 
     fit = fit.nb,
     grid = grid_north)
 
@@ -296,29 +298,31 @@ Model_selection
 
 #-------------------------------------------------------------------------------
 #Format data filtering table and the model selection table for document
+  dataFilters <- data.frame(lapply(dataFilters, as.character), stringsasFactors = FALSE)
 write.csv(dataFilters, 
-          file = file.path(dir, "area_weighted", "data_filters.csv"), 
+          file = file.path(dir, "dataFilters.csv"), 
           row.names = FALSE)
 
-View(Model_selection)
+#View(Model_selection)
 #format table for the document
 out <- Model_selection %>%
   dplyr::select(-`(Intercept)`) %>%
-  mutate_at(vars(covars,"year","offset(logEffort)"), as.character) %>%
+  mutate_at(vars(covars_weighted,"year","offset(logEffort)"), as.character) %>%
   mutate(across(c("logLik","AICc","delta"), round, 1)) %>%
   replace_na(list(district = "Excluded", `district:year` = "Excluded",
                   targetSpecies = "Excluded", month = "Excluded")) %>%
-  mutate_at(c(covars,"year","offset(logEffort)"), 
+  mutate_at(c(covars_weighted,"year","offset(logEffort)"), 
             funs(stringr::str_replace(.,"\\+","Included"))) %>%
   rename(`Effort offset` = `offset(logEffort)`, 
          `log-likelihood` = logLik,
          `Primary target species` = targetSpecies,
          `Interaction` = `district:year`) %>%
   rename_with(stringr::str_to_title,-AICc)
-View(out)
-write.csv(out, file = file.path(dir, "area_weighted", "model_selection.csv"), 
+#View(out)
+write.csv(out, file = file.path(dir, "model_selection.csv"), 
           row.names = FALSE)
 
+}
 #-------------------------------------------------------------------------------
 #4/4/23 taking way too long to run on Melissa's computer
 #diagnostic of prop zero without the interaction looks good!

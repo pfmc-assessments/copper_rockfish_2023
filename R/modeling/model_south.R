@@ -24,7 +24,7 @@ int_model <- SS_output(file.path(wd, "0.1_init_model"))
 
 # Pin selectivity parameter 6 to asymptotic since it was being estimated asymptotic for all
 # blocks except for the 2022 year which was estimating dome at the very largest sizes 52 cm+
-# Remove the commercial live block in 2022 due to lack of data in this single year to inform
+# Remove the commercial live block in 2022 do lack of data in this single year to inform
 # selectivity estimation
 com_selex <- SS_output(file.path(wd, "0.2_com_selex"))
 # NLL = 2339, R0 = 5.5

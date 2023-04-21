@@ -280,7 +280,7 @@ Model_selection <- as.data.frame(model.suite) %>%
   dplyr::select(-weight)
 Model_selection
 
-#in the north region is not signficant and the AIC differentes is <2 so drop
+#in the north region is not signficant and the AIC differents is <2 so drop
 #northern grid
 
 if(modelArea == "north"){

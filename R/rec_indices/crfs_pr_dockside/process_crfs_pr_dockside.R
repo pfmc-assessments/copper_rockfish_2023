@@ -17,12 +17,12 @@ library(glue)
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
 modelArea = "north"
-
+modelName = "rm_last2yrs_area_weighted"
 #setwd to the north or the south
 #set working directory
 setwd("S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside")
 #setwd(glue::glue(here(),"/data/rec_indices/crfs_pr_dockside/"))
-out.dir <- glue::glue(getwd(),'/',modelArea,'/')
+out.dir <- file.path(getwd(), modelArea, modelName)
 
 #load data for processing
 load("all_pr_data.RData")
@@ -43,6 +43,15 @@ cdfwpr <- all_pr_data %>%
   filter(area == modelArea) %>%
   mutate(cpue = kept/anglers)
 
+#look at total sample sizes by year to see if there is a post-covid difference
+cdfwpr_samplesize <- all_pr_data %>%
+  mutate(area = ifelse(district > 2, "north", "south")) %>%
+  group_by(area, year) %>%
+  tally() %>%
+  pivot_wider(names_from = area, values_from = n)
+write.csv(cdfwpr_samplesize, "pr_trip_sample_size_by_year.csv")
+
+
 #cpue over time to see if there's a reduction in copper cpue in 2022
 #will run with and without 2022
 #will eventually add in the angler reported catches as well for a more complete 
@@ -59,7 +68,7 @@ group_by(year) %>%
             max = max(cpue))
 cpue_year
 write.csv(cpue_year, 
-file.path(getwd(),modelArea,"forSS","observed_cpue_by_year.csv"),
+file.path(getwd(),modelArea, modelName, "forSS","observed_cpue_by_year.csv"),
 row.names = FALSE)
 #histogram of the number of fish per bag
 #-------------------------------------------------------------------------------
@@ -79,12 +88,13 @@ pivot_wider(names_from=district, values_from = n)
 
 #Remove 2020 due to covid
 cdfwpr <- cdfwpr %>%
-filter(!year %in% c(2020))
+filter(!year %in% c(2020, 2021, 2022))
 
 #-------------------------------------------------------------------------------
 # Add to filter dataframe
 dataFilters$Filter[filter.num] <- c("Year")
-dataFilters$Description[filter.num] <- c("Remove 2020 due to COVID sampling restrictions")
+dataFilters$Description[filter.num] <- c("Remove 2020-2022 due to COVID sampling restrictions 
+                                         and avoidance")
 dataFilters$Samples[filter.num] <- cdfwpr %>% tally()
 dataFilters$Positive_Samples[filter.num] <- cdfwpr %>% filter(kept>0) %>% tally()
 filter.num <- filter.num + 1
@@ -222,7 +232,7 @@ tripTargets <- cdfwpr %>%
   mutate(totalTrips = tripsWithTarget+tripsWOTarget,
          percentpos = tripsWithTarget/(tripsWithTarget+tripsWOTarget)) 
 write.csv(tripTargets, 
-file.path(getwd(),modelArea,"forSS","prim1summary.csv"),
+file.path(getwd(),modelArea, modelName, "forSS","prim1summary.csv"),
 row.names=FALSE)
 
 tripTargetFilter  <- tripTargets %>%
@@ -245,7 +255,7 @@ filter(!prim1Common %in%
   mutate(totalTrips = tripsWithTarget+tripsWOTarget,
          percentpos = tripsWithTarget/(tripsWithTarget+tripsWOTarget)) 
 write.csv(secondary_target, 
-file.path(getwd(),modelArea,"forSS","prim2summary.csv"),
+file.path(getwd(),modelArea, modelName, "forSS","prim2summary.csv"),
 row.names=FALSE)
 
 secondary_filter1 <- secondary_target %>%
@@ -325,6 +335,8 @@ dataFilters$Positive_Samples[filter.num] <- cdfwpr %>% filter(kept>0) %>% tally(
 filter.num <- filter.num + 1
 #-------------------------------------------------------------------------------
 
+
+
 #final tables and visualizations
 #Get the number of available samples by year
 samples_year_district <- cdfwpr %>%
@@ -333,7 +345,7 @@ tally() %>%
 tidyr::pivot_wider(names_from=district, values_from = n)
 samples_year_district
 write.csv(samples_year_district, 
-file.path(getwd(),modelArea,"forSS","samples_by_year_district.csv"),
+file.path(getwd(),modelArea, modelName, "forSS","samples_by_year_district.csv"),
 row.names=FALSE)
 
 #sample sizes by month
@@ -365,7 +377,7 @@ geom_line(aes(x = year, y = average_cpue,
 colour = district)) +
 xlab("Year") + ylab("Average CPUE") + ylim(c(0, 1.5)) + 
 scale_color_viridis_d()
-ggsave(file = file.path(getwd(),modelArea, "average_cpue_by_cnty.png"), width = 7, height = 7)
+ggsave(file = file.path(getwd(),modelArea, modelName, "average_cpue_by_cnty.png"), width = 7, height = 7)
 
 #look at district 4 in 2017
 #several trips with high cpue!
@@ -377,4 +389,4 @@ View(aa)
 
 #save the datafile and filters for the run file
 save(cdfwpr, dataFilters, 
-file = file.path(getwd(),modelArea,"/data_for_glm.RData"))
+file = file.path(getwd(),modelArea, modelName, "/data_for_glm.RData"))

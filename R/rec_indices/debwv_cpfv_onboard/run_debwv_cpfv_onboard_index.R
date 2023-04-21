@@ -7,12 +7,9 @@
 rm(list = ls(all = TRUE))
 graphics.off()
 options(knitr.table.format = "latex")
-library(rstanarm)
-options(mc.cores = parallel::detectCores())
 library(tidyr)
 library(dplyr)
 library(ggplot2)
-library(bayesplot)
 library(grid)
 library(devtools)
 library(ggeffects)
@@ -27,24 +24,23 @@ pacfinSpecies <- 'COPP'
 speciesName <- "copper"
 modelArea = "north"
 indexName <-  "debwv_cpfv_onboard"
-
+modelName = "area_weighted"
 # Set working directories
-dir <- file.path(here(),"data","rec_indices", indexName)
+dir <- file.path(here(),"data","rec_indices", indexName, modelName)
 setwd(dir)
 
 
-load('COPP_filtered_data.RData')
+load(file.path(here(),"data","rec_indices",indexName, 'COPP_filtered_data.RData'))
 r_code_location <- "C:/Users/melissa.monk/Documents/Github/copper_rockfish_2023/R"
-source(file.path(bayes_function, "rec_indices","Delta_bayes_functions.R"))
 #-------------------------------------------------------------------------------
-covars <- c("year", "reef", "wave", "depth")
+covars <- c("year", "reef", "wave")
 #rename effort and catch columns
   dat <- dat %>%
     rename(Effort = ANGHRS) %>%
     rename(Target = KEPT,
            year = YEAR,
            wave = WAVE,
-           depth = DEPTH_bin,
+           depth = DEPTHfm,
            cpue = CPUE) %>%
     mutate(reef = MegaReef) %>%
     mutate(logEffort = log(Effort)) %>%
@@ -64,22 +60,25 @@ ggplot(dat %>% group_by(reef, year) %>% summarise(average_cpue = mean(cpue)),
   geom_point(size = 3)  + theme_bw() +
   geom_line(aes(x = year, y = average_cpue, 
                 colour = reef)) +
-  xlab("Year") + ylab("Average CPUE") + ylim(c(0, .4)) + 
+  xlab("Year") + ylab("Average CPUE") + ylim(c(0, .2)) + 
   scale_color_viridis_d()
 ggsave(file = file.path(getwd(),modelArea, "average_cpue_by_reef.png"), width = 7, height = 7)
 
-
+#cpue by depth
+ggplot(dat, aes(x = cpue, y = depth)) +
+  geom_point(alpha = .5)
 
 summary(dat$wave)
 summary(dat$year)
 summary(dat$reef)
 summary(dat$depth)
 
+dat$depth_2 <- dat$depth^2
 
 #Model selection
 #full model
 model.full <- MASS::glm.nb(
-  Target ~ year + wave + reef + depth + offset(logEffort),
+  Target ~ year + wave + reef + depth + depth_2 + offset(logEffort),
   data = dat,
   na.action = "na.fail")
 summary(model.full)
@@ -215,17 +214,18 @@ Model_selection
 #Also run as sdmtmb - looks very different - yikes!
   library(sdmTMB)
   library(tmbstan)
-  library(sdmTMBextra)
+  #library(sdmTMBextra)
 
   grid <- expand.grid(
     year = unique(dat$year),
-    wave = levels(dat$wave)[1], 
+  #  wave = levels(dat$wave)[1], 
     reef = levels(dat$reef)[1],
-    depth = levels(dat$depth)[1]
+    depth = dat$depth[1],
+    depth_2 = dat$depth_2[1]
   )
   
   fit.nb <- sdmTMB(
-    Target ~ year + wave + reef + depth,
+    Target ~ year  + reef + poly(depth, 2),
     data = dat,
     offset = dat$logEffort,
     time = "year",
@@ -255,7 +255,7 @@ Model_selection
     fit = fit.nb)
   
   calc_index(
-    dir = file.path(dir, "forSS"), 
+    dir = file.path(dir), 
     fit = fit.nb,
     grid = grid)
   
@@ -268,9 +268,10 @@ Model_selection
     ungroup() %>%
     rename(`Positive Samples` = Positive_Samples) %>%
     as.data.frame()
+  dataFilters <- data.frame(lapply(dataFilters, as.character), stringsasFactors = FALSE)
   
   write.csv(dataFilters, 
-            file = file.path(dir, "forSS", "data_filters.csv"), 
+            file = file.path(dir, "data_filters.csv"), 
             row.names = FALSE)
   
   View(Model_selection)
@@ -279,15 +280,15 @@ Model_selection
     dplyr::select(-`(Intercept)`) %>%
     mutate_at(vars(covars,"year","offset(logEffort)"), as.character) %>%
     mutate(across(c("logLik","AICc","delta"), round, 1)) %>%
-    replace_na(list(depth = "Excluded", wave = "Excluded",
-                    reef = "Excluded")) %>%
+    replace_na(list( reef = "Excluded")) %>%
     mutate_at(c(covars,"year","offset(logEffort)"), 
               funs(stringr::str_replace(.,"\\+","Included"))) %>%
     rename(`Effort offset` = `offset(logEffort)`, 
-           `log-likelihood` = logLik) %>%
+           `log-likelihood` = logLik,
+           `Depth squared` = depth_2) %>%
     rename_with(stringr::str_to_title,-AICc)
-  View(out)
-  write.csv(out, file = file.path(dir, "forSS", "model_selection.csv"), row.names = FALSE)
+ # View(out)
+  write.csv(out, file = file.path(dir, "model_selection.csv"), row.names = FALSE)
   
   #summary of trips and  percent pos per year
   summaries <- dat %>%
@@ -296,9 +297,48 @@ Model_selection
               tripsWOTarget = sum(Target==0)) %>%
     mutate(totalTrips = tripsWithTarget+tripsWOTarget,
            percentpos = tripsWithTarget/(tripsWithTarget+tripsWOTarget)) 
-  View(summaries)
+  #View(summaries)
   write.csv(summaries, 
-            file.path(getwd(),"forSS","percent_pos.csv"),
+            file.path(getwd(),"percent_pos.csv"),
             row.names=FALSE)
   
 
+  
+  
+  
+#Delta_models ------------------------------------------------------------------- 
+  modelName <- "delta_lognormal_main_effects"
+  
+  dir.create(file.path(here(),"data","rec_indices", indexName, modelName))
+  dir <- file.path(here(),"data","rec_indices", indexName, modelName)
+  rm(fit, index)
+  
+  fit <- sdmTMB(
+    Target ~ year  + reef + poly(depth, 2),
+    data = dat,
+    offset = dat$logEffort,
+    time = "year",
+    spatial="off",
+    spatiotemporal = "off",
+    family = delta_lognormal(),
+    control = sdmTMBcontrol(newton_loops = 1)
+  )
+  
+  index <- calc_index(
+    dir = file.path(dir), 
+    fit = fit,
+    grid = grid)
+  
+  do_diagnostics(
+    dir = file.path(dir), 
+    fit = fit)
+  
+  index$model <- modelName
+  indices <- rbind(indices, index)
+  loglike <- logLik(fit)
+  aic <- AIC(fit)
+  metrics <- rbind(metrics, c(name, loglike, aic))
+  
+  save(indices, file = file.path(dir, "all_indices.rdata"))  
+  save(metrics, file = file.path(dir, "metrics.rdata"))
+  

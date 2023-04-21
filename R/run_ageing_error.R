@@ -12,7 +12,7 @@ SourceFile <- file.path(system.file("executables", package = "nwfscAgeingError")
 
 
 library(here)
-dir = file.path(here(), "data", "ages")
+dir = file.path(here(), "data", "ages","ageing_error_2023")
 reads <- read.csv(file = file.path(dir,  'double_reads_a1=patrick_a2=tyler.csv'), header = TRUE)
 SourceFile <- dir
 

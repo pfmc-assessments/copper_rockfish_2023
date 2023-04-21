@@ -156,13 +156,14 @@ dat  %>% filter(KEPT==0) %>% do(data.frame(quantile(.$DEPTHfm, seq(0,1,.01))))
 
 #REMOVE anything deeper than  meters (~70 fathoms) retains 99% of positive drifts and 95% of all drifts
  dat <- dat %>%
-   filter(DEPTHfm<=70) 
+   filter(DEPTHfm<=60,
+          DEPTHfm >= 10) 
 # 
 #Add to filter dataframe
 data_filters$Samples[filter.num] = dim(dat)[1]
 data_filters$Positive_Samples[filter.num] = dim(subset(dat, KEPT>0))[1]
 data_filters$Filter[filter.num] = "Depth"
-data_filters$Description[filter.num] = 'Remove drifts in less than 70 fm'
+data_filters$Description[filter.num] = 'Retain drifts between 10-60 fm'
 filter.num = filter.num + 1
 
 
@@ -170,16 +171,15 @@ filter.num = filter.num + 1
 hist(dat$DEPTHfm)
 #dev.off()
 
+ggplot(dat, aes(x=SuperReef, y = DEPTHfm, colour = SuperReef)) + geom_boxplot()
+ggsave(file = file.path(getwd(), "depth_by_reef.png"), width = 7, height = 7)
 
-#png(filename = paste0(out.dir,'/Depth by SuperReef boxplot.png'), width = 16, height = 6, units = "in", res = 600)
-ggplot(dat, aes(x=SuperReef, y = DEPTHfm, colour = SuperReef)) + geom_boxplot() 
-#dev.off()
 
 
 
 dat = dat %>%
       mutate(DEPTH_bin = cut(DEPTHfm,
-                       breaks = c(0,10,20,30,40,50,60,70))) %>%
+                       breaks = c(10,20,30,40,50,60))) %>%
            mutate_at(vars(DEPTH_bin), as.factor)
            
            
@@ -237,9 +237,9 @@ colnames(reef_areas)[1] <- 'SuperReef'
 reef_sample_size <- inner_join(reef_years, reef_drifts)
 reef_sample_size <- inner_join(reef_sample_size, reef_time)
 reef_sample_size <- inner_join(reef_sample_size,reef_areas)
+write.csv(reef_sample_size, file = file.path(getwd(),"reef_sample_size.csv"), 
+          row.names = FALSE)
 
-#look at how many drifts and how many samples with vermilion you lose with this filter
-#dat %>% filter(NUMENC>0) %>% count()
 
 
 ###################################################################
@@ -263,29 +263,30 @@ dat$SuperReef = as.factor(dat$SuperReef)
 
  dat$MegaReef  <- dat$SuperReef %>% droplevels()
  dat = dat %>% mutate(MegaReef = case_when(
-               SuperReef %in% c('1_OR_HMB','8_HMB_SC')~ 'V1',
-               SuperReef %in% c('10_MossLanding_BigSur') ~ 'V2',
-               SuperReef %in% c('13_SLOCnty_Morro', '15_Morro_Conception') ~ 'V3',  
-               SuperReef %in% c('6_Farallons', '9_HMB_MB_Offshore') ~ 'V4'))
+               SuperReef %in% c('1_OR_SF') ~ 'OR_SF',
+               SuperReef %in% c('2_SF_MossLanding')~ 'SF_MossLanding',
+               SuperReef %in% c('10_MossLanding_BigSur') ~ 'MossLanding_BigSur',
+               SuperReef %in% c('13_SLOCnty_Morro', '15_Morro_Conception') ~ 'SLO_Conception'))
                               
                               
-levels(dat$MegaReef) <- c("V1" ,"V2", "V3","V4")                             
+levels(dat$MegaReef) <- c("OR_SF" ,"SF_MossLanding", "MossLanding_BigSur", "SLO_Conception")                             
 
 with(dat, table(MegaReef,YEAR))
 with(dat, table(MegaReef))
 
 with(subset(dat, KEPT>0),table(MegaReef))/with(dat, table(MegaReef))
-round(with(subset(dat, KEPT>0),table(YEAR,MegaReef))/with(dat, table(YEAR,MegaReef)),2)
-
+percent_pos_depth <- round(with(subset(dat, KEPT>0),table(YEAR,MegaReef))/with(dat, table(YEAR,MegaReef)),2)
+write.csv(percent_pos_depth, file = file.path(getwd(), "percent_pos_depth.csv"), 
+          row.names = FALSE)
 #plot CPUE by year again with combined reef
 CPUE_reef_year <- dat %>%
   group_by(MegaReef,YEAR) %>%
   summarise(mean_CPUE = mean(CPUE))
 
-#png(filename = paste0(out.dir,'/MeanCPUEbyMegaReef.png'), width = 6, height = 6, units = "in", res = 600)
 ggplot(CPUE_reef_year, aes(x=YEAR, y = mean_CPUE, color = MegaReef, group=MegaReef)) +
-  geom_line()
-#dev.off()
+  geom_point() + geom_line(linewidth = 1) + xlab("Year") + 
+  ylab("Average CPUE") + scale_color_viridis_d()
+ggsave(file = file.path(getwd(), "cpue_by_reef.png"), height = 7, width = 7)
 
 #Look at depths again
 round(with(subset(dat, NUMENC>0),table(YEAR,DEPTH_bin))/with(dat, table(YEAR,DEPTH_bin)),2)
@@ -307,7 +308,7 @@ print(CPUE_year)
 png(filename = paste0(out.dir,'/Average CPUE by Year and Region.png'), width = 6, height = 4, 
     units = "in", pointsize = 10, res=300)
 with(dat, interaction.plot(YEAR, MegaReef, CPUE,
-                           col=1:7, lty=1, lwd=2, ylab="CPAH", ylim=c(0,1), 
+                           col=1:7, lty=1, lwd=2, ylab="CPAH", ylim=c(0,.2), 
                            legend=F))
 legend("topright", legend=c("V1_FtBragg_SC", "V2_MossLanding_BigSur",
                             "V3_SLOCnty_PtConcpn","V4_Offshore"), lty=1, col=1:7)
@@ -334,9 +335,8 @@ Arithmetic_weighted_index = CPUE_year_reef %>%
   mutate(Final_index = sum(Weighted_val)) %>%
   dplyr::select(YEAR, Final_index) %>% unique()
 
-gg = ggplot(Arithmetic_weighted_index, aes(YEAR, Final_index)) + geom_line()
-x11();gg
-ggsave(paste0(out.dir,'/Area weighted arithmetic mean.png'))
+ggplot(Arithmetic_weighted_index, aes(YEAR, Final_index)) + geom_line()
+ggsave(file = file.path(out.dir,'/Area weighted arithmetic mean.png'))
 
 
 save(dat, data_filters, COPP_reef_info, file = file.path(dir,'COPP_filtered_data.RData'))

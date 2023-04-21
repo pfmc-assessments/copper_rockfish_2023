@@ -17,17 +17,20 @@ library(readxl)
 #species and area identifiers - eventually put in function
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
-modelArea = "north"
+#CCFRP has their own species codes
 ccfrpSpeciesCode <- "CPR"
-#setwd to the north or the south
 
 #setwd(glue::glue(here(),"/data/survey_indices/ccfrp/"))
 dir <- file.path("S:/copper_rockfish_2023/data/survey_indices/ccfrp")
 setwd(dir)
 
-#read in the GIS intepretted depths
+#read in the GIS interpreted depths
+#Rebecca Miller took all of the recorded start and end lat/long inforamtion from
+# each drift and used the 2m resolution bathymetry layer and the 90m  resolution 
+#bathymetry layer to interpret depths
 gis.start.depth1 <- read_excel("ccfrp_for_arc_Start_copy.xlsx")
 
+#convert the negative depth in meters to positive values in feet
 gis.start.depth <- gis.start.depth1 %>%
   dplyr::select(Drift_ID, Depth_2m, Depth90m) %>%
   mutate_at(vars(Depth_2m), as.numeric) %>%
@@ -38,6 +41,7 @@ gis.start.depth <- gis.start.depth1 %>%
 
 gis.end.depth1 <- read_excel("ccfrp_for_arc_End_copy.xlsx") 
 
+#do the same for the end locations
 gis.end.depth <- gis.end.depth1 %>%
   dplyr::select(Drift_ID, Depth2m, Depth90m) %>%
   mutate(Depth2mft = -Depth2m * 3.281,
@@ -163,18 +167,20 @@ drifts_trip_area <- left_join(drifts, trips_areas, by = "tripID")
 
 #-------------------------------------------------------------------------------
 # Collapse catches to drift level
+#each line in the catch table is a single fish
 Target_catches <- subset(catches, speciesCode == ccfrpSpeciesCode)
 Target_catches <- Target_catches %>%
   group_by(driftID) %>%
   tally()
-colnames(Target_catches)[2] <- "Target"
+#Target is the number of fish by drift for the species you're interested in
+colnames(Target_catches)[2] <- "Target"  #number of fish
 
 #join drifts and catch info and make NA 0 where target species not observed
 dat <- left_join(drifts_trip_area, Target_catches)
 dat <- dat %>%
   mutate(
     Target = replace_na(Target, 0),
-    area = substring(driftID, 1, 2)
+    area = substring(driftID, 1, 2) #pulls out the area sampled
   ) %>%
   mutate(effort = anglers * driftTime) %>%
   mutate(cpue = Target / effort) %>%
@@ -201,7 +207,6 @@ summary(as.factor(aa$monitoringGroup))
 
 
 #merge in the gis depths
-
 dat <- left_join(dat, gis.depth) 
 
 #pull out just the depth info to look at
@@ -209,7 +214,7 @@ all.depths <- dat %>%
   dplyr::select(driftID, startDepthft, endDepthft, 
                 gis.end.2mtoft, gis.end.90mtoft,
                 gis.start.2mtoft, gis.start.90mtoft) %>%
-  mutate(start.diff = gis.start.2mtoft - startDepthft)
+  mutate(start.diff = gis.start.2mtoft - startDepthft) 
 
 
 summary(all.depths)
@@ -264,7 +269,7 @@ total_target <- dat %>% group_by(name) %>%
 totals <- inner_join(total_effort, total_target) %>%
   mutate(total_cpue = total_target/total_effort)
 
-#how often sites sampled
+#how often sites (500 m x 500m cell) sampled
 sites_sampled <- dat %>%
   group_by(name, year) %>%
   tally() %>%
@@ -308,7 +313,9 @@ ggsave(file = file.path(dir, "plots", "start_end_depth.png"), width = 7, height 
 #     scale_color_viridis_d()
 # ggsave(file = file.path(dir, "plots", "anacapa_depth.png"), width = 7, height = 7)
 
-#removing
+#areas to remove - only sampled 1-2 years
+#removed from the data in the process file where it's documented
+#remove here for plotting purposes
 name.remove = c("SE Farallon Islands", "Trinidad", 
 "Point Conception", "Laguna Beach")
 #average cpue
@@ -342,5 +349,6 @@ aes(x = depth/6, fill = gridCellID, colour=site)) +
 ggsave(file = file.path(dir, "plots", "depth_by_cell.png"), width = 7, height = 7)
 
 
+#save the data or save it and just open the process_ccfrp R script
 save(dat, areas, catches, lengths, cellLocation, drifts, specieslu,
      tagReturns, dat, file = file.path(getwd(),"ccfrp.RData"))

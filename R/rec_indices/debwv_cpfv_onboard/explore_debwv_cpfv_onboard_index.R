@@ -68,9 +68,9 @@ query_debwv <- glue::glue_sql(
 			 			END, 	
 			 	
 		   REEFID,							
-		   SUM(case when RECFINSP = 241 then NUMENC else 0 end) as NUMENC,  
-		   SUM(case when RECFINSP = 241 then KEPT else 0 end) as KEPT,     
-           SUM(case when RECFINSP = 241 then DISCD else 0 end) as DISCD     
+		   SUM(case when CDFGSP = 2308 then NUMENC else 0 end) as NUMENC,  
+		   SUM(case when CDFGSP = 2308 then KEPT else 0 end) as KEPT,     
+           SUM(case when CDFGSP = 2308 then DISCD else 0 end) as DISCD     
 
 
 	FROM LOCATION_TRUNC  
