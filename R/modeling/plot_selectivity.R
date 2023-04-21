@@ -22,11 +22,25 @@ info1 <- SSplotSelex(model, fleets = 1, fleetnames = fleets[1], subplot = 1, yea
 info2 <- SSplotSelex(model, fleets = 2, fleetnames = fleets[2], subplot = 1, year = c(1916, 2022))
 #info1$infotable$col <- rich.colors.short(8)[c(1,1)]
 
-info3 <- SSplotSelex(model, fleets = 3, fleetnames = fleets[3], subplot = 1, year = c(1916, 2002, 2017, 2022))
+info3 <- SSplotSelex(model, fleets = 3, subplot = 1, year = c(1916, 2002, 2017, 2022))
 info1$infotable$col <- rich.colors.short(8)[c(1,1)]
 
-info4 <- SSplotSelex(model, fleets = 4, fleetnames = fleets[4], subplot = 1, year = c(1916, 2002, 2017, 2022))
+info4 <- SSplotSelex(model, fleets = 4, subplot = 1, year = c(1916, 2002, 2017, 2022))
 info1$infotable$col <- rich.colors.short(8)[c(1,1)]
 
 info5 <- SSplotSelex(model, fleets = 5, fleetnames = fleets[5], subplot = 1, year = c(2016, 2022))
-info1$infotable$col <- rich.colors.short(8)[c(1,1)]
+info5$infotable$col <- rich.colors.short(8)[c(1,1)]
+
+info3 <- SSplotSelex(model, fleets = 3, subplot = 1, year = c(1916, 2002, 2017))
+
+
+info4 <- SSplotSelex(model, fleets = 4, subplot = 1, year = c(1916, 2002, 2017))
+
+
+info3 <- SSplotSelex(model, fleets = 3, subplot = 1, year = c(1916, 2000))
+info4 <- SSplotSelex(model, fleets = 4, subplot = 1, year = c(1916, 2000))
+
+1916 1999 2000 2021 
+info3 <- SSplotSelex(model, fleets = 3, subplot = 1, year = c(1916, 2000, 2022))
+info4 <- SSplotSelex(model, fleets = 4, subplot = 1, year = c(1916, 2000, 2022))
+

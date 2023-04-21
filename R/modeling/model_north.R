@@ -405,6 +405,7 @@ get_model_quants(repfile = settlement)
 # Fix the ascending parameter in the PR fleet in the 2017 block
 fix_selex <- SS_output(file.path(wd, "7.2_fix_desc_pr_2017"))
 get_model_quants(repfile = fix_selex)
+SS_plots(fix_selex, aalyear = 2018:2022, plot = 18)
 # Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
 #   947.212   -47.3987    413.628 575.161 6.33682   489.601 278.766               0.569373
 
@@ -419,10 +420,10 @@ SSplotComparisons(mysummary,
                   pdf = TRUE)
 
 
+
 rm_mrfss_cpfv <- SS_output(file.path(wd, "7.3_rm_mrfss_cpfv_data"))
 get_model_quants(repfile = rm_mrfss_cpfv)
 SS_plots(rm_mrfss_cpfv)
-
 modelnames <- c("7.3", "Remove MRFSS Era CPFV Data")
 mysummary <- SSsummarize(list(fix_selex, rm_mrfss_cpfv))
 
@@ -437,6 +438,11 @@ SSplotComparisons(mysummary,
 =======
 init_model <- SS_output(file.path(wd, "0.1_init_model"))
 get_model_quants(init_model)
+# Remove the PR and CPFV selectivity block in 2022
+rm_block <- SS_output(file.path(wd, "7.4_rm_rec_2022_block"))
+get_model_quants(repfile = rm_block)
+# Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023 Natural Mortality - Female
+#  953.592   -46.9211    419.528 575.054 6.32509   482.523 261.321             0.51441                      0.108
 
 ###I'm working through the control file to look at minor changes to see if anything
 ###moves and to undersatnd hte model a bit better
@@ -622,3 +628,83 @@ SSplotComparisons(mysummary,
 # 26.Diagnostic tables
 >>>>>>> Stashed changes
 >>>>>>> Stashed changes
+
+pin_asym <- SS_output(file.path(wd, "7.5_rm_rec_block_pin_asym"))
+get_model_quants(repfile = pin_asym)
+#Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
+#[1,]   958.086   -48.3987    424.473 574.933 6.31599   471.824 242.711               0.514411
+
+modelnames <- c("7.3", "Remove CPFV/PR 2022 Block", "Final PR Asymp.")
+mysummary <- SSsummarize(list(fix_selex, rm_block, pin_asym))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "7.3-5_rm_selex_block_",
+                  legendlabels = modelnames, 
+                  endyr = 2034,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+exe <- SS_output(file.path(wd, "8.0_exe"))
+modelnames <- c("7.4 Rec. Simple Blocks", "3.30.21")
+mysummary <- SSsummarize(list(rm_block, exe))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.0_exe_",
+                  legendlabels = modelnames, 
+                  #endyr = 2034,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+francis <- SS_output(file.path(wd, "8.1_francis"))
+tune_comps(replist = exe, dir = file.path(wd, "8.1_francis"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+mi <- SS_output(file.path(wd, "8.2_mi"))
+tune_comps(replist = exe, dir = file.path(wd, "8.2_mi"), 
+           option = "MI", write = TRUE, allow_up_tuning = TRUE)
+
+modelnames <- c("8.1 Francis", "8.2 MI")
+mysummary <- SSsummarize(list(francis, mi))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.1-2_data_weighting_",
+                  legendlabels = modelnames, 
+                  #endyr = 2034,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+francis <- SS_output(file.path(wd, "8.1_francis"))
+update_pr_index <- SS_output(file.path(wd, "8.3_francis_update_pr_index"))
+
+modelnames <- c("8.1 Francis", "8.3 Update PR Index")
+mysummary <- SSsummarize(list(francis, update_pr_index))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.3_update_PR_index_",
+                  legendlabels = modelnames, 
+                  #endyr = 2034,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+sep_growth <- SS_output(file.path(wd, "8.4_seperate_growth"))
+SS_plots(sep_growth)
+tune_comps(replist = sep_growth, dir = file.path(wd, "8.4_seperate_growth"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+
+modelnames <- c("8.3 Update PR Index", "8.4 Seperate Growth")
+mysummary <- SSsummarize(list(update_pr_index, sep_growth))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.4_seperate_growth_",
+                  legendlabels = modelnames, 
+                  #endyr = 2034,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+test <- SS_output(file.path(wd, "8.3_francis_update_pr_index - Copy"))
+SS_plots(test, plot = c(2, 16:18))
