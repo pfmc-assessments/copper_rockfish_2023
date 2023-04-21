@@ -121,7 +121,7 @@ remove <- which(all_data$lengthcm > 65)
 all_data <- all_data[-remove, ]
 # There area 23 lengths between 60-65 which seem suspect but 
 # going to keep them.
-# remove <- which(all_data$lengthcm >= 60)
+# remove <- which(all_data$lengthcm >= 54)
 
 # Rename the lenth column to match the form expected by the unexpandedLF.fn
 # colnames(all_data[colnames(all_data) == "lengthcm"]) <- "length_cm"
@@ -979,6 +979,25 @@ ggplot(tmp, aes(lengthcm, fill = program, color = program)) +
   facet_wrap(facets = c("year")) + 
   scale_color_viridis_d()
 ggsave(filename = file.path(dir, "plots", "rec_south_mrfss_ally_comparison.png"),
+       width = 10, height = 10)
+
+tmp <- all_data[all_data$year > 2004 & all_data$area == "north", ]
+ggplot(tmp, aes(x = lengthcm, y = as.factor(year)), color = year) + 
+  geom_density_ridges2() +
+  scale_color_viridis_d() + 
+  facet_wrap("mode") +
+  ylab("Year") + xlab("Length (cm)")
+ggsave(filename = file.path(dir, "plots", "rec_north_ggridges_lengths_mode_year.png"),
+       width = 10, height = 10)
+
+tmp <- all_data[all_data$year > 2004 & all_data$area == "south", ]
+
+ggplot(tmp, aes(x = lengthcm, y = as.factor(year)), color = year) + 
+  geom_density_ridges2() +
+  scale_fill_viridis_c(name = "Length") +
+  facet_wrap("mode") +
+  ylab("Year") + xlab("Length (cm)")
+ggsave(filename = file.path(dir, "plots", "rec_south_ggridges_lengths_mode_year.png"),
        width = 10, height = 10)
 
 

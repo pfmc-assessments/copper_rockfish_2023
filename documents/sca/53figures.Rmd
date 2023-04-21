@@ -55,6 +55,22 @@ label = 'mean-com-dead-len-data')
 
 ```{r, results = 'asis'}
 add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Commercial_dead.png"), 
+caption = "Age composition data from the commercial dead and recreational CPFV fleets. The commercial samples were all from 2022 and the CPFV samples were all from 1975",
+label = 'com-dead-age-data')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "ages", "plots", "coop_crfs_length_comparison.png"), 
+caption = "Comparison of all length collected by the CRFS sampling program for the CPFV fleet to the lengths from the fish with ages from the cooperative sampling program. The length distributions in the area north of Point Conception are in general agreement while the distribution of lengths collected by this program does not align with the length samples from CRFS.",
+label = 'coop-len-comparison')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_bubflt2mkt0.png"), 
 caption = "Length composition data from the commercial live fleet",
 label = 'com-live-len-data')
@@ -104,6 +120,10 @@ caption = "Mean length for recreational PR fleet with 95 percent confidence inte
 label = 'mean-rec-pr-len-data')
 ```
 
+
+<!-- ======================================================= -->
+<!-- *************  Add Survey Locations Map  ************** --> 
+<!-- ======================================================= -->
 
 
 <!-- ======================================================= -->
@@ -256,6 +276,29 @@ filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_CCFRP.p
 caption = "Mean length for the CCFRP survey with 95 percent confidence intervals",
 label = 'mean-ccfrp-len-data')
 ```
+
+<!-- ======================================================= -->
+<!-- ***************     Growth Data      ****************** --> 
+<!-- ======================================================= -->
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "ages",  "plots", "south_growth_length_comparison.png"), 
+caption = "Length distribution of fish by collection source that were used as conditional age-at-length data in the growth fleet.",
+label = 'growth-len-dist')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "ages",  "plots", "south_growth_length_comparison.png"), 
+caption = "Age distribution of fish by collection source that were used as conditional age-at-length data in the growth fleet.",
+label = 'growth-age-dist')
+```
+
+
+
 
 
 <!-- ======================================================= -->

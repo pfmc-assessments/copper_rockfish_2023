@@ -59,7 +59,7 @@ growth_ages <- rbind(
   cdfw_ages[, col_names],
   #coop_ages[, col_names],
   wcgbt[, col_names],
-  crfs_non_random [crfs_ages$year == 2021, col_names]
+  crfs_non_random[, col_names]
 )
 
 growth_ages <- growth_ages[!is.na(growth_ages$length_cm), ]
@@ -192,6 +192,48 @@ write.csv(carcass_north,
           file = file.path(dir, "ages", "forSS", "growth_carcass_caal_north.csv"),
           row.names = FALSE) 
 
+
+# Coop CPFV length data
+tmp <- coop_ages[!is.na(coop_ages$length_cm), c("area", "year", "sex", "length_cm", "age")]
+coop_lens <-  UnexpandedLFs.fn(
+  datL = tmp[tmp$area == "north", ], 
+  lgthBins = length_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 3, 
+  month = 7)
+# Based on the unique trip dates
+coop_lens$sexed$InputN <- 46
+coop_lens$unsexed$InputN <- 15
+
+write.csv(coop_lens$sexed, 
+          file = file.path(dir, "rec_bds", "forSS", "coop_lengths_sexed_north.csv"),
+          row.names = FALSE)
+
+write.csv(coop_lens$unsexed, 
+          file = file.path(dir, "rec_bds", "forSS", "coop_length_unsexed_north.csv"),
+          row.names = FALSE)
+
+
+coop_lens <-  UnexpandedLFs.fn(
+  datL = tmp[tmp$area == "south", ], 
+  lgthBins = length_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 3, 
+  month = 7)
+# Based on the unique trip dates
+coop_lens$sexed$InputN <- 39
+coop_lens$unsexed$InputN <- 3
+
+write.csv(coop_lens$sexed, 
+          file = file.path(dir, "rec_bds", "forSS", "coop_lengths_sexed_south.csv"),
+          row.names = FALSE)
+
+write.csv(coop_lens$unsexed, 
+          file = file.path(dir, "rec_bds", "forSS", "coop_length_unsexed_south.csv"),
+          row.names = FALSE)
+
 ages <-  UnexpandedAFs.fn(
   datA = growth_ages[growth_ages$area == "north", ], 
   ageBins = age_bins,
@@ -199,6 +241,7 @@ ages <-  UnexpandedAFs.fn(
   ageErr = 1,
   fleet = 1, 
   month = 7)
+
 write.csv(ages$sexed, 
           file = file.path(dir, "ages", "forSS", "growth_age_marginal_sexed_north.csv"),
           row.names = FALSE)
@@ -213,6 +256,7 @@ ages <-  UnexpandedAFs.fn(
   ageErr = 1,
   fleet = 1, 
   month = 7)
+
 write.csv(ages$sexed, 
           file = file.path(dir, "ages", "forSS", "growth_age_marginal_sexed_south.csv"),
           row.names = FALSE)
@@ -220,6 +264,13 @@ write.csv(ages$unsexed,
           file = file.path(dir, "ages", "forSS", "growth_age_marginal_unsexed_south.csv"),
           row.names = FALSE)
 
+
+
+wcgbt_lens <-  UnexpandedLFs.fn(
+  datL = wcgbt[wcgbt$area == "south", ], 
+  lgthBins = length_bins,
+  fleet = 10, 
+  month = 7)
 
 #===============================================================================
 # CCFRP 
@@ -525,6 +576,27 @@ write.csv(pearson_south,
           file = file.path(dir, "ages", "forSS", "by_source", "pearson_caal_south.csv"),
           row.names = FALSE) 
 
+pearson_lens <-  UnexpandedLFs.fn(
+  datL = pearson_ages[pearson_ages$area == "south", ], 
+  lgthBins = length_bins,
+  fleet = 11, 
+  month = 7)
+
+write.csv(pearson_lens, 
+          file = file.path(dir, "ages", "forSS", "by_source", "pearson_lengths_south.csv"),
+          row.names = FALSE)
+
+
+pearson_lens <-  UnexpandedLFs.fn(
+  datL = pearson_ages[pearson_ages$area == "north", ], 
+  lgthBins = length_bins,
+  fleet = 11, 
+  month = 7)
+
+write.csv(pearson_lens, 
+          file = file.path(dir, "ages", "forSS", "by_source", "pearson_lengths_north.csv"),
+          row.names = FALSE)
+
 #===============================================================================
 # Abrams Research
 #===============================================================================
@@ -542,6 +614,20 @@ abrams_north <- get_caal(
 write.csv(abrams_north, 
           file = file.path(dir, "ages", "forSS", "by_source", "abrams_caal_north.csv"),
           row.names = FALSE)  
+
+
+abrams_lens <-  UnexpandedLFs.fn(
+  datL = abrams_ages, 
+  lgthBins = length_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 9, 
+  month = 7)
+
+
+write.csv(abrams_lens$sexed, 
+          file = file.path(dir, "ages", "forSS", "abrams_lengths_sexed_south.csv"),
+          row.names = FALSE)
 
 #===============================================================================
 # CDFW Special Collections 
@@ -561,8 +647,43 @@ write.csv(cdfw_north,
           file = file.path(dir, "ages", "forSS","by_source", "cdfw_special_collections_caal_north.csv"),
           row.names = FALSE)  
 
+cdfw_lens <-  UnexpandedLFs.fn(
+  datL = cdfw_ages[cdfw_ages$area == "north", ], 
+  lgthBins = length_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 12, 
+  month = 7)
 
 
+write.csv(cdfw_lens$sexed, 
+          file = file.path(dir, "ages", "forSS", "cdfw_lengths_sexed_south.csv"),
+          row.names = FALSE)
+write.csv(cdfw_lens$unsexed, 
+          file = file.path(dir, "ages", "forSS", "cdfw_lengths_unsexed_south.csv"),
+          row.names = FALSE)
 
 
-  
+crfs_lens <-  UnexpandedLFs.fn(
+  datL = crfs_non_random[crfs_non_random$area == "north", ], 
+  lgthBins = length_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 12, 
+  month = 7)
+write.csv(crfs_lens$sexed, 
+          file = file.path(dir, "ages", "forSS", "crfs_non_random_lengths_sexed_north.csv"),
+          row.names = FALSE)
+
+crfs_north <- get_caal(
+  data = crfs_non_random[crfs_non_random$area == "north", ],
+  len_bins = length_bins, 
+  age_bins = age_bins, 
+  month = 7, 
+  ageing_error = 1,
+  fleet = "crfs", 
+  partition = 0)  
+
+write.csv(crfs_north, 
+          file = file.path(dir, "ages", "forSS", "crfs_non_random_ages_sexed_north.csv"),
+          row.names = FALSE)

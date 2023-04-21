@@ -81,4 +81,25 @@ for (a in plot.vec){
 
 ```
 
+## Implied Fit to Excluded Length Data {#excluded-data}
+
+The implied fits to the data not included in the base model due to low annual sample size are shown below.  
+
+```{r, results='asis'}
+plot_info = read.csv(file.path(model_dir, "plots", "plotinfotable_for_doc.csv"))
+len_fit = plot_info[which(plot_info$category == "LenComp"), ]
+plot.vec = c(grep("comp_gstlenfit_flt1mkt0", len_fit$label),
+             grep("comp_gstlenfit_flt2mkt0", len_fit$label),
+             grep("comp_gstlenfit_flt3mkt0", len_fit$label),
+             grep("comp_gstlenfit_flt4mkt0", len_fit$label))
+filein = file.path(model_dir, "plots")
+for (a in plot.vec){
+	cap = len_fit$caption[a]
+	lab = len_fit$label[a]
+	add_figure(filein = file.path(filein, len_fit$file[a]), 
+			   caption = cap, 
+			   label = lab)
+}
+``` 
+
 \newpage
