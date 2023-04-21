@@ -109,7 +109,8 @@ copp_otoliths_table <- bio_orig %>%
 copp_age_table <- bio_orig %>%
   filter(!is.na(Age)) %>%
   group_by(area, Year) %>%
-  summarise(oto.aged = n())
+  summarise(
+    oto.aged = n())
 
 copp_age_summary <- inner_join(copp_otoliths_table,copp_age_table)
 write.csv(copp_age_summary,"copper_age_summary.csv")
@@ -235,6 +236,33 @@ plot_age_length_sampling(
    dir = dir)
 
 #=====================================================================
+# Calculate the numbers of lengths and ages by year
+#=====================================================================
+
+samples <- bio %>%
+  filter(Depth_m < 183) %>%
+  group_by(Year) %>%
+  reframe(
+    n_lengths = n(),
+    n_ages = sum(!is.na(Age))
+  )
+
+pos_tows <- catch %>% 
+  filter(Depth_m < 183) %>%
+  group_by(Year) %>%
+  reframe(
+    total_tows = length(total_catch_numbers),
+    pos_tow = sum(total_catch_numbers > 0),
+    n = sum(total_catch_numbers),
+    weight = sum(total_catch_wt_kg)
+  )
+
+out <- left_join(pos_tows, samples, by = "Year")
+out[is.na(out)] <- 0
+colnames(out) <- c("Year", "Tows", "Positive Tows", "Numbers", "Weight (kg)", "Lengths", "Ages")
+write.csv(out, file = file.path(dir, "forSS", "wcgbt_samples_by_year.csv"), row.names = FALSE)
+
+#=====================================================================
 # Calculate length compositions
 #=====================================================================
 len_bin = seq(10, 54, 2)
@@ -285,7 +313,7 @@ unsexed_length_comps <- SurveyLFs.fn(
     datTows = catch,  
     strat.df = strata,
     lgthBins = len_bin, 
-    month = 7, fleet = NA, 
+    month = 7, fleet = 10, 
     sex = 0,
     nSamps = n)
 
@@ -301,10 +329,26 @@ PlotFreqData.fn(dir = dir,
 PlotSexRatio.fn(dir = dir, 
     dat = bio, data.type = "length")
 
+# Unexpanded length data
+tmp <- bio[, !colnames(bio) %in% c("Ageing_lab")]
+lens <-  UnexpandedLFs.fn(
+  datL = tmp, 
+  lgthBins = len_bin,
+  partition = 0, 
+  ageErr = 1,
+  fleet = "wcgbt", 
+  month = 7)
+write.csv(lens$sexed, 
+          file = file.path(dir, "forSS", "wcgbt_lengths_sexed_unexpanded.csv"),
+          row.names = FALSE)
+write.csv(lens$unsexed, 
+          file = file.path(dir,"forSS", "wcgbt_lengths_unsexed_unexpanded.csv"),
+          row.names = FALSE)
+
 #=====================================================================
 # Calculate age compositions
 #=====================================================================
-age_bin = 0:40
+age_bin = 0:50
 
 # There is only one unsexed fish that has been aged
 n <- GetN.fn(

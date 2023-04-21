@@ -187,3 +187,53 @@ ggplot(data,
 
 ggsave(file.path(dir, "ages", "plots", "north_crfs_pr_length_comparison.png"),
        height = 7, width = 7)
+
+
+# Load in the Pearson ages and plot their locations
+pearson <- read.csv(file.path(dir, "ages", "formatted_age_files", "copper_don_pearson_research_ages_2001-2007.csv"))
+pearson$lat <- pearson$START_LAT / 100
+pearson$lon <- -1 * pearson$START_LONG / 100
+pearson$n <- 1
+
+
+pearson_site <- pearson %>%
+  group_by(lat, lon) %>%
+  reframe(
+    Count = sum(n)
+  )
+
+tmp <- pearson_site[pearson_site$lat > 34.5, ]
+
+ggplot() +
+  geom_point(data = tmp, aes(x = lon, y = lat, size = Count), color = 'blue', alpha = 0.5) +
+  scale_size_binned("Count", breaks = c(1, 2, 5, 10,  20, 35)) +
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 14),
+        legend.position = "right") +
+  xlab("Longitude") + ylab("Latitude") +
+  draw_theme() +
+  draw_projection() +
+  draw_land() +
+  draw_USEEZ(c(-121.0, -124.5), c(34.5, 42)) 
+ggsave(file = file.path(dir, "ages", "plots", "pearson_age_locations_north.png"),
+       width = 12, height = 15)
+
+tmp <- pearson_site[pearson_site$lat <= 34.5, ]
+
+ggplot() +
+  geom_point(data = tmp, aes(x = lon, y = lat, size = Count), color = 'blue', alpha = 0.5) +
+  scale_size_binned("Count", breaks = c(2, 3, 5, 8, 16)) +
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 14),
+        legend.position = "right") +
+  xlab("Longitude") + ylab("Latitude") +
+  draw_theme() +
+  draw_projection() +
+  draw_land() +
+  draw_USEEZ(c(-117, -122), c(31.9, 34.5)) 
+ggsave(file = file.path(dir, "ages", "plots", "pearson_age_locations_south.png"),
+       width = 12, height = 15)
