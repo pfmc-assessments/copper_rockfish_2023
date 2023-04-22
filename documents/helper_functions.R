@@ -39,7 +39,7 @@ create_management_table <- function(
   sa4ss::table_format(
     x = out,
     digits = 2,
-    caption = "The aggregated sub-Overfishing Limit (OFL), sub-Annual Catch Limit (ACL), and catch of copper rockfish in California.",
+    caption = "The portion of the Overfishing Limit (OFL) and Annual Catch Limit (ACL) and estimated catch in California waters.",
     label = paste0(prefix, "ca-management"),
     col_names = col_names
   )
@@ -70,11 +70,11 @@ create_biomass_table <- function(
     Year = years, 
     SB = round(sb, 2), 
     Depl = round(depl, 3))
-  col_names <- c("Year", "Spawning Biomass", "Fraction Unfished")
+  col_names <- c("Year", "Spawning Output", "Fraction Unfished")
   
   sa4ss::table_format(
     x = out,
-    caption = "The estimated spawning biomass in number of million eggs across California and fraction unfished by year.",
+    caption = "The estimated spawning ouput in number of million eggs across California and fraction unfished by year.",
     label = paste0(prefix, "ca-status"),
     col_names = col_names
     )
@@ -132,7 +132,7 @@ create_projection_table <- function(
   
   sa4ss::table_format(
     x = out,
-    caption = "The estimated spawning biomass in number of million eggs across California and fraction unfished by year.",
+    caption = "The estimated spawning output in number of million eggs across California and fraction unfished by year.",
     label = paste0(prefix, "ca-proj"),
     landscape = TRUE,
     col_names = col_names
