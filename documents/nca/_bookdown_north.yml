@@ -1,0 +1,21 @@
+delete_merged_file: true
+book_filename: 'north'
+rmd_files: ['00a.Rmd',
+             '00authors.Rmd', 
+              '00bibliography.Rmd',  
+              '22biology.Rmd'
+             # '01a-photo.Rmd',
+             # '01a.Rmd',
+             # '01executive.Rmd',
+             # '10a.Rmd',
+ #             '11introduction.Rmd',
+ #            '20data.Rmd',
+ #            '30model.Rmd',
+ #            "35model-prestar-base-results-north.Rmd",
+ #            "36model-uncertainty-north.Rmd",
+ #            '40management.Rmd',
+ #            '41acknowledgements.Rmd',
+ #            '50tables.Rmd',
+ #            '60figures.Rmd',
+ # --           '70appendices-north.Rmd'
+]

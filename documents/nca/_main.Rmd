@@ -1,0 +1,377 @@
+---
+geometry: margin=1in
+month: "`r format(Sys.Date(), '%B')`"
+year: "`r format(Sys.Date(), '%Y')`"
+preamble: |
+output:
+  sa4ss::techreport_pdf:
+    default
+  bookdown::pdf_document2:
+    keep_tex: true
+lang: en
+papersize: letter
+---
+
+
+
+<!--chapter:end:00a.Rmd-->
+
+
+
+
+<!--chapter:end:00authors.Rmd-->
+
+---
+bibliography:
+  - sa4ss.bib
+---
+
+<!--chapter:end:00bibliography.Rmd-->
+
+---
+title: Status of Copper Rockfish (_Sebastes caurinus_) along the California North
+  of Pt. Conception U.S. West coast in 2022
+---
+
+<!--chapter:end:00title.Rmd-->
+
+\pagebreak
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\renewcommand{\thetable}{\roman{table}}
+\renewcommand{\thefigure}{\roman{figure}}
+
+
+\setlength\parskip{0.5em plus 0.1em minus 0.2em}
+
+<!--chapter:end:01a.Rmd-->
+
+
+# Executive summary{-}
+
+Placeholder
+
+
+## Stock{-}
+## Catches{-}
+## Data and assessment{-}
+## Stock biomass and dynamics{-}
+## Recruitment{-}
+## Exploitation status{-}
+## Ecosystem considerations{-}
+## Reference points{-}
+## Management performance{-}
+## Unresolved problems and major uncertainties{-}
+## Decision table and projections{-}
+## Scientific uncertainty{-}
+## Research and data needs{-}
+
+<!--chapter:end:01executive.Rmd-->
+
+\pagebreak
+\setlength{\parskip}{5mm plus1mm minus1mm}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+
+<!--chapter:end:10a.Rmd-->
+
+
+# Introduction
+
+Placeholder
+
+
+## Basic Information
+## Life History
+## Ecosystem Considerations
+## Historical and Current Fishery Information
+## Summary of Management History and Performance
+## Foreign Fisheries
+
+<!--chapter:end:11introduction.Rmd-->
+
+# Data
+
+Data comprise the foundational components of stock assessment models.
+The decision to include or exclude particular data sources in an assessment model depends on many factors.
+These factors often include, but are not limited to,
+the way in which data were collected (e.g., measurement method and consistency);
+the spatial and temporal coverage of the data;
+the quantity of data available per desired sampling unit;
+the representativeness of the data to inform the modeled processes of importance;
+timing of when the data were provided;
+limitations imposed by the Terms of Reference; and
+the presence of an avenue for the inclusion of the data in the assessment model.
+Attributes associated with a data source can change through time,
+as can the applicability of the data source when different modeling approaches are explored (e.g., stock structure or time-varying processes).
+Therefore, the specific data sources included or excluded from this assessment should not necessarily constrain the selection of data sources applicable to future stock assessments for `r spp`.
+Even if a data source is not directly used in the stock assessment they can provide valuable insights into biology, fishery behavior, or localized dynamics.
+
+Data from a wide range of programs were available for possible inclusion in the current assessment model.
+Descriptions of each data source included in the model (Figure \@ref(fig:data-plot)) and sources that were explored but not included in the base model are provided below.
+Data that were excluded from the base model were explicitly explored during the development of this stock assessment or have not changed since their past exploration in a previous `r spp` stock assessment.
+In some cases, the inclusion of excluded data sources were explored through sensitivity analyses (see Section \@ref(assessment-model)).
+
+<!--chapter:end:20data.Rmd-->
+
+
+
+## Fishery-Dependent Data
+### Commercial Fishery
+#### Landings and Discards
+#### Composition Data
+### Recreational Fishery
+#### Landings and Discards
+#### Fishery Dependent Indices of Abundance
+#### Composition Data
+
+<!--chapter:end:21f-.Rmd-->
+
+## Fishery-Independent Data
+
+<!--chapter:end:21s-.Rmd-->
+
+### California Cooperative Fisheries Research Program Survey
+
+#### Index of Abundance
+\
+
+Since 2007, the \gls{s-ccfrp} has monitored several areas in California to evaluate the performance of \glspl{mpa} and understand nearshore fish populations [@Wendt2009; @Starr2015]. In 2017, the survey expanded beyond the four \Gls{mpa}s in central California (A&ntilde;o Nuevo, Point Lobos, Point Buchon, and Piedras Blancas) to include the entire California coast.
+Fish are collected by volunteer anglers aboard \glspl{cpfv} guided by one of the following academic institutions based on proximity to fishing location: Humboldt State University; Bodega Marine Laboratories; Moss Landing Marine Laboratories; Cal Poly San Luis Obispo; University of California, Santa Barbara; and Scripps Institution of Oceanography.
+
+Surveys consist of fishing with hook-and-line gear for 30-45 minutes within randomly chosen 500 by 500 m grid cells within and outside \glspl{mpa}. Prior to 2017, all fish were measured for length and release or descended to depth; since then, some were sampled for otoliths and fin clips.
+
+Appendix Section \ref{ccfrp-index}
+
+#### Composition Data
+
+<!--chapter:end:21s-ccfrp.Rmd-->
+
+### California Department of Fish and Wildlife Remotely Operated Vehicle Survey
+
+#### Index of Abundance 
+\
+
+The California Department of Fish and Wildlife (CDFW) in collaboration with Marine Applied Research and Exploration (MARE) have been conducting remotely operated vehicle (ROV) surveys along the California coast in Marine Protected Areas (MPAs) and reference sites adjacent to them since 2004 for the purposes of long-term monitoring of changes in size, density (fish/square meter) and length of fish and invertebrate species along the California coast. Surveys of the entire coast have now been undertaken twice, each taking three years to complete, 2014-2016 and again in 2019-2021. The survey conducted multiple 500 meter transects across rocky reef survey sites. Sample sites were selected by first randomly selecting the deepest transect at a given site, then selecting transects on a constant interval into shallower depths. Transects were designed to be oriented parallel to general depth contours, though they were carried out using a fixed bearing that crossed depths in some cases.
+
+The data were explored using a super year approach where the central years, 2015 and 2020, were designated as the super year and the data were split north and south of Point Conception. The effort of the survey were split roughly equally between sites that were within MPAs or areas open to fishing (referred to as "Reference") with sampling across most sites (termed "MPA group") within each super year. The number of transects and the number of `r spp` by site and super year are shown in Table \ref{tab:rov-obs} with the number of observations across all years by location shown in Figure \ref{fig:rov-obs-loc}.  The trend in the calculated catch-per-unit-effort based on the data alone was highly variable across sampling locations and by MPA or Reference area (Figure \ref{fig:rov-raw-cpue}).   
+
+CDFW provided an initial analysis of the CDFW ROV survey data which helped form the considered modeling approaches for these data. The final selected model was assumed a negative binomial error structure with covariates for super year, site designation (MPA or Reference), and super year site designation interaction. The estimated index of abundance based on the proportion of hard substrate either in MPA (20 percent) or Reference (80 percent) areas in California `r area`. The weighted index of abundance increases between the two super years 2015 and 2020 (Figure \ref{fig:rov-index-main}). Details regarding the index of abundance, sample sizes, and model selection can be found in the Appendix Section \ref{cdfw-rov-index}.
+
+#### Composition Data
+
+
+CDFW provided annual fish length measurement made from images taken with stereo-cameras in 2016, 2019, 2020, and 2021 (Figure \ref{fig:rov-len}). The corresponding length data were weighted by MPA/Reference area and were grouped by super year (Figure \ref{fig:rov-len-data}). The input sample size was set equal to the weighted number of unique transects `r area`.  
+
+<!--chapter:end:21s-rov.Rmd-->
+
+### Growth Data {#growth-data}
+
+A significant amount of additional length-at-age not associated with fishery fleets or surveys incorporated in the model were available for `r spp`. These independent age data collection efforts from four programs `r area` since 2001: 227 otoliths collected by the NWFSC WCGBT survey, 430 otoliths collected by a research survey conducted by Don Pearson, 45 otoliths from CDFW special collections, and 77 otoliths collected by Abrams research program, and  (Table \ref{tab:growth-age-samps}). The ages collected by these three sources were included in the model as a "growth" fleet that was not associated with removals or an index of abundance. These collection had a wide distribution of length and ages observed (Figures \ref{fig:growth-len-dist} and \ref{fig:growth-age-dist}).
+
+<!--chapter:end:21s-ygrowth.Rmd-->
+
+## Additional Considered Data Sources
+
+### Northwest Fisheries Science Center West Coast Groundfish Bottom Trawl Survey
+
+The \Gls{s-wcgbt} is based on a random-grid design; covering the coastal waters from a depth of 55-1,280 m [@bradburn_2003_2011]. This design generally uses four industry-chartered vessels per year assigned to a roughly equal number of randomly selected grid cells and divided into two 'passes' of the coast. Two vessels fish from north to south during each pass between late May to early October. This design therefore incorporates both vessel-to-vessel differences in catchability, as well as variance associated with selecting a relatively small number (approximately 700) of possible cells from a very large set of possible cells spread from the Mexican to the Canadian borders.
+
+<!--chapter:end:21s-zsurveys_not_included.Rmd-->
+
+
+
+## Biological Data
+### Natural Mortality
+### Maturation and Fecundity
+### Sex Ratio
+### Length-Weight Relationship
+### Growth (Length-at-Age) {#length-at-age}
+### Ageing Precision and Bias
+
+<!--chapter:end:22biology.Rmd-->
+
+## Environmental and Ecosystem Data
+
+<!--chapter:end:23enviro.Rmd-->
+
+# Assessment Model
+
+
+<!--chapter:end:30model.Rmd-->
+
+## Summary of Previous Assessments and Reviews
+
+
+### History of Modeling Approaches 
+
+```{r, echo=FALSE, results='asis'}
+
+filein = file.path(doc_dir, "shared_text", '31_summary_previous_assessments.Rmd')
+read_child(filein)
+```
+
+
+### Most Recent STAR Panel and SSC Recommendations
+
+
+```{r, echo=FALSE, results='asis'}
+
+filein = file.path(doc_dir, "shared_text", '31_ssc_summary.Rmd')
+read_child(filein)
+```
+
+
+
+### Response to Groundfish Subcommittee Requests
+
+To be completed post-STAR panel.
+
+<!--chapter:end:31summary.Rmd-->
+
+
+
+## Model Structure and Assumptions
+### Model Changes from the Last Assessment 
+### Modeling Platform and Structure
+### Model Selection and Evaluation
+### Bridging Analysis
+### Key Assumptions and Structural Choices
+### Priors
+### Data Weighting
+### Model Parameters
+
+<!--chapter:end:32structure.Rmd-->
+
+## Base Model Results
+
+
+### Parameter Estimates
+
+### Fits to the Data
+
+### Population Trajectory
+
+### Reference Points
+
+
+
+<!--chapter:end:33results.Rmd-->
+
+## Model Diagnostics
+Describe all diagnostics
+
+### Convergence
+
+### Sensitivity Analyses
+
+### Retrospective Analysis
+
+### Likelihood Profiles
+
+### Unresolved Problems and Major Uncertainties
+
+<!--chapter:end:34diagnostics.Rmd-->
+
+# Management 
+
+## Reference Points
+
+## Unresolved Problems and Major Uncertainties
+
+## Harvest Projections and Decision Tables
+
+## Evaluation of Scientific Uncertainty
+
+## Research and Data Needs
+
+<!--chapter:end:40management.Rmd-->
+
+# Acknowledgments
+Here are all the mad props!
+
+<!--chapter:end:41acknowledgments.Rmd-->
+
+\clearpage
+
+# References
+<!-- If you want to references to appear somewhere before the end, add: -->
+<div id="refs"></div>
+<!-- where you want it to appear -->
+<!-- The following sets the appropriate indentation for the references
+  but it cannot be used with bookdown and the make file because it leads
+  to a bad pdf.
+\noindent
+\vspace{-2em}
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt}
+ -->
+
+<!--chapter:end:49bibliography.Rmd-->
+
+
+# Tables
+
+Placeholder
+
+
+
+<!--chapter:end:52tables.Rmd-->
+
+
+# Figures
+
+Placeholder
+
+
+
+<!--chapter:end:53figures.Rmd-->
+
+
+# Appendix A {#detailed-fit-comps}
+
+Placeholder
+
+
+## Detailed Fit to Length Composition Data {#length-data}
+## Detailed Fit to Age Composition Data {#age-data}
+## Detailed Fit to Conditional-Age-at-Length Composition Data {#caal-data}
+## Implied Fit to Excluded Length Data {#excluded-data}
+
+<!--chapter:end:60appendix_caal.Rmd-->
+
+# Appendix B. MRFSS CPFV Dockside Index of Abundance {#mrfss-cpfv-index}
+
+<!--chapter:end:61appendix_mrfss.Rmd-->
+
+# Appendix C. California Onboard CPFV Index of Abundance {#onboard-cpfv-index}
+
+<!--chapter:end:62appendix_crfs_onboard.Rmd-->
+
+# Appendix D. Deb Wilson-Vandenberg Onboard CPFV Index of Abundance {#dwv-cpfv-index}
+
+<!--chapter:end:63appendix_dwv_cpfv.Rmd-->
+
+# Appendix E. CRFS PR Dockside Index of Abundance {#crfs-pr-index}
+
+<!--chapter:end:64appendix_crfs_dockside.Rmd-->
+
+# Appendix F. CCFRP Index of Abundance {#ccfrp-index}
+
+<!--chapter:end:65appendix_ccfrp.Rmd-->
+
+
+# Appendix G. CDFW ROV Index of Abundance {#cdfw-rov-index}
+
+Placeholder
+
+
+
+<!--chapter:end:67appendix_rov.Rmd-->
+

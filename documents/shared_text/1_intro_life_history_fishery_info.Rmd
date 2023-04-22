@@ -1,4 +1,9 @@
  
+ ```{r, eval = TRUE}
+Spp <- "Copper rockfish" 
+spp <- "copper rockfish"
+```
+ 
 `r Spp` is a medium- to large-sized nearshore rockfish found from Mexico to Alaska.  The core range is comparatively large, from northern Baja Mexico to the Gulf of Alaska, as well as in Puget Sound.   `r Spp` have historically been a part of both commercial and recreational fisheries throughout its range. 
 
 `r Spp` are commonly found in waters less than 130 meters in depth in nearshore kelp forests and rocky habitat [@love_milton_probably_1996]. The diets of `r spp` consist primarily of crustaceans, mollusks, and fish [@lea_biological_1999; @bizzarro_diet_2017-1]. The body coloring of `r spp` varies across the West Coast with northern fish often exhibiting dark brown to olive  with southern fish exhibiting yellow to olive-pink variations in color [@miller_guide_1972], which initially led to them being designated as two separate species (*S. caurinus* and *S. vexillaris*). 
