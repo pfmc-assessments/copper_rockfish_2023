@@ -1,7 +1,7 @@
 
 ## Stock{-}
 
-This assessment reports the status of `r spp` (*Sebastes caurinus*) off the California coast, using data through 2022. This assessment does not account for populations located in Mexico waters and assumes that this southern population does not contribute to the stock being assessed here. 
+This assessment reports the status of `r spp` (*Sebastes caurinus*) off the California coast in U.S. waters, using data through 2022. The `r spp` stock was assessed using two sub-area models that captured distinct inter-stock dynamics split north and south of Point Conception. The estimated dynamics for each assessed sub-area is described here along with the combined stock status for the California stock. This assessment does not account for populations located in Mexico waters or other areas off the U.S. coast and assumes that these southern and northern populations do not contribute to the population being assessed here. 
 
 
 ## Catches{-}
@@ -37,13 +37,7 @@ label = 'es-north-catch')
 ## Data and assessment{-}
 
 This assessment uses the stock assessment framework
-Stock Synthesis 
-```{r es-modelversion, echo=FALSE} 
-if (exists("model")) {
-  strsplit(model$SS_version,";")[[1]][1]
-}
-```
-(SS3).
+Stock Synthesis version 3.30.21 (SS3).
 
 Replace text with
 date of last assessment,
