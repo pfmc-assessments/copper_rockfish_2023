@@ -22,7 +22,7 @@ wd <- file.path(user_dir, "models", area,"_bridging")
 base_2021 <- SS_output(file.path(wd, "00_2021_base"))
 ss_exe <- SS_output(file.path(wd, "0_0_ss_exe"))
 
-modelnames <- c("2021: 3.30.16", "3.30.20")
+modelnames <- c("2021: 3.30.16", "3.30.21")
 mysummary <- SSsummarize(list(base_2021,  ss_exe))
 
 SSplotComparisons(mysummary,
