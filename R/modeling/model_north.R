@@ -10,21 +10,21 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
 } else {
   # Fill in Melissa's document directory below
-  user_dir <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
+  user_dir <-  "C:/Assessments/2023/copper_rockfish_2023"
 }
 
 wd <- file.path(user_dir, "models", area)
 
-<<<<<<< Updated upstream
+
 #=================================================================================
-# 2021 Base Model 
+# 2021 Base Model ----
 #=================================================================================
 base_2021 <- SS_output(file.path(wd, "_bridging", "00_2021_base"))
 
 int_model <- SS_output(file.path(wd, "0.1_init_model"))
 
 #=================================================================================
-# Start at model 2.0
+# Start at model 2.0 ----
 #=================================================================================
 rm_low_samps <- SS_output(file.path(wd, "2.0_rm_ages_lowN"))
 
@@ -239,7 +239,7 @@ SSplotComparisons(mysummary,
                   legendlabels = modelnames, 	
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
-<<<<<<< Updated upstream
+
 
 non_centered_devs_fix_selex <- SS_output(file.path(wd, "5.2_non_zero_centered_dev_fix_some_selex"))
 SS_plots(non_centered_devs_fix_selex)
@@ -391,6 +391,8 @@ SS_plots(rov, plot = c(2, 16))
 get_model_quants(repfile = rov)
 # NLL = 948.308 Length = 414.43
 
+
+# Start model 7 ----
 # Grab the MLE par file from jitter and rerun
 mle <- SS_output(file.path(wd, "7.0_mle"))
 get_model_quants(repfile = mle)
@@ -434,8 +436,7 @@ SSplotComparisons(mysummary,
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
 
-=======
-=======
+# Melissa model attempt ----
 init_model <- SS_output(file.path(wd, "0.1_init_model"))
 get_model_quants(init_model)
 # Remove the PR and CPFV selectivity block in 2022
@@ -626,9 +627,9 @@ SSplotComparisons(mysummary,
 # 24.Data range
 # 25.Parameter distributions
 # 26.Diagnostic tables
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 
+
+#Start model 7.3 ----
 pin_asym <- SS_output(file.path(wd, "7.5_rm_rec_block_pin_asym"))
 get_model_quants(repfile = pin_asym)
 #Total NLL Survey NLL Length NLL Age NLL log(R0) SB Virgin SB 2023 Fraction Unfished 2023
@@ -690,7 +691,7 @@ SSplotComparisons(mysummary,
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
 
-
+ 
 sep_growth <- SS_output(file.path(wd, "8.4_seperate_growth"))
 SS_plots(sep_growth)
 tune_comps(replist = sep_growth, dir = file.path(wd, "8.4_seperate_growth"), 
@@ -708,3 +709,51 @@ SSplotComparisons(mysummary,
 
 test <- SS_output(file.path(wd, "8.3_francis_update_pr_index - Copy"))
 SS_plots(test, plot = c(2, 16:18))
+
+
+#Start model 8.5 ----
+#Update Deb's index
+deb_update <- SS_output(file.path(wd, "8.5_update_deb_index"))
+SS_plots(deb_update)
+
+#8.6 Add combined lengths to growth fleet
+combine_growth_lengths <- SS_output(file.path(wd, "8.6_combine_growth_lengths"))
+SS_plots(combine_growth_lengths)
+tune_comps(replist = combine_growth_lengths, 
+           dir = file.path(wd, "8.6_combine_growth_lengths"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+
+
+modelnames <- c("8.3_francis_update_pr_index","8.5_update_deb_index", "8.6_combine_growth_lengths")
+mysummary <- SSsummarize(list(update_pr_index, deb_update, combine_growth_lengths ))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.6_combine_growth_",
+                  legendlabels = modelnames, 
+                  #endyr = 2034,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+# Model 8.7
+free_selex <- SS_output(file.path(wd, "8.7_free_growth_selex"))
+SS_plots(free_selex)
+tune_comps(replist = combine_growth_lengths, 
+           dir = file.path(wd, "8.7_free_growth_selex"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+
+modelnames <- c("8.3_francis_update_pr_index","8.6_combine_growth_lengths", "8.7_free_growth_selex")
+mysummary <- SSsummarize(list(update_pr_index, combine_growth_lengths, free_selex ))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.7_free_selex_",
+                  legendlabels = modelnames, 
+                  #endyr = 2034,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+
+# Model 8.8 ------
+rm_lowN_growth <- SS_output(file.path(wd, "8.8_rm_growth_lowN"))
+SS_plots(rm_lowN_growth, plot = c(2, 3))
