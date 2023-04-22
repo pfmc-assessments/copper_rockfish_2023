@@ -1,10 +1,12 @@
 # Install the package if needed
-# remotes::install_github("pfmc-assessments/sa4ss")
+# remotes::install_github("pfmc-assessments/sa4ss", ref ="sub-area_models")
+# remotes::install_github("r4ss/r4ss", ref ="sub-area_models_es")
 library(sa4ss)
 library(here)
 
 # Specify the directory for the document
-model_name <- "5.5_est_m"
+south_model_name <- "5.5_est_m"
+north_model_name <- "0.1_init_model"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -17,13 +19,15 @@ if( grepl("Chantel", user) ){
 doc_dir <- file.path(user_dir, "documents")
 # Currently points to the network location but could be revised
 bridge_dir <- here("models", "sca", "_bridging")
-model_dir <- here("models", "sca", model_name)
+model_dir <- here("models", "sca", model_name_south)
+north_model_dir <- here("models", "nca", north_model_name)
+south_model_dir <- here("models", "sca", south_model_name)
 management_dir <- here("management")
 # Points to the network
 data_dir<- here("data")
 r_dir <- here("R")
 
-save(model_dir, bridge_dir, doc_dir, data_dir, management_dir,
+save(model_dir, bridge_dir, doc_dir, data_dir, management_dir, north_model_dir, south_model_dir,
      file = file.path(doc_dir, "sca", "saved_directories.Rdata"))
 
 setwd(file.path(doc_dir, "sca"))
@@ -43,31 +47,25 @@ bookdown::render_book(
 )
 
 #==================================================================================================
-# Initial Document Creation
-# Create the needed items to generate the "right" template that would be based on the inputs here:
-#==================================================================================================
-sa4ss::draft(
-  authors = c("Chantel R. Wetzel", "Melissa H. Monk", "Julia Coates"),
-  species = "copper rockfish",
-  latin = "Sebastes caurinus",
-  coast = "California South of Pt. Conception U.S. West",
-  type = c("sa"),
-  create_dir = FALSE,
-  edit = FALSE
-)
-
-#==================================================================================================
 # Read in a new model
 # Create a model Rdata object and executive summary ES tex files
 #==================================================================================================
+
 sa4ss::read_model(
-  mod_loc = model_dir,
+  mod_loc = south_model_dir,
+  add_prefix = "south",
+  add_text = "south of Point Conception",
   create_plots = FALSE, 
-  save_loc = file.path(model_dir, "tex_tables"))
+  save_loc = file.path(doc_dir, "sca", "tex_tables"))
+
+sa4ss::read_model(
+  mod_loc = north_model_dir,
+  add_prefix = "north",
+  add_text = "north of Point Conception",
+  create_plots = FALSE, 
+  save_loc = file.path(doc_dir, "sca",  "tex_tables"))
 
 # Create a management projection table from both of the the sub-area models
-
-
 
 # The below functions are wrapped up in the read_model function so may not need to use these
 # model <- r4ss::SS_output(model_dir)
@@ -81,6 +79,22 @@ sa4ss::read_model(
 #   csv_name = "table_labels.csv")
 
 #==================================================================================================
+# Create combined figures
+#================================================================================================= 
+
+south <- r4ss::SS_output(south_model_dir)
+north <- r4ss::SS_output(north_model_dir)
+modelnames <- c("South of Point Conception", "North of Point Conception")
+mysummary <- r4ss::SSsummarize(list(south, north))
+
+r4ss::SSplotComparisons(mysummary,
+                  legendlabels = modelnames, 	
+                  ylimAdj = 1.25,
+                  print = TRUE,
+                  pdf = FALSE,
+                  plotdir = file.path(doc_dir, "shared_figures"))
+
+#==================================================================================================
 # Create tex tables for all files listed in the all_tables.csv
 #==================================================================================================
 
@@ -89,6 +103,21 @@ es_table_tex(
   dir = getwd(), 
   save_loc = file.path(getwd(), "tex_tables"), 
   csv_name = "all_tables.csv")
+
+
+#==================================================================================================
+# Initial Document Creation
+# Create the needed items to generate the "right" template that would be based on the inputs here:
+#==================================================================================================
+sa4ss::draft(
+  authors = c("Chantel R. Wetzel", "Melissa H. Monk", "Julia Coates"),
+  species = "copper rockfish",
+  latin = "Sebastes caurinus",
+  coast = "California South of Pt. Conception U.S. West",
+  type = c("sa"),
+  create_dir = FALSE,
+  edit = FALSE
+)
 
 #==================================================================================================
 # Function to build a single section of the document - not recently tested

@@ -1,0 +1,249 @@
+
+## Stock{-}
+
+This assessment reports the status of `r spp` (*Sebastes caurinus*) off the California coast, using data through 2022. This assessment does not account for populations located in Mexico waters and assumes that this southern population does not contribute to the stock being assessed here. 
+
+
+## Catches{-}
+
+Replace text with
+trends and current levels.
+Include Table for last 10 years.
+Include Figure with long-term estimates.
+
+
+\input{tex_tables/south_a_Catches_ES.tex}
+
+\input{tex_tables/north_a_Catches_ES.tex}
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(south_model_dir, "plots", "catch2 landings stacked.png"), 
+caption = "Landings by fleet used in the base model for the area south of Point Conception where catches in metric tons by fleet are stacked",
+label = 'es-south-catch')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(north_model_dir, "plots", "catch2 landings stacked.png"), 
+caption = "Landings by fleet used in the base model for the area north of Point Conception where catches in metric tons by fleet are stacked",
+label = 'es-north-catch')
+```
+
+
+## Data and assessment{-}
+
+This assessment uses the stock assessment framework
+Stock Synthesis 
+```{r es-modelversion, echo=FALSE} 
+if (exists("model")) {
+  strsplit(model$SS_version,";")[[1]][1]
+}
+```
+(SS3).
+
+Replace text with
+date of last assessment,
+type of assessment model,
+data available,
+new information, and
+information lacking.
+
+## Stock biomass and dynamics{-}
+
+Replace text with
+trends and current levels relative to virgin or historic levels and
+description of uncertainty.
+Include Table for last 10 years.
+Include Figure with long-term estimates.
+
+\input{tex_tables/south_b_SSB_ES.tex}
+
+\input{tex_tables/north_b_SSB_ES.tex}
+
+```{r, results = 'asis'}
+create_biomass_table(
+    doc_dir = doc_dir, 
+    prefix = NULL,
+    doc_names = c("nca", 'sca'),
+    years = 2013:2023)
+
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "compare2_spawnbio_uncertainty.png"), 
+caption = "Estimated time series of spawning output (circles and line: median; light broken lines: 95 percent intervals) for the model areas south and north of Point Conception",
+label = 'es-sb')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "compare4_Bratio_uncertainty.png"), 
+caption = "Estimated time series of fraction of unfished spawning output (circles and line: median; light broken lines: 95 percent intervals) for the model areas south and north of Point Conception",
+label = 'es-depl')
+```
+
+
+\clearpage
+
+## Recruitment{-}
+
+Replace text with
+trends and current levels relative to virgin or historic levels and
+description of uncertainty.
+Include Table for last 10 years.
+Include Figure with long-term estimates.
+
+\input{tex_tables/south_c_Recr_ES.tex}
+
+\input{tex_tables/north_c_Recr_ES.tex}
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "compare10_recruits_uncertainty.png"), 
+caption = "Estimated time series of age-0 recruits (1000s) for the model areas south and north of Point Conception with 95 percent intervals",
+label = 'es-recruits')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "compare12_recdevs_uncertainty.png"), 
+caption = "Estimated time series of recruitment deviations for the model areas south and north of Point Conception.",
+label = 'es-rec-devs')
+```
+
+\clearpage
+
+## Exploitation status{-}
+
+Replace text with
+total catch divided by exploitable biomass or SPR harvest rate.
+Include Table for last 10 years.
+Include Figure with trend in f relative to target vs. trend in biomass relative to the target.
+
+\input{tex_tables/south_d_SPR_ES.tex}
+
+\input{tex_tables/north_d_SPR_ES.tex}
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "compare6_SPRratio_uncertainty.png"), 
+caption = "Estimated 1 - relative spawning ratio (SPR) by year for the model areas south and north of Point Conception. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate",
+label = 'es-1-spr')
+```
+
+## Ecosystem considerations{-}
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'es_ecosystem_considerations.Rmd')
+read_child(filein)
+```
+
+## Reference points{-}
+
+Replace text with
+management targets and definition of overfishing, including the harvest rate that brings the stock to equilibrium at $B_{40\%}$, i.e., the $B_{MSY}$ proxy and the equilibrium stock size that results from fishing at the default harvest rate, i.e., the $F_{MSY}$ proxy.
+Include Table of estimated reference points for ssb, SPR, exploitation rate, and yield based on SSB proxy for MSY, SPR proxy for MSY, and estimated MSY values.
+
+\input{tex_tables/south_e_ReferencePoints_ES.tex}
+
+\input{tex_tables/north_e_ReferencePoints_ES.tex}
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "compare15_phase_plot.png"), 
+caption = "Phase plot of estimated 1-SPR versus fraction unfished for the model areas south and north of Point Conception.",
+label = 'es-phase')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(south_model_dir, "plots", "yield2_yield_curve_with_refpoints.png"), 
+caption = "Equilibrium yield curve for the base case model for model south of Point Conception. Values are based on the 2022 fishery selectivities and with steepness fixed at 0.72",
+label = 'south-es-yield')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(north_model_dir, "plots", "yield2_yield_curve_with_refpoints.png"), 
+caption = "Equilibrium yield curve for the base case model for model north of Point Conception. Values are based on the 2022 fishery selectivities and with steepness fixed at 0.72",
+label = 'north-es-yield')
+```
+
+
+
+## Management performance{-}
+
+Include Table of most recent 10 years of
+catches in comparison with OFL, ABC, HG, and OY/ACL values,
+overfishing levels,
+actual catch and discard.
+Include OFL (encountered), OFL (retained), and OFL (dead) if different due to discard and discard mortality.
+
+
+```{r, results = 'asis'}
+
+create_management_table(
+  management_dir = management_dir, 
+  doc_dir = doc_dir, 
+  doc_names = c("nca", 'sca'),
+  years = 2012:2022,
+  table_names = c("copper_ca_north.csv", "copper_ca_south.csv"),
+  prefix = "es")
+
+```
+
+## Unresolved problems and major uncertainties{-}
+
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir,'shared_text','es_unresolved_problems_uncertainties.Rmd')
+read_child(filein)
+```
+
+
+## Decision table and projections{-}
+
+Replace text with
+projected yields (OFL, ABC, and ACL), spawning biomass, and stock depletion levels for each year.
+OFL calculations should be based on the assumption that future catches equal ABCs and not OFLs.
+
+
+```{r, results = 'asis'}
+
+create_projection_table(
+    management_dir = management_dir, 
+    doc_dir = doc_dir, 
+    fixed_removals = c(91.5, 94.7),
+    doc_names = c("nca", 'sca'),
+    years = 2023:2034,
+    table_names = c("copper_ca_north.csv", "copper_ca_south.csv"),
+    prefix = 'es')
+
+```
+
+
+## Scientific uncertainty{-}
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'es_scientific_uncertainty.Rmd')
+read_child(filein)
+```
+
+## Research and data needs{-}
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'es_research_and_data_needs.Rmd')
+read_child(filein)
+```
