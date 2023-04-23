@@ -70,6 +70,42 @@ label = 'mean-com-live-len-data')
 ```
 
 
+<!-- ======================================================= -->
+<!-- ************ Recreational Indices ********************* --> 
+<!-- ======================================================= -->
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "rec_indices", "mrfss_cpfv_dockside", "north",  "forSS", "Index.png"), 
+caption = "Estimated annual index of abundances for the CPFV fleet based on MRFSS survey data.",
+label = 'mrfss-index-main')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",  "delta_lognormal_main_effects", "Index.png"), 
+caption = "Estimated annual index of abundances for the CPFV fleet based on the Deb Wilson-Vandenberg survey data.",
+label = 'dwv-index-main')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north",  "area_weighted", "Index.png"), 
+caption = "Estimated annual index of abundances for the CPFV fleet based on CRFS survey data.",
+label = 'crfs-index-main')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_pr_dockside", "north",  "rm_last2yrs_area_weighted", "Index.png"), 
+caption = "Estimated annual index of abundances for the CPFV fleet based on CRFS survey data.",
+label = 'crfs-pr-index-main')
+```
+
 
 <!-- ======================================================= -->
 <!-- ************* Recreational Data *********************** --> 
@@ -144,12 +180,63 @@ caption = "Mean length for recreational PR fleet with 95 percent confidence inte
 label = 'mean-rec-pr-len-data')
 ```
 
+<!-- ======================================================= -->
+<!-- *************  Add Survey Locations Map  ************** --> 
+<!-- ======================================================= -->
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "survey_indices", "plots", "north_survey_locations_designation.png"), 
+caption = "Sample locations by each of the fishery-independent data sources used in the base model with indices of abundance, lengths, and ages if collected.",
+label = 'survey-locations')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "survey_indices", "plots", "north_survey_locations.png"), 
+caption = "Sample locations by area, areas open to fishing (reference) and MPAS, for each of the fishery-independent data sources used in the base model with indices of abundance, lengths, and ages if collected.",
+label = 'ref-mpa')
+```
 
 
 <!-- ======================================================= -->
 <!-- ***************     CCFRP           ******************* --> 
 <!-- ======================================================= -->
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "area_weighted", "Index.png"), 
+caption = "Estimated index of abundance from the CCFRP survey",
+label = 'ccfrp-index-main')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_bubflt5mkt0.png"), 
+caption = "Length composition data from the CCFRP survey",
+label = 'ccfrp-len-data')
+```
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_CCFRP.png"), 
+caption = "Mean length for the CCFRP survey with 95 percent confidence intervals",
+label = 'ccfrp-mean-len-data')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAALdat_bubflt5mkt0.png"), 
+caption = "Conditional age-at-length data from the CCFRP survey",
+label = 'ccfrp-age-data')
+```
 
 
 <!-- ======================================================= -->
@@ -202,7 +289,7 @@ label = 'rov-len-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_CDFW_ROV.png"), 
 caption = "Mean length for CDWF ROV survey with 95 percent confidence intervals",
-label = 'mean-rec-pr-len-data')
+label = 'mean-rov-len-data')
 ```
 
 

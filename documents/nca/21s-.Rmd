@@ -1,1 +1,4 @@
 ## Fishery-Independent Data
+\
+
+Tow fishery-independent data sources with indices of abundance were included in the base model. These surveys sampled rocky habitat across the area `r area` (Figure \ref{fig:survey-locations}) sampled both areas opens to fishing (termed reference areas) and Marine Protected Areas (MPAs, Figure \ref{fig:ref-mpa}).
