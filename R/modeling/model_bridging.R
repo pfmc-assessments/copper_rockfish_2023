@@ -317,18 +317,27 @@ SSplotComparisons(mysummary,
 growth <- SS_output(file.path(wd, "8.1_growth"))
 
 modelnames <- c("2021",
+                "+ Fleet Structure",
+                "+ Update Biology",
+                "+ Removals",
                 "+ Fishery Lengths & Ages",
                 "+ Fishery Indices",
                 "+ ROV Index and Lengths",
                 "+ CCFRP Index, Lengths, & Ages",
+                "+ NWFSC HKL Index, Lengths, & Ages",
                 "+ Blocks",
                 "+ Rec. Devs.",
                 "+ Growth Est.")
+
 mysummary <- SSsummarize(list(base_2021, 
+                              rec_fleet,
+                              biology,
+                              rec_catch,
                               dw_fishery_comps, 
                               crfs_pr_index, 
                               rov_dw,
                               ccfrp_index,
+                              hkl_index,
                               blocks,
                               recdevs,
                               growth))
@@ -341,8 +350,57 @@ SSplotComparisons(mysummary,
 
 SSplotComparisons(mysummary,
                   subplots = c(2,4,12),
-                  ylimAdj = 1.15, 
+                  ylimAdj = 1.50, 
                   filenameprefix = "full_bridge_",
+                  legendlabels = modelnames, 	
+                  plotdir = file.path(wd, "_plots"),
+                  print = TRUE,
+                  pdf = FALSE)
+
+
+modelnames <- c("2021",
+                "+ Fleet Structure",
+                "+ Update Biology",
+                "+ Removals",
+                "+ Fishery Lengths & Ages",
+                "+ Fishery Indices")
+
+mysummary <- SSsummarize(list(base_2021, 
+                              rec_fleet,
+                              biology,
+                              rec_catch,
+                              dw_fishery_comps,
+                              crfs_pr_index))
+
+SSplotComparisons(mysummary,
+                  subplots = c(2,4),
+                  ylimAdj = 1.30, 
+                  filenameprefix = "full_bridge_1_",
+                  legendlabels = modelnames, 	
+                  plotdir = file.path(wd, "_plots"),
+                  print = TRUE,
+                  pdf = FALSE)
+
+modelnames <- c("2021",
+                "+ ROV Index and Lengths",
+                "+ CCFRP Index, Lengths, & Ages",
+                "+ NWFSC HKL Index, Lengths, & Ages",
+                "+ Blocks",
+                "+ Rec. Devs.",
+                "+ Growth Est.")
+
+mysummary <- SSsummarize(list(base_2021, 
+                              rov_dw,
+                              ccfrp_index,
+                              hkl_index,
+                              blocks,
+                              recdevs,
+                              growth))
+
+SSplotComparisons(mysummary,
+                  subplots = c(2,4),
+                  ylimAdj = 1.30, 
+                  filenameprefix = "full_bridge_2_",
                   legendlabels = modelnames, 	
                   plotdir = file.path(wd, "_plots"),
                   print = TRUE,

@@ -7,7 +7,7 @@ the spatial and temporal coverage of the data;
 the quantity of data available per desired sampling unit;
 the representativeness of the data to inform the modeled processes of importance;
 timing of when the data were provided;
-limitations imposed by the Terms of Reference; and
+limitations imposed by the Pacific Fishery Management Council Groundfish Terms of Reference; and
 the presence of an avenue for the inclusion of the data in the assessment model.
 Attributes associated with a data source can change through time,
 as can the applicability of the data source when different modeling approaches are explored (e.g., stock structure or time-varying processes).

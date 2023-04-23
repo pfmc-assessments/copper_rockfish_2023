@@ -126,6 +126,52 @@ label = 'mean-rec-pr-len-data')
 <!-- ======================================================= -->
 
 
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "survey_indices", "plots", "south_survey_locations_designation.png"), 
+caption = "Sample locations by each of the fishery-independent data sources used in the base model with indices of abundance, lengths, and ages if collected.",
+label = 'survey-locations')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "survey_indices", "plots", "south_survey_locations.png"), 
+caption = "Sample locations by area, areas open to fishing (reference) and MPAS, for each of the fishery-independent data sources used in the base model with indices of abundance, lengths, and ages if collected.",
+label = 'ref-mpa')
+```
+
+
+<!-- ======================================================= -->
+<!-- ***************     CCFRP           ******************* --> 
+<!-- ======================================================= -->
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_bubflt5mkt0.png"), 
+caption = "Length composition data from the CCFRP survey",
+label = 'ccfrp-len-data')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_gstagedat_bubflt5mkt0.png"), 
+caption = "Age composition data from the CCFRP survey",
+label = 'ccfrp-age-data')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_CCFRP.png"), 
+caption = "Mean length for the CCFRP survey with 95 percent confidence intervals",
+label = 'ccfrp-mean-len-data')
+```
+
+
+
+
 <!-- ======================================================= -->
 <!-- ***************  NWFSC HKL Survey   ******************* --> 
 <!-- ======================================================= -->
@@ -257,27 +303,6 @@ label = 'mean-rov-len-data')
 
 
 <!-- ======================================================= -->
-<!-- ***************     CCFRP           ******************* --> 
-<!-- ======================================================= -->
-
-
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "comp_lendat_bubflt5mkt0.png"), 
-caption = "Length composition data from the CCFRP survey",
-label = 'ccfrp-len-data')
-```
-
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_CCFRP.png"), 
-caption = "Mean length for the CCFRP survey with 95 percent confidence intervals",
-label = 'mean-ccfrp-len-data')
-```
-
-<!-- ======================================================= -->
 <!-- ***************     Growth Data      ****************** --> 
 <!-- ======================================================= -->
 
@@ -292,12 +317,10 @@ label = 'growth-len-dist')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "ages",  "plots", "south_growth_length_comparison.png"), 
+filein = file.path(data_dir, "ages",  "plots", "south_growth_age_comparison.png"), 
 caption = "Age distribution of fish by collection source that were used as conditional age-at-length data in the growth fleet.",
 label = 'growth-age-dist')
 ```
-
-
 
 
 
@@ -416,18 +439,38 @@ label = 'bridge-depl')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(bridge_dir, "_plots", "full_bridge_compare2_spawnbio_uncertainty.png"),
+filein = file.path(bridge_dir, "_plots", "full_bridge_1_compare2_spawnbio_uncertainty.png"),
 caption = "Model structure and data bridging comparison of estimated spawning output",
-label = 'data-bridge-ssb')
+label = 'data-bridge-ssb-1')
+```
+
+
+```{r, results = 'asis'}
+
+add_figure(
+filein = file.path(bridge_dir, "_plots", "full_bridge_1_compare4_Bratio_uncertainty.png"),
+caption = "Model structure and data bridging comparison of estimated fraction unfished",
+label = 'data-bridge-depl-1')
+```
+
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(bridge_dir, "_plots", "full_bridge_2_compare2_spawnbio_uncertainty.png"),
+caption = "Model structure and data bridging comparison of estimated spawning output",
+label = 'data-bridge-ssb-2')
 ```
 
 ```{r, results = 'asis'}
 
 add_figure(
-filein = file.path(bridge_dir, "_plots", "full_bridge_compare4_Bratio_uncertainty.png"),
+filein = file.path(bridge_dir, "_plots", "full_bridge_2_compare4_Bratio_uncertainty.png"),
 caption = "Model structure and data bridging comparison of estimated fraction unfished",
-label = 'data-bridge-depl')
+label = 'data-bridge-depl-2')
 ```
+
 
 
 <!-- ====================================================================== -->

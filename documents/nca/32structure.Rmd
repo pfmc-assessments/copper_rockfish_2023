@@ -7,7 +7,12 @@
 
 ### Modeling Platform and Structure
 
-The assessment was conducted used Stock Synthesis version 3.30.20 developed by Dr. Richard Methot at the NOAA, NWFSC [@methot_stock_2013]. This most recent version was used because it included improvements and corrections to older model versions.  The previous assessment of `r spp` also used Stock Synthesis but an earlier version, 3..30.16; model bridging was performed between both versions of Stock Synthesis and discussed below.  The R package [r4ss](https://github.com/r4ss/r4ss), version 1.38.0, along with R version 4.0.1 were used to investigate and plot model fits. 
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'31_modeling_platform.Rmd')
+read_child(filein)
+```
+
+
 
 ### Model Selection and Evaluation
 
