@@ -296,19 +296,37 @@ label = 'bridge-depl')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(bridge_dir, "_plots", "full_bridge_compare2_spawnbio_uncertainty.png"),
+filein = file.path(bridge_dir, "_plots", "full_bridge_1_compare2_spawnbio_uncertainty.png"),
 caption = "Model structure and data bridging comparison of estimated spawning output",
-label = 'data-bridge-ssb')
+label = 'data-bridge-ssb-1')
+```
+
+
+```{r, results = 'asis'}
+
+add_figure(
+filein = file.path(bridge_dir, "_plots", "full_bridge_1_compare4_Bratio_uncertainty.png"),
+caption = "Model structure and data bridging comparison of estimated fraction unfished",
+label = 'data-bridge-depl-1')
+```
+
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(bridge_dir, "_plots", "full_bridge_2_compare2_spawnbio_uncertainty.png"),
+caption = "Model structure and data bridging comparison of estimated spawning output",
+label = 'data-bridge-ssb-2')
 ```
 
 ```{r, results = 'asis'}
 
 add_figure(
-filein = file.path(bridge_dir, "_plots", "full_bridge_compare4_Bratio_uncertainty.png"),
+filein = file.path(bridge_dir, "_plots", "full_bridge_2_compare4_Bratio_uncertainty.png"),
 caption = "Model structure and data bridging comparison of estimated fraction unfished",
-label = 'data-bridge-depl')
+label = 'data-bridge-depl-2')
 ```
-
 
 
 <!-- ====================================================================== -->
