@@ -25,7 +25,7 @@ base_name <- "6.2_update_pr_index"
 get = get_settings_profile(
   parameters =  c( "L_at_Amax_Fem_GP_1", "NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
   low =  c( 42.0, 0.08, 0.30, -0.5),
-  high = c( 59.0, 0.14, 0.95,  1.5),
+  high = c( 51.0, 0.14, 0.95,  1.5),
   step_size = c(1, 0.01, 0.05, 0.10),
   param_space = c('real', 'real',  'real', 'relative'),
   use_prior_like = c(0, 1, 1, 0)
