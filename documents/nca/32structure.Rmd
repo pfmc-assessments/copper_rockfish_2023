@@ -38,6 +38,9 @@ To arrive at a final base model additional revisions to the model structure, sel
 
 ### Key Assumptions and Structural Choices
 
+The specifications of the assessment are listed in Table \ref{tab:model-structure}. The model is a two-sex, age-structured model starting in 1916 with an accumulated age group at 50 years. Growth and natural mortality were assumed time invariant with constant growth estimated and natural mortality fixed at the median of the prior for both sexes. The lengths in the population were tracked by 1 cm intervals and the length data were binned into 2 cm intervals. Stock Synthesis estimates growth in the age and size plus group. To avoid issues with additional estimated growth in the plus groups, the selection of the maximum age and length bins were selected to ensure that the numbers of fish in the plus group would be low.
+
+Add additional info on selectivity, recruitment 
 
 ### Priors
 
