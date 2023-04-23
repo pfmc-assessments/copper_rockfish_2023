@@ -1,1 +1,8 @@
 # Appendix B. MRFSS Dockside Index of Abundance {#mrfss-index}
+
+```{r, echo=FALSE, results='asis'}
+
+filein = file.path(getwd(), "shared_text",'mrfss_index.Rmd')
+read_child(filein)
+```
+
