@@ -1,5 +1,6 @@
 # Install the package if needed
 #remotes::install_github("pfmc-assessments/sa4ss")
+# devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 library(sa4ss)
 library(here)
 
@@ -34,7 +35,7 @@ r_dir <- here("R")
 
 #save to Rdata file
 save(model_dir, bridge_dir, doc_dir, data_dir, management_dir, north_model_dir, south_model_dir,
-     file = file.path(doc_dir, "sca", "saved_directories.Rdata"))
+     file = file.path(doc_dir, "nca", "saved_directories.Rdata"))
 
 setwd(file.path(doc_dir, "nca"))
 
@@ -86,7 +87,7 @@ sa4ss::read_model(
   add_prefix = "north",
   add_text = "north of Point Conception",
   create_plots = FALSE, 
-  save_loc = file.path(doc_dir, "sca",  "tex_tables"))
+  save_loc = file.path(doc_dir, "nca",  "tex_tables"))
 
 #===============================================================================
 # Create combined figures

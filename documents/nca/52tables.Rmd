@@ -79,7 +79,7 @@ create_management_table(
 <!-- ********************   CCFRP    *********************** --> 
 <!-- ======================================================= -->
 
-\input{tex_tables/south_ccfrp_drifts_length_ages.tex}
+\input{tex_tables/north_ccfrp_drifts_length_ages.tex}
 
 
 <!-- ======================================================= -->
@@ -87,7 +87,7 @@ create_management_table(
 <!-- ======================================================= -->
 
 
-\input{tex_tables/rov_north_samples_transects.tex}
+\include{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
 
 
 <!-- ======================================================= -->
