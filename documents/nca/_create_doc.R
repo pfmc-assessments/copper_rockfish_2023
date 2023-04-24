@@ -66,8 +66,7 @@ bookdown::render_book(
 #                        preview = TRUE, clean = FALSE)
 
 bookdown::render_book("00a.Rmd", 
-                      #output_format ="bookdown::pdf_document2",
-                      output_dir = getwd(), clean = FALSE, 
+                      output_dir = doc_dir, clean = FALSE, 
                       config_file = "_bookdown_north.yml")
 
 

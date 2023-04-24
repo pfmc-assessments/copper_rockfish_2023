@@ -9,6 +9,7 @@ output:
   bookdown::pdf_document2:
     keep_tex: true
 lang: en
+bibilography: [pfmcassess.bib, wcassess.bib]
 papersize: letter
 ---
 
@@ -70,9 +71,11 @@ bibliography:
 
 # Executive summary{-}
 
+
 ## Stock{-}
 
-This assessment reports the status of copper rockfish (_Sebastes caurinus_) off the California North of Pt. Conception U.S. West coast using data through 2022.
+This assessment reports the status of copper rockfish (*Sebastes caurinus*) off the California coast in U.S. waters, using data through 2022. The copper rockfish stock was assessed using two sub-area models that captured distinct inter-stock dynamics split north and south of Point Conception. The estimated dynamics for each assessed sub-area is described here along with the combined stock status for the California stock. This assessment does not account for populations located in Mexico waters or other areas off the U.S. coast and assumes that these southern and northern populations do not contribute to the population being assessed here. 
+
 
 ## Catches{-}
 
@@ -81,25 +84,25 @@ trends and current levels.
 Include Table for last 10 years.
 Include Figure with long-term estimates.
 
-I am testing references of Table \ref{tab:removalsES} and \ref{tab:north-removalsES}
 
-\input{tex_tables/a_Catches_ES.tex}
-
+\input{tex_tables/south_a_Catches_ES.tex}
 
 \input{tex_tables/north_a_Catches_ES.tex}
 
 
-![Landings by fleet used in the base model where catches in metric tons by fleet are stacked.\label{fig:es-catch}](S:/copper_rockfish_2023/models/nca/0.1_init_model/plots/catch2 landings stacked.png){width=100% height=100% alt="."}
+
+![Landings by fleet used in the base model for the area south of Point Conception where catches in metric tons by fleet are stacked.\label{fig:es-south-catch}](S:/copper_rockfish_2023/models/sca/5.5_est_m/plots/catch2 landings stacked.png){width=100% height=100% alt="."}
+
+
+
+
+![Landings by fleet used in the base model for the area north of Point Conception where catches in metric tons by fleet are stacked.\label{fig:es-north-catch}](S:/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png){width=100% height=100% alt="."}
+
 
 ## Data and assessment{-}
 
 This assessment uses the stock assessment framework
-Stock Synthesis 
-
-```
-[1] "3.30.21.00"
-```
-(SS3).
+Stock Synthesis version 3.30.21 (SS3).
 
 Replace text with
 date of last assessment,
@@ -116,13 +119,51 @@ description of uncertainty.
 Include Table for last 10 years.
 Include Figure with long-term estimates.
 
-\input{tex_tables/b_SSB_ES.tex}
+\input{tex_tables/south_b_SSB_ES.tex}
+
+\input{tex_tables/north_b_SSB_ES.tex}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\caption{(\#tab:ca-status)The estimated spawning ouput in number of million eggs across California and fraction unfished by year.}\\
+\toprule
+Year & Spawning Output & Fraction Unfished\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:ca-status)The estimated spawning ouput in number of million eggs across California and fraction unfished by year. \textit{(continued)}}\\
+\toprule
+Year & Spawning Output & Fraction Unfished\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & 227.72 & 0.331\\
+2014 & 243.57 & 0.354\\
+2015 & 264.67 & 0.384\\
+2016 & 283.21 & 0.411\\
+2017 & 299.59 & 0.435\\
+2018 & 308.56 & 0.448\\
+2019 & 316.83 & 0.460\\
+2020 & 322.83 & 0.469\\
+2021 & 319.07 & 0.463\\
+2022 & 320.42 & 0.465\\
+2023 & 331.05 & 0.481\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
 
 
-![Estimated time series of spawning output (circles and line: median; light broken lines: 95 percent intervals) for the base model.\label{fig:es-sb}](S:/copper_rockfish_2023/models/nca/0.1_init_model/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png){width=100% height=100% alt="."}
+
+![Estimated time series of spawning output (circles and line: median; light broken lines: 95 percent intervals) for the model areas south and north of Point Conception.\label{fig:es-sb}](C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/compare2_spawnbio_uncertainty.png){width=100% height=100% alt="."}
 
 
-![Estimated time series of fraction of unfished spawning output (circles and line: median; light broken lines: 95 percent intervals) for the base model.\label{fig:es-depl}](S:/copper_rockfish_2023/models/nca/0.1_init_model/plots/ts9_Relative_spawning_output_intervals.png){width=100% height=100% alt="."}
+
+![Estimated time series of fraction of unfished spawning output (circles and line: median; light broken lines: 95 percent intervals) for the model areas south and north of Point Conception.\label{fig:es-depl}](C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
+
 
 \clearpage
 
@@ -134,12 +175,16 @@ description of uncertainty.
 Include Table for last 10 years.
 Include Figure with long-term estimates.
 
-\input{tex_tables/c_Recr_ES.tex}
+\input{tex_tables/south_c_Recr_ES.tex}
+
+\input{tex_tables/north_c_Recr_ES.tex}
 
 
-![Estimated time series of age-0 recruits (1000s) for the base model with 95 percent intervals.\label{fig:es-recruits}](S:/copper_rockfish_2023/models/nca/0.1_init_model/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png){width=100% height=100% alt="."}
+![Estimated time series of age-0 recruits (1000s) for the model areas south and north of Point Conception with 95 percent intervals.\label{fig:es-recruits}](C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/compare10_recruits_uncertainty.png){width=100% height=100% alt="."}
 
 
+
+![Estimated time series of recruitment deviations for the model areas south and north of Point Conception.\label{fig:es-rec-devs}](C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/compare12_recdevs_uncertainty.png){width=100% height=100% alt="."}
 
 \clearpage
 
@@ -150,13 +195,17 @@ total catch divided by exploitable biomass or SPR harvest rate.
 Include Table for last 10 years.
 Include Figure with trend in f relative to target vs. trend in biomass relative to the target.
 
-\input{tex_tables/d_SPR_ES.tex}
+\input{tex_tables/south_d_SPR_ES.tex}
+
+\input{tex_tables/north_d_SPR_ES.tex}
 
 
-![Estimated 1 - relative spawning ratio (SPR) by year for the base model. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate.\label{fig:es-1-spr}](S:/copper_rockfish_2023/models/nca/0.1_init_model/plots/SPR2_minusSPRseries.png){width=100% height=100% alt="."}
+![Estimated 1 - relative spawning ratio (SPR) by year for the model areas south and north of Point Conception. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate.\label{fig:es-1-spr}](C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/compare6_SPRratio_uncertainty.png){width=100% height=100% alt="."}
 
 ## Ecosystem considerations{-}
 
+
+shared text
 
 ## Reference points{-}
 
@@ -164,13 +213,23 @@ Replace text with
 management targets and definition of overfishing, including the harvest rate that brings the stock to equilibrium at $B_{40\%}$, i.e., the $B_{MSY}$ proxy and the equilibrium stock size that results from fishing at the default harvest rate, i.e., the $F_{MSY}$ proxy.
 Include Table of estimated reference points for ssb, SPR, exploitation rate, and yield based on SSB proxy for MSY, SPR proxy for MSY, and estimated MSY values.
 
+\input{tex_tables/south_e_ReferencePoints_ES.tex}
+
+\input{tex_tables/north_e_ReferencePoints_ES.tex}
 
 
-![Phase plot of estimated 1-SPR versus fraction unfished for the base model.\label{fig:es-phase}](S:/copper_rockfish_2023/models/nca/0.1_init_model/plots/SPR4_phase.png){width=100% height=100% alt="."}
+
+![Phase plot of estimated 1-SPR versus fraction unfished for the model areas south and north of Point Conception.\label{fig:es-phase}](C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/compare15_phase_plot.png){width=100% height=100% alt="."}
 
 
-![Equilibrium yield curve for the base case model. Values are based on the 2020
-fishery selectivities and with steepness fixed at 0.80.\label{fig:es-yield}](S:/copper_rockfish_2023/models/nca/0.1_init_model/plots/yield2_yield_curve_with_refpoints.png){width=100% height=100% alt="."}
+
+![Equilibrium yield curve for the base case model for model south of Point Conception. Values are based on the 2022 fishery selectivities and with steepness fixed at 0.72.\label{fig:south-es-yield}](S:/copper_rockfish_2023/models/sca/5.5_est_m/plots/yield2_yield_curve_with_refpoints.png){width=100% height=100% alt="."}
+
+
+
+
+![Equilibrium yield curve for the base case model for model north of Point Conception. Values are based on the 2022 fishery selectivities and with steepness fixed at 0.72.\label{fig:north-es-yield}](S:/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png){width=100% height=100% alt="."}
+
 
 
 ## Management performance{-}
@@ -215,12 +274,12 @@ Year & OFL (mt) & ACL (mt) & Catch (mt)\\
 \endgroup{}
 \endgroup{}
 
-
 ## Unresolved problems and major uncertainties{-}
 
 
 
 shared text
+
 
 ## Decision table and projections{-}
 
@@ -248,8 +307,8 @@ Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC
 \endfoot
 \bottomrule
 \endlastfoot
-2023 & 116.4 & 91.53 & 70 & - & - & 331.05 & 0.481\\
-2024 & 121.32 & 94.69 & 70 & - & - & 331.91 & 0.482\\
+2023 & 116.4 & 91.53 & 91.5 & - & - & 331.05 & 0.481\\
+2024 & 121.32 & 94.69 & 94.7 & - & - & 331.91 & 0.482\\
 2025 & - & - & - & 182.58 & 169.79 & 331.76 & 0.482\\
 2026 & - & - & - & 182.54 & 169.45 & 330.85 & 0.481\\
 2027 & - & - & - & 182.16 & 169.11 & 329.74 & 0.479\\
@@ -266,7 +325,6 @@ Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC
 \endgroup{}
 
 
-
 ## Scientific uncertainty{-}
 
 
@@ -281,7 +339,7 @@ shared text
 
 # Introduction
 ## Basic Information and Life History
-This assessment reports the status of copper rockfish (*Sebastes caurinus*) off the California coast, north of Point Conception, using data through 2022.
+This assessment report describes the sub-area population of copper rockfish (*Sebastes caurinus*) off the California coast south of Point Conception in U.S. waters, using data through 2022. The sub-area population north of Point Conception in California waters was also evaluated and is described in a separate assessment report. The copper rockfish status for the California stock of is determined by the combined estimates of spawning output from both sub-areas and is detailed in the [management](#management) section. This assessment does not account for populations located in Mexico waters or other areas off the U.S. coast and assumes that these southern and northern populations do not contribute to the population being assessed here. 
 
 
  Copper rockfish have historically been a part of both commercial and recreational 
@@ -297,8 +355,8 @@ reef and within 10 days, half of the copper rockfish returned to the original ca
 
 long the posterior two-thirds of the lateral line. The copper rockfish has high variation 
 in coloration throughout its range, taking on coloration from dark brown, olive, 
-orage-red and pink, with patches of yellow and pink [@miller_guide_1972]. In general 
-the copper rockfish rockfish towards the northern part of the range are often darker in 
+orange-red and pink, with patches of yellow and pink [@miller_guide_1972]. In general 
+the copper rockfish towards the northern part of the range are often darker in 
 color than fish encountered in southern California. The distinct change in coloration 
 resulted in copper rockfish described as two separate species, copper rockfish
 (*S. caurinus*) and whitebelly rockfish (*S. vexillaris*). 
@@ -328,7 +386,7 @@ total length \ref{fig:copper-smurf-length}. Anderson observed benthic copper roc
 nocturnally active over sandy bottom outside the kelp forest [@anderson_identification_1983].
 
 Copper rockfish are a relatively long-lived rockfish, estimated to live at least 50 years
-[@love_milton_probably_1996]. Copper rockfish was determined to have the highest 
+[@love_probably_1996]. Copper rockfish was determined to have the highest 
 vulnerability (V = 2.27) of any West Coast groundfish stock evaluated in a 
 productivity susceptibility analysis [@cope_approach_2011]. This analysis
 calculated species-specific vulnerability scores based on two dimensions: 
@@ -337,8 +395,8 @@ characterized how the stock could be impacted by fisheries and other activities.
  
  As adults, there is little evidence of movement, with  Hanan and CCFRP citations
 
-copper rockfish are opportunistic carnivores and commonly consume crustaceans, mollusks, 
-and fish whole [@lea_biological_1999; @bizzarro_diet_2017]. Prince -@prince_food_1972 
+Copper rockfish are opportunistic carnivores and commonly consume crustaceans, mollusks, 
+and fish whole [@lea_biological_1999; @bizzarro_diet_2017]. -@prince_food_1972 
 observed a shift in a diet dominated by arthropods in age 0 and 1 fish, and a shift to a more 
 diverse diet including molluscs and fish as they aged. the study also noted that 
 juvenile copper rockfish were predated on by harbor seals and lingcod.
@@ -370,11 +428,20 @@ identified from samples collected
 along the Oregon coast suggesting that habitat barriers may limit larval dispersal. 
 
 ## Ecosystem Considerations
-Replace text.
+
+
+
+This stock assessment does not explicitly incorporate trophic interactions, habitat factors
+(other than as they inform relative abundance indices) or environmental factors into the assessment model, but a brief description of likely or potential ecosystem considerations are
+provided below.
+
+As with most other rockfish and groundfish in the California Current, recruitment, or
+cohort (year-class) strength appears to be highly variable for the copper rockfish complex, with only a modest apparent relationship to estimated levels of spawning output. Oceanographic and ecosystem factors are widely recognized to be key drivers of recruitment variability for most species of groundfish, as well as most elements of California Current food webs. Empirical estimates of recruitment from pelagic juvenile rockfish surveys have been used to inform incoming year class strength for some of these stocks, however copper rockfish are infrequently encountered in these surveys. Between 1998 and 2013 the California Cooperative Oceanic Fisheries Investigation (CalCOFI) survey observed had 34 positive observations copper rockfish out of nearly 300,000 total juvenile *Sebastes* encountered in juvenile surveys. 
+
 
 ## Historical and Current Fishery Information
 
-Off the coast of California, north of Point Conception, copper rockfish is caught in both commercial and recreational fisheries. Recreational removals have been the largest source of fishing mortality, comprising nearly 85 percent of total removals of copper rockfish across all years (Table XX and Figure XX). The landings from the commercial fishery have been minimal by year, expect for a brief period between the mid-1980s and early-2000s. 
+Off the coast of California south of Point Conception copper rockfish is caught in both commercial and recreational fisheries. Recreational removals have been the largest source of fishing mortality of copper rockfish across all years (Table \ref{tab:allcatches} and Figure \ref{fig:catch}). The recreational fishery is comprised of individual recreational fishers (Private/Rental, PR) and charter recreational private vessels (CPFV) which take groups of individuals out for day fishing trips. Across both types of recreational fishing the majority of effort occurs around rocky reefs that can be accessed via a day-trips. 
 
 
 The recreational fishery in the early part of the 20th century was focused on nearshore waters near ports, with expanded activity further from port and into deeper depths over time [@miller_spatially_2014]. Prior to the groundfish fishery being declared a federal disaster in 2000, and the subsequent rebuilding period, there were no time or area closures for groundfish. Access to deeper depths during this period spread effort over a larger area and filled bag limits with a greater diversity of species from both the shelf and nearshore. This resulted in lower catch of nearshore rockfish relative to the period after 2000 when 20 to 60 fm depth restrictions ranging from 20 fm in the Northern Management Area to 60 fm in the Southern Management Area were put in place in various management area delineations along the state. This shifting effort onto the nearshore, concomitantly increased catch rates for nearshore rockfish including copper rockfish in the remaining open depths, though season lengths were greatly curtailed.   
@@ -389,7 +456,7 @@ With the development and expansion of the nearshore live fish fishery during the
  
  
 
-Copper rockfish residing between Point Conception and the California/Oregon border are assessed here as a single, separate stock (Figure \ref{fig:map}). This designation was made based on oceanographic, geographic, and fishery conditions. The copper rockfish population in California waters was split at Point Conception due to water circulation patterns that create a natural barrier between nearshore rockfish populations to the north and south. The northern border for this assessment was defined as the California/Oregon border due to substantial differences in historical and current exploitation levels. Additionally, the fairly sedentary nature of adult copper rockfish, likely limits flow of fish between northern California and areas to the north. 
+Copper rockfish residing between Point Conception and the California/Oregon border are assessed here as a single, separate stock (Figure \ref{fig:ca-map}). This designation was made based on oceanographic, geographic, and fishery conditions. The copper rockfish population in California waters was split at Point Conception due to water circulation patterns that create a natural barrier between nearshore rockfish populations to the north and south. The northern border for this assessment was defined as the California/Oregon border due to substantial differences in historical and current exploitation levels. Additionally, the fairly sedentary nature of adult copper rockfish, likely limits flow of fish between northern California and areas to the north. 
 
 ## Summary of Management History and Performance
 Replace text.
@@ -399,32 +466,220 @@ Replace text.
 
 <!--chapter:end:11introduction.Rmd-->
 
-# Data
-
-Data comprise the foundational components of stock assessment models.
-The decision to include or exclude particular data sources in an assessment model depends on many factors.
-These factors often include, but are not limited to,
-the way in which data were collected (e.g., measurement method and consistency);
-the spatial and temporal coverage of the data;
-the quantity of data available per desired sampling unit;
-the representativeness of the data to inform the modeled processes of importance;
-timing of when the data were provided;
-limitations imposed by the Terms of Reference; and
-the presence of an avenue for the inclusion of the data in the assessment model.
-Attributes associated with a data source can change through time,
-as can the applicability of the data source when different modeling approaches are explored (e.g., stock structure or time-varying processes).
-Therefore, the specific data sources included or excluded from this assessment should not necessarily constrain the selection of data sources applicable to future stock assessments for copper rockfish.
-Even if a data source is not directly used in the stock assessment they can provide valuable insights into biology, fishery behavior, or localized dynamics.
-
-Data from a wide range of programs were available for possible inclusion in the current assessment model.
-Descriptions of each data source included in the model (Figure \@ref(fig:data-plot)) and sources that were explored but not included in the base model are provided below.
-Data that were excluded from the base model were explicitly explored during the development of this stock assessment or have not changed since their past exploration in a previous copper rockfish stock assessment.
-In some cases, the inclusion of excluded data sources were explored through sensitivity analyses (see Section \@ref(assessment-model)).
-
-<!--chapter:end:20data.Rmd-->
-
-# Assessment Model
+# Appendix F. CCFRP Index of Abundance {#ccfrp-index}
 
 
-<!--chapter:end:30model.Rmd-->
+
+**California Collaborative Fisheries Research Program Index**
+
+The California Collaborative Fisheries Research Program, [CCFRP](https://www.mlml.calstate.edu/ccfrp/), 
+is a fishery-independent 
+hook-and-line survey designed to monitor nearshore fish populations at a series of sampling 
+locations both inside and adjacent to MPAs 
+[@starr_variation_2015a; @wendt_collaborative_2009].  The CCFRP survey began in 
+2007 along the central coast of California and was designed in collaboration 
+with academics, NMFS scientists and fishermen. 
+From 2007-2016 the CCFRP project was focused on the central California coast,
+and has monitored four MPAs consistently. In 2017, the CCFRP expanded coastwide within California.  
+The index of abundance was developed from the four MPAs sampled consistently 
+(A&ntilde;o Nuevo and Point Lobos 
+by Moss Landing Marine Labs; Point Buchon and Piedras Blancas by Cal Poly).
+
+The survey design for CCFRP consists 500 x 500 m cells both within and 
+adjacent to each MPA. On any given survey day site cells are randomly 
+selected within a stratum (MPA and/or reference cells).  CPFVs are chartered 
+for the survey and the fishing captain is allowed to search within the cell for 
+a fishing location.  During a sampling event, each cell is fished for a total of 
+30-45 minutes by volunteer anglers. Each fish encountered is recorded, measured, 
+and can be linked back to a particular angler, and released (or descended to depth). 
+ CCFRP samples shallower depths to avoid barotrauma-induced mortality.  
+ Starting in 2017, a subset of fish have been retained to collect otoliths and fin 
+clips that provide needed biological information for nearshore species. For the 
+index of abundance, CPUE was modeled at the level of the drift, similar to the 
+fishery-dependent onboard observer survey described above.
+
+
+*CCFRP Index: Data Preparation, Filtering, and Sample Sizes*
+
+The CCFRP data are quality controlled at the time they are key punched and little 
+filtering was needed for the index. 
+Cells not consistently sampled over time were excluded as well as cells that never 
+encountered copper rockfish.
+The full dataset for northern California contained 8,770 drifts, 23% of which encountered 
+copper rockfish.  After applying filters to remove drfits from sites that were not consistently sampled,
+marked for exclusion in the data, or did not fish a minimum of xxx, 7,078 drifts remained for 
+for index standardization, with 1,757 drifts encountering copper rockfish.
+  
+
+*CCFRP Index: Model Selection, Fits, and Diagnostics*
+
+The CCFRP index includes all of the 
+MPAs currently sampled from 2017-2020 and the core central California sampling sites 
+from 2007-2016. Trends among all of the MPAs sampled increased along the entire coast 
+from 2017-2020. The final index (Table \@ref(tab:tab-index-ccfrp)) 
+represents a similar trend to the arithmetic mean of the annual CPUE (Figure \@ref(fig:fig-cpue-ccfrp)).
+
+We modeled retained catch per angler hour (CPUE; number of fish per angler hour) 
+using MLE fr. Indices with a year and area (location along the coast) interaction were not 
+considered in model selection; trends in the average CPUE by region were similar 
+in the filtered data set (Figure \@ref(fig:fig-areacpue-ccfrp)). Plots of the arithmetic 
+mean by inside (MPA) and outside (REF) MPAs over time is in Figure \@ref(fig:fig-sitecpue-ccfrp) 
+and shows the distinct trends of increasing average CPUE over time.
+
+
+A negative binomial model was fit to the drift-level data (catch with a log offset for angler 
+hours). Because the average observed CPUE inside MPAs and in the reference sites exhibited 
+differing trends, we explored a YEAR:SITE interaction, which was selected as the best 
+fit model by AIC Table \@ref(tab:tab-model-select-ccfrp)), The final model included
+yrea, mpa/reference categorization, depth, depth squared, and a year:mpa/reference interaction. 
+The model was fit using the sdmTMB R package (version xxx1). 
+
+
+Based on work completed at the SWFSC, we estimate that the percent of rocky reef habitat from Point Conception to the California border within California state waters is 892 $km^2$, of which approximately 23% is in MPAs that prohibit the harvest of groundfish (pers comm. Rebecca Miller, UCSC). There is recreational fishing outside of state waters, but habitat maps are not available at the same 2-m resolution and do not allow for direct comparisons. To estimate the area 
+of rocky substrate south of Point conception, we separted the southern California Bight into four areas, 1) CRFS District 
+1 along the mainland coast, 2) CRFS District 2 along the mainland coast, 3) state waters encompassing the southern 
+Channel Islands, and 4) state waters encompassing the northern Channel Islands.  We calculated the total area in each of the 
+four regions, as well as the total area with available interpretted substrate.  By also calculating the total area open and closed to fishing, i.e., MPAs and CCAs, we expanded the known fraction of rocky substrate to the areas within state 
+waters where no substrated interpretted maps exist.  This resulted in an estimate of 27% of the available rocky substrate 
+within closed areas to fishing in southern California state waters. 
+
+The final index was weighted, giving 20% of the model weight to MPAs and 80% of model 
+weight to the "open" areas within the state.
+
+
+
+\begingroup\fontsize{7}{9}\selectfont
+
+\begin{landscape}\begingroup\fontsize{7}{9}\selectfont
+
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}}
+\caption{(\#tab:ccfrp-data-filter)Data filtering for the CCFRP survey.}\\
+\toprule
+Filter & Description & Samples & Positive\_Samples\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:ccfrp-data-filter)Data filtering for the CCFRP survey. \textit{(continued)}}\\
+\toprule
+Filter & Description & Samples & Positive\_Samples\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+All data &  & 8770 & 1979\\
+Sampling frequency & Remove locations and cells not well 
+                                          sampled and drifts marked for exclusion & 7850 & 1773\\
+Location & Remove grid cells that never observed
+                                           the target species & 7205 & 1773\\
+Time fished & Remove drifts less than two minutes 
+                                          and cells fished less than 15 minutes
+                                          during a sampling event & 7078 & 1757\\*
+\end{longtable}
+\endgroup{}
+\end{landscape}
+\endgroup{}
+
+\newpage
+
+\begingroup\fontsize{7}{9}\selectfont
+
+\begin{landscape}\begingroup\fontsize{7}{9}\selectfont
+
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}}
+\caption{(\#tab:ccfrp-model-selection)Model selection for the CCFRP survey.}\\
+\toprule
+Depth & Depth.Squared & Mpaorref & Region & Year & Interaction & Effort.Offset & Df & Log.Likelihood & AICc & Delta\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:ccfrp-model-selection)Model selection for the CCFRP survey. \textit{(continued)}}\\
+\toprule
+Depth & Depth.Squared & Mpaorref & Region & Year & Interaction & Effort.Offset & Df & Log.Likelihood & AICc & Delta\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+0.402 & -0.008 & Included & Included & Included & Included & Included & 36 & -5319.3 & 10710.9 & 0.0\\
+0.393 & -0.008 & Included & Excluded & Included & Included & Included & 35 & -5321.0 & 10712.3 & 1.4\\
+0.406 & -0.008 & Included & Included & Included & Excluded & Included & 21 & -5351.1 & 10744.4 & 33.5\\
+0.397 & -0.008 & Included & Excluded & Included & Excluded & Included & 20 & -5353.0 & 10746.1 & 35.2\\
+0.145 & Excluded & Included & Excluded & Included & Included & Included & 34 & -5350.2 & 10768.8 & 57.9\\
+0.144 & Excluded & Included & Included & Included & Included & Included & 35 & -5350.1 & 10770.5 & 59.6\\
+0.143 & Excluded & Included & Excluded & Included & Excluded & Included & 19 & -5383.4 & 10804.9 & 94.0\\
+0.143 & Excluded & Included & Included & Included & Excluded & Included & 20 & -5383.2 & 10806.5 & 95.6\\
+0.464 & -0.010 & Excluded & Included & Included & Excluded & Included & 20 & -5508.1 & 11056.3 & 345.4\\
+0.454 & -0.010 & Excluded & Excluded & Included & Excluded & Included & 19 & -5510.5 & 11059.2 & 348.3\\
+0.144 & Excluded & Excluded & Excluded & Included & Excluded & Included & 18 & -5554.0 & 11144.1 & 433.2\\
+0.144 & Excluded & Excluded & Included & Included & Excluded & Included & 19 & -5553.8 & 11145.6 & 434.7\\
+Excluded & Excluded & Included & Excluded & Included & Included & Included & 33 & -5632.6 & 11331.5 & 620.6\\
+Excluded & Excluded & Included & Included & Included & Included & Included & 34 & -5632.2 & 11332.7 & 621.8\\
+Excluded & Excluded & Included & Excluded & Included & Excluded & Included & 18 & -5661.2 & 11358.4 & 647.5\\
+Excluded & Excluded & Included & Included & Included & Excluded & Included & 19 & -5660.7 & 11359.5 & 648.6\\
+Excluded & Excluded & Excluded & Excluded & Included & Excluded & Included & 17 & -5815.9 & 11665.8 & 954.9\\
+Excluded & Excluded & Excluded & Included & Included & Excluded & Included & 18 & -5815.3 & 11666.8 & 955.9\\*
+\end{longtable}
+\endgroup{}
+\end{landscape}
+\endgroup{}
+
+\newpage
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\caption{(\#tab:ccfrp-index)Estimated relative index of abundance for the CCFRP survey.}\\
+\toprule
+Year & Estimate & logSE\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:ccfrp-index)Estimated relative index of abundance for the CCFRP survey. \textit{(continued)}}\\
+\toprule
+Year & Estimate & logSE\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2007 & 0.0582160 & 0.1394863\\
+2008 & 0.0275242 & 0.1493542\\
+2009 & 0.0599728 & 0.1562757\\
+2010 & 0.0329613 & 0.1665564\\
+2011 & 0.0302584 & 0.1638784\\
+2012 & 0.0359084 & 0.1446754\\
+2013 & 0.0237656 & 0.1726645\\
+2014 & 0.0495890 & 0.1397864\\
+2015 & 0.0371527 & 0.2124289\\
+2016 & 0.0962345 & 0.1096466\\
+2017 & 0.0920281 & 0.1075274\\
+2018 & 0.1107285 & 0.0950086\\
+2019 & 0.1284849 & 0.0884973\\
+2020 & 0.1693210 & 0.0947559\\
+2021 & 0.1546231 & 0.0894429\\
+2022 & 0.1363272 & 0.0914945\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\newpage
+
+
+![QQ-plot for the CCFRP survey.\label{fig:ccfrp-qq}](S:/copper_rockfish_2023/data/survey_indices/ccfrp/north/area_weighted/qq.png){width=100% height=100% alt="."}
+
+\newpage 
+
+
+![Average CPUE by site with trends prior to standardization in the MPA and REF areas.\label{fig:ccfrp-avg-cpue}](S:/copper_rockfish_2023/data/survey_indices/ccfrp/north/mpa_site_cpue.png){width=100% height=100% alt="."}
+
+\newpage
+
+
+![The weighted relative index of abundance.\label{fig:ccfrp-index}](S:/copper_rockfish_2023/data/survey_indices/ccfrp/north/area_weighted/Index.png){width=100% height=100% alt="."}
+
+
+
+<!--chapter:end:65appendix_ccfrp.Rmd-->
 
