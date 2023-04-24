@@ -1,10 +1,11 @@
 # Install the package if needed
-# remotes::install_github("pfmc-assessments/sa4ss")
+#remotes::install_github("pfmc-assessments/sa4ss")
 library(sa4ss)
 library(here)
 
 # Specify the directory for the document
-model_name <- "0.1_init_model"
+north_model_name <- "8.5_update_deb_index"
+south_model_name <- "5.5_est_m"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -16,19 +17,29 @@ if( grepl("Chantel", user) ){
 # Based on the user
 doc_dir <- file.path(user_dir, "documents")
 
+#bridging model
 bridge_dir <- here("models", "nca", "_bridging")
-model_dir <- here("models", "nca", model_name)
+
+#point to the northern model for document
+model_dir <- here("models", "nca", north_model_name)
+
+#point to both models for documentsection
+north_model_dir <- here("models", "nca", north_model_name)
+south_model_dir <- here("models", "sca", south_model_name)
+#management
+management_dir <- here("management")
+#data
 data_dir<- here("data")
 r_dir <- here("R")
-management_dir <- here("management")
-save(bridge_dir, model_dir, doc_dir, data_dir, r_dir, management_dir,
-     file = file.path(doc_dir, "nca", "saved_directories.Rdata"))
+
+#save to Rdata file
+save(model_dir, bridge_dir, doc_dir, data_dir, management_dir, north_model_dir, south_model_dir,
+     file = file.path(doc_dir, "sca", "saved_directories.Rdata"))
 
 setwd(file.path(doc_dir, "nca"))
-load('saved_directories.Rdata')
 
 #===============================================================================
-# Compile command
+# Compile command ----
 #===============================================================================
 if(file.exists("_main.Rmd")){
   file.remove("_main.Rmd")
@@ -41,30 +52,61 @@ bookdown::render_book(
 )
 
 #==================================================================================================
-# Initial Document Creation
-# Create the needed items to generate the "right" template that would be based on the inputs here:
+# Function to build a single section of the document - not recently tested
 #==================================================================================================
-sa4ss::draft(
-  authors = c("Melissa H. Monk", "Chantel R. Wetzel", "Julia Coates"),
-  species = "Copper Rockfish",
-  latin = "Sebastes caurinus",
-  coast = "California North of Pt. Conception U.S. West",
-  type = c("sa"),
-  create_dir = FALSE,
-  edit = FALSE
-)
 
-#==================================================================================================
-# Read in a new model
+# Render the pdf
+#bookdown::render_book("00a.Rmd", clean = FALSE)
+
+# Use to only render a specific section which can be quicker
+#shared_txt <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_text"
+#bookdown::render_book(c("00a.Rmd",
+#                        file.path(shared_txt,"1_intro_life_history_fishery_info.Rmd")),
+#                        preview = TRUE, clean = FALSE)
+
+bookdown::render_book("00a.Rmd", 
+                      #output_format ="bookdown::pdf_document2",
+                      output_dir = getwd(), clean = FALSE, 
+                      config_file = "_bookdown_north.yml")
+
+
+#===============================================================================
+# Read in a new model ----
 # Create a model Rdata object and executive summary ES tex files
-#==================================================================================================
+#===============================================================================
 sa4ss::read_model(
-  mod_loc = model_dir,
+  mod_loc = south_model_dir,
+  add_prefix = "south",
+  add_text = "south of Point Conception",
   create_plots = FALSE, 
-  save_loc = file.path(model_dir, "tex_tables"))
+  save_loc = file.path(doc_dir, "sca", "tex_tables"))
 
-#==================================================================================================
-# Updated Read in a new model
+sa4ss::read_model(
+  mod_loc = north_model_dir,
+  add_prefix = "north",
+  add_text = "north of Point Conception",
+  create_plots = FALSE, 
+  save_loc = file.path(doc_dir, "sca",  "tex_tables"))
+
+#===============================================================================
+# Create combined figures
+#===============================================================================
+
+south <- r4ss::SS_output(south_model_dir)
+north <- r4ss::SS_output(north_model_dir)
+modelnames <- c("South of Point Conception", "North of Point Conception")
+mysummary <- r4ss::SSsummarize(list(south, north))
+
+r4ss::SSplotComparisons(mysummary,
+                        legendlabels = modelnames, 	
+                        ylimAdj = 1.25,
+                        print = TRUE,
+                        pdf = FALSE,
+                        plotdir = file.path(doc_dir, "shared_figures"))
+
+
+#================================================================================================
+# Updated Read in a new model ----
 # Create a model Rdata object and executive summary ES tex files
 #==================================================================================================
 sa4ss::es_table_tex(
@@ -79,3 +121,16 @@ es_table_tex(
   save_loc = file.path(getwd(), "tex_tables"), 
   csv_name = "all_tables.csv")
 
+#==================================================================================================
+# Initial Document Creation ----
+# Create the needed items to generate the "right" template that would be based on the inputs here:
+#==================================================================================================
+# sa4ss::draft(
+#   authors = c("Melissa H. Monk", "Chantel R. Wetzel", "Julia Coates"),
+#   species = "Copper Rockfish",
+#   latin = "Sebastes caurinus",
+#   coast = "California North of Pt. Conception U.S. West",
+#   type = c("sa"),
+#   create_dir = FALSE,
+#   edit = FALSE
+# )

@@ -213,6 +213,19 @@ label = 'mean-rec-pr-len-data')
 
 
 
+<!-- ======================================================= -->
+<!-- ***************  life history  ************************ --> 
+<!-- ======================================================= -->
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "copper_lengths_by_half_month.png"), 
+caption = "Distribution of YOY copper rockfish lengths from fish genetically identified from D. Baetscher.",
+label = 'copper-smurf-length')
+```
+
+
+
 <!-- ======================================================= -->  
 <!-- ******************   Biology  ************************* --> 
 <!-- ======================================================= -->  

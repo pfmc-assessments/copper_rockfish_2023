@@ -1,4 +1,6 @@
 ---
 bibliography:
-  - sa4ss.bib
+ - sa4ss.bib
+ - copper.bib
+ - wcassess.bib
 ---

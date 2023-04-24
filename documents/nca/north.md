@@ -59,83 +59,131 @@ address:
 
 ---
 bibliography:
-  - sa4ss.bib
+ - sa4ss.bib
+ - copper.bib
+ - wcassess.bib
 ---
 
 <!--chapter:end:00bibliography.Rmd-->
 
-## Biological Data
-
-### Natural Mortality
-
-
-Natural mortality was not directly measured, so life-history based empirical relationships were used. The Natural Mortality Tool (NMT), a Shiny-based graphical user interface allowing for the application of a variety of natural mortality estimators based on measures such as longevity, size, age and growth, and maturity, was used to obtain estimates of natural mortality. The NMT currently provides 19 options, including the Hamel [-@hamel_development_2022] method, which is a corrected form of the Then et al. [-@then_evaluating_2015] functional regression model and is a commonly applied method for West Coast groundfish. The NMT also allows for the construction of a natural mortality prior weighted across methods by the user.
-
-The Hamel [-@hamel_development_2022] method for developing a prior on natural mortality for West Coast groundfish stock assessments combines meta-analytic approaches relating the $M$ rate to other life-history parameters such as longevity, size, growth rate, and reproductive effort to provide a prior for $M$. The Hamel [-@hamel_development_2022] method re-evaluated the data used by Then et al. [-@then_evaluating_2015] by fitting the one-parameter $A_{\text{max}}$ model under a log-log transformation (such that the slope is forced to be -1 in the transformed space [@hamel_method_2015], the point estimate and median of the prior for $M$ is:
-
-\begin{centering}
-
-$M=\frac{5.4}{A_{\text{max}}}$
-
-\end{centering}
-
-\vspace{0.5cm}
-
-where $A_{\text{max}}$ is the maximum age. The prior is defined as a lognormal distribution with mean $ln(5.4/A_{\text{max}})$ and standard error = 0.31. Using a maximum age of 50, the point estimate and median of the prior is 0.108 yr^-1^. The maximum age was selected based on available age data from all West Coast data sources and literature values. The oldest aged copper rockfish observed in California waters was 52 years of age sampled in 2020 in northern California with 15 additional fish aged to be 40 years and older across all data sources.
-
-The maximum age in the model was set at 50 years. This selection was consistent with the literature examining the longevity of copper rockfish within California [@love_milton_probably_1996] and was supported by the observed ages that had multiple observations of fish between 40 and 52 years of age.  
+# Introduction
+## Basic Information and Life History
+This assessment reports the status of copper rockfish (*Sebastes caurinus*) off the California coast, north of Point Conception, using data through 2022.
 
 
-### Maturation and Fecundity
+ Copper rockfish have historically been a part of both commercial and recreational 
+fisheries throughout its range. Copper rockfish are a demersal, relatively nearshore 
+species within the subgenus *Pteropodus.*
+Copper rockfish range from xxx to xx at depth of   xxx [@love_rockfishes_2002].  The core range is 
+comparatively large, from northern Baja Mexico to the Gulf of Alaska, with copper rockfish 
+also found in Puget Sound. Copper rockfish are commonly found in waters less than 100 meters in depth 
+inhabiting nearshore kelp forests and complex low-relief rocky habitat [@love_milton_probably_1996].
+Adult copper rockfish have high site fidelity and do not make long-range movements. 
+An acoustic telemetry study diplaced copper rockfish 4km from their capture location to an artificial 
+reef and within 10 days, half of the copper rockfish returned to the original capture location 
+[@reynoldsApplicationAcousticTelemetry2010]. 
+
+long the posterior two-thirds of the lateral line. The copper rockfish has high variation 
+in coloration throughout its range, taking on coloration from dark brown, olive, 
+orage-red and pink, with patches of yellow and pink [@miller_guide_1972]. In general 
+the copper rockfish rockfish towards the northern part of the range are often darker in 
+color than fish encountered in southern California. The distinct change in coloration 
+resulted in copper rockfish described as two separate species, copper rockfish
+(*S. caurinus*) and whitebelly rockfish (*S. vexillaris*). 
+
+The *Sebastes* genus are viviparous with internal fertilization, many exhibit 
+dimorphic growth with females larger at size-at-age than males, and a number 
+of species have reproductive strategies that vary with latitude. There 
+are very few fecundity samples from copper rockfish available from available from California, 
+although copper rockfish are assumed to produce a single brood annually. In southern California, 
+peak parturition occurs xxxx central California peak parturition occurs 
+in February and March.   
+
+The pelagic larvae are encountered in the CalCOFI surveys, but neither larval 
+nor young-of-the-year (YOY) can be identified copper rockfish visually [@thompson_larval_2017]. The
+size at birth ranges from 5-6 mm and the larvae remain pelagic until approximately 22-23 mm 
+standard length at which time they recruit to the kelp forest canopy [@anderson_identification_1983].
+
+Juvenile Copper rockfish are indistinguishable from kelp (*S. atrovirens*), black-and-yellow 
+(*S. chrysomelas*), and gopher rockfish (*S. carnatus*), all of which recruit to the 
+kelp forest canopy in the spring months. Copper rockfish is the first of the species group to 
+recruit to the kelp forest from April to May and can be distinguished from the other 
+species once it reaches a size around 50 mm standard length [@anderson_identification_1983]. 
+Baetscher genetically identified YOY rockfish from surveys in Carmel and Monterey Bays 
+in California and provided the authors with the length and genotyped species idenifications 
+from her study [@baetscher_dispersal_2019]. The average length of copper rockfish in July was 7 cm 
+total length (fig: add figure). Anderson observed benthic copper rockfish 
+nocturnally active over sandy bottom outside the kelp forest [@anderson_identification_1983].
+
+Copper rockfish are a relatively long-lived rockfish, estimated to live at least 50 years
+[@love_milton_probably_1996]. Copper rockfish was determined to have the highest 
+vulnerability (V = 2.27) of any West Coast groundfish stock evaluated in a 
+productivity susceptibility analysis [@cope_approach_2011]. This analysis
+calculated species-specific vulnerability scores based on two dimensions: 
+productivity characterized by the life history and susceptibility that
+characterized how the stock could be impacted by fisheries and other activities. 
+ 
+ As adults, there is little evidence of movement, with  Hanan and CCFRP citations
+
+copper rockfish are opportunistic carnivores and commonly consume crustaceans, mollusks, 
+and fish whole [@lea_biological_1999; @bizzarro_diet_2017-1]. Prince -@prince_food_1972 
+observed a shift in a diet dominated by arthropods in age 0 and 1 fish, and a shift to a more 
+diverse diet including molluscs and fish as they aged. the study also noted that 
+juvenile copper rockfish were predated on by harbor seals and lingcod.
+ 
+There is currently no evidence of significant stock structure from genetic 
+studies of copper rockfish across the west coast. -@buonaccorsi_population_2002 looked 
+at genetic variation across six micosatellite 
+DNA loci from samples ranging from British Columbia to southern California. 
+Significant population subdivision was detected between th Puget Sound and coastal 
+samples and support the model of isolation-by-distance for copper rockfish.
+@sivasundar_life_2010 conducted a genetic study to determine the potential for 
+biogeographic boundaries to prohibit gene flow for 15 *Sebastes* species.
+The study's sample sizes of 
+copper rockfish with samples form Oregon, Monterey Bay and Santa Barbara. @sivasundar_life_2010
+used mtDNA and could differentiate samples from Santa Barbara from those collected 
+in Oregon and Monterey Bay, but the Monterey Bay and Oregon samples could not be distinguished. 
+Micosatellite data did not reveal any genetic differentiation among the sampels from 
+the three locations for copper rockfish and suggests low genetic differentiation coastwide. 
+
+The most recent genetic analysis of copper rockfish to date was conducted by 
+ @johansson_influence_2008. The study included 
+749 samples from along the west coast ranging from Neah Bay, Washington to 
+San Diego, California with the majority of sampling locations clustered north 
+of Cape Mendocino in northern California.  The study included 185 samples collected 
+within California. Eleven microsatellite 
+DNA loci were analyzed. The study found significant evidence to support isolation 
+by distance at the coast wide scale. Weak, but significant, genetic structure was 
+identified from samples collected 
+along the Oregon coast suggesting that habitat barriers may limit larval dispersal. 
+
+## Ecosystem Considerations
+Replace text.
+
+## Historical and Current Fishery Information
+
+Off the coast of California, north of Point Conception, copper rockfish is caught in both commercial and recreational fisheries. Recreational removals have been the largest source of fishing mortality, comprising nearly 85 percent of total removals of copper rockfish across all years (Table XX and Figure XX). The landings from the commercial fishery have been minimal by year, expect for a brief period between the mid-1980s and early-2000s. 
 
 
+The recreational fishery in the early part of the 20th century was focused on nearshore waters near ports, with expanded activity further from port and into deeper depths over time [@miller_spatially_2014]. Prior to the groundfish fishery being declared a federal disaster in 2000, and the subsequent rebuilding period, there were no time or area closures for groundfish. Access to deeper depths during this period spread effort over a larger area and filled bag limits with a greater diversity of species from both the shelf and nearshore. This resulted in lower catch of nearshore rockfish relative to the period after 2000 when 20 to 60 fm depth restrictions ranging from 20 fm in the Northern Management Area to 60 fm in the Southern Management Area were put in place in various management area delineations along the state. This shifting effort onto the nearshore, concomitantly increased catch rates for nearshore rockfish including copper rockfish in the remaining open depths, though season lengths were greatly curtailed.   
 
-Maturity-at-length was based on maturity reads conducted by Melissa Head at the NWFSC examining a total of 112 samples (18 north of Point Conception and 94 south of Point Conception) collected across California by the NWFSC Hook and Line survey and \Gls{s-wcgbt} collected in September and October. Given the limited sample size north of Point Conception, all samples were pooled across California to inform maturity north of Point Conception, while only samples south of Point Conception were used to inform maturity in this region.  
+Following  all previously overfished groundfish species, other than yelloweye rockfish, being declared rebuilt by 2019, deeper depth restrictions were offered in the Southern Management area allowing resumed access to shelf rockfish in less than 75 fm and are currently 100 fm as of 2021. The increased access to deeper depths south of Point Conception with the rebuilding of cowcod is expected to reduce the effort in nearshore waters where copper rockfish is most prevalent.  To the north of Point Conception where yelloweye rockfish are prevalent, depth constraints persist and effort remains focused on the nearshore in 30 to 50 fm depending on the management area.  As yelloweye rockfish continues to rebuild, incremental increases in access to deeper depths are expected, which will likely further reduce the effort in nearshore waters where copper rockfish is most prevalent.
 
-The maturity-at-length curve is based on an estimate of functional maturity rather than biological maturity. Biological maturity can include multiple behaviors that functional will exclude (e.g., abortive maturation and skip spawning). Biological maturity indicates that some energy reserves were used to create vitellogenin, but it does not mean that eggs will continue to develop and successfully spawn. This includes juvenile abortive maturation. Female rockfish commonly go through the first stages of spawning the year before they reach actual spawning capability. This is most likely a factor related to their complicated reproductive process of releasing live young. A subset of oocytes will develop early yolk, and then get aborted during the spawning season. Biological maturity also does not account for the proportion of oocytes in atresia (cellular breakdown and reabsorption), which means that fish that were skipping spawning for the season could be listed as biologically mature and functionally immature (Melissa Head, personal communication, NWFSC, NOAA). 
+Prior to development of the live fish market in the 1980s, there was very little commercial catch of copper rockfish, with dead copper rockfish fetching a low ex-vessel price per pound. Copper rockfish were targeted along with other rockfish to some degree in the nearshore or caught as incidental catch by vessels targeting other more valuable stocks such as lingcod.  Most fish were caught using hook and line gear, though some were caught using traps, gill nets and, rarely, trawl gear. Trawling was prohibited within three miles of shore in 1953 and gill netting within three miles of shore was prohibited in 1994, preventing access to a high proportion of the species habitat with these gear types. Copper rockfish were caught along with other rockfish to some degree in the nearshore or caught as bycatch by vessels targeting other more valuable stocks such as lingcod.
 
-The 50 percent size-at-maturity was estimated at 34 cm with a slope of -0.41 (Figure \ref{fig:maturity}). This area-specific maturity-at-length estimate is relatively similar but with fish maturing at a slightly larger size compared to the biological maturity curve assumed for copper rockfish south of Point Conception. Additionally, these values are both slightly smaller compared to estimates by Hannah [-@hannah_length_2014] for fish observed in Oregon waters (34.8 cm) which estimated the 50 percent size-at-maturity of  and slope of -0.60.
+In the late 1980s and early 1990s a market for fish landed live arose out of Los Angeles and the Bay area, driven by demand from Asian restaurants and markets. The growth of the live fish market was driven by consumers willing to pay a higher price for live fish, ideally plate-sized (12 - 14 inches or 30.5 - 35.6 cm). Live fish landed for the restaurant market are lumped into two categories, small (1 - 3 lbs.) or large (3 - 6 lbs.), with small, plate-sized, fish fetching higher prices at market ranging between $5 -7 per fish (Bill James, personal communication). Copper rockfish is one of the many rockfish species that is included in the commercial live fish fishery. The proportion of copper rockfish being landed live vs. dead since 2000 by California commercial fleets ranges between 50 to greater than 70 percent in the southern and northern areas, respectively. 
+ 
+With the development and expansion of the nearshore live fish fishery during the 1980s and 1990s, new entrants in this open access fishery were drawn by premium ex-vessel price per pound for live fish, resulting in over-capitalization of the fishery. Since 2002, the California Department of Fish and Wildlife (CDFW) has managed 19 nearshore species in accordance with Nearshore Fisheries Management Plan [@wilson-vandenberg_implementing_2014]. In 2003, the CDFW implemented a Nearshore Restricted Access Permit system, including the requirement of a Deeper Nearshore Fishery Species Permit to retain copper rockfish, with the overall goal of reducing the number of participants to a more sustainable level, with permit issuance based on historical landings history by the retrospective qualifying date.  The result was a reduction in permits issued from 1,127 in 1999 to 505 in 2003, greatly reducing catch levels. In addition, reduced trip limits, season closures in March and April and depth restrictions were implemented to address bycatch of overfished species and associated constraints from their low catch limits.   
+ 
+ 
 
+Copper rockfish residing between Point Conception and the California/Oregon border are assessed here as a single, separate stock (Figure \ref{fig:map}). This designation was made based on oceanographic, geographic, and fishery conditions. The copper rockfish population in California waters was split at Point Conception due to water circulation patterns that create a natural barrier between nearshore rockfish populations to the north and south. The northern border for this assessment was defined as the California/Oregon border due to substantial differences in historical and current exploitation levels. Additionally, the fairly sedentary nature of adult copper rockfish, likely limits flow of fish between northern California and areas to the north. 
 
-The fecundity-at-length was based on research from Dick et al. [-@dick_meta-analysis_2017]. The fecundity relationship for copper rockfish was estimated equal to 3.362e-07$L$^3.68^ in millions of eggs where $L$ is length in cm. Fecundity-at-length is shown in Figure \ref{fig:fecundity}.
+## Summary of Management History and Performance
+Replace text.
 
+## Foreign Fisheries
+Replace text.
 
-### Sex Ratio
-
-
-There were limited sex-specific observations by length or age across biological data sources. The sex ratio of copper rockfish by length and age across all available data sources off the West Coast are shown in Figure \ref{fig:frac-sex-len}. The sex ratio of young fish was assumed to be 1:1. 
-
-
-### Length-Weight Relationship
-
-
-The length-weight relationship for copper rockfish was estimated outside the model using all coastwide biological data available from fishery-independent data from the \gls{s-wcgbt} and the NWFSC Hook and Line survey\. The estimated length-weight relationship for female fish was W = 9.6e-06$L$^3.19^ and males 1.11e-05$L$^3.15^ where $L$ is length in cm and W is weight in kilograms (Figure \ref{fig:weight-length}).
-
-
-### Growth (Length-at-Age) {#length-at-age}
-
-Length-at-age was estimated for male and female copper rockfish informed by age data from the fisheries, the CCFRP survey, and independent age data collected effort from three programs `area` since 2002: 207 otoliths collected by the NWFSC WCGBT survey, 426 otoliths collected by a research survey conducted by Don Pearson, 74 from a research survey conducted by Abrams, 45 from CDFW special collections, and 210 otoliths collected by a cooperative research survey by the SWFSC and CPFV funded by the Sportfishing Association of California (Table \ref{tab:growth-age-samps}). The ages collected by these three sources were included in the model as a "growth" fleet that was not associated with removals or an index of abundance. 
-
-Sex-specific growth parameters `area` were initially estimated external to the model at the following values:
-
-\begin{centering}
-
-Females $L_{\infty}$ = 48.5 cm; $L_1$ = 9.1 cm; $k$ = 0.174 per year
-
-Males $L_{\infty}$ = 46.8 cm; $L_1$ = 5.3 cm; $k$ = 0.207 per year
-
-\end{centering}
-
-\vspace{0.50cm}
-
-These values were used as starting parameter values within the base model prior to estimating each parameter for male and female copper rockfish.
-
-### Ageing Precision and Bias
-
-
-Uncertainty surrounding the age-reading error process for copper rockfish was incorporated by estimating ageing error by age. Age composition data used in the model were from break-and-burn otolith reads. Aged copper rockfish used in the assessment were aged by the Cooperative Ageing Project (CAP) in Newport, Oregon. Within-lab ageing error was estimated for CAP based on one primary age reader and a second reader producing double reads from 875 otoliths provided by the CAP lab (Figure \ref{fig:age-error-dist}). 
-
-An ageing error estimate was made based on these double reads using a computational tool specifically developed for estimating ageing error [@punt_quantifying_2008] and using release 1.1.0 of the R package \href{https://github.com/nwfsc-assess/nwfscAgeingError}{nwfscAgeingError} [@thorson_nwfscageingerror:_2012] for input and output diagnostics. A linear standard error was estimated by age where there is more variability in the age of older fish (Figures \ref{fig:age-error} and \ref{fig:age-error-matrix}). Sensitivities to alternative ageing error estimates (curvilinear relationship with age) were conducted during model development and the model was relatively insensitive to alternative ageing error assumptions. 
-
-<!--chapter:end:22biology.Rmd-->
+<!--chapter:end:11introduction.Rmd-->
 

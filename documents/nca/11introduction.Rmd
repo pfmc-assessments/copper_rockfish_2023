@@ -1,14 +1,11 @@
 # Introduction
-## Basic Information
+## Basic Information and Life History
 This assessment reports the status of `r spp` (*Sebastes caurinus*) off the California coast, north of Point Conception, using data through 2022.
 
 ```{r, echo=FALSE, results='asis'}
 filein <- file.path(doc_dir, "shared_text",'1_intro_life_history_fishery_info.Rmd')
 read_child(filein)
 ```
-
-## Life History
-Replace text.
 
 ## Ecosystem Considerations
 Replace text.
