@@ -3,6 +3,7 @@
 #### Index of Abundance
 \
 
+Since 2007, the \gls{s-ccfrp} has monitored several areas in California to evaluate the performance of \glspl{mpa} and understand nearshore fish populations [@Wendt2009; @Starr2015]. In 2017, the survey expanded beyond the four \Gls{mpa}s in central California (A&ntilde;o Nuevo, Point Lobos, Point Buchon, and Piedras Blancas) to include the entire California coast. Fish are collected by volunteer anglers aboard \glspl{cpfv} guided by one of the following academic institutions based on proximity to fishing location: Humboldt State University; Bodega Marine Laboratories; Moss Landing Marine Laboratories; Cal Poly San Luis Obispo; University of California, Santa Barbara; and Scripps Institution of Oceanography.
 Since 2007, the \gls{s-ccfrp} has monitored several areas in California to evaluate the performance of \glspl{mpa} and understand nearshore fish populations [@starr_variation_2015; @wendt_collaborative_2009]. In 2017, the survey expanded beyond the four \Gls{mpa}s in central California (A&ntilde;o Nuevo, Point Lobos, Point Buchon, and Piedras Blancas) to include the entire California coast.
 Fish are collected by volunteer anglers aboard \glspl{cpfv} guided by one of the following academic institutions based on proximity to fishing location: Humboldt State University; Bodega Marine Laboratories; Moss Landing Marine Laboratories; Cal Poly San Luis Obispo; University of California, Santa Barbara; and Scripps Institution of Oceanography.
 
@@ -11,3 +12,6 @@ Surveys consist of fishing with hook-and-line gear for 30-45 minutes within rand
 Appendix Section \ref{ccfrp-index}
 
 #### Composition Data
+\ 
+
+Length measurements were available for 2007-2022 from the CCFRP survey `r area` and age data were collected between 2017-2022 (Table \ref{tab:ccfrp-samps}). The length data by designation, MPA and Reference, were weighted based on the estimated rocky habitat within each designation northPoint Conception (80 percent of areas open to fishing). The lengths observed by the survey ranged between 25-50 cm across the sample years with the mean lengths observed ranging between 33-40 cm (Figures \ref{fig:ccfrp-len-data} and \ref{fig:ccfrp-mean-len-data}). The survey collected age data from a subset of fish sampled between 2017-2022 (Figure \ref{fig:ccfrp-age-data}). The read ages from these sampled fish ranged between 2-33 years of age.

@@ -545,3 +545,8 @@ SSplotComparisons(mysummary,
                   #legendloc = "bottomleft",
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+mi <- SS_output(file.path(wd, "7.0_mi"))
+
+tune_comps(replist = francis, dir = file.path(wd, "7.0_francis"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)

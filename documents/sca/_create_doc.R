@@ -19,7 +19,7 @@ if( grepl("Chantel", user) ){
 doc_dir <- file.path(user_dir, "documents")
 # Currently points to the network location but could be revised
 bridge_dir <- here("models", "sca", "_bridging")
-model_dir <- here("models", "sca", model_name_south)
+model_dir <- here("models", "sca", south_model_name)
 north_model_dir <- here("models", "nca", north_model_name)
 south_model_dir <- here("models", "sca", south_model_name)
 management_dir <- here("management")

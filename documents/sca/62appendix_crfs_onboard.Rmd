@@ -1,1 +1,8 @@
 # Appendix C. California Onboard CPFV Index of Abundance {#onboard-cpfv-index}
+
+
+```{r, echo=FALSE, results='asis'}
+
+filein = file.path(getwd(), "shared_text",'crfs_cpfv_index.Rmd')
+read_child(filein)
+```

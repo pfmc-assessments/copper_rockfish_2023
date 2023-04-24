@@ -1,6 +1,7 @@
 ### California Department of Fish and Wildlife Remotely Operated Vehicle Survey
 
-#### Index of Abundance 
+#### Index of Abundance
+\
 
 ```{r, echo=FALSE, results='asis'}
 filein = file.path(doc_dir, "shared_text",'10_appendix_rov.Rmd')
@@ -11,6 +12,7 @@ The number of transects by year, location, site designation, and the numbers of 
 
 CDFW provided an initial analysis of the CDFW ROV survey data which helped form the considered modeling approaches for these data. The STAT explored alternative model structures to generate a standardized index of relative abundance for this survey. The final model selected was a model was a delta-gamma hurdle model where the numbers of fish observed were predicted by year, site designation (MPA or Reference), proportion soft terrain, year/site designation interaction, and random effect for the year/location interaction  Details regarding the index of abundance, sample sizes and model selection can be found in the Appendix Section \ref{cdfw-rov-index}.
 
-#### Composition Data \
+#### Composition Data 
+\
 
-Length measurement were made from images taken with stereo-cameras by the CDFW ROV survey in 2014, 2015, 2019, 2020, and 2021. The sizes observed by MPA and Reference areas north and south of Point Conception varied with a higher density of smaller fish being observed in the Reference areas (Figure \ref{fig:rov-len}). The length data by designation, MPA and Reference, were weighted based on the estimated rocky habitat within each designation north and south of Point Conception (73 and 80 percent of areas open to fishing in the north and south, respectively). The CDFW ROV survey observed `r spp` between 15-50 cm in length with lower mean lengths observed in 2014 and 2015 compared to the later period between 2019-2021 (Figures \ref{fig:rov-len-data} and \ref{fig:mean-rov-len-data}).
+Length measurement were made from images taken with stereo-cameras by the CDFW ROV survey in 2014, 2015, 2019, 2020, and 2021. The sizes observed by MPA and Reference areas north and south of Point Conception varied with a higher density of smaller fish being observed in the Reference areas (Figure \ref{fig:rov-len}). The length data by designation, MPA and Reference, were weighted based on the estimated rocky habitat within each designation north and south of Point Conception (73 and 80 percent of areas open to fishing in the north and south, respectively,  see Appendix Section \ref{cdfw-rov-index} for additional information). The CDFW ROV survey observed `r spp` between 15-50 cm in length with lower mean lengths observed in 2014 and 2015 compared to the later period between 2019-2021 (Figures \ref{fig:rov-len-data} and \ref{fig:mean-rov-len-data}).

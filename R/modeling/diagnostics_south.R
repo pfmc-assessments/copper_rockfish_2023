@@ -19,16 +19,16 @@ if( grepl("Chantel", user) ){
 
 model_dir <- file.path(user_dir, "models", "sca")
 # Specify why model you would like to profile, retro, and/or jitter
-base_name <- "7.0_mi"
+base_name <- "6.2_update_pr_index"
 
 # Specify the parameters and the space to profile
 get = get_settings_profile(
-  parameters =  c( "L_at_Amax_Fem_GP_1",  "L_at_Amax_Mal_GP_1", "NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
-  low =  c( 42.0, 41.0, 0.08, 0.30, -0.5),
-  high = c( 59.0, 49.0, 0.14, 0.95,  1.5),
-  step_size = c(1, 1, 0.01, 0.05, 0.10),
-  param_space = c('real', 'real', 'real', 'real', 'relative'),
-  use_prior_like = c(0, 0, 1, 1, 0)
+  parameters =  c( "L_at_Amax_Fem_GP_1", "NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
+  low =  c( 42.0, 0.08, 0.30, -0.5),
+  high = c( 51.0, 0.14, 0.95,  1.5),
+  step_size = c(1, 0.01, 0.05, 0.10),
+  param_space = c('real', 'real',  'real', 'relative'),
+  use_prior_like = c(0, 1, 1, 0)
 )
 
 get = get_settings_profile(
@@ -46,9 +46,9 @@ model_settings = get_settings(
   settings = list(
     base_name = base_name,
     profile_details = get,
-    run = c("profile", "jitter", "retro"), #, "jitter"),
+    run = c("profile", "jitter", "retro"), 
     retro_yrs = -1:-5,
-    Njitter = 30,
+    Njitter = 25,
     jitter_fraction = 0.10))
 
 # Run line
