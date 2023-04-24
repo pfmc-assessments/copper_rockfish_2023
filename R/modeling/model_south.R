@@ -547,6 +547,29 @@ SSplotComparisons(mysummary,
                   pdf = TRUE)
 
 mi <- SS_output(file.path(wd, "7.0_mi"))
+tune_comps(replist = mi, dir = file.path(wd, "7.0_mi"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
 
 tune_comps(replist = francis, dir = file.path(wd, "7.0_francis"), 
            option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+
+
+# Reset to model 6.3 with the update PR index and add 1965 of main devs
+model = SS_output(file.path(wd, "8.0_pr_index_early_devs"))
+tune_comps(replist = model, dir = file.path(wd, "8.0_pr_index_early_devs"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+SS_plots(model)
+
+centered_devs = SS_output(file.path(wd, "8.1_centered_devs"))
+tune_comps(replist = centered_devs, dir = file.path(wd, "8.1_centered_devs"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+SS_plots(centered_devs)
+
+modelnames <- c("8.0 Non-centered devs.", "8.1 Centered devs.")
+mysummary <- SSsummarize(list(model, centered_devs))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.0_devs_combined_growth_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
