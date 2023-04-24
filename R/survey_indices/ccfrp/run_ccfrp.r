@@ -36,7 +36,7 @@ for (a in 1:length(all)) { source(file.path(github_path, "R", "sdmTMB", all[a]))
 #species and area identifiers - eventually put in function
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
-modelArea = "south"
+modelArea = "north"
 ccfrpSpeciesCode <- "CPR"
 #setwd to the north or the south
 
@@ -383,4 +383,10 @@ ggplot(all_indices, aes(x = year, y = StandardizedCPUE, colour = Index, group = 
   theme(legend.position = c(.25, .85)) +
   scale_color_viridis_d()
 ggsave(file = file.path(dir, "index_comparison_include_areaweighted.png"), width = 7, height = 7)
+
+# Model selection and data filter tables
+
+
+
+
 
