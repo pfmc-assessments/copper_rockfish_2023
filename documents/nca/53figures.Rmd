@@ -298,6 +298,27 @@ label = 'mean-rov-len-data')
 
 
 
+<!-- ======================================================= -->
+<!-- ***************  Growth  ****************** --> 
+<!-- ======================================================= -->
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "ages",  "plots", "south_growth_length_comparison.png"), 
+caption = "Length distribution of fish by collection source that were used as conditional age-at-length data in the growth fleet.",
+label = 'growth-len-dist')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "ages",  "plots", "south_growth_age_comparison.png"), 
+caption = "Age distribution of fish by collection source that were used as conditional age-at-length data in the growth fleet.",
+label = 'growth-age-dist')
+```
+
+
+
 
 <!-- ======================================================= -->
 <!-- ***************  life history  ************************ --> 
@@ -331,6 +352,14 @@ add_figure(
 filein = file.path(model_dir, "plots", "bio9_fecundity_len.png"), 
 caption = "Fecundity as a function of length",
 label = 'fecundity')
+```
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "wcgbt", "plots", "length_fraction_female.png"), 
+caption = "Fraction of each sex by length by the NWFSC WCGBT survey",
+label = 'frac-sex-len')
 ```
 
 

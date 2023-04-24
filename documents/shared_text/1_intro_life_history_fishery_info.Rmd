@@ -12,7 +12,7 @@ reef and within 10 days, half of the `r spp` returned to the original capture lo
 
 long the posterior two-thirds of the lateral line. The `r spp` has high variation 
 in coloration throughout its range, taking on coloration from dark brown, olive, 
-orage-red and pink, with patches of yellow and pink [@miller_guide_1972]. In general 
+orange-red and pink, with patches of yellow and pink [@miller_guide_1972]. In general 
 the `r spp` towards the northern part of the range are often darker in 
 color than fish encountered in southern California. The distinct change in coloration 
 resulted in copper rockfish described as two separate species, copper rockfish

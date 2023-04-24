@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.22)  24 APR 2023 08:21
+This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.22)  24 APR 2023 09:31
  restricted system commands enabled.
 **_main.tex
 (./_main.tex
@@ -1038,7 +1038,28 @@ Package babel Info: Importing font and identification data for english
 \cslhangindent=\skip103
 (./_main.aux
 
-LaTeX Warning: Label `tab:es-ca-management' multiply defined.
+LaTeX Warning: Label `tab:south-removalsES' multiply defined.
+
+
+LaTeX Warning: Label `tab:north-removalsES' multiply defined.
+
+
+LaTeX Warning: Label `tab:south-removalsES' multiply defined.
+
+
+LaTeX Warning: Label `tab:north-removalsES' multiply defined.
+
+
+LaTeX Warning: Label `tab:south-removalsES' multiply defined.
+
+
+LaTeX Warning: Label `tab:north-removalsES' multiply defined.
+
+
+LaTeX Warning: Label `tab:south-removalsES' multiply defined.
+
+
+LaTeX Warning: Label `tab:north-removalsES' multiply defined.
 
 
 LaTeX Warning: Label `tab:allcatches' multiply defined.
@@ -1071,7 +1092,13 @@ LaTeX Warning: Label `tab:params' multiply defined.
 
 LaTeX Warning: Label `tab:params' multiply defined.
 
+
+LaTeX Warning: Label `tab:params' multiply defined.
+
 (./tex_tables/likelihoods.aux) (./tex_tables/e_ReferencePoints.aux) (./tex_tables/TimeSeries.aux)
+
+LaTeX Warning: Label `tab:ca-status' multiply defined.
+
 
 LaTeX Warning: Label `tab:rov-obs' multiply defined.
 
@@ -1533,145 +1560,200 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 \openout5 = _main.upa
 {c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./figure_title.png>] [2
 
-] (./_main.toc [3
+] (./_main.toc
+Overfull \hbox (0.61996pt too wide) detected at line 12
+ []\TU/lmr/m/n/10 xvii
+ []
+
+
+Overfull \hbox (0.61996pt too wide) detected at line 13
+ []\TU/lmr/m/n/10 xvii
+ []
+
+[3
 
 ] [4])
 \tf@toc=\write7
 
 \openout7 = _main.toc
-[5] (./tex_tables/a_Catches_ES.tex) (./tex_tables/north_a_Catches_ES.tex)
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png, id=473, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png  used on input line 229.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-
+[5] (./tex_tables/south_a_Catches_ES.tex) (./tex_tables/north_a_Catches_ES.tex
 warning  (pdf backend): ignoring duplicate destination with the name 'page.i'
 [1
 
 
 ]
-Package marginnote Info: Using workaround for absolute page number on input line 239.
-(./tex_tables/b_SSB_ES.tex
+Package marginnote Info: Using workaround for absolute page number on input line 29.
+)
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/5.5_est_m/plots/catch2 landings stacked.png, id=479, 469.755pt x 289.08pt>
+File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/5.5_est_m/plots/catch2 landings stacked.png Graphic file (type png)
+<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/5.5_est_m/plots/catch2 landings stacked.png>
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/5.5_est_m/plots/catch2 landings stacked.png  used on input line 227.
+(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png, id=480, 469.755pt x 289.08pt>
+File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png Graphic file (type png)
+<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png>
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png  used on input line 233.
+(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
+(./tex_tables/south_b_SSB_ES.tex
 warning  (pdf backend): ignoring duplicate destination with the name 'page.ii'
-[2<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png>])
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png, id=493, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png  used on input line 257.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts9_Relative_spawning_output_intervals.png, id=494, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts9_Relative_spawning_output_intervals.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts9_Relative_spawning_output_intervals.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts9_Relative_spawning_output_intervals.png  used on input line 263.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-
+[2<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/5.5_est_m/plots/catch2 landings stacked.png>]) (./tex_tables/north_b_SSB_ES.tex
 warning  (pdf backend): ignoring duplicate destination with the name 'page.iii'
-[3<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png>]
+[3<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png>])
+<C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare2_spawnbio_uncertainty.png, id=496, 469.755pt x 361.35pt>
+File: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare2_spawnbio_uncertainty.png Graphic file (type png)
+<use C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare2_spawnbio_uncertainty.png>
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare2_spawnbio_uncertainty.png  used on input line 290.
+(luatex.def)             Requested size: 398.34032pt x 306.41562pt.
+<C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare4_Bratio_uncertainty.png, id=497, 469.755pt x 361.35pt>
+File: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare4_Bratio_uncertainty.png Graphic file (type png)
+<use C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare4_Bratio_uncertainty.png>
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare4_Bratio_uncertainty.png  used on input line 296.
+(luatex.def)             Requested size: 398.34032pt x 306.41562pt.
+
 warning  (pdf backend): ignoring duplicate destination with the name 'page.iv'
-[4<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts9_Relative_spawning_output_intervals.png>] (./tex_tables/c_Recr_ES.tex)
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png, id=505, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png  used on input line 279.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-
+[4]
 warning  (pdf backend): ignoring duplicate destination with the name 'page.v'
-[5
-
-] [6<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png>] (./tex_tables/d_SPR_ES.tex)
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR2_minusSPRseries.png, id=518, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR2_minusSPRseries.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR2_minusSPRseries.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR2_minusSPRseries.png  used on input line 295.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR4_phase.png, id=519, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR4_phase.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR4_phase.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR4_phase.png  used on input line 311.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png, id=520, 469.755pt x 289.08pt>
-File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png Graphic file (type png)
-<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png  used on input line 317.
-(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
+[5<c:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare2_spawnbio_uncertainty.png>] [6<c:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare4_Bratio_uncertainty.png>] (./tex_tables/south_c_Recr_ES.tex) (./tex_tables/north_c_Recr_ES.tex)
+<C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare10_recruits_uncertainty.png, id=514, 469.755pt x 361.35pt>
+File: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare10_recruits_uncertainty.png Graphic file (type png)
+<use C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare10_recruits_uncertainty.png>
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare10_recruits_uncertainty.png  used on input line 314.
+(luatex.def)             Requested size: 398.34032pt x 306.41562pt.
+<C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare12_recdevs_uncertainty.png, id=515, 469.755pt x 361.35pt>
+File: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare12_recdevs_uncertainty.png Graphic file (type png)
+<use C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare12_recdevs_uncertainty.png>
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare12_recdevs_uncertainty.png  used on input line 320.
+(luatex.def)             Requested size: 398.34032pt x 306.41562pt.
 [7
 
-] [8] [9<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR2_minusSPRseries.png><n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR4_phase.png>] [10<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png>] [11
+] [8<c:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare10_recruits_uncertainty.png>] [9<c:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare12_recdevs_uncertainty.png>] (./tex_tables/south_d_SPR_ES.tex) (./tex_tables/north_d_SPR_ES.tex)
+<C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare6_SPRratio_uncertainty.png, id=535, 469.755pt x 361.35pt>
+File: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare6_SPRratio_uncertainty.png Graphic file (type png)
+<use C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare6_SPRratio_uncertainty.png>
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare6_SPRratio_uncertainty.png  used on input line 338.
+(luatex.def)             Requested size: 398.34032pt x 306.41562pt.
+[10
 
-] [12
+] [11<c:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare6_SPRratio_uncertainty.png>] (./tex_tables/south_e_ReferencePoints_ES.tex
+Overfull \hbox (41.71796pt too wide) in alignment at lines 4--9
+ [][][][] 
+ []
 
-] [1] [2] [3]
 
-LaTeX Warning: Reference `fig:map' on page 4 undefined on input line 477.
+Overfull \hbox (41.71796pt too wide) in alignment at lines 9--14
+ [][][][] 
+ []
 
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 505--506
+
+Overfull \hbox (41.71796pt too wide) in alignment at lines 14--16
+ [][][][] 
+ []
+
+
+Overfull \hbox (41.71796pt too wide) in alignment at lines 16--18
+ [][][][] 
+ []
+
+
+Overfull \hbox (41.71796pt too wide) in alignment at lines 18--39
+ [][][][] 
+ []
+
+) (./tex_tables/north_e_ReferencePoints_ES.tex
+Overfull \hbox (41.71796pt too wide) in alignment at lines 4--9
+ [][][][] 
+ []
+
+
+Overfull \hbox (41.71796pt too wide) in alignment at lines 9--14
+ [][][][] 
+ []
+
+
+Overfull \hbox (41.71796pt too wide) in alignment at lines 14--16
+ [][][][] 
+ []
+
+
+Overfull \hbox (41.71796pt too wide) in alignment at lines 16--18
+ [][][][] 
+ []
+
+
+Overfull \hbox (41.71796pt too wide) in alignment at lines 18--39
+ [][][][] 
+ []
+
+[12])
+<C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare15_phase_plot.png, id=559, 469.755pt x 361.35pt>
+File: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare15_phase_plot.png Graphic file (type png)
+<use C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare15_phase_plot.png>
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare15_phase_plot.png  used on input line 360.
+(luatex.def)             Requested size: 398.34032pt x 306.41562pt.
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/5.5_est_m/plots/yield2_yield_curve_with_refpoints.png, id=560, 469.755pt x 289.08pt>
+File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/5.5_est_m/plots/yield2_yield_curve_with_refpoints.png Graphic file (type png)
+<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/5.5_est_m/plots/yield2_yield_curve_with_refpoints.png>
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/5.5_est_m/plots/yield2_yield_curve_with_refpoints.png  used on input line 366.
+(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png, id=561, 469.755pt x 289.08pt>
+File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png Graphic file (type png)
+<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png>
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png  used on input line 372.
+(luatex.def)             Requested size: 398.34032pt x 245.13249pt.
+[13] [14<c:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare15_phase_plot.png>] [15<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/5.5_est_m/plots/yield2_yield_curve_with_refpoints.png>] [16<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png>] [17] [18
+
+] [19
+
+] [1]
+Package marginnote Info: Using workaround for absolute page number on input line 501.
+[2] [3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 562--563
 
  []
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 516--517
+[5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 573--574
 
  []
 
-[6
+
+Underfull \hbox (badness 10000) in paragraph at lines 597--598
+
+ []
+
+[7
 Missing character: There is no ↨ (U+21A8) in font [lmroman10-regular]:+tlig;!
-]
-Underfull \hbox (badness 10000) in paragraph at lines 540--541
+] [8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 624--625
 
  []
 
-[7] [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 567--568
-
- []
-
-[10]
-
-LaTeX Warning: Reference `fig:rec-cpfv-age-data' on page 11 undefined on input line 635.
-
-
-LaTeX Warning: Reference `fig:mean-rec-cpfv-ag-data' on page 11 undefined on input line 635.
-
-
-LaTeX Warning: Reference `fig: rec-pr-caal-data' on page 11 undefined on input line 635.
-
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 642--643
+[10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 699--700
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 652--653
+Underfull \hbox (badness 10000) in paragraph at lines 709--710
 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 673--674
+Underfull \hbox (badness 10000) in paragraph at lines 730--731
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 684--685
+Underfull \hbox (badness 10000) in paragraph at lines 741--742
 
  []
 
-
-LaTeX Warning: Reference `fig:growth-len-dist' on page 14 undefined on input line 691.
-
-
-LaTeX Warning: Reference `fig:growth-age-dist' on page 14 undefined on input line 691.
-
-[14] [15]
-Underfull \hbox (badness 1629) in paragraph at lines 732--733
+[14] [15] [16]
+Underfull \hbox (badness 1629) in paragraph at lines 789--790
 []\TU/lmr/m/n/10 The fecundity-at-length was based on re-search from Dick et al. (\TU/lmr/bx/n/10 dick_meta-
  []
 
-
-LaTeX Warning: Reference `fig:frac-sex-len' on page 16 undefined on input line 737.
-
-[16] [17] [18] [19] [20] [21] [22] [23] [24
+[17] [18] [19] [20] [21] [22] [23] [24
 
 ] [25] [26] [27]
 warning  (pdf backend): ignoring duplicate destination with the name 'table.1'
@@ -1776,29 +1858,41 @@ warning  (pdf backend): ignoring duplicate destination with the name 'table.7'
 
 ]
 \openout2 = tex_tables/north_copper_obs_designation_mpa_group_super_year.aux
- (./tex_tables/north_copper_obs_designation_mpa_group_super_year.tex [41
+ (./tex_tables/north_copper_obs_designation_mpa_group_super_year.tex
+warning  (pdf backend): ignoring duplicate destination with the name 'table.8'
+[41
 
 ]) [42]
 \openout2 = tex_tables/north_growth_age_samples.aux
- (./tex_tables/north_growth_age_samples.tex [43
+ (./tex_tables/north_growth_age_samples.tex
+warning  (pdf backend): ignoring duplicate destination with the name 'table.9'
+[43
 
 
 
-]) [44] (./tex_tables/model_structure_north.tex [45
+]) [44] (./tex_tables/model_structure_north.tex
+warning  (pdf backend): ignoring duplicate destination with the name 'table.10'
+[45
 
 
-]) [46] [47
+]) [46]
+warning  (pdf backend): ignoring duplicate destination with the name 'table.11'
+[47
 
-] [48] [49] [50] [51] [52] [53] [54] [55]
+] [48] [49] [50] [51] [52] [53] [54] [55] [56]
 \openout2 = tex_tables/likelihoods.aux
- (./tex_tables/likelihoods.tex) [56
+ (./tex_tables/likelihoods.tex
+warning  (pdf backend): ignoring duplicate destination with the name 'table.12'
+) [57
 
 
 ]
 \openout2 = tex_tables/e_ReferencePoints.aux
 
 No file tex_tables/e_ReferencePoints.tex.
-[57
+
+warning  (pdf backend): ignoring duplicate destination with the name 'table.13'
+[58
 
 
 
@@ -1852,654 +1946,674 @@ Overfull \hbox (7.39053pt too wide) in alignment at lines 18--136
  [][][][][][][][][] 
  []
 
-[58
+[59
 
 
-] [59] [60]) [61] [62
+] [60] [61]) [62] [63
 
 
 ]
-<C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/map.png, id=1101, 505.89pt x 722.7pt>
+<C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/map.png, id=1161, 505.89pt x 722.7pt>
 File: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/map.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/map.png>
-Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/map.png  used on input line 1580.
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/map.png  used on input line 1665.
 (luatex.def)             Requested size: 398.34415pt x 569.0631pt.
 
-LaTeX Warning: Float too large for page by 20.31184pt on input line 1582.
+LaTeX Warning: Float too large for page by 20.31184pt on input line 1667.
 
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png  used on input line 1586.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png  used on input line 1671.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/data_plot.png, id=1102, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/data_plot.png, id=1162, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/data_plot.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/data_plot.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/data_plot.png  used on input line 1592.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/data_plot.png  used on input line 1677.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt1mkt0.png, id=1103, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt1mkt0.png, id=1163, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt1mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt1mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt1mkt0.png  used on input line 1598.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt1mkt0.png  used on input line 1683.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Dead.png, id=1104, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Dead.png, id=1164, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Dead.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Dead.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Dead.png  used on input line 1604.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Dead.png  used on input line 1689.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt1mkt0.png, id=1105, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt1mkt0.png, id=1165, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt1mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt1mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt1mkt0.png  used on input line 1610.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt1mkt0.png  used on input line 1695.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt2mkt0.png, id=1106, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt2mkt0.png, id=1166, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt2mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt2mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt2mkt0.png  used on input line 1616.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt2mkt0.png  used on input line 1701.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Live.png, id=1107, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Live.png, id=1167, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Live.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Live.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Live.png  used on input line 1622.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Live.png  used on input line 1707.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/mrfss_cpfv_dockside/north/forSS/Index.png, id=1108, 722.7pt x 505.89pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/mrfss_cpfv_dockside/north/forSS/Index.png, id=1168, 722.7pt x 505.89pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/mrfss_cpfv_dockside/north/forSS/Index.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/mrfss_cpfv_dockside/north/forSS/Index.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/mrfss_cpfv_dockside/north/forSS/Index.png  used on input line 1628.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/mrfss_cpfv_dockside/north/forSS/Index.png  used on input line 1713.
 (luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/delta_lognormal_main_effects/Index.png, id=1109, 722.7pt x 505.89pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/delta_lognormal_main_effects/Index.png, id=1169, 722.7pt x 505.89pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/delta_lognormal_main_effects/Index.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/delta_lognormal_main_effects/Index.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/delta_lognormal_main_effects/Index.png  used on input line 1634.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/delta_lognormal_main_effects/Index.png  used on input line 1719.
 (luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/area_weighted/Index.png, id=1110, 722.7pt x 505.89pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/area_weighted/Index.png, id=1170, 722.7pt x 505.89pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/area_weighted/Index.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/area_weighted/Index.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/area_weighted/Index.png  used on input line 1640.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/area_weighted/Index.png  used on input line 1725.
 (luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/north/rm_last2yrs_area_weighted/Index.png, id=1111, 722.7pt x 505.89pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/north/rm_last2yrs_area_weighted/Index.png, id=1171, 722.7pt x 505.89pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/north/rm_last2yrs_area_weighted/Index.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/north/rm_last2yrs_area_weighted/Index.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/north/rm_last2yrs_area_weighted/Index.png  used on input line 1646.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/north/rm_last2yrs_area_weighted/Index.png  used on input line 1731.
 (luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt3mkt0_page2.png, id=1112, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt3mkt0_page2.png, id=1172, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt3mkt0_page2.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt3mkt0_page2.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt3mkt0_page2.png  used on input line 1652.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt3mkt0_page2.png  used on input line 1737.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_CPFV.png, id=1113, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_CPFV.png, id=1173, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_CPFV.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_CPFV.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_CPFV.png  used on input line 1658.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_CPFV.png  used on input line 1743.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt3mkt0.png, id=1114, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt3mkt0.png, id=1174, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt3mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt3mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt3mkt0.png  used on input line 1664.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt3mkt0.png  used on input line 1749.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_agedat_data_weighting_TA1.8_Rec_CPFV.png, id=1115, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_agedat_data_weighting_TA1.8_Rec_CPFV.png, id=1175, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_agedat_data_weighting_TA1.8_Rec_CPFV.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_agedat_data_weighting_TA1.8_Rec_CPFV.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_agedat_data_weighting_TA1.8_Rec_CPFV.png  used on input line 1670.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_agedat_data_weighting_TA1.8_Rec_CPFV.png  used on input line 1755.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/coop_crfs_length_comparison.png, id=1116, 722.7pt x 505.89pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/coop_crfs_length_comparison.png, id=1176, 722.7pt x 505.89pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/coop_crfs_length_comparison.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/coop_crfs_length_comparison.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/coop_crfs_length_comparison.png  used on input line 1676.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/coop_crfs_length_comparison.png  used on input line 1761.
 (luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt4mkt0.png, id=1117, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt4mkt0.png, id=1177, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt4mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt4mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt4mkt0.png  used on input line 1682.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt4mkt0.png  used on input line 1767.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt4mkt0_page2.png, id=1118, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt4mkt0_page2.png, id=1178, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt4mkt0_page2.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt4mkt0_page2.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt4mkt0_page2.png  used on input line 1688.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt4mkt0_page2.png  used on input line 1773.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_PR.png, id=1119, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_PR.png, id=1179, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_PR.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_PR.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_PR.png  used on input line 1694.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_PR.png  used on input line 1779.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations_designation.png, id=1120, 578.16pt x 867.24pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations_designation.png, id=1180, 578.16pt x 867.24pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations_designation.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations_designation.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations_designation.png  used on input line 1700.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations_designation.png  used on input line 1785.
 (luatex.def)             Requested size: 380.51932pt x 570.77899pt.
 
-LaTeX Warning: Float too large for page by 34.02774pt on input line 1702.
+LaTeX Warning: Float too large for page by 34.02774pt on input line 1787.
 
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations.png, id=1121, 578.16pt x 867.24pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations.png, id=1181, 578.16pt x 867.24pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations.png  used on input line 1706.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations.png  used on input line 1791.
 (luatex.def)             Requested size: 380.51932pt x 570.77899pt.
 
-LaTeX Warning: Float too large for page by 46.02774pt on input line 1708.
+LaTeX Warning: Float too large for page by 46.02774pt on input line 1793.
 
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/ccfrp/north/area_weighted/Index.png, id=1122, 722.7pt x 505.89pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/ccfrp/north/area_weighted/Index.png, id=1182, 722.7pt x 505.89pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/ccfrp/north/area_weighted/Index.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/ccfrp/north/area_weighted/Index.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/ccfrp/north/area_weighted/Index.png  used on input line 1712.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/ccfrp/north/area_weighted/Index.png  used on input line 1797.
 (luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt5mkt0.png, id=1123, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt5mkt0.png, id=1183, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt5mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt5mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt5mkt0.png  used on input line 1718.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt5mkt0.png  used on input line 1803.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CCFRP.png, id=1124, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CCFRP.png, id=1184, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CCFRP.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CCFRP.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CCFRP.png  used on input line 1724.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CCFRP.png  used on input line 1809.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt5mkt0.png, id=1125, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt5mkt0.png, id=1185, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt5mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt5mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt5mkt0.png  used on input line 1730.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt5mkt0.png  used on input line 1815.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_transect_collapsed_copper_north_protection_count.png, id=1126, 1011.78pt x 578.16pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_transect_collapsed_copper_north_protection_count.png, id=1186, 1011.78pt x 578.16pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_transect_collapsed_copper_north_protection_count.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_transect_collapsed_copper_north_protection_count.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_transect_collapsed_copper_north_protection_count.png  used on input line 1736.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_transect_collapsed_copper_north_protection_count.png  used on input line 1821.
 (luatex.def)             Requested size: 398.34416pt x 227.62523pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/north_raw_cpue_by_mpa_group.png, id=1127, 505.89pt x 505.89pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/north_raw_cpue_by_mpa_group.png, id=1187, 505.89pt x 505.89pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/north_raw_cpue_by_mpa_group.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/north_raw_cpue_by_mpa_group.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/north_raw_cpue_by_mpa_group.png  used on input line 1742.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/north_raw_cpue_by_mpa_group.png  used on input line 1827.
 (luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png, id=1128, 722.7pt x 505.89pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png, id=1188, 722.7pt x 505.89pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png  used on input line 1748.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png  used on input line 1833.
 (luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_length_by_area_designation.png, id=1129, 722.7pt x 722.7pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_length_by_area_designation.png, id=1189, 722.7pt x 722.7pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_length_by_area_designation.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_length_by_area_designation.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_length_by_area_designation.png  used on input line 1754.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_length_by_area_designation.png  used on input line 1839.
 (luatex.def)             Requested size: 398.33534pt x 398.33534pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt6mkt0.png, id=1130, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt6mkt0.png, id=1190, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt6mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt6mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt6mkt0.png  used on input line 1760.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt6mkt0.png  used on input line 1845.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CDFW_ROV.png, id=1131, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CDFW_ROV.png, id=1191, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CDFW_ROV.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CDFW_ROV.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CDFW_ROV.png  used on input line 1766.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CDFW_ROV.png  used on input line 1851.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/copper_length_by_half_month.png, id=1132, 505.89pt x 505.89pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/south_growth_length_comparison.png, id=1192, 505.89pt x 505.89pt>
+File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/south_growth_length_comparison.png Graphic file (type png)
+<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/south_growth_length_comparison.png>
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/south_growth_length_comparison.png  used on input line 1857.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/south_growth_age_comparison.png, id=1193, 505.89pt x 505.89pt>
+File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/south_growth_age_comparison.png Graphic file (type png)
+<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/south_growth_age_comparison.png>
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/south_growth_age_comparison.png  used on input line 1863.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+<C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/copper_length_by_half_month.png, id=1194, 505.89pt x 505.89pt>
 File: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/copper_length_by_half_month.png Graphic file (type png)
 <use C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/copper_length_by_half_month.png>
-Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/copper_length_by_half_month.png  used on input line 1772.
+Package luatex.def Info: C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/copper_length_by_half_month.png  used on input line 1869.
 (luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio6_maturity.png, id=1133, 469.755pt x 289.08pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio6_maturity.png, id=1195, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio6_maturity.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio6_maturity.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio6_maturity.png  used on input line 1778.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio6_maturity.png  used on input line 1875.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio9_fecundity_len.png, id=1134, 469.755pt x 289.08pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio9_fecundity_len.png, id=1196, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio9_fecundity_len.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio9_fecundity_len.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio9_fecundity_len.png  used on input line 1784.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio9_fecundity_len.png  used on input line 1881.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png, id=1135, 505.89pt x 505.89pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/length_fraction_female.png, id=1197, 505.89pt x 505.89pt>
+File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/length_fraction_female.png Graphic file (type png)
+<use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/length_fraction_female.png>
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/length_fraction_female.png  used on input line 1887.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png, id=1198, 505.89pt x 505.89pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png  used on input line 1790.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png  used on input line 1893.
 (luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/ageing_error/B0_S3/Reader_1_vs_Reader_2.png, id=1136, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/ageing_error/B0_S3/Reader_1_vs_Reader_2.png, id=1199, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/ageing_error/B0_S3/Reader_1_vs_Reader_2.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/ageing_error/B0_S3/Reader_1_vs_Reader_2.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/ageing_error/B0_S3/Reader_1_vs_Reader_2.png  used on input line 1796.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/ageing_error/B0_S3/Reader_1_vs_Reader_2.png  used on input line 1899.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers5_ageerrorSD.png, id=1137, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers5_ageerrorSD.png, id=1200, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers5_ageerrorSD.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers5_ageerrorSD.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers5_ageerrorSD.png  used on input line 1802.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers5_ageerrorSD.png  used on input line 1905.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers10_ageerror_matrix_1.png, id=1138, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers10_ageerror_matrix_1.png, id=1201, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers10_ageerror_matrix_1.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers10_ageerror_matrix_1.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers10_ageerror_matrix_1.png  used on input line 1808.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers10_ageerror_matrix_1.png  used on input line 1911.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare2_spawnbio_uncertainty.png, id=1139, 469.755pt x 361.35pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare2_spawnbio_uncertainty.png, id=1202, 469.755pt x 361.35pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare2_spawnbio_uncertainty.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare2_spawnbio_uncertainty.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare2_spawnbio_uncertainty.png  used on input line 1814.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare2_spawnbio_uncertainty.png  used on input line 1917.
 (luatex.def)             Requested size: 398.34032pt x 306.41562pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare4_Bratio_uncertainty.png, id=1140, 469.755pt x 361.35pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare4_Bratio_uncertainty.png, id=1203, 469.755pt x 361.35pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare4_Bratio_uncertainty.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare4_Bratio_uncertainty.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare4_Bratio_uncertainty.png  used on input line 1820.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare4_Bratio_uncertainty.png  used on input line 1923.
 (luatex.def)             Requested size: 398.34032pt x 306.41562pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare2_spawnbio_uncertainty.png, id=1141, 469.755pt x 361.35pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare2_spawnbio_uncertainty.png, id=1204, 469.755pt x 361.35pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare2_spawnbio_uncertainty.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare2_spawnbio_uncertainty.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare2_spawnbio_uncertainty.png  used on input line 1826.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare2_spawnbio_uncertainty.png  used on input line 1929.
 (luatex.def)             Requested size: 398.34032pt x 306.41562pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare4_Bratio_uncertainty.png, id=1142, 469.755pt x 361.35pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare4_Bratio_uncertainty.png, id=1205, 469.755pt x 361.35pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare4_Bratio_uncertainty.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare4_Bratio_uncertainty.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare4_Bratio_uncertainty.png  used on input line 1832.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare4_Bratio_uncertainty.png  used on input line 1935.
 (luatex.def)             Requested size: 398.34032pt x 306.41562pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare2_spawnbio_uncertainty.png, id=1143, 469.755pt x 361.35pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare2_spawnbio_uncertainty.png, id=1206, 469.755pt x 361.35pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare2_spawnbio_uncertainty.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare2_spawnbio_uncertainty.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare2_spawnbio_uncertainty.png  used on input line 1838.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare2_spawnbio_uncertainty.png  used on input line 1941.
 (luatex.def)             Requested size: 398.34032pt x 306.41562pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare4_Bratio_uncertainty.png, id=1144, 469.755pt x 361.35pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare4_Bratio_uncertainty.png, id=1207, 469.755pt x 361.35pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare4_Bratio_uncertainty.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare4_Bratio_uncertainty.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare4_Bratio_uncertainty.png  used on input line 1844.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare4_Bratio_uncertainty.png  used on input line 1947.
 (luatex.def)             Requested size: 398.34032pt x 306.41562pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio1_sizeatage.png, id=1145, 469.755pt x 289.08pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio1_sizeatage.png, id=1208, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio1_sizeatage.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio1_sizeatage.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio1_sizeatage.png  used on input line 1850.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio1_sizeatage.png  used on input line 1953.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png, id=1209, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png  used on input line 1856.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png  used on input line 1959.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/recdevs2_withbars.png, id=1146, 469.755pt x 289.08pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/recdevs2_withbars.png, id=1210, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/recdevs2_withbars.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/recdevs2_withbars.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/recdevs2_withbars.png  used on input line 1862.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/recdevs2_withbars.png  used on input line 1965.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SR_curve.png, id=1147, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SR_curve.png, id=1211, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SR_curve.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SR_curve.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SR_curve.png  used on input line 1868.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SR_curve.png  used on input line 1971.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_CPFV.png, id=1148, 469.755pt x 289.08pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_CPFV.png, id=1212, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_CPFV.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_CPFV.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_CPFV.png  used on input line 1874.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_CPFV.png  used on input line 1977.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_DWV_CPFV.png, id=1149, 469.755pt x 289.08pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_DWV_CPFV.png, id=1213, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_DWV_CPFV.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_DWV_CPFV.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_DWV_CPFV.png  used on input line 1880.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_DWV_CPFV.png  used on input line 1983.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CRFS_CPFV.png, id=1150, 469.755pt x 289.08pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CRFS_CPFV.png, id=1214, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CRFS_CPFV.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CRFS_CPFV.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CRFS_CPFV.png  used on input line 1886.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CRFS_CPFV.png  used on input line 1989.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_PR.png, id=1151, 469.755pt x 289.08pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_PR.png, id=1215, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_PR.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_PR.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_PR.png  used on input line 1892.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_PR.png  used on input line 1995.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CCFRP.png, id=1152, 469.755pt x 289.08pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CCFRP.png, id=1216, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CCFRP.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CCFRP.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CCFRP.png  used on input line 1898.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CCFRP.png  used on input line 2001.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CDFW_ROV.png, id=1153, 469.755pt x 289.08pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CDFW_ROV.png, id=1217, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CDFW_ROV.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CDFW_ROV.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CDFW_ROV.png  used on input line 1904.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CDFW_ROV.png  used on input line 2007.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index9_standcpueall.png, id=1154, 469.755pt x 289.08pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index9_standcpueall.png, id=1218, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index9_standcpueall.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index9_standcpueall.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index9_standcpueall.png  used on input line 1910.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index9_standcpueall.png  used on input line 2013.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png, id=1219, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png  used on input line 1916.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png  used on input line 2019.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts1_Total_biomass_(mt).png, id=1155, 469.755pt x 289.08pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts1_Total_biomass_(mt).png, id=1220, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts1_Total_biomass_(mt).png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts1_Total_biomass_(mt).png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts1_Total_biomass_(mt).png  used on input line 1922.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts1_Total_biomass_(mt).png  used on input line 2025.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts9_Relative_spawning_output_intervals.png, id=1221, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts9_Relative_spawning_output_intervals.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts9_Relative_spawning_output_intervals.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts9_Relative_spawning_output_intervals.png  used on input line 1928.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts9_Relative_spawning_output_intervals.png  used on input line 2031.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR2_minusSPRseries.png, id=1222, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR2_minusSPRseries.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR2_minusSPRseries.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR2_minusSPRseries.png  used on input line 1934.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR2_minusSPRseries.png  used on input line 2037.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-[63
+[64
 
-] [64<c:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/map.png>] [65] [66<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/data_plot.png>] [67<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt1mkt0.png>] [68<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Dead.png>] [69<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt1mkt0.png>] [70<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt2mkt0.png>] [71<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Live.png>] [72<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/mrfss_cpfv_dockside/north/forSS/Index.png>] [73<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/delta_lognormal_main_effects/Index.png>] [74<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/area_weighted/Index.png>] [75<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/north/rm_last2yrs_area_weighted/Index.png>] [76<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt3mkt0_page2.png>] [77<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_CPFV.png>] [78<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt3mkt0.png>] [79<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_agedat_data_weighting_TA1.8_Rec_CPFV.png>] [80<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/coop_crfs_length_comparison.png>] [81<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt4mkt0.png>] [82<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt4mkt0_page2.png>] [83<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_PR.png>] [84<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations_designation.png>] [85<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations.png>] [86<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/ccfrp/north/area_weighted/Index.png>] [87<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt5mkt0.png>] [88<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CCFRP.png>] [89<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt5mkt0.png>] [90<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_transect_collapsed_copper_north_protection_count.png>] [91<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/north_raw_cpue_by_mpa_group.png>] [92<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png>] [93<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_length_by_area_designation.png>] [94<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt6mkt0.png>] [95<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CDFW_ROV.png>] [96<c:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/copper_length_by_half_month.png>] [97<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio6_maturity.png><n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio9_fecundity_len.png>] [98<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png>] [99<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/ageing_error/B0_S3/Reader_1_vs_Reader_2.png>] [100<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers5_ageerrorSD.png>] [101<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers10_ageerror_matrix_1.png>] [102<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare2_spawnbio_uncertainty.png>] [103<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare4_Bratio_uncertainty.png>] [104<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare2_spawnbio_uncertainty.png>] [105<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare4_Bratio_uncertainty.png>] [106<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare2_spawnbio_uncertainty.png>] [107<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare4_Bratio_uncertainty.png>] [108<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio1_sizeatage.png>] [109<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/recdevs2_withbars.png>] [110<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SR_curve.png>] [111<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_CPFV.png>] [112<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_DWV_CPFV.png>] [113<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CRFS_CPFV.png>] [114<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_PR.png>] [115<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CCFRP.png>] [116<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CDFW_ROV.png>] [117<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index9_standcpueall.png>] [118<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts1_Total_biomass_(mt).png>] [119]
+] [65<c:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/map.png>] [66] [67<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/data_plot.png>] [68<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt1mkt0.png>] [69<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Dead.png>] [70<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt1mkt0.png>] [71<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt2mkt0.png>] [72<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Commercial_Live.png>] [73<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/mrfss_cpfv_dockside/north/forSS/Index.png>] [74<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/delta_lognormal_main_effects/Index.png>] [75<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/area_weighted/Index.png>] [76<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/north/rm_last2yrs_area_weighted/Index.png>] [77<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt3mkt0_page2.png>] [78<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_CPFV.png>] [79<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt3mkt0.png>] [80<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_agedat_data_weighting_TA1.8_Rec_CPFV.png>] [81<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/coop_crfs_length_comparison.png>] [82<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt4mkt0.png>] [83<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt4mkt0_page2.png>] [84<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_Rec_PR.png>] [85<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations_designation.png>] [86<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/plots/north_survey_locations.png>] [87<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/ccfrp/north/area_weighted/Index.png>] [88<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_bubflt5mkt0.png>] [89<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CCFRP.png>] [90<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALdat_bubflt5mkt0.png>] [91<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_transect_collapsed_copper_north_protection_count.png>] [92<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/north_raw_cpue_by_mpa_group.png>] [93<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png>] [94<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/plots/rov_length_by_area_designation.png>] [95<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_flt6mkt0.png>] [96<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lendat_data_weighting_TA1.8_CDFW_ROV.png>] [97<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/south_growth_length_comparison.png>] [98<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/south_growth_age_comparison.png>] [99<c:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/copper_length_by_half_month.png>] [100<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio6_maturity.png><n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio9_fecundity_len.png>] [101<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/length_fraction_female.png>] [102<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png>] [103<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/ageing_error/B0_S3/Reader_1_vs_Reader_2.png>] [104<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers5_ageerrorSD.png>] [105<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/numbers10_ageerror_matrix_1.png>] [106<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare2_spawnbio_uncertainty.png>] [107<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/0_model_convert_compare4_Bratio_uncertainty.png>] [108<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare2_spawnbio_uncertainty.png>] [109<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_1_compare4_Bratio_uncertainty.png>] [110<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare2_spawnbio_uncertainty.png>] [111<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/_bridging/_plots/full_bridge_2_compare4_Bratio_uncertainty.png>] [112<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio1_sizeatage.png><n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png>] [113<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/recdevs2_withbars.png>] [114<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SR_curve.png>] [115<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_CPFV.png>] [116<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_DWV_CPFV.png>] [117<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CRFS_CPFV.png>] [118<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_Rec_PR.png>] [119<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CCFRP.png>] [120<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index5_logcpuefit_CDFW_ROV.png>] [121<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/index9_standcpueall.png><n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png>] [122<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts1_Total_biomass_(mt).png><n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts9_Relative_spawning_output_intervals.png>] [123<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR2_minusSPRseries.png>]
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR4_phase.png, id=1540, 469.755pt x 289.08pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR4_phase.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR4_phase.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR4_phase.png  used on input line 1942.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR4_phase.png  used on input line 2045.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png  used on input line 1948.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png  used on input line 2051.
 (luatex.def)             Requested size: 398.34032pt x 245.13249pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt1mkt0.png, id=1458, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt1mkt0.png, id=1541, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt1mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt1mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt1mkt0.png  used on input line 1960.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt1mkt0.png  used on input line 2063.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt2mkt0.png, id=1459, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt2mkt0.png, id=1542, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt2mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt2mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt2mkt0.png  used on input line 1966.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt2mkt0.png  used on input line 2069.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page1.png, id=1460, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page1.png, id=1543, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page1.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page1.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page1.png  used on input line 1972.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page1.png  used on input line 2075.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page2.png, id=1461, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page2.png, id=1544, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page2.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page2.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page2.png  used on input line 1978.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page2.png  used on input line 2081.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page1.png, id=1462, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page1.png, id=1545, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page1.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page1.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page1.png  used on input line 1984.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page1.png  used on input line 2087.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page2.png, id=1463, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page2.png, id=1546, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page2.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page2.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page2.png  used on input line 1990.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page2.png  used on input line 2093.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt5mkt0.png, id=1464, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt5mkt0.png, id=1547, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt5mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt5mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt5mkt0.png  used on input line 1996.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt5mkt0.png  used on input line 2099.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt6mkt0.png, id=1465, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt6mkt0.png, id=1548, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt6mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt6mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt6mkt0.png  used on input line 2002.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt6mkt0.png  used on input line 2105.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-[120
+[124
 
-] [121] [122<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt1mkt0.png>] [123<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt2mkt0.png>] [124<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page1.png>] [125<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page2.png>] [126<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page1.png>] [127<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page2.png>] [128<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt5mkt0.png>] [129<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt6mkt0.png>]
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page1.png, id=1529, 469.755pt x 469.755pt>
+<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR4_phase.png>] [125] [126<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt1mkt0.png>] [127<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt2mkt0.png>] [128<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page1.png>] [129<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt3mkt0_page2.png>] [130<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page1.png>] [131<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt4mkt0_page2.png>] [132<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt5mkt0.png>] [133<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_lenfit_flt6mkt0.png>]
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page1.png, id=1611, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page1.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page1.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page1.png  used on input line 2018.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page1.png  used on input line 2121.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page2.png, id=1530, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page2.png, id=1612, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page2.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page2.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page2.png  used on input line 2024.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page2.png  used on input line 2127.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page3.png, id=1531, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page3.png, id=1613, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page3.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page3.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page3.png  used on input line 2030.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page3.png  used on input line 2133.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page4.png, id=1532, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page4.png, id=1614, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page4.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page4.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page4.png  used on input line 2036.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page4.png  used on input line 2139.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt5mkt0.png, id=1533, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt5mkt0.png, id=1615, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt5mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt5mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt5mkt0.png  used on input line 2042.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt5mkt0.png  used on input line 2145.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page1.png, id=1540, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page1.png, id=1622, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page1.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page1.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page1.png  used on input line 2048.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page1.png  used on input line 2151.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page2.png, id=1547, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page2.png, id=1629, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page2.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page2.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page2.png  used on input line 2054.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page2.png  used on input line 2157.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page3.png, id=1548, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page3.png, id=1630, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page3.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page3.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page3.png  used on input line 2060.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page3.png  used on input line 2163.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page4.png, id=1549, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page4.png, id=1631, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page4.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page4.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page4.png  used on input line 2066.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page4.png  used on input line 2169.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page5.png, id=1550, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page5.png, id=1632, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page5.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page5.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page5.png  used on input line 2072.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page5.png  used on input line 2175.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page6.png, id=1551, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page6.png, id=1633, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page6.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page6.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page6.png  used on input line 2078.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page6.png  used on input line 2181.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page1.png, id=1552, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page1.png, id=1634, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page1.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page1.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page1.png  used on input line 2089.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page1.png  used on input line 2192.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page2.png, id=1553, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page2.png, id=1635, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page2.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page2.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page2.png  used on input line 2095.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page2.png  used on input line 2198.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt2mkt0.png, id=1554, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt2mkt0.png, id=1636, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt2mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt2mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt2mkt0.png  used on input line 2101.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt2mkt0.png  used on input line 2204.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt3mkt0.png, id=1555, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt3mkt0.png, id=1637, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt3mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt3mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt3mkt0.png  used on input line 2107.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt3mkt0.png  used on input line 2210.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt4mkt0.png, id=1556, 469.755pt x 469.755pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt4mkt0.png, id=1638, 469.755pt x 469.755pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt4mkt0.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt4mkt0.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt4mkt0.png  used on input line 2113.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt4mkt0.png  used on input line 2216.
 (luatex.def)             Requested size: 398.34032pt x 398.34032pt.
-[130<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page1.png>] [131<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page2.png>] [132<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page3.png>] [133<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page4.png>] [134<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt5mkt0.png>] [135<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page1.png>] [136<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page2.png>] [137<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page3.png>] [138<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page4.png>] [139<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page5.png>] [140<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page6.png>] [141<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page1.png>] [142<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page2.png>] [143<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt2mkt0.png>] [144<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt3mkt0.png>] [145<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt4mkt0.png>]
-Underfull \hbox (badness 1132) in paragraph at lines 2126--2126
+[134<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page1.png>] [135<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page2.png>] [136<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page3.png>] [137<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_residsflt9mkt0_page4.png>] [138<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt5mkt0.png>] [139<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page1.png>] [140<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page2.png>] [141<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page3.png>] [142<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page4.png>] [143<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page5.png>] [144<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_condAALfit_Andre_plotsflt9mkt0_page6.png>] [145<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page1.png>] [146<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt1mkt0_page2.png>] [147<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt2mkt0.png>] [148<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt3mkt0.png>] [149<n:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/comp_gstlenfit_flt4mkt0.png>]
+Underfull \hbox (badness 1132) in paragraph at lines 2229--2229
 []\TU/lmr/bx/n/14.4 Ap-pendix D. Deb Wilson-Vandenberg On-board
  []
 
-[146]
+[150]
 
-LaTeX Warning: Reference `tab:tab-index-ccfrp' on page 147 undefined on input line 2148.
-
-
-LaTeX Warning: Reference `fig:fig-cpue-ccfrp' on page 147 undefined on input line 2148.
+LaTeX Warning: Reference `tab:tab-index-ccfrp' on page 151 undefined on input line 2251.
 
 
-LaTeX Warning: Reference `fig:fig-areacpue-ccfrp' on page 147 undefined on input line 2150.
+LaTeX Warning: Reference `fig:fig-cpue-ccfrp' on page 151 undefined on input line 2251.
 
 
-LaTeX Warning: Reference `fig:fig-sitecpue-ccfrp' on page 147 undefined on input line 2150.
+LaTeX Warning: Reference `fig:fig-areacpue-ccfrp' on page 151 undefined on input line 2253.
 
 
-LaTeX Warning: Reference `tab:tab-model-select-ccfrp' on page 147 undefined on input line 2152.
+LaTeX Warning: Reference `fig:fig-sitecpue-ccfrp' on page 151 undefined on input line 2253.
 
-[147] [148] [149] (./tex_tables/rov_removed_records_north.tex) [150] (./tex_tables/north_copper_obs_designation_mpa_group_super_year.tex [151]) [152]
-Overfull \hbox (15.06406pt too wide) in paragraph at lines 2186--2186
+
+LaTeX Warning: Reference `tab:tab-model-select-ccfrp' on page 151 undefined on input line 2255.
+
+[151] [152] [153] (./tex_tables/rov_removed_records_north.tex) [154] (./tex_tables/north_copper_obs_designation_mpa_group_super_year.tex [155]) [156]
+Overfull \hbox (15.06406pt too wide) in paragraph at lines 2289--2289
 []|\TU/lmr/m/n/7 Depth.Poly- 
  []
 
 
-Overfull \hbox (11.88966pt too wide) in paragraph at lines 2186--2186
+Overfull \hbox (11.88966pt too wide) in paragraph at lines 2289--2289
 []|\TU/lmr/m/n/7 Prop..Hard|  
  []
 
 
-Overfull \hbox (16.01253pt too wide) in paragraph at lines 2186--2186
+Overfull \hbox (16.01253pt too wide) in paragraph at lines 2289--2289
 []|\TU/lmr/m/n/7 Prop..Mixed|  
  []
 
 
-Overfull \hbox (8.53513pt too wide) in paragraph at lines 2186--2186
+Overfull \hbox (8.53513pt too wide) in paragraph at lines 2289--2289
 []|\TU/lmr/m/n/7 Prop..Soft|  
  []
 
 
-Overfull \hbox (2.7076pt too wide) in paragraph at lines 2186--2186
+Overfull \hbox (2.7076pt too wide) in paragraph at lines 2289--2289
 \TU/lmr/m/n/7 per.Year|  
  []
 
 
-Overfull \hbox (0.8451pt too wide) in paragraph at lines 2186--2186
+Overfull \hbox (0.8451pt too wide) in paragraph at lines 2289--2289
 \TU/lmr/m/n/7 tion.Su- 
  []
 
 
-Overfull \hbox (5.04337pt too wide) in paragraph at lines 2186--2186
+Overfull \hbox (5.04337pt too wide) in paragraph at lines 2289--2289
 \TU/lmr/m/n/7 per_year|  
  []
 
 
-Overfull \hbox (8.00691pt too wide) in paragraph at lines 2186--2186
+Overfull \hbox (8.00691pt too wide) in paragraph at lines 2289--2289
 \TU/lmr/m/n/7 set.log.us- 
  []
 
 
-Overfull \hbox (6.53883pt too wide) in paragraph at lines 2186--2186
+Overfull \hbox (6.53883pt too wide) in paragraph at lines 2289--2289
 \TU/lmr/m/n/7 able.area.|  
  []
 
 
-Overfull \hbox (0.51395pt too wide) in paragraph at lines 2186--2186
+Overfull \hbox (0.51395pt too wide) in paragraph at lines 2289--2289
 []|\TU/lmr/m/n/7 log.like- 
  []
 
 
-Overfull \hbox (15.06406pt too wide) in paragraph at lines 2191--2191
+Overfull \hbox (15.06406pt too wide) in paragraph at lines 2294--2294
 []|\TU/lmr/m/n/7 Depth.Poly- 
  []
 
 
-Overfull \hbox (11.88966pt too wide) in paragraph at lines 2191--2191
+Overfull \hbox (11.88966pt too wide) in paragraph at lines 2294--2294
 []|\TU/lmr/m/n/7 Prop..Hard|  
  []
 
 
-Overfull \hbox (16.01253pt too wide) in paragraph at lines 2191--2191
+Overfull \hbox (16.01253pt too wide) in paragraph at lines 2294--2294
 []|\TU/lmr/m/n/7 Prop..Mixed|  
  []
 
 
-Overfull \hbox (8.53513pt too wide) in paragraph at lines 2191--2191
+Overfull \hbox (8.53513pt too wide) in paragraph at lines 2294--2294
 []|\TU/lmr/m/n/7 Prop..Soft|  
  []
 
 
-Overfull \hbox (2.7076pt too wide) in paragraph at lines 2191--2191
+Overfull \hbox (2.7076pt too wide) in paragraph at lines 2294--2294
 \TU/lmr/m/n/7 per.Year|  
  []
 
 
-Overfull \hbox (0.8451pt too wide) in paragraph at lines 2191--2191
+Overfull \hbox (0.8451pt too wide) in paragraph at lines 2294--2294
 \TU/lmr/m/n/7 tion.Su- 
  []
 
 
-Overfull \hbox (5.04337pt too wide) in paragraph at lines 2191--2191
+Overfull \hbox (5.04337pt too wide) in paragraph at lines 2294--2294
 \TU/lmr/m/n/7 per_year|  
  []
 
 
-Overfull \hbox (8.00691pt too wide) in paragraph at lines 2191--2191
+Overfull \hbox (8.00691pt too wide) in paragraph at lines 2294--2294
 \TU/lmr/m/n/7 set.log.us- 
  []
 
 
-Overfull \hbox (6.53883pt too wide) in paragraph at lines 2191--2191
+Overfull \hbox (6.53883pt too wide) in paragraph at lines 2294--2294
 \TU/lmr/m/n/7 able.area.|  
  []
 
 
-Overfull \hbox (0.51395pt too wide) in paragraph at lines 2191--2191
+Overfull \hbox (0.51395pt too wide) in paragraph at lines 2294--2294
 []|\TU/lmr/m/n/7 log.like- 
  []
 
 
-Overfull \hbox (2.93735pt too wide) in paragraph at lines 2205--2205
+Overfull \hbox (2.93735pt too wide) in paragraph at lines 2308--2308
 []|\TU/lmr/m/n/7 1.2E+07|  
  []
 
 
-Overfull \hbox (2.93735pt too wide) in paragraph at lines 2205--2205
+Overfull \hbox (2.93735pt too wide) in paragraph at lines 2308--2308
 []|\TU/lmr/m/n/7 1.2E+07|  
  []
 
 
-Overfull \hbox (2.93735pt too wide) in paragraph at lines 2205--2205
+Overfull \hbox (2.93735pt too wide) in paragraph at lines 2308--2308
 []|\TU/lmr/m/n/7 1.2E+07|  
  []
 
 
-Overfull \hbox (2.93735pt too wide) in paragraph at lines 2213--2213
+Overfull \hbox (2.93735pt too wide) in paragraph at lines 2316--2316
 []|\TU/lmr/m/n/7 7.8E+06|  
  []
 
 
-Overfull \hbox (2.93735pt too wide) in paragraph at lines 2213--2213
+Overfull \hbox (2.93735pt too wide) in paragraph at lines 2316--2316
 []|\TU/lmr/m/n/7 7.8E+06|  
  []
 
 
-Overfull \hbox (2.93735pt too wide) in paragraph at lines 2213--2213
+Overfull \hbox (2.93735pt too wide) in paragraph at lines 2316--2316
 []|\TU/lmr/m/n/7 7.8E+06|  
  []
 
 
-Overfull \hbox (2.93735pt too wide) in paragraph at lines 2221--2221
+Overfull \hbox (2.93735pt too wide) in paragraph at lines 2324--2324
 []|\TU/lmr/m/n/7 1.4E+07|  
  []
 
 
-Overfull \hbox (2.93735pt too wide) in paragraph at lines 2221--2221
+Overfull \hbox (2.93735pt too wide) in paragraph at lines 2324--2324
 []|\TU/lmr/m/n/7 1.4E+07|  
  []
 
 
-Overfull \hbox (2.93735pt too wide) in paragraph at lines 2221--2221
+Overfull \hbox (2.93735pt too wide) in paragraph at lines 2324--2324
 []|\TU/lmr/m/n/7 1.4E+07|  
  []
 
 
-Overfull \hbox (2.93735pt too wide) in paragraph at lines 2229--2229
+Overfull \hbox (2.93735pt too wide) in paragraph at lines 2332--2332
 []|\TU/lmr/m/n/7 1.0E+07|  
  []
 
 
-Overfull \hbox (2.93735pt too wide) in paragraph at lines 2229--2229
+Overfull \hbox (2.93735pt too wide) in paragraph at lines 2332--2332
 []|\TU/lmr/m/n/7 1.0E+07|  
  []
 
 
-Overfull \hbox (2.93735pt too wide) in paragraph at lines 2229--2229
+Overfull \hbox (2.93735pt too wide) in paragraph at lines 2332--2332
 []|\TU/lmr/m/n/7 1.0E+07|  
  []
 
-[153
+[157
 
-] [154
+] [158
 
 ]
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/qq.png, id=1720, 505.89pt x 505.89pt>
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/qq.png, id=1802, 505.89pt x 505.89pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/qq.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/qq.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/qq.png  used on input line 2265.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/qq.png  used on input line 2368.
 (luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-[155<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/qq.png>]
-<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/proportion_zero.png, id=1726, 505.89pt x 505.89pt>
+[159<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/qq.png>]
+<N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/proportion_zero.png, id=1808, 505.89pt x 505.89pt>
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/proportion_zero.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/proportion_zero.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/proportion_zero.png  used on input line 2273.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/proportion_zero.png  used on input line 2376.
 (luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-[156<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/proportion_zero.png>]
+[160<n:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/proportion_zero.png>]
 File: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png Graphic file (type png)
 <use N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png>
-Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png  used on input line 2281.
+Package luatex.def Info: N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png  used on input line 2384.
 (luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-[157] 
+[161] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./_main.aux (./tex_tables/historical_landings_tables_2020_revised_Avila_1953.aux) (./tex_tables/north_dead_trips_and_samples.aux) (./tex_tables/north_live_trips_and_samples.aux) (./tex_tables/rec_north_sample_size_by_program.aux) (./tex_tables/north_copper_obs_designation_mpa_group_super_year.aux) (./tex_tables/north_growth_age_samples.aux) (./tex_tables/likelihoods.aux) (./tex_tables/e_ReferencePoints.aux) (./tex_tables/TimeSeries.aux) * soulpos - computing points - it may take a few seconds *
 \openout5 = _main.upb
@@ -2511,23 +2625,23 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 70ACC8D91E714A9715CDBE907C242A22;16978.
+(rerunfilecheck)             Checksum: CEBD306D88392C6118E6D6D5CF449F1C;16978.
 )
 
 Here is how much of LuaTeX's memory you used:
- 52573 strings out of 478263
- 477236,1977958 words of node,token memory allocated
+ 52748 strings out of 478263
+ 477249,1977958 words of node,token memory allocated
  798 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 5 kern, 1 penalty, 1 margin_kern, 5 glyph, 27 attribute, 80 glue_spec, 15 attribute_list, 3 write, 5 pdf_action nodes
-   avail lists: 1:14,2:15279,3:3824,4:272,5:538,6:1892,7:38432,8:49,9:12189,10:21,11:904
- 69590 multiletter control sequences out of 65536+600000
- 69 fonts using 19918203 bytes
+   avail lists: 1:7,2:15972,3:3824,4:284,5:541,6:1892,7:38464,8:48,9:12189,10:21,11:956
+ 69667 multiletter control sequences out of 65536+600000
+ 69 fonts using 19918507 bytes
  218i,12n,216p,2284b,628s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman5-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf>
-Output written on _main.pdf (174 pages, 5668822 bytes).
+<c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman5-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.otf><c:/Users/Chantel.Wetzel/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf>
+Output written on _main.pdf (185 pages, 6263645 bytes).
 
-PDF statistics: 1834 PDF objects out of 2073 (max. 8388607)
- 1435 compressed objects within 15 object streams
- 516 named destinations out of 1000 (max. 131072)
+PDF statistics: 1916 PDF objects out of 2073 (max. 8388607)
+ 1486 compressed objects within 15 object streams
+ 533 named destinations out of 1000 (max. 131072)
  696 words of extra memory for PDF output out of 10000 (max. 100000000)
 

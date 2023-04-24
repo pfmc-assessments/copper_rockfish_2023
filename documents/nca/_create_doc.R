@@ -80,7 +80,7 @@ sa4ss::read_model(
   add_prefix = "south",
   add_text = "south of Point Conception",
   create_plots = FALSE, 
-  save_loc = file.path(doc_dir, "sca", "tex_tables"))
+  save_loc = file.path(doc_dir, "nca", "tex_tables"))
 
 sa4ss::read_model(
   mod_loc = north_model_dir,

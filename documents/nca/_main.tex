@@ -210,7 +210,7 @@ Correct citation for this publication:
 \subsection*{Stock}\label{stock}}
 \addcontentsline{toc}{subsection}{Stock}
 
-This assessment reports the status of copper rockfish (\emph{Sebastes caurinus}) off the California North of Pt. Conception U.S. West coast using data through 2022.
+This assessment reports the status of copper rockfish (\emph{Sebastes caurinus}) off the California coast in U.S. waters, using data through 2022. The copper rockfish stock was assessed using two sub-area models that captured distinct inter-stock dynamics split north and south of Point Conception. The estimated dynamics for each assessed sub-area is described here along with the combined stock status for the California stock. This assessment does not account for populations located in Mexico waters or other areas off the U.S. coast and assumes that these southern and northern populations do not contribute to the population being assessed here.
 
 \hypertarget{catches}{%
 \subsection*{Catches}\label{catches}}
@@ -218,29 +218,27 @@ This assessment reports the status of copper rockfish (\emph{Sebastes caurinus})
 
 Replace text with trends and current levels. Include Table for last 10 years. Include Figure with long-term estimates.
 
-I am testing references of Table \ref{tab:removalsES} and \ref{tab:north-removalsES}
-
-\input{tex_tables/a_Catches_ES.tex}
+\input{tex_tables/south_a_Catches_ES.tex}
 
 \input{tex_tables/north_a_Catches_ES.tex}
 
 \begin{figure}
 \centering
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/5.5_est_m/plots/catch2 landings stacked.png}
+\caption{Landings by fleet used in the base model for the area south of Point Conception where catches in metric tons by fleet are stacked.\label{fig:es-south-catch}}
+\end{figure}
+
+\begin{figure}
+\centering
 \includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/catch2 landings stacked.png}
-\caption{Landings by fleet used in the base model where catches in metric tons by fleet are stacked.\label{fig:es-catch}}
+\caption{Landings by fleet used in the base model for the area north of Point Conception where catches in metric tons by fleet are stacked.\label{fig:es-north-catch}}
 \end{figure}
 
 \hypertarget{data-and-assessment}{%
 \subsection*{Data and assessment}\label{data-and-assessment}}
 \addcontentsline{toc}{subsection}{Data and assessment}
 
-This assessment uses the stock assessment framework Stock Synthesis
-
-\begin{verbatim}
-[1] "3.30.21.00"
-\end{verbatim}
-
-(SS3).
+This assessment uses the stock assessment framework Stock Synthesis version 3.30.21 (SS3).
 
 Replace text with date of last assessment, type of assessment model, data available, new information, and information lacking.
 
@@ -250,18 +248,53 @@ Replace text with date of last assessment, type of assessment model, data availa
 
 Replace text with trends and current levels relative to virgin or historic levels and description of uncertainty. Include Table for last 10 years. Include Figure with long-term estimates.
 
-\input{tex_tables/b_SSB_ES.tex}
+\input{tex_tables/south_b_SSB_ES.tex}
+
+\input{tex_tables/north_b_SSB_ES.tex}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\caption{\label{tab:ca-status}The estimated spawning ouput in number of million eggs across California and fraction unfished by year.}\\
+\toprule
+Year & Spawning Output & Fraction Unfished\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:ca-status}The estimated spawning ouput in number of million eggs across California and fraction unfished by year. \textit{(continued)}}\\
+\toprule
+Year & Spawning Output & Fraction Unfished\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & 108.59 & 0.271\\
+2014 & 111.85 & 0.279\\
+2015 & 121.22 & 0.302\\
+2016 & 129.49 & 0.323\\
+2017 & 135.65 & 0.338\\
+2018 & 142.50 & 0.356\\
+2019 & 142.39 & 0.355\\
+2020 & 138.92 & 0.347\\
+2021 & 128.45 & 0.321\\
+2022 & 120.01 & 0.299\\
+2023 & 117.56 & 0.293\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png}
-\caption{Estimated time series of spawning output (circles and line: median; light broken lines: 95 percent intervals) for the base model.\label{fig:es-sb}}
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare2_spawnbio_uncertainty.png}
+\caption{Estimated time series of spawning output (circles and line: median; light broken lines: 95 percent intervals) for the model areas south and north of Point Conception.\label{fig:es-sb}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts9_Relative_spawning_output_intervals.png}
-\caption{Estimated time series of fraction of unfished spawning output (circles and line: median; light broken lines: 95 percent intervals) for the base model.\label{fig:es-depl}}
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare4_Bratio_uncertainty.png}
+\caption{Estimated time series of fraction of unfished spawning output (circles and line: median; light broken lines: 95 percent intervals) for the model areas south and north of Point Conception.\label{fig:es-depl}}
 \end{figure}
 
 \clearpage
@@ -272,12 +305,20 @@ Replace text with trends and current levels relative to virgin or historic level
 
 Replace text with trends and current levels relative to virgin or historic levels and description of uncertainty. Include Table for last 10 years. Include Figure with long-term estimates.
 
-\input{tex_tables/c_Recr_ES.tex}
+\input{tex_tables/south_c_Recr_ES.tex}
+
+\input{tex_tables/north_c_Recr_ES.tex}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png}
-\caption{Estimated time series of age-0 recruits (1000s) for the base model with 95 percent intervals.\label{fig:es-recruits}}
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare10_recruits_uncertainty.png}
+\caption{Estimated time series of age-0 recruits (1000s) for the model areas south and north of Point Conception with 95 percent intervals.\label{fig:es-recruits}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare12_recdevs_uncertainty.png}
+\caption{Estimated time series of recruitment deviations for the model areas south and north of Point Conception.\label{fig:es-rec-devs}}
 \end{figure}
 
 \clearpage
@@ -288,17 +329,21 @@ Replace text with trends and current levels relative to virgin or historic level
 
 Replace text with total catch divided by exploitable biomass or SPR harvest rate. Include Table for last 10 years. Include Figure with trend in f relative to target vs.~trend in biomass relative to the target.
 
-\input{tex_tables/d_SPR_ES.tex}
+\input{tex_tables/south_d_SPR_ES.tex}
+
+\input{tex_tables/north_d_SPR_ES.tex}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR2_minusSPRseries.png}
-\caption{Estimated 1 - relative spawning ratio (SPR) by year for the base model. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate.\label{fig:es-1-spr}}
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare6_SPRratio_uncertainty.png}
+\caption{Estimated 1 - relative spawning ratio (SPR) by year for the model areas south and north of Point Conception. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate.\label{fig:es-1-spr}}
 \end{figure}
 
 \hypertarget{ecosystem-considerations}{%
 \subsection*{Ecosystem considerations}\label{ecosystem-considerations}}
 \addcontentsline{toc}{subsection}{Ecosystem considerations}
+
+shared text
 
 \hypertarget{reference-points}{%
 \subsection*{Reference points}\label{reference-points}}
@@ -306,16 +351,26 @@ Replace text with total catch divided by exploitable biomass or SPR harvest rate
 
 Replace text with management targets and definition of overfishing, including the harvest rate that brings the stock to equilibrium at \(B_{40\%}\), i.e., the \(B_{MSY}\) proxy and the equilibrium stock size that results from fishing at the default harvest rate, i.e., the \(F_{MSY}\) proxy. Include Table of estimated reference points for ssb, SPR, exploitation rate, and yield based on SSB proxy for MSY, SPR proxy for MSY, and estimated MSY values.
 
+\input{tex_tables/south_e_ReferencePoints_ES.tex}
+
+\input{tex_tables/north_e_ReferencePoints_ES.tex}
+
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/SPR4_phase.png}
-\caption{Phase plot of estimated 1-SPR versus fraction unfished for the base model.\label{fig:es-phase}}
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/compare15_phase_plot.png}
+\caption{Phase plot of estimated 1-SPR versus fraction unfished for the model areas south and north of Point Conception.\label{fig:es-phase}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/5.5_est_m/plots/yield2_yield_curve_with_refpoints.png}
+\caption{Equilibrium yield curve for the base case model for model south of Point Conception. Values are based on the 2022 fishery selectivities and with steepness fixed at 0.72.\label{fig:south-es-yield}}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/yield2_yield_curve_with_refpoints.png}
-\caption{Equilibrium yield curve for the base case model. Values are based on the 2020 fishery selectivities and with steepness fixed at 0.80.\label{fig:es-yield}}
+\caption{Equilibrium yield curve for the base case model for model north of Point Conception. Values are based on the 2022 fishery selectivities and with steepness fixed at 0.72.\label{fig:north-es-yield}}
 \end{figure}
 
 \hypertarget{management-performance}{%
@@ -342,17 +397,17 @@ Year & OFL (mt) & ACL (mt) & Catch (mt)\\
 \endfoot
 \bottomrule
 \endlastfoot
-2012 & 163.15 & 136.17 & 85.95\\
-2013 & 148.00 & 123.42 & 105.18\\
-2014 & 148.00 & 123.42 & 98.65\\
-2015 & 303.75 & 277.32 & 147.64\\
-2016 & 286.88 & 261.95 & 165.27\\
-2017 & 313.70 & 286.38 & 225.48\\
-2018 & 319.60 & 291.85 & 203.69\\
-2019 & 325.08 & 296.83 & 182.59\\
-2020 & 330.35 & 301.60 & 242.73\\
-2021 & 249.85 & 206.43 & 164.20\\
-2022 & 249.48 & 204.02 & 66.67\\*
+2012 & 163.15 & 136.17 & 102.08\\
+2013 & 148.00 & 123.42 & 159.08\\
+2014 & 148.00 & 123.42 & 123.42\\
+2015 & 303.75 & 277.32 & 164.36\\
+2016 & 286.88 & 261.95 & 197.90\\
+2017 & 313.70 & 286.38 & 173.73\\
+2018 & 319.60 & 291.85 & 202.62\\
+2019 & 325.08 & 296.83 & 161.40\\
+2020 & 330.35 & 301.60 & 173.04\\
+2021 & 249.85 & 206.43 & 114.41\\
+2022 & 249.48 & 204.02 & 39.04\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -388,18 +443,18 @@ Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC
 \endfoot
 \bottomrule
 \endlastfoot
-2023 & 116.4 & 91.53 & 70 & - & - & 331.05 & 0.481\\
-2024 & 121.32 & 94.69 & 70 & - & - & 331.91 & 0.482\\
-2025 & - & - & - & 182.58 & 169.79 & 331.76 & 0.482\\
-2026 & - & - & - & 182.54 & 169.45 & 330.85 & 0.481\\
-2027 & - & - & - & 182.16 & 169.11 & 329.74 & 0.479\\
-2028 & - & - & - & 181.54 & 168.81 & 328.80 & 0.478\\
-2029 & - & - & - & 180.82 & 168.58 & 328.09 & 0.477\\
-2030 & - & - & - & 180.13 & 168.42 & 327.58 & 0.476\\
-2031 & - & - & - & 179.53 & 168.35 & 327.20 & 0.475\\
-2032 & - & - & - & 179.02 & 168.33 & 326.90 & 0.475\\
-2033 & - & - & - & 178.61 & 168.37 & 326.66 & 0.474\\
-2034 & - & - & - & 178.28 & 168.44 & 326.45 & 0.474\\*
+2023 & 116.4 & 91.53 & 91.5 & - & - & 117.56 & 0.293\\
+2024 & 121.32 & 94.69 & 94.7 & - & - & 114.77 & 0.286\\
+2025 & - & - & - & 56.36 & 46.21 & 112.88 & 0.282\\
+2026 & - & - & - & 60.87 & 49.91 & 112.87 & 0.282\\
+2027 & - & - & - & 64.64 & 53.53 & 115.01 & 0.287\\
+2028 & - & - & - & 67.66 & 56.98 & 118.85 & 0.297\\
+2029 & - & - & - & 70.17 & 60.25 & 123.74 & 0.309\\
+2030 & - & - & - & 72.34 & 63.32 & 129.09 & 0.322\\
+2031 & - & - & - & 74.29 & 66.17 & 134.48 & 0.336\\
+2032 & - & - & - & 76.08 & 68.8 & 139.67 & 0.348\\
+2033 & - & - & - & 77.74 & 71.23 & 144.54 & 0.361\\
+2034 & - & - & - & 79.28 & 73.47 & 149.04 & 0.372\\*
 \end{longtable}
 \endgroup{}
 \end{landscape}
@@ -409,7 +464,7 @@ Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC
 \subsection*{Scientific uncertainty}\label{scientific-uncertainty}}
 \addcontentsline{toc}{subsection}{Scientific uncertainty}
 
-The model estimated uncertainty around the 2023 spawning output was \(\sigma\) = 0.22 and the uncertainty around the OFL was \(\sigma\) = 0.22. This is likely an underestimate of overall uncertainty because of the necessity to fix several population dynamic parameters (e.g., steepness, recruitment variance, female natural mortality) and no explicit incorporation of model structural uncertainty (although see the decision table for alternative states of nature).
+The model estimated uncertainty around the 2023 spawning output was \(\sigma\) = 0.43 and the uncertainty around the OFL was \(\sigma\) = 0.45. This is likely an underestimate of overall uncertainty because of the necessity to fix several population dynamic parameters (e.g., steepness, recruitment variance, female natural mortality) and no explicit incorporation of model structural uncertainty (although see the decision table for alternative states of nature).
 
 \hypertarget{research-and-data-needs}{%
 \subsection*{Research and data needs}\label{research-and-data-needs}}
@@ -432,11 +487,11 @@ shared text
 \hypertarget{basic-information-and-life-history}{%
 \subsection{Basic Information and Life History}\label{basic-information-and-life-history}}
 
-This assessment reports the status of copper rockfish (\emph{Sebastes caurinus}) off the California coast, north of Point Conception, using data through 2022.
+This assessment report describes the sub-area population of copper rockfish (\emph{Sebastes caurinus}) off the California coast south of Point Conception in U.S. waters, using data through 2022. The sub-area population north of Point Conception in California waters was also evaluated and is described in a separate assessment report. The copper rockfish status for the California stock of is determined by the combined estimates of spawning output from both sub-areas and is detailed in the \protect\hyperlink{management}{management} section. This assessment does not account for populations located in Mexico waters or other areas off the U.S. coast and assumes that these southern and northern populations do not contribute to the population being assessed here.
 
 Copper rockfish have historically been a part of both commercial and recreational fisheries throughout its range. Copper rockfish are a demersal, relatively nearshore species within the subgenus \emph{Pteropodus.} Copper rockfish range from xxx to xx at depth of xxx (M. S. Love, Yoklavich, and Thorsteinson 2002). The core range is comparatively large, from northern Baja Mexico to the Gulf of Alaska, with copper rockfish also found in Puget Sound. Copper rockfish are commonly found in waters less than 100 meters in depth inhabiting nearshore kelp forests and complex low-relief rocky habitat (M. Love 1996). Adult copper rockfish have high site fidelity and do not make long-range movements. An acoustic telemetry study displaced copper rockfish 4km from their capture location to an artificial reef and within 10 days, half of the copper rockfish returned to the original capture location (Reynolds, Powers, and Bishop 2010).
 
-long the posterior two-thirds of the lateral line. The copper rockfish has high variation in coloration throughout its range, taking on coloration from dark brown, olive, orage-red and pink, with patches of yellow and pink (D. J. Miller and Lea 1972). In general the copper rockfish towards the northern part of the range are often darker in color than fish encountered in southern California. The distinct change in coloration resulted in copper rockfish described as two separate species, copper rockfish (\emph{S. caurinus}) and whitebelly rockfish (\emph{S. vexillaris}).
+long the posterior two-thirds of the lateral line. The copper rockfish has high variation in coloration throughout its range, taking on coloration from dark brown, olive, orange-red and pink, with patches of yellow and pink (D. J. Miller and Lea 1972). In general the copper rockfish towards the northern part of the range are often darker in color than fish encountered in southern California. The distinct change in coloration resulted in copper rockfish described as two separate species, copper rockfish (\emph{S. caurinus}) and whitebelly rockfish (\emph{S. vexillaris}).
 
 The \emph{Sebastes} genus are viviparous with internal fertilization, many exhibit dimorphic growth with females larger at size-at-age than males, and a number of species have reproductive strategies that vary with latitude. There are very few fecundity samples from copper rockfish available from available from California, although copper rockfish are assumed to produce a single brood annually. In southern California, peak parturition occurs xxxx central California peak parturition occurs in February and March.
 
@@ -457,12 +512,14 @@ The most recent genetic analysis of copper rockfish to date was conducted by Joh
 \hypertarget{ecosystem-considerations-1}{%
 \subsection{Ecosystem Considerations}\label{ecosystem-considerations-1}}
 
-Replace text.
+This stock assessment does not explicitly incorporate trophic interactions, habitat factors (other than as they inform relative abundance indices) or environmental factors into the assessment model, but a brief description of likely or potential ecosystem considerations are provided below.
+
+As with most other rockfish and groundfish in the California Current, recruitment, or cohort (year-class) strength appears to be highly variable for the copper rockfish complex, with only a modest apparent relationship to estimated levels of spawning output. Oceanographic and ecosystem factors are widely recognized to be key drivers of recruitment variability for most species of groundfish, as well as most elements of California Current food webs. Empirical estimates of recruitment from pelagic juvenile rockfish surveys have been used to inform incoming year class strength for some of these stocks, however copper rockfish are infrequently encountered in these surveys. Between 1998 and 2013 the California Cooperative Oceanic Fisheries Investigation (CalCOFI) survey observed had 34 positive observations copper rockfish out of nearly 300,000 total juvenile \emph{Sebastes} encountered in juvenile surveys.
 
 \hypertarget{historical-and-current-fishery-information}{%
 \subsection{Historical and Current Fishery Information}\label{historical-and-current-fishery-information}}
 
-Off the coast of California, north of Point Conception, copper rockfish is caught in both commercial and recreational fisheries. Recreational removals have been the largest source of fishing mortality, comprising nearly 85 percent of total removals of copper rockfish across all years (Table XX and Figure XX). The landings from the commercial fishery have been minimal by year, expect for a brief period between the mid-1980s and early-2000s.
+Off the coast of California south of Point Conception copper rockfish is caught in both commercial and recreational fisheries. Recreational removals have been the largest source of fishing mortality of copper rockfish across all years (Table \ref{tab:allcatches} and Figure \ref{fig:catch}). The recreational fishery is comprised of individual recreational fishers (Private/Rental, PR) and charter recreational private vessels (CPFV) which take groups of individuals out for day fishing trips. Across both types of recreational fishing the majority of effort occurs around rocky reefs that can be accessed via a day-trips.
 
 The recreational fishery in the early part of the 20th century was focused on nearshore waters near ports, with expanded activity further from port and into deeper depths over time (R. R. Miller et al. 2014). Prior to the groundfish fishery being declared a federal disaster in 2000, and the subsequent rebuilding period, there were no time or area closures for groundfish. Access to deeper depths during this period spread effort over a larger area and filled bag limits with a greater diversity of species from both the shelf and nearshore. This resulted in lower catch of nearshore rockfish relative to the period after 2000 when 20 to 60 fm depth restrictions ranging from 20 fm in the Northern Management Area to 60 fm in the Southern Management Area were put in place in various management area delineations along the state. This shifting effort onto the nearshore, concomitantly increased catch rates for nearshore rockfish including copper rockfish in the remaining open depths, though season lengths were greatly curtailed.
 
@@ -474,7 +531,7 @@ In the late 1980s and early 1990s a market for fish landed live arose out of Los
 
 With the development and expansion of the nearshore live fish fishery during the 1980s and 1990s, new entrants in this open access fishery were drawn by premium ex-vessel price per pound for live fish, resulting in over-capitalization of the fishery. Since 2002, the California Department of Fish and Wildlife (CDFW) has managed 19 nearshore species in accordance with Nearshore Fisheries Management Plan (Wilson-Vandenberg, Larinto, and Key 2014). In 2003, the CDFW implemented a Nearshore Restricted Access Permit system, including the requirement of a Deeper Nearshore Fishery Species Permit to retain copper rockfish, with the overall goal of reducing the number of participants to a more sustainable level, with permit issuance based on historical landings history by the retrospective qualifying date. The result was a reduction in permits issued from 1,127 in 1999 to 505 in 2003, greatly reducing catch levels. In addition, reduced trip limits, season closures in March and April and depth restrictions were implemented to address bycatch of overfished species and associated constraints from their low catch limits.
 
-Copper rockfish residing between Point Conception and the California/Oregon border are assessed here as a single, separate stock (Figure \ref{fig:map}). This designation was made based on oceanographic, geographic, and fishery conditions. The copper rockfish population in California waters was split at Point Conception due to water circulation patterns that create a natural barrier between nearshore rockfish populations to the north and south. The northern border for this assessment was defined as the California/Oregon border due to substantial differences in historical and current exploitation levels. Additionally, the fairly sedentary nature of adult copper rockfish, likely limits flow of fish between northern California and areas to the north.
+Copper rockfish residing between Point Conception and the California/Oregon border are assessed here as a single, separate stock (Figure \ref{fig:ca-map}). This designation was made based on oceanographic, geographic, and fishery conditions. The copper rockfish population in California waters was split at Point Conception due to water circulation patterns that create a natural barrier between nearshore rockfish populations to the north and south. The northern border for this assessment was defined as the California/Oregon border due to substantial differences in historical and current exploitation levels. Additionally, the fairly sedentary nature of adult copper rockfish, likely limits flow of fish between northern California and areas to the north.
 
 \hypertarget{summary-of-management-history-and-performance}{%
 \subsection{Summary of Management History and Performance}\label{summary-of-management-history-and-performance}}
@@ -632,7 +689,7 @@ Between 1987 - 1989 and 1993-1998 there were recreational length data for the CP
 
 The majority of length samples for both recreational fleets, CPFV and PR, were unsexed. A wide range of sampled lengths from the recreational CPFV fleet were observed across all years with lengths generally ranging between 25 - 45 cm except for the late 1970s and early 1980s where a higher proportion of larger fish were sampled (Figure \ref{fig:rec-cpfv-len-data}). The mean length of lengths observed in the recreational CPFV fleet since approximately 1990s is relatively stable varying between 35 - 40 cm in length with high variability within the data in the early years (Figure \ref{fig:mean-rec-cpfv-len-data}). The range of lengths sampled from the recreational PR fleet are similar to those from the CPFV fleet with lengths in recent years ranging between 25 - 45 cm with slightly larger proportion of larger fish observed in the 1980s (Figures \ref{fig:rec-pr-len-data} and \ref{fig:mean-rec-pr-len-data}).
 
-Age composition data were available for select years from both the recreational CPFV and PR fleets. Historical age data collected from the CPFV fishery were available from this fleet from 1978, 1981, and 1984. The majority of these fish were sexed (only 4 total unsexed ages from 1978 and 1984) with an average age ranging from 10 to 14 across these years (Figures \ref{fig:rec-cpfv-age-data} and \ref{fig:mean-rec-cpfv-ag-data}). The historical age data from this fleet were input as marginal ages. There were a total of 250 age samples from the final model year, 2022, collected by a cooperative sampling program with the fleet coordinated by the SWFSC (Figures \ref{fig:rec-cpfv-caal-data} and ADD MARGINAL FIGURE). These data were collected by three CPFV vessels that operate north of Point Conception following random sampling protocols. The cooperative ages were compared to all the CPFV lengths collected by the CRFS sampling program to ensure that the sampling was representative of the fishery (Figure \ref{fig:coop-len-comparison} North). These ages were incorporated as either marginal or conditional age-at-length data depending upon how fish length were measured: carcass or whole fish. The carcass lengthed fish were included as marginals in order to avoid any potential measurement bias in the use of these ages. Finally, a total of 139 ages were collected from the PR fleet in 2022 (Figure \ref{fig: rec-pr-caal-data}). These data were used in the model as conditional age-at-length data as well.
+Age composition data were available for select years from both the recreational CPFV and PR fleets. Historical age data collected from the CPFV fishery were available from this fleet from 1978, 1981, and 1984. The majority of these fish were sexed (only 4 total unsexed ages from 1978 and 1984) with an average age ranging from 10 to 14 across these years (Figures \ref{fig:rec-cpfv-caal-data} and \ref{fig:mean-rec-cpfv-age-data}). The historical age data from this fleet were input as marginal ages. There were a total of 250 age samples from the final model year, 2022, collected by a cooperative sampling program with the fleet coordinated by the SWFSC (Figures \ref{fig:rec-cpfv-caal-data} and ADD MARGINAL FIGURE). These data were collected by three CPFV vessels that operate north of Point Conception following random sampling protocols. The cooperative ages were compared to all the CPFV lengths collected by the CRFS sampling program to ensure that the sampling was representative of the fishery (Figure \ref{fig:coop-len-comparison} North). These ages were incorporated as either marginal or conditional age-at-length data depending upon how fish length were measured: carcass or whole fish. The carcass lengthed fish were included as marginals in order to avoid any potential measurement bias in the use of these ages. Finally, a total of 139 ages were collected from the PR fleet in 2022 (Figure \ref{fig:rec-pr-caal-data}). These data were used in the model as conditional age-at-length data as well.
 
 The approach to determine the number of unique trips by data source varied. Some data sources had unique trip numbers within the data (Don Pearson, Deb Wilson Vandenberg). Other data sources that lacked clear trip identifier applied a similar methodology as developed by Brian Soper that combines multiple fields of information to attempt to estimate trips sampled. The number of trips for MRFSS data was estimated using the year, wave, ID code, sampling site (INSITE), area, and mode. A similar methodology was done for CRFS and Miller and Gotshall data that used data, county, water area, interview site, and mode.
 
@@ -727,9 +784,9 @@ Maturity-at-length was based on maturity reads conducted by Melissa Head at the 
 
 The maturity-at-length curve is based on an estimate of functional maturity rather than biological maturity. Biological maturity can include multiple behaviors that functional will exclude (e.g., abortive maturation and skip spawning). Biological maturity indicates that some energy reserves were used to create vitellogenin, but it does not mean that eggs will continue to develop and successfully spawn. This includes juvenile abortive maturation. Female rockfish commonly go through the first stages of spawning the year before they reach actual spawning capability. This is most likely a factor related to their complicated reproductive process of releasing live young. A subset of oocytes will develop early yolk, and then get aborted during the spawning season. Biological maturity also does not account for the proportion of oocytes in atresia (cellular breakdown and reabsorption), which means that fish that were skipping spawning for the season could be listed as biologically mature and functionally immature (Melissa Head, personal communication, NWFSC, NOAA).
 
-The 50 percent size-at-maturity was estimated at 34 cm with a slope of -0.41 (Figure \ref{fig:maturity}). This area-specific maturity-at-length estimate is relatively similar but with fish maturing at a slightly larger size compared to the biological maturity curve assumed for copper rockfish south of Point Conception. Additionally, these values are both slightly smaller compared to estimates by Hannah (2014) for fish observed in Oregon waters (34.8 cm) which estimated the 50 percent size-at-maturity of and slope of -0.60.
+The 50 percent size-at-maturity was estimated at 33.7 cm with a slope of -0.42 (Figure \ref{fig:maturity}). This area-specific maturity-at-length estimate is relatively similar but with fish maturing at a slightly larger size compared to the biological maturity curve assumed for copper rockfish south of Point Conception. Additionally, these values are both slightly smaller compared to estimates by Hannah (2014) for fish observed in Oregon waters (34.8 cm) which estimated the 50 percent size-at-maturity of and slope of -0.60.
 
-The fecundity-at-length was based on research from Dick et al. (\textbf{dick\_meta-analysis\_2017?}). The fecundity relationship for copper rockfish was estimated equal to 3.362e-07\(L\)\textsuperscript{3.68} in millions of eggs where \(L\) is length in cm. Fecundity-at-length is shown in Figure \ref{fig:fecundity}.
+The fecundity-at-length was based on research from Dick et al. (\textbf{dick\_meta-analysis\_2017?}). The fecundity relationship for copper rockfish was estimated equal to 3.36e-07\(L\)\textsuperscript{3.68} in millions of eggs where \(L\) is length in cm. Fecundity-at-length is shown in Figure \ref{fig:fecundity}.
 
 \hypertarget{sex-ratio}{%
 \subsubsection{Sex Ratio}\label{sex-ratio}}
@@ -1072,113 +1129,113 @@ Year & Commercial (Dead) & Commercial (Live) & Rec. CPFV & Rec. PR & Total Landi
 \endfoot
 \bottomrule
 \endlastfoot
-1916 & 4.0 & 0.0 & 0.0 & 0.0 & 4.0\\
-1917 & 6.2 & 0.0 & 0.0 & 0.0 & 6.2\\
-1918 & 7.5 & 0.0 & 0.0 & 0.0 & 7.5\\
-1919 & 4.9 & 0.0 & 0.0 & 0.0 & 4.9\\
-1920 & 5.1 & 0.0 & 0.0 & 0.0 & 5.1\\
-1921 & 4.3 & 0.0 & 0.0 & 0.0 & 4.3\\
-1922 & 3.7 & 0.0 & 0.0 & 0.0 & 3.7\\
-1923 & 3.9 & 0.0 & 0.0 & 0.0 & 3.9\\
-1924 & 2.6 & 0.0 & 0.0 & 0.0 & 2.6\\
-1925 & 3.8 & 0.0 & 0.0 & 0.0 & 3.8\\
-1926 & 4.9 & 0.0 & 0.0 & 0.0 & 4.9\\
-1927 & 3.6 & 0.0 & 0.0 & 0.0 & 3.6\\
-1928 & 3.6 & 0.0 & 1.0 & 0.6 & 5.2\\
-1929 & 3.0 & 0.0 & 1.9 & 1.2 & 6.2\\
-1930 & 5.3 & 0.0 & 2.2 & 1.4 & 9.0\\
-1931 & 6.3 & 0.0 & 3.0 & 1.9 & 11.1\\
-1932 & 5.7 & 0.0 & 3.7 & 2.4 & 11.7\\
-1933 & 4.9 & 0.0 & 4.4 & 2.8 & 12.1\\
-1934 & 3.6 & 0.0 & 5.2 & 3.3 & 12.0\\
-1935 & 5.7 & 0.0 & 5.9 & 3.8 & 15.3\\
-1936 & 5.2 & 0.0 & 6.6 & 4.2 & 16.1\\
-1937 & 5.9 & 0.0 & 7.9 & 5.0 & 18.8\\
-1938 & 5.2 & 0.0 & 7.7 & 5.0 & 17.9\\
-1939 & 5.0 & 0.0 & 6.8 & 4.3 & 16.1\\
-1940 & 4.8 & 0.0 & 9.7 & 6.2 & 20.8\\
-1941 & 5.2 & 0.0 & 9.0 & 5.8 & 20.0\\
-1942 & 1.8 & 0.0 & 4.8 & 3.1 & 9.6\\
-1943 & 2.9 & 0.0 & 4.6 & 2.9 & 10.4\\
-1944 & 8.7 & 0.0 & 3.8 & 2.4 & 14.8\\
-1945 & 21.4 & 0.0 & 5.0 & 3.2 & 29.6\\
-1946 & 23.9 & 0.0 & 8.6 & 5.5 & 38.0\\
-1947 & 7.2 & 0.0 & 6.8 & 4.4 & 18.3\\
-1948 & 9.6 & 0.0 & 13.6 & 8.7 & 31.9\\
-1949 & 5.2 & 0.0 & 17.6 & 11.3 & 34.1\\
-1950 & 4.1 & 0.0 & 21.5 & 13.8 & 39.3\\
-1951 & 8.9 & 0.0 & 24.5 & 20.5 & 53.9\\
-1952 & 5.9 & 0.0 & 21.3 & 17.8 & 45.1\\
-1953 & 2.9 & 0.0 & 18.2 & 15.2 & 36.3\\
-1954 & 5.5 & 0.0 & 22.6 & 18.9 & 46.9\\
-1955 & 2.9 & 0.0 & 26.9 & 22.5 & 52.4\\
-1956 & 4.9 & 0.0 & 30.1 & 25.1 & 60.1\\
-1957 & 5.6 & 0.0 & 28.1 & 24.5 & 58.3\\
-1958 & 6.5 & 0.0 & 52.4 & 40.3 & 99.2\\
-1959 & 7.4 & 0.0 & 39.2 & 33.7 & 80.3\\
-1960 & 10.0 & 0.0 & 32.3 & 26.1 & 68.3\\
-1961 & 7.3 & 0.0 & 24.1 & 19.7 & 51.1\\
-1962 & 5.2 & 0.0 & 27.1 & 31.3 & 63.6\\
-1963 & 6.2 & 0.0 & 32.3 & 40.8 & 79.3\\
-1964 & 4.2 & 0.0 & 22.5 & 44.0 & 70.7\\
-1965 & 4.5 & 0.0 & 37.1 & 63.3 & 104.9\\
-1966 & 5.5 & 0.0 & 40.8 & 74.8 & 121.0\\
-1967 & 6.2 & 0.0 & 38.3 & 83.8 & 128.4\\
-1968 & 3.3 & 0.0 & 37.6 & 95.1 & 136.0\\
-1969 & 2.4 & 0.0 & 36.8 & 106.6 & 145.8\\
-1970 & 2.5 & 0.0 & 53.7 & 125.0 & 181.2\\
-1971 & 4.4 & 0.0 & 39.8 & 125.0 & 169.2\\
-1972 & 6.9 & 0.0 & 60.9 & 147.5 & 215.2\\
-1973 & 6.7 & 0.0 & 69.3 & 170.4 & 246.3\\
-1974 & 15.7 & 0.0 & 70.4 & 184.3 & 270.4\\
-1975 & 8.4 & 0.0 & 67.3 & 192.2 & 268.0\\
-1976 & 15.9 & 0.0 & 69.5 & 211.1 & 296.5\\
-1977 & 13.9 & 0.0 & 78.6 & 213.7 & 306.1\\
-1978 & 2.5 & 0.0 & 62.3 & 216.7 & 281.5\\
-1979 & 2.8 & 0.0 & 56.4 & 233.6 & 292.8\\
-1980 & 39.6 & 0.0 & 55.1 & 210.4 & 305.2\\
-1981 & 9.6 & 0.0 & 106.9 & 171.2 & 287.8\\
-1982 & 12.9 & 0.0 & 106.7 & 164.4 & 284.0\\
-1983 & 69.0 & 0.0 & 64.4 & 76.3 & 209.8\\
-1984 & 43.2 & 0.0 & 49.0 & 92.9 & 185.1\\
-1985 & 25.4 & 0.0 & 42.6 & 138.4 & 206.5\\
-1986 & 10.4 & 0.0 & 47.6 & 106.9 & 165.0\\
-1987 & 13.8 & 0.0 & 17.6 & 68.8 & 100.2\\
-1988 & 17.9 & 0.0 & 25.5 & 69.2 & 112.7\\
-1989 & 33.8 & 0.0 & 42.3 & 46.3 & 122.4\\
-1990 & 43.3 & 0.0 & 28.5 & 61.4 & 133.2\\
-1991 & 52.4 & 0.0 & 25.7 & 53.7 & 131.8\\
-1992 & 71.3 & 0.0 & 24.7 & 46.0 & 142.0\\
-1993 & 68.6 & 0.2 & 22.8 & 71.2 & 162.7\\
-1994 & 25.4 & 6.0 & 17.1 & 44.9 & 93.5\\
-1995 & 34.3 & 8.5 & 11.3 & 21.9 & 76.1\\
-1996 & 36.5 & 17.3 & 10.3 & 19.9 & 84.0\\
-1997 & 38.6 & 7.1 & 18.5 & 15.8 & 80.0\\
-1998 & 23.2 & 5.3 & 5.2 & 11.1 & 44.9\\
-1999 & 8.0 & 7.8 & 11.8 & 9.4 & 37.0\\
-2000 & 2.9 & 4.8 & 19.8 & 4.2 & 31.6\\
-2001 & 4.3 & 7.4 & 12.3 & 4.9 & 28.9\\
-2002 & 3.2 & 6.2 & 10.3 & 2.1 & 21.8\\
-2003 & 1.0 & 1.6 & 3.8 & 17.4 & 23.8\\
-2004 & 1.3 & 2.0 & 6.5 & 9.1 & 18.9\\
-2005 & 0.9 & 2.8 & 18.2 & 13.0 & 34.9\\
-2006 & 0.8 & 2.2 & 16.8 & 16.5 & 36.2\\
-2007 & 1.1 & 4.7 & 17.4 & 18.8 & 42.0\\
-2008 & 1.0 & 4.0 & 9.8 & 17.0 & 31.8\\
-2009 & 0.8 & 1.7 & 14.7 & 22.0 & 39.2\\
-2010 & 0.6 & 1.1 & 14.3 & 11.5 & 27.5\\
-2011 & 0.6 & 1.9 & 8.8 & 14.6 & 25.9\\
-2012 & 0.9 & 2.3 & 12.2 & 19.5 & 34.9\\
-2013 & 0.7 & 2.1 & 8.8 & 14.0 & 25.6\\
-2014 & 0.7 & 2.5 & 16.1 & 17.6 & 36.9\\
-2015 & 0.8 & 2.7 & 24.2 & 37.8 & 65.5\\
-2016 & 0.8 & 2.6 & 28.7 & 34.2 & 66.3\\
-2017 & 1.4 & 4.6 & 56.5 & 76.1 & 138.6\\
-2018 & 3.0 & 6.4 & 44.0 & 49.0 & 102.4\\
-2019 & 2.5 & 6.9 & 39.2 & 53.4 & 101.9\\
-2020 & 3.9 & 7.5 & 59.6 & 85.1 & 156.2\\
-2021 & 3.1 & 7.5 & 54.9 & 41.4 & 107.0\\
-2022 & 1.2 & 1.9 & 11.5 & 32.5 & 47.1\\*
+1916 & 0.1 & 0.0 & 0.0 & 0.0 & 0.1\\
+1917 & 0.2 & 0.0 & 0.0 & 0.0 & 0.2\\
+1918 & 0.2 & 0.0 & 0.0 & 0.0 & 0.2\\
+1919 & 0.1 & 0.0 & 0.0 & 0.0 & 0.1\\
+1920 & 0.1 & 0.0 & 0.0 & 0.0 & 0.1\\
+1921 & 0.1 & 0.0 & 0.0 & 0.0 & 0.1\\
+1922 & 0.1 & 0.0 & 0.0 & 0.0 & 0.1\\
+1923 & 0.1 & 0.0 & 0.0 & 0.0 & 0.1\\
+1924 & 0.2 & 0.0 & 0.0 & 0.0 & 0.2\\
+1925 & 0.2 & 0.0 & 0.0 & 0.0 & 0.2\\
+1926 & 0.2 & 0.0 & 0.0 & 0.0 & 0.2\\
+1927 & 0.2 & 0.0 & 0.0 & 0.0 & 0.2\\
+1928 & 0.2 & 0.0 & 0.0 & 0.0 & 0.2\\
+1929 & 0.2 & 0.0 & 0.0 & 0.0 & 0.2\\
+1930 & 0.2 & 0.0 & 0.0 & 0.1 & 0.3\\
+1931 & 0.2 & 0.0 & 0.0 & 0.1 & 0.3\\
+1932 & 0.2 & 0.0 & 0.0 & 0.1 & 0.3\\
+1933 & 0.0 & 0.0 & 0.0 & 0.1 & 0.2\\
+1934 & 0.1 & 0.0 & 0.0 & 0.1 & 0.3\\
+1935 & 0.4 & 0.0 & 0.0 & 0.2 & 0.6\\
+1936 & 0.2 & 0.0 & 0.0 & 0.2 & 0.4\\
+1937 & 0.9 & 0.0 & 0.0 & 0.2 & 1.2\\
+1938 & 0.4 & 0.0 & 0.1 & 0.2 & 0.7\\
+1939 & 0.2 & 0.0 & 0.1 & 0.2 & 0.5\\
+1940 & 0.4 & 0.0 & 0.0 & 0.1 & 0.5\\
+1941 & 0.4 & 0.0 & 0.0 & 0.1 & 0.6\\
+1942 & 0.0 & 0.0 & 0.0 & 0.1 & 0.1\\
+1943 & 0.1 & 0.0 & 0.0 & 0.1 & 0.2\\
+1944 & 0.0 & 0.0 & 0.0 & 0.0 & 0.1\\
+1945 & 0.1 & 0.0 & 0.0 & 0.1 & 0.2\\
+1946 & 0.0 & 0.0 & 0.0 & 0.1 & 0.2\\
+1947 & 0.0 & 0.0 & 0.3 & 0.4 & 0.7\\
+1948 & 0.1 & 0.0 & 0.7 & 1.1 & 1.8\\
+1949 & 0.2 & 0.0 & 0.8 & 1.3 & 2.3\\
+1950 & 0.3 & 0.0 & 1.3 & 1.6 & 3.2\\
+1951 & 3.7 & 0.0 & 0.8 & 1.4 & 5.8\\
+1952 & 1.5 & 0.0 & 1.2 & 1.7 & 4.5\\
+1953 & 0.5 & 0.0 & 1.6 & 2.0 & 4.1\\
+1954 & 0.2 & 0.0 & 3.7 & 4.6 & 8.6\\
+1955 & 0.0 & 0.0 & 8.5 & 8.2 & 16.7\\
+1956 & 0.2 & 0.0 & 8.6 & 9.5 & 18.3\\
+1957 & 0.4 & 0.0 & 4.8 & 5.6 & 10.8\\
+1958 & 0.8 & 0.0 & 6.3 & 3.8 & 10.9\\
+1959 & 0.5 & 0.0 & 3.2 & 2.2 & 5.9\\
+1960 & 0.8 & 0.0 & 3.7 & 2.3 & 6.8\\
+1961 & 2.5 & 0.0 & 4.5 & 2.6 & 9.6\\
+1962 & 1.4 & 0.0 & 2.6 & 2.5 & 6.5\\
+1963 & 1.2 & 0.0 & 3.2 & 2.5 & 7.0\\
+1964 & 0.6 & 0.0 & 7.6 & 3.6 & 11.8\\
+1965 & 1.4 & 0.0 & 6.6 & 9.3 & 17.3\\
+1966 & 1.1 & 0.0 & 24.0 & 18.6 & 43.7\\
+1967 & 2.7 & 0.0 & 20.2 & 27.8 & 50.6\\
+1968 & 1.5 & 0.0 & 22.6 & 35.1 & 59.2\\
+1969 & 0.3 & 0.0 & 11.7 & 34.9 & 47.0\\
+1970 & 0.2 & 0.0 & 15.8 & 53.5 & 69.5\\
+1971 & 0.4 & 0.0 & 12.9 & 53.5 & 66.8\\
+1972 & 0.5 & 0.0 & 17.2 & 74.5 & 92.2\\
+1973 & 0.6 & 0.0 & 18.8 & 92.1 & 111.5\\
+1974 & 0.8 & 0.0 & 22.6 & 114.8 & 138.1\\
+1975 & 1.5 & 0.0 & 22.8 & 117.8 & 142.1\\
+1976 & 2.0 & 0.0 & 17.3 & 97.6 & 116.9\\
+1977 & 2.1 & 0.0 & 14.0 & 93.0 & 109.0\\
+1978 & 2.7 & 0.0 & 13.8 & 91.4 & 108.0\\
+1979 & 4.9 & 0.0 & 15.5 & 131.3 & 151.7\\
+1980 & 4.4 & 0.0 & 18.1 & 125.4 & 147.9\\
+1981 & 4.3 & 0.0 & 38.3 & 43.0 & 85.6\\
+1982 & 5.5 & 0.0 & 76.3 & 74.9 & 156.7\\
+1983 & 4.4 & 0.0 & 26.6 & 51.0 & 82.0\\
+1984 & 3.7 & 0.0 & 24.1 & 63.6 & 91.4\\
+1985 & 4.1 & 0.0 & 26.6 & 85.0 & 115.7\\
+1986 & 4.0 & 0.0 & 40.2 & 57.0 & 101.2\\
+1987 & 3.5 & 0.0 & 24.8 & 50.0 & 78.3\\
+1988 & 4.9 & 0.0 & 23.1 & 24.2 & 52.2\\
+1989 & 3.8 & 0.0 & 32.8 & 16.9 & 53.4\\
+1990 & 2.8 & 0.0 & 26.9 & 30.4 & 60.0\\
+1991 & 8.7 & 0.0 & 19.4 & 24.4 & 52.6\\
+1992 & 3.4 & 0.0 & 11.9 & 18.5 & 33.8\\
+1993 & 3.6 & 0.0 & 6.2 & 10.2 & 20.0\\
+1994 & 7.2 & 0.1 & 21.8 & 33.4 & 62.5\\
+1995 & 28.5 & 3.0 & 7.8 & 11.9 & 51.2\\
+1996 & 33.3 & 2.6 & 43.4 & 17.9 & 97.1\\
+1997 & 32.6 & 3.9 & 2.2 & 4.1 & 42.8\\
+1998 & 25.0 & 3.3 & 16.3 & 10.2 & 54.8\\
+1999 & 0.3 & 0.5 & 36.5 & 12.5 & 49.8\\
+2000 & 2.4 & 2.3 & 6.1 & 16.6 & 27.5\\
+2001 & 1.2 & 2.5 & 6.4 & 10.4 & 20.5\\
+2002 & 2.5 & 1.7 & 2.5 & 7.7 & 14.4\\
+2003 & 0.2 & 0.3 & 7.1 & 9.9 & 17.5\\
+2004 & 1.7 & 1.4 & 9.5 & 4.2 & 16.8\\
+2005 & 1.0 & 0.7 & 24.3 & 3.8 & 29.8\\
+2006 & 0.5 & 0.6 & 6.6 & 6.0 & 13.7\\
+2007 & 0.4 & 0.4 & 20.1 & 11.4 & 32.3\\
+2008 & 0.5 & 0.4 & 16.0 & 10.0 & 26.9\\
+2009 & 0.6 & 1.3 & 15.5 & 7.5 & 24.9\\
+2010 & 0.1 & 1.4 & 14.7 & 7.1 & 23.4\\
+2011 & 0.2 & 1.2 & 34.9 & 8.5 & 44.8\\
+2012 & 1.2 & 1.7 & 39.9 & 8.3 & 51.0\\
+2013 & 1.3 & 2.7 & 61.6 & 14.0 & 79.5\\
+2014 & 1.8 & 2.3 & 47.6 & 10.0 & 61.7\\
+2015 & 2.1 & 4.1 & 67.0 & 9.0 & 82.2\\
+2016 & 2.1 & 3.6 & 82.2 & 11.1 & 99.0\\
+2017 & 1.7 & 2.8 & 70.6 & 11.7 & 86.9\\
+2018 & 2.9 & 2.2 & 82.0 & 14.2 & 101.3\\
+2019 & 2.7 & 3.1 & 60.2 & 14.7 & 80.7\\
+2020 & 3.5 & 3.6 & 56.4 & 23.0 & 86.5\\
+2021 & 2.7 & 1.9 & 44.2 & 8.3 & 57.2\\
+2022 & 0.7 & 0.2 & 14.1 & 4.5 & 19.5\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -1203,17 +1260,17 @@ Year & OFL (mt) & ACL (mt) & Catch (mt)\\
 \endfoot
 \bottomrule
 \endlastfoot
-2012 & 163.15 & 136.17 & 85.95\\
-2013 & 148.00 & 123.42 & 105.18\\
-2014 & 148.00 & 123.42 & 98.65\\
-2015 & 303.75 & 277.32 & 147.64\\
-2016 & 286.88 & 261.95 & 165.27\\
-2017 & 313.70 & 286.38 & 225.48\\
-2018 & 319.60 & 291.85 & 203.69\\
-2019 & 325.08 & 296.83 & 182.59\\
-2020 & 330.35 & 301.60 & 242.73\\
-2021 & 249.85 & 206.43 & 164.20\\
-2022 & 249.48 & 204.02 & 66.67\\*
+2012 & 163.15 & 136.17 & 102.08\\
+2013 & 148.00 & 123.42 & 159.08\\
+2014 & 148.00 & 123.42 & 123.42\\
+2015 & 303.75 & 277.32 & 164.36\\
+2016 & 286.88 & 261.95 & 197.90\\
+2017 & 313.70 & 286.38 & 173.73\\
+2018 & 319.60 & 291.85 & 202.62\\
+2019 & 325.08 & 296.83 & 161.40\\
+2020 & 330.35 & 301.60 & 173.04\\
+2021 & 249.85 & 206.43 & 114.41\\
+2022 & 249.48 & 204.02 & 39.04\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -1255,154 +1312,174 @@ Parameter & Value & Phase & Bounds & Status & SD & Prior (Exp.Val, SD)\\
 \endfoot
 \bottomrule
 \endlastfoot
-NatM uniform Fem GP 1 & 0.108 & -2 & (0.05, 0.4) & NA & NA & Log Norm (-2.2256, 0.31)\\
-L at Amin Fem GP 1 & 14.583 & -2 & (6, 25) & NA & NA & None\\
-L at Amax Fem GP 1 & 48.401 & 2 & (35, 54) & OK & 0.4372850 & None\\
-VonBert K Fem GP 1 & 0.154 & 2 & (0.03, 0.35) & OK & 0.0085293 & None\\
-CV young Fem GP 1 & 0.154 & 2 & (0.01, 0.3) & OK & 0.0219014 & None\\
-CV old Fem GP 1 & 0.074 & 2 & (0.01, 0.3) & OK & 0.0066717 & None\\
+NatM uniform Fem GP 1 & 0.117 & 2 & (0.05, 0.4) & OK & 0.0115078 & Log Norm (-2.2256, 0.31)\\
+L at Amin Fem GP 1 & 17.442 & 2 & (10, 25) & OK & 0.5485560 & None\\
+L at Amax Fem GP 1 & 46.697 & 2 & (35, 54) & OK & 0.3605700 & None\\
+VonBert K Fem GP 1 & 0.188 & 2 & (0.03, 0.35) & OK & 0.0102786 & None\\
+CV young Fem GP 1 & 0.150 & -2 & (0.01, 1) & NA & NA & None\\
+CV old Fem GP 1 & 0.067 & 2 & (0.01, 1) & OK & 0.0036675 & None\\
 Wtlen 1 Fem GP 1 & 0.000 & -9 & (0, 0.1) & NA & NA & None\\
 Wtlen 2 Fem GP 1 & 3.190 & -9 & (2, 4) & NA & NA & None\\
-Mat50\% Fem GP 1 & 34.040 & -9 & (10, 50) & NA & NA & None\\
-Mat slope Fem GP 1 & -0.410 & -9 & (-1, 0) & NA & NA & None\\
+Mat50\% Fem GP 1 & 33.700 & -9 & (10, 54) & NA & NA & None\\
+Mat slope Fem GP 1 & -0.425 & -9 & (-1, 0) & NA & NA & None\\
 Eggs scalar Fem GP 1 & 0.000 & -9 & (-3, 3) & NA & NA & None\\
 Eggs exp len Fem GP 1 & 3.679 & -9 & (-3, 4) & NA & NA & None\\
-NatM uniform Mal GP 1 & 0.108 & -2 & (0.05, 0.4) & NA & NA & Log Norm (-2.2256, 0.31)\\
-L at Amin Mal GP 1 & 12.637 & -2 & (6, 25) & NA & NA & None\\
-L at Amax Mal GP 1 & 46.640 & 2 & (35, 54) & OK & 0.4246640 & None\\
-VonBert K Mal GP 1 & 0.194 & 2 & (0.03, 0.3) & OK & 0.0094345 & None\\
-CV young Mal GP 1 & 0.152 & 2 & (0.01, 0.3) & OK & 0.0268574 & None\\
-CV old Mal GP 1 & 0.074 & 2 & (0.01, 0.3) & OK & 0.0083439 & None\\
+NatM uniform Mal GP 1 & 0.129 & 2 & (0.05, 0.4) & OK & 0.0127108 & Log Norm (-2.2256, 0.31)\\
+L at Amin Mal GP 1 & 17.505 & 2 & (10, 25) & OK & 0.6895360 & None\\
+L at Amax Mal GP 1 & 44.966 & 2 & (35, 54) & OK & 0.4277730 & None\\
+VonBert K Mal GP 1 & 0.223 & 2 & (0.03, 0.35) & OK & 0.0147559 & None\\
+CV young Mal GP 1 & 0.150 & -2 & (0.01, 1) & NA & NA & None\\
+CV old Mal GP 1 & 0.070 & 2 & (0.01, 1) & OK & 0.0039815 & None\\
 Wtlen 1 Mal GP 1 & 0.000 & -9 & (0, 0.1) & NA & NA & None\\
 Wtlen 2 Mal GP 1 & 3.150 & -9 & (2, 4) & NA & NA & None\\
 CohortGrowDev & 1.000 & -9 & (0, 1) & NA & NA & None\\
 FracFemale GP 1 & 0.500 & -9 & (0.01, 0.99) & NA & NA & None\\
-SR LN(R0) & 6.337 & 1 & (2, 20) & OK & 0.0971554 & None\\
-SR BH steep & 0.720 & -7 & (0.22, 1) & NA & NA & Normal (0.72, 0.16)\\
-SR sigmaR & 0.500 & -99 & (0.15, 0.9) & NA & NA & None\\
+SR LN(R0) & 5.631 & 1 & (2, 20) & OK & 0.1464300 & None\\
+SR BH steep & 0.720 & -7 & (0.22, 1) & NA & NA & Full Beta (0.72, 0.16)\\
+SR sigmaR & 0.600 & -99 & (0.15, 0.9) & NA & NA & None\\
 SR regime & 0.000 & -99 & (-2, 2) & NA & NA & None\\
 SR autocorr & 0.000 & -99 & (0, 0) & NA & NA & None\\
-Early InitAge 16 & 0.002 & 5 & (-5, 5) & act & 0.5005360 & dev (NA, NA)\\
-Early InitAge 15 & 0.002 & 5 & (-5, 5) & act & 0.5005910 & dev (NA, NA)\\
-Early InitAge 14 & 0.003 & 5 & (-5, 5) & act & 0.5006520 & dev (NA, NA)\\
-Early InitAge 13 & 0.003 & 5 & (-5, 5) & act & 0.5007180 & dev (NA, NA)\\
-Early InitAge 12 & 0.003 & 5 & (-5, 5) & act & 0.5007900 & dev (NA, NA)\\
-Early InitAge 11 & 0.004 & 5 & (-5, 5) & act & 0.5008680 & dev (NA, NA)\\
-Early InitAge 10 & 0.004 & 5 & (-5, 5) & act & 0.5009510 & dev (NA, NA)\\
-Early InitAge 9 & 0.004 & 5 & (-5, 5) & act & 0.5010410 & dev (NA, NA)\\
-Early InitAge 8 & 0.005 & 5 & (-5, 5) & act & 0.5011370 & dev (NA, NA)\\
-Early InitAge 7 & 0.005 & 5 & (-5, 5) & act & 0.5012390 & dev (NA, NA)\\
-Early InitAge 6 & 0.006 & 5 & (-5, 5) & act & 0.5013470 & dev (NA, NA)\\
-Early InitAge 5 & 0.006 & 5 & (-5, 5) & act & 0.5014630 & dev (NA, NA)\\
-Early InitAge 4 & 0.007 & 5 & (-5, 5) & act & 0.5015880 & dev (NA, NA)\\
-Early InitAge 3 & 0.007 & 5 & (-5, 5) & act & 0.5017230 & dev (NA, NA)\\
-Early InitAge 2 & 0.008 & 5 & (-5, 5) & act & 0.5018700 & dev (NA, NA)\\
-Early InitAge 1 & 0.008 & 5 & (-5, 5) & act & 0.5020300 & dev (NA, NA)\\
-Early RecrDev 1916 & 0.009 & 5 & (-5, 5) & act & 0.5022030 & dev (NA, NA)\\
-Early RecrDev 1917 & 0.010 & 5 & (-5, 5) & act & 0.5023900 & dev (NA, NA)\\
-Early RecrDev 1918 & 0.011 & 5 & (-5, 5) & act & 0.5025920 & dev (NA, NA)\\
-Early RecrDev 1919 & 0.012 & 5 & (-5, 5) & act & 0.5028110 & dev (NA, NA)\\
-Early RecrDev 1920 & 0.013 & 5 & (-5, 5) & act & 0.5030480 & dev (NA, NA)\\
-Early RecrDev 1921 & 0.014 & 5 & (-5, 5) & act & 0.5033040 & dev (NA, NA)\\
-Early RecrDev 1922 & 0.015 & 5 & (-5, 5) & act & 0.5035800 & dev (NA, NA)\\
-Early RecrDev 1923 & 0.016 & 5 & (-5, 5) & act & 0.5038780 & dev (NA, NA)\\
-Early RecrDev 1924 & 0.017 & 5 & (-5, 5) & act & 0.5041990 & dev (NA, NA)\\
-Early RecrDev 1925 & 0.019 & 5 & (-5, 5) & act & 0.5045460 & dev (NA, NA)\\
-Early RecrDev 1926 & 0.020 & 5 & (-5, 5) & act & 0.5049200 & dev (NA, NA)\\
-Early RecrDev 1927 & 0.022 & 5 & (-5, 5) & act & 0.5053240 & dev (NA, NA)\\
-Early RecrDev 1928 & 0.024 & 5 & (-5, 5) & act & 0.5057600 & dev (NA, NA)\\
-Early RecrDev 1929 & 0.026 & 5 & (-5, 5) & act & 0.5063160 & dev (NA, NA)\\
-Early RecrDev 1930 & 0.029 & 5 & (-5, 5) & act & 0.5069250 & dev (NA, NA)\\
-Early RecrDev 1931 & 0.031 & 5 & (-5, 5) & act & 0.5075860 & dev (NA, NA)\\
-Early RecrDev 1932 & 0.034 & 5 & (-5, 5) & act & 0.5083090 & dev (NA, NA)\\
-Early RecrDev 1933 & 0.037 & 5 & (-5, 5) & act & 0.5090900 & dev (NA, NA)\\
-Early RecrDev 1934 & 0.041 & 5 & (-5, 5) & act & 0.5099230 & dev (NA, NA)\\
-Early RecrDev 1935 & 0.045 & 5 & (-5, 5) & act & 0.5108500 & dev (NA, NA)\\
-Early RecrDev 1936 & 0.048 & 5 & (-5, 5) & act & 0.5118420 & dev (NA, NA)\\
-Early RecrDev 1937 & 0.053 & 5 & (-5, 5) & act & 0.5129160 & dev (NA, NA)\\
-Early RecrDev 1938 & 0.057 & 5 & (-5, 5) & act & 0.5140900 & dev (NA, NA)\\
-Early RecrDev 1939 & 0.063 & 5 & (-5, 5) & act & 0.5153920 & dev (NA, NA)\\
-Early RecrDev 1940 & 0.068 & 5 & (-5, 5) & act & 0.5168610 & dev (NA, NA)\\
-Early RecrDev 1941 & 0.075 & 5 & (-5, 5) & act & 0.5185360 & dev (NA, NA)\\
-Early RecrDev 1942 & 0.082 & 5 & (-5, 5) & act & 0.5204460 & dev (NA, NA)\\
-Early RecrDev 1943 & 0.091 & 5 & (-5, 5) & act & 0.5226000 & dev (NA, NA)\\
-Early RecrDev 1944 & 0.100 & 5 & (-5, 5) & act & 0.5249600 & dev (NA, NA)\\
-Early RecrDev 1945 & 0.110 & 5 & (-5, 5) & act & 0.5274600 & dev (NA, NA)\\
-Early RecrDev 1946 & 0.120 & 5 & (-5, 5) & act & 0.5299870 & dev (NA, NA)\\
-Early RecrDev 1947 & 0.129 & 5 & (-5, 5) & act & 0.5323970 & dev (NA, NA)\\
-Early RecrDev 1948 & 0.137 & 5 & (-5, 5) & act & 0.5345380 & dev (NA, NA)\\
-Early RecrDev 1949 & 0.144 & 5 & (-5, 5) & act & 0.5361950 & dev (NA, NA)\\
-Early RecrDev 1950 & 0.149 & 5 & (-5, 5) & act & 0.5372320 & dev (NA, NA)\\
-Early RecrDev 1951 & 0.152 & 5 & (-5, 5) & act & 0.5376180 & dev (NA, NA)\\
-Early RecrDev 1952 & 0.154 & 5 & (-5, 5) & act & 0.5374520 & dev (NA, NA)\\
-Early RecrDev 1953 & 0.157 & 5 & (-5, 5) & act & 0.5370420 & dev (NA, NA)\\
-Early RecrDev 1954 & 0.162 & 5 & (-5, 5) & act & 0.5367140 & dev (NA, NA)\\
-Early RecrDev 1955 & 0.168 & 5 & (-5, 5) & act & 0.5367890 & dev (NA, NA)\\
-Early RecrDev 1956 & 0.176 & 5 & (-5, 5) & act & 0.5386040 & dev (NA, NA)\\
-Early RecrDev 1957 & 0.171 & 5 & (-5, 5) & act & 0.5411260 & dev (NA, NA)\\
-Early RecrDev 1958 & 0.168 & 5 & (-5, 5) & act & 0.5411560 & dev (NA, NA)\\
-Early RecrDev 1959 & 0.172 & 5 & (-5, 5) & act & 0.5420560 & dev (NA, NA)\\
-Early RecrDev 1960 & 0.194 & 5 & (-5, 5) & act & 0.5472150 & dev (NA, NA)\\
-Early RecrDev 1961 & 0.240 & 5 & (-5, 5) & act & 0.5588460 & dev (NA, NA)\\
-Early RecrDev 1962 & 0.300 & 5 & (-5, 5) & act & 0.5762850 & dev (NA, NA)\\
-Early RecrDev 1963 & 0.353 & 5 & (-5, 5) & act & 0.5966210 & dev (NA, NA)\\
-Early RecrDev 1964 & 0.432 & 5 & (-5, 5) & act & 0.6276120 & dev (NA, NA)\\
-Early RecrDev 1965 & 0.548 & 5 & (-5, 5) & act & 0.6765520 & dev (NA, NA)\\
-Early RecrDev 1966 & 0.640 & 5 & (-5, 5) & act & 0.7212960 & dev (NA, NA)\\
-Early RecrDev 1967 & 0.639 & 5 & (-5, 5) & act & 0.6970270 & dev (NA, NA)\\
-Early RecrDev 1968 & 0.519 & 5 & (-5, 5) & act & 0.6152570 & dev (NA, NA)\\
-Early RecrDev 1969 & 0.304 & 5 & (-5, 5) & act & 0.5298390 & dev (NA, NA)\\
-Main RecrDev 1970 & 0.105 & 2 & (-5, 5) & act & 0.4602050 & dev (NA, NA)\\
-Main RecrDev 1971 & -0.183 & 2 & (-5, 5) & act & 0.4147490 & dev (NA, NA)\\
-Main RecrDev 1972 & -0.418 & 2 & (-5, 5) & act & 0.3882020 & dev (NA, NA)\\
-Main RecrDev 1973 & -0.372 & 2 & (-5, 5) & act & 0.3602760 & dev (NA, NA)\\
-Main RecrDev 1974 & -0.429 & 2 & (-5, 5) & act & 0.3580490 & dev (NA, NA)\\
-Main RecrDev 1975 & -0.374 & 2 & (-5, 5) & act & 0.3425140 & dev (NA, NA)\\
-Main RecrDev 1976 & -0.471 & 2 & (-5, 5) & act & 0.3354620 & dev (NA, NA)\\
-Main RecrDev 1977 & -0.544 & 2 & (-5, 5) & act & 0.3062000 & dev (NA, NA)\\
-Main RecrDev 1978 & -0.780 & 2 & (-5, 5) & act & 0.3055380 & dev (NA, NA)\\
-Main RecrDev 1979 & -0.988 & 2 & (-5, 5) & act & 0.3091900 & dev (NA, NA)\\
-Main RecrDev 1980 & -0.829 & 2 & (-5, 5) & act & 0.3101430 & dev (NA, NA)\\
-Main RecrDev 1981 & -0.374 & 2 & (-5, 5) & act & 0.2634890 & dev (NA, NA)\\
-Main RecrDev 1982 & -0.712 & 2 & (-5, 5) & act & 0.3140870 & dev (NA, NA)\\
-Main RecrDev 1983 & -0.692 & 2 & (-5, 5) & act & 0.3357210 & dev (NA, NA)\\
-Main RecrDev 1984 & -0.025 & 2 & (-5, 5) & act & 0.3184590 & dev (NA, NA)\\
-Main RecrDev 1985 & 0.173 & 2 & (-5, 5) & act & 0.3104140 & dev (NA, NA)\\
-Main RecrDev 1986 & -0.338 & 2 & (-5, 5) & act & 0.3665730 & dev (NA, NA)\\
-Main RecrDev 1987 & -0.438 & 2 & (-5, 5) & act & 0.3557730 & dev (NA, NA)\\
-Main RecrDev 1988 & -0.348 & 2 & (-5, 5) & act & 0.3544940 & dev (NA, NA)\\
-Main RecrDev 1989 & 0.052 & 2 & (-5, 5) & act & 0.3085760 & dev (NA, NA)\\
-Main RecrDev 1990 & 0.236 & 2 & (-5, 5) & act & 0.2733810 & dev (NA, NA)\\
-Main RecrDev 1991 & -0.095 & 2 & (-5, 5) & act & 0.3218830 & dev (NA, NA)\\
-Main RecrDev 1992 & -0.207 & 2 & (-5, 5) & act & 0.3618540 & dev (NA, NA)\\
-Main RecrDev 1993 & 0.212 & 2 & (-5, 5) & act & 0.3125740 & dev (NA, NA)\\
-Main RecrDev 1994 & 0.020 & 2 & (-5, 5) & act & 0.3411330 & dev (NA, NA)\\
-Main RecrDev 1995 & -0.373 & 2 & (-5, 5) & act & 0.3559270 & dev (NA, NA)\\
-Main RecrDev 1996 & -0.311 & 2 & (-5, 5) & act & 0.3284980 & dev (NA, NA)\\
-Main RecrDev 1997 & -0.170 & 2 & (-5, 5) & act & 0.3196660 & dev (NA, NA)\\
-Main RecrDev 1998 & -0.100 & 2 & (-5, 5) & act & 0.3167430 & dev (NA, NA)\\
-Main RecrDev 1999 & -0.194 & 2 & (-5, 5) & act & 0.3249550 & dev (NA, NA)\\
-Main RecrDev 2000 & -0.448 & 2 & (-5, 5) & act & 0.3280280 & dev (NA, NA)\\
-Main RecrDev 2001 & -0.400 & 2 & (-5, 5) & act & 0.2968320 & dev (NA, NA)\\
-Main RecrDev 2002 & -0.266 & 2 & (-5, 5) & act & 0.2845070 & dev (NA, NA)\\
-Main RecrDev 2003 & -0.414 & 2 & (-5, 5) & act & 0.3031940 & dev (NA, NA)\\
-Main RecrDev 2004 & -0.599 & 2 & (-5, 5) & act & 0.3043670 & dev (NA, NA)\\
-Main RecrDev 2005 & -0.761 & 2 & (-5, 5) & act & 0.3253250 & dev (NA, NA)\\
-Main RecrDev 2006 & -0.156 & 2 & (-5, 5) & act & 0.3438320 & dev (NA, NA)\\
-Main RecrDev 2007 & 0.750 & 2 & (-5, 5) & act & 0.2518290 & dev (NA, NA)\\
-Main RecrDev 2008 & 0.515 & 2 & (-5, 5) & act & 0.3368150 & dev (NA, NA)\\
-Main RecrDev 2009 & 0.701 & 2 & (-5, 5) & act & 0.2767130 & dev (NA, NA)\\
-Main RecrDev 2010 & -0.150 & 2 & (-5, 5) & act & 0.3671620 & dev (NA, NA)\\
-Main RecrDev 2011 & -0.009 & 2 & (-5, 5) & act & 0.3522450 & dev (NA, NA)\\
-Main RecrDev 2012 & 0.526 & 2 & (-5, 5) & act & 0.2743950 & dev (NA, NA)\\
-Main RecrDev 2013 & 0.330 & 2 & (-5, 5) & act & 0.3124100 & dev (NA, NA)\\
-Main RecrDev 2014 & 0.148 & 2 & (-5, 5) & act & 0.3219590 & dev (NA, NA)\\
-Main RecrDev 2015 & 0.359 & 2 & (-5, 5) & act & 0.2636510 & dev (NA, NA)\\
-Main RecrDev 2016 & -0.400 & 2 & (-5, 5) & act & 0.3640690 & dev (NA, NA)\\
-Main RecrDev 2017 & 0.709 & 2 & (-5, 5) & act & 0.2396250 & dev (NA, NA)\\
-Main RecrDev 2018 & 0.296 & 2 & (-5, 5) & act & 0.2976730 & dev (NA, NA)\\
-Main RecrDev 2019 & -0.339 & 2 & (-5, 5) & act & 0.3810410 & dev (NA, NA)\\
-Late RecrDev 2020 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+Early InitAge 36 & 0.000 & 2 & (-5, 5) & act & 0.5999870 & dev (NA, NA)\\
+Early InitAge 35 & 0.000 & 2 & (-5, 5) & act & 0.5999860 & dev (NA, NA)\\
+Early InitAge 34 & 0.000 & 2 & (-5, 5) & act & 0.5999840 & dev (NA, NA)\\
+Early InitAge 33 & 0.000 & 2 & (-5, 5) & act & 0.5999820 & dev (NA, NA)\\
+Early InitAge 32 & 0.000 & 2 & (-5, 5) & act & 0.5999790 & dev (NA, NA)\\
+Early InitAge 31 & 0.000 & 2 & (-5, 5) & act & 0.5999770 & dev (NA, NA)\\
+Early InitAge 30 & 0.000 & 2 & (-5, 5) & act & 0.5999740 & dev (NA, NA)\\
+Early InitAge 29 & 0.000 & 2 & (-5, 5) & act & 0.5999710 & dev (NA, NA)\\
+Early InitAge 28 & 0.000 & 2 & (-5, 5) & act & 0.5999670 & dev (NA, NA)\\
+Early InitAge 27 & 0.000 & 2 & (-5, 5) & act & 0.5999630 & dev (NA, NA)\\
+Early InitAge 26 & 0.000 & 2 & (-5, 5) & act & 0.5999580 & dev (NA, NA)\\
+Early InitAge 25 & 0.000 & 2 & (-5, 5) & act & 0.5999530 & dev (NA, NA)\\
+Early InitAge 24 & 0.000 & 2 & (-5, 5) & act & 0.5999470 & dev (NA, NA)\\
+Early InitAge 23 & 0.000 & 2 & (-5, 5) & act & 0.5999410 & dev (NA, NA)\\
+Early InitAge 22 & 0.000 & 2 & (-5, 5) & act & 0.5999330 & dev (NA, NA)\\
+Early InitAge 21 & 0.000 & 2 & (-5, 5) & act & 0.5999250 & dev (NA, NA)\\
+Early InitAge 20 & 0.000 & 2 & (-5, 5) & act & 0.5999160 & dev (NA, NA)\\
+Early InitAge 19 & 0.000 & 2 & (-5, 5) & act & 0.5999060 & dev (NA, NA)\\
+Early InitAge 18 & 0.000 & 2 & (-5, 5) & act & 0.5998940 & dev (NA, NA)\\
+Early InitAge 17 & 0.000 & 2 & (-5, 5) & act & 0.5998810 & dev (NA, NA)\\
+Early InitAge 16 & 0.000 & 2 & (-5, 5) & act & 0.5998670 & dev (NA, NA)\\
+Early InitAge 15 & -0.001 & 2 & (-5, 5) & act & 0.5998510 & dev (NA, NA)\\
+Early InitAge 14 & -0.001 & 2 & (-5, 5) & act & 0.5998340 & dev (NA, NA)\\
+Early InitAge 13 & -0.001 & 2 & (-5, 5) & act & 0.5998140 & dev (NA, NA)\\
+Early InitAge 12 & -0.001 & 2 & (-5, 5) & act & 0.5997930 & dev (NA, NA)\\
+Early InitAge 11 & -0.001 & 2 & (-5, 5) & act & 0.5997700 & dev (NA, NA)\\
+Early InitAge 10 & -0.001 & 2 & (-5, 5) & act & 0.5997440 & dev (NA, NA)\\
+Early InitAge 9 & -0.001 & 2 & (-5, 5) & act & 0.5997160 & dev (NA, NA)\\
+Early InitAge 8 & -0.001 & 2 & (-5, 5) & act & 0.5996850 & dev (NA, NA)\\
+Early InitAge 7 & -0.001 & 2 & (-5, 5) & act & 0.5996520 & dev (NA, NA)\\
+Early InitAge 6 & -0.001 & 2 & (-5, 5) & act & 0.5996170 & dev (NA, NA)\\
+Early InitAge 5 & -0.001 & 2 & (-5, 5) & act & 0.5995790 & dev (NA, NA)\\
+Early InitAge 4 & -0.002 & 2 & (-5, 5) & act & 0.5995380 & dev (NA, NA)\\
+Early InitAge 3 & -0.002 & 2 & (-5, 5) & act & 0.5994930 & dev (NA, NA)\\
+Early InitAge 2 & -0.002 & 2 & (-5, 5) & act & 0.5994440 & dev (NA, NA)\\
+Early InitAge 1 & -0.002 & 2 & (-5, 5) & act & 0.5993900 & dev (NA, NA)\\
+Early RecrDev 1916 & -0.002 & 2 & (-5, 5) & act & 0.5993300 & dev (NA, NA)\\
+Early RecrDev 1917 & -0.003 & 2 & (-5, 5) & act & 0.5992650 & dev (NA, NA)\\
+Early RecrDev 1918 & -0.003 & 2 & (-5, 5) & act & 0.5991940 & dev (NA, NA)\\
+Early RecrDev 1919 & -0.003 & 2 & (-5, 5) & act & 0.5991150 & dev (NA, NA)\\
+Early RecrDev 1920 & -0.003 & 2 & (-5, 5) & act & 0.5990290 & dev (NA, NA)\\
+Early RecrDev 1921 & -0.004 & 2 & (-5, 5) & act & 0.5989340 & dev (NA, NA)\\
+Early RecrDev 1922 & -0.004 & 2 & (-5, 5) & act & 0.5988300 & dev (NA, NA)\\
+Early RecrDev 1923 & -0.004 & 2 & (-5, 5) & act & 0.5987150 & dev (NA, NA)\\
+Early RecrDev 1924 & -0.005 & 2 & (-5, 5) & act & 0.5985890 & dev (NA, NA)\\
+Early RecrDev 1925 & -0.005 & 2 & (-5, 5) & act & 0.5984510 & dev (NA, NA)\\
+Early RecrDev 1926 & -0.006 & 2 & (-5, 5) & act & 0.5983120 & dev (NA, NA)\\
+Early RecrDev 1927 & -0.006 & 2 & (-5, 5) & act & 0.5981610 & dev (NA, NA)\\
+Early RecrDev 1928 & -0.007 & 2 & (-5, 5) & act & 0.5979940 & dev (NA, NA)\\
+Early RecrDev 1929 & -0.008 & 2 & (-5, 5) & act & 0.5978100 & dev (NA, NA)\\
+Early RecrDev 1930 & -0.008 & 2 & (-5, 5) & act & 0.5976060 & dev (NA, NA)\\
+Early RecrDev 1931 & -0.009 & 2 & (-5, 5) & act & 0.5973770 & dev (NA, NA)\\
+Early RecrDev 1932 & -0.010 & 2 & (-5, 5) & act & 0.5971190 & dev (NA, NA)\\
+Early RecrDev 1933 & -0.011 & 2 & (-5, 5) & act & 0.5968270 & dev (NA, NA)\\
+Early RecrDev 1934 & -0.012 & 2 & (-5, 5) & act & 0.5964970 & dev (NA, NA)\\
+Early RecrDev 1935 & -0.013 & 2 & (-5, 5) & act & 0.5961240 & dev (NA, NA)\\
+Early RecrDev 1936 & -0.015 & 2 & (-5, 5) & act & 0.5957030 & dev (NA, NA)\\
+Early RecrDev 1937 & -0.017 & 2 & (-5, 5) & act & 0.5952300 & dev (NA, NA)\\
+Early RecrDev 1938 & -0.018 & 2 & (-5, 5) & act & 0.5947020 & dev (NA, NA)\\
+Early RecrDev 1939 & -0.021 & 2 & (-5, 5) & act & 0.5941130 & dev (NA, NA)\\
+Early RecrDev 1940 & -0.023 & 2 & (-5, 5) & act & 0.5934610 & dev (NA, NA)\\
+Early RecrDev 1941 & -0.025 & 2 & (-5, 5) & act & 0.5927370 & dev (NA, NA)\\
+Early RecrDev 1942 & -0.028 & 2 & (-5, 5) & act & 0.5919370 & dev (NA, NA)\\
+Early RecrDev 1943 & -0.031 & 2 & (-5, 5) & act & 0.5910500 & dev (NA, NA)\\
+Early RecrDev 1944 & -0.035 & 2 & (-5, 5) & act & 0.5900670 & dev (NA, NA)\\
+Early RecrDev 1945 & -0.039 & 2 & (-5, 5) & act & 0.5889730 & dev (NA, NA)\\
+Early RecrDev 1946 & -0.043 & 2 & (-5, 5) & act & 0.5877500 & dev (NA, NA)\\
+Early RecrDev 1947 & -0.048 & 2 & (-5, 5) & act & 0.5863770 & dev (NA, NA)\\
+Early RecrDev 1948 & -0.053 & 2 & (-5, 5) & act & 0.5848370 & dev (NA, NA)\\
+Early RecrDev 1949 & -0.059 & 2 & (-5, 5) & act & 0.5831110 & dev (NA, NA)\\
+Early RecrDev 1950 & -0.066 & 2 & (-5, 5) & act & 0.5811710 & dev (NA, NA)\\
+Early RecrDev 1951 & -0.074 & 2 & (-5, 5) & act & 0.5789650 & dev (NA, NA)\\
+Early RecrDev 1952 & -0.084 & 2 & (-5, 5) & act & 0.5764110 & dev (NA, NA)\\
+Early RecrDev 1953 & -0.096 & 2 & (-5, 5) & act & 0.5734070 & dev (NA, NA)\\
+Early RecrDev 1954 & -0.109 & 2 & (-5, 5) & act & 0.5699610 & dev (NA, NA)\\
+Early RecrDev 1955 & -0.124 & 2 & (-5, 5) & act & 0.5663420 & dev (NA, NA)\\
+Early RecrDev 1956 & -0.138 & 2 & (-5, 5) & act & 0.5628170 & dev (NA, NA)\\
+Early RecrDev 1957 & -0.150 & 2 & (-5, 5) & act & 0.5599180 & dev (NA, NA)\\
+Early RecrDev 1958 & -0.155 & 2 & (-5, 5) & act & 0.5586180 & dev (NA, NA)\\
+Early RecrDev 1959 & -0.144 & 2 & (-5, 5) & act & 0.5600910 & dev (NA, NA)\\
+Main RecrDev 1960 & -0.139 & 2 & (-5, 5) & act & 0.5602320 & dev (NA, NA)\\
+Main RecrDev 1961 & -0.092 & 2 & (-5, 5) & act & 0.5658560 & dev (NA, NA)\\
+Main RecrDev 1962 & -0.062 & 2 & (-5, 5) & act & 0.5685330 & dev (NA, NA)\\
+Main RecrDev 1963 & -0.080 & 2 & (-5, 5) & act & 0.5667730 & dev (NA, NA)\\
+Main RecrDev 1964 & -0.077 & 2 & (-5, 5) & act & 0.5703330 & dev (NA, NA)\\
+Main RecrDev 1965 & 0.088 & 2 & (-5, 5) & act & 0.6088720 & dev (NA, NA)\\
+Main RecrDev 1966 & 0.517 & 2 & (-5, 5) & act & 0.7832530 & dev (NA, NA)\\
+Main RecrDev 1967 & 0.945 & 2 & (-5, 5) & act & 1.0686600 & dev (NA, NA)\\
+Main RecrDev 1968 & 1.630 & 2 & (-5, 5) & act & 0.5335650 & dev (NA, NA)\\
+Main RecrDev 1969 & 0.259 & 2 & (-5, 5) & act & 0.6428240 & dev (NA, NA)\\
+Main RecrDev 1970 & 0.511 & 2 & (-5, 5) & act & 0.3644090 & dev (NA, NA)\\
+Main RecrDev 1971 & -0.237 & 2 & (-5, 5) & act & 0.3838200 & dev (NA, NA)\\
+Main RecrDev 1972 & -0.125 & 2 & (-5, 5) & act & 0.3275020 & dev (NA, NA)\\
+Main RecrDev 1973 & 0.325 & 2 & (-5, 5) & act & 0.3085140 & dev (NA, NA)\\
+Main RecrDev 1974 & 0.094 & 2 & (-5, 5) & act & 0.4276100 & dev (NA, NA)\\
+Main RecrDev 1975 & -0.039 & 2 & (-5, 5) & act & 0.4459270 & dev (NA, NA)\\
+Main RecrDev 1976 & -0.038 & 2 & (-5, 5) & act & 0.4526700 & dev (NA, NA)\\
+Main RecrDev 1977 & 0.040 & 2 & (-5, 5) & act & 0.4176740 & dev (NA, NA)\\
+Main RecrDev 1978 & -0.114 & 2 & (-5, 5) & act & 0.4028720 & dev (NA, NA)\\
+Main RecrDev 1979 & -0.290 & 2 & (-5, 5) & act & 0.4014530 & dev (NA, NA)\\
+Main RecrDev 1980 & -0.429 & 2 & (-5, 5) & act & 0.3967740 & dev (NA, NA)\\
+Main RecrDev 1981 & -0.388 & 2 & (-5, 5) & act & 0.3885210 & dev (NA, NA)\\
+Main RecrDev 1982 & -0.381 & 2 & (-5, 5) & act & 0.3735410 & dev (NA, NA)\\
+Main RecrDev 1983 & -0.572 & 2 & (-5, 5) & act & 0.3974730 & dev (NA, NA)\\
+Main RecrDev 1984 & -0.296 & 2 & (-5, 5) & act & 0.4148970 & dev (NA, NA)\\
+Main RecrDev 1985 & 0.181 & 2 & (-5, 5) & act & 0.4179810 & dev (NA, NA)\\
+Main RecrDev 1986 & 0.079 & 2 & (-5, 5) & act & 0.4726880 & dev (NA, NA)\\
+Main RecrDev 1987 & -0.017 & 2 & (-5, 5) & act & 0.5372620 & dev (NA, NA)\\
+Main RecrDev 1988 & 0.204 & 2 & (-5, 5) & act & 0.5656800 & dev (NA, NA)\\
+Main RecrDev 1989 & 0.127 & 2 & (-5, 5) & act & 0.5573700 & dev (NA, NA)\\
+Main RecrDev 1990 & 0.256 & 2 & (-5, 5) & act & 0.5355190 & dev (NA, NA)\\
+Main RecrDev 1991 & 0.479 & 2 & (-5, 5) & act & 0.4590390 & dev (NA, NA)\\
+Main RecrDev 1992 & 0.271 & 2 & (-5, 5) & act & 0.4309620 & dev (NA, NA)\\
+Main RecrDev 1993 & -0.267 & 2 & (-5, 5) & act & 0.4409410 & dev (NA, NA)\\
+Main RecrDev 1994 & -0.320 & 2 & (-5, 5) & act & 0.4145690 & dev (NA, NA)\\
+Main RecrDev 1995 & 0.026 & 2 & (-5, 5) & act & 0.3272050 & dev (NA, NA)\\
+Main RecrDev 1996 & -0.430 & 2 & (-5, 5) & act & 0.3711650 & dev (NA, NA)\\
+Main RecrDev 1997 & -0.724 & 2 & (-5, 5) & act & 0.3784190 & dev (NA, NA)\\
+Main RecrDev 1998 & -0.323 & 2 & (-5, 5) & act & 0.3477740 & dev (NA, NA)\\
+Main RecrDev 1999 & 0.550 & 2 & (-5, 5) & act & 0.1869890 & dev (NA, NA)\\
+Main RecrDev 2000 & -0.375 & 2 & (-5, 5) & act & 0.3207210 & dev (NA, NA)\\
+Main RecrDev 2001 & -0.509 & 2 & (-5, 5) & act & 0.2760300 & dev (NA, NA)\\
+Main RecrDev 2002 & -0.420 & 2 & (-5, 5) & act & 0.2618160 & dev (NA, NA)\\
+Main RecrDev 2003 & 0.484 & 2 & (-5, 5) & act & 0.1549870 & dev (NA, NA)\\
+Main RecrDev 2004 & -0.036 & 2 & (-5, 5) & act & 0.2470430 & dev (NA, NA)\\
+Main RecrDev 2005 & 0.089 & 2 & (-5, 5) & act & 0.1937670 & dev (NA, NA)\\
+Main RecrDev 2006 & -0.945 & 2 & (-5, 5) & act & 0.3531330 & dev (NA, NA)\\
+Main RecrDev 2007 & 0.153 & 2 & (-5, 5) & act & 0.1887920 & dev (NA, NA)\\
+Main RecrDev 2008 & 0.293 & 2 & (-5, 5) & act & 0.2056290 & dev (NA, NA)\\
+Main RecrDev 2009 & 0.983 & 2 & (-5, 5) & act & 0.1407900 & dev (NA, NA)\\
+Main RecrDev 2010 & 1.086 & 2 & (-5, 5) & act & 0.1346100 & dev (NA, NA)\\
+Main RecrDev 2011 & 0.547 & 2 & (-5, 5) & act & 0.1814410 & dev (NA, NA)\\
+Main RecrDev 2012 & 0.597 & 2 & (-5, 5) & act & 0.1693760 & dev (NA, NA)\\
+Main RecrDev 2013 & 1.177 & 2 & (-5, 5) & act & 0.1192700 & dev (NA, NA)\\
+Main RecrDev 2014 & -0.126 & 2 & (-5, 5) & act & 0.2606770 & dev (NA, NA)\\
+Main RecrDev 2015 & -0.875 & 2 & (-5, 5) & act & 0.2933280 & dev (NA, NA)\\
+Main RecrDev 2016 & -0.549 & 2 & (-5, 5) & act & 0.2321920 & dev (NA, NA)\\
+Main RecrDev 2017 & -0.789 & 2 & (-5, 5) & act & 0.2749310 & dev (NA, NA)\\
+Main RecrDev 2018 & -0.798 & 2 & (-5, 5) & act & 0.3086230 & dev (NA, NA)\\
+Main RecrDev 2019 & -0.529 & 2 & (-5, 5) & act & 0.3624640 & dev (NA, NA)\\
+Main RecrDev 2020 & -0.600 & 2 & (-5, 5) & act & 0.4807970 & dev (NA, NA)\\
 Late RecrDev 2021 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
 Late RecrDev 2022 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
 ForeRecr 2023 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
@@ -1417,75 +1494,83 @@ ForeRecr 2031 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
 ForeRecr 2032 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
 ForeRecr 2033 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
 ForeRecr 2034 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
-LnQ base Rec CPFV(3) & -9.825 & -1 & (-15, 15) & NA & NA & None\\
-Q extraSD Rec CPFV(3) & 0.115 & 1 & (0, 0.5) & OK & 0.0800967 & None\\
-LnQ base Rec PR(4) & -4.639 & -1 & (-15, 15) & NA & NA & None\\
-Q extraSD Rec PR(4) & 0.299 & 1 & (0, 0.5) & OK & 0.0689774 & None\\
-LnQ base CCFRP(5) & -10.057 & -1 & (-15, 15) & NA & NA & None\\
-Q extraSD CCFRP(5) & 0.215 & 1 & (0, 0.5) & OK & 0.0648669 & None\\
-LnQ base CDFW ROV(6) & -11.019 & -1 & (-15, 15) & NA & NA & None\\
-Q extraSD CDFW ROV(6) & 0.069 & 1 & (0, 0.5) & OK & 0.0872572 & None\\
-LnQ base DWV CPFV(7) & -9.753 & -1 & (-15, 15) & NA & NA & None\\
-Q extraSD DWV CPFV(7) & 0.230 & 1 & (0, 0.5) & OK & 0.0891013 & None\\
-LnQ base CRFS CPFV(8) & -11.162 & -1 & (-15, 15) & NA & NA & None\\
-Q extraSD CRFS CPFV(8) & 0.110 & 1 & (0, 0.5) & OK & 0.0413025 & None\\
-Size DblN peak Commercial Dead(1) & 44.697 & 1 & (15, 53) & OK & 4.3052700 & None\\
-Size DblN top logit Commercial Dead(1) & -3.965 & -3 & (-7, 7) & NA & NA & None\\
-Size DblN ascend se Commercial Dead(1) & 5.092 & 3 & (-10, 10) & OK & 0.4119030 & None\\
-Size DblN descend se Commercial Dead(1) & 2.753 & -4 & (-10, 10) & NA & NA & None\\
-Size DblN start logit Commercial Dead(1) & -20.000 & -5 & (-20, 30) & NA & NA & None\\
-Size DblN end logit Commercial Dead(1) & 10.000 & -4 & (-10, 10) & NA & NA & None\\
-Size DblN peak Commercial Live(2) & 27.474 & 1 & (15, 53) & OK & 1.2090300 & None\\
-Size DblN top logit Commercial Live(2) & -3.965 & -3 & (-7, 7) & NA & NA & None\\
-Size DblN ascend se Commercial Live(2) & 1.545 & 3 & (-10, 10) & OK & 0.9237850 & None\\
-Size DblN descend se Commercial Live(2) & 3.744 & 4 & (-10, 10) & OK & 0.5160480 & None\\
-Size DblN start logit Commercial Live(2) & -20.000 & -5 & (-20, 30) & NA & NA & None\\
-Size DblN end logit Commercial Live(2) & -3.764 & 4 & (-10, 10) & OK & 1.4164400 & None\\
-Size DblN peak Rec CPFV(3) & 36.841 & 2 & (15, 53) & OK & 1.9187100 & None\\
-Size DblN top logit Rec CPFV(3) & -1.047 & -3 & (-7, 7) & NA & NA & None\\
-Size DblN ascend se Rec CPFV(3) & 4.256 & 3 & (-10, 10) & OK & 0.3632720 & None\\
-Size DblN descend se Rec CPFV(3) & 0.738 & -4 & (-10, 10) & NA & NA & None\\
-Size DblN start logit Rec CPFV(3) & -20.000 & -9 & (-20, 30) & NA & NA & None\\
-Size DblN end logit Rec CPFV(3) & 10.000 & -4 & (-10, 10) & NA & NA & None\\
-Size DblN peak Rec PR(4) & 32.434 & 2 & (15, 53) & OK & 0.8482890 & None\\
-Size DblN top logit Rec PR(4) & -1.047 & -3 & (-7, 7) & NA & NA & None\\
-Size DblN ascend se Rec PR(4) & 3.643 & 3 & (-10, 10) & OK & 0.2132640 & None\\
-Size DblN descend se Rec PR(4) & 9.413 & -4 & (-10, 10) & NA & NA & None\\
-Size DblN start logit Rec PR(4) & -20.000 & -9 & (-20, 30) & NA & NA & None\\
-Size DblN end logit Rec PR(4) & -7.885 & -4 & (-10, 10) & NA & NA & None\\
-Size DblN peak CCFRP(5) & 33.542 & 1 & (15, 53) & OK & 1.0358700 & None\\
-Size DblN top logit CCFRP(5) & -3.965 & -3 & (-7, 7) & NA & NA & None\\
-Size DblN ascend se CCFRP(5) & 3.963 & 3 & (-10, 10) & OK & 0.2498110 & None\\
-Size DblN descend se CCFRP(5) & 6.447 & -4 & (-10, 10) & NA & NA & None\\
-Size DblN start logit CCFRP(5) & -20.000 & -5 & (-20, 30) & NA & NA & None\\
-Size DblN end logit CCFRP(5) & 8.784 & -4 & (-10, 10) & NA & NA & None\\
-Size DblN peak CDFW ROV(6) & 45.804 & 2 & (15, 53) & OK & 7.4909900 & None\\
-Size DblN top logit CDFW ROV(6) & -1.047 & -3 & (-7, 7) & NA & NA & None\\
-Size DblN ascend se CDFW ROV(6) & 5.639 & 3 & (-10, 10) & OK & 0.7810160 & None\\
-Size DblN descend se CDFW ROV(6) & 4.653 & -4 & (-10, 10) & NA & NA & None\\
+LnQ base Rec CPFV(3) & -9.270 & -1 & (-15, 15) & NA & NA & None\\
+Q extraSD Rec CPFV(3) & 0.276 & 4 & (0.001, 0.5) & OK & 0.1056840 & None\\
+LnQ base Rec Private(4) & -8.592 & -1 & (-15, 15) & NA & NA & None\\
+Q extraSD Rec Private(4) & 0.192 & 4 & (0.001, 0.5) & OK & 0.0527988 & None\\
+LnQ base CCFRP(5) & -6.013 & -1 & (-15, 15) & NA & NA & None\\
+Q extraSD CCFRP(5) & 0.059 & 4 & (0.001, 0.5) & OK & 0.0708589 & None\\
+LnQ base CDFW ROV(6) & -8.326 & -1 & (-15, 15) & NA & NA & None\\
+Q extraSD CDFW ROV(6) & 0.041 & 4 & (0.001, 0.5) & OK & 0.1262310 & None\\
+LnQ base NWFSC HKL(7) & -10.914 & -1 & (-15, 15) & NA & NA & None\\
+LnQ base CRFS CPFV(8) & -14.712 & -1 & (-15, 15) & NA & NA & None\\
+Q extraSD CRFS CPFV(8) & 0.271 & 4 & (0.001, 0.5) & OK & 0.0863620 & None\\
+Size DblN peak Commercial dead(1) & 43.111 & 1 & (15, 53) & OK & 3.3572400 & None\\
+Size DblN top logit Commercial dead(1) & -6.842 & -3 & (-7, 7) & NA & NA & None\\
+Size DblN ascend se Commercial dead(1) & 5.169 & -3 & (-10, 10) & NA & NA & None\\
+Size DblN descend se Commercial dead(1) & 10.000 & -4 & (-10, 10) & NA & NA & None\\
+Size DblN start logit Commercial dead(1) & -20.000 & -9 & (-20, 30) & NA & NA & None\\
+Size DblN end logit Commercial dead(1) & 10.000 & -4 & (-10, 10) & NA & NA & None\\
+Size DblN peak Commercial live(2) & 33.863 & 2 & (15, 53) & OK & 0.6389660 & None\\
+Size DblN top logit Commercial live(2) & -6.842 & -3 & (-7, 7) & NA & NA & None\\
+Size DblN ascend se Commercial live(2) & 2.959 & 3 & (-10, 10) & OK & 0.2338810 & None\\
+Size DblN descend se Commercial live(2) & 3.549 & 4 & (-10, 10) & OK & 0.2983250 & None\\
+Size DblN start logit Commercial live(2) & -20.000 & -9 & (-20, 30) & NA & NA & None\\
+Size DblN end logit Commercial live(2) & -3.022 & 4 & (-10, 10) & OK & 0.8321690 & None\\
+Size DblN peak Rec CPFV(3) & 31.462 & 1 & (15, 53) & OK & 1.9649900 & None\\
+Size DblN top logit Rec CPFV(3) & -6.935 & -3 & (-7, 7) & NA & NA & None\\
+Size DblN ascend se Rec CPFV(3) & 4.168 & -3 & (-10, 10) & NA & NA & None\\
+Size DblN descend se Rec CPFV(3) & 1.061 & -3 & (-10, 10) & NA & NA & None\\
+Size DblN start logit Rec CPFV(3) & -8.243 & -9 & (-20, 30) & NA & NA & None\\
+Size DblN end logit Rec CPFV(3) & -0.488 & 2 & (-10, 10) & OK & 0.9008840 & None\\
+Size DblN peak Rec Private(4) & 31.458 & 2 & (15, 53) & OK & 1.3215000 & None\\
+Size DblN top logit Rec Private(4) & -6.935 & -3 & (-7, 7) & NA & NA & None\\
+Size DblN ascend se Rec Private(4) & 3.505 & -3 & (-10, 10) & NA & NA & None\\
+Size DblN descend se Rec Private(4) & 3.528 & -4 & (-10, 10) & NA & NA & None\\
+Size DblN start logit Rec Private(4) & -8.243 & -9 & (-20, 30) & NA & NA & None\\
+Size DblN end logit Rec Private(4) & -1.315 & 4 & (-10, 10) & OK & 0.7023670 & None\\
+Size DblN peak CCFRP(5) & 37.487 & 3 & (15, 53) & OK & 0.0089322 & None\\
+Size DblN top logit CCFRP(5) & -6.891 & -3 & (-7, 7) & NA & NA & None\\
+Size DblN ascend se CCFRP(5) & 4.640 & 3 & (-10, 10) & OK & 0.2114170 & None\\
+Size DblN descend se CCFRP(5) & -9.994 & -4 & (-10, 10) & NA & NA & None\\
+Size DblN start logit CCFRP(5) & -20.000 & -9 & (-20, 30) & NA & NA & None\\
+Size DblN end logit CCFRP(5) & -1.363 & 4 & (-10, 10) & OK & 0.3736640 & None\\
+Size DblN peak CDFW ROV(6) & 38.916 & 2 & (10, 53) & OK & 1.7925400 & None\\
+Size DblN top logit CDFW ROV(6) & -6.891 & -3 & (-7, 7) & NA & NA & None\\
+Size DblN ascend se CDFW ROV(6) & 5.214 & 3 & (-10, 10) & OK & 0.2459800 & None\\
+Size DblN descend se CDFW ROV(6) & 2.170 & 4 & (-10, 10) & OK & 1.5435500 & None\\
 Size DblN start logit CDFW ROV(6) & -20.000 & -9 & (-20, 30) & NA & NA & None\\
-Size DblN end logit CDFW ROV(6) & 10.000 & -4 & (-10, 10) & NA & NA & None\\
-Size DblN descend se Commercial Live(2) BLK1repl 1916 & 10.000 & -3 & (-10, 10) & NA & NA & None\\
-Size DblN end logit Commercial Live(2) BLK1repl 1916 & 10.000 & -3 & (-10, 10) & NA & NA & None\\
-Size DblN peak Rec CPFV(3) BLK2repl 1916 & 36.363 & 3 & (15, 53) & OK & 1.1060300 & None\\
-Size DblN peak Rec CPFV(3) BLK2repl 2002 & 34.223 & 3 & (15, 53) & OK & 0.9482910 & None\\
-Size DblN ascend se Rec CPFV(3) BLK2repl 1916 & 4.202 & 3 & (-10, 10) & OK & 0.1903550 & None\\
-Size DblN ascend se Rec CPFV(3) BLK2repl 2002 & 4.014 & 3 & (-10, 10) & OK & 0.1975500 & None\\
-Size DblN descend se Rec CPFV(3) BLK2repl 1916 & 4.338 & 6 & (-10, 10) & OK & 0.3991060 & None\\
-Size DblN descend se Rec CPFV(3) BLK2repl 2002 & 3.003 & 6 & (-10, 10) & OK & 0.6050850 & None\\
-Size DblN end logit Rec CPFV(3) BLK2repl 1916 & -2.190 & -5 & (-10, 10) & NA & NA & None\\
-Size DblN end logit Rec CPFV(3) BLK2repl 2002 & -0.916 & 5 & (-10, 10) & OK & 0.4686510 & None\\
-Size DblN peak Rec PR(4) BLK2repl 1916 & 27.796 & 3 & (15, 53) & OK & 0.1482690 & None\\
-Size DblN peak Rec PR(4) BLK2repl 2002 & 30.509 & 3 & (15, 53) & OK & 0.4597980 & None\\
-Size DblN ascend se Rec PR(4) BLK2repl 1916 & 3.658 & 3 & (-10, 10) & OK & 0.1100270 & None\\
-Size DblN ascend se Rec PR(4) BLK2repl 2002 & 3.329 & 3 & (-10, 10) & OK & 0.1376130 & None\\
-Size DblN descend se Rec PR(4) BLK2repl 1916 & -5.198 & -6 & (-10, 10) & NA & NA & None\\
-Size DblN descend se Rec PR(4) BLK2repl 2002 & 3.922 & 6 & (-10, 10) & OK & 0.3241060 & None\\
-Size DblN end logit Rec PR(4) BLK2repl 1916 & 0.689 & 5 & (-10, 10) & OK & 0.3275720 & None\\
-Size DblN end logit Rec PR(4) BLK2repl 2002 & -0.970 & 5 & (-10, 10) & OK & 0.3751040 & None\\
-Size DblN top logit CCFRP(5) BLK3repl 1916 & -6.798 & -4 & (-7, 7) & NA & NA & None\\
-Size DblN descend se CCFRP(5) BLK3repl 1916 & 4.846 & -4 & (-10, 10) & NA & NA & None\\
-Size DblN end logit CCFRP(5) BLK3repl 1916 & -1.835 & -5 & (-10, 10) & NA & NA & None\\*
+Size DblN end logit CDFW ROV(6) & -0.578 & 4 & (-10, 10) & OK & 0.5340950 & None\\
+Size DblN peak NWFSC HKL(7) & 42.143 & 2 & (15, 53) & OK & 1.6159800 & None\\
+Size DblN top logit NWFSC HKL(7) & -6.891 & -3 & (-7, 7) & NA & NA & None\\
+Size DblN ascend se NWFSC HKL(7) & 4.807 & 3 & (-10, 10) & OK & 0.1766040 & None\\
+Size DblN descend se NWFSC HKL(7) & -9.703 & -4 & (-10, 10) & NA & NA & None\\
+Size DblN start logit NWFSC HKL(7) & -20.000 & -9 & (-20, 30) & NA & NA & None\\
+Size DblN end logit NWFSC HKL(7) & 10.000 & -4 & (-10, 10) & NA & NA & None\\
+Age DblN peak Growth(9) & 5.533 & 2 & (1, 15) & OK & 0.6074160 & None\\
+Age DblN top logit Growth(9) & -6.891 & -3 & (-7, 7) & NA & NA & None\\
+Age DblN ascend se Growth(9) & 0.983 & 3 & (-10, 10) & OK & 0.3259640 & None\\
+Age DblN descend se Growth(9) & -9.859 & -4 & (-10, 10) & NA & NA & None\\
+Age DblN start logit Growth(9) & -6.500 & -4 & (-20, 30) & NA & NA & None\\
+Age DblN end logit Growth(9) & 10.000 & -4 & (-10, 10) & NA & NA & None\\
+Size DblN peak Commercial dead(1) BLK4repl 1916 & 37.608 & 2 & (15, 55) & OK & 2.2848800 & None\\
+Size DblN ascend se Commercial dead(1) BLK4repl 1916 & 4.234 & 4 & (-10, 10) & OK & 0.3914120 & None\\
+Size DblN peak Rec CPFV(3) BLK3repl 1916 & 27.539 & 3 & (15, 55) & OK & 1.4711800 & None\\
+Size DblN peak Rec CPFV(3) BLK3repl 2000 & 30.482 & 3 & (15, 55) & OK & 0.8257260 & None\\
+Size DblN ascend se Rec CPFV(3) BLK3repl 1916 & 3.684 & 4 & (-10, 10) & OK & 0.3644190 & None\\
+Size DblN ascend se Rec CPFV(3) BLK3repl 2000 & 3.951 & 4 & (-10, 10) & OK & 0.1737550 & None\\
+Size DblN descend se Rec CPFV(3) BLK3repl 1916 & 5.149 & 6 & (-10, 10) & OK & 0.6533540 & None\\
+Size DblN descend se Rec CPFV(3) BLK3repl 2000 & 4.687 & 6 & (-10, 10) & OK & 0.3465550 & None\\
+Size DblN end logit Rec CPFV(3) BLK3repl 1916 & -0.483 & 5 & (-10, 10) & OK & 0.5768610 & None\\
+Size DblN end logit Rec CPFV(3) BLK3repl 2000 & -1.989 & 5 & (-10, 10) & OK & 0.7170140 & None\\
+Size DblN peak Rec Private(4) BLK3repl 1916 & 29.813 & 3 & (15, 55) & OK & 1.8400800 & None\\
+Size DblN peak Rec Private(4) BLK3repl 2000 & 30.548 & 3 & (15, 55) & OK & 0.5480490 & None\\
+Size DblN ascend se Rec Private(4) BLK3repl 1916 & 3.890 & 4 & (-10, 10) & OK & 0.4368860 & None\\
+Size DblN ascend se Rec Private(4) BLK3repl 2000 & 3.522 & 4 & (-10, 10) & OK & 0.1495390 & None\\
+Size DblN descend se Rec Private(4) BLK3repl 1916 & 4.487 & 6 & (-10, 10) & OK & 0.5603100 & None\\
+Size DblN descend se Rec Private(4) BLK3repl 2000 & 4.203 & 6 & (-10, 10) & OK & 0.2814550 & None\\
+Size DblN end logit Rec Private(4) BLK3repl 1916 & -1.410 & 5 & (-10, 10) & OK & 0.6146950 & None\\
+Size DblN end logit Rec Private(4) BLK3repl 2000 & -1.410 & 5 & (-10, 10) & OK & 0.3704330 & None\\*
 \end{longtable}
 \endgroup{}
 \end{landscape}
@@ -1516,18 +1601,18 @@ Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC
 \endfoot
 \bottomrule
 \endlastfoot
-2023 & 116.4 & 91.53 & 70 & - & - & 331.05 & 0.481\\
-2024 & 121.32 & 94.69 & 70 & - & - & 331.91 & 0.482\\
-2025 & - & - & - & 182.58 & 169.79 & 331.76 & 0.482\\
-2026 & - & - & - & 182.54 & 169.45 & 330.85 & 0.481\\
-2027 & - & - & - & 182.16 & 169.11 & 329.74 & 0.479\\
-2028 & - & - & - & 181.54 & 168.81 & 328.80 & 0.478\\
-2029 & - & - & - & 180.82 & 168.58 & 328.09 & 0.477\\
-2030 & - & - & - & 180.13 & 168.42 & 327.58 & 0.476\\
-2031 & - & - & - & 179.53 & 168.35 & 327.20 & 0.475\\
-2032 & - & - & - & 179.02 & 168.33 & 326.90 & 0.475\\
-2033 & - & - & - & 178.61 & 168.37 & 326.66 & 0.474\\
-2034 & - & - & - & 178.28 & 168.44 & 326.45 & 0.474\\*
+2023 & 116.4 & 91.53 & 70 & - & - & 117.56 & 0.293\\
+2024 & 121.32 & 94.69 & 70 & - & - & 114.77 & 0.286\\
+2025 & - & - & - & 56.36 & 46.21 & 112.88 & 0.282\\
+2026 & - & - & - & 60.87 & 49.91 & 112.87 & 0.282\\
+2027 & - & - & - & 64.64 & 53.53 & 115.01 & 0.287\\
+2028 & - & - & - & 67.66 & 56.98 & 118.85 & 0.297\\
+2029 & - & - & - & 70.17 & 60.25 & 123.74 & 0.309\\
+2030 & - & - & - & 72.34 & 63.32 & 129.09 & 0.322\\
+2031 & - & - & - & 74.29 & 66.17 & 134.48 & 0.336\\
+2032 & - & - & - & 76.08 & 68.8 & 139.67 & 0.348\\
+2033 & - & - & - & 77.74 & 71.23 & 144.54 & 0.361\\
+2034 & - & - & - & 79.28 & 73.47 & 149.04 & 0.372\\*
 \end{longtable}
 \endgroup{}
 \end{landscape}
@@ -1555,17 +1640,17 @@ Year & Spawning Output & Fraction Unfished\\
 \endfoot
 \bottomrule
 \endlastfoot
-2013 & 227.72 & 0.331\\
-2014 & 243.57 & 0.354\\
-2015 & 264.67 & 0.384\\
-2016 & 283.21 & 0.411\\
-2017 & 299.59 & 0.435\\
-2018 & 308.56 & 0.448\\
-2019 & 316.83 & 0.460\\
-2020 & 322.83 & 0.469\\
-2021 & 319.07 & 0.463\\
-2022 & 320.42 & 0.465\\
-2023 & 331.05 & 0.481\\*
+2013 & 108.59 & 0.271\\
+2014 & 111.85 & 0.279\\
+2015 & 121.22 & 0.302\\
+2016 & 129.49 & 0.323\\
+2017 & 135.65 & 0.338\\
+2018 & 142.50 & 0.356\\
+2019 & 142.39 & 0.355\\
+2020 & 138.92 & 0.347\\
+2021 & 128.45 & 0.321\\
+2022 & 120.01 & 0.299\\
+2023 & 117.56 & 0.293\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -1769,6 +1854,18 @@ Year & Spawning Output & Fraction Unfished\\
 
 \begin{figure}
 \centering
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/south_growth_length_comparison.png}
+\caption{Length distribution of fish by collection source that were used as conditional age-at-length data in the growth fleet.\label{fig:growth-len-dist}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/ages/plots/south_growth_age_comparison.png}
+\caption{Age distribution of fish by collection source that were used as conditional age-at-length data in the growth fleet.\label{fig:growth-age-dist}}
+\end{figure}
+
+\begin{figure}
+\centering
 \includegraphics[width=1\textwidth,height=1\textheight]{C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures/copper_length_by_half_month.png}
 \caption{Distribution of YOY copper rockfish lengths from fish genetically identified from D. Baetscher.\label{fig:copper-smurf-length}}
 \end{figure}
@@ -1783,6 +1880,12 @@ Year & Spawning Output & Fraction Unfished\\
 \centering
 \includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/8.5_update_deb_index/plots/bio9_fecundity_len.png}
 \caption{Fecundity as a function of length.\label{fig:fecundity}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/wcgbt/plots/length_fraction_female.png}
+\caption{Fraction of each sex by length by the NWFSC WCGBT survey.\label{fig:frac-sex-len}}
 \end{figure}
 
 \begin{figure}
