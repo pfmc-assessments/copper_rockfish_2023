@@ -565,11 +565,39 @@ tune_comps(replist = centered_devs, dir = file.path(wd, "8.1_centered_devs"),
            option = "MI", write = FALSE, allow_up_tuning = TRUE)
 SS_plots(centered_devs)
 
-modelnames <- c("8.0 Non-centered devs.", "8.1 Centered devs.")
-mysummary <- SSsummarize(list(model, centered_devs))
+sigmaR <- SS_output(file.path(wd, "8.2_sigmaR_70"))
+tune_comps(replist = sigmaR, dir = file.path(wd, "8.2_sigmaR_70"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+SS_plots(sigmaR)
+
+modelnames <- c("8.0 Non-centered devs.", "8.1 Centered devs.", "8.2 Centered & SigmaR = 0.70")
+mysummary <- SSsummarize(list(model, centered_devs, sigmaR))
 SSplotComparisons(mysummary,
-                  filenameprefix = "8.0_devs_combined_growth_",
+                  filenameprefix = "8.2_devs_",
                   legendlabels = modelnames, 
                   #legendloc = "bottomleft",
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+phasing <- SS_output(file.path(wd, "8.3_phasing - Copy"))
+end_devs <- SS_output(file.path(wd, "8.3_phasing_dev_end_yr"))
+noncentered <- SS_output(file.path(wd, "8.3_phasing_noncentered_devs"))
+pr_index <- SS_output(file.path(wd, "8.3_phasing_pr_index"))
+hkl <- SS_output(file.path(wd, "8.3_phasing_rm_hkl_2022"))
+nodevs <- SS_output(file.path(wd, "8.3_phasing_nodevs"))
+
+modelnames <- c("Phasing", "Extend Devs", "Non-Centered", "PR Index 2022", "Rm. HKL 2022", "No. Devs.")
+mysummary <- SSsummarize(list(phasing, end_devs, noncentered, pr_index, hkl, nodevs))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.3_phasing_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+est_m <- SS_output(file.path(wd, "8.4_est_m"))
+est_h <- SS_output(file.path(wd, "8.4_est_h"))
+tune_comps(replist = est_h, dir = file.path(wd, "8.4_est_h"), 
+           option = "MI", write = TRUE, allow_up_tuning = TRUE)
+
+est_h_rov <- SS_output(file.path(wd, "8.5_est_h_rm_rov_sd"))

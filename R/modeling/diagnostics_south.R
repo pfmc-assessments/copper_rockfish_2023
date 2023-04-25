@@ -20,14 +20,14 @@ if( grepl("Chantel", user) ){
 
 model_dir <- file.path(user_dir, "models", "sca")
 # Specify why model you would like to profile, retro, and/or jitter
-base_name <- "7.0_mi"
+base_name <- "8.1_centered_devs"
 
 # Specify the parameters and the space to profile
 get = get_settings_profile(
   parameters =  c( "L_at_Amax_Fem_GP_1", "NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
   low =  c( 42.0, 0.08, 0.30, -0.5),
-  high = c( 51.0, 0.14, 0.95,  1.5),
-  step_size = c(1, 0.01, 0.05, 0.10),
+  high = c( 51.0, 0.13, 0.95,  1.5),
+  step_size = c(1, 0.005, 0.05, 0.10),
   param_space = c('real', 'real',  'real', 'relative'),
   use_prior_like = c(0, 1, 1, 0)
 )
@@ -56,7 +56,7 @@ model_settings = get_settings(
   settings = list(
     base_name = base_name,
     profile_details = get,
-    run = "profile", #c("profile", "jitter", "retro"), 
+    run = c("profile", "jitter"), #c("profile", "jitter", "retro"), 
     retro_yrs = -1:-5,
     Njitter = 25,
     jitter_fraction = 0.10))
@@ -64,4 +64,39 @@ model_settings = get_settings(
 # Run line
 run_diagnostics(mydir = model_dir, model_settings = model_settings)
 
+
+library(ss3diags)
+base_name <- base_name
+model <- SS_output(file.path(model_dir, base_name))
+
+# Runs Test
+dir.create(file.path(model_dir, base_name, "runs_test"))
+ss3diags::SSplotRunstest(
+  model, 
+  plotdir = file.path(model_dir, base_name, "runs_test"),
+  print = TRUE)
+sspar(mfrow = c(3, 2), plot.cex = 0.8)
+ss3diags::SSplotRunstest(
+  model,
+  add = TRUE,
+  verbose = FALSE,
+  plotdir = file.path(model_dir, base_name, "runs_test"),
+  print = TRUE)
+
+sspar(mfrow = c(1, 1), plot.cex = 0.8)
+SSplotJABBAres(model, add = TRUE, subplot = 'len')
+
+load(file.path(model_dir, paste0(base_model,"_retro"), "retro_output.Rdata"))
+sspar(mfrow = c(3, 2), plot.cex = 0.8)
+SSplotHCxval(
+  retroSummary, 
+  add = TRUE, 
+  verbose = F, 
+  ylimAdj = 1.3, 
+  legendcex = 0.7)
+
+sspar(mfrow = c(1, 1), plot.cex = 0.7)
+mvln = SSdeltaMVLN(model, run = "SMA")
+sspar(mfrow = c(3, 2), plot.cex = 0.7)
+SSplotEnsemble(mvln$kb, ylabs = mvln$labels, add = T, verbose = F)
 
