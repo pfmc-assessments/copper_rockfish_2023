@@ -1,4 +1,4 @@
-# Appendix B. MRFSS Dockside Index of Abundance {#mrfss-index}
+# Appendix B. MRFSS CPFV Dockside Index of Abundance {#mrfss-index}
 
 ```{r, echo=FALSE, results='asis'}
 

@@ -185,13 +185,13 @@ table_format(x = mod_params,
 <!-- ***********    Like Contributions  ******************** --> 
 <!-- ======================================================= -->
 
-\include{tex_tables/likelihoods.tex}
+\include{tex_tables/south_likelihoods.tex}
 
 <!-- ======================================================= -->
 <!-- ********  Reference Points & Management *************** --> 
 <!-- ======================================================= -->
 
-\include{tex_tables/e_ReferencePoints.tex}
+\include{tex_tables/south_e_ReferencePoints.tex}
 
 \newpage
 
@@ -215,7 +215,7 @@ create_projection_table(
 <!-- ***********       Time Series      ******************** --> 
 <!-- ======================================================= -->
 
-\include{tex_tables/TimeSeries.tex}
+\include{tex_tables/south_TimeSeries.tex}
 
 \newpage
 

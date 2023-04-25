@@ -6,7 +6,7 @@ library(here)
 
 # Specify the directory for the document
 south_model_name <- "5.5_est_m"
-north_model_name <- "0.1_init_model"
+north_model_name <- "8.5_update_deb_index"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
