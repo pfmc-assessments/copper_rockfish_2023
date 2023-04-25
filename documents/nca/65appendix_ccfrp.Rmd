@@ -78,3 +78,75 @@ within closed areas to fishing in southern California state waters.
 The final index was weighted, giving 20% of the model weight to MPAs and 80% of model 
 weight to the "open" areas within the state.
 
+
+
+```{r, results = 'asis'}
+
+tab <- read.csv(file.path(data_dir, "survey_indices", "ccfrp", "north", "dataFilters.csv"))
+
+sa4ss::table_format(x = tab,
+             caption = "Data filtering for the CCFRP survey.",
+             label = "ccfrp-data-filter",
+             align = 'l',
+             longtable = TRUE,
+             font_size = 7,
+             landscape = TRUE)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+
+tab <- read.csv(file.path(data_dir, "survey_indices", "ccfrp", "north", "model_selection.csv"))
+
+sa4ss::table_format(x = tab,
+             caption = "Model selection for the CCFRP survey.",
+             label = "ccfrp-model-selection",
+             align = 'l',
+             longtable = TRUE,
+             font_size = 7,
+             landscape = TRUE)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+
+ind <- read.csv(file.path(data_dir, "survey_indices", "ccfrp", "north", "area_weighted", "index_forSS.csv"))
+ind <- ind[, c(1,4,5)]
+col_names = c("Year", "Estimate", "logSE")
+
+sa4ss::table_format(x = ind,
+             caption = "Estimated relative index of abundance for the CCFRP survey.",
+             label = "ccfrp-index",
+             col_names = col_names)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "area_weighted", "qq.png"), 
+caption = "QQ-plot for the CCFRP survey.",
+label = 'ccfrp-qq')
+```
+
+\newpage 
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "mpa_site_cpue.png"), 
+caption = "Average CPUE by site with trends prior to standardization in the MPA and REF areas.",
+label = 'ccfrp-avg-cpue')
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "area_weighted", "Index.png"), 
+caption = "The weighted relative index of abundance.",
+label = 'ccfrp-index')
+```
+
+

@@ -384,8 +384,34 @@ ggplot(all_indices, aes(x = year, y = StandardizedCPUE, colour = Index, group = 
   scale_color_viridis_d()
 ggsave(file = file.path(dir, "index_comparison_include_areaweighted.png"), width = 7, height = 7)
 
-# Model selection and data filter tables
+# Model selection and data filter tables ---------------------------------------
+#Format data filtering table and the model selection table for document
+dataFilters <- data.frame(lapply(data_filters, as.character), stringsasFactors = FALSE)
+write.csv(dataFilters, 
+          file = file.path(dir, "dataFilters.csv"), 
+          row.names = FALSE)
 
+#View(Model_selection)
+#format table for the document
+out <- Model_selection %>%
+  dplyr::select(-`(Intercept)`) %>%
+  mutate_at(vars("region",  "MPAorREF" ,"year","offset(logEffort)"), as.character) %>%
+  mutate(across(c("logLik","AICc","delta"), round, 1)) %>%
+#  replace_na(list(region = "Excluded", 
+        #          MPAorREF:year = "Excluded",
+#                  MPAorREF = "Excluded", 
+            #      depth_2 = "Excluded", 
+ #                 depth = "Excluded")) %>%
+  mutate_at(c("region",  "MPAorREF" ,"year", "offset(logEffort)"), 
+            funs(stringr::str_replace(.,"\\+","Included"))) %>%
+  rename(`Effort offset` = `offset(logEffort)`, 
+         `log-likelihood` = logLik,
+         `Depth squared` = depth_2,
+         `Interaction` = `MPAorREF:year`) %>%
+  rename_with(stringr::str_to_title,-AICc)
+#View(out)
+write.csv(out, file = file.path(dir, "model_selection.csv"), 
+          row.names = FALSE)
 
 
 
