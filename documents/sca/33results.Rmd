@@ -1,5 +1,7 @@
 ## Base Model Results
 
+The base model parameter estimates along with approximate asymptotic standard errors (SD column) are shown in Table \ref{tab:params} and the likelihood components are shown in Table \ref{tab:south-likelihood}. Estimates of derived reference points and approximate 95 percent asymptotic confidence intervals are shown in Table xx. Estimates of stock size over time are shown in Table xx.
+
 
 ### Parameter Estimates
 

@@ -41,7 +41,7 @@ read_child(filein)
 
 ### Growth (Length-at-Age) {#length-at-age}
 
-Length-at-age was estimated for male and female `r spp` informed by age data from the fisheries, the CCFRP survey, and independent age data collected effort from three programs `area` since 2002: 207 otoliths collected by the NWFSC WCGBT survey, 427 otoliths collected by a research survey conducted by Don Pearson, 77 from a research survey conducted by Abrams, and 508 otoliths collected by a cooperative research survey by the SWFSC and CPFV funded by the Sportfishing Association of California (Table \ref{tab:growth-age-samps}). The ages collected by these three sources were included in the model as a "growth" fleet that was not associated with removals or an index of abundance. 
+Length-at-age was estimated for male and female `r spp` informed by age data from the fisheries, the CCFRP survey, and independent age data collected effort from three programs `r `area` since 2002: 207 otoliths collected by the NWFSC WCGBT survey, 427 otoliths collected by a research survey conducted by Don Pearson, 77 from a research survey conducted by Abrams, and 508 otoliths collected by a cooperative research survey by the SWFSC and CPFV funded by the Sportfishing Association of California (Table \ref{tab:growth-age-samps}). The ages collected by these three sources were included in the model as a "growth" fleet that was not associated with removals or an index of abundance. 
 
 Sex-specific growth parameters `r area` were initially estimated external to the model at the following values:
 

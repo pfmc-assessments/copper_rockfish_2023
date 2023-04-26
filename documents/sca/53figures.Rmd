@@ -1,6 +1,8 @@
 \clearpage
 # Figures
 
+## Data 
+
 <!-- ====================================================================== --> 
 <!-- *******************    Assessment Map      *************************** --> 
 <!-- ====================================================================== --> 
@@ -9,8 +11,10 @@
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "map.png"), 
 caption = "Map of management area and the 2023 assessments areas for copper rockfish",
-label = 'map')
+label = 'ca-map')
 ```
+
+\pagebreak
 
 <!-- ====================================================================== -->  
 <!-- ****************** Catches Used in the Model ************************* --> 
@@ -23,6 +27,7 @@ caption = "Landings by fleet used in the base model where catches in metric tons
 label = 'catch')
 ```	
 
+\pagebreak
 <!-- ====================================================================== --> 
 <!-- ******************* Data Used in the Model *************************** --> 
 <!-- ====================================================================== --> 
@@ -34,6 +39,7 @@ caption = "Summary of data sources used in the base model",
 label = 'data-plot')
 ```	
 
+\pagebreak
 <!-- ======================================================= -->
 <!-- *************** Commercial Data *********************** --> 
 <!-- ======================================================= -->
@@ -45,6 +51,8 @@ caption = "Length composition data from the commercial dead fleet",
 label = 'com-dead-len-data')
 ```
 
+\pagebreak
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Commercial_dead.png"), 
@@ -52,6 +60,7 @@ caption = "Mean length for commercial dead fleet with 95 percent confidence inte
 label = 'mean-com-dead-len-data')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -60,6 +69,7 @@ caption = "Age composition data from the commercial dead and recreational CPFV f
 label = 'com-dead-age-data')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -68,6 +78,7 @@ caption = "Comparison of all length collected by the CRFS sampling program for t
 label = 'coop-len-comparison')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -76,6 +87,8 @@ caption = "Length composition data from the commercial live fleet",
 label = 'com-live-len-data')
 ```
 
+\pagebreak
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Commercial_live.png"), 
@@ -83,10 +96,10 @@ caption = "Mean length for commercial live fleet with 95 percent confidence inte
 label = 'mean-com-live-len-data')
 ```
 
+\pagebreak
 <!-- ======================================================= -->
 <!-- ************* Recreational Indices ******************** --> 
 <!-- ======================================================= -->
-
 
 ```{r, results = 'asis'}
 add_figure(
@@ -95,6 +108,7 @@ caption = "Estimated annual index of abundances for the CPFV fleet based on MRFS
 label = 'mrfss-index-main')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -103,6 +117,7 @@ caption = "Estimated annual index of abundances for the CPFV fleet based on CRFS
 label = 'crfs-index-main')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -111,11 +126,11 @@ caption = "Estimated annual index of abundances for the CPFV fleet based on CRFS
 label = 'crfs-pr-index-main')
 ```
 
+\pagebreak
 
 <!-- ======================================================= -->
 <!-- ************* Recreational Data *********************** --> 
 <!-- ======================================================= -->
-
 
 ```{r, results = 'asis'}
 add_figure(
@@ -124,6 +139,8 @@ caption = "Length composition data from the recreational CPFV fleet",
 label = 'rec-cpfv-len-data')
 ```
 
+\pagebreak
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_CPFV.png"), 
@@ -131,6 +148,7 @@ caption = "Mean length for recreational CPFV fleet with 95 percent confidence in
 label = 'mean-rec-cpfv-len-data')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -139,6 +157,8 @@ caption = "Length composition data from the recreation PR fleet",
 label = 'rec-pr-len-data')
 ```
 
+\pagebreak
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_Private.png"), 
@@ -146,11 +166,11 @@ caption = "Mean length for recreational PR fleet with 95 percent confidence inte
 label = 'mean-rec-pr-len-data')
 ```
 
+\pagebreak
 
 <!-- ======================================================= -->
 <!-- *************  Add Survey Locations Map  ************** --> 
 <!-- ======================================================= -->
-
 
 ```{r, results = 'asis'}
 add_figure(
@@ -159,6 +179,7 @@ caption = "Sample locations by each of the fishery-independent data sources used
 label = 'survey-locations')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -167,11 +188,10 @@ caption = "Sample locations by area, areas open to fishing (reference) and MPAS,
 label = 'ref-mpa')
 ```
 
-
+\pagebreak
 <!-- ======================================================= -->
 <!-- ***************     CCFRP           ******************* --> 
 <!-- ======================================================= -->
-
 
 ```{r, results = 'asis'}
 add_figure(
@@ -180,7 +200,7 @@ caption = "Estimated index of abundance from the CCFRP survey",
 label = 'ccfrp-index-main')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -189,6 +209,7 @@ caption = "Length composition data from the CCFRP survey",
 label = 'ccfrp-len-data')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -197,6 +218,7 @@ caption = "Age composition data from the CCFRP survey",
 label = 'ccfrp-age-data')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -205,13 +227,12 @@ caption = "Mean length for the CCFRP survey with 95 percent confidence intervals
 label = 'ccfrp-mean-len-data')
 ```
 
-
+\pagebreak
 
 
 <!-- ======================================================= -->
 <!-- ***************  NWFSC HKL Survey   ******************* --> 
 <!-- ======================================================= -->
-
 
 ```{r, results = 'asis'}
 add_figure(
@@ -220,7 +241,7 @@ caption = "Area sampled by the NWFSC Hook and Line survey",
 label = 'nwfsc-hkl-map')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -229,7 +250,7 @@ caption = "Observations of copper rockfish by the NWFSC Hook and Line survey by 
 label = 'nwfsc-hkl-site')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -238,6 +259,7 @@ caption = "Standardized CPUE inside and outside the CCA.",
 label = 'nwfsc-hkl-cca-main')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -246,7 +268,7 @@ caption = "Number of observations by depth (m) inside and outside the CCAs.",
 label = 'nwfsc-hkl-depth')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -255,7 +277,7 @@ caption = "Estimated index of abundance for copper rockfish.",
 label = 'nwfsc-hkl-index-main')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -264,6 +286,7 @@ caption = "Observed length (cm) distribution of copper rockfish by the NWFSC Hoo
 label = 'nwfsc-hkl-site-len')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -272,7 +295,7 @@ caption = "Age and length by sex for copper rockfish in the NWFSC Hook and Line 
 label = 'nwfsc-hkl-len-age')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -281,6 +304,7 @@ caption = "Length composition data from the NWFSC Hook and Line survey",
 label = 'hkl-len-data')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -288,13 +312,11 @@ filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_NWFSC_H
 caption = "Mean length for NWFSC Hook and Line survey with 95 percent confidence intervals",
 label = 'mean-hkl-len-data')
 ```
-
+\pagebreak
 
 <!-- ======================================================= -->
 <!-- ***************     ROV             ******************* --> 
 <!-- ======================================================= -->
-
-
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -303,7 +325,7 @@ caption = "The location and size of observations across all years and transects.
 label = 'rov-obs-loc')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -312,7 +334,7 @@ caption = "The trend of the calculated CPUE by each MPA and Reference group by y
 label = 'rov-raw-cpue')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -321,6 +343,7 @@ caption = "The distribution of lengths across all years for MPA and Reference ar
 label = 'rov-len')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -329,6 +352,7 @@ caption = "Length composition data from the CDFW ROV survey",
 label = 'rov-len-data')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -337,11 +361,11 @@ caption = "Mean length for the CDFW ROV survey with 95 percent confidence interv
 label = 'mean-rov-len-data')
 ```
 
+\pagebreak
 
 <!-- ======================================================= -->
 <!-- ***************     Growth Data      ****************** --> 
 <!-- ======================================================= -->
-
 
 ```{r, results = 'asis'}
 add_figure(
@@ -350,6 +374,7 @@ caption = "Length distribution of fish by collection source that were used as co
 label = 'growth-len-dist')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -357,8 +382,7 @@ filein = file.path(data_dir, "ages",  "plots", "south_growth_age_comparison.png"
 caption = "Age distribution of fish by collection source that were used as conditional age-at-length data in the growth fleet.",
 label = 'growth-age-dist')
 ```
-
-
+\pagebreak
 
 <!-- ======================================================= -->
 <!-- ***************  NWFSC WCGBT Survey  ****************** --> 
@@ -371,6 +395,7 @@ caption = "Location and catch-per-unit-effort by location caught south of Point 
 label = 'wcgbt-cpue')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -379,6 +404,7 @@ caption = "Number of positive tows across all years by depth in meters.",
 label = 'wcgbt-depth')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -387,7 +413,9 @@ caption = "Age and length by sex for copper rockfish caught south of Point Conce
 label = 'wcgbt-len-age')
 ```
 
+\pagebreak
 
+## Biology
 
 <!-- ======================================================= -->
 <!-- ***************  life history  ************************ --> 
@@ -400,14 +428,11 @@ caption = "Distribution of YOY copper rockfish lengths from fish genetically ide
 label = 'copper-smurf-length')
 ```
 
-
-
+\pagebreak
 
 <!-- ======================================================= -->  
 <!-- ******************   Biology  ************************* --> 
 <!-- ======================================================= -->  
-
-
 
 ```{r, results = 'asis'}
 add_figure(
@@ -416,6 +441,7 @@ caption = "Maturity as a function of length",
 label = 'maturity')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -424,6 +450,7 @@ caption = "Fecundity as a function of length",
 label = 'fecundity')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -432,6 +459,7 @@ caption = "Fraction of each sex by length by the NWFSC WCGBT survey",
 label = 'frac-sex-len')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -440,7 +468,7 @@ caption = "Estimated weight-at-length",
 label = 'weight-length')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -449,6 +477,7 @@ caption = "Distribution of double reads between age reader 1 and 2.",
 label = 'age-error-dist')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -457,7 +486,7 @@ caption = "Ageing imprecision standard deviation of observed age in years.",
 label = 'age-error')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -466,11 +495,15 @@ caption = "Distribution of observed age at true age for ageing error type 1.",
 label = 'age-error-matrix')
 ```
 
+\pagebreak
+
+## Model Results
+
+### Bridging
 
 <!-- ======================================================= -->  
 <!-- ******************   Bridge   ************************* --> 
 <!-- ======================================================= -->
-
 
 ```{r, results = 'asis'}
 add_figure(
@@ -478,6 +511,8 @@ filein = file.path(bridge_dir, "_plots", "0_model_convert_compare2_spawnbio_unce
 caption = "Model version bridge comparison of estimated spawning output",
 label = 'bridge-ssb')
 ```
+
+\pagebreak
 
 ```{r, results = 'asis'}
 
@@ -487,6 +522,7 @@ caption = "Model version bridge comparison of estimated fraction unfished",
 label = 'bridge-depl')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -495,6 +531,7 @@ caption = "Model structure and data bridging comparison of estimated spawning ou
 label = 'data-bridge-ssb-1')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 
@@ -504,7 +541,7 @@ caption = "Model structure and data bridging comparison of estimated fraction un
 label = 'data-bridge-depl-1')
 ```
 
-
+\pagebreak
 
 
 ```{r, results = 'asis'}
@@ -514,6 +551,8 @@ caption = "Model structure and data bridging comparison of estimated spawning ou
 label = 'data-bridge-ssb-2')
 ```
 
+\pagebreak
+
 ```{r, results = 'asis'}
 
 add_figure(
@@ -522,11 +561,15 @@ caption = "Model structure and data bridging comparison of estimated fraction un
 label = 'data-bridge-depl-2')
 ```
 
-
+\pagebreak
 
 <!-- ====================================================================== -->
 <!-- *********************    Priors            ********************** --> 
 <!-- ====================================================================== -->
+
+
+
+### Biology
 
 <!-- ====================================================================== -->
 <!-- *********************  Model Est. Biology       ********************** --> 
@@ -539,6 +582,10 @@ caption = "Model estimated length-at-age in the beginning of the year. Shaded ar
 label = 'mod-est-len-age')
 ```
 
+\pagebreak
+
+### Selectivity
+
 <!-- ====================================================================== -->
 <!-- *********************    Selectivity            ********************** --> 
 <!-- ====================================================================== -->
@@ -546,10 +593,11 @@ label = 'mod-est-len-age')
 
 
 
+### Recruitment
+
 <!-- ======================================================= -->  
 <!-- ****************** Recruitment ************************ --> 
 <!-- ======================================================= -->
-
 
 ```{r, results = 'asis'}
 add_figure(
@@ -558,6 +606,7 @@ caption = "Estimated time series of age-0 recruits (1000s)",
 label = 'recruits')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -566,6 +615,7 @@ caption = "Estimated time series of recruitment deviations",
 label = 'rec-devs')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -574,11 +624,13 @@ caption = "Stock-recruit curve. Point colors indicate year, with warmer colors i
 label = 'bh-curve')
 ```
 
+\pagebreak
+
+### Fits to Data
 
 <!-- ====================================================================== -->
 <!-- *************** Fit to the Length & Age Data  ************************ --> 
 <!-- ====================================================================== -->
-
 
 ```{r, results = 'asis'}
 add_figure(
@@ -587,6 +639,7 @@ caption = "Pearson residuals for commercial fleet. Closed bubble are positive re
 label = 'com-dead-pearson')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -595,6 +648,7 @@ caption = "Mean length for commercial dead lengths with 95 percent confidence in
 label = 'com-dead-mean-len-fit')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -603,6 +657,7 @@ caption = "Age composition data aggregated across time by fleet.",
 label = 'agg-marg-age-fit')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -611,7 +666,7 @@ caption = "Pearson residuals for commercial dead age data. Closed bubble are pos
 label = 'com-dead-age-pearson')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -620,6 +675,7 @@ caption = "Pearson residuals for commercial live fleet. Closed bubble are positi
 label = 'com-live-pearson')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -628,7 +684,7 @@ caption = "Mean length for commercial live fish lengths with 95 percent confiden
 label = 'com-live-mean-len-fit')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -637,6 +693,7 @@ caption = "Pearson residuals for recreational CPFV fleet. Closed bubble are posi
 label = 'rec-cpfv-pearson')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -645,7 +702,7 @@ caption = "Mean length for recreational CPFV lengths with 95 percent confidence 
 label = 'rec-cpfv-mean-len-fit')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -654,7 +711,7 @@ caption = "Pearson residuals for recreational CPFV age data. Closed bubble are p
 label = 'rec-cpfv-age-pearson')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -663,6 +720,7 @@ caption = "Pearson residuals for recreational private/rental fleet. Closed bubbl
 label = 'rec-pr-pearson')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -671,6 +729,7 @@ caption = "Mean length for recreational private/rental lengths with 95 percent c
 label = 'rec-pr-mean-len-fit')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -679,6 +738,7 @@ caption = "Pearson residuals for CCFRP survey length data. Closed bubble are pos
 label = 'ccfrp-len-pearson')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -687,6 +747,7 @@ caption = "Mean length for CCFRP survey lengths with 95 percent confidence inter
 label = 'ccfrp-mean-len-fit')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -695,6 +756,7 @@ caption = "Pearson residuals for CCFRP survey conditional-age-at-length data. Cl
 label = 'ccfrp-age-pearson')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -703,6 +765,7 @@ caption = "Pearson residuals for CDFW ROV survey length data. Closed bubble are 
 label = 'rov-pearson')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -711,6 +774,7 @@ caption = "Mean length for CDFW ROV survey lengths with 95 percent confidence in
 label = 'rov-mean-len-fit')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -719,6 +783,7 @@ caption = "Pearson residuals for NWFSC Hook and Line survey length data. Closed 
 label = 'nwfsc-hkl-pearson')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -727,6 +792,7 @@ caption = "Mean length for NWFSC Hook and Line survey lengths with 95 percent co
 label = 'nwfsc-hkl-mean-len-fit')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -735,6 +801,7 @@ caption = "Pearson residuals for NWFSC Hook and Line survey conditional-age-at-l
 label = 'nwfsc-hkl-age-pearson-1')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -743,6 +810,7 @@ caption = "Pearson residuals for NWFSC Hook and Line survey conditional-age-at-l
 label = 'nwfsc-hkl-age-pearson-2')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -751,6 +819,7 @@ caption = "Pearson residuals for NWFSC Hook and Line survey conditional-age-at-l
 label = 'nwfsc-hkl-age-pearson-3')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -759,7 +828,7 @@ caption = "Mean age for NWFSC Hook and Line survey age data with 95 percent conf
 label = 'nwfsc-hkl-mean-age-fit')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -768,6 +837,7 @@ caption = "Pearson residuals for the growth conditional-age-at-length data. Clos
 label = 'growth-age-pearson-1')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -776,6 +846,7 @@ caption = "Pearson residuals for the growth conditional-age-at-length data. Clos
 label = 'growth-age-pearson-2')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -784,6 +855,7 @@ caption = "Pearson residuals for the growth conditional-age-at-length data. Clos
 label = 'growth-age-pearson-3')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -792,10 +864,10 @@ caption = "Mean age for the growth age data with 95 percent confidence intervals
 label = 'growth-mean-age-fit')
 ```
 
+\pagebreak
 <!-- ======================================================= -->  
 <!-- ************* Fit to the Indices ********************** --> 
 <!-- ======================================================= -->
-
 
 ```{r, results = 'asis'}
 add_figure(
@@ -804,6 +876,7 @@ caption = "Fit to log index data on log scale for the recreational (MRFSS) CPFV 
 label = 'mrfss-cpfv-index-fit')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -812,6 +885,7 @@ caption = "Fit to log index data on log scale for the recreational CRFS CPFV ind
 label = 'crfs-cpfv-index-fit')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -820,7 +894,7 @@ caption = "Fit to log index data on log scale for the recreational private index
 label = 'crfs-pr-index-fit')
 ```
 
-
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -829,6 +903,7 @@ caption = "Fit to log index data on log scale for the CCFRP index of abundance. 
 label = 'ccfrp-index-fit')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -837,6 +912,7 @@ caption = "Fit to log index data on log scale for the CDFW ROV index of abundanc
 label = 'rov-index-fit')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -845,6 +921,9 @@ caption = "Fit to log index data on log scale for the NWFSC Hook and Line index 
 label = 'nwfsc-hkl-index-fit')
 ```
 
+\pagebreak
+
+### Time-series
 
 <!-- ======================================================= -->  
 <!-- ****************** Time Series ************************ --> 
@@ -858,12 +937,16 @@ caption = "Estimated time series of spawning biomass",
 label = 'ssb')
 ```
 
+\pagebreak
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "ts1_Total_biomass_(mt).png"), 
 caption = "Estimated time series of total biomass",
 label = 'tot-bio')
 ```
+
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -872,6 +955,9 @@ caption = "Estimated time series of fraction of unfished spawning biomass",
 label = 'depl')
 ```
 
+\pagebreak
+
+### Sensitivity Analyses and Retrospectives
 
 <!-- ====================================================================== -->
 <!-- ******************      Sensitivities    ***************************** --> 
@@ -886,6 +972,7 @@ label = 'depl')
 
 
 
+### Likelihood Profiles
 
 <!-- ====================================================================== -->
 <!-- ******************       Profile         ***************************** --> 
@@ -898,6 +985,9 @@ label = 'depl')
 <!-- ************* Comparison w/ Previous Assessments ********************** --> 
 <!-- ====================================================================== -->
 
+
+
+### Reference Points and Forecasts
 
 <!-- ====================================================================== -->
 <!-- ******************    Reference Points    **************************** --> 
@@ -921,6 +1011,8 @@ label = 'phase')
 ```
 
 
+\pagebreak
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "yield2_yield_curve_with_refpoints.png"), 
@@ -928,3 +1020,5 @@ caption = "Equilibrium yield curve for the base case model. Values are based on 
 fishery selectivities and with steepness fixed at 0.72",
 label = 'yield')
 ```
+
+\pagebreak

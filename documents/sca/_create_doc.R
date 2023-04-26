@@ -51,14 +51,14 @@ bookdown::render_book(
 # Create a model Rdata object and executive summary ES tex files
 #==================================================================================================
 
-sa4ss::read_model(
+read_model(
   mod_loc = south_model_dir,
   add_prefix = "south",
   add_text = "south of Point Conception",
   create_plots = FALSE, 
   save_loc = file.path(doc_dir, "sca", "tex_tables"))
 
-sa4ss::read_model(
+read_model(
   mod_loc = north_model_dir,
   add_prefix = "north",
   add_text = "north of Point Conception",
@@ -104,6 +104,12 @@ es_table_tex(
   save_loc = file.path(getwd(), "tex_tables"), 
   csv_name = "all_tables.csv")
 
+
+es_table_tex(
+  dir = file.path(south_model_dir, "tables"), 
+  add_prefix = "south",
+  save_loc = file.path(getwd(), "tex_tables"), 
+  csv_name = "table_labels.csv")
 
 #==================================================================================================
 # Initial Document Creation
