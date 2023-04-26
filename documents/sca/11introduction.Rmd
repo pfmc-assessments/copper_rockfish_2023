@@ -1,8 +1,8 @@
 # Introduction
+
+This assessment report describes the sub-area population of `r spp` (*Sebastes caurinus*) off the California coast south of Point Conception in U.S. waters, using data through 2022. The sub-area population north of Point Conception in California waters was also evaluated and is described in a separate assessment report. The `r spp` status for the California stock of is determined by the combined estimates of spawning output from both sub-areas and is detailed in the [Management](#management) section. This assessment does not account for populations located in Mexico waters or other areas off the U.S. coast and assumes that these southern and northern populations do not contribute to the population being assessed here. 
+
 ## Basic Information and Life History
-
-This assessment report describes the sub-area population of `r spp` (*Sebastes caurinus*) off the California coast south of Point Conception in U.S. waters, using data through 2022. The sub-area population north of Point Conception in California waters was also evaluated and is described in a separate assessment report. The `r spp` status for the California stock of is determined by the combined estimates of spawning output from both sub-areas and is detailed in the [management](#management) section. This assessment does not account for populations located in Mexico waters or other areas off the U.S. coast and assumes that these southern and northern populations do not contribute to the population being assessed here. 
-
 
 ```{r, echo=FALSE, results='asis'}
 filein = file.path(doc_dir, "shared_text", '1_intro_life_history_fishery_info.Rmd')
@@ -38,4 +38,11 @@ read_child(filein)
 ```
 
 ## Foreign Fisheries
-Replace text.
+
+
+```{r, echo=FALSE, results='asis'}
+
+filein = file.path(doc_dir, "shared_text", '1_foreign_fisheries.Rmd')
+read_child(filein)
+```
+

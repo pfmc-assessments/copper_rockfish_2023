@@ -1,8 +1,7 @@
 
- `r Spp` have historically been a part of both commercial and recreational 
+`r Spp` have historically been a part of both commercial and recreational 
 fisheries throughout its range. `r Spp` are a demersal, relatively nearshore 
-species within the subgenus *Pteropodus.* `r Spp` range from xxx to xx at depth of   xxx [@love_rockfishes_2002].  The core range is 
-comparatively large, from northern Baja Mexico to the Gulf of Alaska, with `r spp` 
+species within the subgenus *Pteropodus.* `r Spp` range from xxx to xx at depth of   xxx [@love_rockfishes_2002].  The core range is  comparatively large, from northern Baja Mexico to the Gulf of Alaska, with `r spp` 
 also found in Puget Sound. `r Spp` are commonly found in waters less than 100 meters in depth 
 inhabiting nearshore kelp forests and complex low-relief rocky habitat [@love_probably_1996].
 Adult copper rockfish have high site fidelity and do not make long-range movements. 
@@ -10,12 +9,8 @@ An acoustic telemetry study displaced `r spp` 4km from their capture location to
 reef and within 10 days, half of the `r spp` returned to the original capture location 
 [@reynolds_application_2010]. 
 
-long the posterior two-thirds of the lateral line. The `r spp` has high variation 
-in coloration throughout its range, taking on coloration from dark brown, olive, 
-orange-red and pink, with patches of yellow and pink [@miller_guide_1972]. In general 
-the `r spp` towards the northern part of the range are often darker in 
-color than fish encountered in southern California. The distinct change in coloration 
-resulted in copper rockfish described as two separate species, copper rockfish
+`r Spp` have a clearly defined long white band the posterior two-thirds of the lateral line. `r Spp` has high variation in coloration throughout its range, taking on coloration from dark brown, olive, 
+orange-red and pink, with patches of yellow and pink [@miller_guide_1972]. In general  the `r spp` towards the northern part of the range are often darker in  color than fish encountered in southern California. The distinct change in coloration  resulted in copper rockfish described as two separate species, copper rockfish
 (*S. caurinus*) and whitebelly rockfish (*S. vexillaris*). 
 
 The *Sebastes* genus are viviparous with internal fertilization, many exhibit 
@@ -53,21 +48,20 @@ characterized how the stock could be impacted by fisheries and other activities.
  As adults, there is little evidence of movement, with  Hanan and CCFRP citations
 
 `r Spp` are opportunistic carnivores and commonly consume crustaceans, mollusks, 
-and fish whole [@lea_biological_1999; @bizzarro_diet_2017]. -@prince_food_1972 
+and fish whole [@lea_biological_1999; @bizzarro_diet_2017]. [-@prince_food_1972] 
 observed a shift in a diet dominated by arthropods in age 0 and 1 fish, and a shift to a more 
 diverse diet including molluscs and fish as they aged. the study also noted that 
 juvenile copper rockfish were predated on by harbor seals and lingcod.
  
 There is currently no evidence of significant stock structure from genetic 
-studies of `r spp` across the west coast. -@buonaccorsi_population_2002 looked 
+studies of `r spp` across the west coast. [-@buonaccorsi_population_2002] looked 
 at genetic variation across six micosatellite 
 DNA loci from samples ranging from British Columbia to southern California. 
 Significant population subdivision was detected between th Puget Sound and coastal 
 samples and support the model of isolation-by-distance for `r spp`.
 @sivasundar_life_2010 conducted a genetic study to determine the potential for 
 biogeographic boundaries to prohibit gene flow for 15 *Sebastes* species.
-The study's sample sizes of 
-`r spp` with samples form Oregon, Monterey Bay and Santa Barbara. @sivasundar_life_2010
+The study's sample sizes of `r spp` with samples form Oregon, Monterey Bay and Santa Barbara. @sivasundar_life_2010
 used mtDNA and could differentiate samples from Santa Barbara from those collected 
 in Oregon and Monterey Bay, but the Monterey Bay and Oregon samples could not be distinguished. 
 Micosatellite data did not reveal any genetic differentiation among the sampels from 

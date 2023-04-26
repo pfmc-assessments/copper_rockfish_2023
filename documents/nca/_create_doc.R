@@ -74,14 +74,14 @@ bookdown::render_book("00a.Rmd",
 # Read in a new model ----
 # Create a model Rdata object and executive summary ES tex files
 #===============================================================================
-sa4ss::read_model(
+read_model(
   mod_loc = south_model_dir,
   add_prefix = "south",
   add_text = "south of Point Conception",
   create_plots = FALSE, 
   save_loc = file.path(doc_dir, "nca", "tex_tables"))
 
-sa4ss::read_model(
+read_model(
   mod_loc = north_model_dir,
   add_prefix = "north",
   add_text = "north of Point Conception",

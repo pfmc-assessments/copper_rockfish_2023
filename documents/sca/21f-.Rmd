@@ -5,7 +5,6 @@
 
 #### Landings and Discards
 \
-
 ```{r, echo=FALSE, results='asis'}
 
 filein = file.path(doc_dir, "shared_text",'2f_commercial_removals.Rmd')
@@ -46,7 +45,6 @@ read_child(filein)
 ```
 
 #### Indices of Abundance
-\
 
 A number of indices of abundance were explored for the recreational fleet. Discarded catch is available from onboard observer surveys, but was not included in indices. Indices developed for the assessment include:
 

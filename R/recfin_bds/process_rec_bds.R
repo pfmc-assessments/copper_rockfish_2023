@@ -981,6 +981,7 @@ ggplot(tmp, aes(lengthcm, fill = program, color = program)) +
 ggsave(filename = file.path(dir, "plots", "rec_south_mrfss_ally_comparison.png"),
        width = 10, height = 10)
 
+library(ggridges)
 tmp <- all_data[all_data$year > 2004 & all_data$area == "north", ]
 ggplot(tmp, aes(x = lengthcm, y = as.factor(year)), color = year) + 
   geom_density_ridges2() +
@@ -990,14 +991,14 @@ ggplot(tmp, aes(x = lengthcm, y = as.factor(year)), color = year) +
 ggsave(filename = file.path(dir, "plots", "rec_north_ggridges_lengths_mode_year.png"),
        width = 10, height = 10)
 
-tmp <- all_data[all_data$year > 2004 & all_data$area == "south", ]
+tmp <- all_data[all_data$year < 2000 & all_data$area == "south", ]
 
 ggplot(tmp, aes(x = lengthcm, y = as.factor(year)), color = year) + 
   geom_density_ridges2() +
   scale_fill_viridis_c(name = "Length") +
   facet_wrap("mode") +
   ylab("Year") + xlab("Length (cm)")
-ggsave(filename = file.path(dir, "plots", "rec_south_ggridges_lengths_mode_year.png"),
+ggsave(filename = file.path(dir, "plots", "rec_south_ggridges_lengths_mode_pre_2000_year.png"),
        width = 10, height = 10)
 
 
