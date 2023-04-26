@@ -86,9 +86,13 @@ create_management_table(
 <!-- ********************  ROV       *********************** --> 
 <!-- ======================================================= -->
 
-
 \include{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
 
+<!-- ======================================================= -->
+<!-- ***************  NWFSC WCGBTS  ************************ --> 
+<!-- ======================================================= -->
+
+\input{tex_tables/wcgbt_samples_by_year.tex}
 
 <!-- ======================================================= -->
 <!-- ***************  Growth  Data  *********************** --> 
@@ -99,7 +103,6 @@ create_management_table(
 <!-- ======================================================= -->
 <!-- ***********   Model Structure      ******************** --> 
 <!-- ======================================================= -->
-
 
 \input{tex_tables/model_structure_north.tex}
 
@@ -157,13 +160,13 @@ table_format(x = mod_params,
 <!-- ***********    Like Contributions  ******************** --> 
 <!-- ======================================================= -->
 
-\include{tex_tables/likelihoods.tex}
+\include{tex_tables/north_likelihoods.tex}
 
 <!-- ======================================================= -->
 <!-- ********  Reference Points & Management *************** --> 
 <!-- ======================================================= -->
 
-\include{tex_tables/e_ReferencePoints.tex}
+\include{tex_tables/north_e_ReferencePoints.tex}
 
 \newpage
 
@@ -185,7 +188,7 @@ create_projection_table(
 <!-- ***********       Time Series      ******************** --> 
 <!-- ======================================================= -->
 
-\include{tex_tables/TimeSeries.tex}
+\include{tex_tables/north_TimeSeries.tex}
 
 \newpage
 

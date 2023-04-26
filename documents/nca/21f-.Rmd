@@ -42,7 +42,7 @@ filein = file.path(general_wd,'2f_recreational_removals.Rmd')
 read_child(filein)
 ```
 
-#### Fishery Dependent Indices of Abundance
+#### Fishery-Dependent Indices of Abundance
 \
 
 A number of indices of abundance were explored for the recreational fleet. Discarded catch is available from onboard observer surveys, but was not included in indices. Indices developed for the assessment include:
@@ -63,7 +63,7 @@ Figure \ref{fig:dwv-index-main} Appendix Section \ref{dwv-cpfv-index}
 Figure \ref{fig:crfs-pr-index-main} Appendix Section \ref{crfs-pr-index}
 
 #### Composition Data
-
+\
 Length compositions were available from the following sources: 
 
 * Recreational party/charter mode (CPFV/PC)
