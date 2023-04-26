@@ -601,3 +601,61 @@ tune_comps(replist = est_h, dir = file.path(wd, "8.4_est_h"),
            option = "MI", write = TRUE, allow_up_tuning = TRUE)
 
 est_h_rov <- SS_output(file.path(wd, "8.5_est_h_rm_rov_sd"))
+
+
+
+# Start model 8.1 -----
+centered_dev <- SS_output(file.path(wd, "8.1_centered_devs"))
+nosurveys <- SS_output(file.path(wd, "8.1a_nosurveys"))
+ROVonly <- SS_output(file.path(wd, "8.1a_ROVonly"))
+CCFRPonly <- SS_output(file.path(wd, "8.1c_CCFRPonly"))
+HKLonly <- SS_output(file.path(wd, "8.1d_HKLonly"))
+
+modelnames <- c("centered_dev", "nosurveys", "ROVonly", "CCFRPonly", "HKLonly")
+mysummary <- SSsummarize(list(centered_dev, nosurveys, ROVonly, CCFRPonly, HKLonly))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.1_surveysoff_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+#Model 8.2
+#no HKL survey and centered devs
+noHKL <- SS_output(file.path(wd, "8.2_noHKL_devOpt2"))
+tune_comps(replist = noHKL, dir = file.path(wd, "8.2_noHKL_devOpt2"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+SS_plots(noHKL)
+#Hook and line survey is driving something - now to figure out what
+
+#Put pieces of HKL back in
+noHKL <- SS_output(file.path(wd, "8.2_noHKL_devOpt2"))
+noHKLages <- SS_output(file.path(wd, "8.2_noHKLages_devOpt2"))
+noHKLindex <- SS_output(file.path(wd, "8.2_noHKLindex_devOpt2"))
+noHKLlengths <- SS_output(file.path(wd, "8.2_noHKLlengths_devOpt2"))
+
+modelnames <- c("noHKL", "noHKLages", "noHKLindx", "noHKLlenghts")
+mysummary <- SSsummarize(list(noHKL, noHKLages, noHKLindex, noHKLlengths))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.2_HKL_piecies_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+#no rec indices
+noRecIndex <- SS_output(file.path(wd, "8.3_noRecSurveys_devOpt2"))
+tune_comps(replist = noRecIndex, dir = file.path(wd, "8.3_noRecSurveys_devOpt2"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+SS_plots(noRecIndex)
+
+
+
+#for fun - remove the FI surveys and drop down the Rec historical catches
+test1 <- SS_output(file.path(wd, "8.4_nosurveys_cutReccatches"))
+tune_comps(replist = test1, dir = file.path(wd, "8.4_nosurveys_cutReccatches"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+SS_plots(test1)
+#nothing useful here

@@ -43,6 +43,9 @@ cdfwpr <- all_pr_data %>%
   filter(area == modelArea) %>%
   mutate(cpue = kept/anglers)
 
+
+
+# bag limit exploration---------------------------------------------------------
 #look at total sample sizes by year to see if there is a post-covid difference
 cdfwpr_samplesize <- all_pr_data %>%
   mutate(area = ifelse(district > 2, "north", "south")) %>%
@@ -71,6 +74,13 @@ write.csv(cpue_year,
 file.path(getwd(),modelArea, modelName, "forSS","observed_cpue_by_year.csv"),
 row.names = FALSE)
 #histogram of the number of fish per bag
+
+
+
+
+
+
+
 #-------------------------------------------------------------------------------
 # Add to filter dataframe
 dataFilters$Filter[filter.num] <- c("All data")
