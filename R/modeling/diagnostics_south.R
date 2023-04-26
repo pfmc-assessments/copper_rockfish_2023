@@ -15,7 +15,7 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
 } else {
   # Fill in Melissa's document directory below
-  user_dir <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
+  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
 }
 
 model_dir <- file.path(user_dir, "models", "sca", "_sensitivities")
@@ -44,11 +44,11 @@ get = get_settings_profile(
 
 get = get_settings_profile(
   parameters =  c("SR_LN(R0)"),
-  low =  c(-0.75),
-  high = c(0.75),
-  step_size = c(0.1),
-  param_space = c('relative'),
-  use_prior_like = c(0)
+  low =  c(5),
+  high = c( 6.5),
+  step_size = c( 0.25),
+  param_space = c( 'real'),
+  use_prior_like = c( 0)
 )
 
 # This specifies to run ALL the diagnostics, if you want to do only some of them revise the "run" input line
@@ -56,7 +56,7 @@ model_settings = get_settings(
   settings = list(
     base_name = base_name,
     profile_details = get,
-    run = c("profile", "jitter", "retro"), 
+    run = c("profile"),#, "jitter"), #c("profile", "jitter", "retro"), 
     retro_yrs = -1:-5,
     Njitter = 50,
     jitter_fraction = 0.10))
@@ -99,4 +99,6 @@ sspar(mfrow = c(1, 1), plot.cex = 0.7)
 mvln = SSdeltaMVLN(model, run = "SMA")
 sspar(mfrow = c(3, 2), plot.cex = 0.7)
 SSplotEnsemble(mvln$kb, ylabs = mvln$labels, add = T, verbose = F)
+
+
 
