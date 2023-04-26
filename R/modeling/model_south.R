@@ -601,3 +601,16 @@ tune_comps(replist = est_h, dir = file.path(wd, "8.4_est_h"),
            option = "MI", write = TRUE, allow_up_tuning = TRUE)
 
 est_h_rov <- SS_output(file.path(wd, "8.5_est_h_rm_rov_sd"))
+
+catch <- SS_output(file.path(wd, "_sensitivities", "8.1_centered_devs_catch"))
+estm <- SS_output(file.path(wd, "_sensitivities", "8.1_centered_devs_est_m"))
+mat <- SS_output(file.path(wd, "_sensitivities", "8.1_centered_devs_mat"))
+same_m <- SS_output(file.path(wd, "_sensitivities", "8.1_centered_devs_bio_offset"))
+modelnames <- c("Centered Devs.", "Lower PR Catch", "Est M", "Same M by Sex", "Mat = 30.5")
+mysummary <- SSsummarize(list(centered_devs, catch, estm, same_m, mat))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.1_sensitivities_",
+                  legendlabels = modelnames, 
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
