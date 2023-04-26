@@ -13,4 +13,4 @@ $M=\frac{5.4}{A_{\text{max}}}$
 
 where $A_{\text{max}}$ is the maximum age. The prior is defined as a lognormal distribution with mean $ln(5.4/A_{\text{max}})$ and standard error = 0.31. Using a maximum age of 50, the point estimate and median of the prior is 0.108 yr^-1^. The maximum age was selected based on available age data from all West Coast data sources and literature values. The oldest aged `r spp` observed in California waters was 52 years of age sampled in 2020 in northern California with 15 additional fish aged to be 40 years and older across all data sources.
 
-The maximum age in the model was set at 50 years. This selection was consistent with the literature examining the longevity of `r spp` within California [@love_milton_probably_1996] and was supported by the observed ages that had multiple observations of fish between 40 and 52 years of age.  
+The maximum age in the model was set at 50 years. This selection was consistent with the literature examining the longevity of `r spp` within California [@love_probably_1996] and was supported by the observed ages that had multiple observations of fish between 40 and 52 years of age.  
