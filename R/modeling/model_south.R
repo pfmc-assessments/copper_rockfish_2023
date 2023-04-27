@@ -672,3 +672,150 @@ tune_comps(replist = test1, dir = file.path(wd, "8.4_nosurveys_cutReccatches"),
            option = "Francis", write = TRUE, allow_up_tuning = TRUE)
 SS_plots(test1)
 #nothing useful here
+
+
+base <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est"))
+h_prior <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_h_prior"))
+fix_mh <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_fix_m_h"))
+rec_opt <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rec_opt_1"))
+rm_ages <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_ages"))
+rm_all_surveys <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_all_surveys"))
+rm_ccfrp <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_ccfrp"))
+rm_cpfv_indices <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_cpfv_indices"))
+rm_growth <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_growth"))
+rm_hkl <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_hkl"))
+rm_hkl_lens <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_hkl_lens"))
+rm_hkl_bio <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_hkl_len_ages"))
+rm_hkl_index <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_hkl_index"))
+rm_hkl_ages <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_hkl_ages"))
+rm_pr_index <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_pr_index"))
+rm_rov <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_rov"))
+split_hkl_comps <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_hkl_split"))
+selex_block <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_hkl_selex_block"))
+allow_dome <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_hkl_split_selex"))
+selex_q_block <- SS_output(file.path(wd, "_sensitivities", "8.7_centered_m_h_est_rm_hkl_selex_q_block"))
+
+
+modelnames <- c("Base", "- All Surveys", "- CCFRP", "- ROV", "- NWFSC HKL", "- PR Index", "- All CPFV Indices")
+mysummary <- SSsummarize(list(base, rm_all_surveys, rm_ccfrp, rm_rov, rm_hkl, rm_pr_index, rm_cpfv_indices))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.7_surveys_indices_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+modelnames <- c("Base", "Rm NWFSC HKL", "Rm NWFSC HKL Ages", "Rm NWFSC HKL Lengths", 
+                "Rm NWFSC HKL Lengths & Ages", "Rm NWFSC HKL Index")
+mysummary <- SSsummarize(list(base, rm_hkl, rm_hkl_ages, rm_hkl_lens, rm_hkl_bio, rm_hkl_index))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.7_hkl_data_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+modelnames <- c("Base", "Rm NWFSC HKL", "Split NWFSC HKL Lengths & Ages", "Split and Allow Dome", 
+                "One Fleet w/ Selex Block", "One Fleet w/ Q & Selex Block")
+mysummary <- SSsummarize(list(base, rm_hkl, split_hkl_comps, allow_dome, selex_block, selex_q_block))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.7_hkl_data_split_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+modelnames <- c("Base", "- NWFSC HKL", "- NWFSC HKL Ages", "- Growth Ages")
+mysummary <- SSsummarize(list(base, rm_hkl, rm_hkl_ages, rm_growth))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.7_hkl_data_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+modelnames <- c("Base", "h Prior", "Fix M & h", "Rec. Opt = 1")
+mysummary <- SSsummarize(list(base, h_prior, fix_mh , rec_opt))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.7_parameters_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+hkl_selex <- SS_output(file.path(wd, "8.8_hkl_selex_block"))
+tune_comps(replist = hkl_selex, option = "MI", write = FALSE, allow_up_tuning = TRUE)
+# NLL = 2096.51, R0 gradient = 0.0000389224000 (max gradient component)
+hkl_fixed_mh <- SS_output(file.path(wd, "8.8_hkl_selex_block_fix_m_h"))
+# NLL = 2100.25, R0 gradient =  0.00000178486000
+
+modelnames <- c("No Split Est. M & h", "Split Est.", "No Split", "Split")
+mysummary <- SSsummarize(list(base, hkl_selex, centered_dev, hkl_fixed_mh))
+SSplotComparisons(mysummary,
+                  filenameprefix = "8.8_hkl_split_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+# Working off model 8.8 that includes selectivity block with fixed M & h
+# NWFSC HKL data re-processed excluding fish from the CCAs and depths closed to fishing (>73 meters)
+updated_hkl <- SS_output(file.path(wd, "9.0_update_hkl_w_block_fix_mh"))
+SS_plots(updated_hkl)
+modelnames <- c("NWFSC HKL Selex Block - All Data", "NWFSC HKL Selex Block - Open Areas")
+mysummary <- SSsummarize(list(hkl_fixed_mh, updated_hkl))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.0_updated_hkl_data_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+add_hkl_ages_growth <- SS_output(file.path(wd, "9.1_add_omitted_hkl_ages_to_growth"))
+SS_plots(add_hkl_ages_growth)
+modelnames <- c("NWFSC HKL Selex Block - All Data", "NWFSC HKL Selex Block - Open Areas", 
+                "Add Omitted Ages to Growth")
+mysummary <- SSsummarize(list(hkl_fixed_mh, updated_hkl, add_hkl_ages_growth))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.1_updated_hkl_data_growth_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+cpfv_asym <- SS_output(file.path(wd, "9.2_cpfv_asym_2000"))
+# This model results with the NWFSC HKL peak parameter from 2014-2022 at the upper bound of 52.9
+modelnames <- c("NWFSC HKL Selex Block - All Data", "NWFSC HKL Selex Block - Open Areas", 
+                "Add Omitted Ages to Growth", "CPFV Asym. Selex 2000+")
+mysummary <- SSsummarize(list(hkl_fixed_mh, updated_hkl, add_hkl_ages_growth, cpfv_asym))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.2_cpfv_asym_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+test <- SS_output(file.path(wd, "9.3_cpfv_asym_w_coop_ages _test"))
+# This model results with the NWFSC HKL peak parameter from 2014-2022 at the upper bound of 52.9
+modelnames <- c("NWFSC HKL Selex Block - All Data", "NWFSC HKL Selex Block - Open Areas", 
+                "Add Omitted Ages to Growth", "CPFV Asym. Selex 2000+", "test")
+mysummary <- SSsummarize(list(hkl_fixed_mh, updated_hkl, add_hkl_ages_growth, cpfv_asym))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.3_cpfv_asym_growth_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)

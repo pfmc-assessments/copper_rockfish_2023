@@ -10,7 +10,7 @@ library(here)
 # South of Pt Conception
 ###################################################################
 area <- 'sca'
-base_model = "7.0_mi"
+base_model = "8.7_centered_m_h_est"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -159,32 +159,32 @@ Sensi_plot_dover(model.summaries=x,
 ###################################################################################
 # Create a Table of Results
 ###################################################################################
-
+x = mysummary
 ii = 1:length(modelnames)
 n = length(modelnames)
-out<- matrix(NA, 23, max(ii))
+out<- matrix(NA, 24, max(ii))
 
 out = rbind(
   as.numeric(x$likelihoods[x$likelihoods$Label == "TOTAL",1:n]), 
   as.numeric(x$likelihoods[x$likelihoods$Label == "Survey",1:n]), 
   as.numeric(x$likelihoods[x$likelihoods$Label == "Length_comp",1:n]),
-  #as.numeric(x$likelihoods[x$likelihoods$Label == "Age_comp",1:n]), 
+  as.numeric(x$likelihoods[x$likelihoods$Label == "Age_comp",1:n]), 
   as.numeric(x$likelihoods[x$likelihoods$Label == "Recruitment",1:n]), 
   as.numeric(x$likelihoods[x$likelihoods$Label == "Forecast_Recruitment",1:n]),
   as.numeric(x$likelihoods[x$likelihoods$Label == "Parm_priors",1:n]),
   as.numeric(x$pars[x$pars$Label == "SR_LN(R0)", 1:n]), 
   as.numeric(x$SpawnBio[x$SpawnBio$Label == "SSB_Virgin", 1:n]),
-  as.numeric(x$SpawnBio[x$SpawnBio$Label == "SSB_2021", 1:n]),
-  as.numeric(x$Bratio[x$Bratio$Label == "Bratio_2021", 1:n]), 
+  as.numeric(x$SpawnBio[x$SpawnBio$Label == "SSB_2023", 1:n]),
+  as.numeric(x$Bratio[x$Bratio$Label == "Bratio_2023", 1:n]), 
   as.numeric(x$quants[x$quants$Label == "Dead_Catch_SPR", 1:n]),
   as.numeric(x$pars[x$pars$Label == "SR_BH_steep", 1:n]),
-  as.numeric(x$pars[x$pars$Label == "NatM_p_1_Fem_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "NatM_uniform_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "L_at_Amin_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "L_at_Amax_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "VonBert_K_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "CV_young_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "CV_old_Fem_GP_1", 1:n]),
-  as.numeric(x$pars[x$pars$Label == "NatM_p_1_Mal_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "NatM_uniform_Mal_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "L_at_Amin_Mal_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "L_at_Amax_Mal_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "VonBert_K_Mal_GP_1", 1:n]),
@@ -196,14 +196,14 @@ colnames(out) = modelnames
 rownames(out) = c("Total Likelihood",
                   "Survey Likelihood",
                   "Length Likelihood",
-                  #"Age Likelihood",
+                  "Age Likelihood",
                   "Recruitment Likelihood",
                   "Forecast Recruitment Likelihood",
                   "Parameter Priors Likelihood",
                   "log(R0)",
                   "SB Virgin",
-                  "SB 2020",
-                  "Fraction Unfished 2021",
+                  "SB 2023",
+                  "Fraction Unfished 2023",
                   "Total Yield - SPR 50",
                   "Steepness",
                   "Natural Mortality - Female",
