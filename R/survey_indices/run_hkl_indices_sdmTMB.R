@@ -16,7 +16,7 @@ library(tmbstan)
 library(rstan) # for plot() method
 options(mc.cores = parallel::detectCores())
 
-data_dir <- file.path(here(), "data", "nwfsc_hkl")
+data_dir <- file.path(here(), "data", "survey_indices", "nwfsc_hkl")
 index_dir <- file.path(here(), "data", "survey_indices", "nwfsc_hkl")
 
 user <- Sys.getenv("USERNAME")
@@ -516,6 +516,83 @@ index <- calc_index(
   dir = file.path(index_dir, name), 
   fit = fit,
   grid = grid)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+index$model <- name
+indices <- rbind(indices, index)
+loglike <- logLik(fit)
+aic <- AIC(fit)
+metrics <- rbind(metrics, c(name, loglike, aic))
+
+save(indices, file = file.path(index_dir, "all_indices.rdata"))  
+save(metrics, file = file.path(index_dir, "metrics.rdata"))
+
+#===============================================================================
+# Negative-Binomial GLM with only main effects excluding CCA data that > 73 m
+#===============================================================================
+remove <- which(species_data$cca == 1 & species_data$drop_depth_meters > 73)
+
+open_areas <- species_data[-remove, ] %>%
+  group_by(common_name, year, site_number, drop) %>% 
+  reframe(n = sum(number_caught),
+          swell = median(swell_height_m),
+          vermilion = sum(vermilion),
+          bocaccio = sum(bocaccio),
+          lat = mean(drop_latitude_degrees),
+          lon = mean(drop_longitude_degrees),
+          effort = length(unique(angler)) * length(unique(hook))) 
+open_areas$site_number <- droplevels(open_areas$site_number)
+
+# Format the data frame by adding factors and 0 centering quantities 
+open_areas <- open_areas %>%
+  mutate(
+    year = as.factor(year),
+    site_number = as.factor(site_number),
+    drop = as.factor(drop),
+    swell_scaled = swell - mean(swell),
+    vermilion_scaled = vermilion - mean(vermilion),
+    bocaccio_scaled = bocaccio - mean(bocaccio)
+  )
+
+
+# Year and Sites
+year_site <- expand.grid(
+  year = unique(open_areas$year),
+  site_number = unique(open_areas$site_number))
+
+## join in location info for all sites
+locs <- dplyr::group_by(open_areas, site_number) %>%
+  dplyr::summarise(
+    lat = lat[1],
+    lon = lon[1])
+
+grid_open <- dplyr::left_join(year_site, locs) %>%
+  dplyr::filter(!is.na(lat + lon))
+grid_open$swell_scaled <- 0
+grid_open$vermilion_scaled <- 0
+grid_open$bocaccio_scaled <- 0
+grid_open$drop <- as.factor(3)
+
+name <- "glm_negbin_main_year_site_drop_swell_vermilion_open_areas"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + site_number + drop + swell_scaled + vermilion_scaled,
+  data = open_areas,
+  offset = log(open_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = nbinom2(link = "log")
+)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = grid_open)
 
 do_diagnostics(
   dir = file.path(index_dir, name), 

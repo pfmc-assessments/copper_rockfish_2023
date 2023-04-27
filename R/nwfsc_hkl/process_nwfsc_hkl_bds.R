@@ -148,6 +148,33 @@ write.csv(lfs$sexed,
           file = file.path(dir, "forSS",  "nwfsc_hkl_outside_cca_only_not_expanded_length_comp_sex_3.csv"),
           row.names = FALSE) 
 
+# Expand outside and CCA samples from less than 73 meters (49 fish)
+remove <- which(hkl$area == "CCA" & hkl$drop_depth_meters > 73)
+
+lfs <-  UnexpandedLFs.fn(
+  datL = hkl[-remove, ], 
+  lgthBins = length_bins,
+  partition = 0, 
+  fleet = 7, 
+  month = 9)
+
+write.csv(lfs$sexed, 
+          file = file.path(dir, "forSS",  "nwfsc_hkl_outside_and_cca_open_to_fishomg_not_expanded_length_comp_sex_3.csv"),
+          row.names = FALSE) 
+
+lfs <-  UnexpandedLFs.fn(
+  datL = hkl[remove, ], 
+  lgthBins = length_bins,
+  partition = 0, 
+  fleet = 7, 
+  month = 9)
+
+write.csv(lfs$sexed, 
+          file = file.path(dir, "forSS",  "nwfsc_hkl_cca_closed_to_fishing_not_expanded_length_comp_sex_3.csv"),
+          row.names = FALSE) 
+
+
+
 # Explore weighting length samples based on % of sample sites within CCA and outside
 cca_comps <- lfs_cca[, 6:52] * as.vector(samp_weights[, "cca_percent"])
 noncca_comps <- lfs$sexed[lfs$sexed$year > 2013, 6:52] * as.vector(samp_weights[, "noncca_percent"])
@@ -181,7 +208,7 @@ plot_comps(
 plot_comps(
   dir = dir,
   data = out, 
-  add_save_name = "nwfsc_hkl_weighted",
+  add_save_name = "nwfsc_outside_cca_73m_",
   add_0_ylim = FALSE
 )
 
@@ -198,7 +225,7 @@ PlotSexRatio.fn(
 # Create marginal ages
 #==============================================================================
 age_bins <- 0:50
-source(file.path(here(), "R", "get_caal.R"))
+source(file.path(user_dir, "R", "get_caal.R"))
 
 afs <-  UnexpandedAFs.fn(
   datA = hkl, 
@@ -273,6 +300,33 @@ name <- paste0("CAAL_len_", min(length_bins), "_", max(length_bins), "_age_",
   min(age_bins), "_", max(age_bins), ".csv")
 write.csv(out, file = file.path(dir, "forSS", name), row.names = FALSE)
 
+
+# Outside and CCAs < 73 meters (49 fish)
+remove <- which(hkl$area == "CCA" & hkl$drop_depth_meters > 73)
+out <- get_caal(
+  data = hkl[-remove, ], 
+  len_bins = length_bins,
+  age_bins = age_bins,
+  month = 9, 
+  fleet = 5)
+
+name <- paste0("CAAL_len_outside_cca_open_fishing_", min(length_bins), "_", max(length_bins), "_age_",
+               min(age_bins), "_", max(age_bins), ".csv")
+write.csv(out, file = file.path(dir, "forSS", name), row.names = FALSE)
+
+
+remove <- which(hkl$area == "CCA" & hkl$drop_depth_meters > 73)
+out <- get_caal(
+  data = hkl[remove, ], 
+  len_bins = length_bins,
+  age_bins = age_bins,
+  month = 9, 
+  fleet = 5)
+
+name <- paste0("CAAL_len_closed_cca_to_fishing_", min(length_bins), "_", max(length_bins), "_age_",
+               min(age_bins), "_", max(age_bins), ".csv")
+write.csv(out, file = file.path(dir, "forSS", name), row.names = FALSE)
+
 #====================================================================
 # create tables
 #====================================================================
@@ -282,6 +336,8 @@ doc_loc <- file.path(here(), "documents", "sca", "tex_tables")
 
 hkl_all$depth_bin <- plyr::round_any(hkl_all$drop_depth_meters, 10, floor)
 hkl_all$set_id_drop <- paste0(hkl_all$set_id, hkl_all$drop_number)
+
+hist(hkl_all[hkl_all$cowcod_conservation_area_indicator== 1 & hkl_all$count !=0, "depth_bin"])
 
 dat <- hkl_all %>%
   mutate(Targetbin = as.numeric(count > 0))
