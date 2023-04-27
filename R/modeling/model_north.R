@@ -757,3 +757,36 @@ SSplotComparisons(mysummary,
 # Model 8.8 ------
 rm_lowN_growth <- SS_output(file.path(wd, "8.8_rm_growth_lowN"))
 SS_plots(rm_lowN_growth, plot = c(2, 3))
+
+# Fix some of the selectivity paramters based on the MCMC diagnostics
+base <- SS_output(file.path(wd, "9.0_update_deb_index_selex"))
+# remove mrfss cpfv index
+rm_mrfss_index <- SS_output(file.path(wd, "_sensitivities", "9.0_update_deb_index_selex_rm_mrfss_index"))
+rm_cpfv_indices <- SS_output(file.path(wd, "_sensitivities", "9.0_update_deb_index_selex_rm_all_cpfv_index"))
+rm_ccfrp <- SS_output(file.path(wd, "_sensitivities", "9.0_update_deb_index_selex_rm_ccfrp"))
+rm_crfs_cpfv_index <- SS_output(file.path(wd, "_sensitivities", "9.0_update_deb_index_selex_rm_crfs_cpfv_index"))
+rm_dwv_index <- SS_output(file.path(wd, "_sensitivities", "9.0_update_deb_index_selex_rm_dwv_index"))
+rm_pr_index <- SS_output(file.path(wd, "_sensitivities", "9.0_update_deb_index_selex_rm_pr_index"))
+rm_rov <- SS_output(file.path(wd, "_sensitivities", "9.0_update_deb_index_selex_rm_rov"))
+rm_all_cpfv <- SS_output(file.path(wd, "_sensitivities", "9.0_update_deb_index_selex_rm_all_cpfv_index"))
+
+rm_ages <- SS_output(file.path(wd, "_sensitivities", "9.0_update_deb_index_selex_rm_ages"))
+rm_ages_fish_indices <- SS_output(file.path(wd, "_sensitivities", "9.0_update_deb_index_selex_rm_ages_fish_indices"))
+
+modelnames <- c("Base","- MRFSS CPFV Index", "- DWV CPFV Index", "- CRFS CPFV Index", "- CRFS PR Index", "- All CPFV Indices")
+mysummary <- SSsummarize(list(base, rm_mrfss_index, rm_dwv_index, rm_crfs_cpfv_index, rm_pr_index, rm_all_cpfv))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.0_indices_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.3,
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+modelnames <- c("Base","- ROV Data", "- CCFRP Data", "- Ages", "- Ages & Fishery Indices")
+mysummary <- SSsummarize(list(base, rm_rov, rm_ccfrp, rm_ages, rm_ages_fish_indices))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.0_survey_and_ages_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.3,
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
