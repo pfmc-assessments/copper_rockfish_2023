@@ -13,16 +13,16 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
 }
 
-model_dir <- file.path(user_dir, "models", "sca", "_sensitivities", "8.5_centered_m_h_est_adj_v2")
+model_dir <- file.path(user_dir, "models", "nca", "_sensitivities", "9.0_update_deb_index_selex")
 
 
-run_regularization(
-  dir_wd = model_dir,
-  model = "ss",
-  extension = ".exe",
-  interactive = TRUE,
+#run_regularization(
+  dir_wd = model_dir#,
+  model = "ss"#,
+  extension = ".exe"#,
+  interactive = TRUE#,
   verbose = TRUE
-)
+#)
 
 wd <- getwd()
 on.exit(setwd(wd), add = TRUE)
