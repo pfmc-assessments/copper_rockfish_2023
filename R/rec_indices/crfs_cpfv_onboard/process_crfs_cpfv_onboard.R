@@ -17,7 +17,7 @@ library(glue)
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
 modelArea = "south"
-
+model = "start2004"
 #setwd to the north or the south
 #set working directory
 dir <- file.path(here(), "data", "rec_indices", "crfs_cpfv_onboard", modelArea)
@@ -38,7 +38,9 @@ dataFilters <- data.frame(matrix(vector(), 10, 4,
 #-------------------------------------------------------------------------------
 onboard <- onboard_data %>% 
   mutate(area = ifelse(district %in% c(1, 2), "south", "north")) %>%
-  filter(area == modelArea)
+  filter(area == modelArea) %>%
+  filter(cpue > 0) %>%
+  filter(effort > 0)
 
 
 #Get the number of available samples by year
@@ -46,7 +48,16 @@ samples_year_district <- onboard %>%
   group_by(year, district) %>%
   tally() %>%
   tidyr::pivot_wider(names_from=district, values_from = n)
-View(samples_year_district)
+#View(samples_year_district)
+write.csv(samples_year_district, "samples_year_district.csv")
+
+#exploratory plots
+ggplot(onboard, aes(x = as.factor(year), y = cpue)) +
+  geom_boxplot()
+
+
+
+
 #-------------------------------------------------------------------------------
 # Add to filter dataframe
 dataFilters$Filter[filter.num] <- c("All data")
@@ -55,6 +66,25 @@ dataFilters$Samples[filter.num] <- onboard %>% tally()
 dataFilters$Positive_Samples[filter.num] <- onboard %>% filter(number.fish>0) %>% tally()
 filter.num <- filter.num + 1
 #-------------------------------------------------------------------------------
+
+#remove 1999-2003 ----
+if(model == "start2004"){
+
+onboard <- onboard %>%
+  filter(year > 2003)
+
+#-------------------------------------------------------------------------------
+# Add to filter dataframe
+dataFilters$Filter[filter.num] <- c("Years")
+dataFilters$Description[filter.num] <- c("Start time series in 2004")
+dataFilters$Samples[filter.num] <- onboard %>% tally()
+dataFilters$Positive_Samples[filter.num] <- onboard %>% filter(number.fish>0) %>% tally()
+filter.num <- filter.num + 1
+#-------------------------------------------------------------------------------
+}
+
+
+
 #IF Depth isn't available and GIS depth is - add that in
 #ONLY using starting depth which is depth1ft, and the gis depths are based on 
 #start locations
@@ -292,7 +322,7 @@ cdfwblockTargets <- onboard %>%
          percentpos = driftsWithTarget / (driftsWithTarget + driftsWOTarget)) %>%
   filter(percentpos > 0.02) %>%
   filter(!cdfw.block == 0)
-View(cdfwblockTargets)
+#View(cdfwblockTargets)
 #write.csv(driftTargets, 
 #          file.path(dir, "driftTargets.csv"),
 #          row.names=FALSE)
@@ -327,7 +357,7 @@ samples_year_district <- onboard %>%
 group_by(year, district) %>%
 tally() %>%
 tidyr::pivot_wider(names_from=district, values_from = n)
-View(samples_year_district)
+#View(samples_year_district)
 write.csv(samples_year_district, 
 file.path(dir,"samples_by_year_district.csv"),
 row.names=FALSE)
