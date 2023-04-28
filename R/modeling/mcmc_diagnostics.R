@@ -13,14 +13,14 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
 }
 
-model_dir <- file.path(user_dir, "models", "nca", "_sensitivities", "9.0_update_deb_index_selex")
+model_dir <- file.path(user_dir, "models", "sca", "_sensitivities", "10.2_selex")
 
 
 #run_regularization(
   dir_wd = model_dir#,
   model = "ss"#,
   extension = ".exe"#,
-  interactive = TRUE#,
+  interactive = FALSE#,
   verbose = TRUE
 #)
 
@@ -153,4 +153,4 @@ grDevices::dev.off()
 # from command line b/c post-warmup samples from all chains
 # were merged into main folder, so any mceval output files
 # contain all this information
-)
+#)

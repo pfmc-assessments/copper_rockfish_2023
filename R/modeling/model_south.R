@@ -783,6 +783,7 @@ SSplotComparisons(mysummary,
 
 add_hkl_ages_growth <- SS_output(file.path(wd, "9.1_add_omitted_hkl_ages_to_growth"))
 SS_plots(add_hkl_ages_growth)
+# NLL = 2124.06
 modelnames <- c("NWFSC HKL Selex Block - All Data", "NWFSC HKL Selex Block - Open Areas", 
                 "Add Omitted Ages to Growth")
 mysummary <- SSsummarize(list(hkl_fixed_mh, updated_hkl, add_hkl_ages_growth))
@@ -794,8 +795,28 @@ SSplotComparisons(mysummary,
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
 
+add_hkl_ages_growth_rm_hkl <- SS_output(file.path(wd, "9.1_add_omitted_hkl_ages_to_growth_rm_hkl"))
+add_hkl_ages_growth_est_mh <- SS_output(file.path(wd, "9.1_add_omitted_hkl_ages_to_growth_est_m_h"))
+add_hkl_ages_growth_est_mh_rm_hkl <- SS_output(file.path(wd, "9.1_add_omitted_hkl_ages_to_growth_est_m_h_rm_hkl"))
+modelnames <- c("9.1 Add Omitted Ages to Growth", "-Rm. NWFSC HKL",
+                "9.1 Add Omitted Ages to Growth & Est M/h", "-Rm. NWFSC HKL Est M/h")
+mysummary <- SSsummarize(list(add_hkl_ages_growth, add_hkl_ages_growth_rm_hkl,
+                              add_hkl_ages_growth_est_mh, add_hkl_ages_growth_est_mh_rm_hkl))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.1_sensitivities_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
 cpfv_asym <- SS_output(file.path(wd, "9.2_cpfv_asym_2000"))
+# NLL = 2151 where the increase in likelihood is primarily coming for the ages in 
+# the NWFSC HKL and Growth fleet
+# CPFV length like difference is ~ 8 units
 # This model results with the NWFSC HKL peak parameter from 2014-2022 at the upper bound of 52.9
+# The ROV selectivity also becomes much closer to asymptotic in this run
 modelnames <- c("NWFSC HKL Selex Block - All Data", "NWFSC HKL Selex Block - Open Areas", 
                 "Add Omitted Ages to Growth", "CPFV Asym. Selex 2000+")
 mysummary <- SSsummarize(list(hkl_fixed_mh, updated_hkl, add_hkl_ages_growth, cpfv_asym))
@@ -806,16 +827,109 @@ SSplotComparisons(mysummary,
                   #legendloc = "bottomleft",
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
-
-test <- SS_output(file.path(wd, "9.3_cpfv_asym_w_coop_ages _test"))
-# This model results with the NWFSC HKL peak parameter from 2014-2022 at the upper bound of 52.9
-modelnames <- c("NWFSC HKL Selex Block - All Data", "NWFSC HKL Selex Block - Open Areas", 
-                "Add Omitted Ages to Growth", "CPFV Asym. Selex 2000+", "test")
-mysummary <- SSsummarize(list(hkl_fixed_mh, updated_hkl, add_hkl_ages_growth, cpfv_asym))
+# Sensitivities to look at estimation of selectivity and removal of the NWFSC HKL fleet
+cpfv_asym_est <- SS_output(file.path(wd, "9.2_cpfv_asym_2000_param"))
+cpfv_asym_rm_hkl <- SS_output(file.path(wd, "9.2_cpfv_asym_2000_rm_hkl"))
+cpfv_asym_est_m_h <- SS_output(file.path(wd, "9.2_cpfv_asym_2000_est_m_h"))
+cpfv_asym_est_m_h_rm_hkl <- SS_output(file.path(wd, "9.2_cpfv_asym_2000_est_m_h_rm_hkl"))
+modelnames <- c("CPFV Asym. Selex 2000+", "CPFV Asym. Rm. NWFSC HKL", 
+                "CPFV Asym. + Est. M & h", "CPFV Asym. + Est. M & h, Rm. NWFSC HKL")
+mysummary <- SSsummarize(list(cpfv_asym, cpfv_asym_rm_hkl, cpfv_asym_est_m_h,
+                              cpfv_asym_est_m_h_rm_hkl))
 SSplotComparisons(mysummary,
-                  filenameprefix = "9.3_cpfv_asym_growth_",
+                  filenameprefix = "9.2_cpfv_asym_sens_",
                   legendlabels = modelnames, 
                   ylimAdj = 1.30,
                   #legendloc = "bottomleft",
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+
+modelnames <- c("NWFSC HKL Selex Block", "NWFSC HKL Selex Block & Est. M/h",
+                "NWFSC HKL Selex Block & CPFV Asym.", "NWFSC HKL Selex Block & CPFV Asym. & Est. M/h")
+mysummary <- SSsummarize(list(add_hkl_ages_growth, add_hkl_ages_growth_est_mh, 
+                              cpfv_asym, cpfv_asym_est_m_h))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.1_9.2_est_selex_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+coop_ages <- SS_output(file.path(wd, "9.3_cpfv_asym_w_coop_ages"))
+SS_plots(coop_ages)
+# This model results with the NWFSC HKL peak parameter from 2014-2022 at the upper bound of 52.9
+modelnames <- c("NWFSC HKL Selex Block - All Data", "NWFSC HKL Selex Block - Open Areas", 
+                "Add Omitted Ages to Growth", "CPFV Asym. Selex 2000+", "+ Coop. Ages w/ CPFV")
+mysummary <- SSsummarize(list(hkl_fixed_mh, updated_hkl, add_hkl_ages_growth, cpfv_asym, coop_ages))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.3_cpfv_asym_coop_ages_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+coop_ages_lens <- SS_output(file.path(wd, "9.4_cpfv_asym_w_coop_ages_lens"))
+SS_plots(coop_ages_lens)
+# This model results with the NWFSC HKL peak parameter from 2014-2022 at the upper bound of 52.9
+modelnames <- c("NWFSC HKL Selex Block - All Data", "NWFSC HKL Selex Block - Open Areas", 
+                "Add Omitted Ages to Growth", "CPFV Asym. Selex 2000+", 
+                "+ Coop. Ages w/ CPFV", "+ Coop. Len. & Ages w/ CPFV")
+mysummary <- SSsummarize(list(hkl_fixed_mh, updated_hkl, add_hkl_ages_growth, cpfv_asym, 
+                              coop_ages, coop_ages_lens))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.4_cpfv_asym_coop_ages_lens_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.30,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+est_mh <- SS_output(file.path(wd, "9.5_cpfv_coop_est_m_h"))
+SS_plots(est_mh)
+# This model results with the NWFSC HKL peak parameter from 2014-2022 at the upper bound of 52.9
+modelnames <- c("NWFSC HKL Selex Block - All Data", "NWFSC HKL Selex Block - Open Areas", 
+                "Add Omitted Ages to Growth", "CPFV Asym. Selex 2000+", 
+                "+ Coop. Ages w/ CPFV", "+ Coop. Len. & Ages w/ CPFV", "+ Est. M & h")
+mysummary <- SSsummarize(list(hkl_fixed_mh, updated_hkl, add_hkl_ages_growth, cpfv_asym, 
+                              coop_ages, coop_ages_lens, est_mh))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.5_cpfv_coop_est_mh_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+growth <- SS_output(file.path(wd, "9.6_mirror_growth_fleets"))
+modelnames <- c("+ Est. M & h", "Mirror Growth Fleets")
+mysummary <- SSsummarize(list(est_mh, growth))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.6_mirror_growth_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.20,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+growth_selex <- SS_output(file.path(wd, "9.6_mirror_growth_fleets_selex"))
+# The age-selex is now domed peaking at young age but the improvement to the NLL
+# is only 4 units for 2 extra parameters
+SS_plots(growth_selex, plot = c(2, 16:18))
+
+# This run keeps the coop length in the cpfv fleet but moves the ages back to the growth fleet
+coop_ages_growth <- SS_output(file.path(wd, "9.7_move_coop_ages_to_growth"))
+SS_plots(coop_ages_growth)
+
+# 9.8 Fix ROV asymptotic, free up CCFRP selectivity, and remove the 2022 coop lengths
+selex <- SS_output(file.path(wd, "10.2_selex"))
+SS_plots(selex)
+
+selex_alt <- SS_output(file.path(wd, "10.2_selex_alt_growth"))
+SS_plots(selex_alt)
+
+
+selex_fixm <- SS_output(file.path(wd, "10.2_selex_fix_m"))
+SS_plots(selex_fixm)

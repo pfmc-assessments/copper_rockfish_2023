@@ -10,7 +10,7 @@ library(here)
 # South of Pt Conception
 ###################################################################
 area <- 'sca'
-base_model = "8.7_centered_m_h_est"
+base_model = "10.2_selex"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){

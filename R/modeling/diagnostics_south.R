@@ -18,15 +18,15 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
 }
 
-model_dir <- file.path(user_dir, "models", "sca", "_sensitivities")
+model_dir <- file.path(user_dir, "models", "sca")
 # Specify why model you would like to profile, retro, and/or jitter
-base_name <- "8.7_centered_m_h_est"
+base_name <- "10.2_selex_alt_growth"
 
 # Specify the parameters and the space to profile
 get = get_settings_profile(
   parameters =  c("NatM_uniform_Fem_GP_1", "NatM_uniform_Mal_GP_1", "SR_BH_steep", "SR_LN(R0)"),
-  low =  c(0.08, 0.10, 0.30, -0.5),
-  high = c(.13, 0.14, 0.95,  1.5),
+  low =  c(0.08, 0.10, 0.30, -0.50),
+  high = c(0.14, 0.15, 0.95,  0.70),
   step_size = c(0.005, 0.005, 0.05, 0.10),
   param_space = c('real', 'real', 'real', 'relative'),
   use_prior_like = c(1, 1, 1, 0)
@@ -56,9 +56,9 @@ model_settings = get_settings(
   settings = list(
     base_name = base_name,
     profile_details = get,
-    run = c("profile"),#, "jitter"), #c("profile", "jitter", "retro"), 
+    run = c("profile", "jitter", "retro"), 
     retro_yrs = -1:-5,
-    Njitter = 50,
+    Njitter = 100,
     jitter_fraction = 0.10))
 
 # Run line
