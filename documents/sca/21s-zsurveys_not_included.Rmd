@@ -1,5 +1,18 @@
 ## Additional Considered Data Sources
 
+
+```{r, echo=FALSE, results='asis'}
+filein <- file.path(doc_dir, "shared_text",'21_surveys_not_included_pisco_scuba.Rmd')
+read_child(filein)
+```
+Early years with less consistent sampling were eliminated such that the time series for UCSB began in 2004 and extended through 2021.  Sites surveyed by UCSB were mixed in distribution inside and outside MPA locations and therefore were not filtered for this criterion.  After filtering, sites that remained in the UCSC dataset were centered around the northern Channel Islands with a few on the Santa Barbara Channel mainland.  Sample sizes of `r spp` observed by year at all retained sites ranged from 15 to 39 fish for UCSB (Table: nCPR_table_N_S.csv). 
+
+```{r, echo=FALSE, results='asis'}
+filein <- file.path(doc_dir, "shared_text",'21_surveys_not_included_other.Rmd')
+read_child(filein)
+```
+
+
 ### Northwest Fisheries Science Center West Coast Groundfish Bottom Trawl Survey
 
 The Northwest Fisheries Science Center (NWFSC) West Coast Groundfish Bottom Trawl (WCGBT) survey is based on a random-grid design; covering the coastal waters from a depth of 55-1,280 m [@bradburn_2003_2011]. This design generally uses four industry-chartered vessels per year assigned to a roughly equal number of randomly selected grid cells and divided into two 'passes' of the coast. Two vessels fish from north to south during each pass between late May to early October. This design therefore incorporates both vessel-to-vessel differences in catchability, as well as variance associated with selecting a relatively small number (approximately 700) of possible cells from a very large set of possible cells spread from the Mexican to the Canadian borders.
@@ -10,7 +23,7 @@ The observations of `r spp` by the `r wcgbt` are limited. The `r wcgbt` uses tra
 ### California Cooperative Oceanic Fisheries Investigations
 
 The California Cooperative Oceanic Fisheries Investigations (CalCOFI) survey began in 1951 and conducts quarterly cruises off southern and central California, collecting a suite of hydrographic and biological data at fixed stations and while underway; ichthyoplankon sampling with a paired bongo started in 1978. Data on larval abundance from the CalCOFI Ichthyoplankton survey have been used in stock assessments of several species, including bocaccio, cowcod and shortbelly rockfish. Although the long-term dataset is limited to a subset of species for which morphological identification of larvae has been possible, recent research has been successful at identifying a broader range of species based on genetic
-identification of larvae (Thompson et al. 2016). 
+identification of larvae (Thompson et al. 2016). Larval fish were enumberated from winter samples from 1998 to 2013.  Out of 36 sites, 12 observed a larval `r spp` at least once, predominantly around the northern Channel Islands.  After selecting for only those sites that observed `r spp`, we examined the proportion of positive net tows by year and the average number of `r spp` observed per tow.  Given that these values were low and the sites observing `r spp` were not well distributed, we did not use these data to develop a recruitment index for use in the assessment. 
 
 ### Southern California Bight Publicly Owned Treatment Works
 
