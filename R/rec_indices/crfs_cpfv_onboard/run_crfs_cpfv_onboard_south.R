@@ -212,3 +212,7 @@ summaries <- dat %>%
 #View(summaries)
 write.csv(summaries, file.path(dir,  "percent_pos.csv"), row.names=FALSE)
 
+
+
+#area-weighted index ----
+
