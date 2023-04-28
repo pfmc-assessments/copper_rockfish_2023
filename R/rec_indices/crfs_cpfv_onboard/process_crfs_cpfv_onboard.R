@@ -12,7 +12,7 @@ library(tidyr)
 library(ggplot2)
 library(here)
 library(glue)
-
+library(ggridges)
 #species and area identifiers - eventually put in function
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
@@ -53,10 +53,8 @@ write.csv(samples_year_district, "samples_year_district.csv")
 
 #exploratory plots
 ggplot(onboard, aes(x = as.factor(year), y = cpue)) +
-  geom_boxplot()
-
-
-
+  geom_boxplot() + xlab("Year") + ylab("CPUE")
+ggsave(file.path(dir, "cpue_by_year.png"), height = 7, width = 7)
 
 #-------------------------------------------------------------------------------
 # Add to filter dataframe
@@ -67,9 +65,31 @@ dataFilters$Positive_Samples[filter.num] <- onboard %>% filter(number.fish>0) %>
 filter.num <- filter.num + 1
 #-------------------------------------------------------------------------------
 
+#depth by district or area fished
+ggplot(onboard %>% filter(number.fish > 0, depth1ft<250), 
+       aes(x = depth1ft/6, y = as.factor(year), 
+           fill = as.factor(year))) +
+geom_density_ridges(show.legend = FALSE) +
+  xlab("Depth (fm)") + ylab("Year") +
+#geom_density_ridges(onboard, aes(x = depth, y = year, colour = year)) +
+scale_fill_viridis_d()
+ggsave(file.path(dir, "copper_depths_nofilter.png"))
+
+
+#Proportion discarded by year
+keep_discard <- onboard %>%
+  group_by(year) %>%
+  summarise(kept = sum(kept),
+            discard = sum(discd)) %>%
+  mutate(`Proportion discarded` = discard/(kept+discard))
+write.csv(keep_discard, file.path(dir, "keep_discard_prop.csv"), row.names = FALSE)
+
+
+
+
+
 #remove 1999-2003 ----
 if(model == "start2004"){
-
 onboard <- onboard %>%
   filter(year > 2003)
 
@@ -83,8 +103,6 @@ filter.num <- filter.num + 1
 #-------------------------------------------------------------------------------
 }
 
-
-
 #IF Depth isn't available and GIS depth is - add that in
 #ONLY using starting depth which is depth1ft, and the gis depths are based on 
 #start locations
@@ -97,6 +115,8 @@ onboard <- onboard %>%
 pos_data <- onboard %>% filter(number.fish > 0)
 summary(pos_data$depth)
 summary(as.factor(pos_data$LocationTableError))
+
+
 
 
 #check fish time and observed anglers
@@ -147,7 +167,7 @@ if(modelArea == "north"){
     filter(month %in% c(4, 5, 6, 7, 8, 9, 10, 11, 12))
 } else {
   onboard <- onboard %>%
-    filter(month %in% c(2, 4, 5, 6, 7, 8, 9, 10, 11, 12))
+    filter(month %in% c(3, 4, 5, 6, 7, 8, 9, 10, 11, 12))
 }
 
 #-------------------------------------------------------------------------------
@@ -224,7 +244,8 @@ fishtime_quantile
 #remove upper and lower 2.5%
 #Drifts less than 5 minutes probably were not successful
 onboard <- onboard %>% 
-  filter(fishtime %in% fishtime_quantile[2] : fishtime_quantile[40])
+  filter(fishtime > fishtime_quantile[2],
+         fishtime < fishtime_quantile[40])
 
 
 #-------------------------------------------------------------------------------
@@ -309,9 +330,12 @@ pos_data <- onboard %>% filter(number.fish > 0)
 #look at reef distance
 summary(pos_data$reef.dist)
 quantile(pos_data$reef.dist, seq(0, 1, .01))
-ggplot(pos_data, aes(x = reef.dist, y = cpue, colour = district)) +
-  geom_jitter(alpha = 0.5)
-
+ggplot(pos_data, aes(x = reef.dist, y = cpue)) +
+  geom_jitter(alpha = 0.5, colour = "purple") + 
+  xlab("Distance to rocky substrage (m)") + ylab("CPUE") +
+  theme_bw() +
+  facet_wrap(~district)
+ggsave(file.path(dir, "reef_dist_cpue.png"), height = 7, width = 7)
 
 #primary target species only
 cdfwblockTargets <- onboard %>%
@@ -342,6 +366,18 @@ dataFilters$Positive_Samples[filter.num] <- onboard %>% filter(number.fish>0) %>
 filter.num <- filter.num + 1
 #-------------------------------------------------------------------------------
 }
+
+
+#depth by district or area fished
+ggplot(onboard %>% filter(number.fish > 0), 
+       aes(x = depth/6, y = as.factor(year), 
+           fill = as.factor(year))) +
+  geom_density_ridges(show.legend = FALSE) +
+  xlab("Depth (fm)") + ylab("Year") +
+  #geom_density_ridges(onboard, aes(x = depth, y = year, colour = year)) +
+  scale_fill_viridis_d()
+ggsave(file.path(dir, "copper_depths_gisdepthadded.png"))
+
 
 #look at years
 summary(as.factor(onboard$year))
@@ -416,7 +452,7 @@ if(modelArea == "south"){
  onboard <- onboard %>%
    mutate(region = case_when(
      cdfw.block %in% c(876:879, 860:861, 842:843, 821:822, 801:802, 756:757, 737:740, 718:720 , 681:682, 702:703) ~ "District 1 mainland",
-     cdfw.block %in% c(651:658) ~ "District 2 mainland",
+     cdfw.block %in% c(651:658, 679, 701, 705) ~ "District 2 mainland",
      cdfw.block %in% c(888, 870, 867, 849:850, 829, 806:808, 813:815, 768:769, 764:765, 761:762, 744:745, 724) ~ "Southern Channel Islands",
      cdfw.block %in% c(684:691, 707:713) ~ "Northern Channel Islands", 
      TRUE ~ cdfw.block

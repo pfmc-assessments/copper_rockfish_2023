@@ -6,3 +6,99 @@
 filein = file.path(getwd(), "shared_text",'crfs_cpfv_index.Rmd')
 read_child(filein)
 ```
+
+**California CPFV CPUE Index: Data Preparation, Filtering, and Sample Sizes**
+
+As described above the CDFW and Cal Poly onboard observer programs are identical 
+in that the same protocols are followed.  The only difference is that Cal Poly
+measures both retained and discarded fish from the observed anglers and CDFW
+measures only discarded fish from the observed anglers. CDFW measures retained 
+fish as part of the angler interview at the bag and trip level. This index 
+selectivity is mirrored to the recreational 
+fleet in the stock assessment model, which represent only retained (dead) 
+fish.  Therefore, only retained fish were modeled in this index. The length 
+from CDFW sampling are contained in the RecFIN database and included in the 
+length composition for the recreational fleet in the assessment model. 
+
+A number of filters are applied to these data.  All of the Cal Poly data were 
+QA/QC-ed once key-punched, whereas a number of errors remain in the 
+data from CDFW.  Data sheets from CDFW are not available prior to 2012 and 
+staff constraints have also prevented a quality control review of the data. 
+
+Each drift was assigned to a reef (hard bottom). Hard bottom was extracted from 
+the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html), 
+with bathymetric data from state waters available at a 2 m resolution.  Reefs were 
+developed based on a number of factors described in the supplemental material 
+("Reef Delineation"). Depth restrictions in the recreational fishery were fairly 
+consistent from 2004-2016. Starting in 2017, depth restrictions eased in districts 
+north of Point Conception and the recreational fleet targeted these depths 
+(Figure \@ref(fig:fig-depthfished-cpfvonboard)). The deeper waters (40-50 fm) are 
+outside of the mapped hard bottom habitat, but could be assigend to the larger 
+areas considered as a factor in the index.
+
+We retained 14218 drifts for index standardization, with 
+5960 drifts encountering vermilion rockfish 
+(Table \@ref(tab:tab-data-filter-cpfvonboard)).  
+
+Sample sizes by factors selected to model, excluding WAVE can be found in Tables 
+\@ref(tab:tab-region-cpfvonboard), \@ref(tab:tab-depth-cpfvonboard), and \@ref(tab:tab-year-cpfvonboard).
+
+**California CPFV CPUE Index: Model Selection, Fits, and Diagnostics**
+
+The onboard CPFV index restricts the time series to an end year at 2019. Due to 
+COVID-19, no onboard sampling took place in 2020. In 2021 the onboard sampling 
+resumed in August, at which point a large portion of the southern California fleet 
+had switched target species and fish highly migratory species. The 2021 stock assessment 
+had also been released by August 2021 indicating the stock was below the biomass 
+at 40%.  The southern California CPFV began an organized effort to avoid copper 
+rockfish and encourage their clientele to release and descend copper rockfish 
+when encountered. In 2022, the CDFW implmeneted the 1 copper rockfish sub-bag 
+limit and combined with avoidance by the fleet, does not represent the available 
+copper rockfish biomass.
+
+Two indices are presented below, one with a starting year of 1999 when the CRFS 
+program started the CPFV onboard observer program and another starting in 2004. 
+Between 1999 and 2003 a series of regulation changed occurred including gear 
+restrictions and implementation of depth closures.  See the additional information 
+or the history of regulation changes section for details.
+
+In the assessment model, the recreational CPFV fleet is modeled as retained plus
+discarded fish. The proportion of observed discarded copper rockfish is small, 
+averaging 4% over the time series (\ref(tab:keep_discard)) and are included in the index.
+
+We modeled catch per angler minutes fished (CPUE) by fishing drift. Prior to any modeling,
+the SWFSC QA/QC'd the data to ensure the location information was correct. 
+Each drift was overlaid with the available interpreted substrate layer that characterizes 
+rocky and hard substrate, assigned to a rocky reef and the distance of the 
+drift start location calculated.  In addition, the depth of the start location was 
+interpreted from the 2 m resolution bathymetry as well as 90 m resolution bathymetry 
+layer for comparison.  For drifts missing depth location, we assigned depth based on the 
+best available depth based on the bathymetry.
+
+The 
+
+
+Indices with a year and area interaction were not 
+considered in model selection; trends in the average CPUE by region were similar 
+in the filtered data set (Figure \@ref(fig:fig-areacpue-cpfvonboard)). 
+
+A Lognormal model  was 
+selected over a over a Gamma model for the positive observations by a $\Delta AIC$ of 919.67, and supported by Q-Q plots of the positive observations fit to both distributions (Figure \@ref(fig:fig-dist-fits-cpfvonboard)). The delta-GLM
+method allows the linear predictors to differ between the binomial and positive models.
+Based on AIC values from maximum likelihood fits (Table \@ref(tab:tab-model-select-cpfvonboard)), 
+a main effects model including 
+YEAR and WAVE and DEPTH bin 
+was fit for the binomial model and a main 
+effects model including 
+YEAR and WAVE and DEPTH bin 
+was fit for the  Lognormal model.
+Models were fit using the “rstanarm” R package (version 2.21.1). Posterior predictive 
+checks of the Bayesian model fit for the binomial model and the positive model 
+were all reasonable (Figures \@ref(fig:fig-posterior-mean-cpfvonboard)  and 
+ \@ref(fig:fig-posterior-sd-cpfvonboard)). The binomial model generated data sets with the 
+ proportion zeros similar to the 58%  zeroes in the observed data 
+(Figure \@ref(fig:fig-propzero-cpfvonboard)). The predicted marginal effects from 
+both the binomial and Lognormal models can be found in Figures \@ref(fig:fig-Dbin-marginal-cpfvonboard) and \@ref(fig:fig-Dpos-marginal-cpfvonboard). The 
+final index (Table \@ref(tab:tab-index-cpfvonboard)) 
+represents a similar trend to the arithmetic mean of the annual CPUE (Figure \@ref(fig:fig-cpue-cpfvonboard)).
+
