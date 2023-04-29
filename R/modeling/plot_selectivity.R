@@ -1,7 +1,7 @@
 
 library(r4ss)
 area <- "sca"
-base_model <- "10.2_selex"
+base_model <- "11.0_francis_cpfv_dome"
 #area <- 'nca'
 
 user <- Sys.getenv("USERNAME")
@@ -22,8 +22,8 @@ colors <- viridis::viridis(9)
 #================================================================================
 
 info1 <- SSplotSelex(model, fleets = 1,  subplot = 1, year = c(2022))
-info1$infotable$longname = c("Com. Dead 1916-2016", "Com. Dead 2017-2022")
-info1$infotable$col <- c(colors[1], colors[2])
+#info1$infotable$longname = c("Com. Dead 1916-2016", "Com. Dead 2017-2022")
+info1$infotable$col <- c(colors[1])
 
 info2 <- SSplotSelex(model, fleets = 2, subplot = 1, year = c(2022))
 info2$infotable$longname <- c("Com. Live 1916-2022")
@@ -31,7 +31,7 @@ info2$infotable$col <- colors[2]
 
 info3 <- SSplotSelex(model, fleets = 3, subplot = 1, year = c(1999, 2003, 2022))
 info3$infotable$longname = c("CPFV 1916-1999", "CPFV 2000-2003", "CPFV 2004-2022")
-info3$infotable$col <- c(colors[3], colors[3])
+info3$infotable$col <- c(colors[3], colors[3], colors[3])
 
 info4 <- SSplotSelex(model, fleets = 4, subplot = 1, year = c(1999, 2022))
 info4$infotable$longname = c("PR 1916-1999", "PR 20000-2022")
@@ -43,23 +43,23 @@ info5$infotable$col <- colors[5]
 info6 <- SSplotSelex(model, fleets = 6, subplot = 1, year = c(2022))
 info6$infotable$col <- colors[6]
 
-info7 <- SSplotSelex(model, fleets = 7, subplot = 1, year = c(2013, 2022))
-info7$infotable$longname = c("NWFSC HKL 2004-2013", "NWFSC HKL 2014-2022")
-info7$infotable$col <- c(colors[7], colors[7])
+info7 <- SSplotSelex(model, fleets = 7, subplot = 1, year = c(2022))
+#info7$infotable$longname = c("NWFSC HKL 2004-2013", "NWFSC HKL 2014-2022")
+info7$infotable$col <- c(colors[7])
 
-info9 <- SSplotSelex(model, fleets = 9, sizefacotrs = "Asel", agefactors = "Asel", subplot = 1, year = c(2022))
-info9$infotable$col <- colors[9]
+#info9 <- SSplotSelex(model, fleets = 9, sizefacotrs = "Asel", agefactors = "Asel", subplot = 1, year = c(2022))
+#info9$infotable$col <- colors[9]
 
-HandyCode::pngfun(wd = wd, 'selectivity_domed_cpfv.png', w = 10, h = 12)
+HandyCode::pngfun(wd = file.path(wd, base_model, "plots"), 'south_selectivity.png', w = 10, h = 12)
 par(mfrow=c(4,2),mar=c(2,4,3,1))
 SSplotSelex(model, fleets=1,  infotable=info1$infotable, 
-            subplot=1, legendloc='topleft', year = c(2016, 2022))
+            subplot=1, legendloc='topleft', year = c(2022))
 grid()
 SSplotSelex(model, fleets=2, infotable=info2$infotable, 
             subplot=1, legendloc='topleft', year = c(2022))
 grid()
 SSplotSelex(model, fleets=3, infotable=info3$infotable,subplot=1, 
-            legendloc='topleft', year = c(1999, 2022))
+            legendloc='topleft', year = c(1999, 2003, 2022))
 grid()
 SSplotSelex(model, fleets=4, infotable=info4$infotable,subplot=1, 
             legendloc='topleft', year = c(1999, 2022))

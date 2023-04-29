@@ -1021,3 +1021,53 @@ SSplotComparisons(mysummary,
                   #legendloc = "bottomleft",
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+#------------------------------------------------------------------------------
+# The models below include the updated area-weighted crfs cpfv index, remove the 
+# mrfss cpfv index, and explore new area-weighted nwfsc hkl indices with M fixed
+# for both sexes
+update_rec_indices <- SS_output(file.path(wd, "10.9_updated_rec_indices"))
+hkl_delta_log <- SS_output(file.path(wd, "10.9_hkl_delta_log"))
+hkl_delta_log_re <- SS_output(file.path(wd, "10.9_hkl_delta_log_re"))
+tune_comps(replist = hkl_delta_log_re, dir = file.path(wd,  "10.9_hkl_delta_log_re"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+modelnames <- c("Update CRFS & Remove MRFSS Index", "NWFSC HKL Area-Weighted Delta-Log",
+                "NWFSC HKL Area-Weighted Delta-Log RE")
+mysummary <- SSsummarize(list(update_rec_indices, hkl_delta_log, hkl_delta_log_re))
+SSplotComparisons(mysummary,
+                  filenameprefix = "10.9_area_weighted_indices_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.20,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+round(hkl_delta_log_re$likelihoods_used$values,1)
+hkl_delta_log_re$likelihoods_by_fleet[c(10,14), ]
+#NLL = 1929.2
+
+# Double check selectivity given the new index
+hkl_selex <- SS_output(file.path(wd, "10.9_hkl_delta_log_re_selex"))
+round(hkl_selex$likelihoods_used$values,1)
+hkl_selex$likelihoods_by_fleet[c(10,14), ]
+#NLL = 1935 
+# Logistic selex has the better likelihood fit coming from the lengths and the parameter priors
+
+# Model 11.0_francis incorporates the area-weighted indices for both the CRFS CPFV index and the
+# NWFSC HKL index (with RE). Logistic selectivity for the NWFSC HKL survey. The MRFS CPFV is 
+# not being fit in the model (lambda = 0). Reweighted the model via the Francis method.
+base <- SS_output(file.path(wd, "11.0_francis"))
+alt_base <- SS_output(file.path(wd, "11.0_francis_cpfv_dome"))
+tune_comps(replist = alt_base, dir = file.path(wd,  "11.0_francis_cpfv_dome"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+modelnames <- c("11.0 CPFV Selex Asym. 2004+", "11.0 CPFV Selex Domed 2004+")
+mysummary <- SSsummarize(list(base, alt_base))
+SSplotComparisons(mysummary,
+                  filenameprefix = "11.0_base_alt",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.20,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
