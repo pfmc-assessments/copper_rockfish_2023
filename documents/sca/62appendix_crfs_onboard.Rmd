@@ -13,28 +13,37 @@ As described above the CDFW and Cal Poly onboard observer programs are identical
 in that the same protocols are followed.  The only difference is that Cal Poly
 measures both retained and discarded fish from the observed anglers and CDFW
 measures only discarded fish from the observed anglers. CDFW measures retained 
-fish as part of the angler interview at the bag and trip level. This index 
+fish as part of the angler interview at the bag and trip level.  
+Therefore, only retained fish were modeled in this index. 
+The data went through a QA/QC process at the SWFSC which included mapping 
+fishing drifts in ArcPro to determine if the recorded latitude and longitude wer correct.  
+
+To appropriately weight the onboard observer survey index by the available 
+rocky substrate within a region, each drift was assigned to the closest area 
+of rocky habitat. Hard bottom was extracted from 
+the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html), 
+in northern California and along the mainland coast of southern California. These data 
+were collected ino state waters at a resolution of two meters. South of Point 
+Conception, additional interpretted bathymetric data classifying the bottom type as 
+rock or soft bottom were compiled by Emily Saarman (UC Santa Cruz) and also available 
+from CDFW's website. 
+
+We applied a number of data filters to the available data presented in Table 
+\@ref(fig:)
+
+This index 
 selectivity is mirrored to the recreational 
 fleet in the stock assessment model, which represent only retained (dead) 
-fish.  Therefore, only retained fish were modeled in this index. The length 
-from CDFW sampling are contained in the RecFIN database and included in the 
-length composition for the recreational fleet in the assessment model. 
+fish. 
 
-A number of filters are applied to these data.  All of the Cal Poly data were 
-QA/QC-ed once key-punched, whereas a number of errors remain in the 
-data from CDFW.  Data sheets from CDFW are not available prior to 2012 and 
-staff constraints have also prevented a quality control review of the data. 
-
-Each drift was assigned to a reef (hard bottom). Hard bottom was extracted from 
-the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html), 
-with bathymetric data from state waters available at a 2 m resolution.  Reefs were 
-developed based on a number of factors described in the supplemental material 
-("Reef Delineation"). Depth restrictions in the recreational fishery were fairly 
+Depth restrictions in the recreational fishery were fairly 
 consistent from 2004-2016. Starting in 2017, depth restrictions eased in districts 
 north of Point Conception and the recreational fleet targeted these depths 
 (Figure \@ref(fig:fig-depthfished-cpfvonboard)). The deeper waters (40-50 fm) are 
 outside of the mapped hard bottom habitat, but could be assigend to the larger 
 areas considered as a factor in the index.
+
+
 
 We retained 14218 drifts for index standardization, with 
 5960 drifts encountering vermilion rockfish 
@@ -68,37 +77,157 @@ averaging 4% over the time series (\ref(tab:keep_discard)) and are included in t
 
 We modeled catch per angler minutes fished (CPUE) by fishing drift. Prior to any modeling,
 the SWFSC QA/QC'd the data to ensure the location information was correct. 
-Each drift was overlaid with the available interpreted substrate layer that characterizes 
-rocky and hard substrate, assigned to a rocky reef and the distance of the 
+Each drift was overlaid with the available interpreted substrate layer that characterizes rocky and hard substrate, assigned to a rocky reef and the distance of the 
 drift start location calculated.  In addition, the depth of the start location was 
 interpreted from the 2 m resolution bathymetry as well as 90 m resolution bathymetry 
-layer for comparison.  For drifts missing depth location, we assigned depth based on the 
-best available depth based on the bathymetry.
+layer for comparison. For drifts missing depth location, we assigned depth based on the best available depth based on the bathymetry.
 
 The 
 
 
-Indices with a year and area interaction were not 
-considered in model selection; trends in the average CPUE by region were similar 
+rends in the average CPUE by region were similar 
 in the filtered data set (Figure \@ref(fig:fig-areacpue-cpfvonboard)). 
 
-A Lognormal model  was 
-selected over a over a Gamma model for the positive observations by a $\Delta AIC$ of 919.67, and supported by Q-Q plots of the positive observations fit to both distributions (Figure \@ref(fig:fig-dist-fits-cpfvonboard)). The delta-GLM
-method allows the linear predictors to differ between the binomial and positive models.
-Based on AIC values from maximum likelihood fits (Table \@ref(tab:tab-model-select-cpfvonboard)), 
-a main effects model including 
-YEAR and WAVE and DEPTH bin 
-was fit for the binomial model and a main 
-effects model including 
-YEAR and WAVE and DEPTH bin 
-was fit for the  Lognormal model.
-Models were fit using the “rstanarm” R package (version 2.21.1). Posterior predictive 
-checks of the Bayesian model fit for the binomial model and the positive model 
-were all reasonable (Figures \@ref(fig:fig-posterior-mean-cpfvonboard)  and 
- \@ref(fig:fig-posterior-sd-cpfvonboard)). The binomial model generated data sets with the 
- proportion zeros similar to the 58%  zeroes in the observed data 
-(Figure \@ref(fig:fig-propzero-cpfvonboard)). The predicted marginal effects from 
-both the binomial and Lognormal models can be found in Figures \@ref(fig:fig-Dbin-marginal-cpfvonboard) and \@ref(fig:fig-Dpos-marginal-cpfvonboard). The 
-final index (Table \@ref(tab:tab-index-cpfvonboard)) 
-represents a similar trend to the arithmetic mean of the annual CPUE (Figure \@ref(fig:fig-cpue-cpfvonboard)).
+A Lognormal model  was selected over a over a Gamma model for the positive observations by a $\Delta AIC$ of 919.67, and supported by Q-Q plots (Figure \@ref(fig:fig-dist-fits-cpfvonboard)). 
+Based on AIC values from maximum likelihood fits (Table \@ref(tab:tab-model-select-cpfvonboard), 
+a main effects model including YEAR and WAVE and DEPTH bin 
+was fit for the binomial model and a main effects model including 
+YEAR and WAVE and DEPTH bin was fit for the  Lognormal model.
+Models were fit using the sdmTMB R package (version ). 
 
+
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
+                    "samples_by_year_district.csv"))
+#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+sa4ss::table_format(x = ind,
+             caption = "Number of observed drifts by year and district.",
+             label = "onboard-waterarea")#,
+        #     col_names = col_names)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
+                    "start2005", "target_water_area.csv"))
+#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+sa4ss::table_format(x = ind,
+             caption = "Number of observed drifts inside and outside of stat waters.",
+             label = "onboard-waterarea")#,
+        #     col_names = col_names)                         
+```
+
+
+\newpage
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
+                    "start2005", "percent_pos.csv"))
+#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+sa4ss::table_format(x = ind,
+             caption = "Data filtering steps for the onboard CPFV survey.",
+             label = "onboard-percentpos")#,
+        #     col_names = col_names)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
+                    "model_selection.csv"))
+col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+sa4ss::table_format(x = ind,
+             caption = "Data filtering steps for the onboard CPFV survey.",
+             label = "onboard-filter",
+             col_names = col_names)                         
+```
+
+
+\newpage
+
+```{r, results = 'asis'}
+
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                   "area_weighted_logn", "index_forSS.csv"))
+ind <- ind[, c(1,4,5)]
+col_names = c("Year", "Estimate", "logSE")
+
+sa4ss::table_format(x = ind,
+             caption = "Estimated relative index of abundance for the onboard CPFV survey.",
+             label = "onboard-index",
+             col_names = col_names)                         
+```
+
+
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                    "data_filters.csv"))
+ind <- ind[, c(1,4,5)]
+col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+sa4ss::table_format(x = ind,
+             caption = "Data filtering steps for the onboard CPFV survey.",
+             label = "onboard-filter",
+             col_names = col_names)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                   "area_weighted_logn", "index.png"), 
+caption = "Index for the onboard CPFV survey.",
+label = 'onboard-index')
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                   "area_weighted_logn", "qq.png"), 
+caption = "QQ-plot for the onboard CPFV survey.",
+label = 'onboard-qq')
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                   "avearge_cpue_by_region.png"), 
+caption = "Average CPUE by region prior to standardization.",
+label = 'onboard-regioncpue')
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                   "copper_depth_gisdepthadded.png"), 
+caption = "Distribution by year of depths where copper rockfish observed.",
+label = 'onboard-depths')
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                   "drifts_by_depth_district.png"), 
+caption = "Stacked bar plot of the depth of observed copper rockfish by district.",
+label = 'onboard-depths')
+```
+
+\newpage
