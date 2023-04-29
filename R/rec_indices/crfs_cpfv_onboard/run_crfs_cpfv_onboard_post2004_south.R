@@ -50,7 +50,7 @@ all <- list.files(file.path(user_dir, "R", "sdmTMB"))
 for (a in 1:length(all)) { source(file.path(user_dir, "R", "sdmTMB", all[a]))}
 # Set working directories
 #set working directory
-dir <- file.path(here(), "data", "rec_indices", "crfs_cpfv_onboard", modelArea, "start2004")
+dir <- file.path(here(), "data", "rec_indices", "crfs_cpfv_onboard", modelArea, "start2005")
 
 #dir <- file.path(here(),"data","rec_indices", indexName, modelArea)
 setwd(dir)
@@ -65,8 +65,8 @@ dat <- onboard %>%
   mutate_at(covars, as.factor) %>% # make sure covariates are factors
   mutate(depth = depth/6) %>%
   mutate(depth_2 = depth^2) %>%
-  mutate(depth_scaled = (depth - mean(depth)) / sd(depth),
-         depth_scaled2 = depth_scaled^2) %>%
+  mutate(depth_scaled = (depth - mean(depth)) / sd(depth)) %>%
+  mutate(depth_scaled2 = depth_scaled^2) %>%
   droplevels
 
 #-----------------------------------------------------------------------------

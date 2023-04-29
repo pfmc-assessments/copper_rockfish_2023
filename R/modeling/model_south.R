@@ -988,3 +988,36 @@ SSplotComparisons(mysummary,
                   #legendloc = "bottomleft",
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+#-------------------------------------------------------------------------------
+# Model 10.7 sensitivity
+#Add in the new area-weighted cpfv index
+francis <- SS_output(file.path(wd, "10.7_francis"))
+francis_cpfv <- SS_output(file.path(wd, "10.7_francis_update_cpfv"))
+francis_cpfv_freehkl <- SS_output(file.path(wd, "10.7_francis_update_cpfv_freehklselex"))
+simple_hkl_selex <- SS_output(file.path(wd, "10.7_francis_update_cpfv_simplifyhklselex"))
+SS_plots(simple_hkl_selex)
+tune_comps(replist = simple_hkl_selex, dir = file.path(wd, "10.7_francis_update_cpfv_simplifyhklselex"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+rmMRFSS <- SS_output(file.path(wd, "10.7_francis_update_cpfv_simplifyhklselex_rmMRFSS"))
+SS_plots(rmMRFSS)
+tune_comps(replist = rmMRFSS, dir = file.path(wd, "10.7_francis_update_cpfv_simplifyhklselex_rmMRFSS"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+
+rmSurveyVar <-  SS_output(file.path(wd, "10.7_noaddvar"))
+
+tune_comps(replist = rmSurveyVar, dir = file.path(wd, "10.7_noaddvar"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+SS_plots(rmSurveyVar)
+
+modelnames <- c("UpdateCPFV1", "Simply_HKLselex2","RemoveMRFSS3", "RemoveSurveyVar")
+mysummary <- SSsummarize(list(francis_cpfv, simple_hkl_selex, rmMRFSS, rmSurveyVar))
+SSplotComparisons(mysummary,
+                  filenameprefix = "10.7_additive_updates_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.20,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)

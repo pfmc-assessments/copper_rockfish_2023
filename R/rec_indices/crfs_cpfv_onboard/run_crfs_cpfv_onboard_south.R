@@ -215,4 +215,68 @@ write.csv(summaries, file.path(dir,  "percent_pos.csv"), row.names=FALSE)
 
 
 #area-weighted index ----
+#-------------------------------------------------------------------------------
+model.full <- MASS::glm.nb(
+  number.fish ~ year + region + month + depth_scaled + year:region + offset(logEffort),
+  data = dat,
+  na.action = "na.fail")
+#use ggpredict to get an estimate of the logEffort for sdmTMB predictions
+#MuMIn will fit all models and then rank them by AICc
+model.suite <- MuMIn::dredge(model.full,
+                             rank = "AICc", 
+                             fixed= c("offset(logEffort)", "year"))
 
+#Create model selection dataframe for the document
+Model_selection <- as.data.frame(model.suite) %>%
+  dplyr::select(-weight)
+Model_selection
+
+pos <- dat %>% filter(number.fish >0)
+with(pos, table(year, region))
+
+grid_south <- expand.grid(
+  year = unique(dat$year),
+  region = levels(dat$region),
+  month = levels(dat$month)[1],
+  depth_scaled = dat$depth_scaled[1])
+
+grid_south$region_year <- 1
+
+# District1 <- round(0.12 * 100, 0)
+# District2 <- round(0.07 * 100, 0)
+# Nchannel <- round(0.44 * 100, 0)
+# Schannel <- round(0.36 * 100, 0)
+
+grid_south <- NULL
+for (a in 1:12){
+  grid_south <- rbind(grid_south, grid[grid$region ==  "District 1 mainland", ])
+}
+for (a in 1:7){
+  grid_south <- rbind(grid_south, grid[grid$region == "District 2 mainland", ])
+}
+for (a in 1:44){
+  grid_south <- rbind(grid_south, grid[grid$region == "Northern Channel Islands", ])
+}
+for (a in 1:36){
+  grid_south <- rbind(grid_south, grid[grid$region == "Southern Channel Islands", ])
+}
+
+fit.logn.w = sdmTMB(
+  number.fish ~ year*region + month + depth_scaled,
+  data = dat,
+  offset = dat$logEffort,
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = nbinom2(link = "log"),
+  control = sdmTMBcontrol(newton_loops = 1))
+
+do_diagnostics(
+  dir = file.path(dir, "area_weighted_negbin"), 
+  fit = fit.logn.w,
+  plot_resid = FALSE)
+
+calc_index(
+  dir = file.path(dir, "area_weighted_negbin"), 
+  fit = fit.nb,
+  grid = grid_south)
