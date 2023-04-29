@@ -64,6 +64,13 @@ model_settings = get_settings(
 # Run line
 run_diagnostics(mydir = model_dir, model_settings = model_settings)
 
+# Rerun a profile value
+rerun_profile_vals(mydir = file.path(model_dir, base_name),
+           model_settings = model_settings,
+           para_name =  "NatM_uniform_Fem_GP_1",
+           run_num = c(6),
+           data_file_nm = "2023_ca_s_copper.dat")
+
 
 library(ss3diags)
 base_name <- base_name

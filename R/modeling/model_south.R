@@ -927,9 +927,64 @@ SS_plots(coop_ages_growth)
 selex <- SS_output(file.path(wd, "10.2_selex"))
 SS_plots(selex)
 
-selex_alt <- SS_output(file.path(wd, "10.2_selex_alt_growth"))
-SS_plots(selex_alt)
-
-
 selex_fixm <- SS_output(file.path(wd, "10.2_selex_fix_m"))
 SS_plots(selex_fixm)
+
+
+selex_growth_fixm <- SS_output(file.path(wd, "10.2_selex_alt_growth_fix_m"))
+SS_plots(selex_growth_fixm)
+
+selex_alt <- SS_output(file.path(wd, "10.2_selex_alt_growth"))
+SS_plots(selex_alt)
+round(selex_alt$likelihoods_used$values,1)
+selex_alt$parameters_with_highest_gradients
+selex_alt$likelihoods_by_fleet[c(10,14), ]
+
+sigmaR <- SS_output(file.path(wd, "10.3_sigmaR"))
+# NLL = 2157.27
+round(sigmaR$likelihoods_used$values,1)
+sigmaR$parameters_with_highest_gradients
+sigmaR$likelihoods_by_fleet[c(10,14), ]
+
+logistic <- SS_output(file.path(wd, "10.4_logistic"))
+round(logistic$likelihoods_used$values,1)
+logistic$likelihoods_by_fleet[c(10,14), ]
+logistic$parameters_with_highest_gradients
+SS_plots(logistic, plot = c(2, 16))
+
+logistic2 <- SS_output(file.path(wd, "10.5"))
+round(logistic2$likelihoods_used$values,1)
+logistic2$likelihoods_by_fleet[c(10,14), ]
+logistic2$parameters_with_highest_gradients
+SS_plots(logistic2, plot = c(2, 16:18))
+
+com_dead <- SS_output(file.path(wd, "10.5_rm_com_block"))
+round(com_dead$likelihoods_used$values,1)
+com_dead$likelihoods_by_fleet[c(10,14), ]
+SS_plots(com_dead)
+
+cpfv_block <- SS_output(file.path(wd, "10.6_cpfv_block"))
+round(cpfv_block$likelihoods_used$values,1)
+cpfv_block$likelihoods_by_fleet[c(10,14), ]
+cpfv_block$parameters_with_highest_gradients
+SS_plots(cpfv_block, plot = c(2, 16:18))
+tune_comps(replist = cpfv_block, dir = file.path(wd, "10.6_cpfv_block"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+
+mi <- SS_output(file.path(wd, "10.7_mi"))
+francis <- SS_output(file.path(wd, "10.7_francis"))
+# The two models below do not have redone data weights
+mi_fix_m <- SS_output(file.path(wd, "10.7_mi_fix_m"))
+francis_fix_m <- SS_output(file.path(wd, "10.7_francis_fix_m"))
+tune_comps(replist = francis_fix_m, dir = file.path(wd, "10.7_francis_fix_m"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+
+modelnames <- c("10.2_selex_alt_growth", "MI", "Francis", "MI - Fix M", "Francis - Fix M")
+mysummary <- SSsummarize(list(selex_alt, mi, francis, mi_fix_m, francis_fix_m))
+SSplotComparisons(mysummary,
+                  filenameprefix = "10.7_dw_m_treatment_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.20,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
