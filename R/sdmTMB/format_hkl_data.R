@@ -35,7 +35,7 @@ format_hkl_data <- function(
   data <- data[data$site_number %in% 
       samples_across_years[samples_across_years$total_caught_by_site != 0, "site_number"] & 
       data$samples_across_years >= 2, 
-      c("common_name", "number_caught", "year", "site_number", "vessel",
+      c("common_name", "area_name", "number_caught", "year", "site_number", "vessel",
         "cca", "vermilion", "bocaccio",
       "drop_latitude_degrees", "drop_longitude_degrees",
       "drop_number", "hook_number", "angler_number", "sex", "crew", 
@@ -47,6 +47,7 @@ format_hkl_data <- function(
       "drop_time_proportion_of_solar_day", 
       "weight_kg", "length_cm")]
 
+  data$area_name <- as.factor(data$area_name)
   data$hook_number <- as.character(data$hook_number)
   data$hook_number[data$hook_number %in% "1"] <- "1_Bottom"
   data$hook_number[data$hook_number %in% "5"] <- "5_Top"

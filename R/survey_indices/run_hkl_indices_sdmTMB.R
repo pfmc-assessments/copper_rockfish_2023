@@ -34,6 +34,8 @@ for (a in 1:length(all)) { source(file.path(user_dir, "R", "sdmTMB", all[a]))}
 species <- "Copper Rockfish"
 d <- read.csv(file.path(data_dir, "H&LSurveyDataThru2022_DWarehouse version_03042023.csv"))
 
+
+
 d$ave_lat <- d$ave_long <- NA 
 for (aa in unique(d$site_number)) {
   find <-  which(d$site_number == aa) 
@@ -46,6 +48,16 @@ species_data <- format_hkl_data(
   common_name = species, 
   data = d)
 save(species_data, file = file.path(data_dir, "filtered_species_data_nwfsc_hkl.rdata"))
+
+location <- species_data %>% 
+  group_by(area_name) %>% 
+  reframe(
+    site = site_number[1],
+    depth = mean(drop_depth_meters),
+    lat = mean(drop_latitude_degrees), 
+    lon = mean(drop_longitude_degrees),
+    total = sum(number_caught))
+write.csv(location, file = file.path(data_dir, "site_location.csv"))
 
 # Does not include wave height, moon phase, or angler location on the vessel (angler)
 subdata <- species_data %>%
@@ -107,8 +119,10 @@ indices <- metrics <- NULL
 #===============================================================================
 
 # Create data set to use in estimating the indices
-covars <- c("year", "site_number", 'drop', "swell_scaled", "moon_scaled", "bocaccio_scaled", 
-            #"depth_scaled", "depth_scaled_2", "wave_scaled", 
+covars <- c("year", "site_number", 
+            'drop', "swell_scaled", "moon_scaled", 
+            "bocaccio_scaled", 
+            "depth_scaled", "depth_scaled_2", "wave_scaled", 
             "vermilion_scaled", 
             "offset(log(effort))")
 
@@ -125,7 +139,7 @@ model.full <- MASS::glm.nb(as.formula(
 
 model.suite <- MuMIn::dredge(model.full,
                       rank = "AICc", 
-                      fixed= c("offset(log(effort))", "year", "site_number", 'drop'))
+                      fixed= c("offset(log(effort))", "year", 'drop'))
 
 
 #Create model selection dataframe for the document
@@ -606,6 +620,181 @@ metrics <- rbind(metrics, c(name, loglike, aic))
 
 save(indices, file = file.path(index_dir, "all_indices.rdata"))  
 save(metrics, file = file.path(index_dir, "metrics.rdata"))
+
+#===============================================================================
+# Negative-Binomial GLM with only main effects excluding CCA data that > 73 m & Area-Weighted
+#===============================================================================
+# Create area grouping for index weighting
+species_data$area <- NA
+species_data$area[species_data$area_name %in% 
+                    c("Anacapa Island", "San Miguel Island", "Santa Cruz Island", "Santa Rosa Island")] <- "Northern_Channel_Island"
+species_data$area[species_data$area_name %in% 
+                    c("Tanner Bank", "Catalina Island", "Cortez Bank", "San Clemente Island", "San Nicolas Island East", "San Nicolas Island West", "Santa Barbara Island")] <- "Southern_Channel_Island"
+species_data$area[species_data$area_name %in% 
+                    c("San Pedro Bay", "Santa Monica Bay", "South Coast", "Central Coast")] <- "Mainland_1"
+species_data$area[species_data$area_name %in% 
+                    c("Point Conception/Arguello", "Port Hueneme", "Santa Barbara", "Santa Barbara Channel")] <- "Mainland_2"
+# Did not catch any coppers in Mainland 2 in 2005, combining both mainland areas
+species_data$area[species_data$area %in% c("Mainland_2", "Mainland_1")] <- "Mainland"
+
+remove <- which(species_data$cca == 1 & species_data$drop_depth_meters > 73)
+
+open_areas <- species_data[-remove, ] %>%
+  group_by(common_name, year, site_number, drop) %>% 
+  reframe(n = sum(number_caught),
+          area = area[1],
+          swell = median(swell_height_m),
+          depth = median(drop_depth_meters),
+          vermilion = sum(vermilion),
+          bocaccio = sum(bocaccio),
+          lat = mean(drop_latitude_degrees),
+          lon = mean(drop_longitude_degrees),
+          effort = length(unique(angler)) * length(unique(hook))) 
+
+# Format the data frame by adding factors and 0 centering quantities 
+open_areas <- open_areas %>%
+  mutate(
+    year = as.factor(year),
+    area = as.factor(open_areas$area),
+    site_number = as.factor(site_number),
+    drop = as.factor(drop),
+    depth_scaled = (depth - mean(depth)) / sd(depth),
+    depth_scaled_2 = depth_scaled^2,
+    swell_scaled = swell - mean(swell),
+    vermilion_scaled = vermilion - mean(vermilion),
+    bocaccio_scaled = bocaccio - mean(bocaccio)
+  )
+
+# Create data set to use in estimating the indices
+covars <- c("year", "area",  "year:area",
+            'drop', "swell_scaled",
+            "bocaccio_scaled", 
+            "depth_scaled", "depth_scaled_2", 
+            "vermilion_scaled", 
+            "offset(log(effort))")
+
+model.full <- MASS::glm.nb(as.formula(
+  paste("n", 
+        paste(0, "+", paste(covars, collapse = " + ")), 
+        sep = " ~ ")),
+  data = open_areas,
+  na.action = "na.fail")
+
+model.suite <- MuMIn::dredge(model.full,
+                             rank = "AICc", 
+                             fixed= c("offset(log(effort))", "year", "area", 'drop'))
+
+
+#Create model selection dataframe for the document
+Model_selection <- as.data.frame(model.suite)
+Model_selection
+#pull out the best model
+best.model <- MuMIn::get.models(model.suite,subset = delta == 0)
+best.formula <- best.model$ `8`$call$formula
+
+save(model.suite, 
+     file = file.path(index_dir, "nbglm_area_weighted_model_selection_drop_level.rdata"))
+save(Model_selection, file = file.path(index_dir, "model_area_weighted_formula_drop_level.rdata"))
+
+#format table for the document
+
+out <- Model_selection[, -c(12, ncol(Model_selection))] # remove the logLike and weight columns
+out[, 12:13] <- round(out[ , 12:13], 1)
+out[, c('bocaccio_scaled', "depth_scaled", "depth_scaled_2", 'swell_scaled', 'vermilion_scaled')] <- round(out[, c('bocaccio_scaled',"depth_scaled", "depth_scaled_2", 'swell_scaled', 'vermilion_scaled')] , 2)
+colnames(out) <- c("Area", 'Bocaccio', "Depth", "Depth2", 'Drop','Swell', 'Vermilion', 'Year', "Area:Year", 'Offset-log(effort)', 'DF', "AICc", "Delta") 
+write.csv(out, file = file.path(index_dir, "forSS", "area_weighted_model_selection.csv"), row.names = FALSE)
+
+
+raw.cpue <- open_areas %>%
+  mutate(cpue = n / effort) %>%
+  group_by(year, area) %>%
+  summarize(avg_cpue = mean(cpue))
+raw.cpue$year <- as.numeric(raw.cpue$year)
+
+ggplot(data = raw.cpue) + 
+  geom_point(aes(y = avg_cpue, x = year, colour = area), size = 3) + theme_bw() + 
+  geom_line(aes(x = year, y = avg_cpue, colour = area)) +
+  facet_wrap('area')
+ggsave(file = file.path(dir, "plots", 'raw_cpue_nwfsc_hkl_by_area.png'), width = 7, height = 7)
+
+# Format the data frame by adding factors and 0 centering quantities 
+#open_areas <- open_areas %>%
+#  mutate(
+#    year = as.factor(year),
+#    site_number = as.factor(site_number),
+#    drop = as.factor(drop),
+#    swell_scaled = swell - mean(swell),
+#    vermilion_scaled = vermilion - mean(vermilion),
+#    bocaccio_scaled = bocaccio - mean(bocaccio)
+#  )
+
+# Year and Sites
+year_site <- expand.grid(
+  year = unique(open_areas$year),
+  site_number = unique(open_areas$site_number),
+  area = unique(open_areas$area))
+
+## join in location info for all sites
+locs <- open_areas %>%
+  dplyr::group_by(year, area) %>%
+  dplyr::summarise(
+    lat = lat[1],
+    lon = lon[1],
+    site_number = site_number[1],
+    depth_scaled = depth_scaled[1],
+    depth_scaled_2 = depth_scaled_2[1],
+    swell_scaled = swell_scaled[1],
+    bocaccio_scaled = bocaccio_scaled[1],
+    vermilion_scaled = vermilion_scaled[1],
+    drop = as.factor(3))
+
+weighted_grid <- NULL
+for (a in 1:39){
+  weighted_grid <- rbind(weighted_grid, locs[locs$area == "Mainland", ])
+}
+#for(a in 1:14){
+#  weighted_grid <- rbind(weighted_grid, locs[locs$area == "Mainland_2", ])
+#}
+for(a in 1:73){
+  weighted_grid <- rbind(weighted_grid, locs[locs$area == "Southern_Channel_Island", ])
+}
+for(a in 1:88){
+  weighted_grid <- rbind(weighted_grid, locs[locs$area == "Northern_Channel_Island", ])
+}
+
+name <- "glm_negbin_year_area_depth_drop_swell_vermilion_bocaccio_open_areas_area_weighted"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + drop + vermilion_scaled + bocaccio_scaled + year*area,
+  data = open_areas,
+  offset = log(open_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = nbinom2(link = "log")
+)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = weighted_grid)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+index$model <- name
+indices <- rbind(indices, index)
+loglike <- logLik(fit)
+aic <- AIC(fit)
+metrics <- rbind(metrics, c(name, loglike, aic))
+
+save(indices, file = file.path(index_dir, "all_indices.rdata"))  
+save(metrics, file = file.path(index_dir, "metrics.rdata"))
+
+
 
 #===============================================================================
 # Negative-Binomial GLM with only main effects excluding CCA data
