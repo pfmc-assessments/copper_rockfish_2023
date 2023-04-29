@@ -18,15 +18,28 @@ load(file.path(dir, "nwfsc_hkl_2004-2022.rdata"))
 hkl_all <- hkl
 hkl_all$lat <- hkl_all$drop_latitude_degrees
 hkl_all$lon <- hkl_all$drop_longitude_degrees
-hkl_all$area <- ifelse(hkl_all$site_number >= 500, "CCA", "Outside CCA")
+hkl_all$cca_area <- ifelse(hkl_all$site_number >= 500, "CCA", "Outside CCA")
 hkl_all$fathom_bin <- plyr::round_any(hkl_all$drop_depth_fathoms, 5, floor)
 hkl_all$depth_bin <- plyr::round_any(hkl_all$drop_depth_meters, 5, floor)
 #hkl_all$length_bin <- plyr::round_any(hkl_all$length_cm, 2, floor)
 hkl_all$count <- 0
 ind <- which(hkl_all$common_name == "Copper Rockfish")
 hkl_all[ind, 'count'] <- 1
-# Filter down to only copper obaervations
+# Filter down to only copper observations
 hkl <- hkl_all[ind, ]
+
+# Process the length and area weight
+hkl$area <- NA
+hkl$area[hkl$area_name %in% 
+                    c("Anacapa Island", "San Miguel Island", "Santa Cruz Island", "Santa Rosa Island")] <- "Northern_Channel_Island"
+hkl$area[hkl$area_name %in% 
+                    c("Tanner Bank", "Catalina Island", "Cortez Bank", "San Clemente Island", "San Nicolas Island East", "San Nicolas Island West", "Santa Barbara Island")] <- "Southern_Channel_Island"
+hkl$area[hkl$area_name %in% 
+                    c("San Pedro Bay", "Santa Monica Bay", "South Coast", "Central Coast")] <- "Mainland_1"
+hkl$area[hkl$area_name %in% 
+                    c("Point Conception/Arguello", "Port Hueneme", "Santa Barbara", "Santa Barbara Channel")] <- "Mainland_2"
+# Did not catch any coppers in Mainland 2 in 2005, combining both mainland areas
+hkl$area[hkl$area %in% c("Mainland_2", "Mainland_1")] <- "Mainland"
 
 hkl_all_site <- hkl_all %>%
   group_by(site_number) %>%
@@ -46,7 +59,7 @@ hkl <- hkl[hkl$include_fish == 1, ]
 hkl <- hkl[hkl$sex != "U", ]
 
 samples_area <- hkl %>%
-  group_by(year, area) %>%
+  group_by(year, area_cca) %>%
   reframe(
     Drops = length(unique(set_id_drop)),
     Observations = sum(count)
@@ -54,6 +67,27 @@ samples_area <- hkl %>%
 colnames(samples_area)[1:2] <- c("Year", "Area")
 write.csv(samples_area, file = file.path(dir, "forSS", "sample_number_by_site_cca.csv"), row.names = FALSE)
 
+
+samples_area <- hkl %>%
+  group_by(year, area) %>%
+  reframe(
+    Drops = length(unique(set_id_drop)),
+    Observations = sum(count)
+  )
+colnames(samples_area)[1:2] <- c("Year", "Region")
+write.csv(samples_area, file = file.path(dir, "forSS", "sample_number_by_region.csv"), row.names = FALSE)
+
+ggplot(data = samples_area) + 
+  geom_point(aes(y = Observations, x = year, colour = area), size = 3) + theme_bw() + 
+  geom_line(aes(x = year, y = Observations, colour = area)) +
+  facet_wrap('area')
+
+prop <- hkl %>%
+  group_by(area) %>%
+  reframe(
+    len = sum(!is.na(length_cm))
+  ) %>%
+  mutate(freq = len / sum(len))
 
 sample_summary <- hkl %>%
   group_by(year) %>%
@@ -97,6 +131,51 @@ samp_weights <- hkl_all %>%
     cca_percent = cca_sites/all_sites,
     noncca_percent = 1 - cca_percent
   )
+
+#==================================================================
+# Visualize the data by Region
+#==================================================================
+remove <- which(hkl$cowcod_conservation_area_indicator == 1 & hkl$drop_depth_meters > 73)
+
+ggplot(hkl, aes(x = length_cm, y = as.factor(year))) + 
+  geom_density_ridges2() +
+  scale_fill_viridis_c(name = "Length") +
+  facet_wrap("area") +
+  stat_density_ridges(quantile_lines = TRUE, quantiles = 2) + 
+  ylab("Year") + xlab("Length (cm)")
+ggsave(filename = file.path(dir, "plots", "nwfsc_hkl_ggridges_year_region.png"),
+       width = 10, height = 10)
+
+hkl$region <- hkl$area
+hkl$region[remove] <- "Closed_Area"
+
+ggplot(hkl, aes(x = length_cm, fill = region)) + 
+  geom_density(alpha = 0.50) + 
+  scale_fill_viridis_d() + xlim( c(10, 56)) + 
+  ylab("Year") + xlab("Length (cm)")
+ggsave(filename = file.path(dir, "plots", "nwfsc_hkl_length_density_region.png"),
+       width = 10, height = 7)
+
+
+samp_by_region <- hkl %>%
+  group_by(year, region) %>%
+  reframe(
+    mean_length = mean(length_cm),
+    n = n()
+  )
+out <- samp_by_region %>% 
+  pivot_wider(names_from = region, values_from = c(n, mean_length))
+write.csv(out, file = file.path(dir, "forSS", "samples_and_mean_length_by_region.csv"),
+      row.names = FALSE)
+
+samples_all <- hkl %>%
+  group_by(year, region) %>%
+  reframe(
+    unique_set_by_site = length(unique(set_id_drop)),
+    n_copper = sum(count)
+  )
+out <- samples_all %>% 
+  pivot_wider(names_from = region, values_from = c(unique_set_by_site, n_copper))
 
 #==================================================================
 # Create unexpanded length composition data
@@ -174,18 +253,18 @@ write.csv(lfs$sexed,
           row.names = FALSE) 
 
 
-
+# This is all total garbage
 # Explore weighting length samples based on % of sample sites within CCA and outside
-cca_comps <- lfs_cca[, 6:52] * as.vector(samp_weights[, "cca_percent"])
-noncca_comps <- lfs$sexed[lfs$sexed$year > 2013, 6:52] * as.vector(samp_weights[, "noncca_percent"])
+#cca_comps <- lfs_cca[, 6:52] * as.vector(samp_weights[, "cca_percent"])
+#noncca_comps <- lfs$sexed[lfs$sexed$year > 2013, 6:52] * as.vector(samp_weights[, "noncca_percent"])
 # Combine the comps and then standardize
-weighted_comps <- cca_comps + noncca_comps
-standardized <- round(100 * weighted_comps[,2:ncol(weighted_comps)] / apply( weighted_comps[,2:ncol(weighted_comps)], 1, sum), 4)
+#weighted_comps <- cca_comps + noncca_comps
+#standardized <- round(100 * weighted_comps[,2:ncol(weighted_comps)] / apply( weighted_comps[,2:ncol(weighted_comps)], 1, sum), 4)
 
-out <- cbind(lfs$sexed[lfs$sexed$year > 2013, 1:5], floor(weighted_comps[,1]), standardized)
-colnames(out) <- colnames(lfs$sexed)
-out <- rbind(lfs$sexed[lfs$sexed$year < 2014, ], out)
-write.csv(out, file = file.path(dir, "forSS", "cca_effort_weighted_length_composition.csv"), row.names = FALSE)
+#out <- cbind(lfs$sexed[lfs$sexed$year > 2013, 1:5], floor(weighted_comps[,1]), standardized)
+#colnames(out) <- colnames(lfs$sexed)
+#out <- rbind(lfs$sexed[lfs$sexed$year < 2014, ], out)
+#write.csv(out, file = file.path(dir, "forSS", "cca_effort_weighted_length_composition.csv"), row.names = FALSE)
 
 #====================================================================
 # Plot the composition data

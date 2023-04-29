@@ -49,6 +49,19 @@ species_data <- format_hkl_data(
   data = d)
 save(species_data, file = file.path(data_dir, "filtered_species_data_nwfsc_hkl.rdata"))
 
+# Create area grouping for index weighting
+species_data$area <- NA
+species_data$area[species_data$area_name %in% 
+                    c("Anacapa Island", "San Miguel Island", "Santa Cruz Island", "Santa Rosa Island")] <- "Northern_Channel_Island"
+species_data$area[species_data$area_name %in% 
+                    c("Tanner Bank", "Catalina Island", "Cortez Bank", "San Clemente Island", "San Nicolas Island East", "San Nicolas Island West", "Santa Barbara Island")] <- "Southern_Channel_Island"
+species_data$area[species_data$area_name %in% 
+                    c("San Pedro Bay", "Santa Monica Bay", "South Coast", "Central Coast")] <- "Mainland_1"
+species_data$area[species_data$area_name %in% 
+                    c("Point Conception/Arguello", "Port Hueneme", "Santa Barbara", "Santa Barbara Channel")] <- "Mainland_2"
+# Did not catch any coppers in Mainland 2 in 2005, combining both mainland areas
+species_data$area[species_data$area %in% c("Mainland_2", "Mainland_1")] <- "Mainland"
+
 location <- species_data %>% 
   group_by(area_name) %>% 
   reframe(
@@ -552,9 +565,11 @@ remove <- which(species_data$cca == 1 & species_data$drop_depth_meters > 73)
 open_areas <- species_data[-remove, ] %>%
   group_by(common_name, year, site_number, drop) %>% 
   reframe(n = sum(number_caught),
+          area = area[1],
           swell = median(swell_height_m),
           vermilion = sum(vermilion),
           bocaccio = sum(bocaccio),
+          depth = median(drop_depth_meters),
           lat = mean(drop_latitude_degrees),
           lon = mean(drop_longitude_degrees),
           effort = length(unique(angler)) * length(unique(hook))) 
@@ -564,8 +579,11 @@ open_areas$site_number <- droplevels(open_areas$site_number)
 open_areas <- open_areas %>%
   mutate(
     year = as.factor(year),
+    area = as.factor(open_areas$area),
     site_number = as.factor(site_number),
     drop = as.factor(drop),
+    depth_scaled = (depth - mean(depth)) / sd(depth),
+    depth_scaled_2 = depth_scaled * depth_scaled,
     swell_scaled = swell - mean(swell),
     vermilion_scaled = vermilion - mean(vermilion),
     bocaccio_scaled = bocaccio - mean(bocaccio)
@@ -581,7 +599,9 @@ year_site <- expand.grid(
 locs <- dplyr::group_by(open_areas, site_number) %>%
   dplyr::summarise(
     lat = lat[1],
-    lon = lon[1])
+    lon = lon[1],
+    depth_scaled = depth_scaled[1],
+    depth_scaled_2 = depth_scaled_2[1])
 
 grid_open <- dplyr::left_join(year_site, locs) %>%
   dplyr::filter(!is.na(lat + lon))
@@ -622,20 +642,84 @@ save(indices, file = file.path(index_dir, "all_indices.rdata"))
 save(metrics, file = file.path(index_dir, "metrics.rdata"))
 
 #===============================================================================
+# Negative-Binomial GLM with only main effects excluding CCA data that > 73 m & Not Area-Weighted
+#===============================================================================
+
+# Year and Sites
+year_site <- expand.grid(
+  year = unique(open_areas$year),
+  site_number = unique(open_areas$site_number),
+  area = unique(open_areas$area))
+
+## join in location info for all sites
+locs <- open_areas %>%
+  dplyr::group_by(year, area) %>%
+  dplyr::summarise(
+    lat = lat[1],
+    lon = lon[1],
+    site_number = site_number[1],
+    depth_scaled = depth_scaled[1],
+    depth_scaled_2 = depth_scaled_2[1],
+    swell_scaled = swell_scaled[1],
+    bocaccio_scaled = bocaccio_scaled[1],
+    vermilion_scaled = vermilion_scaled[1],
+    drop = as.factor(3))
+
+grid_open <- dplyr::left_join(year_site, locs) %>%
+  dplyr::filter(!is.na(lat + lon))
+
+
+name <- "glm_negbin_year_area_depth_drop_swell_vermilion_bocaccio_open_area"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + drop + vermilion_scaled + bocaccio_scaled + year*area,
+  data = open_areas,
+  offset = log(open_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = nbinom2(link = "log")
+)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = grid_open)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+
+name <- "glm_negbin_year_depth_drop_vermilion_bocaccio_open_area"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + depth_scaled + depth_scaled_2 + drop + vermilion_scaled + bocaccio_scaled,
+  data = open_areas,
+  offset = log(open_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = nbinom2(link = "log")
+)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = grid_open)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+
+#===============================================================================
 # Negative-Binomial GLM with only main effects excluding CCA data that > 73 m & Area-Weighted
 #===============================================================================
-# Create area grouping for index weighting
-species_data$area <- NA
-species_data$area[species_data$area_name %in% 
-                    c("Anacapa Island", "San Miguel Island", "Santa Cruz Island", "Santa Rosa Island")] <- "Northern_Channel_Island"
-species_data$area[species_data$area_name %in% 
-                    c("Tanner Bank", "Catalina Island", "Cortez Bank", "San Clemente Island", "San Nicolas Island East", "San Nicolas Island West", "Santa Barbara Island")] <- "Southern_Channel_Island"
-species_data$area[species_data$area_name %in% 
-                    c("San Pedro Bay", "Santa Monica Bay", "South Coast", "Central Coast")] <- "Mainland_1"
-species_data$area[species_data$area_name %in% 
-                    c("Point Conception/Arguello", "Port Hueneme", "Santa Barbara", "Santa Barbara Channel")] <- "Mainland_2"
-# Did not catch any coppers in Mainland 2 in 2005, combining both mainland areas
-species_data$area[species_data$area %in% c("Mainland_2", "Mainland_1")] <- "Mainland"
 
 remove <- which(species_data$cca == 1 & species_data$drop_depth_meters > 73)
 
@@ -671,18 +755,18 @@ covars <- c("year", "area",  "year:area",
             "bocaccio_scaled", 
             "depth_scaled", "depth_scaled_2", 
             "vermilion_scaled", 
-            "offset(log(effort))")
+            "offset(log_effort)")
 
-model.full <- MASS::glm.nb(as.formula(
+model.full <- lme4::glmer.nb(as.formula(
   paste("n", 
         paste(0, "+", paste(covars, collapse = " + ")), 
         sep = " ~ ")),
-  data = open_areas,
-  na.action = "na.fail")
+  data = open_areas)
 
 model.suite <- MuMIn::dredge(model.full,
                              rank = "AICc", 
-                             fixed= c("offset(log(effort))", "year", "area", 'drop'))
+                             fixed= c("offset(log(effort))", 
+                                      "year", "area", 'drop'))
 
 
 #Create model selection dataframe for the document
@@ -709,13 +793,13 @@ raw.cpue <- open_areas %>%
   mutate(cpue = n / effort) %>%
   group_by(year, area) %>%
   summarize(avg_cpue = mean(cpue))
-raw.cpue$year <- as.numeric(raw.cpue$year)
+raw.cpue$year <- as.numeric(as.character(raw.cpue$year))
 
 ggplot(data = raw.cpue) + 
   geom_point(aes(y = avg_cpue, x = year, colour = area), size = 3) + theme_bw() + 
   geom_line(aes(x = year, y = avg_cpue, colour = area)) +
-  facet_wrap('area')
-ggsave(file = file.path(dir, "plots", 'raw_cpue_nwfsc_hkl_by_area.png'), width = 7, height = 7)
+  facet_grid(area~.) + xlab("Year") + ylab("Raw CPUE")
+ggsave(file = file.path(dir, "plots", 'raw_cpue_nwfsc_hkl_by_area.png'), width = 10, height = 7)
 
 # Format the data frame by adding factors and 0 centering quantities 
 #open_areas <- open_areas %>%
@@ -776,6 +860,160 @@ fit <- sdmTMB(
   family = nbinom2(link = "log")
 )
 
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = weighted_grid)
+
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+name <- "glm_negbin_year_area_depth_drop_swell_vermilion_bocaccio_re_site_open_areas_area_weighted"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + drop + vermilion_scaled + bocaccio_scaled + year*area + (1|site_number),
+  data = open_areas,
+  offset = log(open_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = nbinom2(link = "log")
+)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = weighted_grid)
+
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+
+name <- "glm_negbin_year_area_depth_drop_open_areas_area_weighted"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + drop + year*area,
+  data = open_areas,
+  offset = log(open_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = nbinom2(link = "log")
+)
+
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = weighted_grid)
+
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+name <- "glm_negbin_year_area_depth_drop_vermilion_open_areas_area_weighted"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + drop + vermilion_scaled +  year*area,
+  data = open_areas,
+  offset = log(open_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = nbinom2(link = "log")
+)
+
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = weighted_grid)
+
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+
+name <- "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_area_weighted"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + drop + vermilion_scaled + bocaccio_scaled + year*area,
+  data = open_areas,
+  offset = log(open_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = delta_lognormal()
+)
+
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = weighted_grid)
+
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+
+name <- "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+open_areas$site_number <- droplevels(open_areas$site_number)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + drop + vermilion_scaled + bocaccio_scaled + year*area + (1|site_number),
+  data = open_areas,
+  offset = log(open_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = delta_lognormal()
+)
+
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = weighted_grid)
+
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+
+name <- "glm_delta_lognormal_year_area_depth__open_areas_re_site_area_weighted"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + year*area + (1|site_number),
+  data = open_areas,
+  offset = log(open_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = delta_lognormal()
+)
+
 index <- calc_index(
   dir = file.path(index_dir, name), 
   fit = fit,
@@ -785,14 +1023,79 @@ do_diagnostics(
   dir = file.path(index_dir, name), 
   fit = fit)
 
-index$model <- name
-indices <- rbind(indices, index)
-loglike <- logLik(fit)
-aic <- AIC(fit)
-metrics <- rbind(metrics, c(name, loglike, aic))
 
-save(indices, file = file.path(index_dir, "all_indices.rdata"))  
-save(metrics, file = file.path(index_dir, "metrics.rdata"))
+name <- "glm_delta_lognormal_year_area_depth_drop_open_areas_re_site_area_weighted"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + drop + year*area + (1|site_number),
+  data = open_areas,
+  offset = log(open_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = delta_lognormal()
+)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = weighted_grid)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+
+name <- "glm_delta_lognormal_year_area_depth_drop_vermilion_open_areas_re_site_area_weighted"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + drop + vermilion_scaled + year*area + (1|site_number),
+  data = open_areas,
+  offset = log(open_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = delta_lognormal()
+)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = weighted_grid)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+
+name <- "glm_delta_gamma_year_area_depth_drop_vermilion_bocaccio_open_areas_area_weighted"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + drop + vermilion_scaled + bocaccio_scaled + year*area,
+  data = open_areas,
+  offset = log(open_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = delta_gamma()
+)
+
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = weighted_grid)
+
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
 
 
 
