@@ -21,7 +21,7 @@ colors <- viridis::viridis(9)
 # Southern Figure
 #================================================================================
 
-info1 <- SSplotSelex(model, fleets = 1,  subplot = 1, year = c(2016, 2017))
+info1 <- SSplotSelex(model, fleets = 1,  subplot = 1, year = c(2022))
 info1$infotable$longname = c("Com. Dead 1916-2016", "Com. Dead 2017-2022")
 info1$infotable$col <- c(colors[1], colors[2])
 
@@ -29,8 +29,8 @@ info2 <- SSplotSelex(model, fleets = 2, subplot = 1, year = c(2022))
 info2$infotable$longname <- c("Com. Live 1916-2022")
 info2$infotable$col <- colors[2]
 
-info3 <- SSplotSelex(model, fleets = 3, subplot = 1, year = c(1999, 2022))
-info3$infotable$longname = c("CPFV 1916-1999", "CPFV 20000-2022")
+info3 <- SSplotSelex(model, fleets = 3, subplot = 1, year = c(1999, 2003, 2022))
+info3$infotable$longname = c("CPFV 1916-1999", "CPFV 2000-2003", "CPFV 2004-2022")
 info3$infotable$col <- c(colors[3], colors[3])
 
 info4 <- SSplotSelex(model, fleets = 4, subplot = 1, year = c(1999, 2022))
