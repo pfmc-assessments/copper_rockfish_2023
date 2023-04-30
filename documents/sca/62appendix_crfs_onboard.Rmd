@@ -31,10 +31,10 @@ from CDFW's website.
 We applied a number of data filters to the available data presented in Table 
 \@ref(fig:)
 
-This index 
-selectivity is mirrored to the recreational 
-fleet in the stock assessment model, which represent only retained (dead) 
-fish. 
+This index selectivity is mirrored to the recreational 
+fleet in the stock assessment model, which represents retaiend plus discarded
+fish. On average, a small percentage of observed copper rockfish are discarded (table). 
+
 
 Depth restrictions in the recreational fishery were fairly 
 consistent from 2004-2016. Starting in 2017, depth restrictions eased in districts 
@@ -45,9 +45,9 @@ areas considered as a factor in the index.
 
 
 
-We retained 14218 drifts for index standardization, with 
-5960 drifts encountering vermilion rockfish 
-(Table \@ref(tab:tab-data-filter-cpfvonboard)).  
+We retained dxxxx drifts for index standardization, with 
+xxx drifts encountering vermilion rockfish 
+(Table \@ref(tab:onboard-filter)).  
 
 Sample sizes by factors selected to model, excluding WAVE can be found in Tables 
 \@ref(tab:tab-region-cpfvonboard), \@ref(tab:tab-depth-cpfvonboard), and \@ref(tab:tab-year-cpfvonboard).
@@ -61,11 +61,11 @@ had switched target species and fish highly migratory species. The 2021 stock as
 had also been released by August 2021 indicating the stock was below the biomass 
 at 40%.  The southern California CPFV began an organized effort to avoid copper 
 rockfish and encourage their clientele to release and descend copper rockfish 
-when encountered. In 2022, the CDFW implmeneted the 1 copper rockfish sub-bag 
+when encountered. In 2022, the CDFW implemented the one copper rockfish sub-bag 
 limit and combined with avoidance by the fleet, does not represent the available 
 copper rockfish biomass.
 
-Two indices are presented below, one with a starting year of 1999 when the CRFS 
+The index present when the CRFS 
 program started the CPFV onboard observer program and another starting in 2004. 
 Between 1999 and 2003 a series of regulation changed occurred including gear 
 restrictions and implementation of depth closures.  See the additional information 
@@ -99,12 +99,12 @@ Models were fit using the sdmTMB R package (version ).
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
-                    "samples_by_year_district.csv"))
+                    "keep_discard_prop.csv"))
 #col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
 
 sa4ss::table_format(x = ind,
-             caption = "Number of observed drifts by year and district.",
-             label = "onboard-waterarea")#,
+             caption = "Number of observed copper rockfish retained and discarded by year.",
+             label = "onboard-keepdiscard")#,
         #     col_names = col_names)                         
 ```
 
