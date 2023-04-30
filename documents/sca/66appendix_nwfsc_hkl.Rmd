@@ -2,36 +2,21 @@
 
 Since 2004, the NWFSC has conducted an annual hook and line survey targeting shelf rockfish in the genus *Sebastes* at fixed stations (e.g., sites, Figure \ref{fig:nwfsc-hkl-map}) in the Southern California Bight. Key species of rockfish targeted by the `r hkl` are bocaccio (*S. paucispinis*), cowcod (*S. levis*), greenspotted (*S. chlorostictus*), and vermilion/sunset (*S. miniatus* and *S. crocotulus*) rockfishes, although a wide range of rockfish species have been observed by this survey. During each site visit, three deckhands simultaneously deploy 5-hook sampling rigs (this is referred to as a single drop) for a maximum of 5 minutes per line, but individual lines may be retrieved sooner at the angler's discretion (e.g., to avoid losing fish). Five drops are attempted at each site for a maximum possible catch of 75 fish per site per year (3 anglers x 5 hooks x 5 drops). Further details regarding the sample frame, site selection, and survey methodology are described by Harms et al. [-@harms_noaa_2008]. 
 
-The sites considered for the creation of a relative index of abundance were limited to sites that have caught at least 1 `r spp` across all years. A range of alternative model structures were explored to generate an index of abundances. This included alternative levels of aggregation (hook, drop, or site), probability distributions (negative binomial, delta-gamma, or delta-lognormal), and covariates (year, site number, depth, swell height, inside/outside CCA, and/or the number of vermilion/sunset or bocaccio rockfishes observed, Table ref{tab:nwfsc-hkl-model-selection}). The overall trend in the index of abundance were highly similar across the explored probability distributions and model configurations. The number of observation in `r spp` in the CCA were limited. The calculated CPUE inside and outside the CCA were similar for `r spp` (Figure \ref{fig:nwfsc-hkl-cca}). Given this, the index selected for the base model include all observations of `r spp` across all sampled sites. Sensitivities to excluding the CCA observations were conducted.
+The sites considered for the creation of a relative index of abundance were limited to sites that have caught at least 1 `r spp` across all years are were open to fishing in order to create an index of abundance based on comparable data. This eliminated a small subset of sites within the CCAs of depths greater than 73 meters, resulting in the removal of only 50 observations of `r spp`. To appropriately weight the survey index by the available rocky substrate by region in the California Bight, each site was assigned as mainland, Northern Channel Island, or Southern Channel Island. Estimates of hard bottom was extracted from the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html) for each of these regions. These data were collected into state waters at a resolution of two meters. South of Point  Conception, additional interpreted bathymetric data classifying the bottom type as  rock or soft bottom were compiled by Emily Saarman (UC Santa Cruz) and also available  from CDFW's website. The estimates of rocky substrate for each of these regions were 19.5, 36.5, and 44.1 percent in the mainland, Southern Channel Islands, and Northern Channel Islands, respectively. 
 
-All modeling was initially conducted using sdmTMB [@anderson_sdmtmb_2022] with the final selected model fit using the "rstanarm" R package (v. 2.21.3). All diagnostics appeared reasonable (Figure \ref{fig:nwfsc-hkl-qq} and \ref{fig:nwfsc-hkl-prop-zero}). The final selected model was a negative binomial model that included covariates terms for year, site number, drop, swell height, and the number vermilion/sunset rockfishes caught within the same drop. The model with the lowest AIC also included the number of bocaccio caught within a drop, however, the effect was small with uncertainty that included 0 so the slightly simpler model was selected.  A comparison between the standardized estimated relative index of abundance compared with the calculated raw catch-per-unit-effort (CPUE) is show Figure \ref{fig:nwfsc-hkl-index-raw}. The final index of abundance is shown in Figure \ref{fig:nwfsc-hkl-index} and Table \ref{tab:nwfsc-hkl-index-tab}
+A range of alternative model structures were explored to generate an index of abundances. This included alternative levels of aggregation (hook, drop, or site), probability distributions (negative binomial, delta-gamma, or delta-lognormal), and covariates (year, site number, depth, swell height, region, year-region interaction, and/or the number of vermilion/sunset or bocaccio rockfishes observed. The overall trend in the index of abundance were highly similar across the explored probability distributions and model configurations. Based on QQ-plots, residuals, and AIC the delta-lognormal distribution was selected with covariates for year, region, drop, polynomial depth term, number of bocaccio, number of vermilion, year-region interaction, and site as a random-effect was selected as the final model using sdmTMB [@anderson_sdmtmb_2022] (Figures \ref{fig:nwfsc-hkl-qq}, \ref{fig:nwfsc-hkl-resid-1}, and \ref{fig:nwfsc-hkl-resid-2}). 
 
-\pagebreak
-
-
-\input{tex_tables/nwfsc_hkl_model_selection.tex}
 
 \newpage
-
 
 \input{tex_tables/nwfsc_hkl_formatted_index.tex}
 
 \newpage
 
-
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "standardized_cpue_nwfsc_hkl_inside_outside.png"), 
-caption = "Standardized CPUE inside and outside the CCA.",
-label = 'nwfsc-hkl-cca')
-```
-
-\newpage
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "stand_index_raw_versus_est.png"), 
-caption = "Standardized comparison of estimated relative index of abundance and the raw cath-per-unit-effort.",
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "raw_cpue_nwfsc_hkl_by_area.png"), 
+caption = "Raw catch-per-unit-effort by region for the NWFSC Hook and Line suvey.",
 label = 'nwfsc-hkl-index-raw')
 ```
 
@@ -39,25 +24,36 @@ label = 'nwfsc-hkl-index-raw')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "rstan_full_nb_glm_year_site_drop_swell_vermilion", "Index.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted", "Index.png"), 
 caption = "Estimated index of abundance by the NWFSC Hook and Line survey for copper rockfish.",
 label = 'nwfsc-hkl-index')
 ```
 
+\newpage
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "alternative_models", "glm_negbin_main_year_site_drop_swell_vermilion", "qq.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted", "qq.png"), 
 caption = "QQ plot.",
 label = 'nwfsc-hkl-qq')
 ```
 
+\newpage
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "rstan_full_nb_glm_year_site_drop_swell_vermilion", "proportion_zero_south.png"), 
-caption = "Predicted zero compared to observed zeros.",
-label = 'nwfsc-hkl-prop-zero')
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted", "residuals_page1.png"), 
+caption = "QQ plot.",
+label = 'nwfsc-hkl-resid-1')
 ```
 
 \newpage
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted", "residuals_page2.png"), 
+caption = "QQ plot.",
+label = 'nwfsc-hkl-resid-2')
+```
+
+
