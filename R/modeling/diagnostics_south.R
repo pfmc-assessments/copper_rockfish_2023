@@ -20,7 +20,7 @@ if( grepl("Chantel", user) ){
 
 model_dir <- file.path(user_dir, "models", "sca")
 # Specify why model you would like to profile, retro, and/or jitter
-base_name <- "11.0_francis_cpfv_dome"
+base_name <- "12.0_base"
 
 # Specify the parameters and the space to profile
 get = get_settings_profile(
@@ -56,7 +56,7 @@ model_settings = get_settings(
   settings = list(
     base_name = base_name,
     profile_details = get,
-    run = c("profile", "jitter", "retro"), 
+    run =  c("profile", "jitter", "retro"), 
     retro_yrs = -1:-5,
     Njitter = 50,
     jitter_fraction = 0.10))
@@ -69,8 +69,8 @@ run_diagnostics(mydir = model_dir, model_settings = model_settings)
 #==============================================================================
 rerun_profile_vals(mydir = file.path(model_dir, base_name),
            model_settings = model_settings,
-           para_name =  "NatM_uniform_Fem_GP_1",
-           run_num = c(6),
+           para_name =  "NatM_uniform_Mal_GP_1",
+           run_num = c(3,4),
            data_file_nm = "2023_ca_s_copper.dat")
 
 

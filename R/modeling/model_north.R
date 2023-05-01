@@ -790,3 +790,18 @@ SSplotComparisons(mysummary,
                   ylimAdj = 1.3,
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+
+tune_comps(replist = base, dir = file.path(wd, "9.0_update_deb_index_selex"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+
+
+dw <- SS_output(file.path(wd, "9.1_rov_logistic_dw"))
+round(dw$likelihoods_used$values,1)
+dw$likelihoods_by_fleet[c(10,14), ]
+# NLL = 983.4
+
+com_selex <- SS_output(file.path(wd, "9.2_com_logistic"))
+round(com_selex$likelihoods_used$values,1)
+com_selex$likelihoods_by_fleet[c(10,14), ]
+# NLL = 983.9 
