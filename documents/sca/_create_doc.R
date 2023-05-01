@@ -46,6 +46,20 @@ bookdown::render_book(
   output_dir = getwd()
 )
 
+
+
+#===============================================================================
+# Compile only particular sections
+#===============================================================================
+if(file.exists("_main.Rmd")){
+  file.remove("_main.Rmd")
+}
+bookdown::render_book("00a.Rmd", 
+                      output_dir = doc_dir, clean = FALSE, 
+                      config_file = "_bookdown_south.yml")
+# stopper
+
+
 #==================================================================================================
 # Read in a new model
 # Create a model Rdata object and executive summary ES tex files

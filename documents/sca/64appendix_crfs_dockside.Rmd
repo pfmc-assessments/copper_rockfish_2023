@@ -1,1 +1,172 @@
 # Appendix D. CRFS PR Dockside Index of Abundance {#crfs-pr-index}
+
+Catch and effort data from CRFS dockside sampling of private boats, 2004-2022, 
+were provided by CDFW for use in this assessment. The PR dockside data housed 
+on RecFIN were determined to include a number of errors that precluded the ability to 
+use them for an index of abundance.  For the time period from 2004-2014 the authors 
+re-created the interivew, or trip level, data from the sample "i" files.  For 2015-2022 
+the authors used files provided by CDFW from the CRFS sampling program.
+
+The data for both time periods include catch (number 
+of fish) by species, number of anglers contributing to the catch at the level of an interview 
+from a trip, angler-reported area of fishing, county, port, 
+interview site, year, month, and CRFS district. The sample size of the 
+unfiltered private boat data is much larger than the CPFV onboard observer data set, 
+with 256,738 samples statewide from 2004-2022, 169,912 south 
+of Point Conception and 86,826 north of Point Conception. 
+
+
+Records were limited to the primary private and rental boats public-access sites, 
+PR1 sites (Table \@ref(tab:pr-filter)). The CRFS interviews contain a small fraction of samples where the retained catch for 
+rockfish is over the daily bag limit.  We did not remove these data from the index, but did 
+only include sampler examined catch.  
+Additional data filters included the exclusion of any samples from January and 
+February, since those months have been closed to the recreational fishery south of Point Conception 
+since 2005.  The angler reported water area was restricted to ocean areas in U.S. waters 
+and a reported primary gear 
+of hook-and-line or troll gear.  A number of trips with the primary gear reported troll reported
+a secondary gear of hook-and-line. To determine if the angler(s) interviewed targeted rockfish and
+fished in rocky habitat, we retained trips if the angler reported the primary target species 
+as rockfish or bottomfish or if rockfish was reported as the secondary target species. This filter 
+replaced the Stephens-MacCall (@stephens-multispecies-2004) filtering approach.
+
+We retained 13,340 angler interviews for 
+index standardization, with 3,739 included sampled examined copper rockfish
+(Table \@ref(tab:pr-filter)).  
+
+We modeled retained catch per angler days with a negative binomial GLM in the R package sdmTMB.
+The QQ plots indicate a reasonable fit.  There are a handful of samples with higher than average 
+CPUE and the authors check with CDFW to determine whether the samples should still be included. 
+The CDFW indicated data sheets were not avaialble prior to 2012, but the cathches were less than the 
+bag limits, and should be assumed correct. Indices with a year and district interaction were not 
+considered in model selection due to the fact that fishing locations are unknown; 
+trends in the average CPUE by district were similar 
+in the filtered data set (Figure \@ref(fig:pr-districtcpue)). 
+
+Based on AICc values from maximum likelihood fits Table \@ref(tab:pr-modelselect)), 
+a main effects model including year and district as categorical covariates were selected 
+(Table \@ref(tab:pr-index) and Figure \@ref(fig:pr-index)).
+
+
+
+<!--Tables -->
+
+\newpage
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_pr_dockside", "bag_change_visuals",
+"pr_bag_limit_by_year.csv")) 
+col_names = c("Year", "Minimum","25th Quantiles", "50th Quantile", "75th Quantile", "Maximum")
+
+sa4ss::table_format(x = ind,
+             caption = "Summary of the copper rockfish CPUE, number of fish retained per 
+             angler day, by year.",
+             label = "pr-cpue",
+             col_names = col_names)
+```
+
+
+\newpage
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_pr_dockside", "south",
+                    "percent_pos.csv")) %>%
+  mutate(percentpos = scales::percent(round(percentpos, 3)))
+col_names = c("Year" ,"Trips with Target", "Trips without Target", "Total trips", "Percent with Target")
+
+sa4ss::table_format(x = ind,
+             caption = "Number of samples and percent positive for the dockside PR survey.",
+             label = "pr-percentpos",
+             col_names = col_names)
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south",
+                          "start2005", "data_filters.csv"))
+col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+sa4ss::table_format(x = ind,
+             caption = "Data filtering steps for the onboard CPFV survey.",
+             label = "pr-filter",
+             col_names = col_names,
+             col_to_adjust = c(3),
+             width = c('5cm'))
+```
+
+\newpage
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_pr_dockside", "south",
+                    "model_selection.csv"))
+
+sa4ss::table_format(x = ind,
+             caption = "Model selection for the dockside PR survey.",
+             label = "pr-modelselect")
+```
+
+
+\newpage
+
+```{r, results = 'asis'}
+
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_pr_dockside", 
+                          "south", "rm_last2yrs", "Index_forSS.csv"))
+ind <- ind[, c(1,4,5)]
+col_names = c("Year", "Estimate", "logSE")
+
+sa4ss::table_format(x = ind,
+             caption = "Estimated relative index of abundance for the dockside PR survey.",
+             label = "pr-index",
+             col_names = col_names)
+```
+
+\newpage
+
+<!--Figures -->
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_pr_dockside", "bag_change_visuals", 
+                   "pr_copper_cpue_year_area_max5.png"), 
+caption = "Distribution by year of the number of copper rockfish retained per angler. This includes sampler 
+observed and angler reported catch.",
+label = 'pr-bag')
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_pr_dockside", "south", "rm_lasty2yrs",
+                   "average_cpue_by_district.png"), 
+caption = "Average CPUE by district prior to standardization.",
+label = 'pr-districtcpue')
+```
+
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_pr_dockside", "south", "rm_last2yrs",
+                    "index.png"), 
+caption = "Index for the dockside PR survey.",
+label = 'pr-index')
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_pr_dockside", "south", "rm_last2yrs",
+                   , "qq.png"), 
+caption = "QQ plot for the dockside PR survey.",
+label = 'pr-qq')
+```
+
+\newpage
+

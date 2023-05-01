@@ -11,49 +11,15 @@ read_child(filein)
 The CRFS onboard observer data went through a QA/QC process at the SWFSC which included mapping 
 fishing drifts in ArcPro to determine if the recorded latitude and longitude were correct.  
 
-To appropriately weight the onboard observer survey index by the available 
-rocky substrate within a region, each drift was assigned to the closest area 
-of rocky habitat. Hard bottom was extracted from 
-the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html), 
-in northern California and along the mainland coast of southern California. These data 
-were collected in state waters at a resolution of two meters. South of Point 
-Conception, additional interpreted bathymetric data classifying the bottom type as 
-rock or soft bottom were compiled by Emily Saarman (UC Santa Cruz) and also available 
-from CDFW's website. 
+In the assessment model, the recreational CPFV fleet is modeled as retained plus
+discarded fish. The proportion of observed discarded copper rockfish is small, 
+averaging 4% over the time series (\@ref(tab:onboard-keepdiscard)) and are included in the index.
 
 We applied a number of data filters to the available data presented in Table 
-\@ref(fig:)
-
-This index selectivity is mirrored to the recreational 
-fleet in the stock assessment model, which represents retaiend plus discarded
-fish. On average, a small percentage of observed copper rockfish are discarded (table). 
-
-
-Depth restrictions in the recreational fishery were fairly 
-consistent from 2004-2016. 
-
-Starting in 2017, depth restrictions eased in districts 
-north of Point Conception and the recreational fleet targeted these depths 
-(Figure \@ref(fig:onboard-depths)). The deeper waters (40-50 fm) are 
-outside of the mapped hard bottom habitat, but could be assigned to the larger 
-areas considered as a factor in the index.
-
-Table \@ref(tab:onboard-waterarea)
-Table \@ref(tab:onboard-percentpos)
-Figure \@ref(fig:onboard-depths)
-Figure \@ref(fig:onboard-regioncpue)
-
-We retained dxxxx drifts for index standardization, with 
-xxx drifts encountering vermilion rockfish 
-(Table \@ref(tab:onboard-filter)).  
-
-Sample sizes by factors selected to model, excluding WAVE can be found in Tables 
-\@ref(tab:tab-region-cpfvonboard), \@ref(tab:tab-depth-cpfvonboard), and \@ref(tab:tab-year-cpfvonboard).
-
-
-
-The onboard CPFV index restricts the time series to an end year at 2019. Due to 
-COVID-19, no onboard sampling took place in 2020. In 2021 the onboard sampling 
+\@ref(tab:onboard-filter). The onboard CPFV index restricts the time series to 2005-2019. The onboard observer survey 
+began in 1999, but the sample sizes were small during the first year of the program. The 
+years 1999-2004 also represent years where a number of regulations changed including gear limits, 
+bag limits, and spatial closures.  Due to COVID-19, no onboard sampling took place in 2020. In 2021 the onboard sampling 
 resumed in August, at which point a large portion of the southern California fleet 
 had switched target species and fish highly migratory species. The 2021 stock assessment 
 had also been released by August 2021 indicating the stock was below the biomass 
@@ -61,17 +27,16 @@ at 40%.  The southern California CPFV began an organized effort to avoid copper
 rockfish and encourage their clientele to release and descend copper rockfish 
 when encountered. In 2022, the CDFW implemented the one copper rockfish sub-bag 
 limit and combined with avoidance by the fleet, does not represent the available 
-copper rockfish biomass.
-
-The index present when the CRFS 
-program started the CPFV onboard observer program and another starting in 2004. 
-Between 1999 and 2003 a series of regulation changed occurred including gear 
-restrictions and implementation of depth closures.  See the additional information 
+copper rockfish biomass. See the online supplementary material
 or the history of regulation changes section for details.
 
-In the assessment model, the recreational CPFV fleet is modeled as retained plus
-discarded fish. The proportion of observed discarded copper rockfish is small, 
-averaging 4% over the time series (\@ref(tab:onboard-keepdiscard)) and are included in the index.
+The filters also included removal of the number of observed anglers and time fished at the tail 
+ends of the distributions, remooval of drifts occurring in depths outside copper rockfish's range 
+(Table \@ref(tab:onboard-filter) and Figure \@ref(fig:onboard-depths)). Because the availability of high resolution data were lacking 
+for the south, we retained all drifts from within a CDFW block that had at least 100 drifts and 
+at least 5% of those encountered copper rockfish. We retained 17,605 drifts for index
+ standardization, and 3,035 of those drifts encountered copper rockfish 
+Table \@ref(tab:onboard-percentpos). 
 
 We modeled catch per angler minutes fished (CPUE) by fishing drift. Prior to any modeling,
 the SWFSC QA/QC'd the data to ensure the location information was correct. 
@@ -80,69 +45,72 @@ drift start location calculated.  In addition, the depth of the start location w
 interpreted from the 2 m resolution bathymetry as well as 90 m resolution bathymetry 
 layer for comparison. For drifts missing depth location, we assigned depth based on the best available depth based on the bathymetry.
 
-The 
+To appropriately weight the onboard observer survey index by the available 
+rocky substrate within a region, each drift was assigned to the closest area 
+of rocky habitat. Hard bottom was extracted from 
+the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html), 
+along the mainland coast of southern California. These data 
+were collected in state waters at a resolution of two meters, but did not extend into state waters 
+past the mainland coast. Additional interpreted bathymetric data classifying the bottom type as 
+rock or soft bottom were compiled by analysts at the University of California Santa Cruz and are now
+also available from CDFW's website. We used the available interepreted rocky substrate data to expand the 
+known area of rocky substrate to areas in southern California that lack substrate type.  This 
+expansion of the estiamated rocky substrate assumes that the proportions of rocky substrate within 
+and outside state waters are similar.  Copper rockfish are a nearshore species and the majority of 
+observed encounters were within state waters (Table \@ref(tab:onboard-waterarea)).
+is a course estimation of the amount of rocky substrate, and represents the best available data. 
+The calculations can be found in the online supplementary material.
 
-
+The covariates explored for model selection included year and four levels region as categorical 
+region (District 1 mainland, District 2 mainland, Southern Channel Islands and Northern 
+Channel Islands), a year and area interaction, categorical variable for month, and continuous depth and depth-squared.
 rends in the average CPUE by region were similar 
-in the filtered data set (Figure \@ref(fig:fig-areacpue-cpfvonboard)). 
+in the filtered data set (Figure \@ref(fig:onboard-regioncpue)). A year and region interaction 
+was included after visualizing the trends in average CPUE over time (Figure \@ref(fig:onboard-average_cpue_by_region)). The full model was selected by AICc 
+(Table \@ref(tab:onboard-model_selection)). In southern California, whether a trip is a 1/3 or 3/4 or overnight 
+trip has a significant impact on the available fishing grounds.  The 1/2 day CPFV vessels 
+fishnthe shallower, nearshore waters along the along the mainland areas. The 3/4 and overnight or multi-day
+vessels are able to access the same areas of the Northern Channel Islands, where as the southern Channel Islands 
+are further offshore and the observations are predominantly from overnight trips. The overnight and 
+multi-day trips may target multiple target species, i.e., tuna and rockfish, depending on the time of the year.
 
-A Lognormal model  was selected over a over a Gamma model for the positive observations by a $\Delta AIC$ of 919.67, and supported by Q-Q plots (Figure \@ref(fig:fig-dist-fits-cpfvonboard)). 
-Based on AIC values from maximum likelihood fits (Table \@ref(tab:tab-model-select-cpfvonboard), 
-a main effects model including YEAR and WAVE and DEPTH bin 
-was fit for the binomial model and a main effects model including 
-YEAR and WAVE and DEPTH bin was fit for the  Lognormal model.
-Models were fit using the sdmTMB R package (version ). 
+Indices were fit via MLE from the sdmTMB package in R. The QQ plot fot the negative binoimal 
+model indicated a poor fit to the data, which as not surprising given the low percent of 
+observed drifts encountering copper rockfish. A delta-Lognormal 
+was selected over a delta-gamma by a delta AIC of xxxxx.  The QQ plot indicated a much improved fit compared to the negative 
+binomaial model (Table \@ref(fig:onboard-qq)).
 
+The final index was weighted based on the estimates of rocky substrate within each of the four regions. 
+The relative abundance increases during the first part of the time series (Table \@ref(tab:onboard-index) 
+and Figure \@ref(fig:onboard-index)).  
 
+<!--Tables -->
 
 ```{r, results = 'asis'}
-ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
-                    "keep_discard_prop.csv"))
-#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+library(dplyr)
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south",
+                    "keep_discard_prop.csv")) %>%
+  mutate(Proportion.discarded = scales::percent(round(Proportion.discarded,3)))
+col_names = c("Year",	"Number Kept",	"Number Discarded", "Proportion discarded")
 
 sa4ss::table_format(x = ind,
              caption = "Number of observed copper rockfish retained and discarded by year.",
-             label = "onboard-keepdiscard")#,
-        #     col_names = col_names)                         
+             label = "onboard-keepdiscard",
+             col_names = col_names)                         
 ```
 
 \newpage
 
 ```{r, results = 'asis'}
-ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
-                    "start2005", "target_water_area.csv"))
-#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south",
+                    "start2005", "target_water_area.csv")) %>%
+  mutate(percent_N = scales::percent(round(percent_N, 3)))
+col_names = c("District", "Year", "Inside State Waters",	"Outside State Waters",
+               "Percent Inside")
 
 sa4ss::table_format(x = ind,
-             caption = "Number of observed drifts inside and outside of stat waters.",
-             label = "onboard-waterarea")#,
-        #     col_names = col_names)                         
-```
-
-
-\newpage
-
-```{r, results = 'asis'}
-ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
-                    "start2005", "percent_pos.csv"))
-#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
-
-sa4ss::table_format(x = ind,
-             caption = "Data filtering steps for the onboard CPFV survey.",
-             label = "onboard-percentpos")#,
-        #     col_names = col_names)                         
-```
-
-\newpage
-
-```{r, results = 'asis'}
-ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
-                    "model_selection.csv"))
-col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
-
-sa4ss::table_format(x = ind,
-             caption = "Data filtering steps for the onboard CPFV survey.",
-             label = "onboard-filter",
+             caption = "Number of observed drifts inside and outside of state waters.",
+             label = "onboard-waterarea",
              col_names = col_names)                         
 ```
 
@@ -150,9 +118,53 @@ sa4ss::table_format(x = ind,
 \newpage
 
 ```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south",
+                    "start2005", "percent_pos.csv")) %>%
+  mutate(percentpos = scales::percent(round(percentpos, 3)))
+col_names = c("Year" ,"Trips with Target", "Trips without Target", "Total trips", "Percent with Target")
 
-ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
-                   "area_weighted_logn", "index_forSS.csv"))
+sa4ss::table_format(x = ind,
+             caption = "Data filtering steps for the onboard CPFV survey.",
+             label = "onboard-percentpos",
+             col_names = col_names)
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south",
+                          "start2005", "data_filters.csv"))
+col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+sa4ss::table_format(x = ind,
+             caption = "Data filtering steps for the onboard CPFV survey.",
+             label = "onboard-filter",
+             col_names = col_names,
+             col_to_adjust = c(3),
+             width = c('5cm'))
+```
+
+
+\newpage
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south",
+                    "model_selection.csv"))
+
+sa4ss::table_format(x = ind,
+             caption = "Model selection for the onboard CPFV survey.",
+             label = "onboard-modelselect")                         
+```
+
+
+\newpage
+
+```{r, results = 'asis'}
+
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", 
+                          "south", "start2005",
+                            "area_weighted_logn", "index_forSS.csv"))
 ind <- ind[, c(1,4,5)]
 col_names = c("Year", "Estimate", "logSE")
 
@@ -162,25 +174,45 @@ sa4ss::table_format(x = ind,
              col_names = col_names)                         
 ```
 
+\newpage
+
+<!--Figures -->
 
 
 ```{r, results = 'asis'}
-ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
-                    "data_filters.csv"))
-ind <- ind[, c(1,4,5)]
-col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south", 
+                   "copper_depths_gisdepthadded.png"), 
+caption = "Distribution by year of depths where copper rockfish observed.",
+label = 'onboard-depths')
+```
+\newpage
 
-sa4ss::table_format(x = ind,
-             caption = "Data filtering steps for the onboard CPFV survey.",
-             label = "onboard-filter",
-             col_names = col_names)                         
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south",
+                   "drifts_by_depth_district.png"),
+caption = "Stacked bar plot of the depth of observed copper rockfish by district.",
+label = 'onboard-depths')
 ```
 
 \newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south", "start2005",
+                   "average_cpue_by_region.png"), 
+caption = "Average CPUE by region prior to standardization.",
+label = 'onboard-regioncpue')
+```
+
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south", "start2005",
                    "area_weighted_logn", "index.png"), 
 caption = "Index for the onboard CPFV survey.",
 label = 'onboard-index')
@@ -190,7 +222,7 @@ label = 'onboard-index')
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south","start2005",
                    "area_weighted_logn", "qq.png"), 
 caption = "QQ-plot for the onboard CPFV survey.",
 label = 'onboard-qq')
@@ -198,34 +230,3 @@ label = 'onboard-qq')
 
 \newpage
 
-
-```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
-                   "avearge_cpue_by_region.png"), 
-caption = "Average CPUE by region prior to standardization.",
-label = 'onboard-regioncpue')
-```
-
-\newpage
-
-```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
-                   "copper_depth_gisdepthadded.png"), 
-caption = "Distribution by year of depths where copper rockfish observed.",
-label = 'onboard-depths')
-```
-
-\newpage
-
-
-```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
-                   "drifts_by_depth_district.png"), 
-caption = "Stacked bar plot of the depth of observed copper rockfish by district.",
-label = 'onboard-depths')
-```
-
-\newpage
