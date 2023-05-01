@@ -11,7 +11,7 @@ if( grepl("Chantel", user) ){
 }
 
 wd <- file.path(user_dir, "models", area)
-model_name <- "11.3_8.7_build_rm_mrfss_index_retro"
+model_name <- "11.1_8.7_build_replace_crfs_index_retro"
 
 load(file.path(wd, model_name, "retro_output.Rdata"))
 

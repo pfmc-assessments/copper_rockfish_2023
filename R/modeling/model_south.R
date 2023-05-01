@@ -1167,8 +1167,8 @@ base <- SS_output(file.path(wd,  "11.10_8.7_build_dw_fix_m_h"))
 model <- base; base_name <- "11.10_8.7_build_dw_fix_m_h"; model_dir <- wd
 SS_plots(base)
 round(base$likelihoods_used$values,1)
-# NLL = 2167.8
 
+# NLL = 2167.8
 base <- SS_output(file.path(wd, "12.0_base"))
 tune_comps(replist = base, dir = file.path(wd,  "12.0_base"), 
            option = "MI", write = FALSE, allow_up_tuning = TRUE)
@@ -1213,3 +1213,17 @@ SSplotComparisons(mysummary,
                   ylimAdj = 1.40,
                   plotdir = file.path(wd, "_sensitivities", "_plots"),
                   pdf = TRUE)
+
+growth_block <- SS_output(file.path(wd, "_sensitivities", "12.0_base_growth_block"))
+SS_plots(growth_block, plot = c(2, 16:19))
+growth_block$likelihoods_by_fleet[c(10,14), ]
+tune_comps(replist = growth_block, dir = file.path(wd, "_sensitivities", "12.0_base_growth_block"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+# NLL = 2144.8
+
+
+growth_block_len <- SS_output(file.path(wd, "_sensitivities", "12.0_base_growth_block_lengths"))
+SS_plots(growth_block_len, plot = c(2, 16))
+growth_block_len$likelihoods_by_fleet[c(10,14), ]
+tune_comps(replist = growth_block_len, dir = file.path(wd, "_sensitivities", "12.0_base_growth_block_lengths"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
