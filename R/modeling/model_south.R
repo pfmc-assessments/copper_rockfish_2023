@@ -1071,3 +1071,145 @@ SSplotComparisons(mysummary,
                   #legendloc = "bottomleft",
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+# base = 8.7 model
+crfs_index <- SS_output(file.path(wd, "11.1_8.7_build_replace_crfs_index"))
+hkl_data <- SS_output(file.path(wd, "11.2_8.7_build_replace_hkl_index"))
+rm_mrfss <- SS_output(file.path(wd, "11.3_8.7_build_rm_mrfss_index"))
+rm_com_block_logistic <- SS_output(file.path(wd, "11.4_8.7_build_com_selex_block"))
+SS_plots(rm_com_block_logistic, plot = 2)
+hkl_selex <- SS_output(file.path(wd, "11.5_8.7_build_hkl_selex"))
+rov_selex <- SS_output(file.path(wd, "11.6_8.7_build_rov_selex"))
+rov_selex$likelihoods_by_fleet[c(10,14), ]
+add_cpfv_block <- SS_output(file.path(wd, "11.7_8.7_build_add_cpfv_block"))
+add_cpfv_block$likelihoods_by_fleet[c(10,14), ]
+
+rov_dome <- SS_output(file.path(wd, "11.8_8.7_build_rov_dome"))
+tune_comps(replist = rov_dome, dir = file.path(wd,  "11.8_8.7_build_rov_dome"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+dw <- SS_output(file.path(wd, "11.9_8.7_build_dw"))
+
+modelnames <- c("8.7", "Update CRFS CPFV Index", "Update NWFSC HKL Index", "Rm. MRFSS CPFV Index",
+                "Rm. Com. Dead Block", "Update HKL Selex", "Add CPFV Block", "DW")
+mysummary <- SSsummarize(list(base, crfs_index, hkl_data, rm_mrfss, rm_com_block_logistic,
+                              hkl_selex, rov_dome, dw))
+SSplotComparisons(mysummary,
+                  filenameprefix = "11.9_build_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+modelnames <- c("11.0 Francis CPFV Dome", "11.9", "11.9 Fix M & h")
+mysummary <- SSsummarize(list(alt_base, dw, fix_mh))
+SSplotComparisons(mysummary,
+                  filenameprefix = "11.0_vs_11.9_build_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.20,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+rm_coop <- SS_output(file.path(wd, "_sensitivities", "11.9_8.7_build_dw_rm_coop"))
+rm_growth <- SS_output(file.path(wd, "_sensitivities", "11.9_8.7_build_dw_rm_growth"))
+rm_hkl <- SS_output(file.path(wd, "_sensitivities", "11.9_8.7_build_dw_rm_hkl"))
+rm_rov <- SS_output(file.path(wd, "_sensitivities", "11.9_8.7_build_dw_rm_rov"))
+rm_ccfrp <- SS_output(file.path(wd, "_sensitivities", "11.9_8.7_build_dw_rm_ccfrp"))
+rm_surveys <- SS_output(file.path(wd, "_sensitivities", "11.9_8.7_build_dw_rm_all_surveys"))
+
+modelnames <- c("11.9", "Rm. Coop. Ages", "Rm. Growth Ages", "Rm. NWFSC HKL",
+                "Rm. ROV", "Rm. CCFRP", "Rm. All Surveys")
+mysummary <- SSsummarize(list(dw, rm_coop, rm_growth, rm_hkl, rm_rov, rm_ccfrp, rm_surveys))
+SSplotComparisons(mysummary,
+                  filenameprefix = "11.9_sensitivities_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_sensitivities", "_plots"),
+                  pdf = TRUE)
+
+fix_m <- SS_output(file.path(wd, "_sensitivities", "11.9_8.7_build_dw_fix_m"))
+fix_h <- SS_output(file.path(wd, "_sensitivities", "11.9_8.7_build_dw_fix_h"))
+fix_mh <- SS_output(file.path(wd, "_sensitivities", "11.9_8.7_build_dw_fix_m_h"))
+com_asym <- SS_output(file.path(wd, "_sensitivities", "11.9_8.7_build_dw_cpfv_asym"))
+# NLL = 2113.84
+fix_mh_com_asym <- SS_output(file.path(wd, "_sensitivities", "11.9_8.7_build_dw_fix_m_h_cpfv_asym"))
+# NLL = 2116.38
+# Fix both Ms & h with CPFV selex dome-shaped NLL = 2086.6
+
+tune_comps(replist = fix_mh, dir = file.path(wd,   "_sensitivities", "11.9_8.7_build_dw_fix_m_h"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+modelnames <- c("11.9 Est. M & h", "Fix M", "Fix h", "Fix M & h", "11.9 Est M & h CPFV Asym.", "Fix M & h, CPFV Asym.")
+mysummary <- SSsummarize(list(dw, fix_m, fix_h, fix_mh, com_asym, fix_mh_com_asym))
+SSplotComparisons(mysummary,
+                  filenameprefix = "11.9_sens_m_h_cpfv_selex_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  #legendloc = "bottomleft",
+                  plotdir = file.path(wd, "_sensitivities", "_plots"),
+                  pdf = TRUE)
+
+round(dw$likelihoods_used$values,1)
+round(fix_m$likelihoods_used$values,1)
+round(fix_h$likelihoods_used$values,1)
+round(fix_mh$likelihoods_used$values,1)
+# Estimate both M & h NLL = 2083.6
+# Fix both Ms when estimating h NLL = 2086.2 improvement of only 2.6 units 
+# Fix h and estimate Ms NLL = 2083.6 same as the model that estimates both M & h
+# Fix both Ms & h NLL = 2086.6
+
+# Based on these sensitivities fix both Ms and h and allow CPFV fleet to estimate some level of dome-shaped selectivity
+base <- SS_output(file.path(wd,  "11.10_8.7_build_dw_fix_m_h"))
+model <- base; base_name <- "11.10_8.7_build_dw_fix_m_h"; model_dir <- wd
+SS_plots(base)
+round(base$likelihoods_used$values,1)
+# NLL = 2167.8
+
+base <- SS_output(file.path(wd, "12.0_base"))
+tune_comps(replist = base, dir = file.path(wd,  "12.0_base"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+
+rm_coop <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_coop"))
+rm_growth <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_growth"))
+rm_hkl <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_hkl"))
+rm_rov <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_rov"))
+rm_ccfrp <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_ccfrp"))
+rm_surveys <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_surveys"))
+rm_rec_indices <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_rec_indices"))
+rm_hkl_ages <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_hkl_ages"))
+cpfv_asym <- SS_output(file.path(wd, "_sensitivities", "12.0_base_cpfv_asym"))
+cpfv_asym_hkl <- SS_output(file.path(wd, "_sensitivities", "12.0_base_cpfv_asym_rm_hkl"))
+no_rec_devs <- SS_output(file.path(wd, "_sensitivities", "12.0_base_no_rec_devs"))
+
+modelnames <- c("12.0", "Rm. Coop. Ages", "Rm. Growth Ages", "Rm. NWFSC HKL",
+                "Rm. ROV", "Rm. CCFRP", "Rm. All Surveys", "Rm. Rec. Indices")
+mysummary <- SSsummarize(list(base, rm_coop, rm_growth, rm_hkl, rm_rov, rm_ccfrp, rm_surveys, rm_rec_indices))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.0_sensitivities_2_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd, "_sensitivities", "_plots"),
+                  pdf = TRUE)
+
+modelnames <- c("12.0", "CPFV Selex Asym.", "CPFV Selex Asym. & Rm. NWFSC HKL", "Rm. NWFSC HKL",
+                "Rm. NWFSC HKL Ages")
+mysummary <- SSsummarize(list(base, cpfv_asym, cpfv_asym_hkl, rm_hkl, rm_hkl_ages))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.0_sensitivities_1_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd, "_sensitivities", "_plots"),
+                  pdf = TRUE)
+
+modelnames <- c("12.0", "No Rec. Devs.")
+mysummary <- SSsummarize(list(base, no_rec_devs))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.0_sensitivities_3_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd, "_sensitivities", "_plots"),
+                  pdf = TRUE)
