@@ -1513,21 +1513,47 @@ tune_comps(replist = cpfv_asym_dev_1980, dir = file.path(wd,  "12.14_drop_hkl_in
 
 full <- SS_output(file.path(wd, "12.5_move_pearson_hkl_ages_dw"))
 SS_plots(full)
+# One female M value - running informed by length data (hkl)
+# Male M good: minimum around 0.115, informed by age data (growth and ccfrp) and recruitment 
+# h good: value > 0.72 with all info coming from recruitment
+# R0 all values okay but profile funky: infor from age data (lower R0 - CPFV) and recruitment 
+# retro - normal with lower value maximum Mohn's of -1.24
 
 late_devs <- SS_output(file.path(wd, "12.6_start_devs_1980_dw"))
 SS_plots(late_devs)
+# M female good: min ~0.11 informed by age data (coop growth lower M), length (HKL), and recruitment 
+# M male good: min ~0.109 informed by age data (growth lower M), length, and recruitment
+# h goodish: min ~0.72 informed by recruitment (higher), length data (cpfv), and age data (coop, lower)
+# R0 goodish: tight min at 5.5ish, informed by length data (tight info), age data (lower), and recruitment 
+# retro - standard with lower value maximum Mohn's of -1.47
+
+# Alternative late start devs: 12.6_start_devs_1990_dw_profile_NatM_uniform_Fem_GP_1_prior_like_1
+# M female good: informed by age data (lower - coop) and recruitment
+# M male rerunning
+# h good: minimum ~ 0.72 informed by recruitment (higher), lengths (higher), and ages (lower - coop)
+# R0 good: sharp minimum around 5.5 informed by length data primarily and age data
 
 drop_index <- SS_output(file.path(wd, "12.14_drop_hkl_index_cpfv_selex_dw_all_devs_dw"))
 SS_plots(drop_index)
+# Female M good: ~0.108 informed primarily by length data (coop)
+# Male M good: ~0.108 informed by age and length data
+# h rerun
+# R0 good: age data lower (CPFV) and recruitment 
+# retro standard but maximum awful with Mohn's rho of -2.48
 
 drop_index_late_devs <- SS_output(file.path(wd, "12.14_drop_hkl_index_cpfv_selex_dw_all_devs_devs_1980_dw"))
 SS_plots(drop_index_late_devs)
+# M female good: minimum 0.108 informed by length data (coop)
+# M male good: minimum 0.108 informed by length data (coop) and ages (coop)
+# h rerun
+# R0 good: cpfv length data informing 
 
 fix_cpfv_selex <- SS_output(file.path(wd, "12.15_all_devs_hkl_index_cpfv_asym_dw"))
 SS_plots(fix_cpfv_selex)
 
-modelnames <- c("Full Model", "-NWFSC HKL Index & Fix CPFV Selex", "Fix CPFV Selex")
-mysummary <- SSsummarize(list(full, drop_index, fix_cpfv_selex))
+modelnames <- c("Full Model", "Full Model Late Devs.", "-NWFSC HKL Index & Fix CPFV Selex", 
+                "-NWFSC HKL Index & Fix CPFV Selex - Late Devs.", "Fix CPFV Selex")
+mysummary <- SSsummarize(list(full, late_devs, drop_index, drop_index_late_devs, fix_cpfv_selex))
 SSplotComparisons(mysummary,
                   filenameprefix = "13_alternative_models_",
                   legendlabels = modelnames, 
@@ -1535,4 +1561,99 @@ SSplotComparisons(mysummary,
                   plotdir = file.path(wd,  "_plots"),
                   pdf = TRUE)
 
+
+full_est_m <- SS_output(file.path(wd, "12.5_move_pearson_hkl_ages_dw_est_m_dw"))
+tune_comps(replist = full_est_m, dir = file.path(wd,  "12.5_move_pearson_hkl_ages_dw_est_m"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+late_devs_est_m <- SS_output(file.path(wd, "12.6_start_devs_1980_dw_est_m_dw"))
+tune_comps(replist = late_devs_est_m, dir = file.path(wd,  "12.6_start_devs_1980_dw_est_m"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+drop_coop <- SS_output(file.path(wd, "12.14_drop_hkl_index_cpfv_selex_dw_all_devs_drop_coop"))
+
+
+modelnames <- c("Full Model", "Full Model Est. M", "Full Model Late Devs.", "Full Model Late Devs. Est. M")
+mysummary <- SSsummarize(list(full, full_est_m, late_devs, late_devs_est_m))
+SSplotComparisons(mysummary,
+                  filenameprefix = "13_alternative_models_est_m_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+
+full_model_est_m_cpfv_asym <- SS_output(file.path(wd, "12.5_move_pearson_hkl_ages_est_m_cpfv_selex"))
+modelnames <- c("Full Model", "Full Model Est. M", "Full Model Est. M & CPFV Asym.")
+mysummary <- SSsummarize(list(full, full_est_m, full_model_est_m_cpfv_asym))
+SSplotComparisons(mysummary,
+                  filenameprefix = "13_alternative_models_est_m_cpfv_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+
+#============================================================================================================
+# Identifying a base model
+#============================================================================================================
+
+# Work from model "12.5_move_pearson_hkl_ages_dw" and/or the "12.5_move_pearson_hkl_ages_dw_est_m_dw"
+# Start initial from the model that does not estimate M and then turn these parameter on after data/model
+# structure updated
+# Revisions from the 12.5 model are:
+# 1. Update the CCFRP index to the non-area-weighted delta-lognormal index
+# 2. Allow the ROV survey to have some level of dome given the limited sampling at the maximum depth range
+# 3. Explore estimating vs. pinning CPFV selectivity
+# 4. Potentially update the CRFS CPFV index based on Melissa' new work-up
+
+#full <- SS_output(file.path(wd, "12.5_move_pearson_hkl_ages_dw"))
+#full_est_m <- SS_output(file.path(wd, "12.5_move_pearson_hkl_ages_dw_est_m_dw"))
+
+update_ccfrp_index <- SS_output(file.path(wd, "13.0_update_ccfrp_index"))
+SS_plots(update_ccfrp_index)
+update_rov_selex <- SS_output(file.path(wd, "13.1_rov_selex"))
+SS_plots(update_rov_selex, plot = 2)
+tune_comps(replist = update_rov_selex, dir = file.path(wd,  "13.1_rov_selex"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+com_asym <- SS_output(file.path(wd, "13.2_cpfv_selex_dw"))
+SS_plots(com_asym)
+tune_comps(replist = com_asym, dir = file.path(wd, "13.2_cpfv_selex_dw"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+cpfv_dome <- SS_output(file.path(wd, "13.2_cpfv_dome_dw"))
+tune_comps(replist = cpfv_dome, dir = file.path(wd, "13.2_cpfv_dome_dw"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+cpfv_dome_est_m <- SS_output(file.path(wd, "13.3_cpfv_dome_est_m"))
+tune_comps(replist = cpfv_dome_est_m, dir = file.path(wd, "13.3_cpfv_dome_est_m"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+cpfv_asym_est_m <- SS_output(file.path(wd, "13.3_cpfv_selex_est_m"))
+tune_comps(replist = cpfv_asym_est_m, dir = file.path(wd, "13.3_cpfv_selex_est_m"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+SS_plots(cpfv_dome_est_m); SS_plots(cpfv_asym_est_m); SS_plots(cpfv_dome); SS_plots(cpfv_asym)
+
+modelnames <- c("12.5 (Fixed M)", "+ Update CCFRP Index", "+ Update ROV Selex", "+ CPFV Dome Selex", "+ CPFV Asym. Selex", 
+                "+ CPFV Dome Est. M", "+ CPFV Asym. Est. M")
+mysummary <- SSsummarize(list(full, update_ccfrp_index, update_rov_selex, cpfv_dome, cpfv_asym, cpfv_dome_est_m, cpfv_asym_est_m))
+SSplotComparisons(mysummary,
+                  filenameprefix = "13.0-2__",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+
+all_marginals <- SS_output(file.path(wd, "_sensitivities", "13.3_cpfv_selex_est_m_marginals"))
+tune_comps(replist = all_marginals, dir = file.path(wd, "_sensitivities", "13.3_cpfv_selex_est_m_marginals"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+
+modelnames <- c("+ CPFV Asym. Est. M", "All Marginals")
+mysummary <- SSsummarize(list(cpfv_asym_est_m, all_marginals))
+SSplotComparisons(mysummary,
+                  filenameprefix = "13.0_marginals__",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd, "_sensitivities", "_plots"),
+                  pdf = TRUE)
 

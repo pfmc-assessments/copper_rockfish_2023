@@ -21,7 +21,7 @@ if( grepl("Chantel", user) ){
 
 model_dir <- file.path(user_dir, "models", "nca")
 # Specify why model you would like to profile, retro, and/or jitter
-base_name <- "8.3_francis_update_pr_dwv_index"
+base_name <- "9.2_com_logistic"
 
 # Specify the parameters and the space to profile
 get = get_settings_profile(
@@ -39,7 +39,7 @@ model_settings = get_settings(
   base_name = base_name,
   profile_details = get,
   run = c("profile",  "jitter", "retro"),
-  retro_yrs = -1:-5,
+  retro_yrs = -1:-15,
   jitter_fraction = 0.10,
   Njitter = 50))
 
