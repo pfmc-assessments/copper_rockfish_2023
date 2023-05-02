@@ -20,7 +20,7 @@ if( grepl("Chantel", user) ){
 
 model_dir <- file.path(user_dir, "models", "sca")
 # Specify why model you would like to profile, retro, and/or jitter
-base_name <- "13.3_cpfv_selex_est_m"
+base_name <- "13.2_cpfv_dome_dw"
 
 # Specify the parameters and the space to profile
 get = get_settings_profile(

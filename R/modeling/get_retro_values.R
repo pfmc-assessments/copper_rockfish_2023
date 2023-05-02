@@ -11,7 +11,7 @@ if( grepl("Chantel", user) ){
 }
 
 wd <- file.path(user_dir, "models", area)
-model_name <- "11.1_8.7_build_replace_crfs_index_retro"
+model_name <- "13.3_cpfv_selex_est_m_retro"
 
 load(file.path(wd, model_name, "retro_output.Rdata"))
 
@@ -81,3 +81,30 @@ rownames(out) = c("Total Likelihood",
 
 
 write.csv(out, file = file.path(wd, model_name, paste0(model_name, "_retro_values.csv")))
+
+#=======================================================================================
+# Create figures without the management lines
+#=======================================================================================
+model_settings$retro_yrs <- -1:-5
+endyrvec <- c(retroSummary$endyrs[1], retroSummary$endyrs[1] + -1:-5)
+
+# Make figures, copy over two figures with ones that have Mohn's rho values
+r4ss::SSplotComparisons(
+  summaryoutput = retroSummary,
+  endyrvec = endyrvec,
+  btarg = -1,
+  minbthresh = -1,
+  legendlabels = c(
+    "Base Model",
+    sprintf("Data %.0f year%s",
+            -1:-5,
+            ifelse(abs(model_settings$retro_yrs) == 1, "", "s")
+    )
+  ),
+  plotdir = retro_dir,
+  legendloc = "topright",
+  print = TRUE,
+  plot = FALSE,
+  pdf = FALSE
+)
+
