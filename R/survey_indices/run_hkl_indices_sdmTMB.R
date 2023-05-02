@@ -789,7 +789,23 @@ colnames(out) <- c("Area", 'Bocaccio', "Depth", "Depth2", 'Drop','Swell', 'Vermi
 write.csv(out, file = file.path(index_dir, "forSS", "area_weighted_model_selection.csv"), row.names = FALSE)
 
 
-raw.cpue <- open_areas %>%
+tmp <- species_data
+remove <- which(tmp$cca == 1 & tmp$drop_depth_meters > 73)
+tmp$area[remove] <- "CCA_Closed_to_Fishing"
+
+tmp2 <- tmp %>%
+  group_by(common_name, year, site_number, drop) %>% 
+  reframe(n = sum(number_caught),
+          area = area[1],
+          swell = median(swell_height_m),
+          depth = median(drop_depth_meters),
+          vermilion = sum(vermilion),
+          bocaccio = sum(bocaccio),
+          lat = mean(drop_latitude_degrees),
+          lon = mean(drop_longitude_degrees),
+          effort = length(unique(angler)) * length(unique(hook))) 
+
+raw.cpue <- tmp2 %>%
   mutate(cpue = n / effort) %>%
   group_by(year, area) %>%
   summarize(avg_cpue = mean(cpue))
@@ -798,7 +814,7 @@ raw.cpue$year <- as.numeric(as.character(raw.cpue$year))
 ggplot(data = raw.cpue) + 
   geom_point(aes(y = avg_cpue, x = year, colour = area), size = 3) + theme_bw() + 
   geom_line(aes(x = year, y = avg_cpue, colour = area)) +
-  facet_grid(area~.) + xlab("Year") + ylab("Raw CPUE")
+  facet_wrap("area") + xlab("Year") + ylab("Raw CPUE")
 ggsave(file = file.path(dir, "plots", 'raw_cpue_nwfsc_hkl_by_area.png'), width = 10, height = 7)
 
 # Format the data frame by adding factors and 0 centering quantities 
