@@ -136,6 +136,14 @@ samp_weights <- hkl_all %>%
 # Visualize the data by Region
 #==================================================================
 remove <- which(hkl$cowcod_conservation_area_indicator == 1 & hkl$drop_depth_meters > 73)
+hkl$area[remove] <- "CCA_Closed_to_Fishing"
+
+prop <- hkl %>%
+  group_by(area) %>%
+  reframe(
+    len = sum(!is.na(length_cm))
+  ) %>%
+  mutate(freq = len / sum(len))
 
 ggplot(hkl, aes(x = length_cm, y = as.factor(year))) + 
   geom_density_ridges2() +
@@ -149,7 +157,7 @@ ggsave(filename = file.path(dir, "plots", "nwfsc_hkl_ggridges_year_region.png"),
 hkl$region <- hkl$area
 hkl$region[remove] <- "Closed_Area"
 
-ggplot(hkl, aes(x = length_cm, fill = region)) + 
+ggplot(hkl, aes(x = length_cm, fill = area)) + 
   geom_density(alpha = 0.50) + 
   scale_fill_viridis_d() + xlim( c(10, 56)) + 
   ylab("Year") + xlab("Length (cm)")
@@ -158,15 +166,29 @@ ggsave(filename = file.path(dir, "plots", "nwfsc_hkl_length_density_region.png")
 
 
 samp_by_region <- hkl %>%
-  group_by(year, region) %>%
+  group_by(year, area) %>%
   reframe(
     mean_length = mean(length_cm),
     n = n()
   )
 out <- samp_by_region %>% 
-  pivot_wider(names_from = region, values_from = c(n, mean_length))
+  pivot_wider(names_from = area, values_from = c(n, mean_length))
 write.csv(out, file = file.path(dir, "forSS", "samples_and_mean_length_by_region.csv"),
       row.names = FALSE)
+
+
+prop <- hkl %>%
+  group_by(area) %>%
+  reframe(
+    n = n()
+  ) %>%
+  mutate(freq = n / sum(n))
+out <- prop %>% 
+  pivot_wider(names_from = area, values_from = c(len, freq))
+round(out, 2)
+write.csv(out, file = file.path(dir, "forSS", "samples_and_proportion_by_region.csv"),
+          row.names = FALSE)
+
 
 samples_all <- hkl %>%
   group_by(year, region) %>%

@@ -6,11 +6,11 @@
 #					
 ##############################################################################################################
 
-dir <- "C:/Assessments/2023/copper_rockfish_2023/data/rec_catch"
+dir <- here::here("data", "rec_catch")
 library(ggplot2)
 
 load(file.path(dir, "mrfss_catch_filtered.rdata"))
-load(file.path(dir, "crfss_catch_filtered.rdata"))
+load(file.path(dir, "crfss_catch_filtered_march_2023.rdata"))
 # Objects are called mrfss and crfs
 
 # Read the historical landings
@@ -30,6 +30,8 @@ rec_hist <- read.csv(file.path(dir, "ca_hist_recreational_1928_1980_ej.csv"))
 
 crfs$catch_mt <- crfs$TOTAL_MORTALITY_MT
 crfs$catch_num <- crfs$TOTAL_MORTALITY_NUM
+
+crfs$ports <- sapply(strsplit(crfs$RECFIN_PORT_NAME, '\\s*[()]'), '[',1)
 
 # Confirm the area assignment
 table(crfs$RECFIN_SUBREGION_NAME, crfs$area)
@@ -198,3 +200,9 @@ ggplot(df, aes(x = year, y = catch_mt, fill = mode)) +
 	xlab("Year") + ylab("Landings (mt)")
 ggsave(filename = file.path(dir, "plots", "mrfss_landings_mt_by_area_mode.png"), 
       width = 13, height = 10, units = 'in')
+
+ind = which(crfs$area == "south", crfs$mode == "cpfv")
+tmp = aggregate(catch_mt ~year + ports, crfs[ind, ], sum)
+
+plot(tmp$year[tmp$ports == "SOUTH"], tmp$catch_mt[tmp$ports == "SOUTH"], type = 'b', col = 'red', ylim = c(0, 100))
+lines(tmp$year[tmp$ports == "CHANNEL"], tmp$catch_mt[tmp$ports == "CHANNEL"], lty =  2, col = 'blue')

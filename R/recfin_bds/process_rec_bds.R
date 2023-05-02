@@ -364,6 +364,11 @@ weight <- catch %>%
     percent = catch_mt/sum(catch_mt)
   )
 
+find <- which(weight$area == "south" & weight$mode == "cpfv" & weight$percent != 0)
+tmp = weight[find,]
+plot(weight[weight$port == "BAY AREA", "year"], weight[weight$port == "BAY AREA", "percent"], type = 'b', col = "red")
+line(weight[weight$port == "SOUTH", "year"], weight[weight$port == "SOUTH", "percent"], type = 'b', col = "red")
+
 crfs$ports <- sapply(strsplit(crfs$RECFIN_PORT_NAME, '\\s*[()]'), '[',1)
 # create a subset df from the crfs data with the info I need
 crfs_subset <- crfs[, c('year', 'area', 'mode', 'ports', 'sex', 'lengthcm')]
@@ -1002,3 +1007,38 @@ ggsave(filename = file.path(dir, "plots", "rec_south_ggridges_lengths_mode_pre_2
        width = 10, height = 10)
 
 
+find = which(crfss_bds$area == "south" & crfss_bds$mode == "cpfv")
+subdata = crfss_bds[find, ]
+subdata$ports <- sapply(strsplit(subdata$RECFIN_PORT_NAME, '\\s*[()]'), '[',1)
+
+total <- subdata %>% 
+  group_by(year, ports) %>%
+  reframe(n = n())
+out <- total %>% 
+  pivot_wider(names_from = ports, values_from = n)
+
+out$percent_channel <- out$CHANNEL / apply(out[,2:3], 1, sum)
+write.csv(out, file = file.path(dir, "forSS", "south_percent_sampling_by_district.csv"), row.names = FALSE)
+
+ggplot(subdata, aes(x = lengthcm, y = as.factor(year)), color = year) + 
+  geom_density_ridges2() +
+  scale_fill_viridis_c(name = "Length") +
+  facet_wrap("ports") +
+  ylab("Year") + xlab("Length (cm)")
+ggsave(filename = file.path(dir, "plots", "rec_south_ggridges_lengths_cpfv_district.png"),
+       width = 10, height = 10)
+
+# Catch
+find = which(crfs$area == "south" & crfs$mode == "cpfv")
+sub_cat = crfs[find, ]
+
+total <- sub_cat %>% 
+  group_by(year, ports) %>%
+  reframe(
+    catch = sum(catch_mt)
+  )
+out <- total %>% 
+  pivot_wider(names_from = ports, values_from = catch)
+
+out$percent_channel <- out$CHANNEL / apply(out[,2:3], 1, sum)
+write.csv(out, file = file.path(dir, "forSS", "south_percent_catch_by_district.csv"), row.names = FALSE)
