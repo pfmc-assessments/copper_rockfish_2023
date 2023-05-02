@@ -1,9 +1,5 @@
 # Appendix F. CCFRP Index of Abundance {#ccfrp-index}
 
-
-
-**California Collaborative Fisheries Research Program Index**
-
 The California Collaborative Fisheries Research Program, [CCFRP](https://www.mlml.calstate.edu/ccfrp/), 
 is a fishery-independent 
 hook-and-line survey designed to monitor nearshore fish populations at a series of sampling 
@@ -30,9 +26,6 @@ clips that provide needed biological information for nearshore species. For the
 index of abundance, CPUE was modeled at the level of the drift, similar to the 
 fishery-dependent onboard observer survey described above.
 
-
-*CCFRP Index: Data Preparation, Filtering, and Sample Sizes*
-
 The CCFRP data are quality controlled at the time they are key punched and little 
 filtering was needed for the index. 
 Cells not consistently sampled over time were excluded as well as cells that never 
@@ -41,9 +34,7 @@ The full dataset for northern California contained 8,770 drifts, 23% of which en
 `r spp`.  After applying filters to remove drfits from sites that were not consistently sampled,
 marked for exclusion in the data, or did not fish a minimum of xxx, 7,078 drifts remained for 
 for index standardization, with 1,757 drifts encountering `r spp`.
-  
 
-*CCFRP Index: Model Selection, Fits, and Diagnostics*
 
 The CCFRP index includes all of the 
 MPAs currently sampled from 2017-2020 and the core central California sampling sites 
@@ -58,14 +49,12 @@ in the filtered data set (Figure \@ref(fig:fig-areacpue-ccfrp)). Plots of the ar
 mean by inside (MPA) and outside (REF) MPAs over time is in Figure \@ref(fig:fig-sitecpue-ccfrp) 
 and shows the distinct trends of increasing average CPUE over time.
 
-
 A negative binomial model was fit to the drift-level data (catch with a log offset for angler 
 hours). Because the average observed CPUE inside MPAs and in the reference sites exhibited 
 differing trends, we explored a YEAR:SITE interaction, which was selected as the best 
 fit model by AIC Table \@ref(tab:tab-model-select-ccfrp)), The final model included
 yrea, mpa/reference categorization, depth, depth squared, and a year:mpa/reference interaction. 
 The model was fit using the sdmTMB R package (version xxx1). 
-
 
 Based on work completed at the SWFSC, we estimate that the percent of rocky reef habitat from Point Conception to the California border within California state waters is 892 $km^2$, of which approximately 23% is in MPAs that prohibit the harvest of groundfish (pers comm. Rebecca Miller, UCSC). There is recreational fishing outside of state waters, but habitat maps are not available at the same 2-m resolution and do not allow for direct comparisons. To estimate the area 
 of rocky substrate south of Point conception, we separted the southern California Bight into four areas, 1) CRFS District 

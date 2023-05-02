@@ -164,7 +164,7 @@ year_site_mpa <- dat %>%
 #cpue by mpa and site
 ggplot(year_site_mpa, aes(x = year, y = avg_cpue, colour = MPAorREF, group = MPAorREF)) +
   geom_point() +
-  geom_path() +
+  geom_path() + xlab("Year") + ylab("Average CPUE") +
   facet_wrap(~siteName) +
   scale_color_viridis_d()
 ggsave(file = file.path(dir, "mpa_site_cpue.png"), width = 7, height = 7)
@@ -220,7 +220,7 @@ model.full <- MASS::glm.nb(
   na.action = "na.fail")
 summary(model.full)
 anova(model.full)
-year_region_interxn <- ggpredict(model.full, terms = "year")
+#year_region_interxn <- ggpredict(model.full, terms = "year")
 
 #see if the year:MPAorREF
 model.full <- MASS::glm.nb(
@@ -229,7 +229,7 @@ model.full <- MASS::glm.nb(
   na.action = "na.fail")
 summary(model.full)
 anova(model.full)
-year_mpa_interxn <- ggpredict(model.full, terms = "year")
+#year_mpa_interxn <- ggpredict(model.full, terms = "year")
 #MPAorREF:year is significant in the north
 #not significant in the south
 
@@ -267,7 +267,7 @@ ggsave(file = file.path(dir, "index_comparison.png"), width = 7, height = 7)
 
 
 
-model.full <- MASS::glm.nb(Target ~  region + depth + depth_2 + year*MPAorREF + offset(logEffort),
+model.full <- MASS::glm.nb(Target ~  region + depth + depth_2 + offset(logEffort),
   data = dat,
   na.action = "na.fail")
 #MuMIn will fit all models and then rank them by AICc
@@ -410,9 +410,53 @@ out <- Model_selection %>%
          `Interaction` = `MPAorREF:year`) %>%
   rename_with(stringr::str_to_title,-AICc)
 #View(out)
-write.csv(out, file = file.path(dir, "model_selection.csv"), 
+write.csv(Model_selection, file = file.path(dir, "model_selection.csv"), 
           row.names = FALSE)
 
 
+write.csv(data_filters)
 
+
+#summary of trips and  percent pos per year
+summaries <- dat %>%
+  group_by(year) %>%
+  summarise(tripsWithTarget = sum(Target>0),
+            tripsWOTarget = sum(Target==0)) %>%
+  mutate(totalTrips = tripsWithTarget+tripsWOTarget,
+         percentpos = tripsWithTarget/(tripsWithTarget+tripsWOTarget)) 
+View(summaries)
+write.csv(summaries, 
+          file.path(dir,  "percent_pos.csv"),
+          row.names=FALSE)
+
+
+
+
+#south delta logn
+grid <- expand.grid(
+  year = unique(dat$year),
+  depth = dat$depth[1],
+  depth_2 = dat$depth_2[1],
+  region = levels(dat$region)[1],
+  MPAorREF = levels(dat$MPAorREF)[1])
+
+fit.logn <- sdmTMB(
+  Target ~  poly(depth, 2) + region + year + MPAorREF,
+  data = dat,
+  offset = dat$logEffort,
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = delta_lognormal(),
+  control = sdmTMBcontrol(newton_loops = 1))
+
+do_diagnostics(
+  dir = file.path(dir, "deltalogn"), 
+  fit = fit.logn,
+  plot_resid = FALSE)
+
+calc_index(
+  dir = file.path(dir, "deltalogn"), 
+  fit = fit.logn,
+  grid = grid)
 

@@ -1,1 +1,28 @@
-shared text
+## Ecosystem Considerations
+
+This stock assessment does not explicitly incorporate trophic interactions, 
+habitat factors (other than as inform relative abundance indices) or environmental
+factors into the assessment model.  With respect to trophic interactions, copper rockfish 
+are described as opportunistic predators that feeding on a wide range of both pelagic and 
+benthic prey items, including a wide range of fishes , many types of crustaceans (crabs, 
+shrimps, amphipods, euphausiids and others) as well as octopus and other cephalopods
+ @love_rockfishes_2002.  A wide range of predators will prey on pelagic or recently settled 
+ juvenile copper rockfish, including salmon, seabirds, marine mammals and lingcod.  While 
+ these studies suggest the potential for top down impacts of lingcod on temperate reef 
+ communities as mediated through copper and other rockfishes @beaudreau_spatial_2007; 
+ @frid_predatory_2010, there is not currently sufficient data or empirical evidence to 
+ attempt to model such interactions. 
+
+As with most other rockfish and groundfish in the California Current, recruitment, or 
+cohort (year-class) strength appears to be somewhat variable for copper rockfish, with 
+only a modest apparent relationship to spawning output.  Oceanographic and ecosystem factors 
+are widely recognized to be key drivers of recruitment variability for most species of 
+groundfish, as well as most elements of California Current food webs.  Empirical estimates 
+of recruitment from pelagic juvenile rockfish trawl surveys have been used to inform incoming 
+year class strength for some of these stocks, however copper rockfish are rarely encountered 
+in these surveys and are difficult to distinguish from closely related species 
+@field_spatiotemporal_2021.  Trap surveys have been conducted for copper and other 
+late winter/spring spawning rockfish (such as gopher and quillback) during the settlement 
+phase in late summer and early fall, and suggest considerable variability in recruitment 
+strength from year to year in response to ocean conditions 
+@caselle_temporal_2010; @markel_temporal_2017.  

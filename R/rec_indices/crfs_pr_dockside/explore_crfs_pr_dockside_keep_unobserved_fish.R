@@ -187,6 +187,10 @@ summary(as.factor(PR_effort$X1stTargetWaterArea))
 PR_catch <- PR_catch_all %>%
   mutate(ID = paste0(RefNum,"_",SampleNum)) 
 
+
+PR_data <- left_join(PR_catch, PR_effort, by = "ID")
+save(PR_data, file = file.path(getwd(), "bag_change_visuals", "pr_data_for_covid_speciation.RData"))
+
 #PR trip summary
 PR_trips <- PR_effort %>%
   group_by(YEAR, District) %>%

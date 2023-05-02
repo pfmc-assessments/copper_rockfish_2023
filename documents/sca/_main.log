@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.30)  30 APR 2023 16:10
+This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.30)  1 MAY 2023 12:15
  restricted system commands enabled.
 **_main.tex
 (./_main.tex
@@ -918,6 +918,29 @@ Package: footnotehyper 2021/08/13 v1.1e hyperref aware footnote.sty (JFB)
 \FNH@notes=\box80
 \FNH@width=\dimen312
 \FNH@toks=\toks54
+) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2023/01/19 line numbers on paragraphs v5.1
+\linenopenalty=\count377
+\output=\toks55
+\linenoprevgraf=\count378
+\linenumbersep=\dimen313
+\linenumberwidth=\dimen314
+\c@linenumber=\count379
+\c@pagewiselinenumber=\count380
+\c@LN@truepage=\count381
+\c@internallinenumber=\count382
+\c@internallinenumbers=\count383
+\quotelinenumbersep=\dimen315
+\bframerule=\dimen316
+\bframesep=\dimen317
+\bframebox=\box81
+\linenoamsmath@ams@eqpen=\count384
+LaTeX Info: Redefining \\ on input line 3131.
+) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/showlabels/showlabels.sty
+Package: showlabels 2022/07/18 v1.9.2
+Package: `showlabels' v1.9.2 <2022/07/18>
+with amsmath equation tags
+\SL@labelposition=\count385
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2023/04/18 3.88 The Babel package
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/luababel.def
@@ -1012,8 +1035,8 @@ Package babel Info: Non-standard hyphenation setup on input line 118.
 \babelcatcodetablenum=\catcodetable12
 \bbl@pattcodes=\catcodetable13
 )
-\babel@savecnt=\count377
-\U@D=\dimen313
+\babel@savecnt=\count386
+\U@D=\dimen318
 \l@unhyphenated=\language88
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/luababel.def
 \bbl@attr@locale=\attribute4
@@ -1034,48 +1057,42 @@ Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
 Package babel Info: Importing font and identification data for english
 (babel)             from babel-en.ini. Reported on input line 11.
 )
-\csllabelwidth=\skip102
-\cslhangindent=\skip103
-(./_main.aux
+No file _main.aux.
 
-LaTeX Warning: Label `tab:onboard-filter' multiply defined.
-
-)
 \openout1 = _main.aux
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
-LaTeX Font Info:    ... okay on input line 126.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 126.
-LaTeX Font Info:    ... okay on input line 126.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 126.
-LaTeX Font Info:    ... okay on input line 126.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 126.
-LaTeX Font Info:    ... okay on input line 126.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 126.
-LaTeX Font Info:    ... okay on input line 126.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 126.
-LaTeX Font Info:    ... okay on input line 126.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 126.
-LaTeX Font Info:    ... okay on input line 126.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 126.
-LaTeX Font Info:    ... okay on input line 126.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 126.
-LaTeX Font Info:    ... okay on input line 126.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 126.
-LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count378
-\scratchdimen=\dimen314
-\scratchbox=\box81
-\nofMPsegments=\count379
-\nofMParguments=\count380
-\everyMPshowfont=\toks55
-\MPscratchCnt=\count381
-\MPscratchDim=\dimen315
-\MPnumerator=\count382
-\makeMPintoPDFobject=\count383
-\everyMPtoPDFconversion=\toks56
+\scratchcounter=\count387
+\scratchdimen=\dimen319
+\scratchbox=\box82
+\nofMPsegments=\count388
+\nofMParguments=\count389
+\everyMPshowfont=\toks56
+\MPscratchCnt=\count390
+\MPscratchDim=\dimen320
+\MPnumerator=\count391
+\makeMPintoPDFobject=\count392
+\everyMPtoPDFconversion=\toks57
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/grfext/grfext.sty
@@ -1124,9 +1141,8 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package backref Info: ** backref set up for natbib ** on input line 126.
-Package hyperref Info: Link coloring OFF on input line 126.
-(./_main.out) (./_main.out)
+Package backref Info: ** backref set up for natbib ** on input line 104.
+Package hyperref Info: Link coloring OFF on input line 104.
 \@outlinefile=\write6
 
 \openout6 = _main.out
@@ -1137,7 +1153,7 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package soulpos Info: Loading soulutf8 on input line 126.
+Package soulpos Info: Loading soulutf8 on input line 104.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/soul/soulutf8.sty
 Package: soulutf8 2023-02-18 v3.0 Permit use of UTF-8 characters in soul (HO)
 
@@ -1149,41 +1165,41 @@ Package soulutf8 Warning: This package is obsolete,
 Package: soul 2023-02-18 v3.0 Permit use of UTF-8 characters in soul (HO)
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/soul/soul-ori.sty
 Package: soul-ori 2023-02-18 v3.0 letterspacing/underlining (mf)
-\SOUL@word=\toks57
-\SOUL@lasttoken=\toks58
-\SOUL@syllable=\toks59
-\SOUL@cmds=\toks60
-\SOUL@buffer=\toks61
-\SOUL@token=\toks62
-\SOUL@syllgoal=\dimen316
-\SOUL@syllwidth=\dimen317
-\SOUL@charkern=\dimen318
-\SOUL@hyphkern=\dimen319
-\SOUL@dimen=\dimen320
-\SOUL@dimeni=\dimen321
-\SOUL@minus=\count384
-\SOUL@comma=\count385
-\SOUL@apo=\count386
-\SOUL@grave=\count387
-\SOUL@spaceskip=\skip104
-\SOUL@ttwidth=\dimen322
-\SOUL@uldp=\dimen323
-\SOUL@ulht=\dimen324
+\SOUL@word=\toks58
+\SOUL@lasttoken=\toks59
+\SOUL@syllable=\toks60
+\SOUL@cmds=\toks61
+\SOUL@buffer=\toks62
+\SOUL@token=\toks63
+\SOUL@syllgoal=\dimen321
+\SOUL@syllwidth=\dimen322
+\SOUL@charkern=\dimen323
+\SOUL@hyphkern=\dimen324
+\SOUL@dimen=\dimen325
+\SOUL@dimeni=\dimen326
+\SOUL@minus=\count393
+\SOUL@comma=\count394
+\SOUL@apo=\count395
+\SOUL@grave=\count396
+\SOUL@spaceskip=\skip102
+\SOUL@ttwidth=\dimen327
+\SOUL@uldp=\dimen328
+\SOUL@ulht=\dimen329
 ))
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 126.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 104.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 126.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 104.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 126.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 104.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 126.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 104.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 126.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 104.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 126.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 104.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 126.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 104.
 
 Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
 
@@ -1214,7 +1230,7 @@ Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
 (fontspec)             \__um_luatex_copy_fontdimens: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 126.
+(Font)              scaled to size 10.95pt on input line 104.
 
 Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
 
@@ -1251,15 +1267,15 @@ Package fontspec Info: Font family 'latinmodern-math.otf(1)' created for font
 (fontspec)             \__um_luatex_copy_fontdimens: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 126.
+(Font)              scaled to size 10.95pt on input line 104.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 126.
+(Font)              `operators' in the math version `normal' on input line 104.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 126.
+(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 104.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 126.
+(Font)              `operators' in the math version `bold' on input line 104.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 126.
+(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 104.
 
 Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
 
@@ -1341,13 +1357,13 @@ Package fontspec Info: Font family 'latinmodern-math.otf(2)' created for font
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 126.
+(Font)              `symbols' in the math version `normal' on input line 104.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 126.
+(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 104.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 126.
+(Font)              `symbols' in the math version `bold' on input line 104.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 126.
+(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 104.
 
 Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
 
@@ -1411,83 +1427,83 @@ Package fontspec Info: Font family 'latinmodern-math.otf(3)' created for font
 (fontspec)             \fontdimen 13\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 126.
+(Font)              `largesymbols' in the math version `normal' on input line 104.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 126.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 104.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 126.
+(Font)              `largesymbols' in the math version `bold' on input line 104.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 126.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 104.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.665pt on input line 126.
+(Font)              scaled to size 7.665pt on input line 104.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.475pt on input line 126.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 126.
+(Font)              scaled to size 5.475pt on input line 104.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 104.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.95099pt on input line 126.
+(Font)              scaled to size 10.95099pt on input line 104.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.66568pt on input line 126.
+(Font)              scaled to size 7.66568pt on input line 104.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.4755pt on input line 126.
+(Font)              scaled to size 5.4755pt on input line 104.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.94882pt on input line 126.
+(Font)              scaled to size 10.94882pt on input line 104.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.66417pt on input line 126.
+(Font)              scaled to size 7.66417pt on input line 104.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.47441pt on input line 126.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 126.
+(Font)              scaled to size 5.47441pt on input line 104.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 104.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 126.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 104.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Info: Redefining \microtypecontext on input line 126.
-Package microtype Info: Applying patch `item' on input line 126.
-Package microtype Info: Applying patch `toc' on input line 126.
-Package microtype Info: Applying patch `eqnum' on input line 126.
-Package microtype Info: Applying patch `footnote' on input line 126.
-Package microtype Info: Applying patch `verbatim' on input line 126.
+LaTeX Info: Redefining \microtypecontext on input line 104.
+Package microtype Info: Applying patch `item' on input line 104.
+Package microtype Info: Applying patch `toc' on input line 104.
+Package microtype Info: Applying patch `eqnum' on input line 104.
+Package microtype Info: Applying patch `footnote' on input line 104.
+Package microtype Info: Applying patch `verbatim' on input line 104.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 126.
+LaTeX Info: Redefining \showhyphens on input line 104.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of spacing.
 Package microtype Info: No adjustment of kerning.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
 File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Modern Roman (RS)
 )
-<figure_title.png, id=15, 722.7pt x 542.025pt>
+<figure_title.png, id=7, 722.7pt x 542.025pt>
 File: figure_title.png Graphic file (type png)
 <use figure_title.png>
-Package luatex.def Info: figure_title.png  used on input line 143.
+Package luatex.def Info: figure_title.png  used on input line 121.
 (luatex.def)             Requested size: 289.07487pt x 216.80615pt.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 146.
+(Font)              scaled to size 10.0pt on input line 124.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 146.
+(Font)              scaled to size 7.0pt on input line 124.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 146.
+(Font)              scaled to size 5.0pt on input line 124.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 146.
+(Font)              scaled to size 10.00092pt on input line 124.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 146.
+(Font)              scaled to size 7.00064pt on input line 124.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 146.
+(Font)              scaled to size 5.00046pt on input line 124.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 146.
+(Font)              scaled to size 9.99893pt on input line 124.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 146.
+(Font)              scaled to size 6.99925pt on input line 124.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 146.
+(Font)              scaled to size 4.99947pt on input line 124.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -1496,110 +1512,69 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 
 \openout5 = _main.upa
-{c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./figure_title.png>] [2
+{c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./figure_title.png>]
 
-] (./_main.toc)
+LaTeX Warning: Reference `LastPage' on page ii undefined on input line 146.
+
+[2
+
+]
+No file _main.toc.
 \tf@toc=\write7
 
 \openout7 = _main.toc
 [3
 
-] [1
-
+] [4
 
 ]
-Package marginnote Info: Using workaround for absolute page number on input line 209.
-[2] [3] [4] [5] [6] [7]
-Overfull \hbox (3.61978pt too wide) in paragraph at lines 403--403
- []|\TU/lmr/m/n/10 Log.Like- 
- []
+
+LaTeX Warning: Reference `tab:pr-filter' on page 1 undefined on input line 186.
 
 
-Overfull \hbox (14.45053pt too wide) in alignment at lines 400--405
- [][][][][][][][][] 
- []
+LaTeX Warning: Reference `tab:pr-rfgen' on page 1 undefined on input line 186.
 
 
-Overfull \hbox (3.61978pt too wide) in paragraph at lines 408--408
- []|\TU/lmr/m/n/10 Log.Like- 
- []
+LaTeX Warning: Reference `tab:pr-cpue' on page 1 undefined on input line 186.
 
 
-Overfull \hbox (14.45053pt too wide) in alignment at lines 405--410
- [][][][][][][][][] 
- []
+LaTeX Warning: Reference `pr-bag' on page 1 undefined on input line 186.
 
 
-Overfull \hbox (14.45053pt too wide) in alignment at lines 410--412
- [][][][][][][][][] 
- []
+LaTeX Warning: Reference `tab:pr-filter' on page 1 undefined on input line 190.
 
 
-Overfull \hbox (14.45053pt too wide) in alignment at lines 412--414
- [][][][][][][][][] 
- []
+LaTeX Warning: Reference `fig:pr-qq' on page 1 undefined on input line 192.
 
 
-Overfull \hbox (14.45053pt too wide) in alignment at lines 414--423
- [][][][][][][][][] 
- []
+LaTeX Warning: Reference `fig:pr-districtcpue' on page 1 undefined on input line 192.
 
-[8] [9]
-<S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/copper_depths_gisdepthadded.png, id=102, 505.89pt x 505.89pt>
-File: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/copper_depths_gisdepthadded.png Graphic file (type png)
-<use S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/copper_depths_gisdepthadded.png>
-Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/copper_depths_gisdepthadded.png  used on input line 468.
-(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-[10<s:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/copper_depths_gisdepthadded.png>]
-<S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/drifts_by_depth_district.png, id=107, 505.89pt x 505.89pt>
-File: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/drifts_by_depth_district.png Graphic file (type png)
-<use S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/drifts_by_depth_district.png>
-Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/drifts_by_depth_district.png  used on input line 472.
-(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-[11<s:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/drifts_by_depth_district.png>]
-<S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/average_cpue_by_region.png, id=112, 505.89pt x 505.89pt>
-File: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/average_cpue_by_region.png Graphic file (type png)
-<use S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/average_cpue_by_region.png>
-Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/average_cpue_by_region.png  used on input line 480.
-(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-[12<s:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/average_cpue_by_region.png>]
-<S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/index.png, id=117, 722.7pt x 505.89pt>
-File: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/index.png Graphic file (type png)
-<use S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/index.png>
-Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/index.png  used on input line 488.
-(luatex.def)             Requested size: 398.33534pt x 278.83473pt.
-[13<s:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/Index.png>]
-<S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/qq.png, id=123, 505.89pt x 505.89pt>
-File: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/qq.png Graphic file (type png)
-<use S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/qq.png>
-Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/qq.png  used on input line 496.
-(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
-[14<s:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/qq.png>] [15] 
-enddocument/afterlastpage: lastpage setting LastPage.
-(./_main.aux * soulpos - computing points - it may take a few seconds *
-\openout5 = _main.upb
- (./_main.upa))
+[1
 
-LaTeX Warning: There were multiply-defined labels.
+]
 
-Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 661487A0A3EF517629F8C6D2A2AF8843;413.
-)
+LaTeX Warning: Reference `tab:pr-modelselect' on page 2 undefined on input line 194.
+
+
+LaTeX Warning: Reference `tab:pr-index' on page 2 undefined on input line 194.
+
+
+LaTeX Warning: Reference `fig:pr-index' on page 2 undefined on input line 194.
+
+[2] [3] [4] [5]
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+m
+l.311 Filter & Description & N
+                            umber of Samples & Positive Samples\\
 
 Here is how much of LuaTeX's memory you used:
- 50160 strings out of 478263
+ 50373 strings out of 478263
  125086,1977958 words of node,token memory allocated
- 724 words of node memory still in use:
-   8 hlist, 2 vlist, 2 rule, 1 local_par, 5 glue, 4 kern, 1 penalty, 4 glyph, 17 attribute, 79 glue_spec, 10 attribute_list, 3 write nodes
-   avail lists: 1:3,2:2356,3:528,4:59,5:503,6:252,7:8562,8:2,9:1792,10:14,11:624
- 68550 multiletter control sequences out of 65536+600000
- 63 fonts using 19133839 bytes
- 218i,11n,216p,2284b,635s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf>
-Output written on _main.pdf (18 pages, 1265651 bytes).
-
-PDF statistics: 174 PDF objects out of 1000 (max. 8388607)
- 129 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 131072)
- 32 words of extra memory for PDF output out of 10000 (max. 100000000)
-
+ 2505 words of node memory still in use:
+   18 hlist, 4 vlist, 12 rule, 9 disc, 3 local_par, 3 dir, 60 glue, 10 kern, 8 penalty, 6 unset, 93 glyph, 4 align_record, 1 span, 93 attribute, 87 glue_spec, 48 attribute_list, 7 temp, 1 align_stack, 3 write, 1 pdf_dest, 2 pdf_colorstack nodes
+   avail lists: 1:3,2:1341,3:300,4:212,5:530,6:137,7:8405,8:2,9:1013,10:13,11:547
+ 68824 multiletter control sequences out of 65536+600000
+ 67 fonts using 19655055 bytes
+ 218i,11n,216p,2284b,666s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!

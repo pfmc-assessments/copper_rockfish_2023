@@ -4,7 +4,8 @@ rmd_files: ['00a.Rmd',
              '00authors.Rmd', 
               '00bibliography.Rmd',
 #               '01executive.Rmd',
-              '62appendix_crfs_onboard.Rmd'
+#    '62appendix_crfs_onboard.Rmd'
+              '64appendix_crfs_dockside.Rmd'
  #             '11introduction.Rmd',
  #             '65appendix_ccfrp.Rmd'
  #            "35model-prestar-base-results-north.Rmd",

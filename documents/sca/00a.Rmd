@@ -3,6 +3,9 @@ geometry: margin=1in
 month: "`r format(Sys.Date(), '%B')`"
 year: "`r format(Sys.Date(), '%Y')`"
 preamble: 
+header-includes: 
+  - \usepackage{lineno}
+  - \usepackage[inline]{showlabels}
 csl: canadian-journal-of-fisheries-and-aquatic-sciences.csl
 output:
   sa4ss::techreport_pdf:
@@ -12,6 +15,15 @@ output:
 lang: en
 papersize: letter
 ---
+
+\linenumbers
+
+<!-- Common lat/long 
+Cape Mendocino, Pt. Conception and OR border -->
+\newcommand\CapeM{$40^\circ 10^\prime N$}
+\newcommand\PtC{$34^\circ 27^\prime N$}
+\newcommand\CAOR{$42^\circ 00^\prime N$}
+
 
 ```{r opts, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)

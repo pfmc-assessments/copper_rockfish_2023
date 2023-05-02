@@ -1,25 +1,30 @@
 
 `r Spp` have historically been a part of both commercial and recreational 
 fisheries throughout its range. `r Spp` are a demersal, relatively nearshore 
-species within the subgenus *Pteropodus.* `r Spp` range from xxx to xx at depth of   xxx [@love_rockfishes_2002].  The core range is  comparatively large, from northern Baja Mexico to the Gulf of Alaska, with `r spp` 
-also found in Puget Sound. `r Spp` are commonly found in waters less than 100 meters in depth 
+species within the subgenus *Pteropodus.*  The copper rockfish's core range is c
+omparatively large, ranging from northern Baja Mexico to the Gulf of Alaska, with `r spp` 
+also found in Puget Sound. `r Spp` range from the subtidal (as juveniles) 
+to depths of 183 m [@love_rockfishes_2002].  `r Spp` are commonly found in waters less than 100 meters in depth 
 inhabiting nearshore kelp forests and complex low-relief rocky habitat [@love_probably_1996].
 Adult copper rockfish have high site fidelity and do not make long-range movements. 
 An acoustic telemetry study displaced `r spp` 4km from their capture location to an artificial 
 reef and within 10 days, half of the `r spp` returned to the original capture location 
 [@reynolds_application_2010]. 
 
-`r Spp` have a clearly defined long white band the posterior two-thirds of the lateral line. `r Spp` has high variation in coloration throughout its range, taking on coloration from dark brown, olive, 
-orange-red and pink, with patches of yellow and pink [@miller_guide_1972]. In general  the `r spp` towards the northern part of the range are often darker in  color than fish encountered in southern California. The distinct change in coloration  resulted in copper rockfish described as two separate species, copper rockfish
+`r Spp` have a clearly defined long white band the posterior two-thirds of the lateral line. 
+`r Spp` has high variation in coloration throughout its range, taking on coloration from dark 
+brown, olive, 
+orange-red and pink, with patches of yellow and pink [@miller_guide_1972]. In general  the
+ `r spp` towards the northern part of the range are often darker in  color than fish encountered 
+ in southern California. The distinct change in coloration  resulted in copper rockfish described
+  as two separate species, copper rockfish
 (*S. caurinus*) and whitebelly rockfish (*S. vexillaris*). 
 
 The *Sebastes* genus are viviparous with internal fertilization, many exhibit 
 dimorphic growth with females larger at size-at-age than males, and a number 
 of species have reproductive strategies that vary with latitude. There 
 are very few fecundity samples from `r spp` available from available from California, 
-although `r spp` are assumed to produce a single brood annually. In southern California, 
-peak parturition occurs xxxx central California peak parturition occurs 
-in February and March.   
+although `r spp` are assumed to produce a single brood annually during the winter months. 
 
 The pelagic larvae are encountered in the CalCOFI surveys, but neither larval 
 nor young-of-the-year (YOY) can be identified `r spp` visually [@thompson_larval_2017]. The
@@ -61,8 +66,8 @@ Significant population subdivision was detected between th Puget Sound and coast
 samples and support the model of isolation-by-distance for `r spp`.
 @sivasundar_life_2010 conducted a genetic study to determine the potential for 
 biogeographic boundaries to prohibit gene flow for 15 *Sebastes* species.
-The study's sample sizes of `r spp` with samples form Oregon, Monterey Bay and Santa Barbara. @sivasundar_life_2010
-used mtDNA and could differentiate samples from Santa Barbara from those collected 
+The study's sample sizes of `r spp` with samples form Oregon, Monterey Bay and Santa Barbara. 
+@sivasundar_life_2010 used mtDNA and could differentiate samples from Santa Barbara from those collected 
 in Oregon and Monterey Bay, but the Monterey Bay and Oregon samples could not be distinguished. 
 Micosatellite data did not reveal any genetic differentiation among the sampels from 
 the three locations for copper rockfish and suggests low genetic differentiation coastwide. 
