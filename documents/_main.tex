@@ -81,6 +81,31 @@
 
 %Define cslreferences environment, required by pandoc 2.8
 %https://github.com/rstudio/rmarkdown/issues/1649
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}  % for \widthof, \maxof in minipage
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 
 \providecommand{\tightlist}{%
@@ -93,7 +118,7 @@
 \newcommand{\trYear}{2023}
 \newcommand{\trMonth}{May}
 \newcommand{\trAuthsLong}{truetruetrue}
-\newcommand{\trAuthsBack}{Wetzel, C.R., M.H. Monk, J. Coates}
+\newcommand{\trAuthsBack}{Monk, M.H., C.R. Wetzel, J. Coates}
 \newcommand{\trCitation}{
 \begin{hangparas}{1em}{1}
 \trAuthsBack{}. \trYear{}. \trTitle{}. \glsentrylong{pfmc}, Portland, Oregon. \pageref{LastPage}{}\,p.
@@ -121,11 +146,11 @@
 \includegraphicsifexists[width=4in]{figure_title.png}
 \vfill
 by\\
-Chantel R. Wetzel\textsuperscript{1}\\
-Melissa H. Monk\textsuperscript{2}\\
+Melissa H. Monk\textsuperscript{1}\\
+Chantel R. Wetzel\textsuperscript{2}\\
 Julia Coates\textsuperscript{3}\vfill
-\textsuperscript{1}Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Marine Fisheries Service, 2725 Montlake Boulevard East, Seattle, Washington 98112\\
-\textsuperscript{2}Southwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Marine Fisheries Service, 110 McAllister Way, Santa Cruz, California 95060\\
+\textsuperscript{1}Southwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Marine Fisheries Service, 110 McAllister Way, Santa Cruz, California 95060\\
+\textsuperscript{2}Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Marine Fisheries Service, 2725 Montlake Boulevard East, Seattle, Washington 98112\\
 \textsuperscript{3}.na.character\vfill
 \trMonth{} \trYear{}
 \end{center}
@@ -176,165 +201,255 @@ Correct citation for this publication:
 \newcommand\PtC{$34^\circ 27^\prime N$}
 \newcommand\CAOR{$42^\circ 00^\prime N$}
 
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+This assessment report describes the sub-area population of copper rockfish (\emph{Sebastes caurinus}) off the California coast north of Point Conception in U.S. waters, using data through 2022. The sub-area population north of Point Conception in California waters was also evaluated and is described in a separate assessment report. The copper rockfish status for the California stock of is determined by the combined estimates of spawning output from both sub-areas and is detailed in the \protect\hyperlink{management}{management} section. This assessment does not account for populations located in Mexico waters or other areas off the U.S. coast and assumes that these southern and northern populations do not contribute to the population being assessed here.
+
+\hypertarget{basic-information-and-life-history}{%
+\subsection{Basic Information and Life History}\label{basic-information-and-life-history}}
+
+Copper rockfish have historically been a part of both commercial and recreational fisheries throughout its range. Copper rockfish are a demersal, relatively nearshore species within the subgenus \emph{Pteropodus.} The copper rockfish's core range is c omparatively large, ranging from northern Baja Mexico to the Gulf of Alaska, with copper rockfish also found in Puget Sound. Copper rockfish range from the subtidal (as juveniles) to depths of 183 m (Love et al. 2002). Copper rockfish are commonly found in waters less than 100 meters in depth inhabiting nearshore kelp forests and complex low-relief rocky habitat (Love 1996). Adult copper rockfish have high site fidelity and do not make long-range movements. An acoustic telemetry study displaced copper rockfish 4km from their capture location to an artificial reef and within 10 days, half of the copper rockfish returned to the original capture location (Reynolds et al. 2010).
+
+Copper rockfish have a clearly defined long white band the posterior two-thirds of the lateral line. Copper rockfish has high variation in coloration throughout its range, taking on coloration from dark brown, olive, orange-red and pink, with patches of yellow and pink (Miller and Lea 1972). In general the copper rockfish towards the northern part of the range are often darker in color than fish encountered in southern California. The distinct change in coloration resulted in copper rockfish described as two separate species, copper rockfish (\emph{S. caurinus}) and whitebelly rockfish (\emph{S. vexillaris}).
+
+The \emph{Sebastes} genus are viviparous with internal fertilization, many exhibit dimorphic growth with females larger at size-at-age than males, and a number of species have reproductive strategies that vary with latitude. There are very few fecundity samples from copper rockfish available from available from California, although copper rockfish are assumed to produce a single brood annually during the winter months.
+
+The pelagic larvae are encountered in the CalCOFI surveys, but neither larval nor young-of-the-year (YOY) can be identified copper rockfish visually (Thompson et al. 2017). The size at birth ranges from 5-6 mm and the larvae remain pelagic until approximately 22-23 mm standard length at which time they recruit to the kelp forest canopy (Anderson 1983).
+
+Juvenile Copper rockfish are indistinguishable from kelp (\emph{S. atrovirens}), black-and-yellow (\emph{S. chrysomelas}), and gopher rockfish (\emph{S. carnatus}), all of which recruit to the kelp forest canopy in the spring months. Copper rockfish is the first of the species group to recruit to the kelp forest from April to May and can be distinguished from the other species once it reaches a size around 50 mm standard length (Anderson 1983). Baetscher genetically identified YOY rockfish from surveys in Carmel and Monterey Bays in California and provided the authors with the length and genotyped species idenifications from her study (Baetscher et al. 2019). The average length of copper rockfish in July was 3-4 cm total length \ref{fig:copper-smurf-length}. Anderson observed benthic copper rockfish nocturnally active over sandy bottom outside the kelp forest (Anderson 1983).
+
+Copper rockfish are a relatively long-lived rockfish, estimated to live at least 50 years (Love 1996). Copper rockfish was determined to have the highest vulnerability (V = 2.27) of any West Coast groundfish stock evaluated in a productivity susceptibility analysis (Cope et al. 2011). This analysis calculated species-specific vulnerability scores based on two dimensions: productivity characterized by the life history and susceptibility that characterized how the stock could be impacted by fisheries and other activities.
+
+As adults, there is little evidence of movement, with Hanan and CCFRP citations
+
+Copper rockfish are opportunistic carnivores and commonly consume crustaceans, mollusks, and fish whole (Lea et al. 1999; Bizzarro et al. 2017). (1972) observed a shift in a diet dominated by arthropods in age 0 and 1 fish, and a shift to a more diverse diet including molluscs and fish as they aged. the study also noted that juvenile copper rockfish were predated on by harbor seals and lingcod.
+
+There is currently no evidence of significant stock structure from genetic studies of copper rockfish across the west coast. (2002) looked at genetic variation across six micosatellite DNA loci from samples ranging from British Columbia to southern California. Significant population subdivision was detected between th Puget Sound and coastal samples and support the model of isolation-by-distance for copper rockfish. Sivasundar and Palumbi (2010) conducted a genetic study to determine the potential for biogeographic boundaries to prohibit gene flow for 15 \emph{Sebastes} species. The study's sample sizes of copper rockfish with samples form Oregon, Monterey Bay and Santa Barbara. Sivasundar and Palumbi (2010) used mtDNA and could differentiate samples from Santa Barbara from those collected in Oregon and Monterey Bay, but the Monterey Bay and Oregon samples could not be distinguished. Micosatellite data did not reveal any genetic differentiation among the sampels from the three locations for copper rockfish and suggests low genetic differentiation coastwide.
+
+The most recent genetic analysis of copper rockfish to date was conducted by Johansson et al. (2008). The study included 749 samples from along the west coast ranging from Neah Bay, Washington to San Diego, California with the majority of sampling locations clustered north of Cape Mendocino in northern California. The study included 185 samples collected within California. Eleven microsatellite DNA loci were analyzed. The study found significant evidence to support isolation by distance at the coast wide scale. Weak, but significant, genetic structure was identified from samples collected along the Oregon coast suggesting that habitat barriers may limit larval dispersal.
+
+\hypertarget{ecosystem-considerations}{%
+\subsection{Ecosystem Considerations}\label{ecosystem-considerations}}
+
+This stock assessment does not explicitly incorporate trophic interactions, habitat factors (other than as they inform relative abundance indices) or environmental factors into the assessment model, but a brief description of likely or potential ecosystem considerations are provided below.
+
+As with most other rockfish and groundfish in the California Current, recruitment, or cohort (year-class) strength appears to be highly variable for the copper rockfish complex, with only a modest apparent relationship to estimated levels of spawning output. Oceanographic and ecosystem factors are widely recognized to be key drivers of recruitment variability for most species of groundfish, as well as most elements of California Current food webs. Empirical estimates of recruitment from pelagic juvenile rockfish surveys have been used to inform incoming year class strength for some of these stocks, however copper rockfish are infrequently encountered in these surveys. Between 1998 and 2013 the California Cooperative Oceanic Fisheries Investigation (CalCOFI) survey observed had 34 positive observations copper rockfish out of nearly 300,000 total juvenile \emph{Sebastes} encountered in juvenile surveys.
+
+\hypertarget{historical-and-current-fishery-information}{%
+\subsection{Historical and Current Fishery Information}\label{historical-and-current-fishery-information}}
+
+Off the coast of California south of Point Conception copper rockfish is caught in both commercial and recreational fisheries. Recreational removals have been the largest source of fishing mortality of copper rockfish across all years (Table \ref{tab:allcatches} and Figure \ref{fig:catch}). The recreational fishery is comprised of individual recreational fishers (Private/Rental, PR) and charter recreational private vessels (CPFV) which take groups of individuals out for day fishing trips. Across both types of recreational fishing the majority of effort occurs around rocky reefs that can be accessed via a day-trips.
+
+The recreational fishery in the early part of the 20th century was focused on nearshore waters near ports, with expanded activity further from port and into deeper depths over time (Miller et al. 2014). Prior to the groundfish fishery being declared a federal disaster in 2000, and the subsequent rebuilding period, there were no time or area closures for groundfish. Access to deeper depths during this period spread effort over a larger area and filled bag limits with a greater diversity of species from both the shelf and nearshore. This resulted in lower catch of nearshore rockfish relative to the period after 2000 when 20 to 60 fm depth restrictions ranging from 20 fm in the Northern Management Area to 60 fm in the Southern Management Area were put in place in various management area delineations along the state. This shifting effort onto the nearshore, concomitantly increased catch rates for nearshore rockfish including copper rockfish in the remaining open depths, though season lengths were greatly curtailed.
+
+Following all previously overfished groundfish species, other than yelloweye rockfish, being declared rebuilt by 2019, deeper depth restrictions were offered in the Southern Management area allowing resumed access to shelf rockfish in less than 75 fm and are currently 100 fm as of 2021. The increased access to deeper depths south of Point Conception with the rebuilding of cowcod is expected to reduce the effort in nearshore waters where copper rockfish is most prevalent. To the north of Point Conception where yelloweye rockfish are prevalent, depth constraints persist and effort remains focused on the nearshore in 30 to 50 fm depending on the management area. As yelloweye rockfish continues to rebuild, incremental increases in access to deeper depths are expected, which will likely further reduce the effort in nearshore waters where copper rockfish is most prevalent.
+
+Prior to development of the live fish market in the 1980s, there was very little commercial catch of copper rockfish, with dead copper rockfish fetching a low ex-vessel price per pound. Copper rockfish were targeted along with other rockfish to some degree in the nearshore or caught as incidental catch by vessels targeting other more valuable stocks such as lingcod. Most fish were caught using hook and line gear, though some were caught using traps, gill nets and, rarely, trawl gear. Trawling was prohibited within three miles of shore in 1953 and gill netting within three miles of shore was prohibited in 1994, preventing access to a high proportion of the species habitat with these gear types. Copper rockfish were caught along with other rockfish to some degree in the nearshore or caught as bycatch by vessels targeting other more valuable stocks such as lingcod.
+
+In the late 1980s and early 1990s a market for fish landed live arose out of Los Angeles and the Bay area, driven by demand from Asian restaurants and markets. The growth of the live fish market was driven by consumers willing to pay a higher price for live fish, ideally plate-sized (12 - 14 inches or 30.5 - 35.6 cm). Live fish landed for the restaurant market are lumped into two categories, small (1 - 3 lbs.) or large (3 - 6 lbs.), with small, plate-sized, fish fetching higher prices at market ranging between \$5 -7 per fish (Bill James, personal communication). Copper rockfish is one of the many rockfish species that is included in the commercial live fish fishery. The proportion of copper rockfish being landed live vs.~dead since 2000 by California commercial fleets ranges between 50 to greater than 70 percent in the southern and northern areas, respectively.
+
+With the development and expansion of the nearshore live fish fishery during the 1980s and 1990s, new entrants in this open access fishery were drawn by premium ex-vessel price per pound for live fish, resulting in over-capitalization of the fishery. Since 2002, the California Department of Fish and Wildlife (CDFW) has managed 19 nearshore species in accordance with Nearshore Fisheries Management Plan (Wilson-Vandenberg et al. 2014). In 2003, the CDFW implemented a Nearshore Restricted Access Permit system, including the requirement of a Deeper Nearshore Fishery Species Permit to retain copper rockfish, with the overall goal of reducing the number of participants to a more sustainable level, with permit issuance based on historical landings history by the retrospective qualifying date. The result was a reduction in permits issued from 1,127 in 1999 to 505 in 2003, greatly reducing catch levels. In addition, reduced trip limits, season closures in March and April and depth restrictions were implemented to address bycatch of overfished species and associated constraints from their low catch limits.
+
+Copper rockfish residing between Point Conception and the California/Oregon border are assessed here as a single, separate stock (Figure \ref{fig:ca-map}). This designation was made based on oceanographic, geographic, and fishery conditions. The copper rockfish population in California waters was split at Point Conception due to water circulation patterns that create a natural barrier between nearshore rockfish populations to the north and south. The northern border for this assessment was defined as the California/Oregon border due to substantial differences in historical and current exploitation levels. Additionally, the fairly sedentary nature of adult copper rockfish, likely limits flow of fish between northern California and areas to the north.
+
+\hypertarget{summary-of-management-history-and-performance}{%
+\subsection{Summary of Management History and Performance}\label{summary-of-management-history-and-performance}}
+
+Prior to the adoption of the Pacific Coast Groundfish Fishery Management Plan (FMP) in 1982, copper rockfish were managed through a regulatory process that included the California Department of Fish and Wildlife (CDFW), the California State Legislature, and the Fish and Game Commission (FGC). With implementation of the Pacific Coast Groundfish FMP, copper rockfish came under the management authority of the Pacific Fishery Management Council (PFMC) and were managed as part of the Sebastes complex. Because copper rockfish had not undergone rigorous stock assessment and did not compose a large fraction of the landings it was classified and managed as part of the ``Minor Nearshore Rockfish'' group (PFMC 2008).
+
+Since the early 1980s, a number of federal regulatory measures have been used to manage the commercial rockfish fishery including cumulative trip limits (generally for two- month periods) and seasons. Starting in 1994 the commercial groundfish fishery sector was divided into two components: limited entry and open access with specific regulations designed for each component. Limited entry programs were designed in part to limit bottom contact gears and the open access sector includes gears not making bottom contact, e.g.~hook and line. Other regulatory actions for the general rockfish categories included area closures and gear restrictions set for the four different commercial sectors - limited entry fixed gear, limited entry trawl, open access trawl, and open access non-trawl (which includes the nearshore fishery) .
+
+During the late 1990s and early 2000s, major changes also occurred in the way that California managed its nearshore fishery. The Marine Life Management Act (MLMA), which was passed in 1998 by the California Legislature and enacted in 1999, required that the FGC adopt an FMP for nearshore finfish (Wilson-Vandenberg et al.~2014). It also gave authority to the FGC to regulate commercial and recreational nearshore fisheries through FMPs and provided broad authority to adopt regulations for the nearshore fishery during the time prior to adoption of the nearshore finfish FMP. Within this legislation, the Legislature also included a requirement that commercial fishermen landing nearshore species possess a nearshore fishery permit. In 2000, the PFMC's rockfish management structure changed significantly with the replacement of the Sebastes complex -north and -south areas with Minor Rockfish North (Vancouver, Columbia, and Eureka, International North Pacific Fisheries Commission (INPFC) areas) and Minor Rockfish South (Monterey and Conception INPFC areas only). The OY for these two groups was further divided (between north and south of 40\(^\circ\) 10' N. lat., Cape Mendocino, California) into nearshore, shelf, and slope rockfish categories with allocations set for Limited Entry and Open Access fisheries within each of these three categories (January 4, 2000, 65 FR 221; PFMC 2002, Tables 54-55). Species were parceled into these new categories depending on primary catch depths and geographical distribution. copper rockfish was included in the nearshore rockfish category.
+
+Following adoption of the Nearshore FMP and accompanying regulations by the FGC in fall of 2002, the FGC adopted regulations in November 2002 which established a set of marine protected areas (MPAs) around the Channel Islands in southern California (which became effective April 2003). The FGC also adopted a restricted access program in December 2002 which established the Deeper Nearshore Species Fishery Permit, to be effective starting in the 2003 fishing year. Also, since the enactment of the MLMA, the PFMC and State coordinated to develop and adopt various management specifications to keep harvest within the harvest targets, including seasonal and area closures, depth restrictions, and bag limits to regulate the recreational fishery and license and permit regulations, finfish trap permits, gear restrictions, seasonal and area closures, depth restrictions, trip limits, and minimum size limits to regulate the commercial fishery. The MPAs were later expanded under authority of the Marine Life Protection Act (MLPA) enacted in 1999, creating a network of MPAs which went into place in phases beginning with the central coast in 2007, north central coast in 2010, and the south and north coasts in 2012. The implementation of the cowcod conservation area (CCA) in 2001 closed a large area of the Southern California Bight west of Santa Catalina and San Clemente Islands and offshore of San Diego. The CCA prohibited retention of groundfish, except for some take of nearshore species in depths less than 20 fm around islands and banks, and later, less than 40 fm. The rockfish conservation areas (RCAs) are seasonally adjusted depth limits impacting trawl and non-trawl gears that were initially established in 2002 to protect overfished species. The RCAs also restricted catch of nearshore species to depths less than 30 fm, and in some areas along California to less than 20 fm. Thus, the MPAs, CCAs and RCAs represent three types of spatial and/or depth closures impacting rockfish.
+
+The state of California has adopted regulatory measures to manage the nearshore fishery based on the harvest guidelines set by the PFMC for the minor nearshore rockfish complexes north and south of 40\(^\circ\) 10' N. lat. The complexes are managed based on overfishing limits (OFL) and annual catch limits (ACL) that are determined by summing the species-specific OFLs and ACLs (ACLs set equal to the Acceptable Biological Catches) contributions for all stocks managed in the complexes). Limits are shared among all commercial and recreational fleets with the various management procedures intended to maintain removals below the total OFL and ACL for the nearshore rockfish north and south complexes as a whole, rather than on a species by species basis. The nearshore commercial fishery is managed based on bimonthly allowable catches per vessel, that have ranged from 200 pounds to 2,000 pounds per two months since 2000. The limited entry trawl fleet is managed on monthly limits on an annual basis. Since 2011, the limit has been 300 pounds per month for non-IFQ species, such as nearshore rockfish.
+
+The species-specific OFL and ACL contribution for copper rockfish that is allocated to California waters, Nearshore Rockfish South and 25 percent of the Nearshore Rockfish North for copper rockfish, is shown in Table \ref{tab:ca-management} as well as the total catch, south and north of Point Conception, of copper rockfish in California for the last ten years. Over the last ten years the catches of copper rockfish have been below the species-specific ACLs. In 2021 all West Coast stocks of copper rockfish were assessed that informed the 2023-24 harvest specifications OFLs and ACLs for copper rockfish. In California waters the new OFLs and ACLs for the 2023-24 management cycle were significantly lower than early years, resulting in in-season management action by CDFW for 2022 to reduce removals based on the latest stock assessment. January 1, 2022, a statewide commercial sub-trip limit of 75 lbs. per 2-month and statewide recreational sub-bag limit of 1 fish within the overall 10 fish allowed for the RCG complex went into effect. No change in recreational seasons or depth limits occurred in 2022 but changes were implemented in 2023. In 2022, the Northern and Mendocino management areas were closed January through April and allowed fishing to 30 fathoms May through October and at all depths November through December. The San Francisco and Central management areas were closed January through March and allowed fishing to 50 fathoms the remainder of the year. The Southern management area was closed January and February and allowed fishing to 100 fathoms the remainder of the year. Beginning in 2023, closed seasons are extended in all management areas. Depth restrictions are eased during some months and tightened in others.
+
+\hypertarget{foreign-fisheries}{%
+\subsection{Foreign Fisheries}\label{foreign-fisheries}}
+
+\emph{Sebastes} spp. are not in the Fisheries National Chart (FNC, database containing species status) maintained by the Mexican Government, i.e., they are not commercially harvested in the northwest Mexican Pacific Ocean (E.M. Bojórquez, Centro de Investigaciones Biológicas del Noroeste, S.C., personal communication).There are no data available on copper rockfish fisheries off the coast of Mexico. Catches in Mexican waters by U.S. fleets are not included in this assessment.
+
+\hypertarget{data}{%
+\section{Data}\label{data}}
+
+Data comprise the foundational components of stock assessment models. The decision to include or exclude particular data sources in an assessment model depends on many factors. These factors often include, but are not limited to, the way in which data were collected (e.g., measurement method and consistency); the spatial and temporal coverage of the data; the quantity of data available per desired sampling unit; the representativeness of the data to inform the modeled processes of importance; timing of when the data were provided; limitations imposed by the Terms of Reference; and the presence of an avenue for the inclusion of the data in the assessment model. Attributes associated with a data source can change through time, as can the applicability of the data source when different modeling approaches are explored (e.g., stock structure or time-varying processes). Therefore, the specific data sources included or excluded from this assessment should not necessarily constrain the selection of data sources applicable to future stock assessments for copper rockfish. Even if a data source is not directly used in the stock assessment they can provide valuable insights into biology, fishery behavior, or localized dynamics.
+
+Data from a wide range of programs were available for possible inclusion in the current assessment model. Descriptions of each data source included in the model (Figure \ref{fig:data-plot}) and sources that were explored but not included in the base model are provided below. Data that were excluded from the base model were explicitly explored during the development of this stock assessment or have not changed since their past exploration in a previous copper rockfish stock assessment. In some cases, the inclusion of excluded data sources were explored through sensitivity analyses (see Section \ref{assessment-model}).
+
+\hypertarget{biological-data}{%
+\subsection{Biological Data}\label{biological-data}}
+
+\hypertarget{natural-mortality}{%
+\subsubsection{Natural Mortality}\label{natural-mortality}}
+
+Natural mortality was not directly measured, so life-history based empirical relationships were used. The Natural Mortality Tool (NMT), a Shiny-based graphical user interface allowing for the application of a variety of natural mortality estimators based on measures such as longevity, size, age and growth, and maturity, was used to obtain estimates of natural mortality. The NMT currently provides 19 options, including the Hamel (2022) method, which is a corrected form of the Then et al. (2015) functional regression model and is a commonly applied method for West Coast groundfish. The NMT also allows for the construction of a natural mortality prior weighted across methods by the user.
+
+The Hamel (2022) method for developing a prior on natural mortality for West Coast groundfish stock assessments combines meta-analytic approaches relating the \(M\) rate to other life-history parameters such as longevity, size, growth rate, and reproductive effort to provide a prior for \(M\). The Hamel (2022) method re-evaluated the data used by Then et al. (2015) by fitting the one-parameter \(A_{\text{max}}\) model under a log-log transformation (such that the slope is forced to be -1 in the transformed space (Hamel 2015), the point estimate and median of the prior for \(M\) is:
+
+\begin{centering}
+
+$M=\frac{5.4}{A_{\text{max}}}$
+
+\end{centering}
+
+\vspace{0.5cm}
+
+where \(A_{\text{max}}\) is the maximum age. The prior is defined as a lognormal distribution with mean \(ln(5.4/A_{\text{max}})\) and standard error = 0.31. Using a maximum age of 50, the point estimate and median of the prior is 0.108 yr\textsuperscript{-1}. The maximum age was selected based on available age data from all West Coast data sources and literature values. The oldest aged copper rockfish observed in California waters was 52 years of age sampled in 2020 in northern California with 15 additional fish aged to be 40 years and older across all data sources.
+
+The maximum age in the model was set at 50 years. This selection was consistent with the literature examining the longevity of copper rockfish within California (Love 1996) and was supported by the observed ages that had multiple observations of fish between 40 and 52 years of age.
+
+\hypertarget{maturation-and-fecundity}{%
+\subsubsection{Maturation and Fecundity}\label{maturation-and-fecundity}}
+
+Maturity-at-length was based on maturity reads conducted by Melissa Head at the NWFSC examining a total of 112 samples (18 north of Point Conception and 94 south of Point Conception) collected across California by the NWFSC Hook and Line survey and the NWFSC WCGBT surveys collected in September and October. Given the limited sample size north of Point Conception, all samples were pooled across California to inform maturity north of Point Conception, while only samples south of Point Conception were used to inform maturity in this region.
+
+The maturity-at-length curve is based on an estimate of functional maturity rather than biological maturity. Biological maturity can include multiple behaviors that functional will exclude (e.g., abortive maturation and skip spawning). Biological maturity indicates that some energy reserves were used to create vitellogenin, but it does not mean that eggs will continue to develop and successfully spawn. This includes juvenile abortive maturation. Female rockfish commonly go through the first stages of spawning the year before they reach actual spawning capability. This is most likely a factor related to their complicated reproductive process of releasing live young. A subset of oocytes will develop early yolk, and then get aborted during the spawning season. Biological maturity also does not account for the proportion of oocytes in atresia (cellular breakdown and reabsorption), which means that fish that were skipping spawning for the season could be listed as biologically mature and functionally immature (Melissa Head, personal communication, NWFSC, NOAA).
+
+The 50 percent size-at-maturity was estimated at 34 cm with a slope of -0.41 (Figure \ref{fig:maturity}). This area-specific maturity-at-length estimate is relatively similar but with fish maturing at a slightly larger size compared to the biological maturity curve assumed for copper rockfish south of Point Conception. Additionally, these values are both slightly smaller compared to estimates by Hannah (2014) for fish observed in Oregon waters (34.8 cm) which estimated the 50 percent size-at-maturity of and slope of -0.60.
+
+The fecundity-at-length was based on research from Dick et al. (2017). The fecundity relationship for copper rockfish was estimated equal to 3.362e-07\(L\)\textsuperscript{3.68} in millions of eggs where \(L\) is length in cm. Fecundity-at-length is shown in Figure \ref{fig:fecundity}.
+
+\hypertarget{sex-ratio}{%
+\subsubsection{Sex Ratio}\label{sex-ratio}}
+
+There were limited sex-specific observations by length or age of young fish across biological data sources. The NWFSC WCGBT survey had the highest frequency of small fish observed. However, many of the small fish observed by the survey were too small for sex determination (Figure \ref{fig:frac-sex-len}). In the absence of evidence of a differential sex ratio at birth the sex ratio of young fish was assumed to be 1:1.
+
+\hypertarget{length-weight-relationship}{%
+\subsubsection{Length-Weight Relationship}\label{length-weight-relationship}}
+
+The length-weight relationship for copper rockfish was estimated outside the model using all coastwide biological data available from fishery-independent data from the NWFSC WCGBT and the NWFSC Hook and Line surveys. The estimated length-weight relationship for female fish was W = 9.6e-06\(L\)\textsuperscript{3.19} and males 1.11e-05\(L\)\textsuperscript{3.15} where \(L\) is length in cm and W is weight in kilograms (Figure \ref{fig:weight-length}).
+
+\hypertarget{length-at-age}{%
+\subsubsection{Growth (Length-at-Age)}\label{length-at-age}}
+
+Length-at-age was estimated for male and female copper rockfish informed by age data from the fisheries, the CCFRP survey, and independent age data collected effort from three programs north of Point Conception since 2002: 207 otoliths collected by the NWFSC WCGBT survey, 426 otoliths collected by a research survey conducted by Don Pearson, 74 from a research survey conducted by Abrams, and 45 from CDFW special collections (Table \ref{tab:growth-age-samps}). The ages collected by these three sources were included in the model as a ``growth'' fleet that was not associated with removals or an index of abundance.
+
+Sex-specific growth parameters \texttt{area} were initially estimated external to the model at the following values:
+
+\begin{centering}
+
+Females $L_{\infty}$ = 48.5 cm; $L_1$ = 9.1 cm; $k$ = 0.174 per year
+
+Males $L_{\infty}$ = 46.8 cm; $L_1$ = 5.3 cm; $k$ = 0.207 per year
+
+\end{centering}
+
+\vspace{0.50cm}
+
+These values were used as starting parameter values within the base model prior to estimating each parameter for male and female copper rockfish.
+
+\hypertarget{ageing-precision-and-bias}{%
+\subsubsection{Ageing Precision and Bias}\label{ageing-precision-and-bias}}
+
+Uncertainty surrounding the age-reading error process for copper rockfish was incorporated by estimating ageing error by age. Age composition data used in the model were from break-and-burn otolith reads. Aged copper rockfish used in the assessment were aged by the Cooperative Ageing Project (CAP) in Newport, Oregon. Within-lab ageing error was estimated for CAP based on one primary age reader and a second reader producing double reads from 875 otoliths provided by the CAP lab (Figure \ref{fig:age-error-dist}).
+
+An ageing error estimate was made based on these double reads using a computational tool specifically developed for estimating ageing error (Punt et al. 2008) and using release 1.1.0 of the R package \href{https://github.com/nwfsc-assess/nwfscAgeingError}{nwfscAgeingError} (Thorson et al. 2012) for input and output diagnostics. A linear standard error was estimated by age where there is more variability in the age of older fish (Figures \ref{fig:age-error} and \ref{fig:age-error-matrix}). Sensitivities to alternative ageing error estimates (curvilinear relationship with age) were conducted during model development and the model was relatively insensitive to alternative ageing error assumptions.
+
+\hypertarget{mrfss-cpfv-index}{%
+\section{Appendix B. MRFSS CPFV Dockside Index of Abundance}\label{mrfss-cpfv-index}}
+
+\hypertarget{dwv-cpfv-index}{%
+\section{Appendix D. Deb Wilson-Vandenberg Onboard CPFV Index of Abundance}\label{dwv-cpfv-index}}
+
 \hypertarget{crfs-pr-index}{%
-\section{Appendix D. CRFS PR Dockside Index of Abundance}\label{crfs-pr-index}}
+\section{Appendix E. CRFS PR Dockside Index of Abundance}\label{crfs-pr-index}}
 
-Catch and effort data from CRFS dockside sampling of private boats, 2004-2022, were provided by CDFW for use in this assessment. The PR dockside data housed on the Recreational Fisheries Information Network (RecFIN) were determined to include a number of complexities that precluded the ability to use them for an index of abundance. For the time period from 2004-2014 the authors re-created the interivew, or trip level, data from the ``i'' sample files. For 2015-2022 the authors used files provided by CDFW from the CRFS dockside sampling program.
+\hypertarget{ccfrp-index}{%
+\section{Appendix F. CCFRP Index of Abundance}\label{ccfrp-index}}
 
-The data for both time periods included catch by species, number of anglers contributing to the catch, angler-reported area of fishing, gear, county, port, interview site, year, month, and CRFS district. The catch included the number of fish observed by the CRFS sample, the number of unobserved retained fish reported by the angler, and the number of discarded and descended fish reported by the angler. The sample size of the unfiltered private boat data is much larger than the CPFV onboard observer data set, with 256,738 samples statewide from 2004-2022, 169,912 south of Point Conception and 86,826 north of Point Conception.
+The California Collaborative Fisheries Research Program, \href{https://www.mlml.calstate.edu/ccfrp/}{CCFRP}, is a fishery-independent hook-and-line survey designed to monitor nearshore fish populations at a series of sampling locations both inside and adjacent to MPAs (Wendt and Starr 2009; Starr et al. 2015). The CCFRP survey began in 2007 along the central coast of California and was designed in collaboration with academics, NMFS scientists and fishermen. From 2007-2016 the CCFRP project was focused on the central California coast, and has monitored four MPAs consistently. In 2017, the CCFRP expanded coastwide within California.\\
+The index of abundance was developed from the four MPAs sampled consistently (Año Nuevo and Point Lobos by Moss Landing Marine Labs; Point Buchon and Piedras Blancas by Cal Poly).
 
-Records were limited to the primary private and rental boats public-access sites, PR1 sites, which encompasses approximately 90\% of the total private boat effort (Table \ref{tab:pr-filter}). The CRFS interviews contain a small fraction (407 trips over the entire time series) of samples where the retained catch for rockfish is over the daily bag limit of 10 fish per person. We did not remove these data from the index, but did only include sampler examined catch. Rockfish species can be difficult to distinguish and there have not been any verifiction studies conducted to determine the undertainty in angler reported unboserved catch. Additional data filters included the exclusion of any samples from January and February, since those months have been closed to the recreational fishery south of Point Conception since 2005. The time series was also restricted to 2004-2019. Sampling during the COVID period (2020-2021) resulted in a higher fraction of the sampled examined catch in the ``rockfish, general'' category due to the social distancing requirements (Table \ref{tab:pr-rfgen}). The CDFW implemented a one fish sub-bag limit for copper rockfish in 2022 and the qauntiles and distribution of CPUE suggest that this regulation change impacted fishing behavior in the private boat fleet (Table \ref{tab:pr-cpue} and Figure \ref{pr-bag}).
+The survey design for CCFRP consists 500 x 500 m cells both within and adjacent to each MPA. On any given survey day site cells are randomly selected within a stratum (MPA and/or reference cells). CPFVs are chartered for the survey and the fishing captain is allowed to search within the cell for a fishing location. During a sampling event, each cell is fished for a total of 30-45 minutes by volunteer anglers. Each fish encountered is recorded, measured, and can be linked back to a particular angler, and released (or descended to depth). CCFRP samples shallower depths to avoid barotrauma-induced mortality.\\
+Starting in 2017, a subset of fish have been retained to collect otoliths and fin clips that provide needed biological information for nearshore species. For the index of abundance, CPUE was modeled at the level of the drift, similar to the fishery-dependent onboard observer survey described above.
 
-The angler reported water area was restricted to ocean areas in U.S. waters and a reported primary gear of hook-and-line or troll gear. A number of trips with the primary gear reported troll reported a secondary gear of hook-and-line. To determine if the angler(s) interviewed targeted rockfish and fished in rocky habitat, we retained trips if the angler reported the primary target species as rockfish or bottomfish or if rockfish was reported as the secondary target species. This filter replaced the Stephens-MacCall ((\textbf{stephens-multispecies-2004?})) filtering approach.
+The CCFRP data are quality controlled at the time they are key punched and little filtering was needed for the index. Cells not consistently sampled over time were excluded as well as cells that never encountered copper rockfish. The full dataset for northern California contained 8,770 drifts, 23\% of which encountered copper rockfish. After applying filters to remove drfits from sites that were not consistently sampled, marked for exclusion in the data, or did not fish a minimum of xxx, 7,078 drifts remained for for index standardization, with 1,757 drifts encountering copper rockfish.
 
-We retained 13,340 angler interviews for index standardization, with 3,739 included sampled examined copper rockfish (Table \ref{tab:pr-filter}).
+The CCFRP index includes all of the MPAs currently sampled from 2017-2020 and the core central California sampling sites from 2007-2016. Trends among all of the MPAs sampled increased along the entire coast from 2017-2020. The final index (Table \ref{tab:tab-index-ccfrp}) represents a similar trend to the arithmetic mean of the annual CPUE (Figure \ref{fig:fig-cpue-ccfrp}).
 
-We modeled retained catch per angler days with a negative binomial GLM in the R package sdmTMB. The QQ plots indicate a reasonable fit (Figure \ref{fig:pr-qq}). There are a handful of samples with higher than average CPUE and the authors check with CDFW to determine whether the samples should still be included. The CDFW indicated data sheets were not avaialble prior to 2012, but the catches were less than the bag limits, and should be assumed correct. Indices with a year and district interaction were not considered in model selection due to the fact that fishing locations are unknown; the scale of the relative abundance of copper is higher in District 2, but there is some overlap in the fishing locations accessed by this fleet (Figure \ref{fig:pr-districtcpue}).
+We modeled retained catch per angler hour (CPUE; number of fish per angler hour) using MLE fr. Indices with a year and area (location along the coast) interaction were not considered in model selection; trends in the average CPUE by region were similar in the filtered data set (Figure \ref{fig:fig-areacpue-ccfrp}). Plots of the arithmetic mean by inside (MPA) and outside (REF) MPAs over time is in Figure \ref{fig:fig-sitecpue-ccfrp} and shows the distinct trends of increasing average CPUE over time.
 
-Based on AICc values from maximum likelihood fits Table \ref{tab:pr-modelselect}), a main effects model including year, month and primary target species as categorical covariates were selected (Table \ref{tab:pr-index} and Figure \ref{fig:pr-index}).
+A negative binomial model was fit to the drift-level data (catch with a log offset for angler hours). Because the average observed CPUE inside MPAs and in the reference sites exhibited differing trends, we explored a YEAR:SITE interaction, which was selected as the best fit model by AIC Table \ref{tab:tab-model-select-ccfrp}), The final model included yrea, mpa/reference categorization, depth, depth squared, and a year:mpa/reference interaction. The model was fit using the sdmTMB R package (version xxx1).
 
-\newpage
+Based on work completed at the SWFSC, we estimate that the percent of rocky reef habitat from Point Conception to the California border within California state waters is 892 \(km^2\), of which approximately 23\% is in MPAs that prohibit the harvest of groundfish (pers comm. Rebecca Miller, UCSC). There is recreational fishing outside of state waters, but habitat maps are not available at the same 2-m resolution and do not allow for direct comparisons. To estimate the area of rocky substrate south of Point conception, we separted the southern California Bight into four areas, 1) CRFS District 1 along the mainland coast, 2) CRFS District 2 along the mainland coast, 3) state waters encompassing the southern Channel Islands, and 4) state waters encompassing the northern Channel Islands. We calculated the total area in each of the four regions, as well as the total area with available interpretted substrate. By also calculating the total area open and closed to fishing, i.e., MPAs and CCAs, we expanded the known fraction of rocky substrate to the areas within state waters where no substrated interpretted maps exist. This resulted in an estimate of 27\% of the available rocky substrate within closed areas to fishing in southern California state waters.
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
+The final index was weighted, giving 20\% of the model weight to MPAs and 80\% of model weight to the ``open'' areas within the state.
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
-\caption{\label{tab:pr-cpue}Summary of the copper rockfish CPUE, number of fish retained per
-             angler day, by year.}\\
+\begingroup\fontsize{7}{9}\selectfont
+
+\begin{landscape}\begingroup\fontsize{7}{9}\selectfont
+
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}}
+\caption{\label{tab:ccfrp-data-filter}Data filtering for the CCFRP survey.}\\
 \toprule
-Year & Minimum & Q1 & Q2 & Q3 & Maximum\\
+Filter & Description & Samples & Positive\_Samples\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:pr-cpue}Summary of the copper rockfish CPUE, number of fish retained  \textit{(continued)}}\\
+\caption[]{\label{tab:ccfrp-data-filter}Data filtering for the CCFRP survey. \textit{(continued)}}\\
 \toprule
-Year & Minimum & Q1 & Q2 & Q3 & Maximum\\
+Filter & Description & Samples & Positive\_Samples\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-2015 & 0.125 & 0.500 & 0.667 & 1.25 & 10.000\\
-2016 & 0.143 & 0.500 & 0.667 & 1.50 & 10.000\\
-2017 & 0.111 & 0.500 & 1.000 & 2.00 & 10.000\\
-2018 & 0.143 & 0.500 & 1.000 & 1.60 & 20.000\\
-2019 & 0.111 & 0.500 & 0.917 & 1.50 & 10.000\\
-2020 & 0.167 & 0.500 & 0.667 & 1.00 & 7.500\\
-2021 & 0.111 & 0.500 & 0.667 & 1.25 & 8.571\\
-2022 & 0.125 & 0.333 & 0.500 & 1.00 & 6.333\\*
+All data &  & 8770 & 1979\\
+Sampling frequency & Remove locations and cells not well 
+                                          sampled and drifts marked for exclusion & 7850 & 1773\\
+Location & Remove grid cells that never observed
+                                           the target species & 7205 & 1773\\
+Time fished & Remove drifts less than two minutes 
+                                          and cells fished less than 15 minutes
+                                          during a sampling event & 7078 & 1757\\*
 \end{longtable}
 \endgroup{}
+\end{landscape}
 \endgroup{}
 
 \newpage
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{7}{9}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:pr-rfgen}Summary of the number of speciated and unspeciated (RFGEN) rockfish 
-  per year across all of California.}\\
+\begin{landscape}\begingroup\fontsize{7}{9}\selectfont
+
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}}
+\caption{\label{tab:ccfrp-model-selection}Model selection for the CCFRP survey.}\\
 \toprule
-Year & Unspeciated & Speciated & Percent unspeciated\\
+Depth & Depth.Squared & Mpaorref & Region & Year & Interaction & Effort.Offset & Df & Log.Likelihood & AICc & Delta\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:pr-rfgen}Summary of the number of speciated and unspeciated (RFGEN) rockfi \textit{(continued)}}\\
+\caption[]{\label{tab:ccfrp-model-selection}Model selection for the CCFRP survey. \textit{(continued)}}\\
 \toprule
-Year & Unspeciated & Speciated & Percent unspeciated\\
+Depth & Depth.Squared & Mpaorref & Region & Year & Interaction & Effort.Offset & Df & Log.Likelihood & AICc & Delta\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-2015 & 5816 & 93285 & 5.9\%\\
-2016 & 5153 & 71835 & 6.7\%\\
-2017 & 6015 & 80123 & 7.0\%\\
-2018 & 4767 & 79348 & 5.7\%\\
-2019 & 3597 & 92228 & 3.8\%\\
-2020 & 27522 & 59999 & 31.4\%\\
-2021 & 13439 & 90050 & 13.0\%\\
-2022 & 3559 & 83804 & 4.1\%\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
-\caption{\label{tab:pr-percentpos}Number of samples and percent positive for the dockside PR survey.}\\
-\toprule
-Year & Trips with Target & Trips without Target & Total trips & Percent with Target\\
-\midrule
-\endfirsthead
-\caption[]{\label{tab:pr-percentpos}Number of samples and percent positive for the dockside PR survey. \textit{(continued)}}\\
-\toprule
-Year & Trips with Target & Trips without Target & Total trips & Percent with Target\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-2004 & 189 & 601 & 790 & 23.9\%\\
-2005 & 160 & 494 & 654 & 24.5\%\\
-2006 & 241 & 526 & 767 & 31.4\%\\
-2007 & 325 & 705 & 1030 & 31.6\%\\
-2008 & 269 & 754 & 1023 & 26.3\%\\
-2009 & 213 & 862 & 1075 & 19.8\%\\
-2010 & 117 & 466 & 583 & 20.1\%\\
-2011 & 150 & 501 & 651 & 23.0\%\\
-2012 & 143 & 931 & 1074 & 13.3\%\\
-2013 & 363 & 1104 & 1467 & 24.7\%\\
-2014 & 279 & 818 & 1097 & 25.4\%\\
-2015 & 227 & 335 & 562 & 40.4\%\\
-2016 & 246 & 321 & 567 & 43.4\%\\
-2017 & 265 & 378 & 643 & 41.2\%\\
-2018 & 274 & 314 & 588 & 46.6\%\\
-2019 & 278 & 491 & 769 & 36.2\%\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{9}{11}\selectfont
-
-\begin{landscape}\begingroup\fontsize{9}{11}\selectfont
-
-\begin{longtable}[t]{cc>{\centering\arraybackslash}p{12cm}c}
-\caption{\label{tab:pr-filter}Data filtering steps for the onboard CPFV survey.}\\
-\toprule
-Filter & Description & Number of Samples & Positive Samples\\
-\midrule
-\endfirsthead
-\caption[]{\label{tab:pr-filter}Data filtering steps for the onboard CPFV survey. \textit{(continued)}}\\
-\toprule
-Filter & Description & Number of Samples & Positive Samples\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-All data & All data & 56276 & 4861\\
-Years & Start time series in 2005 due to sparse data & 46125 & 4523\\
-Errors and Missing Data & Remove drifts with missing data and identified errors & 41837 & 4319\\
-Area fished & Remove drifts in bays and Mexico (if applicable) & 39081 & 4235\\
-Months fished & Remove Jan-Feb; recreational rockfish fishery closed & 35123 & 4112\\
-Depth & Remove drifts in depths greater than 60 fathoms & 33724 & 4094\\
-Observed anglers & Remove upper and lower 2.5\% of observed anglers; 
-                                           Remaining data: Observed anglers 4-14 & 32603 & 3977\\
-Time fished & Remove upper and lower 2.5\% time fished and 
-                                         time fished; Remaining drifts with 5-102 minutes time fished & 29641 & 3773\\
-Distance from rocky substrate & Southern CA rocky substrate incomplete; 
-                                         keep 95\% of the data; drifts within 3,365 m of rocky substrate & 25099 & 3381\\
-CDFW block & Retain drifts in CDFW blocks with at least 100 drifts and 
-                                         more than 5\% of all drifts in that block 
-                                         caught a copper rockfish & 17605 & 3035\\*
+0.402 & -0.008 & + & + & + & + & + & 36 & -5319.3 & 10710.9 & 0.0\\
+0.393 & -0.008 & + & NA & + & + & + & 35 & -5321.0 & 10712.3 & 1.4\\
+0.406 & -0.008 & + & + & + & NA & + & 21 & -5351.1 & 10744.4 & 33.5\\
+0.397 & -0.008 & + & NA & + & NA & + & 20 & -5353.0 & 10746.1 & 35.2\\
+0.145 & NA & + & NA & + & + & + & 34 & -5350.2 & 10768.8 & 57.9\\
+0.144 & NA & + & + & + & + & + & 35 & -5350.1 & 10770.5 & 59.6\\
+0.143 & NA & + & NA & + & NA & + & 19 & -5383.4 & 10804.9 & 94.0\\
+0.143 & NA & + & + & + & NA & + & 20 & -5383.2 & 10806.5 & 95.6\\
+0.464 & -0.010 & NA & + & + & NA & + & 20 & -5508.1 & 11056.3 & 345.4\\
+0.454 & -0.010 & NA & NA & + & NA & + & 19 & -5510.5 & 11059.2 & 348.3\\
+0.144 & NA & NA & NA & + & NA & + & 18 & -5554.0 & 11144.1 & 433.2\\
+0.144 & NA & NA & + & + & NA & + & 19 & -5553.8 & 11145.6 & 434.7\\
+NA & NA & + & NA & + & + & + & 33 & -5632.6 & 11331.5 & 620.6\\
+NA & NA & + & + & + & + & + & 34 & -5632.2 & 11332.7 & 621.8\\
+NA & NA & + & NA & + & NA & + & 18 & -5661.2 & 11358.4 & 647.5\\
+NA & NA & + & + & + & NA & + & 19 & -5660.7 & 11359.5 & 648.6\\
+NA & NA & NA & NA & + & NA & + & 17 & -5815.9 & 11665.8 & 954.9\\
+NA & NA & NA & + & + & NA & + & 18 & -5815.3 & 11666.8 & 955.9\\*
 \end{longtable}
 \endgroup{}
 \end{landscape}
@@ -345,31 +460,140 @@ CDFW block & Retain drifts in CDFW blocks with at least 100 drifts and
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}}
-\caption{\label{tab:pr-modelselect}Model selection for the dockside PR survey.}\\
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\caption{\label{tab:ccfrp-index}Estimated relative index of abundance for the CCFRP survey.}\\
 \toprule
-District & Month & Primary.Target.Species & Year & Effort.Offset & Df & Log.Likelihood & AICc & Delta\\
+Year & Estimate & logSE\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:pr-modelselect}Model selection for the dockside PR survey. \textit{(continued)}}\\
+\caption[]{\label{tab:ccfrp-index}Estimated relative index of abundance for the CCFRP survey. \textit{(continued)}}\\
 \toprule
-District & Month & Primary.Target.Species & Year & Effort.Offset & Df & Log.Likelihood & AICc & Delta\\
+Year & Estimate & logSE\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-+ & + & + & + & + & 29 & -14494.1 & 29046.3 & 0.0\\
-+ & NA & + & + & + & 20 & -14515.9 & 29071.8 & 25.5\\
-+ & + & NA & + & + & 27 & -14576.7 & 29207.5 & 161.2\\
-+ & NA & NA & + & + & 18 & -14603.1 & 29242.2 & 195.9\\
-NA & + & + & + & + & 28 & -15132.3 & 30320.8 & 1274.5\\
-NA & NA & + & + & + & 19 & -15147.5 & 30333.0 & 1286.7\\
-NA & + & NA & + & + & 26 & -15354.8 & 30761.7 & 1715.4\\
-NA & NA & NA & + & + & 17 & -15369.6 & 30773.2 & 1726.9\\*
+2007 & 0.0582160 & 0.1394863\\
+2008 & 0.0275242 & 0.1493542\\
+2009 & 0.0599728 & 0.1562757\\
+2010 & 0.0329613 & 0.1665564\\
+2011 & 0.0302584 & 0.1638784\\
+2012 & 0.0359084 & 0.1446754\\
+2013 & 0.0237656 & 0.1726645\\
+2014 & 0.0495890 & 0.1397864\\
+2015 & 0.0371527 & 0.2124289\\
+2016 & 0.0962345 & 0.1096466\\
+2017 & 0.0920281 & 0.1075274\\
+2018 & 0.1107285 & 0.0950086\\
+2019 & 0.1284849 & 0.0884973\\
+2020 & 0.1693210 & 0.0947559\\
+2021 & 0.1546231 & 0.0894429\\
+2022 & 0.1363272 & 0.0914945\\*
 \end{longtable}
 \endgroup{}
+\endgroup{}
+
+\newpage
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/survey_indices/ccfrp/north/area_weighted/qq.png}
+\caption{QQ-plot for the CCFRP survey.\label{fig:ccfrp-qq}}
+\end{figure}
+
+\newpage
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/survey_indices/ccfrp/north/mpa_site_cpue.png}
+\caption{Average CPUE by site with trends prior to standardization in the MPA and REF areas.\label{fig:ccfrp-avg-cpue}}
+\end{figure}
+
+\newpage
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/survey_indices/ccfrp/north/area_weighted/Index.png}
+\caption{The weighted relative index of abundance.\label{fig:ccfrp-index}}
+\end{figure}
+
+\hypertarget{cdfw-rov-index}{%
+\section{Appendix G. CDFW ROV Index of Abundance}\label{cdfw-rov-index}}
+
+The California Department of Fish and Wildlife (CDFW) in collaboration with Marine Applied Research and Exploration (MARE) have been conducting remotely operated vehicle (ROV) surveys along the California coast in Marine Protected Areas (MPAs) and reference sites adjacent to them since 2004 for the purposes of long-term monitoring of changes in size, density (fish/square meter) and length of fish and invertebrate species along the California coast. Surveys of the entire coast have now been undertaken twice, each taking three years to complete, 2014-2016 and again in 2019-2021. The survey conducted multiple 500 meter transects across rocky reef survey sites. Sample sites were selected by first randomly selecting the deepest transect at a given site, then selecting transects on a constant interval into shallower depths. Transects were designed to be oriented parallel to general depth contours, though they were carried out using a fixed bearing that crossed depths in some cases.
+
+Given that each pass of the California coast took a three year period, the STAT opted to explore using the data either by year or grouping it into super years. The selected super years were 2015 and 2020, the middle year of the time grouped sampling efforts. Based on the life history of copper rockfish and the generally limited movement of adult copper rockfish, the super year approach was considered for each model area in order to include these data within the model limited given the range of the survey area each year across the California coast, the super year application. The two sub-area models for copper rockfish represent disparate proportions of the California coast where the model south of Point Conception has a greatly reduced spatial range compared to the model area north of Point Conception. South of Point Conception nearly all sampling locations were visited either three or four times within the six year sampling period (only one reference location only visited one year) while sampling locations north of Point Conception were visited between two to four times within the six sampling years. These differences in sampling frequency and the areas being sampled informed the selection of modeling these data different by area. The data south of Point Conception were modeled using the sample year while the data north of Point Conception were modeled using super years.
+
+Minimal filtering were done to the data. Transects were removed based on four factors: 1) extreme estimates of effort (the estimated area of view below the ROV termed usable area), 2) any locations that were not sampled by both super year periods, 3) transect that were conducted crossing from MPA into reference areas, and 4) transects conducted across depths that never observed copper rockfish within the survey (Table \ref{tab:rov-filtered}). Once the data were filtered the average calculated CPUE for each MPA and Reference groups were plotted to visualize the data (Table \ref{tab:rov-obs} and Figure \ref{fig:rov-raw-cpue}).
+
+A range of alternative model structures were explored to generate an index of abundances including alternative error structures, covariates, and factors were considered when exploring how best to model these data. Based on model selection a model with super year, site designation (MPA or Reference), and super year site designation interaction was selected (Table \ref{tab:rov-model-selection}). A negative-binomial model was selected based on the distribution of the data and diagnostics (Figures \ref{fig:rov-qq} and \ref{fig:rov-prop-zero}) using sdmTMB (Anderson et al. 2022). The model estimates were then area-weighted based on the estimated percent of habitat within MPAs based on habitat seafloor mapping data within state waters were north of Point Conception an estimate of 20\% of rocky habitat within MPAs and 80\% open to fishing. The weighted relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
+
+\newpage
+
+\input{tex_tables/rov_removed_records_north.tex}
+
+\newpage
+
+\input{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
+
+\newpage
+
+\begingroup\fontsize{7}{9}\selectfont
+
+\begin{landscape}\begingroup\fontsize{7}{9}\selectfont
+
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{0.92cm}>{\raggedright\arraybackslash}p{0.92cm}>{\raggedright\arraybackslash}p{0.92cm}>{\raggedright\arraybackslash}p{0.92cm}>{\raggedright\arraybackslash}p{0.92cm}>{\raggedright\arraybackslash}p{0.92cm}>{\raggedright\arraybackslash}p{0.92cm}>{\raggedright\arraybackslash}p{0.92cm}>{\raggedright\arraybackslash}p{0.92cm}>{\raggedright\arraybackslash}p{0.92cm}>{\raggedright\arraybackslash}p{0.92cm}}
+\caption{\label{tab:rov-model-selection}Model selection for the ROV survey.}\\
+\toprule
+Designation & Depth.Polynomial & Prop..Hard & Prop..Mixed & Prop..Soft & Super.Year & Designation.Super\_year & offset.log.usable.area. & DF & log.likelihood & AICc & Delta\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:rov-model-selection}Model selection for the ROV survey. \textit{(continued)}}\\
+\toprule
+Designation & Depth.Polynomial & Prop..Hard & Prop..Mixed & Prop..Soft & Super.Year & Designation.Super\_year & offset.log.usable.area. & DF & log.likelihood & AICc & Delta\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
++ & + & N.A. & N.A. & N.A. & + & + & + & 7 & -1257.3 & 2528.6 & 0.00\\
++ & + & N.A. & 0.45 & N.A. & + & + & + & 8 & -1256.3 & 2528.7 & 0.06\\
++ & + & -0.16 & N.A. & N.A. & + & + & + & 8 & -1257.0 & 2530.2 & 1.60\\
++ & + & N.A. & N.A. & -0.11 & + & + & + & 8 & -1257.2 & 2530.5 & 1.86\\
++ & + & N.A. & 0.46 & 0.02 & + & + & + & 9 & -1256.3 & 2530.7 & 2.10\\
++ & + & -0.02 & 0.44 & N.A. & + & + & + & 9 & -1256.3 & 2530.7 & 2.10\\
++ & + & -0.46 & N.A. & -0.44 & + & + & + & 9 & -1256.3 & 2530.7 & 2.10\\
++ & + & 1.2E+07 & 1.2E+07 & 1.2E+07 & + & + & + & 10 & -1256.3 & 2532.8 & 4.13\\
++ & + & N.A. & 0.49 & N.A. & + & NA & + & 7 & -1260.4 & 2535.0 & 6.34\\
++ & + & N.A. & N.A. & N.A. & + & NA & + & 6 & -1261.6 & 2535.2 & 6.60\\
++ & + & -0.23 & N.A. & N.A. & + & NA & + & 7 & -1261.1 & 2536.3 & 7.71\\
++ & + & N.A. & 0.53 & 0.09 & + & NA & + & 8 & -1260.4 & 2536.9 & 8.25\\
++ & + & -0.09 & 0.44 & N.A. & + & NA & + & 8 & -1260.4 & 2536.9 & 8.25\\
++ & + & -0.53 & N.A. & -0.44 & + & NA & + & 8 & -1260.4 & 2536.9 & 8.25\\
++ & + & N.A. & N.A. & -0.05 & + & NA & + & 7 & -1261.5 & 2537.2 & 8.60\\
++ & + & 7.8E+06 & 7.8E+06 & 7.8E+06 & + & NA & + & 9 & -1260.4 & 2538.9 & 10.29\\
++ & NA & -0.43 & N.A. & N.A. & + & + & + & 6 & -1271.3 & 2554.8 & 26.12\\
++ & NA & N.A. & 0.62 & 0.37 & + & + & + & 7 & -1271.1 & 2556.3 & 27.66\\
++ & NA & -0.37 & 0.24 & N.A. & + & + & + & 7 & -1271.1 & 2556.3 & 27.66\\
++ & NA & -0.62 & N.A. & -0.24 & + & + & + & 7 & -1271.1 & 2556.3 & 27.66\\
++ & NA & N.A. & N.A. & N.A. & + & + & + & 5 & -1273.2 & 2556.5 & 27.82\\
++ & NA & N.A. & 0.42 & N.A. & + & + & + & 6 & -1272.3 & 2556.8 & 28.15\\
++ & NA & N.A. & N.A. & 0.22 & + & + & + & 6 & -1272.7 & 2557.5 & 28.83\\
++ & NA & 1.4E+07 & 1.4E+07 & 1.4E+07 & + & + & + & 8 & -1271.1 & 2558.3 & 29.67\\
++ & NA & -0.5 & N.A. & N.A. & + & NA & + & 5 & -1275.6 & 2561.2 & 32.62\\
++ & NA & N.A. & 0.69 & 0.44 & + & NA & + & 6 & -1275.3 & 2562.7 & 34.11\\
++ & NA & -0.44 & 0.25 & N.A. & + & NA & + & 6 & -1275.3 & 2562.7 & 34.11\\
++ & NA & -0.69 & N.A. & -0.25 & + & NA & + & 6 & -1275.3 & 2562.7 & 34.11\\
++ & NA & N.A. & 0.46 & N.A. & + & NA & + & 5 & -1277.0 & 2564.1 & 35.47\\
++ & NA & N.A. & N.A. & N.A. & + & NA & + & 4 & -1278.1 & 2564.2 & 35.52\\
++ & NA & N.A. & N.A. & 0.27 & + & NA & + & 5 & -1277.3 & 2564.7 & 36.07\\
++ & NA & 1.0E+07 & 1.0E+07 & 1.0E+07 & + & NA & + & 7 & -1275.3 & 2564.8 & 36.13\\*
+\end{longtable}
+\endgroup{}
+\end{landscape}
 \endgroup{}
 
 \newpage
@@ -378,12 +602,12 @@ NA & NA & NA & + & + & 17 & -15369.6 & 30773.2 & 1726.9\\*
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:pr-index}Estimated relative index of abundance for the dockside PR survey.}\\
+\caption{\label{tab:rov-index}Estimated relative index of abundance for the ROV survey.}\\
 \toprule
 Year & Estimate & logSE\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:pr-index}Estimated relative index of abundance for the dockside PR survey. \textit{(continued)}}\\
+\caption[]{\label{tab:rov-index}Estimated relative index of abundance for the ROV survey. \textit{(continued)}}\\
 \toprule
 Year & Estimate & logSE\\
 \midrule
@@ -392,22 +616,8 @@ Year & Estimate & logSE\\
 \endfoot
 \bottomrule
 \endlastfoot
-2004 & 0.0333712 & 0.1225622\\
-2005 & 0.0348261 & 0.1300758\\
-2006 & 0.0551271 & 0.1216623\\
-2007 & 0.0767447 & 0.1083005\\
-2008 & 0.0737311 & 0.1087158\\
-2009 & 0.0525342 & 0.1110163\\
-2010 & 0.0454907 & 0.1340280\\
-2011 & 0.0624982 & 0.1274957\\
-2012 & 0.0267310 & 0.1214051\\
-2013 & 0.0636877 & 0.1049115\\
-2014 & 0.0636298 & 0.1104863\\
-2015 & 0.0908369 & 0.1246994\\
-2016 & 0.1199350 & 0.1240353\\
-2017 & 0.1000309 & 0.1203017\\
-2018 & 0.1174937 & 0.1221443\\
-2019 & 0.0854438 & 0.1171329\\*
+2015 & 0.0258229 & 0.1191350\\
+2020 & 0.0428021 & 0.0701096\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -416,33 +626,105 @@ Year & Estimate & logSE\\
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/bag_change_visuals/pr_copper_cpue_year_area_max5.png}
-\caption{Distribution by year of the number of copper rockfish retained per angler. This includes sampler observed and angler reported catch. The vertical line at 1 represents the sub-bag limit implemented in 2022.\label{fig:pr-bag}}
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/qq.png}
+\caption{QQ-plot for the ROV survey.\label{fig:rov-qq}}
 \end{figure}
 
 \newpage
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/average_cpue_by_district.png}
-\caption{Average CPUE by district prior to standardization.\label{fig:pr-districtcpue}}
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/proportion_zero.png}
+\caption{Predicted zeros based on the data and replicates from a Stan model.\label{fig:rov-prop-zero}}
 \end{figure}
 
 \newpage
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/index.png}
-\caption{Index for the dockside PR survey.\label{fig:pr-index}}
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/survey_indices/rov/glm_negbin_north_designation_depth/Index.png}
+\caption{The weighted relative index of abundance.\label{fig:rov-index}}
 \end{figure}
 
-\newpage
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-anderson_sdmtmb_2022}{}}%
+Anderson, S.C., Ward, E.J., English, P.A., and Barnett, L.A.K. 2022. {sdmTMB}: An {R} package for fast, flexible, and user-friendly generalized linear mixed effects models with spatial and spatiotemporal random fields. preprint, Ecology. doi:\href{https://doi.org/10.1101/2022.03.24.485545}{10.1101/2022.03.24.485545}.
 
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/qq.png}
-\caption{QQ plot for the dockside PR survey.\label{fig:pr-qq}}
-\end{figure}
+\leavevmode\vadjust pre{\hypertarget{ref-anderson_identification_1983}{}}%
+Anderson, T.W. 1983. Identification and development of nearshore juvenile rockfishes (genus genus{\textbackslash{}}emph\{{Sebastes}\}) in central {California} kelp forests. PhD thesis, California State University, Fresno.
 
-\newpage
+\leavevmode\vadjust pre{\hypertarget{ref-baetscher_dispersal_2019}{}}%
+Baetscher, D.S., Anderson, E.C., Horvath, E.A.G., Malone, D.P., Saarman, E.T., Carr, M.H., and Garza, J.C. 2019. Dispersal of a nearshore marine fish connects marine reserves and adjacent fished areas along an open coast. Molecular Ecology \textbf{28}: 1611--1623. doi:\href{https://doi.org/10.1111/mec.15044}{10.1111/mec.15044}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-bizzarro_diet_2017}{}}%
+Bizzarro, J.J., Yoklavich, M.M., and Wakefield, W.W. 2017. Diet composition and foraging ecology of {U}.{S}. {Pacific} {Coast} groundfishes with applications for fisheries management. Environmental Biology of Fishes \textbf{100}(4): 375--393. doi:\href{https://doi.org/10.1007/s10641-016-0529-2}{10.1007/s10641-016-0529-2}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-buonaccorsi_population_2002}{}}%
+Buonaccorsi, V.P., Kimbrell, C.A., Lynn, E.A., and Vetter, R.D. 2002. Population structure of copper rockfish (\emph{{Sebastes} caurinus}) reflects postglacial colonization and contemporary patterns of larval dispersal. Canadian Journal of Fisheries and Aquatic Sciences \textbf{59}(8): 1374--1384. doi:\href{https://doi.org/10.1139/f02-101}{10.1139/f02-101}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-cope_approach_2011}{}}%
+Cope, J.M., DeVore, J., Dick, E.J., Ames, K., Budrick, J., Erickson, D.L., Grebel, J., Hanshew, G., Jones, R., Mattes, L., Niles, C., and Williams, S. 2011. An {Approach} to {Defining} {Stock} {Complexes} for {U}.{S}. {West} {Coast} {Groundfishes} {Using} {Vulnerabilities} and {Ecological} {Distributions}. North American Journal of Fisheries Management \textbf{31}(4): 589--604. doi:\href{https://doi.org/10.1080/02755947.2011.591264}{10.1080/02755947.2011.591264}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-dick_meta-analysis_2017}{}}%
+Dick, E.J., Beyer, S., Mangel, M., and Ralston, S. 2017. A meta-analysis of fecundity in rockfishes (genus \emph{sebastes}). Fisheries Research \textbf{187}: 73--85. doi:\href{https://doi.org/10.1016/j.fishres.2016.11.009}{10.1016/j.fishres.2016.11.009}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-hamel_method_2015}{}}%
+Hamel, O.S. 2015. A method for calculating a meta-analytical prior for the natural mortality rate using multiple life history correlates. ICES Journal of Marine Science \textbf{72}(1): 62--69. doi:\href{https://doi.org/doi:10.1093/icesjms/fsu131}{doi:10.1093/icesjms/fsu131}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-hamel_development_2022}{}}%
+Hamel, O.S., and Cope, J.M. 2022. Development and considerations for application of a longevity-based prior for the natural mortality rate. Fisheries Research \textbf{256}: 106477. doi:\href{https://doi.org/10.1016/j.fishres.2022.106477}{10.1016/j.fishres.2022.106477}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-hannah_length_2014}{}}%
+Hannah, R.W. 2014. Length and age at maturity of female copper rockfish (\emph{{Sebastes} caurinus}) from {Oregon} waters based on histological evaluation of ovaries. Information \{Reports\}, Oregon Department of Fish; Wildlife.
+
+\leavevmode\vadjust pre{\hypertarget{ref-johansson_influence_2008}{}}%
+Johansson, M.L., Banks, M.A., Glunt, K.D., Hassel-Finnegan, H.M., and Buonaccorsi, V.P. 2008. Influence of habitat discontinuity, geographical distance, and oceanography on fine-scale population genetic structure of copper rockfish ( \emph{{Sebastes} caurinus} ). Molecular Ecology \textbf{17}(13): 3051--3061. doi:\href{https://doi.org/10.1111/j.1365-294X.2008.03814.x}{10.1111/j.1365-294X.2008.03814.x}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-lea_biological_1999}{}}%
+Lea, R.N., McAllister, R.D., and VenTresca, D.A. 1999. Biological sspects of nearshore rockfishes of the genus sebastes from {Central} {California} with notes on ecologically related sport fishes. State of California The Resources Agency Department of Fish; Game.
+
+\leavevmode\vadjust pre{\hypertarget{ref-love_probably_1996}{}}%
+Love, M. 1996. Probably more than you want to know about the fishes of the {Pacific} {Coast}. Really Big Press, Santa Barbara, California.
+
+\leavevmode\vadjust pre{\hypertarget{ref-love_rockfishes_2002}{}}%
+Love, M.S., Yoklavich, M.M., and Thorsteinson, L. 2002. Rockfishes of the {Northeast} {Pacific}. University of California Press, Berkeley, CA.
+
+\leavevmode\vadjust pre{\hypertarget{ref-miller_guide_1972}{}}%
+Miller, D.J., and Lea, R.N. 1972. Guide to coastal {Marine} {Fishes} of {California}. State of California Department of Fish; Game Bureau of Marine Fisheries.
+
+\leavevmode\vadjust pre{\hypertarget{ref-miller_spatially_2014}{}}%
+Miller, R.R., Field, J.C., Santora, J.A., Schroeder, I.D., Huff, D.D., Key, M., Pearson, D.E., and MacCall, A.D. 2014. A {Spatially} {Distinct} {History} of the {Development} of {California} {Groundfish} {Fisheries}. PLoS ONE \textbf{9}(6): e99758. doi:\href{https://doi.org/10.1371/journal.pone.0099758}{10.1371/journal.pone.0099758}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-prince_food_1972}{}}%
+Prince, E.D. 1972. The food and behavior of the copper rockfish, {Sebastes} caurinus {Richardson}, associated with an artificial reef in {South} {Humboldt} {Bay}, {California}. \{PhD\} \{Thesis\}, California State University.
+
+\leavevmode\vadjust pre{\hypertarget{ref-punt_quantifying_2008}{}}%
+Punt, A.E., Smith, D.C., KrusicGolub, K., and Robertson, S. 2008. Quantifying age-reading error for use in fisheries stock assessments, with application to species in {Australia}'s southern and eastern scalefish and shark fishery. Canadian Journal of Fisheries and Aquatic Sciences \textbf{65}(9): 1991--2005. doi:\href{https://doi.org/10.1139/F08-111}{10.1139/F08-111}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-reynolds_application_2010}{}}%
+Reynolds, B.F., Powers, S.P., and Bishop, M.A. 2010. Application of {Acoustic} {Telemetry} to {Assess} {Residency} and {Movements} of {Rockfish} and {Lingcod} at {Created} and {Natural} {Habitats} in {Prince} {William} {Sound}. PLoS ONE \textbf{5}(8): e12130. doi:\href{https://doi.org/10.1371/journal.pone.0012130}{10.1371/journal.pone.0012130}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-sivasundar_life_2010}{}}%
+Sivasundar, A., and Palumbi, S.R. 2010. Life history, ecology and the biogeography of strong genetic breaks among 15 species of {Pacific} rockfish, {Sebastes}. Marine Biology \textbf{157}(7): 1433--1452. doi:\href{https://doi.org/10.1007/s00227-010-1419-3}{10.1007/s00227-010-1419-3}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-starr_variation_2015a}{}}%
+Starr, R.M., Wendt, D.E., Barnes, C.L., Marks, C.I., Malone, D., Waltz, G., Schmidt, K.T., Chiu, J., Launer, A.L., and Hall, N.C. 2015. Variation in responses of fishes across multiple reserves within a network of marine protected areas in temperate waters. PLoS ONE \textbf{10}(3): 1--24. doi:\href{https://doi.org/10.5061/dryad.6hk4h.Funding}{10.5061/dryad.6hk4h.Funding}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-then_evaluating_2015}{}}%
+Then, A.Y., Hoenig, J.M., Hall, N.G., and Hewitt, D.A. 2015. Evaluating the predictive performance of empirical estimators of natural mortality rate using information on over 200 fish species. ICES Journal of Marine Science \textbf{72}(1): 82--92. doi:\href{https://doi.org/10.1093/icesjms/fsu136}{10.1093/icesjms/fsu136}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-thompson_larval_2017}{}}%
+Thompson, A.R., Chen, D.C., Guo, L.W., Hyde, J.R., and Watson, W. 2017. Larval abundances of rockfishes that were historically targeted by fishing increased over 16 years in association with a large marine protected area. Royal Society Open Science \textbf{4}(9). doi:\href{https://doi.org/10.1098/rsos.170639}{10.1098/rsos.170639}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-thorson_nwfscageingerror_2012}{}}%
+Thorson, J.T., Stewart, I.J., and Punt, A.E. 2012. {nwfscAgeingError}: A user interface in {R} for the {Punt} {\textbackslash{}}emphet al. (2008) method for calculating ageing error and imprecision. Available from: http://github.com/pfmc-assessments/nwfscAgeingError/.
+
+\leavevmode\vadjust pre{\hypertarget{ref-wendt_collaborative_2009}{}}%
+Wendt, D.E., and Starr, R.M. 2009. Collaborative research: An effective way to collect data for stock assessments and evaluate marine protected areas in {California}. Marine and Coastal Fisheries \textbf{1}(1): 315--324. doi:\href{https://doi.org/10.1577/c08-054.1}{10.1577/c08-054.1}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-wilson-vandenberg_implementing_2014}{}}%
+Wilson-Vandenberg, D., Larinto, T., and Key, M. 2014. Implementing {California}'s {Nearshore} {Fishery} {Management} {Plan} --- twelve years later. California Department of Fish and Game \textbf{100}(2): 32.
+
+\end{CSLReferences}
 \end{document}

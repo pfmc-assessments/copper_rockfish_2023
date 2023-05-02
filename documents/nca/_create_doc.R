@@ -64,12 +64,15 @@ bookdown::render_book(
 #bookdown::render_book(c("00a.Rmd",
 #                        file.path(shared_txt,"1_intro_life_history_fishery_info.Rmd")),
 #                        preview = TRUE, clean = FALSE)
-
+if(file.exists("_main.Rmd")){
+  file.remove("_main.Rmd")
+}
 bookdown::render_book("00a.Rmd", 
-                      output_dir = doc_dir, clean = FALSE, 
+                      output_dir = doc_dir, 
+                      clean = FALSE, 
                       config_file = "_bookdown_north.yml")
 
-
+#stopper
 #===============================================================================
 # Read in a new model ----
 # Create a model Rdata object and executive summary ES tex files

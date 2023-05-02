@@ -460,3 +460,24 @@ calc_index(
   fit = fit.logn,
   grid = grid)
 
+######deltagamma
+fit.gamma <- sdmTMB(
+  Target ~  poly(depth, 2) + region + year + MPAorREF,
+  data = dat,
+  offset = dat$logEffort,
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = delta_gamma(),
+  control = sdmTMBcontrol(newton_loops = 1))
+
+do_diagnostics(
+  dir = file.path(dir, "deltagamma"), 
+  fit = fit.gamma,
+  plot_resid = FALSE)
+
+calc_index(
+  dir = file.path(dir, "deltagamma"), 
+  fit = fit.gamma,
+  grid = grid)
+

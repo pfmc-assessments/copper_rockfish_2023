@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.30)  1 MAY 2023 12:15
+This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.30)  2 MAY 2023 09:30
  restricted system commands enabled.
 **_main.tex
 (./_main.tex
@@ -1057,29 +1057,38 @@ Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
 Package babel Info: Importing font and identification data for english
 (babel)             from babel-en.ini. Reported on input line 11.
 )
-No file _main.aux.
+\csllabelwidth=\skip102
+\cslhangindent=\skip103
+(./_main.aux
 
+LaTeX Warning: Label `tab:onboard-keepdiscard' multiply defined.
+
+
+LaTeX Warning: Label `tab:onboard-filter' multiply defined.
+
+)
 \openout1 = _main.aux
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count387
@@ -1141,8 +1150,9 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package backref Info: ** backref set up for natbib ** on input line 104.
-Package hyperref Info: Link coloring OFF on input line 104.
+Package backref Info: ** backref set up for natbib ** on input line 129.
+Package hyperref Info: Link coloring OFF on input line 129.
+(./_main.out) (./_main.out)
 \@outlinefile=\write6
 
 \openout6 = _main.out
@@ -1153,7 +1163,7 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package soulpos Info: Loading soulutf8 on input line 104.
+Package soulpos Info: Loading soulutf8 on input line 129.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/soul/soulutf8.sty
 Package: soulutf8 2023-02-18 v3.0 Permit use of UTF-8 characters in soul (HO)
 
@@ -1181,25 +1191,25 @@ Package: soul-ori 2023-02-18 v3.0 letterspacing/underlining (mf)
 \SOUL@comma=\count394
 \SOUL@apo=\count395
 \SOUL@grave=\count396
-\SOUL@spaceskip=\skip102
+\SOUL@spaceskip=\skip104
 \SOUL@ttwidth=\dimen327
 \SOUL@uldp=\dimen328
 \SOUL@ulht=\dimen329
 ))
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 104.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 129.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 104.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 129.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 104.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 129.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 104.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 129.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 104.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 129.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 104.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 129.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 104.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 129.
 
 Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
 
@@ -1230,7 +1240,7 @@ Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
 (fontspec)             \__um_luatex_copy_fontdimens: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 104.
+(Font)              scaled to size 10.95pt on input line 129.
 
 Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
 
@@ -1267,15 +1277,15 @@ Package fontspec Info: Font family 'latinmodern-math.otf(1)' created for font
 (fontspec)             \__um_luatex_copy_fontdimens: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 104.
+(Font)              scaled to size 10.95pt on input line 129.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 104.
+(Font)              `operators' in the math version `normal' on input line 129.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 104.
+(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 129.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 104.
+(Font)              `operators' in the math version `bold' on input line 129.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 104.
+(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 129.
 
 Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
 
@@ -1357,13 +1367,13 @@ Package fontspec Info: Font family 'latinmodern-math.otf(2)' created for font
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 104.
+(Font)              `symbols' in the math version `normal' on input line 129.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 104.
+(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 129.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 104.
+(Font)              `symbols' in the math version `bold' on input line 129.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 104.
+(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 129.
 
 Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
 
@@ -1427,83 +1437,83 @@ Package fontspec Info: Font family 'latinmodern-math.otf(3)' created for font
 (fontspec)             \fontdimen 13\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 104.
+(Font)              `largesymbols' in the math version `normal' on input line 129.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 104.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 129.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 104.
+(Font)              `largesymbols' in the math version `bold' on input line 129.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 104.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 129.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.665pt on input line 104.
+(Font)              scaled to size 7.665pt on input line 129.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.475pt on input line 104.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 104.
+(Font)              scaled to size 5.475pt on input line 129.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 129.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.95099pt on input line 104.
+(Font)              scaled to size 10.95099pt on input line 129.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.66568pt on input line 104.
+(Font)              scaled to size 7.66568pt on input line 129.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.4755pt on input line 104.
+(Font)              scaled to size 5.4755pt on input line 129.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.94882pt on input line 104.
+(Font)              scaled to size 10.94882pt on input line 129.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.66417pt on input line 104.
+(Font)              scaled to size 7.66417pt on input line 129.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.47441pt on input line 104.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 104.
+(Font)              scaled to size 5.47441pt on input line 129.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 129.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 104.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 129.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Info: Redefining \microtypecontext on input line 104.
-Package microtype Info: Applying patch `item' on input line 104.
-Package microtype Info: Applying patch `toc' on input line 104.
-Package microtype Info: Applying patch `eqnum' on input line 104.
-Package microtype Info: Applying patch `footnote' on input line 104.
-Package microtype Info: Applying patch `verbatim' on input line 104.
+LaTeX Info: Redefining \microtypecontext on input line 129.
+Package microtype Info: Applying patch `item' on input line 129.
+Package microtype Info: Applying patch `toc' on input line 129.
+Package microtype Info: Applying patch `eqnum' on input line 129.
+Package microtype Info: Applying patch `footnote' on input line 129.
+Package microtype Info: Applying patch `verbatim' on input line 129.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 104.
+LaTeX Info: Redefining \showhyphens on input line 129.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of spacing.
 Package microtype Info: No adjustment of kerning.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
 File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Modern Roman (RS)
 )
-<figure_title.png, id=7, 722.7pt x 542.025pt>
+<figure_title.png, id=115, 722.7pt x 542.025pt>
 File: figure_title.png Graphic file (type png)
 <use figure_title.png>
-Package luatex.def Info: figure_title.png  used on input line 121.
+Package luatex.def Info: figure_title.png  used on input line 146.
 (luatex.def)             Requested size: 289.07487pt x 216.80615pt.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 124.
+(Font)              scaled to size 10.0pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 124.
+(Font)              scaled to size 7.0pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 124.
+(Font)              scaled to size 5.0pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 124.
+(Font)              scaled to size 10.00092pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 124.
+(Font)              scaled to size 7.00064pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 124.
+(Font)              scaled to size 5.00046pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 124.
+(Font)              scaled to size 9.99893pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 124.
+(Font)              scaled to size 6.99925pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 124.
+(Font)              scaled to size 4.99947pt on input line 149.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -1512,14 +1522,9 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 
 \openout5 = _main.upa
-{c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./figure_title.png>]
+{c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./figure_title.png>] [2
 
-LaTeX Warning: Reference `LastPage' on page ii undefined on input line 146.
-
-[2
-
-]
-No file _main.toc.
+] (./_main.toc)
 \tf@toc=\write7
 
 \openout7 = _main.toc
@@ -1529,52 +1534,567 @@ No file _main.toc.
 
 ]
 
-LaTeX Warning: Reference `tab:pr-filter' on page 1 undefined on input line 186.
-
-
-LaTeX Warning: Reference `tab:pr-rfgen' on page 1 undefined on input line 186.
-
-
-LaTeX Warning: Reference `tab:pr-cpue' on page 1 undefined on input line 186.
-
-
-LaTeX Warning: Reference `pr-bag' on page 1 undefined on input line 186.
-
-
-LaTeX Warning: Reference `tab:pr-filter' on page 1 undefined on input line 190.
-
-
-LaTeX Warning: Reference `fig:pr-qq' on page 1 undefined on input line 192.
-
-
-LaTeX Warning: Reference `fig:pr-districtcpue' on page 1 undefined on input line 192.
+LaTeX Warning: Reference `fig:copper-smurf-length' on page 1 undefined on input line 220.
 
 [1
 
+] [2]
+
+LaTeX Warning: Reference `tab:allcatches' on page 3 undefined on input line 242.
+
+
+LaTeX Warning: Reference `fig:catch' on page 3 undefined on input line 242.
+
+[3]
+
+LaTeX Warning: Reference `fig:ca-map' on page 4 undefined on input line 254.
+
+[4] [5]
+
+LaTeX Warning: Reference `tab:ca-management' on page 6 undefined on input line 269.
+
+[6]
+
+LaTeX Warning: Reference `fig:data-plot' on page 7 undefined on input line 281.
+
+
+LaTeX Warning: Reference `assessment-model' on page 7 undefined on input line 281.
+
+[7] [8]
+
+LaTeX Warning: Reference `fig:maturity' on page 9 undefined on input line 312.
+
+
+LaTeX Warning: Reference `fig:fecundity' on page 9 undefined on input line 314.
+
+
+LaTeX Warning: Reference `fig:frac-sex-len' on page 9 undefined on input line 319.
+
+
+LaTeX Warning: Reference `fig:weight-length' on page 9 undefined on input line 324.
+
+
+LaTeX Warning: Reference `tab:growth-age-samps' on page 9 undefined on input line 329.
+
+[9]
+
+LaTeX Warning: Reference `fig:age-error-dist' on page 10 undefined on input line 348.
+
+
+LaTeX Warning: Reference `fig:age-error' on page 10 undefined on input line 350.
+
+
+LaTeX Warning: Reference `fig:age-error-matrix' on page 10 undefined on input line 350.
+
+
+LaTeX Warning: Reference `tab:south_referenceES' on page 10 undefined on input line 358.
+
+
+LaTeX Warning: Reference `fig:depl' on page 10 undefined on input line 360.
+
+
+LaTeX Warning: Reference `tab:south_timeseries' on page 10 undefined on input line 360.
+
+
+LaTeX Warning: Reference `fig:1-spr' on page 10 undefined on input line 360.
+
+
+LaTeX Warning: Reference `fig:phase' on page 10 undefined on input line 360.
+
+
+LaTeX Warning: Reference `tab:south_referenceES' on page 10 undefined on input line 360.
+
+
+LaTeX Warning: Reference `fig:yield' on page 10 undefined on input line 360.
+
+[10] [11]
+
+LaTeX Warning: Reference `fig:fig-sm-mrfss' on page 12 undefined on input line 399.
+
+[12]
+
+LaTeX Warning: Reference `tab:tab-region-mrfss' on page 13 undefined on input line 405.
+
+
+LaTeX Warning: Reference `tab:tab-year-mrfss' on page 13 undefined on input line 405.
+
+
+LaTeX Warning: Reference `fig:fig-areacpue-mrfss' on page 13 undefined on input line 407.
+
+[13]
+
+LaTeX Warning: Reference `fig:fig-dist-fits-mrfss' on page 14 undefined on input line 409.
+
+[14] [15] [16] [17] [18] [19] [20] [21]
+Overfull \hbox (3.61978pt too wide) in paragraph at lines 619--619
+ []|\TU/lmr/m/n/10 Log.Like- 
+ []
+
+
+Overfull \hbox (14.45053pt too wide) in alignment at lines 616--621
+ [][][][][][][][][] 
+ []
+
+
+Overfull \hbox (3.61978pt too wide) in paragraph at lines 624--624
+ []|\TU/lmr/m/n/10 Log.Like- 
+ []
+
+
+Overfull \hbox (14.45053pt too wide) in alignment at lines 621--626
+ [][][][][][][][][] 
+ []
+
+
+Overfull \hbox (14.45053pt too wide) in alignment at lines 626--628
+ [][][][][][][][][] 
+ []
+
+
+Overfull \hbox (14.45053pt too wide) in alignment at lines 628--630
+ [][][][][][][][][] 
+ []
+
+
+Overfull \hbox (14.45053pt too wide) in alignment at lines 630--639
+ [][][][][][][][][] 
+ []
+
+[22] [23]
+<S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/copper_depths_gisdepthadded.png, id=320, 505.89pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/copper_depths_gisdepthadded.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/copper_depths_gisdepthadded.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/copper_depths_gisdepthadded.png  used on input line 684.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+[24<s:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/copper_depths_gisdepthadded.png>]
+<S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/drifts_by_depth_district.png, id=325, 505.89pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/drifts_by_depth_district.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/drifts_by_depth_district.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/drifts_by_depth_district.png  used on input line 688.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+[25<s:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/drifts_by_depth_district.png>]
+<S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/average_cpue_by_region.png, id=330, 505.89pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/average_cpue_by_region.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/average_cpue_by_region.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/average_cpue_by_region.png  used on input line 696.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+[26<s:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/average_cpue_by_region.png>]
+<S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/index.png, id=335, 722.7pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/index.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/index.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/index.png  used on input line 704.
+(luatex.def)             Requested size: 398.33534pt x 278.83473pt.
+[27<s:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/Index.png>]
+<S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/qq.png, id=342, 505.89pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/qq.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/qq.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/qq.png  used on input line 712.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+[28<s:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/south/start2005/area_weighted_logn/qq.png>]
+
+LaTeX Warning: Reference `pr-bag' on page 29 undefined on input line 725.
+
+[29] [30] [31] [32] [33]
+Overfull \hbox (396.32367pt too wide) in alignment at lines 847--852
+ [][][][] 
+ []
+
+
+Overfull \hbox (396.32367pt too wide) in alignment at lines 852--857
+ [][][][] 
+ []
+
+
+Overfull \hbox (396.32367pt too wide) in alignment at lines 857--859
+ [][][][] 
+ []
+
+
+Overfull \hbox (396.32367pt too wide) in alignment at lines 859--861
+ [][][][] 
+ []
+
+
+Overfull \hbox (396.32367pt too wide) in alignment at lines 861--877
+ [][][][] 
+ []
+
+[34
+
 ]
-
-LaTeX Warning: Reference `tab:pr-modelselect' on page 2 undefined on input line 194.
-
-
-LaTeX Warning: Reference `tab:pr-index' on page 2 undefined on input line 194.
+Overfull \hbox (5.80879pt too wide) in paragraph at lines 890--890
+ \TU/lmr/m/n/10 mary.Tar- 
+ []
 
 
-LaTeX Warning: Reference `fig:pr-index' on page 2 undefined on input line 194.
+Overfull \hbox (11.89777pt too wide) in paragraph at lines 890--890
+ \TU/lmr/m/n/10 get.Species| 
+ []
 
-[2] [3] [4] [5]
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-m
-l.311 Filter & Description & N
-                            umber of Samples & Positive Samples\\
+
+Overfull \hbox (3.61978pt too wide) in paragraph at lines 890--890
+ []|\TU/lmr/m/n/10 Log.Like- 
+ []
+
+
+Overfull \hbox (20.64053pt too wide) in alignment at lines 887--892
+ [][][][][][][][][] 
+ []
+
+
+Overfull \hbox (5.80879pt too wide) in paragraph at lines 895--895
+ \TU/lmr/m/n/10 mary.Tar- 
+ []
+
+
+Overfull \hbox (11.89777pt too wide) in paragraph at lines 895--895
+ \TU/lmr/m/n/10 get.Species| 
+ []
+
+
+Overfull \hbox (3.61978pt too wide) in paragraph at lines 895--895
+ []|\TU/lmr/m/n/10 Log.Like- 
+ []
+
+
+Overfull \hbox (20.64053pt too wide) in alignment at lines 892--897
+ [][][][][][][][][] 
+ []
+
+
+Overfull \hbox (20.64053pt too wide) in alignment at lines 897--899
+ [][][][][][][][][] 
+ []
+
+
+Overfull \hbox (20.64053pt too wide) in alignment at lines 899--901
+ [][][][][][][][][] 
+ []
+
+
+Overfull \hbox (20.64053pt too wide) in alignment at lines 901--910
+ [][][][][][][][][] 
+ []
+
+[35
+
+] [36]
+<S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/bag_change_visuals/pr_copper_cpue_year_area_max5.png, id=402, 505.89pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/bag_change_visuals/pr_copper_cpue_year_area_max5.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/bag_change_visuals/pr_copper_cpue_year_area_max5.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/bag_change_visuals/pr_copper_cpue_year_area_max5.png  used on input line 958.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+[37<s:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/bag_change_visuals/pr_copper_cpue_year_area_max5.png>]
+<S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/average_cpue_by_district.png, id=410, 505.89pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/average_cpue_by_district.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/average_cpue_by_district.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/average_cpue_by_district.png  used on input line 966.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+[38<s:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/average_cpue_by_district.png>]
+<S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/index.png, id=415, 722.7pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/index.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/index.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/index.png  used on input line 974.
+(luatex.def)             Requested size: 398.33534pt x 278.83473pt.
+[39<s:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/Index.png>]
+<S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/qq.png, id=421, 505.89pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/qq.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/qq.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/qq.png  used on input line 982.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+[40<s:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/south/rm_last2yrs/qq.png>]
+
+LaTeX Warning: Reference `tab:tab-index-ccfrp' on page 41 undefined on input line 999.
+
+
+LaTeX Warning: Reference `fig:fig-cpue-ccfrp' on page 41 undefined on input line 999.
+
+
+LaTeX Warning: Reference `fig:ccfrp-sitecpue' on page 41 undefined on input line 1001.
+
+
+LaTeX Warning: Reference `tab:ccfrp-model' on page 41 undefined on input line 1003.
+
+[41] [42] [43
+
+]
+Overfull \hbox (18.50067pt too wide) in paragraph at lines 1054--1054
+[]|\TU/lmr/m/n/7 Depth_squared|  
+ []
+
+
+Overfull \hbox (18.50067pt too wide) in paragraph at lines 1059--1059
+[]|\TU/lmr/m/n/7 Depth_squared|  
+ []
+
+[44
+
+
+] [45
+
+]
+<S:/copper_rockfish_2023/data/survey_indices/ccfrp/south/area_weighted/qq.png, id=453, 505.89pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/survey_indices/ccfrp/south/area_weighted/qq.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/survey_indices/ccfrp/south/area_weighted/qq.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/survey_indices/ccfrp/south/area_weighted/qq.png  used on input line 1113.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+[46<s:/copper_rockfish_2023/data/survey_indices/ccfrp/south/area_weighted/qq.png>]
+<S:/copper_rockfish_2023/data/survey_indices/ccfrp/south/mpa_site_cpue.png, id=460, 505.89pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/survey_indices/ccfrp/south/mpa_site_cpue.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/survey_indices/ccfrp/south/mpa_site_cpue.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/survey_indices/ccfrp/south/mpa_site_cpue.png  used on input line 1121.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+[47<s:/copper_rockfish_2023/data/survey_indices/ccfrp/south/mpa_site_cpue.png>]
+<S:/copper_rockfish_2023/data/survey_indices/ccfrp/south/area_weighted/Index.png, id=467, 722.7pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/survey_indices/ccfrp/south/area_weighted/Index.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/survey_indices/ccfrp/south/area_weighted/Index.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/survey_indices/ccfrp/south/area_weighted/Index.png  used on input line 1129.
+(luatex.def)             Requested size: 398.33534pt x 278.83473pt.
+
+LaTeX Warning: Reference `fig:nwfsc-hkl-map' on page 48 undefined on input line 1136.
+
+[48<s:/copper_rockfish_2023/data/survey_indices/ccfrp/south/area_weighted/Index.png>] [49] (./tex_tables/nwfsc_hkl_formatted_index.tex) [50]
+<S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/plots/raw_cpue_nwfsc_hkl_by_area.png, id=492, 722.7pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/plots/raw_cpue_nwfsc_hkl_by_area.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/plots/raw_cpue_nwfsc_hkl_by_area.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/plots/raw_cpue_nwfsc_hkl_by_area.png  used on input line 1150.
+(luatex.def)             Requested size: 398.33534pt x 278.83473pt.
+[51<s:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/plots/raw_cpue_nwfsc_hkl_by_area.png>]
+<S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/Index.png, id=498, 722.7pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/Index.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/Index.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/Index.png  used on input line 1158.
+(luatex.def)             Requested size: 398.33534pt x 278.83473pt.
+[52<s:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/Index.png>]
+<S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/qq.png, id=505, 505.89pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/qq.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/qq.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/qq.png  used on input line 1166.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+[53<s:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/qq.png>]
+<S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/residuals_page1.png, id=511, 1011.78pt x 722.7pt>
+File: S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/residuals_page1.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/residuals_page1.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/residuals_page1.png  used on input line 1174.
+(luatex.def)             Requested size: 398.34416pt x 284.53154pt.
+[54<s:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/residuals_page1.png>]
+<S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/residuals_page2.png, id=516, 1011.78pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/residuals_page2.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/residuals_page2.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/residuals_page2.png  used on input line 1182.
+(luatex.def)             Requested size: 398.34416pt x 199.17207pt.
+[55<s:/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted/residuals_page2.png>]
+
+LaTeX Warning: Reference `tab:rov-obs' on page 56 undefined on input line 1193.
+
+
+LaTeX Warning: Reference `fig:rov-raw-cpue' on page 56 undefined on input line 1193.
+
+[56] (./tex_tables/rov_removed_records_south.tex) [57]
+Overfull \hbox (15.06406pt too wide) in paragraph at lines 1212--1212
+[]|\TU/lmr/m/n/7 Depth.Poly- 
+ []
+
+
+Overfull \hbox (11.88966pt too wide) in paragraph at lines 1212--1212
+[]|\TU/lmr/m/n/7 Prop..Hard|  
+ []
+
+
+Overfull \hbox (16.01253pt too wide) in paragraph at lines 1212--1212
+[]|\TU/lmr/m/n/7 Prop..Mixed|  
+ []
+
+
+Overfull \hbox (8.53513pt too wide) in paragraph at lines 1212--1212
+[]|\TU/lmr/m/n/7 Prop..Soft|  
+ []
+
+
+Overfull \hbox (2.7076pt too wide) in paragraph at lines 1212--1212
+\TU/lmr/m/n/7 per.Year|  
+ []
+
+
+Overfull \hbox (0.8451pt too wide) in paragraph at lines 1212--1212
+\TU/lmr/m/n/7 tion.Su- 
+ []
+
+
+Overfull \hbox (5.04337pt too wide) in paragraph at lines 1212--1212
+\TU/lmr/m/n/7 per_year|  
+ []
+
+
+Overfull \hbox (8.00691pt too wide) in paragraph at lines 1212--1212
+\TU/lmr/m/n/7 set.log.us- 
+ []
+
+
+Overfull \hbox (6.53883pt too wide) in paragraph at lines 1212--1212
+\TU/lmr/m/n/7 able.area.|  
+ []
+
+
+Overfull \hbox (0.51395pt too wide) in paragraph at lines 1212--1212
+[]|\TU/lmr/m/n/7 log.like- 
+ []
+
+
+Overfull \hbox (15.06406pt too wide) in paragraph at lines 1217--1217
+[]|\TU/lmr/m/n/7 Depth.Poly- 
+ []
+
+
+Overfull \hbox (11.88966pt too wide) in paragraph at lines 1217--1217
+[]|\TU/lmr/m/n/7 Prop..Hard|  
+ []
+
+
+Overfull \hbox (16.01253pt too wide) in paragraph at lines 1217--1217
+[]|\TU/lmr/m/n/7 Prop..Mixed|  
+ []
+
+
+Overfull \hbox (8.53513pt too wide) in paragraph at lines 1217--1217
+[]|\TU/lmr/m/n/7 Prop..Soft|  
+ []
+
+
+Overfull \hbox (2.7076pt too wide) in paragraph at lines 1217--1217
+\TU/lmr/m/n/7 per.Year|  
+ []
+
+
+Overfull \hbox (0.8451pt too wide) in paragraph at lines 1217--1217
+\TU/lmr/m/n/7 tion.Su- 
+ []
+
+
+Overfull \hbox (5.04337pt too wide) in paragraph at lines 1217--1217
+\TU/lmr/m/n/7 per_year|  
+ []
+
+
+Overfull \hbox (8.00691pt too wide) in paragraph at lines 1217--1217
+\TU/lmr/m/n/7 set.log.us- 
+ []
+
+
+Overfull \hbox (6.53883pt too wide) in paragraph at lines 1217--1217
+\TU/lmr/m/n/7 able.area.|  
+ []
+
+
+Overfull \hbox (0.51395pt too wide) in paragraph at lines 1217--1217
+[]|\TU/lmr/m/n/7 log.like- 
+ []
+
+
+Overfull \hbox (18.97598pt too wide) in paragraph at lines 1229--1229
+[]|\TU/lmr/m/n/7 101334179.47|  
+ []
+
+
+Overfull \hbox (18.97598pt too wide) in paragraph at lines 1229--1229
+[]|\TU/lmr/m/n/7 101334179.37|  
+ []
+
+
+Overfull \hbox (18.97598pt too wide) in paragraph at lines 1229--1229
+[]|\TU/lmr/m/n/7 101334177.71|  
+ []
+
+
+Overfull \hbox (15.07265pt too wide) in paragraph at lines 1233--1233
+[]|\TU/lmr/m/n/7 99217437.47|  
+ []
+
+
+Overfull \hbox (15.07265pt too wide) in paragraph at lines 1233--1233
+[]|\TU/lmr/m/n/7 99217437.37|  
+ []
+
+
+Overfull \hbox (15.07265pt too wide) in paragraph at lines 1233--1233
+[]|\TU/lmr/m/n/7 99217435.71|  
+ []
+
+
+Overfull \hbox (18.97598pt too wide) in paragraph at lines 1245--1245
+[]|\TU/lmr/m/n/7 102962691.18|  
+ []
+
+
+Overfull \hbox (8.95354pt too wide) in paragraph at lines 1245--1245
+[]|\TU/lmr/m/n/7 102962691|  
+ []
+
+
+Overfull \hbox (18.97598pt too wide) in paragraph at lines 1245--1245
+[]|\TU/lmr/m/n/7 102962689.48|  
+ []
+
+
+Overfull \hbox (18.97598pt too wide) in paragraph at lines 1249--1249
+[]|\TU/lmr/m/n/7 100001585.01|  
+ []
+
+
+Overfull \hbox (18.97598pt too wide) in paragraph at lines 1249--1249
+[]|\TU/lmr/m/n/7 100001584.84|  
+ []
+
+
+Overfull \hbox (18.97598pt too wide) in paragraph at lines 1249--1249
+[]|\TU/lmr/m/n/7 100001583.31|  
+ []
+
+[58
+
+] [59
+
+]
+<S:/copper_rockfish_2023/data/survey_indices/rov/delta_gamma_south_designation_depth_year_soft_73_27/qq.png, id=551, 505.89pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/survey_indices/rov/delta_gamma_south_designation_depth_year_soft_73_27/qq.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/survey_indices/rov/delta_gamma_south_designation_depth_year_soft_73_27/qq.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/survey_indices/rov/delta_gamma_south_designation_depth_year_soft_73_27/qq.png  used on input line 1294.
+(luatex.def)             Requested size: 398.34415pt x 398.34415pt.
+[60<s:/copper_rockfish_2023/data/survey_indices/rov/delta_gamma_south_designation_depth_year_soft_73_27/qq.png>]
+<S:/copper_rockfish_2023/data/survey_indices/rov/delta_gamma_south_designation_depth_year_soft_73_27/Index.png, id=557, 722.7pt x 505.89pt>
+File: S:/copper_rockfish_2023/data/survey_indices/rov/delta_gamma_south_designation_depth_year_soft_73_27/Index.png Graphic file (type png)
+<use S:/copper_rockfish_2023/data/survey_indices/rov/delta_gamma_south_designation_depth_year_soft_73_27/Index.png>
+Package luatex.def Info: S:/copper_rockfish_2023/data/survey_indices/rov/delta_gamma_south_designation_depth_year_soft_73_27/Index.png  used on input line 1302.
+(luatex.def)             Requested size: 398.33534pt x 278.83473pt.
+[61<s:/copper_rockfish_2023/data/survey_indices/rov/delta_gamma_south_designation_depth_year_soft_73_27/Index.png>] [62] [63] [64] 
+enddocument/afterlastpage: lastpage setting LastPage.
+(./_main.aux * soulpos - computing points - it may take a few seconds *
+\openout5 = _main.upb
+ (./_main.upa))
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package rerunfilecheck Info: File `_main.out' has not changed.
+(rerunfilecheck)             Checksum: 3D9483984E71EA04CD8334FADAD63080;5554.
+)
 
 Here is how much of LuaTeX's memory you used:
- 50373 strings out of 478263
- 125086,1977958 words of node,token memory allocated
- 2505 words of node memory still in use:
-   18 hlist, 4 vlist, 12 rule, 9 disc, 3 local_par, 3 dir, 60 glue, 10 kern, 8 penalty, 6 unset, 93 glyph, 4 align_record, 1 span, 93 attribute, 87 glue_spec, 48 attribute_list, 7 temp, 1 align_stack, 3 write, 1 pdf_dest, 2 pdf_colorstack nodes
-   avail lists: 1:3,2:1341,3:300,4:212,5:530,6:137,7:8405,8:2,9:1013,10:13,11:547
- 68824 multiletter control sequences out of 65536+600000
- 67 fonts using 19655055 bytes
- 218i,11n,216p,2284b,666s stack positions out of 10000i,1000n,20000p,200000b,200000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 50986 strings out of 478263
+ 156366,1977958 words of node,token memory allocated
+ 724 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 5 glue, 4 kern, 1 penalty, 4 glyph, 17 attribute, 79 glue_spec, 10 attribute_list, 3 write nodes
+   avail lists: 1:11,2:6112,3:1506,4:255,5:668,6:730,7:10481,8:15,9:4760,10:24,11:782
+ 69098 multiletter control sequences out of 65536+600000
+ 70 fonts using 20050043 bytes
+ 218i,11n,216p,2284b,673s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman5-regular.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans8-regular.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf><c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf>
+Output written on _main.pdf (68 pages, 3217745 bytes).
+
+PDF statistics: 702 PDF objects out of 1000 (max. 8388607)
+ 563 compressed objects within 6 object streams
+ 190 named destinations out of 1000 (max. 131072)
+ 232 words of extra memory for PDF output out of 10000 (max. 100000000)
+

@@ -1,18 +1,24 @@
 delete_merged_file: true
-
+book_filename: 'south'
 rmd_files: ['00a.Rmd',
              '00authors.Rmd', 
               '00bibliography.Rmd',
 #               '01executive.Rmd',
-#    '62appendix_crfs_onboard.Rmd'
-              '64appendix_crfs_dockside.Rmd'
- #             '11introduction.Rmd',
- #             '65appendix_ccfrp.Rmd'
+             '11introduction.Rmd',
+             '20data.Rmd',
+             '22biology.Rmd',
+#             '40management.Rmd',
+             '61appendix_mrfss.Rmd',
+             '62appendix_crfs_onboard.Rmd',
+             '64appendix_crfs_dockside.Rmd',
+             '65appendix_ccfrp.Rmd',
+             '66appendix_nwfsc_hkl.Rmd',
+             '67appendix_rov.Rmd'
  #            "35model-prestar-base-results-north.Rmd",
  #            "36model-uncertainty-north.Rmd",
  #            '40management.Rmd',
  #            '41acknowledgements.Rmd',
  #            '50tables.Rmd',
  #            '60figures.Rmd',
- # --           '70appendices-north.Rmd'
+
 ]

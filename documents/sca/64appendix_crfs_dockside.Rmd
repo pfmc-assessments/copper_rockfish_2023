@@ -143,7 +143,7 @@ sa4ss::table_format(
   landscape = TRUE,
   custom_width = TRUE,
   col_to_adjust = c(3),
-  width = c("8m")
+  width = c("8cm")
 )
 ```
 

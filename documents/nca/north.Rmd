@@ -1,0 +1,745 @@
+---
+geometry: margin=1in
+month: "`r format(Sys.Date(), '%B')`"
+year: "`r format(Sys.Date(), '%Y')`"
+preamble: |
+output:
+  sa4ss::techreport_pdf:
+    default
+  bookdown::pdf_document2:
+    keep_tex: true
+lang: en
+bibilography: [pfmcassess.bib, wcassess.bib]
+papersize: letter
+---
+
+```{r opts, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+knitr::knit_hooks$set(plot = function(x,options) {
+      base = knitr::opts_knit$get('base.url')
+      if (is.null(base)) base = ''
+      alt = ifelse (is.null(options$alt),"",options$alt)
+      cap = ifelse (is.null(options$caption),"",options$caption)
+      if (alt != ""){
+        sprintf('![%s](%s%s "%s")', cap, base, x, alt)
+      } else {
+        sprintf('![%s](%s%s)', cap, base, x)
+        }
+  })
+
+load('saved_directories.Rdata')
+load("00opts.Rdata")
+
+spp <- "copper rockfish"
+Spp <- "Copper rockfish"
+area <- "north of Point Conception"
+
+if(file.exists("00mod.Rdata")){
+  load("00mod.Rdata")
+} else {
+  print("Model output not being read. Please run the read_model() function.")
+}
+
+source(file.path(doc_dir, "helper_functions.R"))
+
+hkl <- "NWFSC Hook and Line survey"
+
+#source(file.path(r_dir, "get_derived_quants.R"))
+
+```
+
+<!--chapter:end:00a.Rmd-->
+
+---
+author:
+  - name: Melissa H. Monk
+    code: 1
+    first: M
+    middle: H
+    family: Monk
+  - name: Chantel R. Wetzel
+    code: 2
+    first: C
+    middle: R
+    family: Wetzel
+  - name: Julia Coates
+    code: 3
+    first: J
+    middle: ''
+    family: Coates
+author_list: Monk, M.H., C.R. Wetzel, J. Coates
+affiliation:
+  - code: 1
+    address: Southwest Fisheries Science Center, U.S. Department of Commerce, National
+      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 110
+      McAllister Way, Santa Cruz, California 95060
+  - code: 2
+    address: Northwest Fisheries Science Center, U.S. Department of Commerce, National
+      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 2725
+      Montlake Boulevard East, Seattle, Washington 98112
+  - code: 3
+    address: .na.character
+address:
+  - ^1^Southwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+    and Atmospheric Administration, National Marine Fisheries Service, 110 McAllister
+    Way, Santa Cruz, California 95060
+  - ^2^Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+    and Atmospheric Administration, National Marine Fisheries Service, 2725 Montlake
+    Boulevard East, Seattle, Washington 98112
+  - ^3^NA
+---
+
+<!--chapter:end:00authors.Rmd-->
+
+---
+bibliography:
+ - sa4ss.bib
+ - pfmcassess.bib
+ - wcassess.bib
+---
+
+<!--chapter:end:00bibliography.Rmd-->
+
+# Introduction
+
+This assessment report describes the sub-area population of `r spp` (*Sebastes caurinus*) off the California coast `r area` in U.S. waters, using data through 2022. The sub-area population north of Point Conception in California waters was also evaluated and is described in a separate assessment report. The `r spp` status for the California stock of is determined by the combined estimates of spawning output from both sub-areas and is detailed in the [management](#management) section. This assessment does not account for populations located in Mexico waters or other areas off the U.S. coast and assumes that these southern and northern populations do not contribute to the population being assessed here. 
+
+## Basic Information and Life History
+
+```{r, echo=FALSE, results='asis'}
+filein <- file.path(doc_dir, "shared_text",'1_intro_life_history_fishery_info.Rmd')
+read_child(filein)
+```
+
+## Ecosystem Considerations
+
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text", '1_ecosystem_consideration.Rmd')
+read_child(filein)
+```
+
+
+## Historical and Current Fishery Information
+
+Off the coast of California south of Point Conception `r spp` is caught in both commercial and recreational fisheries. Recreational removals have been the largest source of fishing mortality of `r spp` across all years (Table \ref{tab:allcatches} and Figure \ref{fig:catch}). The recreational fishery is comprised of individual recreational fishers (Private/Rental, PR) and charter recreational private vessels (CPFV) which take groups of individuals out for day fishing trips. Across both types of recreational fishing the majority of effort occurs around rocky reefs that can be accessed via a day-trips. 
+
+```{r, echo=FALSE, results='asis'}
+filein <- file.path(doc_dir, "shared_text",'1_intro_ca_commercial.Rmd')
+read_child(filein)
+```
+
+`r Spp` residing between Point Conception and the California/Oregon border are assessed here as a single, separate stock (Figure \ref{fig:ca-map}). This designation was made based on oceanographic, geographic, and fishery conditions. The `r spp` population in California waters was split at Point Conception due to water circulation patterns that create a natural barrier between nearshore rockfish populations to the north and south. The northern border for this assessment was defined as the California/Oregon border due to substantial differences in historical and current exploitation levels. Additionally, the fairly sedentary nature of adult `r spp`, likely limits flow of fish between northern California and areas to the north. 
+
+## Summary of Management History and Performance
+
+
+```{r, echo=FALSE, results='asis'}
+
+filein = file.path(doc_dir, "shared_text", '1_intro_management.Rmd')
+read_child(filein)
+```
+
+
+## Foreign Fisheries
+
+
+
+```{r, echo=FALSE, results='asis'}
+
+filein = file.path(doc_dir, "shared_text", '1_foreign_fisheries.Rmd')
+read_child(filein)
+```
+
+
+
+<!--chapter:end:11introduction.Rmd-->
+
+# Data
+
+Data comprise the foundational components of stock assessment models.
+The decision to include or exclude particular data sources in an assessment model depends on many factors.
+These factors often include, but are not limited to,
+the way in which data were collected (e.g., measurement method and consistency);
+the spatial and temporal coverage of the data;
+the quantity of data available per desired sampling unit;
+the representativeness of the data to inform the modeled processes of importance;
+timing of when the data were provided;
+limitations imposed by the Terms of Reference; and
+the presence of an avenue for the inclusion of the data in the assessment model.
+Attributes associated with a data source can change through time,
+as can the applicability of the data source when different modeling approaches are explored (e.g., stock structure or time-varying processes).
+Therefore, the specific data sources included or excluded from this assessment should not necessarily constrain the selection of data sources applicable to future stock assessments for `r spp`.
+Even if a data source is not directly used in the stock assessment they can provide valuable insights into biology, fishery behavior, or localized dynamics.
+
+Data from a wide range of programs were available for possible inclusion in the current assessment model.
+Descriptions of each data source included in the model (Figure \@ref(fig:data-plot)) and sources that were explored but not included in the base model are provided below.
+Data that were excluded from the base model were explicitly explored during the development of this stock assessment or have not changed since their past exploration in a previous `r spp` stock assessment.
+In some cases, the inclusion of excluded data sources were explored through sensitivity analyses (see Section \@ref(assessment-model)).
+
+<!--chapter:end:20data.Rmd-->
+
+## Biological Data
+
+### Natural Mortality
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'2_biology_natural_mortality.Rmd')
+read_child(filein)
+```
+
+
+### Maturation and Fecundity
+
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'2_biology_maturity.Rmd')
+read_child(filein)
+```
+
+The 50 percent size-at-maturity was estimated at `r round(model$MGparmAdj[,"Mat50%_Fem_GP_1"][1], 1)` cm with a slope of `r round(model$MGparmAdj$Mat_slope_Fem_GP_1[1], 2)` (Figure \ref{fig:maturity}). This area-specific maturity-at-length estimate is relatively similar but with fish maturing at a slightly larger size compared to the biological maturity curve assumed for `r spp` south of Point Conception. Additionally, these values are both slightly smaller compared to estimates by Hannah [-@hannah_length_2014] for fish observed in Oregon waters (34.8 cm) which estimated the 50 percent size-at-maturity of  and slope of -0.60.
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'2_biology_fecundity.Rmd')
+read_child(filein)
+```
+
+
+### Sex Ratio
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'2_biology_sex_ratio.Rmd')
+read_child(filein)
+```
+
+
+### Length-Weight Relationship
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'2_biology_weight_length.Rmd')
+read_child(filein)
+```
+
+
+### Growth (Length-at-Age) {#length-at-age}
+
+Length-at-age was estimated for male and female `r spp` informed by age data from the fisheries, the CCFRP survey, and independent age data collected effort from three programs `r area` since 2002: 207 otoliths collected by the NWFSC WCGBT survey, 426 otoliths collected by a research survey conducted by Don Pearson, 74 from a research survey conducted by Abrams, and 45 from CDFW special collections (Table \ref{tab:growth-age-samps}). The ages collected by these three sources were included in the model as a "growth" fleet that was not associated with removals or an index of abundance. 
+
+Sex-specific growth parameters `area` were initially estimated external to the model at the following values:
+
+\begin{centering}
+
+Females $L_{\infty}$ = 48.5 cm; $L_1$ = 9.1 cm; $k$ = 0.174 per year
+
+Males $L_{\infty}$ = 46.8 cm; $L_1$ = 5.3 cm; $k$ = 0.207 per year
+
+\end{centering}
+
+\vspace{0.50cm}
+
+These values were used as starting parameter values within the base model prior to estimating each parameter for male and female `r spp`.
+
+### Ageing Precision and Bias
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'2_biology_ageing_error.Rmd')
+read_child(filein)
+```
+
+<!--chapter:end:22biology.Rmd-->
+
+# Management 
+
+## Reference Points
+
+## Unresolved Problems and Major Uncertainties
+
+## Harvest Projections and Decision Tables
+
+## Evaluation of Scientific Uncertainty
+
+## Research and Data Needs
+
+<!--chapter:end:40management.Rmd-->
+
+# Appendix B. MRFSS CPFV Dockside Index of Abundance {#mrfss-cpfv-index}
+
+<!--chapter:end:61appendix_mrfss.Rmd-->
+
+
+
+# Appendix C. California Onboard CPFV Index of Abundance {#onboard-cpfv-index}
+
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(getwd(), "shared_text",'crfs_cpfv_index.Rmd')
+read_child(filein)
+```
+
+
+As described above the CDFW and Cal Poly onboard observer programs are identical 
+in that the same protocols are followed.  The only difference is that Cal Poly
+measures both retained and discarded fish from the observed anglers and CDFW
+measures only discarded fish from the observed anglers. CDFW measures retained 
+fish as part of the angler interview at the bag and trip level.  
+Therefore, only retained fish were modeled in this index. 
+The data went through a QA/QC process at the SWFSC which included mapping 
+fishing drifts in ArcPro to determine if the recorded latitude and longitude were correct.  
+
+To appropriately weight the onboard observer survey index by the available 
+rocky substrate within a region, each drift was assigned to the closest area 
+of rocky habitat. Hard bottom was extracted from 
+the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html), 
+in northern California and along the mainland coast of southern California. These data 
+were collected in state waters at a resolution of two meters. South of Point 
+Conception, additional interpreted bathymetric data classifying the bottom type as 
+rock or soft bottom were compiled by Emily Saarman (UC Santa Cruz) and also available 
+from CDFW's website. 
+
+We applied a number of data filters to the available data presented in Table 
+\@ref(fig:)
+
+This index selectivity is mirrored to the recreational 
+fleet in the stock assessment model, which represents retaiend plus discarded
+fish. On average, a small percentage of observed copper rockfish are discarded (table). 
+
+
+Depth restrictions in the recreational fishery were fairly 
+consistent from 2004-2016. 
+
+Starting in 2017, depth restrictions eased in districts 
+north of Point Conception and the recreational fleet targeted these depths 
+(Figure \@ref(fig:onboard-depths)). The deeper waters (40-50 fm) are 
+outside of the mapped hard bottom habitat, but could be assigned to the larger 
+areas considered as a factor in the index.
+
+Table \@ref(tab:onboard-waterarea)
+Table \@ref(tab:onboard-percentpos)
+Figure \@ref(fig:onboard-depths)
+Figure \@ref(fig:onboard-regioncpue)
+
+We retained dxxxx drifts for index standardization, with 
+xxx drifts encountering vermilion rockfish 
+(Table \@ref(tab:onboard-filter)).  
+
+Sample sizes by factors selected to model, excluding WAVE can be found in Tables 
+\@ref(tab:tab-region-cpfvonboard), \@ref(tab:tab-depth-cpfvonboard), and \@ref(tab:tab-year-cpfvonboard).
+
+
+
+The onboard CPFV index restricts the time series to an end year at 2019. Due to 
+COVID-19, no onboard sampling took place in 2020. In 2021 the onboard sampling 
+resumed in August, at which point a large portion of the southern California fleet 
+had switched target species and fish highly migratory species. The 2021 stock assessment 
+had also been released by August 2021 indicating the stock was below the biomass 
+at 40%.  The southern California CPFV began an organized effort to avoid copper 
+rockfish and encourage their clientele to release and descend copper rockfish 
+when encountered. In 2022, the CDFW implemented the one copper rockfish sub-bag 
+limit and combined with avoidance by the fleet, does not represent the available 
+copper rockfish biomass.
+
+The index present when the CRFS 
+program started the CPFV onboard observer program and another starting in 2004. 
+Between 1999 and 2003 a series of regulation changed occurred including gear 
+restrictions and implementation of depth closures.  See the additional information 
+or the history of regulation changes section for details.
+
+In the assessment model, the recreational CPFV fleet is modeled as retained plus
+discarded fish. The proportion of observed discarded copper rockfish is small, 
+averaging 4% over the time series (\@ref(tab:onboard-keepdiscard)) and are included in the index.
+
+We modeled catch per angler minutes fished (CPUE) by fishing drift. Prior to any modeling,
+the SWFSC QA/QC'd the data to ensure the location information was correct. 
+Each drift was overlaid with the available interpreted substrate layer that characterizes rocky and hard substrate, assigned to a rocky reef and the distance of the 
+drift start location calculated.  In addition, the depth of the start location was 
+interpreted from the 2 m resolution bathymetry as well as 90 m resolution bathymetry 
+layer for comparison. For drifts missing depth location, we assigned depth based on the best available depth based on the bathymetry.
+
+The 
+
+
+rends in the average CPUE by region were similar 
+in the filtered data set (Figure \@ref(fig:fig-areacpue-cpfvonboard)). 
+
+A Lognormal model  was selected over a over a Gamma model for the positive observations by a $\Delta AIC$ of 919.67, and supported by Q-Q plots (Figure \@ref(fig:fig-dist-fits-cpfvonboard)). 
+Based on AIC values from maximum likelihood fits (Table \@ref(tab:tab-model-select-cpfvonboard), 
+a main effects model including YEAR and WAVE and DEPTH bin 
+was fit for the binomial model and a main effects model including 
+YEAR and WAVE and DEPTH bin was fit for the  Lognormal model.
+Models were fit using the sdmTMB R package (version ). 
+
+
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
+                    "keep_discard_prop.csv"))
+#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+sa4ss::table_format(x = ind,
+             caption = "Number of observed copper rockfish retained and discarded by year.",
+             label = "onboard-keepdiscard")#,
+        #     col_names = col_names)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
+                    "start2005", "target_water_area.csv"))
+#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+sa4ss::table_format(x = ind,
+             caption = "Number of observed drifts inside and outside of stat waters.",
+             label = "onboard-waterarea")#,
+        #     col_names = col_names)                         
+```
+
+
+\newpage
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
+                    "start2005", "percent_pos.csv"))
+#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+sa4ss::table_format(x = ind,
+             caption = "Data filtering steps for the onboard CPFV survey.",
+             label = "onboard-percentpos")#,
+        #     col_names = col_names)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
+                    "model_selection.csv"))
+col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+sa4ss::table_format(x = ind,
+             caption = "Data filtering steps for the onboard CPFV survey.",
+             label = "onboard-filter",
+             col_names = col_names)                         
+```
+
+
+\newpage
+
+```{r, results = 'asis'}
+
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                   "area_weighted_logn", "index_forSS.csv"))
+ind <- ind[, c(1,4,5)]
+col_names = c("Year", "Estimate", "logSE")
+
+sa4ss::table_format(x = ind,
+             caption = "Estimated relative index of abundance for the onboard CPFV survey.",
+             label = "onboard-index",
+             col_names = col_names)                         
+```
+
+
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                    "data_filters.csv"))
+ind <- ind[, c(1,4,5)]
+col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+sa4ss::table_format(x = ind,
+             caption = "Data filtering steps for the onboard CPFV survey.",
+             label = "onboard-filter",
+             col_names = col_names)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                   "area_weighted_logn", "index.png"), 
+caption = "Index for the onboard CPFV survey.",
+label = 'onboard-index')
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                   "area_weighted_logn", "qq.png"), 
+caption = "QQ-plot for the onboard CPFV survey.",
+label = 'onboard-qq')
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                   "avearge_cpue_by_region.png"), 
+caption = "Average CPUE by region prior to standardization.",
+label = 'onboard-regioncpue')
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                   "copper_depth_gisdepthadded.png"), 
+caption = "Distribution by year of depths where copper rockfish observed.",
+label = 'onboard-depths')
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+                   "drifts_by_depth_district.png"), 
+caption = "Stacked bar plot of the depth of observed copper rockfish by district.",
+label = 'onboard-depths')
+```
+
+\newpage
+
+<!--chapter:end:62appendix_crfs_onboard.Rmd-->
+
+# Appendix D. Deb Wilson-Vandenberg Onboard CPFV Index of Abundance {#dwv-cpfv-index}
+
+<!--chapter:end:63appendix_dwv_cpfv.Rmd-->
+
+# Appendix E. CRFS PR Dockside Index of Abundance {#crfs-pr-index}
+
+<!--chapter:end:64appendix_crfs_dockside.Rmd-->
+
+# Appendix F. CCFRP Index of Abundance {#ccfrp-index}
+
+The California Collaborative Fisheries Research Program, [CCFRP](https://www.mlml.calstate.edu/ccfrp/), 
+is a fishery-independent 
+hook-and-line survey designed to monitor nearshore fish populations at a series of sampling 
+locations both inside and adjacent to MPAs 
+[@starr_variation_2015a; @wendt_collaborative_2009].  The CCFRP survey began in 
+2007 along the central coast of California and was designed in collaboration 
+with academics, NMFS scientists and fishermen. 
+From 2007-2016 the CCFRP project was focused on the central California coast,
+and has monitored four MPAs consistently. In 2017, the CCFRP expanded coastwide within California.  
+The index of abundance was developed from the four MPAs sampled consistently 
+(A&ntilde;o Nuevo and Point Lobos 
+by Moss Landing Marine Labs; Point Buchon and Piedras Blancas by Cal Poly).
+
+The survey design for CCFRP consists 500 x 500 m cells both within and 
+adjacent to each MPA. On any given survey day site cells are randomly 
+selected within a stratum (MPA and/or reference cells).  CPFVs are chartered 
+for the survey and the fishing captain is allowed to search within the cell for 
+a fishing location.  During a sampling event, each cell is fished for a total of 
+30-45 minutes by volunteer anglers. Each fish encountered is recorded, measured, 
+and can be linked back to a particular angler, and released (or descended to depth). 
+ CCFRP samples shallower depths to avoid barotrauma-induced mortality.  
+ Starting in 2017, a subset of fish have been retained to collect otoliths and fin 
+clips that provide needed biological information for nearshore species. For the 
+index of abundance, CPUE was modeled at the level of the drift, similar to the 
+fishery-dependent onboard observer survey described above.
+
+The CCFRP data are quality controlled at the time they are key punched and little 
+filtering was needed for the index. 
+Cells not consistently sampled over time were excluded as well as cells that never 
+encountered `r spp`.
+The full dataset for northern California contained 8,770 drifts, 23% of which encountered 
+`r spp`.  After applying filters to remove drfits from sites that were not consistently sampled,
+marked for exclusion in the data, or did not fish a minimum of xxx, 7,078 drifts remained for 
+for index standardization, with 1,757 drifts encountering `r spp`.
+
+
+The CCFRP index includes all of the 
+MPAs currently sampled from 2017-2020 and the core central California sampling sites 
+from 2007-2016. Trends among all of the MPAs sampled increased along the entire coast 
+from 2017-2020. The final index (Table \@ref(tab:tab-index-ccfrp)) 
+represents a similar trend to the arithmetic mean of the annual CPUE (Figure \@ref(fig:fig-cpue-ccfrp)).
+
+We modeled retained catch per angler hour (CPUE; number of fish per angler hour) 
+using MLE fr. Indices with a year and area (location along the coast) interaction were not 
+considered in model selection; trends in the average CPUE by region were similar 
+in the filtered data set (Figure \@ref(fig:fig-areacpue-ccfrp)). Plots of the arithmetic 
+mean by inside (MPA) and outside (REF) MPAs over time is in Figure \@ref(fig:fig-sitecpue-ccfrp) 
+and shows the distinct trends of increasing average CPUE over time.
+
+A negative binomial model was fit to the drift-level data (catch with a log offset for angler 
+hours). Because the average observed CPUE inside MPAs and in the reference sites exhibited 
+differing trends, we explored a YEAR:SITE interaction, which was selected as the best 
+fit model by AIC Table \@ref(tab:tab-model-select-ccfrp)), The final model included
+yrea, mpa/reference categorization, depth, depth squared, and a year:mpa/reference interaction. 
+The model was fit using the sdmTMB R package (version xxx1). 
+
+Based on work completed at the SWFSC, we estimate that the percent of rocky reef habitat from Point Conception to the California border within California state waters is 892 $km^2$, of which approximately 23% is in MPAs that prohibit the harvest of groundfish (pers comm. Rebecca Miller, UCSC). There is recreational fishing outside of state waters, but habitat maps are not available at the same 2-m resolution and do not allow for direct comparisons. To estimate the area 
+of rocky substrate south of Point conception, we separted the southern California Bight into four areas, 1) CRFS District 
+1 along the mainland coast, 2) CRFS District 2 along the mainland coast, 3) state waters encompassing the southern 
+Channel Islands, and 4) state waters encompassing the northern Channel Islands.  We calculated the total area in each of the 
+four regions, as well as the total area with available interpretted substrate.  By also calculating the total area open and closed to fishing, i.e., MPAs and CCAs, we expanded the known fraction of rocky substrate to the areas within state 
+waters where no substrated interpretted maps exist.  This resulted in an estimate of 27% of the available rocky substrate 
+within closed areas to fishing in southern California state waters. 
+
+The final index was weighted, giving 20% of the model weight to MPAs and 80% of model 
+weight to the "open" areas within the state.
+
+
+
+```{r, results = 'asis'}
+
+tab <- read.csv(file.path(data_dir, "survey_indices", "ccfrp", "north", "dataFilters.csv"))
+
+sa4ss::table_format(x = tab,
+             caption = "Data filtering for the CCFRP survey.",
+             label = "ccfrp-data-filter",
+             align = 'l',
+             longtable = TRUE,
+             font_size = 7,
+             landscape = TRUE)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+
+tab <- read.csv(file.path(data_dir, "survey_indices", "ccfrp", "north", "model_selection.csv"))
+
+sa4ss::table_format(x = tab,
+             caption = "Model selection for the CCFRP survey.",
+             label = "ccfrp-model-selection",
+             align = 'l',
+             longtable = TRUE,
+             font_size = 7,
+             landscape = TRUE)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+
+ind <- read.csv(file.path(data_dir, "survey_indices", "ccfrp", "north", "area_weighted", "index_forSS.csv"))
+ind <- ind[, c(1,4,5)]
+col_names = c("Year", "Estimate", "logSE")
+
+sa4ss::table_format(x = ind,
+             caption = "Estimated relative index of abundance for the CCFRP survey.",
+             label = "ccfrp-index",
+             col_names = col_names)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "area_weighted", "qq.png"), 
+caption = "QQ-plot for the CCFRP survey.",
+label = 'ccfrp-qq')
+```
+
+\newpage 
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "mpa_site_cpue.png"), 
+caption = "Average CPUE by site with trends prior to standardization in the MPA and REF areas.",
+label = 'ccfrp-avg-cpue')
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "area_weighted", "Index.png"), 
+caption = "The weighted relative index of abundance.",
+label = 'ccfrp-index')
+```
+
+
+
+<!--chapter:end:65appendix_ccfrp.Rmd-->
+
+
+# Appendix G. CDFW ROV Index of Abundance {#cdfw-rov-index}
+
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'10_appendix_rov.Rmd')
+read_child(filein)
+```
+
+Minimal filtering were done to the data. Transects were removed based on four factors: 1) extreme estimates of effort (the estimated area of view below the ROV termed usable area), 2) any locations that were not sampled by both super year periods, 3) transect that were conducted crossing from MPA into reference areas, and 4) transects conducted across depths that never observed `r spp` within the survey (Table \ref{tab:rov-filtered}). Once the data were filtered the average calculated CPUE for each MPA and Reference groups were plotted to visualize the data (Table \ref{tab:rov-obs} and Figure \ref{fig:rov-raw-cpue}).
+
+A range of alternative model structures were explored to generate an index of abundances including alternative error structures, covariates, and factors were considered when exploring how best to model these data. Based on model selection a model with super year, site designation (MPA or Reference), and super year site designation interaction was selected (Table \ref{tab:rov-model-selection}). A negative-binomial model was selected based on the distribution of the data and diagnostics (Figures \ref{fig:rov-qq} and \ref{fig:rov-prop-zero}) using sdmTMB [@anderson_sdmtmb_2022]. The model estimates were then area-weighted based on the estimated percent of habitat within MPAs based on habitat seafloor mapping data within state waters were north of Point Conception an estimate of 20% of rocky habitat within MPAs and 80% open to fishing. The weighted relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
+
+\newpage
+
+\input{tex_tables/rov_removed_records_north.tex}
+
+\newpage
+
+\input{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
+
+\newpage
+
+
+
+```{r, results = 'asis'}
+
+tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", "north_model_selection.csv"))
+
+sa4ss::table_format(x = tab,
+             caption = "Model selection for the ROV survey.",
+             label = "rov-model-selection",
+             align = 'l',
+             longtable = TRUE,
+             font_size = 7,
+             landscape = TRUE)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+
+ind <- read.csv(file.path(data_dir, "survey_indices", "rov", "glm_negbin_north_designation_depth", "index_forSS.csv"))
+ind <- ind[, c(1,4,5)]
+col_names = c("Year", "Estimate", "logSE")
+
+sa4ss::table_format(x = ind,
+             caption = "Estimated relative index of abundance for the ROV survey.",
+             label = "rov-index",
+             col_names = col_names)                         
+```
+
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "rov", "glm_negbin_north_designation_depth", "qq.png"), 
+caption = "QQ-plot for the ROV survey.",
+label = 'rov-qq')
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "rov", "glm_negbin_north_designation_depth", "proportion_zero.png"), 
+caption = "Predicted zeros based on the data and replicates from a Stan model.",
+label = 'rov-prop-zero')
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "rov", "glm_negbin_north_designation_depth", "Index.png"), 
+caption = "The weighted relative index of abundance.",
+label = 'rov-index')
+```
+
+
+<!--chapter:end:67appendix_rov.Rmd-->
+
