@@ -805,3 +805,7 @@ com_selex <- SS_output(file.path(wd, "9.2_com_logistic"))
 round(com_selex$likelihoods_used$values,1)
 com_selex$likelihoods_by_fleet[c(10,14), ]
 # NLL = 983.9 
+
+#Model 9.3 melissa ----
+com_selex_nomrfss <- SS_output(file.path(wd, "9.2_com_logistic_noMRFSSind"))
+SS_plots(com_selex_nomrfss)
