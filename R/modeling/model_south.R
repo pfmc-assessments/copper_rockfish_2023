@@ -1170,6 +1170,7 @@ round(base$likelihoods_used$values,1)
 
 # NLL = 2167.8
 base <- SS_output(file.path(wd, "12.0_base"))
+base_mi <- SS_output(file.path(wd, "12.0_base_mi"))
 tune_comps(replist = base, dir = file.path(wd,  "12.0_base"), 
            option = "MI", write = FALSE, allow_up_tuning = TRUE)
 
@@ -1227,3 +1228,311 @@ SS_plots(growth_block_len, plot = c(2, 16))
 growth_block_len$likelihoods_by_fleet[c(10,14), ]
 tune_comps(replist = growth_block_len, dir = file.path(wd, "_sensitivities", "12.0_base_growth_block_lengths"), 
            option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+modelnames <- c("12.0 Francis", "12.0 MI")
+mysummary <- SSsummarize(list(base, base_mi))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.0_dw_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+# Building up and exploring from 12.0 with francis data weights
+# NLL = 2167.8
+base <- SS_output(file.path(wd, "12.0_base"))
+# Add the MRFSS index back in 
+mrfss <- SS_output(file.path(wd, "_sensitivities", "12.0_base_add_mrfss"))
+mrfss_devs <- SS_output(file.path(wd, "_sensitivities", "12.0_base_add_mrfss_dev_late_start"))
+mrfss_rm_growth <- SS_output(file.path(wd, "_sensitivities", "12.0_base_add_mrfss_rm_growth"))
+mrfss_devs_rm_growth <- SS_output(file.path(wd, "_sensitivities", "12.0_base_add_mrfss_dev_late_start_rm_growth"))
+
+
+modelnames <- c("12.0 Francis", "+ MRFSS CPFV", "+ MRFSS, Late Devs.", "+ MRFSS - Growth", "+MRFSS, -Growth, Late Devs.")
+mysummary <- SSsummarize(list(base, mrfss, mrfss_devs, mrfss_rm_growth, mrfss_devs_rm_growth))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.0_mrfss_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd, "_sensitivities", "_plots"),
+                  pdf = TRUE)
+
+
+rm_2022_ages <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_2022_ages"))
+rm_2022_lens <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_2022_lens"))
+rm_2022_ages_lens <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_2022_len_ages"))
+
+modelnames <- c("12.0 Francis", "- 2022 Ages", "- 2022 Lengths", "- Ages & Lengths")
+mysummary <- SSsummarize(list(base, rm_2022_ages, rm_2022_lens, rm_2022_ages_lens))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.0_2022_data_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd, "_sensitivities", "_plots"),
+                  pdf = TRUE)
+
+rm_2022_com_ages <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_2022_com_ages"))
+rm_2022_ccrfp_ages <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_ccfrp_ages"))
+rm_2022_hkl_ages <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_2022_hkl_ages"))
+rm_2022_growth_ages <- SS_output(file.path(wd, "_sensitivities", "12.0_base_rm_2022_growth_ages"))
+
+modelnames <- c("12.0 Francis", "- 2022 Com. Ages", "- 2022 CCFRP Ages", "- 2022 HKL Ages", "- 2022 Growth Ages")
+mysummary <- SSsummarize(list(base, rm_2022_com_ages, rm_2022_ccrfp_ages, rm_2022_hkl_ages, rm_2022_growth_ages))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.0_2022_age_data_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd, "_sensitivities", "_plots"),
+                  pdf = TRUE)
+
+# rm_2022_growth_ages$current_depletion
+#  0.163807
+# rm_2022_ages_lens$current_depletion
+#  0.1340202
+# base$current_depletion
+#  0.1961074
+
+# Move coop-ages into their own fleet since the model is sensitive to lumping these into one fleet with a selex block
+# Lengths added but lambda = 0; Age-Selectivity
+age_selex <- SS_output(file.path(wd, "12.2_coop_fleet_age_selex"))
+# Switch to length-based selectivity for both fleet 9 & 10
+len_selex <- SS_output(file.path(wd, "12.2_coop_fleet_len_selex"))
+# Force the COOP length-based select asymptotic given where there data were collected
+len_selex_asym <- SS_output(file.path(wd, "12.2_coop_fleet_len_selex_asym"))
+tune_comps(replist = len_selex_asym, dir = file.path(wd,  "12.2_coop_fleet_len_selex_asym"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+len_selex_asym_dw <- SS_output(file.path(wd, "12.2_coop_fleet_len_selex_asym_dw"))
+
+len_selex$likelihoods_by_fleet[c(10,14), ]
+len_selex_asym$likelihoods_by_fleet[c(10,14), ]
+
+modelnames <- c("12.0 Francis", "2 Growth Fleets - Age Selex", "2 Growth Fleets - Len Selex", 
+                "2 Growth Fleets - Len Selex Asym.", "2 Growth Fleets - Len Selex Asym.- DW")
+mysummary <- SSsummarize(list(base, age_selex, len_selex, len_selex_asym, len_selex_asym_dw))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.2_growth_fleets_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+
+rov_asym <- SS_output(file.path(wd, "12.3_rov_asym"))
+rov_asym_dn <- SS_output(file.path(wd, "12.3_rov_asym_dn"))
+rov_asym$likelihoods_by_fleet[c(10,14), ]
+rov_asym_dn$likelihoods_by_fleet[c(10,14), ]
+
+modelnames <- c("12.0 Francis",  "2 Growth Fleets - Len Selex Asym.- DW", "ROV Asym.", "ROV Asym. DN", "+ MRFSS CPFV Index")
+mysummary <- SSsummarize(list(base, len_selex_asym_dw, rov_asym, rov_asym_dn, add_mrfss))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.3_rov_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+
+add_mrfss <- SS_output(file.path(wd, "12.4_add_mrfss_index"))
+# The below model has the MRFSS CPFV index, double-normal ROV selectivity, and pearson, hkl, and coop ages in a single fleet
+move_ages <- SS_output(file.path(wd, "12.5_move_pearson_hkl_ages"))
+tune_comps(replist = move_ages, dir = file.path(wd,  "12.5_move_pearson_hkl_ages"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+rm_pearson_hkl_ages <- SS_output(file.path(wd, "12.5_rm_pearson_hkl_ages"))
+tune_comps(replist = rm_pearson_hkl_ages, dir = file.path(wd,  "12.5_rm_pearson_hkl_ages"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+move_ages_dw <- SS_output(file.path(wd, "12.5_move_pearson_hkl_ages_dw"))
+modelnames <- c("12.0 Francis",  "2 Growth Fleets - Len Selex Asym.- DW",  "ROV Asym. DN", "+ MRFSS CPFV Index",
+                "Move Pearson/HKL Ages", "Move Ages - DW", "Remove Pearson/HKL Ages DW")
+mysummary <- SSsummarize(list(base, len_selex_asym_dw, rov_asym_dn, add_mrfss, move_ages,  move_ages_dw, rm_pearson_hkl_ages))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.4_ages_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+
+no_devs <- SS_output(file.path(wd, "12.6_no_rec_devs"))
+devs_2000 <- SS_output(file.path(wd, "12.6_start_devs_2000"))
+devs_1990 <- SS_output(file.path(wd, "12.6_start_devs_1990"))
+devs_1980 <- SS_output(file.path(wd, "12.6_start_devs_1980"))
+
+tune_comps(replist = devs_1980, dir = file.path(wd,  "12.6_start_devs_1980"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+modelnames <- c("12.0 Francis",   "Move Ages - DW", "No Rec. Devs.", "Rec. Devs. 2000", "Rec Devs. 1990", "Rec. Devs. 1980")
+mysummary <- SSsummarize(list(base, move_ages_dw, no_devs, devs_2000, devs_1990, devs_1980))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.6_rec_devs_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+
+devs_1990_h <- SS_output(file.path(wd, "12.6_start_devs_1990_est_h"))
+devs_1980_h <- SS_output(file.path(wd, "12.6_start_devs_1980_est_h"))
+round(devs_1980_h$likelihoods_used$values,1)
+round(devs_1980$likelihoods_used$values,1)
+
+modelnames <- c("Move Ages - DW", "Rec Devs. 1990", "Rec. Devs. 1980", "Rec Devs. 1990, Est. h", "Rec. Devs. 1980, Est h")
+mysummary <- SSsummarize(list(move_ages_dw,devs_1990, devs_1980, devs_1990_h, devs_1980_h))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.6_rec_devs_est_h_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+devs_1990_dw <- SS_output(file.path(wd, "12.6_start_devs_1990_dw"))
+devs_1980_dw <- SS_output(file.path(wd, "12.6_start_devs_1980_dw"))
+modelnames <- c("Move Ages - DW", "Rec Devs. 1990", "Rec. Devs. 1980")
+mysummary <- SSsummarize(list(move_ages_dw,devs_1990_dw, devs_1980_dw))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.6_rec_devs_est_h_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+
+
+add_cpfv_selex <- SS_output(file.path(wd, "12.7_cpfv_selex_2017"))
+SS_plots(add_cpfv_selex, plot = c(2, 16))
+
+
+rm_hkl_all <- SS_output(file.path(wd, "12.8_rm_hkl"))
+rm_hkl_all_dw <- SS_output(file.path(wd, "12.8_rm_hkl_dw"))
+SS_plots(rm_hkl_all_dw)
+tune_comps(replist = rm_hkl_all, dir = file.path(wd,  "12.8_rm_hkl"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+rm_hkl_ages <- SS_output(file.path(wd, "12.8_rm_hkl_ages"))
+rm_hkl_index <- SS_output(file.path(wd, "12.8_rm_hkl_index"))
+rm_hkl_len_ages <- SS_output(file.path(wd, "12.8_rm_hkl_len_ages"))
+modelnames <- c("Full Rec. Devs", "Rec. Devs. 1980", "- NWFSC HKL All Data", "- NWFSC HKL Ages", "- NWFSC HKL Index", 
+                "- NWFSC HKL Comps.", "- NWFSC HKL All Data DW")
+mysummary <- SSsummarize(list(move_ages_dw, devs_1980_dw, rm_hkl_all, rm_hkl_ages, rm_hkl_index, rm_hkl_len_ages,
+                              rm_hkl_all_dw))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.8_nwfsc_hkl_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+
+# Explore info about M & h
+move_ages_dw <- SS_output(file.path(wd, "12.5_move_pearson_hkl_ages_dw"))
+round(move_ages_dw$likelihoods_used$values,1) # NLL = 2503
+no_devs <- SS_output(file.path(wd, "12.6_no_rec_devs"))
+round(no_devs$likelihoods_used$values,1) # NLL = 2850
+devs_m_h <- SS_output(file.path(wd, "12.9_full_devs_m_h"))
+# NLL = 2501
+no_devs_m_h <- SS_output(file.path(wd, "12.9_no_devs_m_h"))
+round(no_devs_m_h $likelihoods_used$values,1) # NLL = 2503
+devs_1980_dw <- SS_output(file.path(wd, "12.6_start_devs_1980_dw"))
+round(devs_1980_dw$likelihoods_used$values,1)# NLL = 2548
+devs_1980_m_h <- SS_output(file.path(wd, "12.9_1980_devs_m_h"))
+round(devs_1980_m_h$likelihoods_used$values,1) # NLL = 2545.6
+
+modelnames <- c("Full Rec. Devs", "Rec. Devs. 1980", "No Rec. Devs.", "Full-Est. M & h", "1980 Devs-Est M & h")
+mysummary <- SSsummarize(list(move_ages_dw, devs_1980_dw, no_devs, devs_m_h, devs_1980_m_h))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.9_devs_est_m_h_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+
+rm_add_var_surveys <- SS_output(file.path(wd, "12.10_no_added_var"))
+rm_add_var_rov_ccfrp <- SS_output(file.path(wd, "12.11_no_added_var_ccfrp_rov"))
+SS_plots(rm_add_var_rov_ccfrp)
+
+modelnames <- c("Rec. Devs. 1980", "No Added Survey Var.", "No Added Survey Var. - CCFRP & ROV")
+mysummary <- SSsummarize(list(devs_1980_dw, rm_add_var_surveys, rm_add_var_rov_ccfrp))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.10_survey_var_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+
+# Using the model where devs begin in 1980 explore dropping the NWFS HKL index but adding the lengths and ages
+# to the COOP Fleet
+drop_hkl_index <- SS_output(file.path(wd, "12.12_drop_hkl_index"))
+SS_plots(drop_hkl_index, plot = c(2, 16:19))
+tune_comps(replist = drop_hkl_index, dir = file.path(wd,  "12.12_drop_hkl_index"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+cpfv_selex <- SS_output(file.path(wd, "12.13_drop_hkl_index_cpfv_selex"))
+SS_plots(cpfv_selex, plot = c(2, 16:20))
+tune_comps(replist = cpfv_selex, dir = file.path(wd,  "12.13_drop_hkl_index_cpfv_selex"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+
+drop_hkl_index <- SS_output(file.path(wd, "12.12_drop_hkl_index_dw"))
+cpfv_selex <- SS_output(file.path(wd, "12.13_drop_hkl_index_cpfv_selex_dw"))
+cpfv_selex_devs <- SS_output(file.path(wd, "12.14_drop_hkl_index_cpfv_selex_dw_all_devs_dw"))
+tune_comps(replist = cpfv_selex_devs, dir = file.path(wd,  "12.14_drop_hkl_index_cpfv_selex_dw_all_devs_dw"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+modelnames <- c("All Rec. Devs", "Rec. Devs. 1980", "Drop NWFS HKL Index", "Drop HKL Index, CPFV Asym.",
+                "All Rec. Devs. Com Asym Drop HKL Index")
+mysummary <- SSsummarize(list(move_ages_dw, devs_1980_dw, drop_hkl_index, cpfv_selex, cpfv_selex_devs))
+SSplotComparisons(mysummary,
+                  filenameprefix = "12.12_rm_hkl_index_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+
+cpfv_asym <- SS_output(file.path(wd, "12.15_all_devs_hkl_index_cpfv_asym"))
+tune_comps(replist = cpfv_asym, dir = file.path(wd,  "12.15_all_devs_hkl_index_cpfv_asym"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+cpfv_asym_dev_1980 <- SS_output(file.path(wd, "12.14_drop_hkl_index_cpfv_selex_dw_all_devs_devs_1980"))
+tune_comps(replist = cpfv_asym_dev_1980, dir = file.path(wd,  "12.14_drop_hkl_index_cpfv_selex_dw_all_devs_devs_1980"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+#============================================================================================================
+#
+# 12.5_move_pearson_hkl_ages_dw
+# Splits the growth ages into two fleets 1. WCGBT and 2. Pearson/NWFSC HKL/Coop Ages
+# Estimate recruitment deviations for all years
+# Retains the NWFSC HKL index and composition data
+#
+# 12.6_start_devs_1980_dw - alternative to the 12.5 model where devs start in 1980
+# 
+# 12.14_drop_hkl_index_cpfv_selex_dw_all_devs_dw
+# Drops the NWFSC HKL index and moves the lengths and ages into the Coop Growth fleet
+# Estimates recruitment deviations for all years
+# Fixes the CPFV selectivity in the final block asymptotic
+#
+# 12.14_drop_hkl_index_cpfv_selex_dw_all_devs_devs_1980
+# 
+# 12.15_all_devs_hkl_index_cpfv_asym
+# Estimate recruitment deviations for all years
+# Retains the NWFSC HKL index and composition data
+# Fixes the CPFV selectivity in the final block asymptotic
+#
+#
+#============================================================================================================
+
+full <- SS_output(file.path(wd, "12.5_move_pearson_hkl_ages_dw"))
+SS_plots(full)
+
+late_devs <- SS_output(file.path(wd, "12.6_start_devs_1980_dw"))
+SS_plots(late_devs)
+
+drop_index <- SS_output(file.path(wd, "12.14_drop_hkl_index_cpfv_selex_dw_all_devs_dw"))
+SS_plots(drop_index)
+
+drop_index_late_devs <- SS_output(file.path(wd, "12.14_drop_hkl_index_cpfv_selex_dw_all_devs_devs_1980_dw"))
+SS_plots(drop_index_late_devs)
+
+fix_cpfv_selex <- SS_output(file.path(wd, "12.15_all_devs_hkl_index_cpfv_asym_dw"))
+SS_plots(fix_cpfv_selex)
+
+modelnames <- c("Full Model", "-NWFSC HKL Index & Fix CPFV Selex", "Fix CPFV Selex")
+mysummary <- SSsummarize(list(full, drop_index, fix_cpfv_selex))
+SSplotComparisons(mysummary,
+                  filenameprefix = "13_alternative_models_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd,  "_plots"),
+                  pdf = TRUE)
+
+
