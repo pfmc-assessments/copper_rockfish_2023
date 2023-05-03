@@ -495,6 +495,37 @@ write.csv(wcgbt_south,
           file = file.path(dir, "ages", "forSS", "by_source", "wcgbt_caal_south.csv"),
           row.names = FALSE) 
 
+ind <- which(colnames(wcgbt) %in% c("otosag_id", "ageing_lab"))
+ages <-  UnexpandedAFs.fn(
+  datA = wcgbt[wcgbt$area == "south", -ind], 
+  ageBins = age_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 'wcgbt', 
+  month = 7)
+
+write.csv(ages$sexed, 
+          file = file.path(dir, "ages", "forSS", "marginals", "wcgbt_age_marginal_sexed_south.csv"),
+          row.names = FALSE)
+write.csv(ages$unsexed, 
+          file = file.path(dir, "ages", "forSS", "marginals", "wcgbt_age_marginal_unsexed_south.csv"),
+          row.names = FALSE)
+
+ages <-  UnexpandedAFs.fn(
+  datA = wcgbt[wcgbt$area == "north", -ind], 
+  ageBins = age_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 'wcgbt', 
+  month = 7)
+
+write.csv(ages$sexed, 
+          file = file.path(dir, "ages", "forSS", "marginals", "wcgbt_age_marginal_sexed_north.csv"),
+          row.names = FALSE)
+write.csv(ages$unsexed, 
+          file = file.path(dir, "ages", "forSS", "marginals", "wcgbt_age_marginal_unsexed_north.csv"),
+          row.names = FALSE)
+
 #===============================================================================
 # COOP Ages 
 #===============================================================================
@@ -545,6 +576,38 @@ carcass_north <- get_caal(
 write.csv(pearson_south, 
           file = file.path(dir, "ages", "forSS", "by_source", "coop_cpfv_carcass_caal_north.csv"),
           row.names = FALSE) 
+
+
+ind <- which(colnames(coop_ages) == "stage")
+ages <-  UnexpandedAFs.fn(
+  datA = coop_ages[coop_ages$area == "south", -ind], 
+  ageBins = age_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 'coop', 
+  month = 7)
+
+write.csv(ages$sexed, 
+          file = file.path(dir, "ages", "forSS", "marginals", "coop_age_marginal_sexed_south.csv"),
+          row.names = FALSE)
+write.csv(ages$unsexed, 
+          file = file.path(dir, "ages", "forSS", "marginals", "coop_age_marginal_unsexed_south.csv"),
+          row.names = FALSE)
+
+ages <-  UnexpandedAFs.fn(
+  datA = coop_ages[coop_ages$area == "north", -ind], 
+  ageBins = age_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 'coop', 
+  month = 7)
+
+write.csv(ages$sexed, 
+          file = file.path(dir, "ages", "forSS", "marginals", "coop_age_marginal_sexed_north.csv"),
+          row.names = FALSE)
+write.csv(ages$unsexed, 
+          file = file.path(dir, "ages", "forSS", "marginals", "coop_age_marginal_unsexed_north.csv"),
+          row.names = FALSE)
 
 #===============================================================================
 # Pearson Research 
@@ -597,6 +660,30 @@ write.csv(pearson_lens,
           file = file.path(dir, "ages", "forSS", "by_source", "pearson_lengths_north.csv"),
           row.names = FALSE)
 
+ages <-  UnexpandedAFs.fn(
+  datA = pearson_ages[pearson_ages$area == "north", ], 
+  ageBins = age_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 'pearson', 
+  month = 7)
+
+write.csv(ages$sexed, 
+          file = file.path(dir, "ages", "forSS", "marginals", "pearson_age_marginal_sexed_north.csv"),
+          row.names = FALSE)
+
+ages <-  UnexpandedAFs.fn(
+  datA = pearson_ages[pearson_ages$area == "south", ], 
+  ageBins = age_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 'pearson', 
+  month = 7)
+
+write.csv(ages$sexed, 
+          file = file.path(dir, "ages", "forSS", "marginals", "pearson_age_marginal_sexed_south.csv"),
+          row.names = FALSE)
+
 #===============================================================================
 # Abrams Research
 #===============================================================================
@@ -627,6 +714,18 @@ abrams_lens <-  UnexpandedLFs.fn(
 
 write.csv(abrams_lens$sexed, 
           file = file.path(dir, "ages", "forSS", "abrams_lengths_sexed_south.csv"),
+          row.names = FALSE)
+
+ages <-  UnexpandedAFs.fn(
+  datA = abrams_ages, 
+  ageBins = age_bins,
+  partition = 0, 
+  ageErr = 1,
+  fleet = 'pearson', 
+  month = 7)
+
+write.csv(ages$sexed, 
+          file = file.path(dir, "ages", "forSS", "marginals", "abrams_age_marginal_sexed_north.csv"),
           row.names = FALSE)
 
 #===============================================================================

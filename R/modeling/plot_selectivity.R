@@ -47,7 +47,8 @@ info7 <- SSplotSelex(model, fleets = 7, subplot = 1, year = c(2022))
 #info7$infotable$longname = c("NWFSC HKL 2004-2013", "NWFSC HKL 2014-2022")
 info7$infotable$col <- c(colors[7])
 
-#info9 <- SSplotSelex(model, fleets = 9, sizefacotrs = "Asel", agefactors = "Asel", subplot = 1, year = c(2022))
+info9 <- SSplotSelex(model, fleets = 9, agefactors = "Asel2", plot = 12, year = c(1916, 2022))
+info9 <- SSplotSelex(model, fleets = 9, subplot = 1, year = c(1916, 2022))
 #info9$infotable$col <- colors[9]
 
 HandyCode::pngfun(wd = file.path(wd, base_model, "plots"), 'south_selectivity.png', w = 10, h = 12)

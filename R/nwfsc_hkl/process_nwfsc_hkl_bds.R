@@ -368,6 +368,33 @@ write.csv(afs$sexed,
           file = file.path(dir, "forSS",  "nwfsc_hkl_outside_cca_only_not_expanded_age_comp_sex_3.csv"),
           row.names = FALSE) 
 
+# CCA samples from > 73 meters
+remove <- which(hkl$area == "CCA_Closed_to_Fishing")
+
+afs <-  UnexpandedAFs.fn(
+  datA = hkl[-remove, ], 
+  ageBins = age_bins,
+  partition = 0, 
+  fleet = 9, 
+  month = 9)
+
+write.csv(afs$sexed, 
+          file = file.path(dir, "forSS",  "nwfsc_hkl_outside_and_cca_open_to_fishing_not_expanded_marginal_age_comp_sex_3.csv"),
+          row.names = FALSE) 
+
+remove <- which(hkl$area == "CCA_Closed_to_Fishing")
+
+afs <-  UnexpandedAFs.fn(
+  datA = hkl[remove, ], 
+  ageBins = age_bins,
+  partition = 0, 
+  fleet = 9, 
+  month = 9)
+
+write.csv(afs$sexed, 
+          file = file.path(dir, "forSS",  "nwfsc_hkl__cca_closed_to_fishing_not_expanded_marginal_age_comp_sex_3.csv"),
+          row.names = FALSE) 
+
 #====================================================================
 # Plot the age composition data
 #====================================================================

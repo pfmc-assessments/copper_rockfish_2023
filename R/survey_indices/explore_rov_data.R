@@ -368,6 +368,26 @@ p$lwr <- plogis(p$est - 1.96 * p$est_se)
 p$upr <- plogis(p$est + 1.96 * p$est_se)
 
 
+# Load up cleaned data used for the index
+load(file.path(dir, "rov_south_data_used_for_index_creation.rdata"))
+load(file.path(dir, "rov_north_data_used_for_index_creation.rdata"))
+library(ggridges)
 
+ggplot(rov_north, aes(x = depth, y = as.factor(year)), color = year) + 
+  #geom_density_ridges2() +
+  geom_density_ridges(stat = "binline", scale = 1, bins = 30) +
+  scale_color_viridis_d() + 
+  facet_wrap("designation") +
+  ylab("Year") + xlab("Depth (m)")
+ggsave(file = file.path(dir, "plots", "transects_depth_year_north.png"), width =10, height = 7)
+
+
+ggplot(rov_south, aes(x = depth, y = as.factor(year)), color = year) + 
+  #geom_density_ridges2() +
+  geom_density_ridges(stat = "binline", scale = 1, bins = 30) +
+  scale_color_viridis_d() + 
+  facet_wrap("designation") +
+  ylab("Year") + xlab("Depth (m)")
+ggsave(file = file.path(dir, "plots", "transects_depth_year_south.png"), width =10, height = 7)
 
 
