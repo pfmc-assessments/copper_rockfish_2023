@@ -66,12 +66,12 @@ dat <- onboard %>%
   mutate(depth_2 = depth^2)
 
 
-if(modelArea == "north"){
+
 #going to have to combine 4-6
 dat <- dat %>%
   mutate(region = ifelse(region %in% c(4,5,6), "4_6", "3")) %>%
   mutate_at(vars(region), as.factor)
-}
+
 #-------------------------------------------------------------------------------
 #Main effects model
 #Model selection
@@ -93,20 +93,18 @@ Model_selection <- as.data.frame(model.suite) %>%
 dplyr::select(-weight)
 Model_selection
 
-#drop month and depth^2
-if(modelArea=="north"){
- 
 #set the grid
   #dropping month - difference in AIC is 7.8
 grid <- expand.grid(
   year = unique(dat$year),
   region = levels(dat$region)[1],
+  month = levels(dat$month)[1],
   depth = dat$depth[1],
   depth_2 = dat$depth_2[1])
 
 
 fit.nb <- sdmTMB(
-  number.fish ~ year + region + poly(depth, 2),
+  number.fish ~ year + region + month + poly(depth, 2),
   data = dat,
   offset = dat$logEffort,
   time = "year",
@@ -115,32 +113,6 @@ fit.nb <- sdmTMB(
   family = nbinom2(link = "log"),
   control = sdmTMBcontrol(newton_loops = 1))
 
-} else {
-  
-  #set the grid for the south
-  grid <- expand.grid(
-    year = unique(dat$year),
-    region = levels(dat$region)[1],
-    month = levels(dat$month)[1],
-    depth = dat$depth[1],
-    depth_2 = dat$depth_2[1])
-    
-  
-  fit.nb <- sdmTMB(
-    number.fish ~ year + poly(depth, 2) + month + region,
-    data = dat,
-    offset = dat$logEffort,
-    time = "year",
-    spatial="off",
-    spatiotemporal = "off",
-    family = nbinom2(link = "log"),
-    silent = TRUE,
-    do_index = TRUE,
-    predict_args = list(newdata = grid, re_form_iid = NA),   
-    index_args = list(area = 1),
-    control = sdmTMBcontrol(newton_loops = 1) #not entirely sure what this does
-  )
-}
 
 #Get diagnostics and index for SS
 do_diagnostics(
@@ -151,6 +123,42 @@ calc_index(
   dir = file.path(dir, "negbin"), 
   fit = fit.nb,
   grid = grid)
+
+
+# delta lognormal
+
+fit.logn <- sdmTMB(
+  number.fish ~ year + region + month + poly(depth, 2),
+  data = dat,
+  offset = dat$logEffort,
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  family = delta_lognormal(),
+  control = sdmTMBcontrol(newton_loops = 1))
+
+
+#Get diagnostics and index for SS
+do_diagnostics(
+  dir = file.path(dir, "deltalogn"), 
+  fit = fit.logn)
+
+calc_index(
+  dir = file.path(dir, "deltalogn"), 
+  fit = fit.logn,
+  grid = grid)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -276,34 +284,43 @@ grid <- expand.grid(
     grid = grid_north)
 
   
-  
+ #sdmTMB - NORTH only
+ #area weighted
+#fraction of rocky habitat by district in state waters only
+north_district_weights <- data.frame(district = c(3,4,5,6),
+                                  area_weight = c(0.3227, 0.321, 0.162, 0.1943))
 
+
+#Model selection
+#full model
+model.full <- MASS::glm.nb(
+  number.fish ~ year + month + region + depth + depth_2 + year:region + offset(logEffort),
+  data = dat,
+  na.action = "na.fail")
+summary(model.full)
+anova(model.full)
+#use ggpredict to get an estimate of the logEffort for sdmTMB predictions
+ggpredict(model.full, terms = "year")
+#MuMIn will fit all models and then rank them by AICc
+model.suite <- MuMIn::dredge(model.full,
+                             rank = "AICc", 
+                             fixed= c("offset(logEffort)", "year"))
+
+#Create model selection dataframe for the document
+Model_selection <- as.data.frame(model.suite) %>%
+  dplyr::select(-weight)
+Model_selection
+#year:area interaction is not significant
 #-------------------------------------------------------------------------------
 #Format data filtering table and the model selection table for document
+ dataFilters <- data.frame(lapply(dataFilters, as.character), stringsasFactors = FALSE)
 write.csv(dataFilters, 
-          file = file.path(dir, "area_weighted", "data_filters.csv"), 
+          file = file.path(dir, "data_filters.csv"), 
           row.names = FALSE)
 
 View(Model_selection)
-#format table for the document
-out <- Model_selection %>%
-  dplyr::select(-`(Intercept)`) %>%
-  mutate(depth = round(depth, 3),
-         depth_2 = round(depth_2, 3)) %>%
-  mutate_at(vars("year","offset(logEffort)", "depth", "depth_2", "region", "region:year"), as.character) %>%
-  mutate(across(c("logLik","AICc","delta"), round, 1)) %>%
-  # replace_na(list(region = "Excluded", `region:year` = "Excluded",
-  #                 depth = "Excluded", depth_2 = "Excluded")) %>%
-  # mutate_at(c("year","offset(logEffort)", "depth", "depth_2", "region", "region:year"), 
-  #           funs(stringr::str_replace(.,"\\+","Included"))) %>%
-  rename(`Effort offset` = `offset(logEffort)`, 
-         `log-likelihood` = logLik,
-         `Depth squared` = depth_2,
-         `Interaction` = `region:year`,
-          Depth = depth) %>%
-  rename_with(stringr::str_to_title,-AICc)
-View(out)
-write.csv(out, file = file.path(dir, "area_weighted", "model_selection.csv"), 
+
+write.csv(Model_selection, file = file.path(dir, "model_selection.csv"), 
           row.names = FALSE)
 
 
