@@ -13,7 +13,7 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
 }
 
-model_dir <- file.path(user_dir, "models", "nca", "9.1_dw")
+model_dir <- file.path(user_dir, "models", "sca", "13.7_cpfv_block")
 
 
 #run_regularization(

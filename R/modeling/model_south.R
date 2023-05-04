@@ -1657,3 +1657,116 @@ SSplotComparisons(mysummary,
                   plotdir = file.path(wd, "_sensitivities", "_plots"),
                   pdf = TRUE)
 
+
+#============================================================================================================
+# Diagnostics on the 13.2 model suite looking at cpfv selex and estimating m
+#============================================================================================================
+#
+# 13.2_cpfv_dome_dw
+# Jitter - BETTER MODEL FOUND (RUN 40)
+# - M female profile good: length data from the HKL fleet
+# - M male need to rerun one
+# - h need to rerun one
+# - R0 good - recruitment is primarily informing with age data saying lower (CPFV)
+# - Only marginally bad
+# MCMC Failed on this model=
+#   
+#   13.2_cpfv_selex (asymptotic)
+# - Jitter good
+# - M female - awful wild in shooting up
+# - M male - same as female
+# - Steepness also wild
+# - R0 need to rerun one - recruitment and age data
+# 
+# 13.2 cpfv dome estimate m
+# Jitter - BETTER MODEL FOUND (model 32)
+# - M female - higher value based on recruitment with some age data from CPFV and growth
+# - M male - recruitment and age data (CPFV)
+# - h need to rerun one: recruitment LL not minimizing
+# - R0 good - recruitment and age data 
+# - Retro - marginally "best" (max mohns = -0.99)
+# MCMC
+# Parameters not moving 
+# - selparm[12]
+# - selparm[14]
+# - selparm[27]
+# - selparm[32] 
+# - selparm[41] worst sd
+# 
+# 13.2 cpfv asymptotic and estimate m
+# - Jitter found best fit
+# - M female - wild and awful
+# - M male good - recruitment and cpfv age data
+# - h need to rerun one value - 
+#   - R0 good - recruitment, length data (cpfv -lower), and age
+# - Retro - marginally worse than 
+###################################################################################################################
+
+# The historical CPFV ages seem to have a very large influence in the model - do a sensitivity where these
+# data have a low lambda
+
+base <- SS_output(file.path(wd, "13.4_cpfv_dome_best_fit"))
+
+# Lambda = 0.01
+cpfv_ages <- SS_output(file.path(wd, "13.5_lambda_hist_ages"))
+
+# CPFV Ages Lambda = 0.01 & Coop growth Lambda = 2
+coop_ages <- SS_output(file.path(wd, "13.5_lambda_coop_ages"))
+
+# CPFV Ages Lambda = 0.01 & Coop growth Lambda = 2
+rm_survey_data <- SS_output(file.path(wd, "13.5_rm_survey_data"))
+
+modelnames <- c("13.4", "Lambda CPFV Ages = 0.01", "+ Lambda Coop Growth = 2", "- All Survey Data")
+mysummary <- SSsummarize(list(base, cpfv_ages, coop_ages, rm_survey_data ))
+SSplotComparisons(mysummary,
+                  filenameprefix = "13.5_ages__",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.40,
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+fixed_base <- SS_output(file.path(wd, "13.6_dome_cpfv_lambda"))
+SS_plots(fixed_base)
+
+# Fix the dome at a higher level
+slight_dome <- SS_output(file.path(wd, "13.6_slight_dome_cpfv_lambda"))
+SS_plots(slight_dome)
+
+fixed_base_m <- SS_output(file.path(wd, "13.6_slight_dome_cpfv_lambda_est_m"))
+SS_plots(fixed_base_m)
+
+combine_cpfv_block <- SS_output(file.path(wd, "13.6_dome_cpfv_lambda_combine_late_early_block"))
+SS_plots(combine_cpfv_block)
+
+modelnames <- c("13.2",  "13.6 CPFV Dome Fixed M", "13.6 Slight Dome Fixed M", 
+                "13.6 Slight Dome Est M", "13.6 CPFV Block", "13.7")
+mysummary <- SSsummarize(list(cpfv_dome, fixed_base, slight_dome, fixed_base_m, combine_cpfv_block, pre_base))
+SSplotComparisons(mysummary,
+                  filenameprefix = "13.6_dome_level_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.20,
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+#=======================================================================================
+# 13.7_cpfv_block Model aligns the recreational blocks for CPFV and PR to both
+# have a block 1916-1999, 2000-2003, and 2004-2022 where the first and the third
+# block selectivities are the same
+# Running the hessian on this model and re-estimating a lot of the selecitivy parameter
+# with the plan of fixing any poorly estimated ones at the new MLE estimates.
+# Leaving the CPFV age data lambda at 0.10
+#=======================================================================================
+
+pre_base <- SS_output(file.path(wd, "13.7_cpfv_block"))
+SS_plots(pre_base, plot = c(2, 16))
+tune_comps(replist = pre_base, dir = file.path(wd, "13.7_cpfv_block"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+
+# Adjust the bias recruitment paramters if needed
+# Adjust data-weights
+# Run MCMC on new model structure
+# Run diagnostics for the new model with M fixed
+
+# Test out estimating M in this model
+pre_base_m <- SS_output(file.path(wd, "13.7_cpfv_block_est_m"))
+SS_plots(pre_base_m)
