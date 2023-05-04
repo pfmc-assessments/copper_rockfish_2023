@@ -35,7 +35,6 @@ species <- "Copper Rockfish"
 d <- read.csv(file.path(data_dir, "H&LSurveyDataThru2022_DWarehouse version_03042023.csv"))
 
 
-
 d$ave_lat <- d$ave_long <- NA 
 for (aa in unique(d$site_number)) {
   find <-  which(d$site_number == aa) 
@@ -788,12 +787,27 @@ out[, c('bocaccio_scaled', "depth_scaled", "depth_scaled_2", 'swell_scaled', 've
 colnames(out) <- c("Area", 'Bocaccio', "Depth", "Depth2", 'Drop','Swell', 'Vermilion', 'Year', "Area:Year", 'Offset-log(effort)', 'DF', "AICc", "Delta") 
 write.csv(out, file = file.path(index_dir, "forSS", "area_weighted_model_selection.csv"), row.names = FALSE)
 
+#===============================================================================
+# Negative-Binomial GLM with only main effects for all areas & Area-Weighted
+#===============================================================================
 
-tmp <- species_data
-remove <- which(tmp$cca == 1 & tmp$drop_depth_meters > 73)
-tmp$area[remove] <- "CCA_Closed_to_Fishing"
+# Hook and line site inside federal MPA that are no take and require fish to be descended
+federal_protected <- c(48, 180, 184,  228, 229, 413)
+state_protected <- c(181, 182, 185, 59, 62, 152, 292, 293, 379)
+military <- 97
+cca <- as.numeric(as.character(unique(species_data$site_number[species_data$cca == 1 & species_data$drop_depth_meters > 73])))
 
-tmp2 <- tmp %>%
+find <- c(which(as.numeric(as.character(species_data$year)) > 2007 & species_data$site_number %in% c(48, 180, 184, 228, 229, 413)),
+          which(as.numeric(as.character(species_data$year)) > 2008 & species_data$site_number %in% c(181, 182)),
+          which(as.numeric(as.character(species_data$year)) > 2009 & species_data$site_number == 185),
+          which(as.numeric(as.character(species_data$year)) > 2010 & species_data$site_number == 97),
+          which(as.numeric(as.character(species_data$year)) > 2011 & species_data$site_number %in% c(59, 62, 152, 292, 293, 379)),
+          which(as.numeric(as.character(species_data$site_number)) > 500 & species_data$drop_depth_meters > 73))
+
+species_data$protection <- "Open"
+species_data$protection[find] <- "MPA"
+
+tmp2 <- species_data %>%
   group_by(common_name, year, site_number, drop) %>% 
   reframe(n = sum(number_caught),
           area = area[1],
@@ -817,22 +831,271 @@ ggplot(data = raw.cpue) +
   facet_wrap("area") + xlab("Year") + ylab("Raw CPUE")
 ggsave(file = file.path(dir, "plots", 'raw_cpue_nwfsc_hkl_by_area.png'), width = 10, height = 7)
 
+mpa_open <- species_data %>%
+  group_by(common_name, year, site_number, drop) %>% 
+  reframe(n = sum(number_caught),
+          area = area[1],
+          protection = protection[1],
+          effort = length(unique(angler)) * length(unique(hook))) 
+
+raw.cpue <- mpa_open %>%
+  mutate(cpue = n / effort) %>%
+  group_by(year, protection, area) %>%
+  summarize(avg_cpue = mean(cpue))
+raw.cpue$year <- as.numeric(as.character(raw.cpue$year))
+
+ggplot(data = raw.cpue) + 
+  geom_point(aes(y = avg_cpue, x = year, colour = protection), size = 3) + theme_bw() + 
+  geom_line(aes(x = year, y = avg_cpue, colour = protection)) +
+  facet_wrap(c("area", "protection")) + xlab("Year") + ylab("Raw CPUE")
+ggsave(file = file.path(index_dir, "plots", 'raw_cpue_nwfsc_hkl_by_mpa_vs_open_by_region.png'), width = 10, height = 7)
+
+mpa_data <- species_data %>%
+  filter(number_caught > 0) %>%
+  group_by(year, protection, area) %>%
+  reframe(n = n())
+
+mpa_data %>% pivot_wider(names_from = protection, values_from = n)
+
+all_areas <- species_data %>%
+  group_by(common_name, year, site_number, drop) %>% 
+  reframe(n = sum(number_caught),
+          area = area[1],
+          protection = protection[1],
+          swell = median(swell_height_m),
+          depth = median(drop_depth_meters),
+          vermilion = sum(vermilion),
+          bocaccio = sum(bocaccio),
+          lat = mean(drop_latitude_degrees),
+          lon = mean(drop_longitude_degrees),
+          effort = length(unique(angler)) * length(unique(hook))) 
+
 # Format the data frame by adding factors and 0 centering quantities 
-#open_areas <- open_areas %>%
-#  mutate(
-#    year = as.factor(year),
-#    site_number = as.factor(site_number),
-#    drop = as.factor(drop),
-#    swell_scaled = swell - mean(swell),
-#    vermilion_scaled = vermilion - mean(vermilion),
-#    bocaccio_scaled = bocaccio - mean(bocaccio)
-#  )
+all_areas <- all_areas %>%
+  filter(year %in% 2011:2022) %>%
+  mutate(
+    year = as.factor(year),
+    area = as.factor(area),
+    protection = as.factor(protection),
+    site_number = as.factor(site_number),
+    drop = as.factor(drop),
+    depth_scaled = (depth - mean(depth)) / sd(depth),
+    depth_scaled_2 = depth_scaled^2,
+    swell_scaled = swell - mean(swell),
+    vermilion_scaled = vermilion - mean(vermilion),
+    bocaccio_scaled = bocaccio - mean(bocaccio)
+  )
+all_areas$year <- droplevels(all_areas$year)
 
 # Year and Sites
 year_site <- expand.grid(
-  year = unique(open_areas$year),
-  site_number = unique(open_areas$site_number),
-  area = unique(open_areas$area))
+  year = unique(all_areas$year),
+  site_number = unique(all_areas$site_number),
+  protection = unique(all_areas$protection))
+
+## join in location info for all sites
+locs <- all_areas %>%
+  dplyr::group_by(year, protection) %>%
+  dplyr::summarise(
+    lat = lat[1],
+    lon = lon[1],
+    site_number = site_number[1],
+    depth_scaled = depth_scaled[1],
+    depth_scaled_2 = depth_scaled_2[1],
+    swell_scaled = swell_scaled[1],
+    bocaccio_scaled = bocaccio_scaled[1],
+    vermilion_scaled = vermilion_scaled[1],
+    drop = as.factor(3))
+
+#weighted_grid <- NULL
+#for (a in 1:39){
+#  weighted_grid <- rbind(weighted_grid, locs[locs$area == "Mainland", ])
+#}
+##for(a in 1:14){
+##  weighted_grid <- rbind(weighted_grid, locs[locs$area == "Mainland_2", ])
+##}
+#for(a in 1:73){
+#  weighted_grid <- rbind(weighted_grid, locs[locs$area == "Southern_Channel_Island", ])
+#}
+#for(a in 1:88){
+#  weighted_grid <- rbind(weighted_grid, locs[locs$area == "Northern_Channel_Island", ])
+#}
+
+mpa_grid <- NULL
+for(a in 1:27){
+  mpa_grid <- rbind(mpa_grid, locs[locs$protection == "MPA", ])
+}
+for(a in 1:73){
+  mpa_grid <- rbind(mpa_grid, locs[locs$protection == "Open", ])
+}
+
+
+name <- "glm_negbin_year_protection_interaction"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+
+fit <- sdmTMB(
+  n ~ year + protection + year*protection,
+  data = all_areas,
+  offset = log(all_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = nbinom2(link = "log")
+)
+
+all_areas$log_offset <- log(all_areas$effort)
+test <- MASS::glm.nb(n ~ year + protection + year:protection + log_offset, data = all_areas)
+summary(test)
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = mpa_grid)
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+
+#===============================================================================
+# Negative-Binomial GLM with only main effects excluding CCA data that > 73 m & Area-Weighted
+#===============================================================================
+
+all_areas <- species_data %>%
+  group_by(common_name, year, site_number, drop) %>% 
+  reframe(n = sum(number_caught),
+          area = area[1],
+          swell = median(swell_height_m),
+          depth = median(drop_depth_meters),
+          vermilion = sum(vermilion),
+          bocaccio = sum(bocaccio),
+          lat = mean(drop_latitude_degrees),
+          lon = mean(drop_longitude_degrees),
+          effort = length(unique(angler)) * length(unique(hook))) 
+
+raw.cpue <- tmp2 %>%
+  mutate(cpue = n / effort) %>%
+  group_by(year, area) %>%
+  summarize(avg_cpue = mean(cpue))
+raw.cpue$year <- as.numeric(as.character(raw.cpue$year))
+
+ggplot(data = raw.cpue) + 
+  geom_point(aes(y = avg_cpue, x = year, colour = area), size = 3) + theme_bw() + 
+  geom_line(aes(x = year, y = avg_cpue, colour = area)) +
+  facet_grid(area~.) + xlab("Year") + ylab("Raw CPUE")
+ggsave(file = file.path(index_dir, "plots", 'raw_cpue_nwfsc_hkl_by_area_all_sites.png'), width = 10, height = 7)
+
+# Format the data frame by adding factors and 0 centering quantities 
+all_areas <- all_areas %>%
+  mutate(
+    year = as.factor(year),
+    site_number = as.factor(site_number),
+    drop = as.factor(drop),
+    swell_scaled = swell - mean(swell),
+    vermilion_scaled = vermilion - mean(vermilion),
+    bocaccio_scaled = bocaccio - mean(bocaccio),
+    depth_scaled = depth - mean(depth),
+    depth_scaled_2 = depth_scaled * depth_scaled
+  )
+
+# Year and Sites
+year_site <- expand.grid(
+  year = unique(all_areas$year),
+  site_number = unique(all_areas$site_number),
+  area = unique(all_areas$area))
+
+## join in location info for all sites
+locs <- all_areas %>%
+  dplyr::group_by(year, area) %>%
+  dplyr::summarise(
+    lat = lat[1],
+    lon = lon[1],
+    site_number = site_number[1],
+    depth_scaled = depth_scaled[1],
+    depth_scaled_2 = depth_scaled_2[1],
+    swell_scaled = swell_scaled[1],
+    bocaccio_scaled = bocaccio_scaled[1],
+    vermilion_scaled = vermilion_scaled[1],
+    drop = as.factor(3))
+
+weighted_grid <- NULL
+for (a in 1:39){
+  weighted_grid <- rbind(weighted_grid, locs[locs$area == "Mainland", ])
+}
+#for(a in 1:14){
+#  weighted_grid <- rbind(weighted_grid, locs[locs$area == "Mainland_2", ])
+#}
+for(a in 1:73){
+  weighted_grid <- rbind(weighted_grid, locs[locs$area == "Southern_Channel_Island", ])
+}
+for(a in 1:88){
+  weighted_grid <- rbind(weighted_grid, locs[locs$area == "Northern_Channel_Island", ])
+}
+  
+name <- "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+all_areas$site_number <- droplevels(all_areas$site_number)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + drop + vermilion_scaled + bocaccio_scaled + year*area + (1|site_number),
+  data = all_areas,
+  offset = log(all_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = delta_lognormal()
+)
+
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = weighted_grid)
+
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+#========================================================================================================
+
+#tmp <- species_data
+#remove <- which(tmp$cca == 1 & tmp$drop_depth_meters > 73)
+#tmp$area[remove] <- "CCA_Closed_to_Fishing"
+
+
+open_areas <- species_data[-remove, ] %>%
+  group_by(common_name, year, site_number, drop) %>% 
+  reframe(n = sum(number_caught),
+          area = area[1],
+          swell = median(swell_height_m),
+          depth = median(drop_depth_meters),
+          vermilion = sum(vermilion),
+          bocaccio = sum(bocaccio),
+          lat = mean(drop_latitude_degrees),
+          lon = mean(drop_longitude_degrees),
+          effort = length(unique(angler)) * length(unique(hook))) 
+
+# Format the data frame by adding factors and 0 centering quantities 
+open_areas <- open_areas %>%
+  mutate(
+    year = as.factor(year),
+    site_number = as.factor(site_number),
+    drop = as.factor(drop),
+    swell_scaled = swell - mean(swell),
+    vermilion_scaled = vermilion - mean(vermilion),
+    bocaccio_scaled = bocaccio - mean(bocaccio),
+    depth_scaled = depth - mean(depth),
+    depth_scaled_2 = depth_scaled * depth_scaled
+  )
+
+# Year and Sites
+year_site <- expand.grid(
+  year = unique(all_areas$year),
+  site_number = unique(all_areas$site_number),
+  area = unique(all_areas$area))
 
 ## join in location info for all sites
 locs <- open_areas %>%

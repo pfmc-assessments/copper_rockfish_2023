@@ -6,7 +6,8 @@
 library(r4ss)
 # Locatedi in the pfmc-assessments organization repo
 # pak::pkg_install("pfmc-assessments/nwfscDiag")
-library(nwfscDiag)
+#library(nwfscDiag)
+devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/nwfscDiag")
 library(dplyr)
 
 # Specify the directory
@@ -20,7 +21,7 @@ if( grepl("Chantel", user) ){
 
 model_dir <- file.path(user_dir, "models", "sca")
 # Specify why model you would like to profile, retro, and/or jitter
-base_name <- "13.2_cpfv_dome_dw"
+base_name <- "13.7_cpfv_block"
 
 # Specify the parameters and the space to profile
 get = get_settings_profile(
@@ -56,7 +57,9 @@ model_settings = get_settings(
   settings = list(
     base_name = base_name,
     profile_details = get,
-    run =  c("profile", "retro", "jitter"), 
+    run =  c("profile", "jitter"), 
+    btarg = -1, 
+    minbthresh = -1,
     retro_yrs = -1:-5,
     Njitter = 50,
     jitter_fraction = 0.10))

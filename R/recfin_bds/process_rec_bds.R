@@ -183,6 +183,36 @@ north$Area <- firstup(north$Area)
 write.csv(south, file = file.path(dir, "forSS", "rec_south_sample_size_by_program.csv"), row.names = FALSE)
 write.csv(north, file = file.path(dir, "forSS", "rec_north_sample_size_by_program.csv"), row.names = FALSE)
 
+
+# Look at the number of samples by district
+crfs$ports <- sapply(strsplit(crfs$RECFIN_PORT_NAME, '\\s*[()]'), '[',1)
+
+sample_size_cpfv <- crfs %>%
+  dplyr::filter(mode == 'cpfv' & area == "south") %>%
+  dplyr::group_by(area, year, ports) %>%
+  dplyr::summarise(
+    #ntrip = length(unique(trip)),
+    n = length(lengthcm))
+
+south_by_district <- sample_size_cpfv %>%
+  pivot_wider(names_from = ports, values_from = n) 
+south_by_district$percent_channel <- south_by_district$CHANNEL / apply(south_by_district[, 3:4], 1, sum)
+south_by_district$percent_south <- 1 - south_by_district$percent_channel
+write.csv(south_by_district, file = file.path(dir, "forSS", "rec_bds_cpfv_samples_by_district.csv"), row.names = FALSE)
+
+sample_size_private <- crfs %>%
+  dplyr::filter(mode == 'private' & area == "south") %>%
+  dplyr::group_by(area, year, ports) %>%
+  dplyr::summarise(
+    #ntrip = length(unique(trip)),
+    n = length(lengthcm))
+
+south_by_district <- sample_size_private %>%
+  pivot_wider(names_from = ports, values_from = n) 
+south_by_district$percent_channel <- south_by_district$CHANNEL / apply(south_by_district[, 3:4], 1, sum)
+south_by_district$percent_south <- 1 - south_by_district$percent_channel
+write.csv(south_by_district, file = file.path(dir, "forSS", "rec_bds_pr_samples_by_district.csv"), row.names = FALSE)
+
 #==============================================================================
 # Create un-weighted composition data for recreational data sources
 #==============================================================================
