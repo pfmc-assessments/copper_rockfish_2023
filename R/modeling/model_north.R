@@ -14,7 +14,7 @@ if( grepl("Chantel", user) ){
 }
 
 wd <- file.path(user_dir, "models", area)
-
+setwd(wd)
 
 #=================================================================================
 # 2021 Base Model ----
@@ -853,4 +853,79 @@ SSplotComparisons(mysummary,
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
 
+
+#### Model 9.4
+#change ROV selectivity back to 24, rec dev option 2
+selex <- SS_output(file.path(wd, "9.4_selex"))
+SS_plots(selex)
+round(selex$likelihoods_used$values,1)
+#NLL - 983,4
+
+
+#change ROV selectivity back to 24, no rec devs
+selex_norecdev <- SS_output(file.path(wd, "9.4_selex_noRecDev"))
+#SS_plots(selex)
+round(selex_norecdev$likelihoods_used$values,1)
+#NLL - 1199.7
+
+#change ROV selectivity back to 24, recdev option to 1
+selex_recdev1 <- SS_output(file.path(wd, "9.4_selex_RecDev1"))
+#SS_plots(selex)
+round(selex_recdev1$likelihoods_used$values,1)
+#NLL 987.6
+
+#change ROV selectivity back to 24, recdev option to 1
+selex_nomrfssdeb <- SS_output(file.path(wd, "9.4_selex_nomrfss_nodeb_index"))
+#SS_plots(selex)
+round(selex_nomrfssdeb$likelihoods_used$values,1)
+#NLL 992
+
+#change ROV selectivity back to 24, recdev option to 1
+selex_nomrfssdeb_nolngth <- SS_output(file.path(wd, "9.4_selex_nomrfss_nodeb_index_nomrfss_lengths"))
+#SS_plots(selex)
+round(selex_nomrfssdeb_nolngth$likelihoods_used$values,1)
+#NLL 918
+
+modelnames <- c("ROV selex24 RecDev2", "-MRFSS+DebIndex", "-MRFSS+Deb+Lengths")
+mysummary <- SSsummarize(list(selex, selex_nomrfssdeb, selex_nomrfssdeb_nolngth))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.4_selex_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.3,
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+############################################################################
+##Model 9.4 - start with all of the MRFSS era data stripped out
+
+mrfss_explore <- SS_output(file.path(wd, "9.5_strip_80s_cpfv"))
+SS_plots(mrfss_explore)
+tune_comps(replist = mrfss_explore, 
+           dir = file.path(wd, "9.5_strip_80s_cpfv"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+
+add_ages <- SS_output(file.path(wd, "9.5_strip_80s_cpfv_add_ages"))
+
+add_lengths <- SS_output(file.path(wd, "9.5_strip_80s_cpfv_add_lengths"))
+
+add_debs <- SS_output(file.path(wd, "9.5_strip_80s_cpfv_add_deb_index"))
+
+modelnames <- c("No MRFSS era Rec data", "+ Marginal ages", 
+                "+ Lengths", "+ Debs Index")
+mysummary <- SSsummarize(list(mrfss_explore, add_ages, add_lengths, add_debs))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.4_mrfssexplore_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.3,
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
+###### 9.6 reweight 9.4
+reweight <- SS_output(file.path(wd, "9.6_reweight"))
+SS_plots(reweight)
+tune_comps(replist = reweight, 
+           dir = file.path(wd, "9.6_reweight"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)
 

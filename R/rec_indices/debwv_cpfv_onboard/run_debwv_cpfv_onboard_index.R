@@ -24,13 +24,13 @@ pacfinSpecies <- 'COPP'
 speciesName <- "copper"
 modelArea = "north"
 indexName <-  "debwv_cpfv_onboard"
-modelName = "area_weighted"
+#modelName = "area_weighted"
 # Set working directories
-dir <- file.path(here(),"data","rec_indices", indexName, modelName)
+dir <- file.path(here(),"data","rec_indices", indexName)
 setwd(dir)
 
-
-load(file.path(here(),"data","rec_indices",indexName, 'COPP_filtered_data.RData'))
+load("COPP_filtered_data.RData")
+#load(file.path(here(),"data","rec_indices",indexName, 'COPP_filtered_data.RData'))
 r_code_location <- "C:/Users/melissa.monk/Documents/Github/copper_rockfish_2023/R"
 #-------------------------------------------------------------------------------
 covars <- c("year", "reef", "wave")
@@ -40,7 +40,7 @@ covars <- c("year", "reef", "wave")
     rename(Target = KEPT,
            year = YEAR,
            wave = WAVE,
-           depth = DEPTHfm,
+           depth = DEPTH,
            cpue = CPUE) %>%
     mutate(reef = MegaReef) %>%
     mutate(logEffort = log(Effort)) %>%
@@ -62,7 +62,7 @@ ggplot(dat %>% group_by(reef, year) %>% summarise(average_cpue = mean(cpue)),
                 colour = reef)) +
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, .2)) + 
   scale_color_viridis_d()
-ggsave(file = file.path(getwd(),modelArea, "average_cpue_by_reef.png"), width = 7, height = 7)
+ggsave(file = file.path(getwd(),"average_cpue_by_reef.png"), width = 7, height = 7)
 
 #cpue by depth
 ggplot(dat, aes(x = cpue, y = depth)) +
@@ -76,9 +76,9 @@ summary(dat$depth)
 dat$depth_2 <- dat$depth^2
 
 #Model selection
-#full model
+#full model - not using wave
 model.full <- MASS::glm.nb(
-  Target ~ year + wave + reef + depth + depth_2 + offset(logEffort),
+  Target ~ year + reef + depth + depth_2 + offset(logEffort),
   data = dat,
   na.action = "na.fail")
 summary(model.full)
@@ -232,30 +232,20 @@ Model_selection
     spatial="off",
     spatiotemporal = "off",
     family = nbinom2(link = "log"),
-    silent = TRUE,
-    do_index = TRUE,
-    predict_args = list(newdata = grid, re_form_iid = NA),   
-    index_args = list(area = 1),
     control = sdmTMBcontrol(newton_loops = 1)) #not entirely sure what this does
   
-  
-#-------------------------------------------------------------------------------
-  pred <- predict(fit.nb, return_tmb_object = TRUE, newdata = grid)
-  index <- get_index(pred, bias_correct = TRUE)
-  index
-  
-#-------------------------------------------------------------------------------
+----------------------------------------------------------------
   # Load in some helper functions for processing and plotting the data
   all <- list.files(file.path(r_code_location, "sdmTMB"))
   for (a in 1:length(all)) { source(file.path(r_code_location, "sdmTMB", all[a]))}
   
   #Get diagnostics and index for SS
   do_diagnostics(
-    dir = dir, 
+    dir = file.path(getwd(),"main_effects"), 
     fit = fit.nb)
   
   calc_index(
-    dir = file.path(dir), 
+    dir = file.path(getwd(),"main_effects"), 
     fit = fit.nb,
     grid = grid)
   
@@ -271,7 +261,7 @@ Model_selection
   dataFilters <- data.frame(lapply(dataFilters, as.character), stringsasFactors = FALSE)
   
   write.csv(dataFilters, 
-            file = file.path(dir, "data_filters.csv"), 
+            file = file.path(getwd(), "data_filters.csv"), 
             row.names = FALSE)
   
   View(Model_selection)
@@ -288,7 +278,7 @@ Model_selection
            `Depth squared` = depth_2) %>%
     rename_with(stringr::str_to_title,-AICc)
  # View(out)
-  write.csv(out, file = file.path(dir, "model_selection.csv"), row.names = FALSE)
+  write.csv(out, file = file.path(getwd(), "model_selection.csv"), row.names = FALSE)
   
   #summary of trips and  percent pos per year
   summaries <- dat %>%
@@ -307,11 +297,9 @@ Model_selection
   
   
 #Delta_models ------------------------------------------------------------------- 
-  modelName <- "delta_lognormal_main_effects"
+
   
-  dir.create(file.path(here(),"data","rec_indices", indexName, modelName))
-  dir <- file.path(here(),"data","rec_indices", indexName, modelName)
-  rm(fit, index)
+
   
   fit <- sdmTMB(
     Target ~ year  + reef + poly(depth, 2),
@@ -325,12 +313,12 @@ Model_selection
   )
   
   index <- calc_index(
-    dir = file.path(dir), 
+    dir = file.path(getwd(), "deltalogn"), 
     fit = fit,
     grid = grid)
   
   do_diagnostics(
-    dir = file.path(dir), 
+    dir = file.path(getwd(),"deltalogn"), 
     fit = fit)
   
   index$model <- modelName
@@ -339,6 +327,30 @@ Model_selection
   aic <- AIC(fit)
   metrics <- rbind(metrics, c(name, loglike, aic))
   
-  save(indices, file = file.path(dir, "all_indices.rdata"))  
-  save(metrics, file = file.path(dir, "metrics.rdata"))
+  #save(indices, file = file.path(dir, "all_indices.rdata"))  
+  #save(metrics, file = file.path(dir, "metrics.rdata"))
+  
+#Delta gamma
+
+
+  
+  fit <- sdmTMB(
+    Target ~ year  + reef + poly(depth, 2),
+    data = dat,
+    offset = dat$logEffort,
+    time = "year",
+    spatial="off",
+    spatiotemporal = "off",
+    family = delta_gamma(),
+    control = sdmTMBcontrol(newton_loops = 1)
+  )
+  
+  index <- calc_index(
+    dir = file.path(getwd(), "deltagamma"), 
+    fit = fit,
+    grid = grid)
+  
+  do_diagnostics(
+    dir = file.path(getwd(),"deltagamma"), 
+    fit = fit)
   

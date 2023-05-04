@@ -35,7 +35,7 @@ indexName <-  "crfs_cpfv_onboard"
 #keep depth as continuous
 covars <- c("month", "region", "year")
 
-
+data_dir <- "S:/copper_rockfish_2023"
 # Load in some helper functions for processing and plotting the data
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -50,9 +50,9 @@ all <- list.files(file.path(user_dir, "R", "sdmTMB"))
 for (a in 1:length(all)) { source(file.path(user_dir, "R", "sdmTMB", all[a]))}
 # Set working directories
 #set working directory
-dir <- file.path(here(), "data", "rec_indices", "crfs_cpfv_onboard", modelArea, "start2005")
+dir <- file.path(data_dir, "data", "rec_indices", "crfs_cpfv_onboard", modelArea, "start2005")
 
-#dir <- file.path(here(),"data","rec_indices", indexName, modelArea)
+#dir <- file.path(data_dir(),"data","rec_indices", indexName, modelArea)
 setwd(dir)
 
 # load data
@@ -67,7 +67,43 @@ dat <- onboard %>%
   mutate(depth_2 = depth^2) %>%
   mutate(depth_scaled = (depth - mean(depth)) / sd(depth)) %>%
   mutate(depth_scaled2 = depth_scaled^2) %>%
-  droplevels
+  rename(region_old = region) %>%
+  rename(region = AlphaHull) %>% 
+  mutate_at(vars(region), as.factor) %>%
+droplevels
+
+#####replot the avearge cpue
+
+  cpue_by_region <- dat %>%
+    group_by(year, region) %>%
+    summarise(average_cpue = mean(cpue))
+
+  # look average cpue by district
+  ggplot(cpue_by_region, aes(x = year, y = average_cpue, colour = region, group = region)) +
+    geom_point(size = 3) +
+    theme_bw() +
+    geom_path(aes(x = year, y = average_cpue, colour = region)) +
+    xlab("Year") +
+    ylab("Average CPUE") +
+    ylim(c(0, (max(cpue_by_region$average_cpue) * 1.1))) +
+    scale_color_viridis_d()
+  ggsave(file = file.path(getwd(), "average_cpue_by_region.png"), width = 7, height = 7)
+
+  cpue_by_year <- dat %>%
+    group_by(year) %>%
+    summarise(average_cpue = mean(cpue))
+
+  # look average cpue by district
+  ggplot(cpue_by_year, aes(x = year, y = average_cpue, group = 1)) +
+    geom_line() +
+    xlab("Year") +
+    ylab("Average CPUE") +
+    ylim(c(0, (max(cpue_by_year$average_cpue) * 1.1))) +
+    scale_color_viridis_d()
+  ggsave(file = file.path(getwd(), "average_cpue_alldata.png"), width = 7, height = 7)
+
+
+
 
 #-----------------------------------------------------------------------------
 #Main effects model
@@ -112,21 +148,16 @@ fit.nb <- sdmTMB(
   spatial="off",
   spatiotemporal = "off",
   family = nbinom2(link = "log"),
-  silent = TRUE,
-  do_index = TRUE,
-  predict_args = list(newdata = grid, re_form_iid = NA),   
-  index_args = list(area = 1),
   control = sdmTMBcontrol(newton_loops = 1) #not entirely sure what this does
 )
 
-
 #Get diagnostics and index for SS
 do_diagnostics(
-  dir = file.path(dir, "negbin"), 
+  dir = file.path(dir, "negbin_alpha"), 
   fit = fit.nb)
 
 calc_index(
-  dir = file.path(dir, "negbin"), 
+  dir = file.path(dir, "negbin_alpha"), 
   fit = fit.nb,
   grid = grid)
 
@@ -143,12 +174,12 @@ fit.gam = sdmTMB(
   control = sdmTMBcontrol(newton_loops = 1))
 
 do_diagnostics(
-  dir = file.path(dir, "deltagamma"), 
+  dir = file.path(dir, "deltagamma_alpha"), 
   fit = fit.gam,
   plot_resid = FALSE)
 
 calc_index(
-  dir = file.path(dir, "deltagamma"), 
+  dir = file.path(dir, "deltagamma_alpha"), 
   fit = fit.gam,
   grid = grid)
 
@@ -164,12 +195,12 @@ fit.logn = sdmTMB(
   control = sdmTMBcontrol(newton_loops = 1))
 
 do_diagnostics(
-  dir = file.path(dir, "deltalogn"), 
+  dir = file.path(dir, "deltalogn_alpha"), 
   fit = fit.logn,
   plot_resid = FALSE)
 
 calc_index(
-  dir = file.path(dir, "deltalogn"), 
+  dir = file.path(dir, "deltalogn_alpha"), 
   fit = fit.logn,
   grid = grid)
 
@@ -201,7 +232,7 @@ write.csv(dataFilters, file = file.path(dir, "data_filters.csv"), row.names = FA
 #          `log-likelihood` = logLik) %>%
 #   rename_with(stringr::str_to_title,-AICc)
 #View(out)
-write.csv(out, file = file.path(dir, "Model_selection.csv"), row.names = FALSE)
+write.csv(Model_selection, file = file.path(dir, "Model_selection.csv"), row.names = FALSE)
 
 #summary of trips and  percent pos per year
 summaries <- dat %>%
@@ -251,16 +282,16 @@ grid_south$region_year <- 1
 
 grid_south <- NULL
 for (a in 1:12){
-  grid_south <- rbind(grid_south, grid[grid$region ==  "District 1 mainland", ])
+  grid_south <- rbind(grid_south, grid[grid$region ==  "Mainland - District 1", ])
 }
 for (a in 1:7){
-  grid_south <- rbind(grid_south, grid[grid$region == "District 2 mainland", ])
+  grid_south <- rbind(grid_south, grid[grid$region == "Mainland - District 2", ])
 }
 for (a in 1:44){
-  grid_south <- rbind(grid_south, grid[grid$region == "Northern Channel Islands", ])
+  grid_south <- rbind(grid_south, grid[grid$region == "NCI", ])
 }
 for (a in 1:36){
-  grid_south <- rbind(grid_south, grid[grid$region == "Southern Channel Islands", ])
+  grid_south <- rbind(grid_south, grid[grid$region == "SCI", ])
 }
 
 fit.logn.w = sdmTMB(
@@ -274,11 +305,11 @@ fit.logn.w = sdmTMB(
   control = sdmTMBcontrol(newton_loops = 1))
 
 do_diagnostics(
-  dir = file.path(dir, "area_weighted_logn"), 
+  dir = file.path(dir, "deltalogn_alpha_weighted"), 
   fit = fit.logn.w,
   plot_resid = FALSE)
 
 calc_index(
-  dir = file.path(dir, "area_weighted_logn"), 
+  dir = file.path(dir, "deltalogn_alpha_weighted"), 
   fit = fit.logn.w,
   grid = grid_south)
