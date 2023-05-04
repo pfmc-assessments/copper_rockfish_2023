@@ -16,21 +16,22 @@ library(ggplot2)
 library(here)
 library(glue)
 
-dir <- file.path(here(), "data", "rec_indices", "debwv_cpfv_onboard")
+data_dir <- "S:/copper_rockfish_2023"
+dir <- file.path(data_dir, "data", "rec_indices", "debwv_cpfv_onboard")
 setwd(dir)
 out.dir <- file.path(getwd(),"plots")
 #load data
 load("debwv_copper_data.R")
-
+#####################################################################################
 #Data filter dataframe 
 data_filters <- data.frame(
-  matrix(vector(), 5, 4,
+  matrix(vector(), 12, 4,
          dimnames=list(c(), c("Filter", "Description",
                              "Samples", "Positive_Samples"))),
                           stringsAsFactors=F)
 data_filters$Filter[1:2] = c("All")
 filter.num = 1
-
+###################################################################################
 
 #Read in data
 dim(subset(debwv, KEPT>0))
@@ -45,25 +46,31 @@ filter.num = filter.num + 1
 #Remove numenc  = null
 debwv <- subset(debwv, NUMENC!='NULL')
 
+##########################################################################################################
 #Add to filter dataframe
 data_filters$Samples[filter.num] = dim(debwv)[1]
 data_filters$Positive_Samples[filter.num] = dim(subset(debwv, KEPT>0))[1]
 data_filters$Filter[filter.num] = "No catch"
 data_filters$Description[filter.num] = 'Remove no catch trips'
 filter.num = filter.num + 1
-
+#########################################################################################################
 
 ##############################Remove 1987 (only sampled Monterey Bay)
-#Remove 1987 and also 
+#Remove 1987 and also depth <80 fm
 debwv  <- debwv %>%
-  filter(YEAR>1987)
+  filter(YEAR>1987) %>%
+  filter(DEPTH<80)
+
+#########################################################################################################
 
 #Add to filter dataframe
 data_filters$Samples[filter.num] = dim(debwv)[1]
 data_filters$Positive_Samples[filter.num] = dim(subset(debwv, KEPT>0))[1]
 data_filters$Filter[filter.num] = "Only sampled Monterey"
-data_filters$Description[filter.num] = 'Remove 1987'
+data_filters$Description[filter.num] = 'Remove 1987 and depths >80fm'
 filter.num = filter.num + 1
+#########################################################################################################
+
 
 #mutate columns to numeric
 debwv <- debwv %>% mutate_at(c('KEPT', 'DISCD', 'NUMENC','REEFID'), as.numeric)
@@ -101,7 +108,7 @@ debwv <- debwv %>%
 
 #Create catch per angler house
 debwv <- debwv %>%
-  mutate(CPUE = KEPT/ANGHRS)
+  mutate(CPUE = NUMENC/(AVG_OBSANG*(FISHTIME/70)))
 summary(debwv$CPUE)
 
 #make a copy of the original to reference
@@ -129,56 +136,99 @@ dev.off()
 #Not removing the upper quantile bc it can be a combo of a number of drifts
 #Removes 5% of the data
 dat <- dat %>%
-      filter(FISHTIME >= 6) #, FISHTIME < fishtime_quantile[40])
+      filter(FISHTIME >= 6,
+      FISHTIME<=218) #, FISHTIME < fishtime_quantile[40])
 
+#########################################################################################################
 #Add to filter dataframe
 data_filters$Samples[filter.num] = dim(dat)[1]
 data_filters$Positive_Samples[filter.num] = dim(subset(dat, KEPT>0))[1]
 data_filters$Filter[filter.num] = "Time fished"
-data_filters$Description[filter.num] = 'Remove drifts fished less than 6 minutes'
+data_filters$Description[filter.num] = 'Remove upper and lower 2.5% of time fished; keep 6-218 minutes'
 filter.num = filter.num + 1
+#########################################################################################################
+
+summary(dat$AVG_OBSANG)
+OBSANG_quantile <- quantile(dat$AVG_OBSANG, seq(0,1,.025))
+OBSANG_quantile
+
+png(filename = paste0(out.dir,'/Histogram of observed anglers.png'), 
+width = 6, height = 6, units = "in", res = 600)
+hist(dat$AVG_OBSANG, breaks=50)
+dev.off()
+
+dat <- dat %>%
+      filter(AVG_OBSANG >= 4,
+      AVG_OBSANG <= 15) #, FISHTIME < fishtime_quantile[40])
+
+#########################################################################################################
+#Add to filter dataframe
+data_filters$Samples[filter.num] = dim(dat)[1]
+data_filters$Positive_Samples[filter.num] = dim(subset(dat, KEPT>0))[1]
+data_filters$Filter[filter.num] = "Observed anglers"
+data_filters$Description[filter.num] = 'Remove upper and lower 2.5% of observed anglers; keep 4-15'
+filter.num = filter.num + 1
+#########################################################################################################
+
+
+
+
 ###############################DEPTH
 #Look at depths and create depth bins
 #BATHY DATA IN METERS, OBSERVER DATA IN FEET, MANAGEMENT IN FATHOMS 
 #Convert feet to fathoms for the analyses
-dat$DEPTHfm <- dat$DEPTH / 6
+
 
 #Look at depth by SuperReef
 #png(filename = paste0(out.dir,'/Histogram of depth (fm) by reef.png'), width = 6, height = 6, units = "in", res = 600)
-ggplot(dat, aes(DEPTHfm, fill=SuperReef)) +
-  geom_histogram()
-
+ggplot(dat, aes(DEPTH, fill=SuperReef)) +
+  geom_histogram() + xlab("Depth (fm)") +ylab("Number of drifts")
+ggsave(file.path(out.dir,"depthfm_byreef.png"), width = 7, height = 7)
 
 #Look at positive depth
-dat %>% filter(KEPT>0) %>% do(data.frame(quantile(.$DEPTHfm, seq(0,1,.01))))
+dat %>% filter(KEPT>0) %>% do(data.frame(quantile(.$DEPTH, seq(0,1,.01))))
 #Look at depths with no copper
-dat  %>% filter(KEPT==0) %>% do(data.frame(quantile(.$DEPTHfm, seq(0,1,.01))))
+dat  %>% filter(KEPT==0) %>% do(data.frame(quantile(.$DEPTH, seq(0,1,.01))))
 
 #REMOVE anything deeper than  meters (~70 fathoms) retains 99% of positive drifts and 95% of all drifts
  dat <- dat %>%
-   filter(DEPTHfm<=60,
-          DEPTHfm >= 10) 
-# 
+   filter(DEPTH<=56,
+          DEPTH >= 8) 
+# ########################################################################################################
 #Add to filter dataframe
 data_filters$Samples[filter.num] = dim(dat)[1]
 data_filters$Positive_Samples[filter.num] = dim(subset(dat, KEPT>0))[1]
 data_filters$Filter[filter.num] = "Depth"
-data_filters$Description[filter.num] = 'Retain drifts between 10-60 fm'
+data_filters$Description[filter.num] = 'Retain drifts between 8-56 fm'
 filter.num = filter.num + 1
+########################################################################################################
+#percent groundfish filter
+ quantile(dat$percent_groundfish, seq(0,1,.025), na.rm=T)
+
+dat <- dat %>% filter(percent_groundfish>=.715)
+# ########################################################################################################
+#Add to filter dataframe
+data_filters$Samples[filter.num] = dim(dat)[1]
+data_filters$Positive_Samples[filter.num] = dim(subset(dat, KEPT>0))[1]
+data_filters$Filter[filter.num] = "Target"
+data_filters$Description[filter.num] = 'Retain trips with at least 71.5% groundfish catch (97.5% of trips)'
+filter.num = filter.num + 1
+########################################################################################################
 
 
 #png(filename = paste0(out.dir,'/Histogram of depth fathoms after filter.png'), width = 6, height = 6, units = "in", res = 600)
-hist(dat$DEPTHfm)
+hist(dat$DEPTH)
 #dev.off()
 
-ggplot(dat, aes(x=SuperReef, y = DEPTHfm, colour = SuperReef)) + geom_boxplot()
+ggplot(dat, aes(x=SuperReef, y = DEPTH, colour = SuperReef)) + 
+geom_boxplot() +ylab("Depth (fm)")
 ggsave(file = file.path(getwd(), "depth_by_reef.png"), width = 7, height = 7)
 
 
 
 
 dat = dat %>%
-      mutate(DEPTH_bin = cut(DEPTHfm,
+      mutate(DEPTH_bin = cut(DEPTH,
                        breaks = c(10,20,30,40,50,60))) %>%
            mutate_at(vars(DEPTH_bin), as.factor)
            
@@ -218,7 +268,8 @@ reef_drifts <- dat %>%
               count(name="n_drifts")
 
 #join sample sizes to the same data frame
-
+with(dat, table(YEAR, SuperReef))
+with(dat %>% filter(KEPT>0), table(YEAR, SuperReef))
 #x11();with(reef_sample_size,plot(n_years, n_drifts))
 
 #############FILTER
@@ -341,6 +392,38 @@ ggsave(file = file.path(out.dir,'/Area weighted arithmetic mean.png'))
 
 save(dat, data_filters, COPP_reef_info, file = file.path(dir,'COPP_filtered_data.RData'))
 
-save.image(paste0(out.dir,'/Filtered_data_DebWV_onboard.RData'))
+save.image(paste0(getwd(),'/Filtered_data_DebWV_onboard.RData'))
 
 
+
+
+#################################################3
+##additional looks at the data
+
+pos <- subset(dat, NUMENC>0 )
+with(pos, table(REEFID))
+with(pos, table(YEAR))
+with(dat, table(REEFID))
+with(dat, table(YEAR, MegaReef))
+summary(dat$percent_groundfish)
+
+ quantile(dat$percent_groundfish, seq(0,1,.1), na.rm=T)
+
+pos_reefs <- pos %>%
+dplyr::select(REEFID) %>%
+unique()
+dat1 <- subset(dat, REEFID %in% pos_reefs$REEFID)
+pos <- subset(dat1, NUMENC>0)
+with(pos, table(YEAR))
+with(dat1, table(YEAR))
+with(dat1, table(YEAR, MegaReef))
+summary(dat1$percent_groundfish)
+
+
+ggplot(dat %>% filter(NUMENC>0), aes(x = CPUE, y = FISHTIME)) + 
+geom_point()
+
+
+summary(dat$ANGHRS)
+summary(dat$FISHTIME)
+summary(dat$AVG_OBSANG)

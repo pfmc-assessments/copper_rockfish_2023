@@ -15,10 +15,10 @@ library(DBI)
 library(here)
 library(glue)
 
-
-dir <- file.path(here(), "data", "rec_indices", "debwv_cpfv_onboard")
+data_dir <- "S:/copper_rockfish_2003"
+dir <- file.path(data_dir, "data", "rec_indices", "debwv_cpfv_onboard")
 setwd(dir)
-
+setwd("S:\\copper_rockfish_2023\\data\\rec_indices\\debwv_cpfv_onboard")
 # connect to all of the databases with windows authentication
 db_driver <- "SQL Server"
 swc_server <- "pinniger"
@@ -37,33 +37,33 @@ query_debwv <- glue::glue_sql(
   "SELECT LOCATION_TRUNC.TRIP_ID AS ASSN,			
 		   LOCATION_TRUNC.FSHNG_STOP AS LOCNUM,		
 		   CNTY,								
-		   DISTRICT,								
-		   MPA,										
-		   ASSESS_AREA,								
-		   SUM_OBSANG AS OBSANG,			
-		   SUM_FISHTIME AS FISHTIME,				
-		   ANGHRS,
+		   DISTRICT,																								
+		   MAX_OBSANG,
+		   MIN_OBSANG,
+		   AVG_OBSANG,
+		   SUM_FISHTIME,
+		   SUM_ANGHRS,
 		   BOAT.percent_groundfish,
 		   YEAR(TRPDATE) AS YEAR,					
 		   MONTH(TRPDATE) AS MONTH,					
      		   DEPTH =   CASE					
-					 WHEN AVG_MINDEPTH IS NOT NULL AND AVG_MAXDEPTH IS NOT NULL				
-					   THEN ((AVG_MINDEPTH+AVG_MAXDEPTH)/2)
-					 WHEN AVG_MINDEPTH IS NULL AND AVG_MAXDEPTH IS NOT NULL
-					   THEN   AVG_MAXDEPTH
-					 WHEN AVG_MINDEPTH IS NOT NULL AND AVG_MAXDEPTH IS  NULL
-			 			THEN AVG_MINDEPTH
-					 WHEN AVG_MINDEPTH IS NULL AND AVG_MAXDEPTH IS NULL
-			 			THEN ((luLOC_CODE.MINFMS*6)+(luLOC_CODE.MAXFMS*6))/2
+					 WHEN AVG_MINDEPTHfm IS NOT NULL AND AVG_MAXDEPTHfm IS NOT NULL				
+					   THEN ((AVG_MINDEPTHfm+AVG_MAXDEPTHfm)/2)
+					 WHEN AVG_MINDEPTHfm IS NULL AND AVG_MAXDEPTHfm IS NOT NULL
+					   THEN   AVG_MAXDEPTHfm
+					 WHEN AVG_MINDEPTHfm IS NOT NULL AND AVG_MAXDEPTHfm IS  NULL
+			 			THEN AVG_MINDEPTHfm
+					 WHEN AVG_MINDEPTHfm IS NULL AND AVG_MAXDEPTHfm IS NULL
+			 			THEN ((luLOC_CODE.MINFMS)+(luLOC_CODE.MAXFMS))/2
 			 			END,
 			  DEPTHTYPE = CASE 
-					 WHEN AVG_MINDEPTH IS NOT NULL AND AVG_MAXDEPTH IS NOT NULL 
+					 WHEN AVG_MINDEPTHfm IS NOT NULL AND AVG_MAXDEPTHfm IS NOT NULL 
 					   THEN 'AVERAGE'
-					 WHEN AVG_MINDEPTH IS NULL AND AVG_MAXDEPTH IS NOT NULL
-					   THEN  'MAXDEPTH'
-					 WHEN AVG_MINDEPTH IS NOT NULL AND AVG_MAXDEPTH IS  NULL
-			 			THEN 'MINDEPTH'
-					 WHEN AVG_MINDEPTH IS NULL AND AVG_MAXDEPTH IS NULL
+					 WHEN AVG_MINDEPTHfm IS NULL AND AVG_MAXDEPTHfm IS NOT NULL
+					   THEN  'MAXDEPTHfm'
+					 WHEN AVG_MINDEPTHfm IS NOT NULL AND AVG_MAXDEPTHfm IS  NULL
+			 			THEN 'MINDEPTHfm'
+					 WHEN AVG_MINDEPTHfm IS NULL AND AVG_MAXDEPTHfm IS NULL
 			 			THEN 'LOC_CODE'
 			 			END, 	
 			 	
@@ -80,12 +80,11 @@ query_debwv <- glue::glue_sql(
 		   INNER JOIN LUREEF	 ON LOCATION_TRUNC.LOC_CODE = LUREEF.LOC_CODE
 		   LEFT  JOIN CATCHES	 ON LOCATION_TRUNC.Trip_ID = CATCHES.Trip_ID 
 									and LOCATION_TRUNC.FSHNG_STOP = CATCHES.FSHNG_STOP
-		   LEFT  JOIN LUSPECIES ON CATCHES.CDFGSP = LUSPECIES.CDFGSP
-
+		  
 	WHERE 
 			  FSHNGTYP_GFISH>0						
 		  and SUM_FISHTIME is not NULL			
-		  and SUM_OBSANG is not NULL			
+		  and AVG_OBSANG is not NULL			
 		  and LOCATION_TRUNC.LOC_CODE is not NULL	
 		  and ReefID is not NULL				
 	 
@@ -93,20 +92,21 @@ query_debwv <- glue::glue_sql(
     GROUP BY		
 			  LOCATION_TRUNC.TRIP_ID,
 			  LOCATION_TRUNC.FSHNG_STOP, 
-			  SUM_OBSANG,  
 			  CNTY,
-			  AVG_MINDEPTH,
-			  AVG_MAXDEPTH,
-			  ASSESS_AREA, 
+			  AVG_MINDEPTHfm,
+			  AVG_MAXDEPTHfm, 
 			  SUM_FISHTIME, 
 			  TRPDATE, 
  			  BOAT.percent_groundfish,
  			  REEFID,
  			  DISTRICT,
- 			  MPA,
  			  MINFMS,
 			  MAXFMS, 
-			  ANGHRS
+			  MAX_OBSANG,
+			  MIN_OBSANG,
+			  AVG_OBSANG,
+			  SUM_ANGHRS
+
 
    ORDER BY NUMENC desc ", 
   .con = con_debwv
@@ -119,11 +119,19 @@ dbDisconnect(con_debwv)
 debwv %>%
   group_by(YEAR) %>%
   summarise(kept = sum(KEPT),
-            discard = sum(DISCD))
+            discard = sum(DISCD)) 
+			
+			
+debwv <- debwv	%>%
+mutate(FISHTIME = SUM_FISHTIME,
+ANGHRS  = SUM_ANGHRS)
 #very few discards so this will be a retained fish only index
 
 #look at the percent of trips and groundfish
-ggplot(debwv %>% filter(KEPT>0), aes(percent_groundfish, KEPT)) + 
-  geom_point()
+ggplot(debwv %>% filter(KEPT>0), aes(percent_groundfish, NUMENC)) + 
+  geom_point() + xlab("Percent of trip catch groundfish") +
+  ylab("Number of copper encountered")
+ggsave(file.path(getwd(),"percent_gfish.png"))
+
 
 save(debwv, file = "debwv_copper_data.R")
