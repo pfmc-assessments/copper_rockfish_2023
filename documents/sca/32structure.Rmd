@@ -16,6 +16,10 @@ The base assessment model for `r spp` was developed to balance parsimony and rea
 ### Model Changes from the Last Assessment 
 
 
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'31_changes_in_model_structure.Rmd')
+read_child(filein)
+```
 
 
 ### Bridging Analysis
