@@ -806,6 +806,51 @@ round(com_selex$likelihoods_used$values,1)
 com_selex$likelihoods_by_fleet[c(10,14), ]
 # NLL = 983.9 
 
-#Model 9.3 melissa ----
-com_selex_nomrfss <- SS_output(file.path(wd, "9.2_com_logistic_noMRFSSind"))
-SS_plots(com_selex_nomrfss)
+#Model 9.3 update cpfv---
+cpfv2004 <- SS_output(file.path(wd, "9.3_cpfv2004"))
+round(cpfv2004$likelihoods_used$values,1)
+#NLL = 983.9
+
+#Model 9.3 no mrfss index ----
+cpfv2004_nomrfss <- SS_output(file.path(wd, "9.3_nomrfss"))
+round(cpfv2004_nomrfss$likelihoods_used$values,1)
+#NLL = 988.7
+
+#Remove marginal ages from the 19702 and 1970s from CPFV----
+noEarlyRecAge <- SS_output(file.path(wd, "9.3_noearlyRecAge"))
+round(noEarlyRecAge$likelihoods_used$values,1)
+#NLL = 961.1
+
+#Remove marginal ages from the 19702 and 1970s from CPFV----
+no2022RecAge <- SS_output(file.path(wd, "9.3_no2022ages"))
+round(no2022RecAge$likelihoods_used$values,1)
+# NLL - 959.1
+
+#Remove marginal ages from the 19702 and 1970s from CPFV----
+nodebindex <- SS_output(file.path(wd, "9.3_noDebIndex"))
+round(nodebindex$likelihoods_used$values,1)
+#NLL = 988.3
+
+#Estimate M----
+estM <- SS_output(file.path(wd, "9.3_estM"))
+SS_plots(estM)
+round(estM$likelihoods_used$values,1)
+#NLL - 982.0
+
+#Estimate h----
+esth <- SS_output(file.path(wd, "9.3_esth"))
+round(esth$likelihoods_used$values,1)
+#NLL - 974.4
+
+modelnames <- c("Update CPFV","- MRFSS index", "-Early Rec Marginals", "-2022 CPFV ages",
+"-Deb Index", "Est. M", "Est. h")
+mysummary <- SSsummarize(list(cpfv2004, cpfv2004_nomrfss, noEarlyRecAge, no2022RecAge,
+nodebindex, estM, esth))
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.3_cpfv2004_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.3,
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+
