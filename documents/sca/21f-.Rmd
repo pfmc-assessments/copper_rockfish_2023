@@ -1,7 +1,7 @@
 
 ## Fishery-Dependent Data
 
-### Commercial Fishery
+### Commercial Fishery {#commercial-fishery}
 
 #### Landings and Discards
 \
@@ -33,7 +33,7 @@ Input effN = $7.06 * N_{\text{trips}}$ if $N_{\text{fish}}/N_{\text{trips}}$ is 
 
 During initial model evaluations alternative data weighting approaches suggested potentially high up-weighting the samples from the commercial live fish fishery. In order to ensure that the data were not up-weighted beyond the total annual sample size the input sample size was revised to be equal to the number of lengths samples.
 
-### Recreational Fishery
+### Recreational Fishery {#recreational-fishery}
 
 #### Landings and Discards
 \

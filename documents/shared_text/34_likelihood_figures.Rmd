@@ -1,0 +1,81 @@
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(paste0(model_dir, "_profile_SR_LN(R0)_prior_like_0"),  "piner_panel_SR_LN(R0).png"), 
+caption = "Change in the negative log-likelihood across a range of log(R~0~) values",
+label = 'r0-profile')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(paste0(model_dir, "_profile_SR_LN(R0)_prior_like_0"),  "SR_LN(R0)_trajectories_compare1_spawnbio.png"), 
+caption = "Change in the estimate of spawning output across a range of log(R~0~) values",
+label = 'r0-ssb')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(paste0(model_dir, "_profile_SR_LN(R0)_prior_like_0"),  "SR_LN(R0)_trajectories_compare3_Bratio.png"), 
+caption = "Change in the estimate of fraction unfished across a range of log(R~0~) values",
+label = 'r0-depl')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(paste0(model_dir, "_profile_SR_BH_steep_prior_like_1"),  "piner_panel_SR_BH_steep.png"), 
+caption = "Change in the negative log-likelihood across a range of steepness values",
+label = 'h-profile')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(paste0(model_dir, "_profile_SR_BH_steep_prior_like_1"),  "SR_BH_steep_trajectories_compare1_spawnbio.png"), 
+caption = "Change in the estimate of spawning output across a range of steepness values",
+label = 'h-ssb')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(paste0(model_dir, "_profile_SR_BH_steep_prior_like_1"),  "SR_BH_steep_trajectories_compare3_Bratio.png"), 
+caption = "Change in the estimate of fraction unfished across a range of steepness values",
+label = 'h-depl')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(paste0(model_dir, "_profile_NatM_uniform_Fem_GP_1_prior_like_1"),  "piner_panel_NatM_uniform_Fem_GP_1.png"), 
+caption = "Change in the negative log-likelihood across a range of female natural mortality values",
+label = 'm-profile')
+```
+
+\pagebreak
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(paste0(model_dir, "_profile_NatM_uniform_Fem_GP_1_prior_like_1"),  "NatM_uniform_Fem_GP_1_trajectories_compare1_spawnbio.png"), 
+caption = "Change in the estimate of spawning output across a range of female natural mortality values",
+label = 'm-ssb')
+```
+
+\pagebreak
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(paste0(model_dir, "_profile_NatM_uniform_Fem_GP_1_prior_like_1"),  "NatM_uniform_Fem_GP_1_trajectories_compare3_Bratio.png"), 
+caption = "Change in the estimate of fraction unfished across a range of female natural values",
+label = 'm-depl')
+```
+
