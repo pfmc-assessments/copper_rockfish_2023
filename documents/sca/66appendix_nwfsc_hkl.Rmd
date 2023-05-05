@@ -2,7 +2,9 @@
 
 Since 2004, the NWFSC has conducted an annual hook and line survey targeting shelf rockfish in the genus *Sebastes* at fixed stations (e.g., sites, Figure \ref{fig:nwfsc-hkl-map}) in the Southern California Bight. Key species of rockfish targeted by the `r hkl` are bocaccio (*S. paucispinis*), cowcod (*S. levis*), greenspotted (*S. chlorostictus*), and vermilion/sunset (*S. miniatus* and *S. crocotulus*) rockfishes, although a wide range of rockfish species have been observed by this survey. During each site visit, three deckhands simultaneously deploy 5-hook sampling rigs (this is referred to as a single drop) for a maximum of 5 minutes per line, but individual lines may be retrieved sooner at the angler's discretion (e.g., to avoid losing fish). Five drops are attempted at each site for a maximum possible catch of 75 fish per site per year (3 anglers x 5 hooks x 5 drops). Further details regarding the sample frame, site selection, and survey methodology are described by Harms et al. [-@harms_noaa_2008]. 
 
-The sites considered for the creation of a relative index of abundance were limited to sites that have caught at least 1 `r spp` across all years are were open to fishing in order to create an index of abundance based on comparable data. This eliminated a small subset of sites within the CCAs of depths greater than 73 meters, resulting in the removal of only 50 observations of `r spp`. To appropriately weight the survey index by the available rocky substrate by region in the California Bight, each site was assigned as mainland, Northern Channel Island, or Southern Channel Island. Estimates of hard bottom was extracted from the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html) for each of these regions. These data were collected into state waters at a resolution of two meters. South of Point  Conception, additional interpreted bathymetric data classifying the bottom type as  rock or soft bottom were compiled by Emily Saarman (University of California Santa Cruz) and also available  from CDFW's website. The estimates of rocky substrate for each of these regions were 19.5, 36.5, and 44.1 percent in the mainland, Southern Channel Islands, and Northern Channel Islands, respectively. The raw catch-per-unit-effort by each region is shown in Figure \ref{fig:nwfsc-hkl-index-raw}.
+Over time, select sampling sites in the original survey design have been converted to either federal or state MPAs begining around 2011. Additionally, the survey began sampling in two cowcod conservation areas (CCA) in the California Bight starting in 2014 which has portions of depth where take is prohibited. The data were examined for potential impact of catch rates of `r spp` in the `r hkl` between open and protected areas in order to best understand how to model these data.  The catch-per-unit-effort of `r spp` were calculated for protected and open sites in three regions: mainland, Northern Channel Island, and Southern Channel Island (Figure \ref{fig:nwfsc-hkl-index-raw}). An exploratory negative binomial model determined that the catch rates of `r spp` between open and protected areas not significantly different so the decision was made to use all data for `r spp` to generate an index of abundance in a manner that did not specifically account for open and protected sites. 
+
+The sites considered for the creation of a relative index of abundance were limited to sites that have caught at least 1 `r spp` across all years.  To appropriately weight the survey index by the available rocky substrate by region in the California Bight, each site was assigned as mainland, Northern Channel Island, or Southern Channel Island. Estimates of hard bottom was extracted from the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html) for each of these regions. These data were collected into state waters at a resolution of two meters. South of Point  Conception, additional interpreted bathymetric data classifying the bottom type as  rock or soft bottom were compiled by Emily Saarman (University of California Santa Cruz) and also available  from CDFW's website. The estimates of rocky substrate for each of these regions were 19.5, 36.5, and 44.1 percent in the mainland, Southern Channel Islands, and Northern Channel Islands, respectively. 
 
 A range of alternative model structures were explored to generate an index of abundances. This included alternative levels of aggregation (hook, drop, or site), probability distributions (negative binomial, delta-gamma, or delta-lognormal), and covariates (year, site, depth, swell height, region, year-region interaction, and/or the number of vermilion/sunset or bocaccio rockfishes observed). The overall trend in the index of abundance were highly similar across the explored probability distributions and model configurations. Based on QQ-plots, residuals, and AIC the delta-lognormal distribution was selected with covariates for year, region, drop, polynomial depth term, number of bocaccio, number of vermilion, year-region interaction, and site as a random-effect was selected as the final model using sdmTMB [@anderson_sdmtmb_2022] (Figures \ref{fig:nwfsc-hkl-qq}, \ref{fig:nwfsc-hkl-resid-1}, and \ref{fig:nwfsc-hkl-resid-2}). 
 
@@ -15,8 +17,8 @@ A range of alternative model structures were explored to generate an index of ab
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "raw_cpue_nwfsc_hkl_by_area.png"), 
-caption = "Raw catch-per-unit-effort by region for the NWFSC Hook and Line suvey.",
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "raw_cpue_nwfsc_hkl_by_mpa_vs_open_by_region.png"), 
+caption = "Raw catch-per-unit-effort by region and area protection for the NWFSC Hook and Line suvey.",
 label = 'nwfsc-hkl-index-raw')
 ```
 
@@ -24,7 +26,7 @@ label = 'nwfsc-hkl-index-raw')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted", "Index.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "Index.png"), 
 caption = "Estimated index of abundance by the NWFSC Hook and Line survey for copper rockfish.",
 label = 'nwfsc-hkl-index')
 ```
@@ -33,7 +35,7 @@ label = 'nwfsc-hkl-index')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted", "qq.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "qq.png"), 
 caption = "QQ plot.",
 label = 'nwfsc-hkl-qq')
 ```
@@ -42,7 +44,7 @@ label = 'nwfsc-hkl-qq')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted", "residuals_page1.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "residuals_page1.png"), 
 caption = "QQ plot.",
 label = 'nwfsc-hkl-resid-1')
 ```
@@ -51,7 +53,7 @@ label = 'nwfsc-hkl-resid-1')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_open_areas_re_site_area_weighted", "residuals_page2.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "residuals_page2.png"), 
 caption = "QQ plot.",
 label = 'nwfsc-hkl-resid-2')
 ```
