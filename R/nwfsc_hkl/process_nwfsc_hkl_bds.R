@@ -28,6 +28,22 @@ hkl_all[ind, 'count'] <- 1
 # Filter down to only copper observations
 hkl <- hkl_all[ind, ]
 
+# Add MPA indicator field
+federal_protected <- c(48, 180, 184,  228, 229, 413)
+state_protected <- c(181, 182, 185, 59, 62, 152, 292, 293, 379)
+military <- 97
+cca <- unique(hkl$site_number[hkl$cca == 1 & hkl$drop_depth_meters > 73])
+
+find <- c(which(hkl$year > 2007 & hkl$site_number %in% c(48, 180, 184, 228, 229, 413)),
+          which(hkl$year > 2008 & hkl$site_number %in% c(181, 182)),
+          which(hkl$year > 2009 & hkl$site_number == 185),
+          which(hkl$year > 2010 & hkl$site_number == 97),
+          which(hkl$year > 2011 & hkl$site_number %in% c(59, 62, 152, 292, 293, 379)),
+          which(hkl$site_number > 500 & hkl$drop_depth_meters > 73))
+
+hkl$protection <- "Open"
+hkl$protection[find] <- "MPA"
+
 # Process the length and area weight
 hkl$area <- NA
 hkl$area[hkl$area_name %in% 
@@ -135,8 +151,8 @@ samp_weights <- hkl_all %>%
 #==================================================================
 # Visualize the data by Region
 #==================================================================
-remove <- which(hkl$cowcod_conservation_area_indicator == 1 & hkl$drop_depth_meters > 73)
-hkl$area[remove] <- "CCA_Closed_to_Fishing"
+#remove <- which(hkl$cowcod_conservation_area_indicator == 1 & hkl$drop_depth_meters > 73)
+#hkl$area[remove] <- "CCA_Closed_to_Fishing"
 
 prop <- hkl %>%
   group_by(area) %>%
@@ -148,20 +164,21 @@ prop <- hkl %>%
 ggplot(hkl, aes(x = length_cm, y = as.factor(year))) + 
   geom_density_ridges2() +
   scale_fill_viridis_c(name = "Length") +
-  facet_wrap("area") +
+  facet_wrap(c("area", "protection")) +
   stat_density_ridges(quantile_lines = TRUE, quantiles = 2) + 
   ylab("Year") + xlab("Length (cm)")
-ggsave(filename = file.path(dir, "plots", "nwfsc_hkl_ggridges_year_region.png"),
+ggsave(filename = file.path(dir, "plots", "nwfsc_hkl_ggridges_year_region_protection.png"),
        width = 10, height = 10)
 
 hkl$region <- hkl$area
-hkl$region[remove] <- "Closed_Area"
+#hkl$region[remove] <- "Closed_Area"
 
 ggplot(hkl, aes(x = length_cm, fill = area)) + 
   geom_density(alpha = 0.50) + 
   scale_fill_viridis_d() + xlim( c(10, 56)) + 
-  ylab("Year") + xlab("Length (cm)")
-ggsave(filename = file.path(dir, "plots", "nwfsc_hkl_length_density_region.png"),
+  ylab("Year") + xlab("Length (cm)") + 
+  facet_grid(protection~.)
+ggsave(filename = file.path(dir, "plots", "nwfsc_hkl_length_density_region_protection.png"),
        width = 10, height = 7)
 
 
