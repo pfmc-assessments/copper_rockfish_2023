@@ -57,7 +57,7 @@ model_settings = get_settings(
   settings = list(
     base_name = base_name,
     profile_details = get,
-    run =  c("profile", "jitter"), 
+    run =  c("retro", "profile", "jitter"), 
     btarg = -1, 
     minbthresh = -1,
     retro_yrs = -1:-5,
@@ -72,14 +72,14 @@ run_diagnostics(mydir = model_dir, model_settings = model_settings)
 #==============================================================================
 rerun_profile_vals(mydir = file.path(model_dir, base_name),
            model_settings = model_settings,
-           para_name =  "NatM_uniform_Mal_GP_1",
-           run_num = c(3,4),
+           para_name =  "SR_LN(R0)",
+           run_num = c(2,3),
            data_file_nm = "2023_ca_s_copper.dat")
 
 
 library(ss3diags)
-base_name <- base_name
-model <- SS_output(file.path(model_dir, base_name))
+base_name <- "9.1_rov_logistic_dw"
+model <- SS_output(file.path(model_dir,  base_name))
 
 # Runs Test
 dir.create(file.path(model_dir, base_name, "runs_test"))

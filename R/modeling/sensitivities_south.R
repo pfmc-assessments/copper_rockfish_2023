@@ -32,7 +32,7 @@ model_list <- c("est_m", #1
               "no_devs", #4
               "cpfv_asym", #5
               "dirichlet", #6
-              "mi") #7
+              "mi_no_hessian") #7
 
 model_list2 =  c("rm_ages", #1
                 "rm_coop", #2
@@ -154,20 +154,20 @@ wd_dat <- file.path(paste0(wd,"/_plots"))
 # Here is where my version can be found: https://github.com/chantelwetzel-noaa/dover_sole_2021/blob/master/code/sensi_plot_Dover.R
 Sensi_plot_dover(model.summaries=x,
                  dir = wd_dat,
-                 current.year=2021,
+                 current.year=2023,
                  mod.names=modelnames, #List the names of the sensitivity runs
                  likelihood.out = c(0, 1, 0),
                  Sensi.RE.out="Sensi_RE_out.DMP", #Saved file of relative errors
                  CI=0.95, #Confidence interval box based on the reference model
-                 TRP.in=0.40, #Target relative abundance value
-                 LRP.in=0.25, #Limit relative abundance value
+                 TRP.in=-1, #Target relative abundance value
+                 LRP.in=-1, #Limit relative abundance value
                  sensi_xlab="Sensitivity scenarios", #X-axis label
                  ylims.in=c(-1,1,-1,1,-1,1,-1,1,-1,1,-1,1,-1,1), #Y-axis label
                  plot.figs=c(1,1,1,1,1,1), #Which plots to make/save? 
-                 sensi.type.breaks=c(4.5, 6.5, 9.5), #vertical breaks that can separate out types of sensitivities
-                 anno.x=c(3, 5.5, 8, 10.5), # Vertical positioning of the sensitivity types labels
-                 anno.y=c(0.83,0.80,0.85,0.9), # Horizontal positioning of the sensitivity types labels
-                 anno.lab=c("Parameters", "Data Weighting", "Selectivity", "Index"), #Sensitivity types labels
+                 #sensi.type.breaks=c(4.5, 6.5, 9.5), #vertical breaks that can separate out types of sensitivities
+                 #anno.x=c(3, 5.5, 8, 10.5), # Vertical positioning of the sensitivity types labels
+                 #anno.y=c(0.83,0.80,0.85,0.9), # Horizontal positioning of the sensitivity types labels
+                 #anno.lab=c("Parameters", "Data Weighting", "Selectivity", "Index"), #Sensitivity types labels
                  horizontal = TRUE) 
 
 

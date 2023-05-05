@@ -48,7 +48,7 @@ run_diagnostics(mydir = model_dir, model_settings = model_settings)
 
 
 library(ss3diags)
-base_name <- "8.5_update_deb_index"
+base_name <- "9.8_selex_fix"
 model <- SS_output(file.path(model_dir, base_name))
 
 # Runs Test

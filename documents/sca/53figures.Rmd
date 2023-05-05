@@ -859,7 +859,16 @@ label = 'growth-age-pearson-3')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "comp_condAALfit_data_weighting_TA1.8_condAgeGrowth.png"), 
+filein = file.path(model_dir, "plots", "comp_condAALfit_data_weighting_TA1.8_condAgeWCGBT_Growth.png"), 
+caption = "Mean age for the growth age data with 95 percent confidence intervals based on current samples sizes",
+label = 'growth-mean-age-fit-wcgbt')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAALfit_data_weighting_TA1.8_condAgeCOOP_Growth.png"), 
 caption = "Mean age for the growth age data with 95 percent confidence intervals based on current samples sizes",
 label = 'growth-mean-age-fit')
 ```
