@@ -100,7 +100,7 @@ Models were fit using the sdmTMB R package (version ).
 
 
 ```{r, results = 'asis'}
-ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
                     "keep_discard_prop.csv"))
 #col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
 
@@ -113,8 +113,8 @@ sa4ss::table_format(x = ind,
 \newpage
 
 ```{r, results = 'asis'}
-ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
-                    "start2005", "target_water_area.csv"))
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north",
+                    "start2004", "target_water_area.csv"))
 #col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
 
 sa4ss::table_format(x = ind,
@@ -127,8 +127,8 @@ sa4ss::table_format(x = ind,
 \newpage
 
 ```{r, results = 'asis'}
-ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
-                    "start2005", "percent_pos.csv"))
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north",
+                     "percent_pos.csv"))
 #col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
 
 sa4ss::table_format(x = ind,
@@ -140,14 +140,14 @@ sa4ss::table_format(x = ind,
 \newpage
 
 ```{r, results = 'asis'}
-ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard",
-                    "model_selection.csv"))
-col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+#ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north",
+#                    "model_selection.csv"))
+#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
 
-sa4ss::table_format(x = ind,
-             caption = "Data filtering steps for the onboard CPFV survey.",
-             label = "onboard-filter",
-             col_names = col_names)                         
+#sa4ss::table_format(x = ind,
+#             caption = "Data filtering steps for the onboard CPFV survey.",
+#             label = "onboard-filter",
+#             col_names = col_names)                         
 ```
 
 
@@ -155,23 +155,23 @@ sa4ss::table_format(x = ind,
 
 ```{r, results = 'asis'}
 
-ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
-                   "area_weighted_logn", "index_forSS.csv"))
-ind <- ind[, c(1,4,5)]
-col_names = c("Year", "Estimate", "logSE")
-
-sa4ss::table_format(x = ind,
-             caption = "Estimated relative index of abundance for the onboard CPFV survey.",
-             label = "onboard-index",
-             col_names = col_names)                         
+#ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
+#                   "area_weighted_logn", "index_forSS.csv"))
+#ind <- ind[, c(1,4,5)]
+#col_names = c("Year", "Estimate", "logSE")
+#
+#sa4ss::table_format(x = ind,
+#             caption = "Estimated relative index of abundance for the onboard CPFV survey.",
+#             label = "onboard-index",
+#             col_names = col_names)                         
 ```
 
 
 
 ```{r, results = 'asis'}
-ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
                     "data_filters.csv"))
-ind <- ind[, c(1,4,5)]
+#ind <- ind[, c(1,4,5)]
 col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
 
 sa4ss::table_format(x = ind,
@@ -183,21 +183,21 @@ sa4ss::table_format(x = ind,
 \newpage
 
 ```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
-                   "area_weighted_logn", "index.png"), 
-caption = "Index for the onboard CPFV survey.",
-label = 'onboard-index')
+#sa4ss::add_figure(
+#filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2005",
+#                   "area_weighted_logn", "index.png"), 
+#caption = "Index for the onboard CPFV survey.",
+#label = 'onboard-index')
 ```
 
 \newpage
 
 ```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
-                   "area_weighted_logn", "qq.png"), 
-caption = "QQ-plot for the onboard CPFV survey.",
-label = 'onboard-qq')
+#sa4ss::add_figure(
+#filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
+#                   "area_weighted_logn", "qq.png"), 
+#caption = "QQ-plot for the onboard CPFV survey.",
+#label = 'onboard-qq')
 ```
 
 \newpage
@@ -205,9 +205,9 @@ label = 'onboard-qq')
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
-                   "avearge_cpue_by_region.png"), 
-caption = "Average CPUE by region prior to standardization.",
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
+                   "average_cpue_by_district.png"), 
+caption = "Average CPUE by district prior to standardization.",
 label = 'onboard-regioncpue')
 ```
 
@@ -215,8 +215,8 @@ label = 'onboard-regioncpue')
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
-                   "copper_depth_gisdepthadded.png"), 
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
+                   "copper_depths_gisdepthadded.png"), 
 caption = "Distribution by year of depths where copper rockfish observed.",
 label = 'onboard-depths')
 ```
@@ -226,7 +226,7 @@ label = 'onboard-depths')
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "start2005",
+filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
                    "drifts_by_depth_district.png"), 
 caption = "Stacked bar plot of the depth of observed copper rockfish by district.",
 label = 'onboard-depths')

@@ -3,10 +3,13 @@
 # devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 library(sa4ss)
 library(here)
+devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/sa4ss")
+devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
+
 
 # Specify the directory for the document
-north_model_name <- "8.5_update_deb_index"
-south_model_name <- "5.5_est_m"
+north_model_name <- "9.8_selex_fix"
+south_model_name <- "14.0_base"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -96,15 +99,20 @@ read_model(
 #===============================================================================
 
 south <- r4ss::SS_output(south_model_dir)
+SS_plots(south, btarg = -1, minbthresh = -1)
 north <- r4ss::SS_output(north_model_dir)
+SS_plots(north, btarg = -1, minbthresh = -1)
 modelnames <- c("South of Point Conception", "North of Point Conception")
 mysummary <- r4ss::SSsummarize(list(south, north))
 
 r4ss::SSplotComparisons(mysummary,
                         legendlabels = modelnames, 	
-                        ylimAdj = 1.25,
+                        subplot = c(2, 4, 6, 8, 10, 12, 15),
+                        ylimAdj = 1.10,
                         print = TRUE,
                         pdf = FALSE,
+                        btarg = -1,
+                        minbthresh = -1,
                         plotdir = file.path(doc_dir, "shared_figures"))
 
 
