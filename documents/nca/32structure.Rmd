@@ -1,10 +1,5 @@
 ## Model Structure and Assumptions
 
-
-### Model Changes from the Last Assessment 
-
-
-
 ### Modeling Platform and Structure
 
 ```{r, echo=FALSE, results='asis'}
@@ -16,6 +11,15 @@ read_child(filein)
 ### Model Selection and Evaluation
 
 The base assessment model for `r spp` was developed to balance parsimony and realism, and the goal was to estimate a spawning output trajectory for the population of `r spp` off the west coast of the U.S. The model contains many assumptions to achieve parsimony and uses many different sources of data to estimate reality. A series of investigative model runs were done to achieve the final base model.
+
+
+### Model Changes from the Last Assessment 
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'31_changes_in_model_structure.Rmd')
+read_child(filein)
+```
+
 
 ### Bridging Analysis
 

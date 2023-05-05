@@ -1770,3 +1770,63 @@ tune_comps(replist = pre_base, dir = file.path(wd, "13.7_cpfv_block"),
 # Test out estimating M in this model
 pre_base_m <- SS_output(file.path(wd, "13.7_cpfv_block_est_m"))
 SS_plots(pre_base_m)
+
+pre_base_rm_hkl <- SS_output(file.path(wd, "13.7_cpfv_block_rm_hkl"))
+
+
+# Test out new HKL index that uses all site and keeps all composition data associated
+# with the survey fleet in the model
+update_hkl <- SS_output(file.path(wd, "13.8_nwfsc_hkl"))
+tune_comps(replist = update_hkl, dir = file.path(wd, "13.8_nwfsc_hkl"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+
+update_hkl_alt <- SS_output(file.path(wd, "13.8_nwfsc_hkl_dn_selex"))
+tune_comps(replist = update_hkl_alt, dir = file.path(wd, "13.8_nwfsc_hkl_dn_selex"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+# Adding all the extra parameters of the double normal and having a block only
+# decreased the NLL by < 2 units
+
+update_hkl_asym <- SS_output(file.path(wd, "13.8_nwfsc_hkl_dn_selex_v2"))
+tune_comps(replist = update_hkl_asym, dir = file.path(wd, "13.8_nwfsc_hkl_dn_selex_v2"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+SS_plots(update_hkl_asym, plot = 2)
+
+update_hkl_asym_rm_hkl <- SS_output(file.path(wd, "13.8_nwfsc_hkl_dn_selex_v2_rm_hkl"))
+# NLL = 2616.9 there is less that 1 NLL change when fixing the selex asym in the last block and 
+# estimating a descending and logit parameter
+# The descending and logit parameters in the early block have high SD
+
+modelnames <- c( "13.7", "Update HKL w/ Logistic Selex Block", "Update HKL w/ DN Selex Block")
+mysummary <- SSsummarize(list(pre_base, update_hkl, update_hkl_asym))
+SSplotComparisons(mysummary,
+                  filenameprefix = "13.7_hkl_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.20,
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
+
+#====================================================================================
+# Base Model 14.0
+# After exploration no block in the HKL selectivity
+# Remove Pearson Ages in order to better fit the COOP Ages
+#====================================================================================
+
+base_model <- SS_output(file.path(wd, "14.0_base"))
+tune_comps(replist = base_model, dir = file.path(wd, "14.0_base"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+SS_plots(base_model)
+
+base_model_sigma <- SS_output(file.path(wd, "14.0_base_sigmaR"))
+
+rm_hkl <- SS_output(file.path(wd, "14.0_base_rm_hkl"))
+tune_comps(replist = rm_hkl, dir = file.path(wd, "14.0_base_rm_hkl"), 
+  option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+
+modelnames <- c("13.7", "13.7 -remove HKL", "14.0", "14.0 -remove HKL")
+mysummary <- SSsummarize(list(pre_base, pre_base_rm_hkl, base_model, rm_hkl))
+SSplotComparisons(mysummary,
+                  filenameprefix = "14.0_hkl_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.20,
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
