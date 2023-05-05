@@ -929,3 +929,14 @@ tune_comps(replist = reweight,
            dir = file.path(wd, "9.6_reweight"), 
            option = "Francis", write = TRUE, allow_up_tuning = TRUE)
 
+
+#==================================================
+selex <- SS_output(file.path(wd, "9.6_selex_rm_mrfssQ_ROV_selex_freeComliveselex"))
+SS_plots(selex, plot = c(2, 16))
+# 1008.73    0.00    0.00  -40.96  414.03  630.13
+
+rov <- SS_output(file.path(wd, "9.8_selex_fix"))
+SS_plots(rov)
+tune_comps(replist = rov, 
+           dir = file.path(wd, "9.7_rov_selex_dw"), 
+           option = "Francis", write = TRUE, allow_up_tuning = TRUE)

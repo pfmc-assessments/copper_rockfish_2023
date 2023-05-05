@@ -13,7 +13,7 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
 }
 
-model_dir <- file.path(user_dir, "models", "sca", "13.7_cpfv_block")
+model_dir <- file.path(user_dir, "models", "sca", "_sensitivities", "14.0_base_mi")
 
 
 #run_regularization(
@@ -61,7 +61,7 @@ fit <- adnuts::sample_rwm(
   chains = 2
 )
 # This thin rate will lead to run time of ~60 mins below
-thin60min <- floor((60 * 60) / mean(fit$time.total))
+thin60min <- floor((30 * 60) / mean(fit$time.total))
 # ------------------------------------------------------------
 # Task 1: Run and demonstrate MCMC convergence diagnostics.
 chains <- parallel::detectCores() - 3

@@ -19,18 +19,18 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
 }
 
-model_dir <- file.path(user_dir, "models", "sca")
+model_dir <- file.path(user_dir, "models", "sca", "_sensitivities")
 # Specify why model you would like to profile, retro, and/or jitter
-base_name <- "13.7_cpfv_block"
+base_name <- "14.0_base_mi"
 
 # Specify the parameters and the space to profile
 get = get_settings_profile(
-  parameters =  c("NatM_uniform_Fem_GP_1", "NatM_uniform_Mal_GP_1", "SR_BH_steep", "SR_LN(R0)"),
-  low =  c(0.09, 0.10, 0.30, -0.50),
-  high = c(0.14, 0.15, 0.95,  0.70),
-  step_size = c(0.005, 0.005, 0.05, 0.10),
-  param_space = c('real', 'real', 'real', 'relative'),
-  use_prior_like = c(1, 1, 1, 0)
+  parameters =  c("NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
+  low =  c(0.08,0.30, -0.50),
+  high = c(0.12, 0.95,  0.70),
+  step_size = c(0.005, 0.05, 0.10),
+  param_space = c('real', 'real', 'relative'),
+  use_prior_like = c(1, 1, 0)
 )
 
 # get = get_settings_profile(
@@ -43,14 +43,14 @@ get = get_settings_profile(
 #   use_prior_like = c(0, 0, 0, 0)
 # )
 # 
-# get = get_settings_profile(
-#   parameters =  c("SR_LN(R0)"),
-#   low =  c(5),
-#   high = c( 6.5),
-#   step_size = c( 0.25),
-#   param_space = c( 'real'),
-#   use_prior_like = c( 0)
-# )
+ get = get_settings_profile(
+   parameters =  c("SR_LN(R0)"),
+   low =  c(5),
+   high = c( 6.0),
+   step_size = c( 0.1),
+   param_space = c( 'real'),
+   use_prior_like = c( 0)
+ )
 
 # This specifies to run ALL the diagnostics, if you want to do only some of them revise the "run" input line
 model_settings = get_settings(
@@ -61,7 +61,7 @@ model_settings = get_settings(
     btarg = -1, 
     minbthresh = -1,
     retro_yrs = -1:-5,
-    Njitter = 50,
+    Njitter = 100,
     jitter_fraction = 0.10))
 
 # Run line
