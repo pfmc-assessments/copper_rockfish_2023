@@ -254,9 +254,9 @@ label = 'nwfsc-hkl-site')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "standardized_cpue_nwfsc_hkl_inside_outside.png"), 
-caption = "Standardized CPUE inside and outside the CCA.",
-label = 'nwfsc-hkl-cca-main')
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "raw_cpue_nwfsc_hkl_by_mpa_vs_open_by_region.png"), 
+caption = "Raw CPUE inside and outside protected areas by region sampled by the NWFSC Hook and Line survey.",
+label = 'nwfsc-hkl-region-main')
 ```
 
 \pagebreak
@@ -272,7 +272,7 @@ label = 'nwfsc-hkl-depth')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "rstan_full_nb_glm_year_site_drop_swell_vermilion", "Index.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "Index.png"), 
 caption = "Estimated index of abundance for copper rockfish.",
 label = 'nwfsc-hkl-index-main')
 ```
@@ -312,6 +312,7 @@ filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_NWFSC_H
 caption = "Mean length for NWFSC Hook and Line survey with 95 percent confidence intervals",
 label = 'mean-hkl-len-data')
 ```
+
 \pagebreak
 
 <!-- ======================================================= -->
@@ -367,6 +368,51 @@ label = 'mean-rov-len-data')
 <!-- ***************     Growth Data      ****************** --> 
 <!-- ======================================================= -->
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_flt9mkt0.png"), 
+caption = "Length distribution by year for fish sampled by the NWFSC WCGBT survey.",
+label = 'growth-wcgbt-len')
+```
+
+\pagebreak
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_WCGBT_Growth.png"), 
+caption = "Mean length distribution by year for fish sampled by the NWFSC WCGBT survey.",
+label = 'growth-mean-wcgbt-len')
+
+```
+
+\pagebreak
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_flt10mkt0.png"), 
+caption = "Length distribution by year for fish sampled by the Pearson Research study (2005-2007) and the CPFV cooperative collection program (2022).",
+label = 'growth-coop-len')
+```
+
+\pagebreak
+
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_COOP_Growth.png"), 
+caption = "Mean length distribution by year for fish sampled by the Pearson Research Program (2005-2007) and the CPFV cooperative colletion program (2022).",
+label = 'growth-mean-coop-len')
+```
+
+\pagebreak
+
+
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "ages",  "plots", "south_growth_length_comparison.png"), 
@@ -376,12 +422,14 @@ label = 'growth-len-dist')
 
 \pagebreak
 
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "ages",  "plots", "south_growth_age_comparison.png"), 
 caption = "Age distribution of fish by collection source that were used as conditional age-at-length data in the growth fleet.",
 label = 'growth-age-dist')
 ```
+
 \pagebreak
 
 <!-- ======================================================= -->
@@ -575,6 +623,15 @@ label = 'data-bridge-depl-2')
 <!-- *********************  Model Est. Biology       ********************** --> 
 <!-- ====================================================================== -->
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "bio5_weightatsize.png"),
+caption = "Assumed weight-length relationship for each sex.",
+label = 'est-len-wght')
+```
+
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "bio1_sizeatage.png"),
@@ -589,6 +646,14 @@ label = 'mod-est-len-age')
 <!-- ====================================================================== -->
 <!-- *********************    Selectivity            ********************** --> 
 <!-- ====================================================================== -->
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "south_selectivity.png"),
+caption = "Estimated selectivity for each fleet and survey in the base model.",
+label = 'est-selex')
+```
 
 
 
@@ -625,6 +690,16 @@ label = 'bh-curve')
 ```
 
 \pagebreak
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "recruit_fit_bias_adjust.png"), 
+caption = "Points are transformed variances. Red line shows current settings for bias adjustment specified in control file. Blue line shows least squares estimate of alternative bias adjustment relationship for recruitment deviations (which may or may not be an improvement)",
+label = 'bias-adjust')
+```
+
+
 
 ### Fits to Data
 
@@ -972,12 +1047,57 @@ label = 'depl')
 <!-- ******************      Sensitivities    ***************************** --> 
 <!-- ====================================================================== -->
 
+ 
+```{r, echo=FALSE, results='asis'}
+nm = paste0(south_model_name, "_final_1_compare2_spawnbio_uncertainty.png")
+add_figure(
+filein = file.path(sens_dir, "_plots",  nm),
+caption = "Change in estimated spawning output by sensitivity",
+label = 'sens-ssb-1')
+```
 
+\newpage
+
+```{r, echo=FALSE, results='asis'}
+nm = paste0(south_model_name, "_final_1_compare4_Bratio_uncertainty.png")
+add_figure(
+filein = file.path(sens_dir, "_plots", nm),
+caption = "Change in estimated fraction unfished by sensitivity",
+label = 'sens-depl-1')
+```
+
+\newpage
+
+```{r, echo=FALSE, results='asis'}
+nm = paste0(south_model_name, "_final_2_compare2_spawnbio_uncertainty.png")
+add_figure(
+filein = file.path(sens_dir, "_plots", nm),
+caption = "Change in estimated spawning output by sensitivity",
+label = 'sens-ssb-2')
+```
+
+\newpage
+
+```{r, echo=FALSE, results='asis'}
+nm = paste0(south_model_name, "_final_2_compare4_Bratio_uncertainty.png")
+add_figure(
+filein = file.path(sens_dir, "_plots", nm),
+caption = "Change in estimated fraction unfished by sensitivity",
+label = 'sens-depl-2')
+```
+
+\newpage
 
 
 <!-- ====================================================================== -->
 <!-- ******************     Retrospectives    ***************************** --> 
 <!-- ====================================================================== -->
+
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'34_retro_figures.Rmd')
+read_child(filein)
+```
 
 
 
@@ -987,6 +1107,11 @@ label = 'depl')
 <!-- ******************       Profile         ***************************** --> 
 <!-- ====================================================================== -->
 
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'34_likelihood_figures.Rmd')
+read_child(filein)
+```
 
 
 

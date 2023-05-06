@@ -4,9 +4,16 @@
 
 Proper convergence was determined by starting the minimization process from dispersed values of the maximum likelihood estimates to determine if the model found a better minimum. Starting parameters were jittered using the jitter function built into Stock Synthesis, using jitter input of 0.10. This was repeated 100 times with only XX out of 100 runs returning to the base model likelihood. However, a better, lower negative log-likelihood, model fit was not found. In the jittering analysis models with similar log-likelihood values (difference < 0.50 units) were often found with little difference in overall model estimates indicating a relatively flat likelihood surface around the maximum likelihood estimate. Additionally, jitters using a smaller jitter value yielded an increased frequency of runs returning to the base model with no models finding a better fit to the data. Through the jittering done as explained and likelihood profiles, we are confident that the base model as presented represents the best fit to the data given the assumptions made. There were no difficulties in inverting the Hessian to obtain estimates of variability, although much of the early model investigation was done without attempting to estimate a Hessian.
 
-### Sensitivity Analyses
+### Sensitivity Analyses {#sensitivities}
 
-Sensitivity analyses were conducted to examine the relative influence of specific changes to data inputs and model structural assumptions to further address uncertainty associated with the base model estimates and derived management quantities.  The majority of the sensitivity models are the result of a single change relative to base model (i.e., they are not the result of cumulative changes such as the modeling approach used with the bridging analysis). Comparisons of likelihood values and estimates of key parameters from the sensitivity analysis are shown in Tables XX and XX. Many additional sensitivity runs were explored during development and testing of the base model. This section focuses on the main data and structural sensitivity model runs and includes the following:
+Sensitivity analyses were conducted to examine the relative influence of specific changes to data inputs and model structural assumptions to further address uncertainty associated with the base model estimates and derived management quantities.  The majority of the sensitivity models are the result of a single change relative to base model (i.e., they are not the result of cumulative changes such as the modeling approach used with the bridging analysis). Comparisons of likelihood values and estimates of key parameters from the sensitivity analysis are shown in Tables \ref{tab:tab-sens-1}-\ref{tab:tab-sens-2} and Figures \ref{fig:sens-ssb-1}-\ref{fig:sens-depl-2}. Many additional sensitivity runs were explored during development and testing of the base model. This section focuses on the main data and structural sensitivity model runs and includes the following:
+Structural Sensitivities
+
+\begin{enumerate}
+   
+  \item  list of items
+
+\end{enumerate}
 
 Data Sensitivities
 
@@ -16,21 +23,29 @@ Data Sensitivities
   
 \end{enumerate}
 
-Structural Sensitivities
-
-\begin{enumerate}
-   
-  \item  list of items
-
-\end{enumerate}
 
 ### Retrospective Analysis
 
 A ten-year retrospective analysis was conducted by successively removing years of data ranging from 2013 - 2022 (i.e., "Data -1 Years" corresponds to data through 2021). 
 
+Figure \ref{fig:retro-ssb}
+Figure \ref{fig:retro-depl}
+
 ### Likelihood Profiles
 
 Likelihood profiles were conducted for $R_0$, steepness, and sex-specific natural mortality values separately. These likelihood profiles were conducted by fixing the parameter at specific values and estimated the remaining parameters based on the fixed parameter value.
+
+Figure \ref{fig:r0-profile}
+Figure \ref{fig:r0-ssb}
+Figure \ref{fig:r0-depl}
+
+Figure \ref{fig:h-profile}
+Figure \ref{fig:h-ssb}
+Figure \ref{fig:h-depl}
+
+Figure \ref{fig:m-profile}
+Figure \ref{fig:m-ssb}
+Figure \ref{fig:m-depl}
 
 ### Historical Analysis
 

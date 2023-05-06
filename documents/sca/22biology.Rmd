@@ -8,7 +8,7 @@ read_child(filein)
 ```
 
 
-### Maturation and Fecundity
+### Maturation and Fecundity {#maturation-and-fecundity}
 
 ```{r, echo=FALSE, results='asis'}
 filein = file.path(doc_dir, "shared_text",'2_biology_maturity.Rmd')

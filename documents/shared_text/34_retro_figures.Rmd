@@ -1,0 +1,15 @@
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(paste0(mod_loc, "_retro"),  "compare2_spawnbio_uncertainty.png"), 
+caption = "Change in the estimate of spawning output when the most recent 5 years of data area removed sequentially",
+label = 'retro-ssb')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(paste0(mod_loc, "_retro"),  "compare4_Bratio_uncertainty.png"),
+caption = "Change in the estimate of fraction unfished when the most recent 5 years of data area removed sequentially",
+label = 'retro-depl')
+```
