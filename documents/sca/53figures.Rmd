@@ -1041,6 +1041,29 @@ label = 'depl')
 
 \pagebreak
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "spawning_output_combined.png"), 
+caption = "Estimated combined time series of spawning output for copper rockfish in California waters",
+label = 'sb-all')
+
+```
+
+
+\clearpage
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "depletion_combined.png"), 
+caption = "Estimated combined time series of fraction of relative spawning output for copper rockfish in California waters",
+label = 'depl-all')
+
+```
+
+\clearpage
+
 ### Sensitivity Analyses and Retrospectives
 
 <!-- ====================================================================== -->
@@ -1114,11 +1137,28 @@ read_child(filein)
 ```
 
 
-
 <!-- ====================================================================== -->
 <!-- ************* Comparison w/ Previous Assessments ********************** --> 
 <!-- ====================================================================== -->
 
+```{r, echo=FALSE, results='asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "south_assess_compare_compare2_spawnbio_uncertainty.png"),
+caption = "Comparison of the estimated spawning output for the base model to previous assessments in 2021 and 2013",
+label = 'comp-assess-sb')
+```
+
+\newpage
+
+
+```{r, echo=FALSE, results='asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "south_assess_compare_compare4_Bratio_uncertainty.png"),
+caption = "Comparison of the estimated fraction unfished for the base model to previous assessments in 2021 and 2013",
+label = 'comp-assess-depl')
+```
+
+\newpage
 
 
 ### Reference Points and Forecasts
@@ -1130,8 +1170,8 @@ read_child(filein)
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "SPR2_minusSPRseries.png"), 
-caption = "Estimated 1 - relative spawning ratio (SPR) by year",
+filein = file.path(doc_dir, "shared_figures", "compare6_SPRratio_uncertainty.png"), 
+caption = "Estimated 1 - relative spawning ratio (SPR) by year for both sub-area models south and north of Point Conception",
 label = '1-spr')
 ```
 
@@ -1139,20 +1179,29 @@ label = '1-spr')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "SPR4_phase.png"), 
+filein = file.path(doc_dir, "shared_figures", "compare15_phase_plot.png"), 
 caption = "Phase plot of the relative biomass (also referred to as fraction unfished) versus the SPR ratio where each point represents the biomass ratio at the start of the year and the relative fishing intensity in that same year. Lines through the final point show the 95 percent intervals based on the asymptotic uncertainty for each dimension. The shaded ellipse is a 95 percent region which accounts for the estimated correlations between the biomass ratio and SPR ratio",
 label = 'phase')
 ```
-
 
 \pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "yield2_yield_curve_with_refpoints.png"), 
-caption = "Equilibrium yield curve for the base case model. Values are based on the 2022
+filein = file.path(south_model_dir, "plots", "yield2_yield_curve_with_refpoints.png"), 
+caption = "Equilibrium yield curve for the base case model south of Point Conception. Values are based on the 2022
 fishery selectivities and with steepness fixed at 0.72",
-label = 'yield')
+label = 'yield-south')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(north_model_dir, "plots", "yield2_yield_curve_with_refpoints.png"), 
+caption = "Equilibrium yield curve for the base case model north of Point Conception. Values are based on the 2022
+fishery selectivities and with steepness fixed at 0.72",
+label = 'yield-north')
 ```
 
 \pagebreak
