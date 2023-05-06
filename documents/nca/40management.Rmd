@@ -2,10 +2,40 @@
 
 ## Reference Points
 
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'4_reference_points.Rmd')
+read_child(filein)
+```
+
+
 ## Unresolved Problems and Major Uncertainties
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'es_unresolved_problems_uncertainties.Rmd')
+read_child(filein)
+```
+
 
 ## Harvest Projections and Decision Tables
 
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'4_forecasts.Rmd')
+read_child(filein)
+```
+
+
 ## Evaluation of Scientific Uncertainty
 
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'es_scientific_uncertainty.Rmd')
+read_child(filein)
+```
+
 ## Research and Data Needs
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'es_research_and_data_needs.Rmd')
+read_child(filein)
+```
+

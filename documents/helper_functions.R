@@ -1,4 +1,23 @@
 
+pngfun <- function(doc_dir, file, w = 7, h = 7, pt = 12){
+  file <- file.path(doc_dir, file)
+  cat('writing PNG to',file,'\n')
+  png(filename = file,
+      width = w,
+      height = h,
+      units = 'in',
+      res = 300, 
+      pointsize = pt
+  )
+}
+
+print.letter <- function(label="(a)",xy=c(0.1,0.925),...) {   #... means any new parameters are copied faithfully to text() below
+  tmp <- par("usr")
+  text.x <- tmp[1]+xy[1]*diff(tmp[1:2])   #x position, diff=difference
+  text.y <- tmp[3]+xy[2]*diff(tmp[3:4])   #y position
+  text(x=text.x, y=text.y, labels=label, ...)             
+}
+
 create_management_table <- function(
   management_dir = management_dir, 
   doc_dir = doc_dir, 
@@ -58,6 +77,16 @@ create_biomass_table <- function(
   load(file.path(doc_dir, doc_names[2], "00mod.Rdata"))
   model2 <- model
   
+  find <- model1[["timeseries"]][["Yr"]] %in% years
+  smry1 <- model1[["timeseries"]][["Bio_smry"]][find]
+  tot_bio1 <- model1[["timeseries"]][["Bio_all"]][find]
+  recruits1 <- model1[["timeseries"]][["Recruit_0"]][find]
+  
+  find <- model2[["timeseries"]][["Yr"]] %in% years
+  smry2 <- model2[["timeseries"]][["Bio_smry"]][find]
+  tot_bio2 <- model2[["timeseries"]][["Bio_all"]][find]
+  recruits2 <- model2[["timeseries"]][["Recruit_0"]][find]
+  
   sb1 <- model1$derived_quants[model1$derived_quants$Label %in% paste0("SSB_", years), "Value"]
   sb2 <- model2$derived_quants[model2$derived_quants$Label %in% paste0("SSB_", years), "Value"]
   sb0 <- model1$derived_quants[model1$derived_quants$Label == "SSB_Virgin", "Value"] +
@@ -68,13 +97,16 @@ create_biomass_table <- function(
   
   out <- data.frame(
     Year = years, 
+    tot_bio = round(tot_bio1 + tot_bio2, 2),
+    smry_bio = round(smry1 + smry2, 2),
+    recr = round(recruits2 + recruits2, 2),
     SB = round(sb, 2), 
     Depl = round(depl, 3))
-  col_names <- c("Year", "Spawning Output", "Fraction Unfished")
+  col_names <- c("Year", "Total Biomass (mt)", "Total Biomass 3+ (mt)", "Age-0 Recruits", "Spawning Output", "Fraction Unfished")
   
   sa4ss::table_format(
     x = out,
-    caption = "The estimated spawning ouput in number of million eggs across California and fraction unfished by year.",
+    caption = "The estimated total biomass (mt), total biomass age 3+ (mt), age-0 recruits, spawning ouput in number of million eggs across California and fraction unfished by year.",
     label = paste0(prefix, "ca-status"),
     col_names = col_names
     )
@@ -138,5 +170,39 @@ create_projection_table <- function(
     col_names = col_names
   )  
   
+}
+
+plot_combined <- function(
+  doc_dir = doc_dir, 
+  doc_names = c("nca", 'sca'),
+  years = 1916:2023){
+  
+  load(file.path(doc_dir, doc_names[1], "00mod.Rdata"))
+  model1 <- model
+  load(file.path(doc_dir, doc_names[2], "00mod.Rdata"))
+  model2 <- model
+  
+  sb1_all <- model1$derived_quants[model1$derived_quants$Label %in% paste0("SSB_", 1916:2023), "Value"]
+  sb2_all <- model2$derived_quants[model2$derived_quants$Label %in% paste0("SSB_", 1916:2023), "Value"]
+  sb0 <- model1$derived_quants[model1$derived_quants$Label == "SSB_Virgin", "Value"] +
+    model2$derived_quants[model2$derived_quants$Label == "SSB_Virgin", "Value"]
+  sb_all <- sb1_all + sb2_all
+  
+  pngfun(doc_dir = file.path(doc_dir, "shared_figures"), file = "spawning_output_combined.png", w = 7, h = 5, pt = 12)
+  plot(1916:2023, sb_all, type = 'b', col = 'blue', yaxs = 'i', xaxs = 'i', ylim = c(0, max(sb_all)*1.10),
+       ylab = "Spawning Output", xlab = "Year")
+  lines(1916:2023, sb_all, lty = 1, col = 'blue')
+  dev.off()
+  
+  pngfun(doc_dir = file.path(doc_dir, "shared_figures"), file = "depletion_combined.png", w = 7, h = 5, pt = 12)
+  plot(1916:2023, sb_all / sb0, type = 'b', col = 'blue', yaxs = 'i', xaxs = 'i', ylim = c(0, 1.1),
+       ylab = "Relative Spawning Output", xlab = "Year")
+  lines(1916:2023, sb_all / sb0, lty = 1, col = 'blue')
+  abline(h = 1.0, lty = 1, col = 'red')
+  abline(h = 0.40, lty = 1, col = 'red')
+  abline(h = 0.25, lty = 1, col = 'red')
+  print.letter(label = "Management target", xy = c(0.16, 0.41), cex = 0.9)
+  print.letter(label = "Minimum stock size threshold", xy = c(0.22, 0.26), cex = 0.9)
+  dev.off()
 }
   

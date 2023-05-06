@@ -48,9 +48,9 @@ Sex-specific growth parameters `area` were initially estimated external to the m
 
 \begin{centering}
 
-Females $L_{\infty}$ = 48.5 cm; $L_1$ = 9.1 cm; $k$ = 0.174 per year
+Females $L_{\infty}$ = 48.5 cm; $L_0$ = 9.1 cm; $k$ = 0.174 per year
 
-Males $L_{\infty}$ = 46.8 cm; $L_1$ = 5.3 cm; $k$ = 0.207 per year
+Males $L_{\infty}$ = 46.8 cm; $L_0$ = 5.3 cm; $k$ = 0.207 per year
 
 \end{centering}
 

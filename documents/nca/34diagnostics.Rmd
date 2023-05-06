@@ -48,4 +48,9 @@ Figure \ref{fig:m-profile}
 Figure \ref{fig:m-ssb}
 Figure \ref{fig:m-depl}
 
-### Unresolved Problems and Major Uncertainties
+### Historical Analysis
+
+Figure \ref{fig:comp-assess-sb}
+
+Figure \ref{fig:comp-assess-depl}
+

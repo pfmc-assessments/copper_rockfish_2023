@@ -1,0 +1,6 @@
+A ten year projection of both base models south and north of Point Conception in California with catches equal to the estimated Acceptable Biological Catch (ABC) based on the category 1 time-varying $\sigma$ with $P^*$ = 0.45 for years 2025-2034 (Table \ref{tab:ca-proj}). Since the stock is estimated to be above the management target of 40 percent the buffer value in Table \ref{tab:ca-proj} reflects the ABC values with the time-varying scientific uncertainty buffer.
+
+The removals in 2023 and 2024 were set equal to the portion of `r spp` species-specific ACL for California determined by summing the adopted ACLs South of 40$^\circ$ 10' Lat. N. and the portion of the North of 40$^\circ$ 10' Lat. N. allocated to California (25 percent - PFMC Groundfish Management Team pers. comm.). The portion of ACL to allocate to each sub-area was determined based on the proportion of the total removals by area in 2022 (71 percent north and 29 percent south). 
+
+Describe the decision table when determined 
+

@@ -79,11 +79,24 @@ label = 'es-sb')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "compare4_Bratio_uncertainty.png"), 
-caption = "Estimated time series of fraction of unfished spawning output (circles and line: median; light broken lines: 95 percent intervals) for the model areas south and north of Point Conception",
+caption = "Estimated time series of fraction of relative spawning output (circles and line: median; light broken lines: 95 percent intervals) for the model areas south and north of Point Conception",
 label = 'es-depl')
 ```
 
 
+```{r, results = 'asis'}
+
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "spawning_output_combined.png"), 
+caption = "Estimated combined time series of spawning output for copper rockfish in California waters",
+label = 'es-sb-all')
+
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "depletion_combined.png"), 
+caption = "Estimated combined time series of fraction of relative spawning output for copper rockfish in California waters",
+label = 'es-depl-all')
+
+```
 \clearpage
 
 ## Recruitment{-}

@@ -50,8 +50,12 @@ wcgbt <- "NWFSC WCGBT survey"
 area <- "north of Point Conception"
 model.area <- "north"
 
+load(file.path(doc_dir, "sca", "00mod.Rdata"))
+south_model <- model
+
 if(file.exists("00mod.Rdata")){
   load("00mod.Rdata")
+  north_model <- model
 } else {
   print("Model output not being read. Please run the read_model() function.")
 }
@@ -59,6 +63,22 @@ if(file.exists("00mod.Rdata")){
 source(file.path(doc_dir, "helper_functions.R"))
 
 #source(file.path(r_dir, "get_derived_quants.R"))
+years <- 2023
+sb1 <- south_model$derived_quants[south_model$derived_quants$Label %in% paste0("SSB_", years), "Value"]
+sb2 <- north_model$derived_quants[north_model$derived_quants$Label %in% paste0("SSB_", years), "Value"]
+sb0 <- south_model$derived_quants[south_model$derived_quants$Label == "SSB_Virgin", "Value"] +
+  north_model$derived_quants[north_model$derived_quants$Label == "SSB_Virgin", "Value"]
+
+sb <- round(sb1 + sb2, 2)
+depl <- round(sb / sb0, 3)
+
+years <- 2023:2026
+est_ofl <- round(south_model$derived_quants[south_model$derived_quants$Label %in% paste0("OFLCatch_", years), "Value"] +
+  north_model$derived_quants[north_model$derived_quants$Label %in% paste0("OFLCatch_", years), "Value"], 2)
+
+est_abc <- round(south_model$derived_quants[south_model$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"] +
+  north_model$derived_quants[north_model$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"], 2)
+
 
 
 ```

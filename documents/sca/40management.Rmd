@@ -2,33 +2,40 @@
 
 ## Reference Points
 
-Reference points were calculated using the estimated selectivity and catch distributions among fleets in the most recent year of the model (`r endyr`, Table \ref{tab:south_referenceES}). The estimated sustainable total yields  were `r round(model$derived_quants[model$derived_quants$Label == 'Dead_Catch_SPR', 'Value'], 2)` mt when using an $\text{SPR}_{50\%}$ reference harvest rate. The spawning output equivalent to 40 percent of unfished spawning output ($\text{SB}_{40\%}$) was `r round(model$derived_quants[model$derived_quants$Label == 'SSB_Btgt', 'Value'], 2)` million eggs. 
-
-The `r endyr` spawning output relative to unfished equilibrium spawning output, `r round(100*model$derived_quants[model$derived_quants$Label == 'Bratio_2023','Value'], 1)` percent, is below the management threshold limit of 25 percent of unfished spawning output (Figure \ref{fig:depl}). The fishing intensity, $1-\text{SPR}$, has been above the harvest rate limit ($\text{SPR}_{50\%}$) in recent years, except 2020 when overall removals declined due to impacts of COVID-19 which reduced recreational fishing effort (Table \ref{tab:south_timeseries} and Figure \ref{fig:1-spr}). The stock is estimated to be below the management target with fishing intensity exceeding the target across recent years (Figure \ref{fig:phase}). Table \ref{tab:south_referenceES} shows the full suite of estimated reference points for the base model and Figure \ref{fig:yield} shows the equilibrium curve based on a steepness value fixed at `r model$parameters[model$parameters$Label == "SR_BH_steep","Value"]`.
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'4_reference_points.Rmd')
+read_child(filein)
+```
 
 ## Unresolved Problems and Major Uncertainties
 
 ```{r, echo=FALSE, results='asis'}
-filein = file.path(getwd(),'shared_text','unresolved_problems_uncertainties.Rmd')
+filein = file.path(doc_dir,'shared_text','es_unresolved_problems_uncertainties.Rmd')
 read_child(filein)
 ```
 
 ## Harvest Projections and Decision Tables
 
-A ten year projection of the base model with catches equal to the estimated Acceptable Biological Catch (ABC) based on the category 2 time-varying $\sigma$ with $P^*$ = 0.45 for years 2023-2032 (Table XX). Since the stock is estimated to be below the management target of 40 percent the buffer value in Table XX reflects both the 40-10 harvest control rule adjustment and the time-varying scientific uncertainty buffer.
 
-The removals in 2021 and 2022 were initially determined by first summing the adopted ACLs South of 40$^\circ$ 10' Lat. N. and the portion of the North of 40$^\circ$ 10' Lat. N. allocated to California (25 percent - PFMC Groundfish Management Team pers. comm.). Once the total ACLs for California were determined the portion of the ACL allocated to the area south of Point Conception was based on the percentage of total removals in each area of California (north and south of Point Conception) from 2017 - 2019 based on recommendations from the Grounfish Management Team. 
-
-The axes of uncertainty in the decision table is based on the uncertainty around the spawning biomass in `r endyr+1` ($\sigma$ = `r round(model$Pstar_sigma,3) ` ) via the log($R_0$) parameter. The $\sigma$ value was used to identify the 12.5 and 87.5 percentiles of the asymptotic standard deviation for the current year, `r endyr+1`, spawning biomass from the base model to identify the low and high states of nature (i.e., 1.15 standard deviations corresponding to the 12.5 and 87.5 percentiles). Once the `r endyr + 1` spawning biomass for the low and high states of nature were identified a search across log($R_0$) values were done to attain the current year spawning biomass values. The log($R_0$) values that corresponded with the lower and upper percentiles were XX and XX.  
-
-Across the low and high states of nature and across alternative future harvest scenarios the fraction of unfished ranges between XX - XX by the end of the 10 year projection period (Table XX). The fraction unfished across the state of natures assuming the ACL removals (the ABC adjusted by the 40:10 harvest control rule) remains below the management target.  
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'4_forecasts.Rmd')
+read_child(filein)
+```
 
 
 ## Evaluation of Scientific Uncertainty
 
 ```{r, echo=FALSE, results='asis'}
-filein = file.path(getwd(), "shared_text",'scientific_uncertainty.Rmd')
+filein = file.path(doc_dir, "shared_text",'es_scientific_uncertainty.Rmd')
 read_child(filein)
 ```
 
 ## Research and Data Needs
+
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'es_research_and_data_needs.Rmd')
+read_child(filein)
+```
+
+

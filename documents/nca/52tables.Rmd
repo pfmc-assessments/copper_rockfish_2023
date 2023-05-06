@@ -198,7 +198,7 @@ create_biomass_table(
     doc_dir = doc_dir, 
     prefix = NULL,
     doc_names = c("nca", 'sca'),
-    years = 2013:2023)
+    years = 1916:2023)
 
 ```
 
@@ -212,3 +212,19 @@ create_biomass_table(
 <!-- ======================================================= -->
 <!-- ********  Reference Points & Management *************** --> 
 <!-- ======================================================= -->
+
+
+```{r, results = 'asis'}
+
+create_projection_table(
+    management_dir = management_dir, 
+    doc_dir = doc_dir, 
+    fixed_removals = c(70, 70),
+    doc_names = c("nca", 'sca'),
+    years = 2023:2034,
+    table_names = c("copper_ca_north.csv", "copper_ca_south.csv"),
+    prefix = NULL)
+
+```
+
+\newpage

@@ -49,4 +49,7 @@ Figure \ref{fig:m-depl}
 
 ### Historical Analysis
 
-### Unresolved Problems and Major Uncertainties
+Figure \ref{fig:comp-assess-sb}
+
+Figure \ref{fig:comp-assess-depl}
+

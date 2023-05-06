@@ -1,2 +1,9 @@
 # Acknowledgments
-Here are all the mad props!
+
+```{r, echo=FALSE, results='asis'}
+
+filein = file.path(doc_dir, "shared_text", 'acknowledgements.Rmd')
+read_child(filein)
+```
+
+
