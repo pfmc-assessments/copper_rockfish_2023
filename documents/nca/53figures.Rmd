@@ -714,7 +714,6 @@ label = 'depl')
 <!-- ====================================================================== -->
 
 
-
 ```{r, echo=FALSE, results='asis'}
 filein = file.path(doc_dir, "shared_text",'34_retro_figures.Rmd')
 read_child(filein)
@@ -733,8 +732,6 @@ read_child(filein)
 filein = file.path(doc_dir, "shared_text",'34_likelihood_figures.Rmd')
 read_child(filein)
 ```
-
-
 
 
 <!-- ====================================================================== -->

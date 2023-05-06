@@ -1,30 +1,11 @@
 ## Model Structure and Assumptions
 
-```{r, echo=FALSE, results='asis'}
-filein = file.path(doc_dir, "shared_text",'32_model_structure_assumptions.Rmd')
-read_child(filein)
-```
-
-The southern California model is fit to three fishery-dependent indices of relative abundance: 1) MRFSS CPFV dockside survey, 
-2) CDFW CRFS onboard observer survey, and 3) CDFW CRFS private/rentals PR1 dockside survey. The MRFSS CPFV dockside index is assumed 
-to be proportional to changes in the relative abundance of the recreational party/charter fleet and represents retained fish only. The CDFW onboard observer index represents the same recreational party/charter fleet and includes both retained and discarded fish. The onboard index is specified as a separate “survey” fleet in the model because it overlaps in time with the MRFSS dockside time series. Both the MRFSS and onboard indices use the recreational party/charter fleet’s selectivity curve to define vulnerable size classes. The CRFS PR1 dockside index is linked to the recreational private/rental boat fleet, and had selectivity curve different from the party/charter fleet. 
-
-Recreational length measurements are included as marginal length compositions (proportions at length, sexes combined) by year starting in 1975 and 1978 for the PC and PR modes, respectively. Fishery-dependent length composition data are also included for the commercial fleets. Age structures from the commercial dead fleet were sparse and not considered for the southern California assessment.
-
-Fishery-independent data sources in the southern California model are organized into three fleets: 1) the NWFSC hook-and-line survey, 2) CDFW ROV survey and 3) CCFRP hook-and-line survey. The NWFSC hook-and-line survey data were used to create an index of relative abundance, 
-includes marginal length compositions by sex and year, and conditional-age-at-length data by sex and year.  
-
-Additional available age structures that could not be linked to one of the fleets above or represented a subset of information from a fleet 
-were included in growth fleets. The NWFSC trawl survey was not considered for an index of abundance, but is a source of conditional-age-at-length data and associated marginal length comps, both by sex and year, within a growth fleet. The earliest available age and length composition data came from assorted 
-
-
 ### Modeling Platform and Structure
 
 ```{r, echo=FALSE, results='asis'}
 filein = file.path(doc_dir, "shared_text",'31_modeling_platform.Rmd')
 read_child(filein)
 ```
-
 
 ### Model Selection and Evaluation
 
@@ -65,15 +46,23 @@ To arrive at a final base model additional revisions to the model structure, sel
 
 ### Key Assumptions and Structural Choices
 
-The specifications of the assessment are listed in Table \ref{tab:model-structure}. The model is a two-sex, age-structured model starting in 1916 with an accumulated age group at 50 years. Growth and natural mortality were assumed time invariant with constant growth estimated and natural mortality fixed at the median of the prior for both sexes. The lengths in the population were tracked by 1 cm intervals and the length data were binned into 2 cm intervals. Stock Synthesis estimates growth in the age and size plus group. To avoid issues with additional estimated growth in the plus groups, the selection of the maximum age and length bins were 
-selected to ensure that the numbers of fish in the plus group would be low.
 
-Time blocks on selectivity were explored extensively when setting up the initial model structure. A range of management changes to the commercial were considered when determining periods of when selectivity may have been expected to change. Commercial removals for `r spp` are relatively low when compared to recreational removals for this species which limited the amount of composition data available to support estimation of changes in selectivity. Given this and the limited evidence in the available length data, 
-time-invariant selectivity was selected for both the commercial dead and live fish fleets. The same time block structure was assumed both the recreational CPFV and PR fleets based on gear restrictions and depth closures. Selectivity blocked into three periods: 1916-1999, 2000-2004, and 2005-2022, Model exploration revealed that that selectivity in the first and third time blocks were highly similar so the these two time periods were set to have equal selectivity. In 2022 the sub-bag limit in the California recreational fishery was reduce to only allow one `r spp`. However, the amount of length samples in 2022 were not informative about 
-a change in selectivity. Finally, a change in selectivity was explored for the `r hkl` to shift sometime between 2012-2014, years where the number of MPA and CCA sites increased within the the survey. Exploratory models did not reveal a meaningful shift in the selectivity for this survey in that time period for `r spp` and for model parsimony a single selectivity for this fleet was assumed. 
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'32_model_structure_assumptions.Rmd')
+read_child(filein)
+```
 
-The specification of when to estimate recruitment deviations is an assumption that affects the estimate of early model uncertainty around stock scale and status. Recruitment deviations were estimated from 1880 - 2020 to appropriately quantify uncertainty in the early model years. The earliest length- and age-composition data occur in 1975 but age data were not consistently on a yearly basis until 2003. The most informed years for estimating recruitment deviations were from about the mid-1990s to 2018. The period from 
-1880 - 1964 was fit using an early recruitement deviation series with little or no bias adjustment, the main period of recruitment deviates occurred from 1965 - 2020 with an upward and downward ramping of bias adjustment, and 2021 onward recruitment deviations were assumed to be 0 due to limited information at the end of the time-series. [-@methot_adjusting_2011a] summarize the reasoning behind varying levels of bias adjustment based on the information available to estimate the deviates. The standard deviation of recruitment variability was assumed to be 0.60 based on the estimated variation in recruitment from the base model.
+The southern California model is fit to two fishery-dependent indices of relative abundance: 1) CDFW CRFS onboard observer survey, and 2) CDFW CRFS private/rentals PR1 dockside survey. Additionally, a MRFSS CPFV dockside index was generated but due to data concerns was not included in the base model. The MRFSS CPFV dockside index is assumed to be proportional to changes in the relative abundance of the recreational party/charter fleet and represents retained fish only. The CDFW onboard observer index represents the same recreational party/charter fleet and includes both retained and discarded fish. The onboard index is specified as a separate “survey” fleet in the model because it overlaps in time with the MRFSS dockside time series. Both the MRFSS and onboard indices use the recreational party/charter fleet’s selectivity curve to define vulnerable size classes. The CRFS PR1 dockside index is linked to the recreational private/rental boat fleet, and had selectivity curve different from the party/charter fleet. 
+
+Recreational length measurements are included as marginal length compositions (proportions at length, sexes combined) by year starting in 1975 and 1980 for the CPFV and PR modes, respectively. Fishery-dependent length composition data are also included for the commercial fleets. Available age data for `r spp` `r are` from either the commercial or recreational fisheries are limited and were only available in 1975 for the recreational CPFV fleet and in 2022 in the commercial dead fleet. Age data from the fisheries were input as marginal ages.
+
+Fishery-independent data sources in the southern California model are organized into three fleets: 1) the `r hkl`, 2) CDFW ROV survey and 3) CCFRP Hook and Line survey. Each of the survey data sources were used to create an index of relative abundance and included marginal length compositions by sex and year. Age data from the `r hkl` and CCFRP Hook and Line survey were included as conditional-age-at-length data by sex and year.  
+
+Additional available age structures that could not be linked to one of the fleets above or represented a subset of information from a fleet were included in the two growth fleets. The `r wcgbt` was not considered for an index of abundance, but is a source of conditional-age-at-length data and associated marginal length comps, both by sex and year, within the `r wcgbt` growth fleet. The second growth fleet combined limited ages from a Pearson Research Study between 2005 - 2007 and ages from the CPFV cooperative collection program in 2022. 
+
+Time blocks on selectivity were explored extensively when setting up the initial model structure. A range of management changes to the commercial fishery were considered when determining periods of when selectivity may have been expected to change. Commercial removals for `r spp` are relatively low when compared to recreational removals for this species which limited the amount of composition data available to support estimation of changes in selectivity. Given this and the limited evidence in the available length data, time-invariant selectivity was selected for both the commercial dead and live fish fleets. The same time block structure was assumed both the recreational CPFV and PR fleets based on gear restrictions and depth closures. Selectivity blocked into three periods: 1916-1999, 2000-2004, and 2005-2022, Model exploration revealed that that selectivity in the first and third time blocks were highly similar so the these two time periods were set to have equal selectivity. In 2022 the sub-bag limit in the California recreational fishery was reduce to only allow one `r spp`. However, the amount of length samples in 2022 were not informative about a change in selectivity. Finally, a change in selectivity was explored for the `r hkl` to shift sometime between 2012-2014, years where the number of MPA and CCA sites increased within the the survey. Exploratory models did not reveal a meaningful shift in the selectivity for this survey in that time period for `r spp` and for model parsimony a single selectivity for this fleet was assumed. 
+
+The specification of when to estimate recruitment deviations is an assumption that affects the estimate of early model uncertainty around stock scale and status. Recruitment deviations were estimated from 1880 - 2020 to appropriately quantify uncertainty in the early model years. The earliest length- and age-composition data occur in 1975 but age data were not consistently on a yearly basis until 2003. The most informed years for estimating recruitment deviations were from about the mid-1990s to 2018. The period from 1880 - 1964 was fit using an early recruitment deviation series with little or no bias adjustment, the main period of recruitment deviates occurred from 1965 - 2020 with an upward and downward ramping of bias adjustment, and 2021 onward recruitment deviations were assumed to be 0 due to limited information at the end of the time-series. [-@methot_adjusting_2011a] summarize the reasoning behind varying levels of bias adjustment based on the information available to estimate the deviates. The standard deviation of recruitment variability was assumed to be 0.60 based on the estimated variation in recruitment from the base model. Annual recruitment deviations were not forced to be fully zero centered during the main recruitment period in order to allow the data to fully inform the estimation and to avoid this constraint altering the annual estimates. Model explorations revealed that the selection of recruitment deviation estimation, zero-centered or not, had little to no impact on the annual estimated deviations.
 
 The following distributions were assumed for data fitting where the survey indices were lognormal and the compositional data had a multinomial error structure.
 
@@ -89,21 +78,12 @@ read_child(filein)
 ### Data Weighting
 
 Length composition data for the commercial fishery started with a sample size determined from the equation listed in 
-Sections \ref{commercial-fishery}. The input sample size for the length composition data from recreational fishery was determined 
-based on the number of estimated trips (described in Sections \ref{recreational-fishery}), both the CCFRP and `r hkl` were set equal 
-to the number of positive drops by year, the CDFW ROV were set equal to the number of positive transects, the `r wcgbt` was set equal 
-to the number of fish, and the Pearson Research survey and CPFV cooperative collection program set equal to the number of trips. The 
-majority of age-composition data were input as conditional-age-at-length with input sample size equal to the number of ages. 
-The age-composition data from both the commercial dead and historical CPFV samples were used as marginal age-composition with the 
+Sections \ref{commercial-fishery}. The input sample size for the length composition data from recreational fishery was determined based on the number of estimated trips (described in Sections \ref{recreational-fishery}), both the CCFRP and `r hkl` were set equal to the number of positive drops by year, the CDFW ROV were set equal to the number of positive transects, the `r wcgbt` was set equal to the number of fish, and the Pearson Research survey and CPFV cooperative collection program set equal to the number of trips. The majority of age-composition data were input as conditional-age-at-length with input sample size equal to the number of ages. The age-composition data from both the commercial dead and historical CPFV samples were used as marginal age-composition with the 
 input sample size set equal to the number of ages.     
 
-The base  model was weighted using the "Francis method", which was based on equation TA1.8 in Francis [-@francis_data_2011] which was 
-selected based on model stability and consistency in the model to identify the minimum likelihood estimate (MLE). This formulation looks 
-at the mean length or age and the variance of the mean to determine if across years, the variability is explained by the model. If the 
-variability around the mean does not encompass the model predictions, then that data source should be down-weighted. This method accounts 
-for correlation in the data (i.e., the multinomial distribution). Sensitivities were performed examining the difference in the model fits 
-and results due to in weighting using McAllister-Ianelli Harmonic Mean Weighting [-@mcallister_bayesian_1997] and the Dirichlet Multinomial 
-Weighting [-@thorson_model-based_2017].
+The base model was weighted using the "Francis method", which was based on equation TA1.8 in Francis [-@francis_data_2011] which was selected based on model stability and consistency in the model to identify the minimum likelihood estimate (MLE). This formulation looks at the mean length or age and the variance of the mean to determine if across years, the variability is explained by the model. If the variability around the mean does not encompass the model predictions, then that data source should be down-weighted. This method accounts for correlation in the data (i.e., the multinomial distribution). Since Francis data weighting is determined by the mean and variance in observations across years, a subset of data type that had only one year of composition data were weighted based on recommended values from the McAllister-Ianelli Harmonic Mean Weight [-@mcallister_bayesian_1997]. These data sources were the marginal ages from the commercial dead and CPFV fleet and the conditional-age-at-length data from the CCFRP Hook and Line survey.
+
+Sensitivities were performed examining the difference in the model fits and results due to in weighting using McAllister-Ianelli Harmonic Mean Weighting  and the Dirichlet Multinomial Weighting [-@thorson_model-based_2017].
 
 ### Model Parameters
 
@@ -118,8 +98,6 @@ poorly informed by the data. When estimated natural mortality was low (around 0.
 which was based on maximum age; however, well within the prior distribution (SE = 0.31). The observations of fish greater than 50 
 years of age across the West Coast, not only this assessment area, is rare, so a natural mortality that would be associated with a 
 maximum around 60 years of age did not seem well supported. Natural mortality was fixed in the base model but estimation of this 
-parameter for both sexes was explored via sensitivies.
+parameter for both sexes was explored via sensitivities.
 
-The standard deviation of recruitment deviates was fixed at 0.60 ($\sigma_R$). Maturity-at-length was fixed as described above in 
-Section \ref{maturation-and-fecundity}. Length-weight parameters were fixed at external estimates based on estimates using the 
-`r hkl` and `r wcgbt` length-weight observations (Figure \ref{fig:est-len-wght}).
+The standard deviation of recruitment deviates was fixed at 0.60 ($\sigma_R$). Maturity-at-length was fixed as described above in Section \ref{maturation-and-fecundity}. A single California sex-specific length-weight relationship were fixed at externally derived estimates using the `r hkl` and `r wcgbt` length-weight observations (Figure \ref{fig:est-len-wght}).

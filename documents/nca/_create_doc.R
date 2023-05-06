@@ -30,6 +30,10 @@ model_dir <- here("models", "nca", north_model_name)
 #point to both models for documentsection
 north_model_dir <- here("models", "nca", north_model_name)
 south_model_dir <- here("models", "sca", south_model_name)
+
+#north model sensitivities
+sens_dir <- here("models", "nca", "_sensitivities")
+
 #management
 management_dir <- here("management")
 #data
@@ -38,7 +42,8 @@ r_dir <- here("R")
 
 #save to Rdata file
 save(model_dir, bridge_dir, doc_dir, data_dir, management_dir, north_model_dir, south_model_dir,
-     file = file.path(doc_dir, "nca", "saved_directories.Rdata"))
+     sens_dir, south_model_name, north_model_name,
+     file = file.path(doc_dir, "sca", "saved_directories.Rdata"))
 
 setwd(file.path(doc_dir, "nca"))
 

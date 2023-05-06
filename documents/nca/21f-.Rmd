@@ -12,7 +12,7 @@ read_child(filein)
 ```
 
 
-#### Composition Data
+#### Composition Data {#commercial-fishery}
 \
 
 Biological data were extracted from the PacFIN Biological Data System on March 20, 2023. Length data for the commercial fleet were extracted from the PacFIN Biological Data System (BDS) with samples for north↨ of Point Conception beginning in 1978 (Tables \ref{tab:dead-com-len} and \ref{tab:live-com-len}). The commercial data was split by landed condition, live or dead, with the first data for the live fish fishery beginning in 1994. The number of length samples by fleet were highly variable with the largest number of sample by year being recorded in the 1990s for the dead fish fishery. In recent years, the number of length samples by year are limited for both fleets with the live fish with annual sample sizes less than 100 per year. The number of samples prior to the 1990s and in the 2000s for the dead fish fishery were sparse and variable across sizes. During model explorations any year with less than 20 sampled fish were considered too sparse to accurately reflect the fleet selectivity for that year (see [Appendix A](#excluded-data) for implied fits to these lengths). 
@@ -62,7 +62,7 @@ Figure \ref{fig:dwv-index-main} Appendix Section \ref{dwv-cpfv-index}
 
 Figure \ref{fig:crfs-pr-index-main} Appendix Section \ref{crfs-pr-index}
 
-#### Composition Data
+#### Composition Data {#recreational-fishery}
 \
 Length compositions were available from the following sources: 
 
