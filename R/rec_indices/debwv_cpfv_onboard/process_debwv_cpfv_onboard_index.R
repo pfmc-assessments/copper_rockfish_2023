@@ -361,8 +361,8 @@ png(filename = paste0(out.dir,'/Average CPUE by Year and Region.png'), width = 6
 with(dat, interaction.plot(YEAR, MegaReef, CPUE,
                            col=1:7, lty=1, lwd=2, ylab="CPAH", ylim=c(0,.2), 
                            legend=F))
-legend("topright", legend=c("V1_FtBragg_SC", "V2_MossLanding_BigSur",
-                            "V3_SLOCnty_PtConcpn","V4_Offshore"), lty=1, col=1:7)
+legend("topright", legend=c("V1", "V2",
+                            "V3","V4"), lty=1, col=1:7)
 dev.off()
 
 levels(dat$MegaReef) = c('V1','V2','V3','V4')

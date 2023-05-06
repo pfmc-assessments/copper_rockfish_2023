@@ -178,22 +178,8 @@ write.csv(dataFilters, file = file.path(dir, "main_effects", "data_filters.csv")
 
 View(Model_selection)
 #format table for the document
-out <- Model_selection %>%
-dplyr::select(-`(Intercept)`) %>%
-  mutate(depth = round(depth, 3),
-         depth_2 = round(depth_2), 3) %>%
-  rename(DepthSquared = depth_2,
-         Depth = depth) %>%
-mutate_at(vars(covars,"year","offset(logEffort)" ,"DepthSquared",  "Depth"), as.character) %>%
-mutate(across(c("logLik","AICc","delta"), round, 1)) %>%
-# replace_na(list(month = "Excluded", region = "Excluded", Depth = "Excluded" ,DepthSquared = "Excluded")) %>%
-# mutate_at(c(covars,"year","offset(logEffort)", "DepthSquared"), 
-#        funs(stringr::str_replace(.,"\\+","Included"))) %>%
-rename(`Effort offset` = `offset(logEffort)`, 
-       `log-likelihood` = logLik,
-        `Depth squared` = DepthSquared) %>%
-rename_with(stringr::str_to_title,-AICc)
-View(out)
+out <- Model_selection
+
 write.csv(out, file = file.path(dir, "main_effects", "model_selection.csv"), row.names = FALSE)
 
 #summary of trips and  percent pos per year
@@ -205,7 +191,7 @@ summaries <- dat %>%
          percentpos = tripsWithTarget/(tripsWithTarget+tripsWOTarget)) 
 View(summaries)
 write.csv(summaries, 
-file.path(dir, "main_effects", "percent_pos.csv"),
+file.path(dir, "percent_pos.csv"),
 row.names=FALSE)
 
 #-------------------------------------------------------------------------------
@@ -313,7 +299,7 @@ Model_selection
 #year:area interaction is not significant
 #-------------------------------------------------------------------------------
 #Format data filtering table and the model selection table for document
- dataFilters <- data.frame(lapply(dataFilters, as.character), stringsasFactors = FALSE)
+ dataFilters <- data.frame(lapply(dataFilters, as.character))
 write.csv(dataFilters, 
           file = file.path(dir, "data_filters.csv"), 
           row.names = FALSE)

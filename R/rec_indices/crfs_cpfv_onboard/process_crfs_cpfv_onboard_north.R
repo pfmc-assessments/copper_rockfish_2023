@@ -17,7 +17,7 @@ library(ggridges)
 pacfinSpecies <- "COPP"
 speciesName <- "copper"
 modelArea <- "north"
-model <- "start2005"
+model <- "start2004"
 # setwd to the north or the south
 # set working directory
 temp_dir <- "S:/copper_rockfish_2023"
@@ -27,23 +27,17 @@ setwd(dir)
 # load data for processing
 load(file.path(temp_dir, "data", "rec_indices", "crfs_cpfv_onboard", "onboard.RData"))
 
-alphahull <- readxl::read_xlsx(file.path(
-  temp_dir, "data", "rec_indices", "crfs_cpfv_onboard",
-  "SouthernAlphaHulls", "AlphaHull_coppers.xlsx"
-))
 
-alphahull <- alphahull %>%
-mutate(ID = paste0(ASSN,"_", LOCNUM)) %>%
-dplyr::select(ID, AlphaHull)
 
 # Data filter dataframe
 filter.num <- 1
-dataFilters <- data.frame(matrix(vector(), 10, 4,
+dataFilters <- data.frame(matrix(vector(), 20, 4,
   dimnames = list(c(), c(
     "Filter", "Description", "Samples",
     "Positive_Samples"
   ))
 ), stringsAsFactors = F)
+
 #-------------------------------------------------------------------------------
 onboard <- onboard_data %>%
   mutate(area = ifelse(district %in% c(1, 2), "south", "north")) %>%
@@ -66,19 +60,6 @@ ggplot(onboard, aes(x = as.factor(year), y = cpue)) +
   ylab("CPUE")
 ggsave(file.path(dir, "cpue_by_year.png"), height = 7, width = 7)
 
-if (modelArea == "south") {
-  onboard <- onboard %>%
-    mutate(region = case_when(
-      cdfw.block %in% c(876:879, 860:861, 842:843, 821:822, 801:802, 756:757, 737:740, 718:720, 681:682, 702:703) ~ "District 1 mainland",
-      cdfw.block %in% c(651:658, 666, 667, 680, 683, 679, 701, 705) ~ "District 2 mainland",
-      cdfw.block %in% c(888, 870, 867, 849:850, 829, 806:808, 813:815, 760, 768:769, 764:765, 761:762, 744:745, 724) ~ "Southern Channel Islands",
-      cdfw.block %in% c(684:691, 707:713) ~ "Northern Channel Islands",
-      TRUE ~ cdfw.block
-    ))
-
-#also add the alpha hulls
-onboard <- left_join(onboard, alphahull, by = "ID")
-}
 
 
 
@@ -124,14 +105,14 @@ write.csv(keep_discard, file.path(dir, "keep_discard_prop.csv"), row.names = FAL
 
 
 # remove 1999-2003 ----
-if (model == "start2005") {
+if (model == "start2004") {
   onboard <- onboard %>%
     filter(year > 2003)
 
   #-------------------------------------------------------------------------------
   # Add to filter dataframe
   dataFilters$Filter[filter.num] <- c("Years")
-  dataFilters$Description[filter.num] <- c("Start time series in 2005 due to sparse data")
+  dataFilters$Description[filter.num] <- c("Start time series in 2004 due to sparse data")
   dataFilters$Samples[filter.num] <- onboard %>% tally()
   dataFilters$Positive_Samples[filter.num] <- onboard %>%
     filter(number.fish > 0) %>%
@@ -191,7 +172,7 @@ onboard <- onboard %>%
 #-------------------------------------------------------------------------------
 # Add to filter dataframe
 dataFilters$Filter[filter.num] <- c("Area fished")
-dataFilters$Description[filter.num] <- c("Remove drifts in bays and Mexico (if applicable)")
+dataFilters$Description[filter.num] <- c("Remove drifts in bays")
 dataFilters$Samples[filter.num] <- onboard %>% tally()
 dataFilters$Positive_Samples[filter.num] <- onboard %>%
   filter(number.fish > 0) %>%
@@ -311,7 +292,7 @@ onboard <- onboard %>%
 dataFilters$Filter[filter.num] <- c("Time fished")
 if (modelArea == "north") {
   dataFilters$Description[filter.num] <- c("Remove upper and lower 2.5% time fished and
-                                         time fished; Remaining drifts with 3-75 minutes time fished")
+                                         time fished; Remaining drifts with 5-73 minutes time fished")
 } else {
   dataFilters$Description[filter.num] <- c("Remove upper and lower 2.5% time fished and
                                          time fished; Remaining drifts with 5-102 minutes time fished")
@@ -355,7 +336,7 @@ if (modelArea == "north") {
   # Add to filter dataframe
   dataFilters$Filter[filter.num] <- c("Distance from rocky substrate")
   dataFilters$Description[filter.num] <- c("After removing observations further
-than 0.5km from rocky substrate, keep 95% of the data; drifts within 41.7 m of rocky substrate")
+than 0.5km from rocky substrate, keep 95% of the data; drifts within 10.1 m of rocky substrate")
   dataFilters$Samples[filter.num] <- onboard %>% tally()
   dataFilters$Positive_Samples[filter.num] <- onboard %>%
     filter(number.fish > 0) %>%
@@ -363,188 +344,6 @@ than 0.5km from rocky substrate, keep 95% of the data; drifts within 41.7 m of r
   filter.num <- filter.num + 1
   #-------------------------------------------------------------------------------
 }
-
-# #to filter by reef distance
-# if (modelArea == "south") {
-#   # Look at distance from reef for the positives and then by region
-#   pos_data <- onboard %>%
-#     filter(number.fish > 0) %>%
-#     filter(reef.dist < 5000)
-#   summary(pos_data$reef.dist)
-#   reef.dist_quantile <- quantile(pos_data$reef.dist, seq(0, 1, .01))
-#   reef.dist_quantile
-
-#   # district 1
-#   pos_data1 <- onboard %>%
-#     filter(number.fish > 0) %>%
-#     filter(reef.dist < 5000, region == "District 1 mainland")
-#   reef.dist_quantile1 <- quantile(pos_data1$reef.dist, seq(0, 1, .01))
-#   reef.dist_quantile1
-
-#   with(pos_data, table(region))
-
-#   ggplot(pos_data, aes(x = reef.dist, y = cpue, colour = region)) +
-#     geom_jitter(alpha = 0.5, show.legend = FALSE) +
-#     facet_wrap(~region) +
-#     xlab("Distance to rocky subs")
-#   ggsave(file.path(dir, "reef_distance.png"), height = 7, width = 7)
-#   # Cumulative distribution of distance from reef
-#   ggplot(pos_data, aes(reef.dist)) +
-#     xlab("Distance to rocky substrate") +
-#     stat_ecdf(geom = "step", color = "purple", show.legend = FALSE) +
-#     facet_wrap(~region)
-#   ggsave(file.path("ecdf_rocky_substrate.png"), width = 7, height = 7)
-
-
-#   with(pos_data, table(cdfw.block))
-
-
-
-#   onboard <- onboard %>%
-#     filter(reef.dist < reef.dist_quantile[96]) %>%
-#     droplevels()
-
-
-#   #-------------------------------------------------------------------------------
-#   # Add to filter dataframe
-#   dataFilters$Filter[filter.num] <- c("Distance from rocky substrate")
-#   dataFilters$Description[filter.num] <- c("Southern CA rocky substrate incomplete;
-#                                          keep 95% of the data; drifts within 3,365 m of rocky substrate")
-#   dataFilters$Samples[filter.num] <- onboard %>% tally()
-#   dataFilters$Positive_Samples[filter.num] <- onboard %>%
-#     filter(number.fish > 0) %>%
-#     tally()
-#   filter.num <- filter.num + 1
-#   #-------------------------------------------------------------------------------
-
-#   pos_data <- onboard %>% filter(number.fish > 0)
-#   # look at reef distance
-#   summary(pos_data$reef.dist)
-#   quantile(pos_data$reef.dist, seq(0, 1, .01))
-#   ggplot(pos_data, aes(x = reef.dist, y = cpue)) +
-#     geom_jitter(alpha = 0.5, colour = "purple") +
-#     xlab("Distance to rocky substrage (m)") +
-#     ylab("CPUE") +
-#     theme_bw() +
-#     facet_wrap(~district)
-#   ggsave(file.path(dir, "reef_dist_cpue.png"), height = 7, width = 7)
-
-#   # primary target species only
-#   cdfwblockTargets <- onboard %>%
-#     group_by(cdfw.block) %>%
-#     summarise(
-#       driftsWithTarget = sum(number.fish > 0),
-#       driftsWOTarget = sum(number.fish == 0)
-#     ) %>%
-#     mutate(
-#       totaldrifts = driftsWithTarget + driftsWOTarget,
-#       percentpos = driftsWithTarget / (driftsWithTarget + driftsWOTarget)
-#     ) %>%
-#     filter(percentpos > 0.05) %>%
-#     filter(!cdfw.block == 0) %>%
-#     filter(totaldrifts > 99)
-#   # View(cdfwblockTargets)
-#   # write.csv(driftTargets,
-#   #          file.path(dir, "driftTargets.csv"),
-#   #          row.names=FALSE)
-
-#   onboard <- onboard %>%
-#     filter(cdfw.block %in% cdfwblockTargets$cdfw.block) %>%
-#     droplevels()
-
-#   #-------------------------------------------------------------------------------
-#   # Add to filter dataframe
-#   dataFilters$Filter[filter.num] <- c("CDFW block")
-#   dataFilters$Description[filter.num] <- c("Retain drifts in CDFW blocks with at least 100 drifts and
-#                                          more than 5% of all drifts in that block
-#                                          caught a copper rockfish")
-#   dataFilters$Samples[filter.num] <- onboard %>% tally()
-#   dataFilters$Positive_Samples[filter.num] <- onboard %>%
-#     filter(number.fish > 0) %>%
-#     tally()
-#   filter.num <- filter.num + 1
-#   #-------------------------------------------------------------------------------
-# }
-
-###To filter by alpha hull
-#to filter by reef distance
-if (modelArea == "south") {
-  
-  #remove the drifts outside an alpha hull
-
-  onboard <- onboard %>%
-  filter(!is.na(AlphaHull))
-
-  pos_data <- onboard %>%
-    filter(number.fish > 0)
- 
-  summary(as.factor(pos_data$AlphaHull))
-  summary(as.factor(onboard$AlphaHull))
-
-  # ggplot(pos_data, aes(x = reef.dist, y = cpue, colour = region)) +
-  #   geom_jitter(alpha = 0.5, show.legend = FALSE) +
-  #   facet_wrap(~region) +
-  #   xlab("Distance to rocky subs")
-  # ggsave(file.path(dir, "reef_distance.png"), height = 7, width = 7)
-  # Cumulative distribution of distance from reef
-  # ggplot(pos_data, aes(reef.dist)) +
-  #   xlab("Distance to rocky substrate") +
-  #   stat_ecdf(geom = "step", color = "purple", show.legend = FALSE) +
-  #   facet_wrap(~region)
-  # ggsave(file.path("ecdf_rocky_substrate.png"), width = 7, height = 7)
-
-
-  # with(pos_data, table(cdfw.block))
-
-  # pos_data <- onboard %>% filter(number.fish > 0)
-  # # look at reef distance
-  # summary(pos_data$reef.dist)
-  # quantile(pos_data$reef.dist, seq(0, 1, .01))
-  # ggplot(pos_data, aes(x = reef.dist, y = cpue)) +
-  #   geom_jitter(alpha = 0.5, colour = "purple") +
-  #   xlab("Distance to rocky substrage (m)") +
-  #   ylab("CPUE") +
-  #   theme_bw() +
-  #   facet_wrap(~district)
-  # ggsave(file.path(dir, "reef_dist_cpue.png"), height = 7, width = 7)
-
-  # # primary target species only
-  # cdfwblockTargets <- onboard %>%
-  #   group_by(cdfw.block) %>%
-  #   summarise(
-  #     driftsWithTarget = sum(number.fish > 0),
-  #     driftsWOTarget = sum(number.fish == 0)
-  #   ) %>%
-  #   mutate(
-  #     totaldrifts = driftsWithTarget + driftsWOTarget,
-  #     percentpos = driftsWithTarget / (driftsWithTarget + driftsWOTarget)
-  #   ) %>%
-  #   filter(percentpos > 0.05) %>%
-  #   filter(!cdfw.block == 0) %>%
-  #   filter(totaldrifts > 99)
-  # # View(cdfwblockTargets)
-  # # write.csv(driftTargets,
-  # #          file.path(dir, "driftTargets.csv"),
-  # #          row.names=FALSE)
-
-  # onboard <- onboard %>%
-  #   filter(cdfw.block %in% cdfwblockTargets$cdfw.block) %>%
-  #   droplevels()
-
-  #-------------------------------------------------------------------------------
-  # Add to filter dataframe
-  dataFilters$Filter[filter.num] <- c("Inferred habitat")
-  dataFilters$Description[filter.num] <- c("Retain drifts within the alpha hulls from positive observations")
-  dataFilters$Samples[filter.num] <- onboard %>% tally()
-  dataFilters$Positive_Samples[filter.num] <- onboard %>%
-    filter(number.fish > 0) %>%
-    tally()
-  filter.num <- filter.num + 1
-  #-------------------------------------------------------------------------------
-}
-
-
-
 # depth by district or area fished
 ggplot(
   onboard %>% filter(number.fish > 0),
@@ -634,50 +433,11 @@ ggplot(cpue_by_district, aes(x = year, y = average_cpue, colour = district)) +
 ggsave(file = file.path(getwd(), "average_cpue_by_district.png"), width = 7, height = 7)
 
 # look at 2015 in district 5
-aa <- subset(onboard, year == 2015 & district == 5)
+#aa <- subset(onboard, year == 2015 & district == 5)
 # one observation
-
-
-# Assign blocks to areas
-if (modelArea == "south") {
-  # onboard <- onboard %>%
-  #   mutate(region = case_when(
-  #     cdfw.block %in% c(876:879, 860:861, 842:843, 821:822, 801:802, 756:757, 737:740, 718:720 , 681:682, 702:703) ~ "District 1 mainland",
-  #     cdfw.block %in% c(651:658, 666, 667, 680, 683,  679, 701, 705) ~ "District 2 mainland",
-  #     cdfw.block %in% c(888, 870, 867, 849:850, 829, 806:808, 813:815,760,  768:769, 764:765, 761:762, 744:745, 724) ~ "Southern Channel Islands",
-  #     cdfw.block %in% c(684:691, 707:713) ~ "Northern Channel Islands",
-  #     TRUE ~ cdfw.block
-  #   ))
-  #
-
-
-  onboard <- onboard %>%
-    mutate_at(vars(region), as.factor)
-  summary(onboard$region)
-  # mainland south 876:879 , 860:861, 842:843, 821:822, 801:802, 756: 757, 737:740, 718:720 , 681:682,
-  # mainland north 651:658,
-  #  southern channel islands 888, 870, 867, 849:850,829, 806:808, 813:815, 768:769, 764:765, 761:762, 744:745: 724
-  #  norther channel islands 684:691, 707:713
-
-
-  cpue_by_region <- onboard %>%
-    group_by(year, region) %>%
-    summarise(average_cpue = mean(cpue))
-
-  # look average cpue by district
-  ggplot(cpue_by_region, aes(x = year, y = average_cpue, colour = region)) +
-    geom_point(size = 3) +
-    theme_bw() +
-    geom_line(aes(x = year, y = average_cpue, colour = region)) +
-    xlab("Year") +
-    ylab("Average CPUE") +
-    ylim(c(0, (max(cpue_by_region$average_cpue) * 1.1))) +
-    scale_color_viridis_d()
-  ggsave(file = file.path(getwd(), "average_cpue_by_region.png"), width = 7, height = 7)
-}
 
 
 # save the datafile and filters for the run file
 save(onboard, dataFilters,
-  file = file.path(dir, "data_for_glm.RData")
+  file = file.path(dir,"start2004", "data_for_glm.RData")
 )

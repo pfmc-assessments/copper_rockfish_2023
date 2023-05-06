@@ -1,1 +1,195 @@
 # Appendix D. Deb Wilson-Vandenberg Onboard CPFV Index of Abundance {#dwv-cpfv-index}
+
+The Deb Wilson-Vandenberg data set is an onboard observer survey data conducted 
+by CDFW survey in California north of Point Conception from 1987-1998 and referred to as the Deb 
+Wilson-Vandenberg onboard observer survey, @reilly-onboard-1998. During an onboard 
+observer trip the sampler rode along on the CPFV and recorded location-specific 
+catch and discard information to the species level for a subset of anglers 
+onboard the vessel. The subset of observed anglers is usually a maximum of 15 
+people the observed anglers change during each fishing stop.  The catch cannot be 
+linked to an individual, but rather to a specific fishing location.  The sampler 
+also records the starting and ending time, number of anglers observed, starting 
+and ending depth, and measured retained and discarded fish. The fine-scale catch and effort 
+data allow us to better filter the data for indices 
+to fishing stops within suitable habitat for the target species.
+
+
+A large effort was made by the SWFSC to recover data from the original data 
+sheets for this survey and developed into a relational database @monk-documentation-2016. 
+The specific fishing locations at each fishing stop  were recorded at a finer 
+scale than the catch data for this survey. We aggregated the relevant location 
+information (time and number of observed anglers) to match the available catch 
+information. Between April 1987 and July 1992 the number of observed anglers 
+was not recorded for each fishing stop, but the number of anglers aboard the 
+vessel is available.  We imputed the number of observed anglers using the number 
+of anglers aboard the vessel and the number of observed anglers at each fishing 
+stop from the August 1992-December 1998 data (see Supplemental materials for 
+details). In 1987, trips were only observed in Monterey, CA and were therefore 
+excluded from the analysis (Table \@ref(tab:deb-filte)). Sampling 
+targeted areas of central California.  Of the 2,256 trips observed, only 12 of 
+those launched from port in District 6, the most northern district in California.
+
+
+Each fishing location was assigned to a reef based on the on the bathymetric maps 
+and interpretation of hard bottom was extracted from 
+the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html).
+Reefs were aggregated to four regions produce adequate sample sizes; 
+the California/Oregon border to San Francisco (V1), San Francisco to Moss Landing (V2), 
+Moss Landing to Big Sur (V3), San Luis Obispo county to Point Conception (V4).  The ports in San 
+Luis Obispo county were sampled more frequently than other regions and the arithmetic 
+mean of CPUE by year was higher also higher in this area (Figure \@ref(fig:fig-areacpue-debwv))
+
+
+The filters also included removal of the number of observed anglers and time fished at the tail 
+ends of the distributions, removal of drifts occurring in depths outside copper rockfish's range 
+(Table \@ref(tab:deb-filter) and Figure \@ref(fig:deb-depths)). 
+We retained 5,546 drifts for index standardization, with 
+1,389 fishing location encountering copper rockfish.  
+Tables of the number of samples and positive observations by factors depth, region and year, 
+can be found in Tables \@ref(tab:deb), \@ref(tab:tab-region-debwv), and 
+\@ref(tab:tab-year-debwv).
+
+
+We modeled catch per angler hour fished (CPUE) by fishing stop where the angler 
+hours were summed across drfts at a fishing stop. To explore weighting of the onboard observer survey index by the available 
+rocky substrate within a region, each drift was assigned to the closest area 
+of rocky habitat. Hard bottom was extracted from 
+the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html), 
+along the mainland coast of southern California. These data 
+were collected in state waters at a resolution of two meters, but did not extend into state waters 
+past the mainland coast. Additional interpreted bathymetric data classifying the bottom type as 
+rock or soft bottom were compiled by analysts at the University of California Santa Cruz and are now
+also available from CDFW's website. We used the available interpreted rocky substrate data to expand the 
+known area of rocky substrate to areas in southern California that lack substrate type. This 
+expansion of the estimated rocky substrate assumes that the proportions of rocky substrate within 
+and outside state waters are similar.
+
+
+The covariates explored for model selection included year and four levels region as categorical 
+region, and continuous depth and depth-squared.  
+rends in the average CPUE by region were similar 
+in the filtered data set (Figure \@ref(fig:deb-regioncpue)). A year and region interaction 
+was included after visualizing the trends in average CPUE over time, but was not significant 
+(Figure \@ref(fig:deb-average_cpue_by_region)). The full model was selected by AICc and 
+included year, depth, depth squared and region
+(Table \@ref(tab:deb-model_selection)). 
+
+Indices were fit via MLE from the sdmTMB package in R. The QQ plot for the negative binoimal 
+model indicated a poor fit to the data, which as not surprising given the low percent of 
+observed drifts encountering copper rockfish. A delta-gamma
+was selected over a delta-lognormal by a delta AIC of 43.  The QQ plot indicated a much 
+improved fit compared to the negative binomial model (Table \@ref(fig:onboard-qq)).
+The relative abundance indicates a decreasing trend during the time series (Table \@ref(tab:deb-index) 
+and Figure \@ref(fig:deb-index)). 
+
+
+
+
+```{r, results = 'asis'}
+#ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard", "north",
+#                     "percent_pos.csv"))
+#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+#sa4ss::table_format(x = ind,
+#             caption = "Data filtering steps for the onboard CPFV survey.",
+#             label = "deb-percentpos")#,
+        #     col_names = col_names)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+#ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard", "north",
+#                    "model_selection.csv"))
+#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+#sa4ss::table_format(x = ind,
+#             caption = "Data filtering steps for the onboard CPFV survey.",
+#             label = "deb-filter",
+#             col_names = col_names)                         
+```
+
+
+\newpage
+
+```{r, results = 'asis'}
+
+ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
+                          "deltagamma", "index_forSS.csv"))
+ind <- ind[, c(1,4,5)]
+col_names = c("Year", "Estimate", "logSE")
+
+sa4ss::table_format(x = ind,
+             caption = "Estimated relative index of abundance for the onboard CPFV survey.",
+             label = "deb-index",
+             col_names = col_names)                         
+```
+
+
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
+                    "data_filters.csv"))
+#ind <- ind[, c(1,4,5)]
+col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+
+sa4ss::table_format(x = ind,
+             caption = "Data filtering steps for the onboard CPFV survey.",
+             label = "deb-filter",
+             col_names = col_names)                         
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
+                   "deltagamma", "index.png"), 
+caption = "Index for the onboard CPFV survey.",
+label = 'deb-index')
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard", 
+                   "deltagamma", "qq.png"), 
+caption = "QQ-plot for the onboard CPFV survey.",
+label = 'deb-qq')
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
+                   "average_cpue_by_reef.png"), 
+caption = "Average CPUE by region to standardization.",
+label = 'deb-regioncpue')
+```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
+                   "percent_gfish.png"), 
+caption = "Percent of catch by trip that consisted of groundfish.",
+label = 'deb-percent-gfish')
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
+                   "depth_by_reef.png"), 
+caption = "Stacked bar plot of the depth of observed copper rockfish by region.",
+label = 'deb-depths')
+```
+
+\newpage
+
