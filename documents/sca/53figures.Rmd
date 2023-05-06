@@ -272,7 +272,7 @@ label = 'nwfsc-hkl-depth')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "rstan_full_nb_glm_year_site_drop_swell_vermilion", "Index.png"), 
+filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "Index.png"), 
 caption = "Estimated index of abundance for copper rockfish.",
 label = 'nwfsc-hkl-index-main')
 ```

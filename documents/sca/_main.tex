@@ -670,7 +670,7 @@ From 1980 to 2003 the MRFSS program conducted dockside intercept surveys of the 
 
 Each entry in the RecFIN Type 3 database corresponds to a single fish examined by a sampler at a particular survey site. Since only a subset of the catch may be sampled, each record also identifies the total number of that species possessed by the group of anglers being interviewed. The number of anglers and the hours fished are also recorded. The data, as they exist in RecFIN, do not indicate which records belong to the same boat trip. A description of the algorithms and process used to aggregate the RecFIN records to the trip level is outlined in the Supplemental Materials (``Identifying Trips in RecFIN'').
 
-The data were filtered to identify rockfish trips, standardized across the time-series, and modeled to estimate and index of abundance for copper rockfish (see \protect\hyperlink{mrfss-index}{Appendix B} for details). The MRFSS CPFV index of abundance between 1980-1999 is generally variable but with a flat trend in abundance except for three years that spike in abundance estimates (Figure \ref{fig:mrfss-index-main}). These same patterns in sharp increases in the index for select years were also observed in the raw data.
+The data were filtered to identify rockfish trips, standardized across the time-series, and modeled to estimate and index of abundance for copper rockfish (see \protect\hyperlink{mrfss-index}{Appendix B} for details). The MRFSS CPFV index of abundance between 1980-1999 is generally variable but with a flat trend in abundance except for three years that spike in abundance estimates (Figure \ref{fig:mrfss-index-main}). These same patterns in sharp increases in the index for select years were also observed in the raw data. Given the limited information in the data to understand what was behind these unexpected spikes in the time series, the MRFSS index of abundance was not used in the final base model.
 
 The state of California implemented a statewide onboard observer sampling program in 1999 (Monk et al. 2014). California Polytechnic State University (Cal Poly) has conducted an independent onboard sampling program as of 2003 for boats in Port San Luis and Morro Bay, and follows the protocols established in Reilly et al. (1998). During an onboard observer trip the sampler rides along on the CPFV and records locationspecific catch and discard information to the species level for a subset of anglers onboard the vessel. The subset of observed anglers is usually a maximum of 15 people the observed anglers change during each fishing stop.
 
@@ -1070,16 +1070,20 @@ The base model parameter estimates along with approximate asymptotic standard er
 
 The estimates of growth parameters by sex varied relative to the externally estimated starting values. The length-at-age 2 and the length-at-age 20 estimates for both sexes was slightly less than the external estimates but were well within the 95 percent confidence interval given the estimated uncertainty (Table \ref{tab:params} and Figure \ref{fig:mod-est-len-age}). The estimated \(k\) for female were greater than the values estimated externally using the survey age data while the male value was similar to the external estimate (0.191 yr\textsuperscript{-1} for females and 0.215 yr\textsuperscript{-1} for males). The majority of female and male copper rockfish growth occurs at younger ages, reaching near maximum length by age 10-15, with female copper rockfish reaching marginally larger maximum lengths (Figure \ref{fig:mod-est-len-age}).
 
-Length-based selectivity curves were estimated for the fishery and survey fleets. The estimated selectivities are shown in Figure \ref{fig:est-selex}. The selectivity for commercial dead fleet was estimated to be asymptotic and was parameterized using logistic selectivity. The commercial live fish fishery selects fish at small sizes with dome-shaped selectivity being estimated parameterized using the double normal selectivity curve with SS3.
-
-Survey selectivity
+Length-based selectivity curves were estimated for the fishery and survey fleets. The majority of fishery and survey fleets were parameterizing using the double normal selectivity paramterization in SS3 except for the commercal dead and NWFSC Hook and Line survey fleet with were parameterized as logistic asymptotic selectivity. The estimated selectivities are shown in Figure \ref{fig:est-selex}. The selectivity for commercial dead fleet was estimated to be asymptotic . The commercial live fish fishery selects fish at small sizes with dome-shaped selectivity. Both recreational fleets were estimated dome-shaped selectivity for each selectivity period with the CPFV fleet selecting a higher portion of large fish at the end of the time series. The CCFRP and CDFW ROV surveys estimated peak selectivity around 40 cm with selectivity decreasing for larger fish. The NWFSC Hook and Line survey estimated asymptotic selectivity only reaching maximum selectivity for the largest fish. The NWFSC WCGBT survey which samples soft bottom via trawl gear had relatively low selectivity for the majority of sizes with only selectivity peaking at the largest sizes. Finally, the estimated length-based selectivity from the CPFV cooperative collection and Pearson Reseach study was asymptotic with full selectivity for fish of 35 cm and larger. Both of these last two fleets included only lengths and ages to inform growth estimation. As noted in the Growth data section that describes these data, the estimated selectivity for the samples collected by the CPFV vessels participating in the cooperative sampling program was distinctly than that from the CPFV fleet operating south of Point Conception as a whole. This is likely due to the areas accessible and trip type (half-day, three-quarter day, or overnight) between the CDFW districts 1 and 2 within this area.
 
 The catchability for each of the surveys was analytically solved comparing observed to expected vulnerable biomass across all years. The analytical values for catchability were very small given the survey methodologies and are reported in Table \ref{tab:params} in log-space. Additional fishery and survey index variability, process error added directly to each year's input standard deviation for the were estimated within the model. The model estimated the largest added variance of 0.185 for the recreational PR fishery index. In contrast the model estimated only limited additional variability in order to fit the recreational CRFS CPFV fishery index (0.085). The model fit the trends in the NWFSC Hook and Line survey index of abundance relatively well with only a small amount of added variance being estimated to fit this time series (0.023). The model estimated an added variance of 0.055 and 0.033 to the indices from the CCFRP and CDFW ROV surveys, respectively.
 
-The time series of estimated recruitments and annual recruitment deviations are shown in Figures \ref{fig:recruits} and \ref{fig:rec-devs}. Years with the highest recruitment deviations were estimated to have occurred in 2010 and 2013 with the lowest being estimated in 2018 and 2019. There is limited information regarding recruitment prior to 1980 but are estimated in the base model to account for uncertainty around the unfished condition. The historical age age data from the CPFV fleet from 1975 were identified to have a disproportional influence on estimated recruitment in the late 1960s relative to all other data sources in the model. These data resulted in a sharp spike in recruitment during these years that was substantially higher than any other year in the model. Given that these estimates were extreme and appeared to be informed by limited data, the decision was made to reduce the influence of this one year of limited age data for model stability (lambda value of 0.10 for these data). Sensitivities showed that the overall ending model estimates were not impacted by this decsion. Estimated recruitment deviations during years with the majority of the compositional data, after 1980, have relatively high uncertainty intervals indicating lack of support for clear strong or poor recruitment years across data sources. Recruitment deviations after 2017 are relatively uncertain but with large negative recruitment deviations. Recruitment is estimated based on the spawner-recruit curve in 2021 and 2022 (Figure \ref{fig:bh-curve}). The recruitment bias adjustment applied within the model across years is shown in Figure \ref{fig:bias-adj}.
+The time series of estimated recruitments and annual recruitment deviations are shown in Figures \ref{fig:recruits} and \ref{fig:rec-devs}. Years with the highest recruitment deviations were estimated to have occurred in 2010 and 2013 with the lowest being estimated in 2018 and 2019. There is limited information regarding recruitment prior to 1980 but are estimated in the base model to account for uncertainty around the unfished condition. The historical age age data from the CPFV fleet from 1975 were identified to have a disproportional influence on estimated recruitment in the late 1960s relative to all other data sources in the model. These data resulted in a sharp spike in recruitment during these years that was substantially higher than any other year in the model. Given that these estimates were extreme and appeared to be informed by limited data, the decision was made to reduce the influence of this one year of limited age data for model stability (lambda value of 0.10 for these data). Sensitivities showed that the overall ending model estimates were not impacted by this decsion. Estimated recruitment deviations during years with the majority of the compositional data, after 1980, have relatively high uncertainty intervals indicating lack of support for clear strong or poor recruitment years across data sources. Recruitment deviations after 2017 are relatively uncertain but with large negative recruitment deviations. Recruitment is estimated based on the spawner-recruit curve in 2021 and 2022 (Figure \ref{fig:bh-curve}). The recruitment bias adjustment applied within the model across years is shown in Figure \ref{fig:bias-adjust}.
 
 \hypertarget{fits-to-the-data}{%
 \subsubsection{Fits to the Data}\label{fits-to-the-data}}
+
+Fits to the length data are shown based on the Pearson residuals-at-length, the annual mean lengths, and aggregated length composition data for the fishery and survey fleets in the model. Annual length composition fits are shown in the Appendix, Section \ref{length-data}.
+
+The Pearson residuals for the commercial dead fishery length data are shown in Figure \ref{fig:com-dead-pearson}. The data across time are limited making it difficult to discern patterns in the Pearson residuals across time particularly since the data were not sufficient to support the estimation in varying selectivity across time which would be expected given changes in management. The mean length observed by year from the commercial fleet were uncertain but with a relatively stable mean size in the final years of the model but with a larger mean size observed in the available data prior to 1990 (Figure \ref{fig:com-dead-mean-len-fit}). There were only limited ages available from the commercial dead fleet in 2022 with a rather large Pearson residuals (Figures \ref{fig:agg-marg-age-fit} and \ref{fig:com-dead-age-pearson}), noting that there were only 8 ages available that happened to all be female. The Pearson residuals for the commercial live fish fishery did not appear to have patterns or periods of misfit to th data (Figure \ref{fig:com-live-pearson}) and the model appeared to fit the mean size across time which was highly variable (Figure \ref{fig:com-live-mean-len-fit}).
+
+The Pearson residuals for the recreational CPFV length data are variable by year (Figure \ref{fig:rec-cpfv-pearson}). Pearson residuals were positive, observations greater than expected, for larger fish prior in the earliest data. Additionally, there appears to be a series of diagonal positive residuals moving across years starting around 2005 which may be a year-class moving through the population that the model is under-estimating. Explorations of alternative selectivity forms failed to resolve this pattern in residuals. The mean length observed by the CPFV fleet was fit relatively well by the model with the largest mean size being observed in the early years of the data with the mean size roughly stabilizing between the late 1980s though 2010, after which there was a mean decline in the mean size and then slowly increasing at the end of the model period (Figure \textbackslash ref\{fig:rec-cpfv-mean-len-fit). Age data were available for the CPFV fleet only in 1975 with all ages being unsexed fish (Figure \ref{fig:agg-marg-age-fit}). The peak of the distribution of these ages was under-fit by the model (Figure \ref{fig:rec-cpfv-age-pearson}). These ages where highly influential in model leading to a large recruitment deviation that was significantly higher than any other year estimated. All data weighting approaches explored wanted to significantly upweight these data. Due to the highly influential nature of this single year of data these data were downweighted in the model. Model explorations showed that down-weighting of these data did not effect the ending model estimates but resulted in a more stable model.
 
 \hypertarget{population-trajectory}{%
 \subsubsection{Population Trajectory}\label{population-trajectory}}
@@ -1496,19 +1500,27 @@ Year & OFL (mt) & ACL (mt) & Catch (mt)\\
 \endgroup{}
 \endgroup{}
 
+\newpage
+
 \include{tex_tables/historical_landings_tables_2020_revised_Avila_1953.tex}
 
 \newpage
 
 \include{tex_tables/south_dead_trips_and_samples.tex}
 
+\newpage
+
 \include{tex_tables/south_live_trips_and_samples.tex}
+
+\newpage
 
 \include{tex_tables/rec_south_sample_size_by_program.tex}
 
 \newpage
 
 \input{tex_tables/south_ccfrp_drifts_length_ages.tex}
+
+\newpage
 
 \input{tex_tables/nwfsc_hkl_positive_samples_by_year.tex}
 
@@ -1526,11 +1538,19 @@ Year & OFL (mt) & ACL (mt) & Catch (mt)\\
 
 \input{tex_tables/rov_south_samples_transects.tex}
 
+\newpage
+
 \input{tex_tables/south_growth_age_samples.tex}
+
+\newpage
 
 \input{tex_tables/wcgbt_samples_by_year.tex}
 
+\newpage
+
 \input{tex_tables/model_structure_south.tex}
+
+\newpage
 
 \begingroup\fontsize{9}{11}\selectfont
 
@@ -1803,7 +1823,11 @@ Size DblN end logit Rec Private(4) BLK5repl 2000 & -2.024 & -6 & (-10, 10) & NA 
 \end{landscape}
 \endgroup{}
 
+\newpage
+
 \include{tex_tables/south_likelihoods.tex}
+
+\newpage
 
 \include{tex_tables/south_e_ReferencePoints.tex}
 
@@ -1935,6 +1959,8 @@ CV old - Male & 0.06 & 0.06 & 0.06 & 0.06 & 0.06 & 0.06 & 0.07 & 0.07\\*
 \end{landscape}
 \endgroup{}
 
+\newpage
+
 \begingroup\fontsize{9}{11}\selectfont
 
 \begin{landscape}\begingroup\fontsize{9}{11}\selectfont
@@ -1983,6 +2009,8 @@ CV old - Male & 0.06 & 0.06 & 0.05 & 0.07 & 0.05 & 0.06 & 0.07 & 0.06 & 0.06\\*
 \endgroup{}
 \end{landscape}
 \endgroup{}
+
+\newpage
 
 \clearpage
 
@@ -2202,7 +2230,7 @@ CV old - Male & 0.06 & 0.06 & 0.05 & 0.07 & 0.05 & 0.06 & 0.07 & 0.06 & 0.06\\*
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/rstan_full_nb_glm_year_site_drop_swell_vermilion/Index.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{N:/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/nwfsc_hkl/glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted/Index.png}
 \caption{Estimated index of abundance for copper rockfish.\label{fig:nwfsc-hkl-index-main}}
 \end{figure}
 
