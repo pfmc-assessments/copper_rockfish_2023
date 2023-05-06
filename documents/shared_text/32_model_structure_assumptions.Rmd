@@ -1,0 +1,30 @@
+
+A decision was made by the STAT after discussions with the Pacific Fishery Management Council’s Groundfish Management Team 
+and Groundfish Advisory Panel to model the areas north and south of Point Conception independently for a number of reasons. 
+These included a discussion of the evidence of a change in growth with latitude and the fundamental differences in the fisheries 
+north and south of Point Conception.  The preliminary exploration of length data also suggested 
+that the size composition of landed fish north and south of Point Conception differed in boht the commercial and recreational 
+fleets. The STAT maintained consistency across the two models when the data supported the decisions, i.e., maintaining the same 
+recreational and commercial fleet structures and sharing biological data across models when appropriate.
+
+*I think Chantel and I duplicated this section*
+The structure of the California models north and south of Point Conception are very similar. Population dynamics in both regions 
+operate on an annual time step and are initialized from an unfished equilibrium condition in 1916. Sex-specific age and length 
+structure is modeled from age 0 (recruitment age) to an accumulator age (plus group) of 50, with 1-cm population length bins 
+ranging from 10-58 cm. Length data bins are 2-cm wide, and range from 8-70 cm in the south and 10-54 cm in the north. 
+Expected recruitment is assumed to follow a Beverton-Holt function of spawning output, with lognormally-distributed recruitment 
+deviations. Growth (male and female) is modeled using the Schnute parameterization of von Bertalanffy growth, with two estimated 
+lengths (ages 2 and 20) and a growth rate coefficient (*k*). The major differences between the two models are the availability of 
+fishery-independent data sources that are region-specific, and the parameterization of male growth and mortality parameters (details below).
+
+
+The models in both regions are conditioned on catches from the commercial and recreational sectors. The commercial sector is divided into 
+two fleets, one representing fish landed for the live-fish market and the second representing all other landings. 
+The recreational sector was divided into four fleets according to boat mode (party/charter or private/rental) and includes both retained and 
+discarded catch. The the ability to accurately estimate a retention curve is complicated by depth-dependent discard mortality rates.
+
+`r Spp` is a desirable species and discards are a small component of total fishing mortality in both the commercial and recreational 
+sectors. **The commercial catches do not include dead discards, which were estimated to be a small percent of the overall landings in both 
+areas (averaging xx mt coastwide since 2015, although increasing since 2017). In addition, there were very few observations available 
+from WCGOP (fewer than xx fish statewide).** The size distribution of recreational discards from the CDFW and Cal Poly onboard observer 
+programs represented smaller fish than those retained prior to the one fish sub-bag for `r spp` enacted in January 2023.  
