@@ -12,3 +12,11 @@ data/
 presentations/
 scientific_papers/
 sql_db
+
+*.upb
+
+*.aux
+
+*.upa
+
+*.log
