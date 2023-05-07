@@ -1,5 +1,5 @@
 ### Partnership for Interdisciplinary Studies of Coastal Oceans
-*add citation*
+
 The Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO) is an 
 academic consortium conducting monitoring of coastal ecosystems in California as 
 well as research to support marine protected area design.  Their work includes SCUBA 
@@ -7,14 +7,12 @@ surveys and fish recruitment monitoring within rocky reef habitats at a suite of
 across the state using standardized protocols so that multiple participating universities 
 collect compatible data. 
 
-#### SCUBA Fish Transects
 We examined fish transect data collected by participating PISCO researchers at 
 the University of California Santa Cruz (UCSC), University of California Santa Barbara 
 (UCSB), the Vantuna Research Group (VRG) and Humboldt State University (HSU) for potential 
 development of a fishery-independent abundance index for use in the assessment model.  We 
 ultimately concluded that the number of detections of `r spp` on transects was too low to 
-be representative of relative abundance over time and the spatial distribution of sites
- having `r spp` were not well distributed across the coast.  Below we outline the structure 
+be representative of relative abundance over time and the spatial distribution of sites having `r spp` were not well distributed across the coast.  Below we outline the structure 
 of PISCO fish transect data, the procedure we used to filter to include `r spp` habitat,
 and resulting sample sizes. Each fish transect location is surveyed by divers who count 
 fish within a 30 x 2 x 2-m volume on the bottom, mid-way up the water column, and near 
@@ -28,11 +26,11 @@ sites on Naples reef near Santa Barbara (Naples Central, Naples East, and Naples
 The full dataset was filtered for quality and habitat appropriate for `r spp`. 
 Data was limited to surveys conducted by UCSC and UCSB because `r spp` were not 
 observed by HSU and sites surveyed by VRG typically either saw very few `r spp` 
-or were not consistently sampled across the time series.  The UCSC and UCSB campus 
+or were not consistently sampled across the time series. The UCSC and UCSB campus 
 sites were separated to develop two indices for the northern and southern model regions.
 We eliminated sites that were sampled in less than 80% of the survey years for each campus.  
 `r Spp` were only observed on bottom transects and so mid-water and canopy transects were 
 removed.  The inner reef (shallow) transects were removed due to rare `r spp` observations.  
 Divers noted approximate water visibility and transects with visibility less than 3 m were 
-removed.  We also retained only fish greater than 17 cm to construct an adult index.  
+removed. We also retained only fish greater than 17 cm to construct an adult index.  
 
