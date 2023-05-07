@@ -235,6 +235,18 @@ Sensi_plot_dover(model.summaries=x,
 ###################################################################################
 # Create a Table of Results
 ###################################################################################
+
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_7, sens_8))
+modelnames <- c("Base Model",
+                "Estimate M",
+                "Estimate h", 
+                "Estimate M & h",
+                "No Rec. Devs.",
+                "CPFV Selectivity Asym.",
+                #"Fix Schnute Growth",
+                "Dirichlet DW", 
+                "McAllister-Ianelli DW")
+
 ii = 1:length(modelnames)
 n = length(modelnames)
 out<- matrix(NA, 24, max(ii))

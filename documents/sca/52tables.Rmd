@@ -259,11 +259,10 @@ create_biomass_table(
 <!-- ****************     Sensitivities      *************** --> 
 <!-- ======================================================= -->
 
-\begin{landscape}
 
 \include{tex_tables/sensitivities_1_final.tex}
 
-\end{landscape}
+
 
 \newpage
 
@@ -281,15 +280,13 @@ sa4ss::table_format(x = tab,
              col_names = col_names) 
 ```
 
-\begin{landscape}
+
 
 \include{tex_tables/sensitivities_2_final.tex}
 
 \newpage
 
 \include{tex_tables/sensitivities_3_final.tex}
-
-\end{landscape}
 
 \newpage
 
