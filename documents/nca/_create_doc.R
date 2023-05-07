@@ -3,9 +3,8 @@
 # devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 library(sa4ss)
 library(here)
-devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/sa4ss")
-devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
-
+#devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/sa4ss")
+#devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 
 # Specify the directory for the document
 north_model_name <- "9.8_selex_fix"
