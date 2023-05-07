@@ -88,17 +88,35 @@ create_management_table(
 
 \include{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
 
-<!-- ======================================================= -->
-<!-- ***************  NWFSC WCGBTS  ************************ --> 
-<!-- ======================================================= -->
-
-\input{tex_tables/wcgbt_samples_by_year.tex}
 
 <!-- ======================================================= -->
 <!-- ***************  Growth  Data  *********************** --> 
 <!-- ======================================================= -->
 
 \include{tex_tables/north_growth_age_samples.tex}
+
+
+<!-- ======================================================= -->
+<!-- *************  PISCO SAMPLES    *********************** --> 
+<!-- ======================================================= -->
+
+```{r, results = 'asis'}
+
+tab <- read.csv(file.path(data_dir, "survey_indices", "pisco", "nCPR_table_N_S.csv"))
+col_names <- c("Year", "UCSC Raw Count", "UCSC Filtered Count", "UCSB Raw Count", "UCSB Filtered Count")
+
+table_format(x = tab,
+             caption = "All and filtered observations by year and sampling institution for PISCO.",
+             label = "pisco-data",
+             align = 'l',
+             col_names = col_names)
+```
+
+<!-- ======================================================= -->
+<!-- ***************  NWFSC WCGBTS  ************************ --> 
+<!-- ======================================================= -->
+
+\input{tex_tables/wcgbt_samples_by_year.tex}
 
 <!-- ======================================================= -->
 <!-- ***********   Model Structure      ******************** --> 

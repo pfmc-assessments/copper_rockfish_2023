@@ -130,6 +130,25 @@ create_management_table(
 \newpage
 
 <!-- ======================================================= -->
+<!-- *************  PISCO SAMPLES    *********************** --> 
+<!-- ======================================================= -->
+
+
+```{r, results = 'asis'}
+
+tab <- read.csv(file.path(data_dir, "survey_indices", "pisco", "nCPR_table_N_S.csv"))
+col_names <- c("Year", "UCSC Raw Count", "UCSC Filtered Count", "UCSB Raw Count", "UCSB Filtered Count")
+
+table_format(x = tab,
+             caption = "All and filtered observations by year and sampling institution for PISCO.",
+             label = "pisco-data",
+             align = 'l',
+             col_names = col_names)
+```
+
+
+
+<!-- ======================================================= -->
 <!-- *************  NWFSC WCGBT  Data  *********************** --> 
 <!-- ======================================================= -->
 

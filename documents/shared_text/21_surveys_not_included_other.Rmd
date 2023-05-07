@@ -3,25 +3,21 @@
 
 The PISCO program conducts larval fish recruitment monitoring by sampling 
 artificial settlement substrates called Standard Monitoring Units for Recruitment
- of Fishes (SMURFs).  Similar to the SCUBA surveys, SMURF surveys are conducted by 
- multiple universities using standardized protocols.  We examined data collected by 
- the UCSB and UCSC campuses in southern and central California.  Surveys by UCSB were 
- conducted between 2000 and 2018 and by UCSC between 1999 and 2016.  Juvenile `r spp` 
- are difficult to distinguish from juvenile gopher rockfish (*Sebastes carnatus*) and the 
- data from UCSB combines counts of these species into a complex.  For this reason, 
- we determined this data to be inappropriate for construction of a `r spp` recrutiment 
- index to be used within the assessment.  While data from UCSC reports distinct counts 
- of copper and gopher rockfish, the concern remains that the `r spp` counts may not be 
- accurate due to this morphological identification difficulty.  Additionally, collections 
- of `r spp` in this data set were very sparse with many years seeing none.  However, 
- an extremely high number were recorded for 2016.  
+of Fishes (SMURFs). Similar to the SCUBA surveys, SMURF surveys are conducted by 
+multiple universities using standardized protocols.  We examined data collected by 
+the UCSB and UCSC campuses in southern and central California.  Surveys by UCSB were 
+conducted between 2000 and 2018 and by UCSC between 1999 and 2016.  Juvenile `r spp` 
+are difficult to distinguish from juvenile gopher rockfish (*Sebastes carnatus*) and the 
+data from UCSB combines counts of these species into a complex.  For this reason, 
+we determined this data to be inappropriate for construction of a `r spp` recrutiment 
+index to be used within the assessment.  While data from UCSC reports distinct counts 
+of copper and gopher rockfish, the concern remains that the `r spp` counts may not be 
+accurate due to this morphological identification difficulty.  Additionally, collections 
+of `r spp` in this data set were very sparse with many years seeing none.  However, 
+an extremely high number were recorded for 2016.  
 
 ### Reef Check
 
-Reef Check is an international non-profit organization leading citizen scientists 
-to monitor reef habitats.  Data from SCUBA surveys of fish in California are available 
-since 2006.  Given the low proportion of `r spp` detections on PISCO surveys, we did not 
-dedicate time to analysis of Reef Check survey data for the purpose of abundance index d
-evelopment.  However, given the wide distribution of Reef Check survey sites, the data 
-may warrant further exploration for future assessments.  
+Reef Check is an international non-profit organization leading citizen scientists to monitor reef habitats.  Data from SCUBA surveys of fish in California are available since 2006.  Given the low proportion of `r spp` detections on PISCO surveys, we did not dedicate time to analysis of Reef Check survey data for the purpose of abundance index development.  However, given the wide distribution of Reef Check survey sites, the data may warrant further exploration for future assessments.  
+
 **Reef Check doesn't identify anything less than 10 cm and I don't think speciates - check on this**
