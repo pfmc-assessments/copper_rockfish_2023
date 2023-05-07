@@ -259,66 +259,31 @@ create_biomass_table(
 <!-- ****************     Sensitivities      *************** --> 
 <!-- ======================================================= -->
 
-```{r, results = 'asis'}
-
-tab <- read.csv(file.path(sens_dir, paste0(south_model_name, "_1_sensitivities_final.csv")), comment.char = "")
-
-col_names = c('Parameter',
-                         'Base Model',
-                         'Estimate M',
-                         'Estimate h',
-                         'Estimate M & h',
-                         'No Rec. Devs.',
-                         'CPFV Selectiivty Asym.',
-                         'Dirichlet DW', "McAllister-Iannelli DW")
-
-table_format(x = tab,
-             caption = "Estimates from each sensitivity.",
-             label = "tab-sens-1",
-             align = 'l',
-             col_names = col_names,
-             longtable = TRUE,
-             font_size = 9,
-             digits = 2, 
-             landscape = TRUE,
-             custom_width = TRUE,
-             col_to_adjust = c(1), 
-             width = c("7cm")) 
-  
-
-```
-
+\include{tex_tables/sensitivities_1_final.tex}
 
 \newpage
 
+
+
 ```{r, results = 'asis'}
+tab <- read.csv(file.path(sens_dir, "data_weights.csv"))
+colnames <- c("Fleet", "Data Type", "Francis", "MI", "Dirichlet")
 
-tab <- read.csv(file.path(sens_dir, paste0(south_model_name, "_2_sensitivities_final.csv")), comment.char = "")
-
-col_names = c('Parameter',
-                         'Base Model',
-                         'Rm. Coop. Ages',
-                         'Rm. WCGBT Ages',
-                         'Rm. CCFRP',
-                         'Rm. All Ages',
-                         'Rm. CDFW ROV',
-                         'Rm. NWFSC HKL',
-                         'Rm. All Surveys', "Rm. Fishery Indices")
-
-table_format(x = tab,
-             caption = "Estimates from each sensitivity.",
-             label = "tab-sens-2",
+sa4ss::table_format(x = tab,
+             caption = "Suggested data weights for each data weighting methodology by fleet and data type.",
+             label = "dw",
              align = 'l',
-             col_names = col_names,
-             digits = 2, 
-             longtable = TRUE,
-             font_size = 9,
-             landscape = TRUE,
-             custom_width = TRUE,
-             col_to_adjust = c(1), 
-             width = c("7cm")) 
-  
+             digits = 2,
+             col_names = col_names) 
 ```
+
+
+
+\include{tex_tables/sensitivities_2_final.tex}
+
+\newpage
+
+\include{tex_tables/sensitivities_3_final.tex}
 
 \newpage
 

@@ -189,6 +189,70 @@ table_format(x = mod_params,
 \newpage
 
 
+<!-- ======================================================= -->
+<!-- ***********       Time Series      ******************** --> 
+<!-- ======================================================= -->
+
+\include{tex_tables/north_TimeSeries.tex}
+
+
+\newpage
+
+
+```{r, results = 'asis'}
+create_biomass_table(
+    doc_dir = doc_dir, 
+    prefix = NULL,
+    doc_names = c("nca", 'sca'),
+    years = 1916:2023)
+
+```
+
+\newpage
+
+<!-- ======================================================= -->
+<!-- ****************     Sensitivities      *************** --> 
+<!-- ======================================================= -->
+
+
+\include{tex_tables/sensitivities_1_final.tex}
+
+\newpage
+
+
+
+```{r, results = 'asis'}
+tab <- read.csv(file.path(sens_dir, "data_weights.csv"))
+colnames <- c("Fleet", "Data Type", "Francis", "MI", "Dirichlet")
+
+sa4ss::table_format(x = tab,
+             caption = "Suggested data weights for each data weighting methodology by fleet and data type.",
+             label = "dw",
+             align = 'l',
+             digits = 2,
+             col_names = col_names) 
+```
+
+
+
+\include{tex_tables/sensitivities_2_final.tex}
+
+\newpage
+
+\include{tex_tables/sensitivities_3_final.tex}
+
+\newpage
+
+
+<!-- ======================================================= -->
+<!-- ********  Reference Points & Management *************** --> 
+<!-- ======================================================= -->
+
+\include{tex_tables/north_e_ReferencePoints.tex}
+
+\newpage
+
+
 ```{r, results = 'asis'}
 
 create_projection_table(
