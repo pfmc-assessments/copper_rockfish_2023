@@ -259,7 +259,11 @@ create_biomass_table(
 <!-- ****************     Sensitivities      *************** --> 
 <!-- ======================================================= -->
 
+\begin{landscape}
+
 \include{tex_tables/sensitivities_1_final.tex}
+
+\end{landscape}
 
 \newpage
 
@@ -267,7 +271,7 @@ create_biomass_table(
 
 ```{r, results = 'asis'}
 tab <- read.csv(file.path(sens_dir, "data_weights.csv"))
-colnames <- c("Fleet", "Data Type", "Francis", "MI", "Dirichlet")
+col_names <- c("Fleet", "Data Type", "Francis", "MI", "Dirichlet")
 
 sa4ss::table_format(x = tab,
              caption = "Suggested data weights for each data weighting methodology by fleet and data type.",
@@ -277,13 +281,15 @@ sa4ss::table_format(x = tab,
              col_names = col_names) 
 ```
 
-
+\begin{landscape}
 
 \include{tex_tables/sensitivities_2_final.tex}
 
 \newpage
 
 \include{tex_tables/sensitivities_3_final.tex}
+
+\end{landscape}
 
 \newpage
 
