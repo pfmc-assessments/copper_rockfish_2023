@@ -1,141 +1,250 @@
 ########################################################
 # Create Sensitivity table for Copper Rockfish 2023
-# North of Pt Conception
-# written by : Chantel Wetzel
+#   written by : Chantel Wetzel
 ########################################################
 
 library(r4ss)
-library(sa4ss)
+library(here)
 
-# The script below is not yet updated to reflect the suite of 
-# sensitivities that will be done with the 2023 model
-
-area = "nca"
-base_model = "0.1_init_model"
+###################################################################
+# North of Pt Conception
+###################################################################
+area <- 'nca'
+base_model = "9.8_selex_fix"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
   user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
 } else {
   # Fill in Melissa's document directory below
-  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
+  user_dir <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
 }
 
 wd <- file.path(user_dir, "models", area, "_sensitivities")
 setwd(wd)
 out.dir <- wd
 
-base.loc <- file.path(user_dir, area, base_model)
+base_loc <- file.path(user_dir, "models", area, base_model)
 
-###################################################################################
-# Pull in each model in using r4ss
-###################################################################################
+model_list <- c("est_m", #1
+                "est_h", #2
+                "est_m_h", #3
+                "schnute",#4
+                "no_devs", #5
+                "dirichlet", #6
+                "mi") #7
 
-model.list <- c(paste0(base_model, "_no_recdevs"), #1
-                paste0(base_model, "_mi"), #2
-                paste0(base_model, "_dm"), #3
-                paste0(base_model, "_est_linf"), #4
-                paste0(base_model, "_est_cv2"), #5
-                paste0(base_model, "_est_m"), #6
-                paste0(base_model, "_com_asym"), #7
-                paste0(base_model, "_spline"), #8
-                paste0(base_model, "_no_blocks"),  #9
-                paste0(base_model, "_rec_block"), #10
-                paste0(base_model, "_index_cpfv"), #11
-                paste0(base_model, '_no_blocks_asym'), #12
-                paste0(base_model, "_no_blocks_asym_dw"), #13
-                paste0(base_model, "_council_cpfv"), #14
-                paste0(base_model, "_council_cpfv_all_selex_both_block_4")) #15
+model_list2 =  c("cut_pr_catch", #1
+                 "add_hist_rec_to_growth", #2
+                 "lens_only", #3
+                 "rm_coop_ages", #4
+                 "rm_all_ages") #5
+                
+model_list3 =  c("rm_ccfrp", #1
+                 "rm_rov", #2
+                 "rm_all_surveys", #3
+                 "rm_cpfv_index", #4
+                 "rm_dwv", #5
+                 "rm_pr_index") #6
 
-out.list = NULL   
-base   = SS_output( base.loc, printstats = FALSE, verbose = FALSE) 
-sens_1  = SS_output( file.path(wd, model.list[1]), printstats = FALSE, verbose = FALSE, covar = FALSE) 
-sens_2  = SS_output( file.path(wd, model.list[2]), printstats = FALSE, verbose = FALSE, covar = FALSE) 
-sens_3  = SS_output( file.path(wd, model.list[3]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_4  = SS_output( file.path(wd, model.list[4]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_5  = SS_output( file.path(wd, model.list[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_6  = SS_output( file.path(wd, model.list[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_7  = SS_output( file.path(wd, model.list[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_8  = SS_output( file.path(wd, model.list[8]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_9  = SS_output( file.path(wd, model.list[9]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_10  = SS_output( file.path(wd, model.list[10]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_11  = SS_output( file.path(wd, model.list[11]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_12  = SS_output( file.path(wd, model.list[12]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_13  = SS_output( file.path(wd, model.list[13]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_14  = SS_output( file.path(wd, model.list[14]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_15  = SS_output( file.path(wd, model.list[15]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+model_list <- paste0(base_model, "_", model_list)
+model_list2 <- paste0(base_model, "_", model_list2)
+model_list3 <- paste0(base_model, "_", model_list3)
+
+#out.list = NULL	
+base   <- SS_output( base_loc, printstats = FALSE, verbose = FALSE) 
+
+sens_1  <- SS_output( file.path(wd, model_list[1]), printstats = FALSE, verbose = FALSE, covar = FALSE) 
+sens_2  <- SS_output( file.path(wd, model_list[2]), printstats = FALSE, verbose = FALSE, covar = FALSE) 
+sens_3  <- SS_output( file.path(wd, model_list[3]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens_4  <- SS_output( file.path(wd, model_list[4]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens_5  <- SS_output( file.path(wd, model_list[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens_6  <- SS_output( file.path(wd, model_list[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens_7  <- SS_output( file.path(wd, model_list[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens2_1  <- SS_output( file.path(wd, model_list2[1]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens2_2  <- SS_output( file.path(wd, model_list2[2]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens2_3  <- SS_output( file.path(wd, model_list2[3]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens2_4  <- SS_output( file.path(wd, model_list2[4]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens2_5  <- SS_output( file.path(wd, model_list2[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens3_1  <- SS_output( file.path(wd, model_list3[1]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens3_2  <- SS_output( file.path(wd, model_list3[2]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens3_3  <- SS_output( file.path(wd, model_list3[3]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens3_4  <- SS_output( file.path(wd, model_list3[4]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens3_5  <- SS_output( file.path(wd, model_list3[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens3_6  <- SS_output( file.path(wd, model_list3[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 
 
-modelnames1 <- c("Base Model",
-                 "No Rec. Devs.",
-                 "MI DW",
-                 "DM DW",
-                 "Estimate Linf",
-                 "Estimate CV Old",
-                 "Estimate M (f)",
-                 "2013 CPFV Onboard Index")
+modelnames <- c("Base Model",
+                "Estimate M",
+                "Estimate h", 
+                "Estimate M & h",
+                "Fix Schnute Growth",
+                "No Rec. Devs.",
+                "Dirichlet DW", 
+                "McAllister-Ianelli DW")
 
 modelnames2 <- c("Base Model",
-                 "Com. Asym. Select.", #7
-                 "Com. Spline Select.",
-                 "Com. No Blocks and Asym.",
-                 "Early Block in Rec. Selectivity",
-                 "Early CPFV Lengths",
-                 "Early CPFV Lengths and Selectivity Blocks")
+                 "Reduce Rec. Catch 1970-82",
+                 "Add Hist. CPFV Ages to Growth",
+                 "Lengths Only", 
+                 "Rm. Coop. Ages",
+                 "Rm. All Ages")
 
-x1 <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_11))
-x2 <- SSsummarize(list(base, sens_7, sens_8, sens_9, sens_10, sens_14, sens_15))
+modelnames3 <- c("Base Model",
+                 "Rm. CCFRP",
+                 "Rm. CDFW ROV",
+                 "Rm. All Surveys",
+                 "Rm. CPFV Index", 
+                 "Rm. DWV Index",
+                 "Rm. PR Index")
 
-SSplotComparisons(x1, endyrvec = 2023, 
-                  legendlabels = modelnames1, 
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
+x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5))
+x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6))
+
+SSplotComparisons(x, 
+                  endyrvec = 2023, 
+                  legendlabels = modelnames, 
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
-                  filenameprefix = paste0(base_model, "_1_final_"),
+                  filenameprefix = paste0(base_model, "_final_1_"),
                   subplot = c(2,4), 
-                  print = TRUE, 
-                  pdf = FALSE)
+                  btarg = -1,
+                  minbthresh = -1,
+                  print = TRUE)
 
-SSplotComparisons(x2, endyrvec = 2023, 
+SSplotComparisons(x, 
+                  endyrvec = 2023, 
+                  legendlabels = modelnames, 
+                  plotdir = file.path(getwd(), '_plots'), 
+                  legendloc = "topleft", 
+                  filenameprefix = paste0(base_model, "_final_1_"),
+                  subplot = c(9:14), 
+                  print = TRUE)
+
+SSplotComparisons(x2, 
+                  endyrvec = 2023, 
                   legendlabels = modelnames2, 
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_2_final_"),
-                  subplot = c(2,4, 12), 
-                  print = TRUE, 
-                  pdf = FALSE)
+                  filenameprefix = paste0(base_model, "_final_2_"),
+                  subplot = c(2,4), 
+                  btarg = -1,
+                  minbthresh = -1,
+                  print = TRUE)
+
+SSplotComparisons(x2, 
+                  endyrvec = 2023, 
+                  legendlabels = modelnames2, 
+                  plotdir = file.path(getwd(), '_plots'), 
+                  legendloc = "topleft", 
+                  ylimAdj = 1.15,
+                  filenameprefix = paste0(base_model, "_final_2_"),
+                  subplot = c(11), 
+                  print = TRUE)
+
+SSplotComparisons(x3, 
+                  endyrvec = 2023, 
+                  legendlabels = modelnames3, 
+                  plotdir = file.path(getwd(), '_plots'), 
+                  legendloc = "topright", 
+                  ylimAdj = 1.15,
+                  filenameprefix = paste0(base_model, "_final_3_"),
+                  subplot = c(2,4), 
+                  btarg = -1,
+                  minbthresh = -1,
+                  print = TRUE)
+
+SSplotComparisons(x3, 
+                  endyrvec = 2023, 
+                  legendlabels = modelnames3, 
+                  plotdir = file.path(getwd(), '_plots'), 
+                  legendloc = "topleft", 
+                  ylimAdj = 1.15,
+                  filenameprefix = paste0(base_model, "_final_3_"),
+                  subplot = c(11), 
+                  print = TRUE)
+
+###################################################################################
+# Jason Style Sensitivity Figure
+###################################################################################
+
+modelnames <- c("Base Model",
+                "Estimate M",
+                "Estimate h", 
+                "Estimate M & h",
+                "Fix Schnute Growth",
+                "No Rec. Devs.",
+                "Dirichlet DW", 
+                "McAllister-Ianelli DW",
+                 "Reduce Rec. Catch 1970-82",
+                 "Add Hist. CPFV Ages to Growth",
+                 "Lengths Only", 
+                 "Rm. Coop. Ages",
+                 "Rm. All Ages",
+                 "Rm. CCFRP",
+                 "Rm. CDFW ROV",
+                 "Rm. All Surveys",
+                 "Rm. CPFV Index", 
+                 "Rm. DWV Index",
+                 "Rm. PR Index")
+
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6,
+                      sens_7, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5,
+                      sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6))
+
+wd_dat <- file.path(paste0(wd,"/_plots")) 
+# Sensitivity figure is something I adapted from Jason's Original that is in r4ss (SS_Sensi_plot)
+# Here is where my version can be found: https://github.com/chantelwetzel-noaa/dover_sole_2021/blob/master/code/sensi_plot_Dover.R
+Sensi_plot_dover(model.summaries=x,
+                 dir = wd_dat,
+                 current.year=2023,
+                 mod.names = modelnames, #List the names of the sensitivity runs
+                 likelihood.out = c(0, 1, 0),
+                 Sensi.RE.out="Sensi_RE_out.DMP", #Saved file of relative errors
+                 CI=0.95, #Confidence interval box based on the reference model
+                 TRP.in=-1, #Target relative abundance value
+                 LRP.in=-1, #Limit relative abundance value
+                 sensi_xlab="Sensitivity scenarios", #X-axis label
+                 ylims.in=c(-1,1,-1,1,-1,1,-1,1,-1,1,-1,1,-1,1, -1,1, -1,1,-1,1), #Y-axis label
+                 plot.figs=c(1,1,1,1,1,1), #Which plots to make/save? 
+                 #sensi.type.breaks=c(4.5, 6.5, 9.5), #vertical breaks that can separate out types of sensitivities
+                 #anno.x=c(3, 5.5, 8, 10.5), # Vertical positioning of the sensitivity types labels
+                 #anno.y=c(0.83,0.80,0.85,0.9), # Horizontal positioning of the sensitivity types labels
+                 #anno.lab=c("Parameters", "Data Weighting", "Selectivity", "Index"), #Sensitivity types labels
+                 horizontal = TRUE) 
+
+
 
 ###################################################################################
 # Create a Table of Results
 ###################################################################################
-
-x = x1
-modelnames = modelnames1
 ii = 1:length(modelnames)
 n = length(modelnames)
-out<- matrix(NA, 2, max(ii))
+out<- matrix(NA, 24, max(ii))
 
 out = rbind(
   as.numeric(x$likelihoods[x$likelihoods$Label == "TOTAL",1:n]), 
   as.numeric(x$likelihoods[x$likelihoods$Label == "Survey",1:n]), 
   as.numeric(x$likelihoods[x$likelihoods$Label == "Length_comp",1:n]),
-  #as.numeric(x$likelihoods[x$likelihoods$Label == "Age_comp",1:n]), 
+  as.numeric(x$likelihoods[x$likelihoods$Label == "Age_comp",1:n]), 
   as.numeric(x$likelihoods[x$likelihoods$Label == "Recruitment",1:n]), 
   as.numeric(x$likelihoods[x$likelihoods$Label == "Forecast_Recruitment",1:n]),
   as.numeric(x$likelihoods[x$likelihoods$Label == "Parm_priors",1:n]),
   as.numeric(x$pars[x$pars$Label == "SR_LN(R0)", 1:n]), 
   as.numeric(x$SpawnBio[x$SpawnBio$Label == "SSB_Virgin", 1:n]),
-  as.numeric(x$SpawnBio[x$SpawnBio$Label == "SSB_2021", 1:n]),
-  as.numeric(x$Bratio[x$Bratio$Label == "Bratio_2021", 1:n]), 
+  as.numeric(x$SpawnBio[x$SpawnBio$Label == "SSB_2023", 1:n]),
+  as.numeric(x$Bratio[x$Bratio$Label == "Bratio_2023", 1:n]), 
   as.numeric(x$quants[x$quants$Label == "Dead_Catch_SPR", 1:n]),
   as.numeric(x$pars[x$pars$Label == "SR_BH_steep", 1:n]),
-  as.numeric(x$pars[x$pars$Label == "NatM_p_1_Fem_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "NatM_uniform_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "L_at_Amin_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "L_at_Amax_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "VonBert_K_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "CV_young_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "CV_old_Fem_GP_1", 1:n]),
-  as.numeric(x$pars[x$pars$Label == "NatM_p_1_Mal_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "NatM_uniform_Mal_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "L_at_Amin_Mal_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "L_at_Amax_Mal_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "VonBert_K_Mal_GP_1", 1:n]),
@@ -147,14 +256,14 @@ colnames(out) = modelnames
 rownames(out) = c("Total Likelihood",
                   "Survey Likelihood",
                   "Length Likelihood",
-                  #"Age Likelihood",
+                  "Age Likelihood",
                   "Recruitment Likelihood",
                   "Forecast Recruitment Likelihood",
                   "Parameter Priors Likelihood",
                   "log(R0)",
                   "SB Virgin",
-                  "SB 2020",
-                  "Fraction Unfished 2021",
+                  "SB 2023",
+                  "Fraction Unfished 2023",
                   "Total Yield - SPR 50",
                   "Steepness",
                   "Natural Mortality - Female",
@@ -171,48 +280,47 @@ rownames(out) = c("Total Likelihood",
                   "CV old - Male")
 
 
-write.csv(out, file = file.path(out.dir, paste0(base_model, "_sensitivities_final_1.csv")))
+write.csv(out, file = file.path(out.dir, paste0(base_model, "_1_sensitivities_final.csv")))
 
-t = table_format(x = out,
-                 caption = 'Sensitivities relative to the base model.',
-                 label = 'sensitivities',
-                 longtable = TRUE,
-                 font_size = 9,
-                 digits = 3,
-                 landscape = TRUE,
-                 col_names = modelnames)
+t = sa4ss::table_format(x = out,
+                        caption = 'Sensitivities relative to the base model.',
+                        label = 'sensitivities-1',
+                        longtable = TRUE,
+                        font_size = 9,
+                        digits = 3,
+                        landscape = TRUE,
+                        col_names = modelnames)
 
 kableExtra::save_kable(t,
-                       file = file.path("C:/Assessments/2021/copper_rockfish_2021/write_up/n_ca/tex_tables/sensitivities_final_1.tex"))
+                       file = "C:/Assessments/2023/copper_rockfish_2023/documents/nca/tex_tables/sensitivities_1_final.tex")
 
 
 x = x2
-modelnames = modelnames2
-ii = 1:length(modelnames)
-n = length(modelnames)
-out<- matrix(NA, 2, max(ii))
+ii = 1:length(modelnames2)
+n = length(modelnames2)
+out<- matrix(NA, 24, max(ii))
 
 out = rbind(
   as.numeric(x$likelihoods[x$likelihoods$Label == "TOTAL",1:n]), 
   as.numeric(x$likelihoods[x$likelihoods$Label == "Survey",1:n]), 
   as.numeric(x$likelihoods[x$likelihoods$Label == "Length_comp",1:n]),
-  #as.numeric(x$likelihoods[x$likelihoods$Label == "Age_comp",1:n]), 
+  as.numeric(x$likelihoods[x$likelihoods$Label == "Age_comp",1:n]), 
   as.numeric(x$likelihoods[x$likelihoods$Label == "Recruitment",1:n]), 
   as.numeric(x$likelihoods[x$likelihoods$Label == "Forecast_Recruitment",1:n]),
   as.numeric(x$likelihoods[x$likelihoods$Label == "Parm_priors",1:n]),
   as.numeric(x$pars[x$pars$Label == "SR_LN(R0)", 1:n]), 
   as.numeric(x$SpawnBio[x$SpawnBio$Label == "SSB_Virgin", 1:n]),
-  as.numeric(x$SpawnBio[x$SpawnBio$Label == "SSB_2021", 1:n]),
-  as.numeric(x$Bratio[x$Bratio$Label == "Bratio_2021", 1:n]), 
+  as.numeric(x$SpawnBio[x$SpawnBio$Label == "SSB_2023", 1:n]),
+  as.numeric(x$Bratio[x$Bratio$Label == "Bratio_2023", 1:n]), 
   as.numeric(x$quants[x$quants$Label == "Dead_Catch_SPR", 1:n]),
   as.numeric(x$pars[x$pars$Label == "SR_BH_steep", 1:n]),
-  as.numeric(x$pars[x$pars$Label == "NatM_p_1_Fem_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "NatM_uniform_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "L_at_Amin_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "L_at_Amax_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "VonBert_K_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "CV_young_Fem_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "CV_old_Fem_GP_1", 1:n]),
-  as.numeric(x$pars[x$pars$Label == "NatM_p_1_Mal_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "NatM_uniform_Mal_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "L_at_Amin_Mal_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "L_at_Amax_Mal_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "VonBert_K_Mal_GP_1", 1:n]),
@@ -220,18 +328,18 @@ out = rbind(
   as.numeric(x$pars[x$pars$Label == "CV_old_Mal_GP_1", 1:n]) )  
 
 out = as.data.frame(out)
-colnames(out) = modelnames
+colnames(out) = modelnames2
 rownames(out) = c("Total Likelihood",
                   "Survey Likelihood",
                   "Length Likelihood",
-                  #"Age Likelihood",
+                  "Age Likelihood",
                   "Recruitment Likelihood",
                   "Forecast Recruitment Likelihood",
                   "Parameter Priors Likelihood",
                   "log(R0)",
                   "SB Virgin",
-                  "SB 2020",
-                  "Fraction Unfished 2021",
+                  "SB 2023",
+                  "Fraction Unfished 2023",
                   "Total Yield - SPR 50",
                   "Steepness",
                   "Natural Mortality - Female",
@@ -248,17 +356,92 @@ rownames(out) = c("Total Likelihood",
                   "CV old - Male")
 
 
-write.csv(out, file = file.path(out.dir, paste0(base_model, "_sensitivities_final_2.csv")))
+write.csv(out, file = file.path(out.dir, paste0(base_model, "_2_sensitivities_final.csv")))
 
-t = table_format(x = out,
-                 caption = 'Sensitivities relative to the base model. The negative log-likelihood for the Early CPFV Lengths
-                 and the Early CPFV Lengths and Selectivity Blocks sensitivities are not comparable with the base model since these sensitivities include additional data.',
-                 label = 'sensitivities-2',
-                 longtable = TRUE,
-                 font_size = 9,
-                 digits = 3,
-                 landscape = TRUE,
-                 col_names = modelnames)
+t = sa4ss::table_format(x = out,
+                        caption = 'Sensitivities relative to the base model.',
+                        label = 'sensitivities-2',
+                        longtable = TRUE,
+                        font_size = 9,
+                        digits = 3,
+                        landscape = TRUE,
+                        col_names = modelnames2)
 
 kableExtra::save_kable(t,
-                       file = file.path("C:/Assessments/2021/copper_rockfish_2021/write_up/n_ca/tex_tables/sensitivities_final_2.tex"))
+                       file = "C:/Assessments/2023/copper_rockfish_2023/documents/nca/tex_tables/sensitivities_2_final.tex")
+
+
+x = x3
+ii = 1:length(modelnames3)
+n = length(modelnames3)
+out<- matrix(NA, 24, max(ii))
+
+out = rbind(
+  as.numeric(x$likelihoods[x$likelihoods$Label == "TOTAL",1:n]), 
+  as.numeric(x$likelihoods[x$likelihoods$Label == "Survey",1:n]), 
+  as.numeric(x$likelihoods[x$likelihoods$Label == "Length_comp",1:n]),
+  as.numeric(x$likelihoods[x$likelihoods$Label == "Age_comp",1:n]), 
+  as.numeric(x$likelihoods[x$likelihoods$Label == "Recruitment",1:n]), 
+  as.numeric(x$likelihoods[x$likelihoods$Label == "Forecast_Recruitment",1:n]),
+  as.numeric(x$likelihoods[x$likelihoods$Label == "Parm_priors",1:n]),
+  as.numeric(x$pars[x$pars$Label == "SR_LN(R0)", 1:n]), 
+  as.numeric(x$SpawnBio[x$SpawnBio$Label == "SSB_Virgin", 1:n]),
+  as.numeric(x$SpawnBio[x$SpawnBio$Label == "SSB_2023", 1:n]),
+  as.numeric(x$Bratio[x$Bratio$Label == "Bratio_2023", 1:n]), 
+  as.numeric(x$quants[x$quants$Label == "Dead_Catch_SPR", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "SR_BH_steep", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "NatM_uniform_Fem_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "L_at_Amin_Fem_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "L_at_Amax_Fem_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "VonBert_K_Fem_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "CV_young_Fem_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "CV_old_Fem_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "NatM_uniform_Mal_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "L_at_Amin_Mal_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "L_at_Amax_Mal_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "VonBert_K_Mal_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "CV_young_Mal_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "CV_old_Mal_GP_1", 1:n]) )  
+
+out = as.data.frame(out)
+colnames(out) = modelnames3
+rownames(out) = c("Total Likelihood",
+                  "Survey Likelihood",
+                  "Length Likelihood",
+                  "Age Likelihood",
+                  "Recruitment Likelihood",
+                  "Forecast Recruitment Likelihood",
+                  "Parameter Priors Likelihood",
+                  "log(R0)",
+                  "SB Virgin",
+                  "SB 2023",
+                  "Fraction Unfished 2023",
+                  "Total Yield - SPR 50",
+                  "Steepness",
+                  "Natural Mortality - Female",
+                  "Length at Amin - Female",
+                  "Length at Amax - Female",
+                  "Von Bert. k - Female",
+                  "CV young - Female",
+                  "CV old - Female",
+                  "Natural Mortality - Male",
+                  "Length at Amin - Male",
+                  "Length at Amax - Male",
+                  "Von Bert. k - Male",
+                  "CV young - Male",
+                  "CV old - Male")
+
+
+write.csv(out, file = file.path(out.dir, paste0(base_model, "_3_sensitivities_final.csv")))
+
+t = sa4ss::table_format(x = out,
+                        caption = 'Sensitivities relative to the base model.',
+                        label = 'sensitivities-3',
+                        longtable = TRUE,
+                        font_size = 9,
+                        digits = 3,
+                        landscape = TRUE,
+                        col_names = modelnames3)
+
+kableExtra::save_kable(t,
+                       file = "C:/Assessments/2023/copper_rockfish_2023/documents/nca/tex_tables/sensitivities_3_final.tex")
