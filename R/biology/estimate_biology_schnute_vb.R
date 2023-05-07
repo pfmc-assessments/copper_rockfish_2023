@@ -13,9 +13,13 @@ library(here)
 library(FSA)
 library(FSAdata)
 library(nlstools)
+library(here)
+library(dplyr)
+library(tidyr)
 
 dir <- file.path(here(), "data")
 setwd(here())
+
 pngfun <- function(dir, name, w = 7,h = 7, pt = 12){
   file <- file.path(dir, name)
   #cat('writing PNG to',file,'\n')
@@ -171,21 +175,36 @@ coef(fitGen)
 #46.8333503 45.7232419  0.2061381  0.2337891 -0.8046669 -0.5878047  
 
 #------------------------------------------------------------------------------
-Areadat <- Alldat %>% filter(area=="north", Sex == "F")
+schnute_params <- data.frame(matrix(ncol = 4, nrow = 3, 
+                                    dimnames = list(c("L1","L3","k"),
+                                                    c("North_F","North_M","South_F","South_M"))))
+
 #Schnute parameterization
-SchStarts = vbStarts(Length~Age, data=Areadat,type='Schnute')
+SchStarts = vbStarts(Length~Age, data=Alldat,type='Schnute')
 SchStarts
 
 vb3 <- vbFuns("Schnute",simple=FALSE)
 
-fit3 <- nls(Length~vb3(Age,L1, L3,K, t1=2,t3=20),data=Alldat,
+fit_north_F <- nls(Length~vb3(Age,L1, L3,K, t1=2,t3=20),
+                   data = Alldat %>% filter(area=="north", Sex == "F"),
             start=SchStarts)
+schnute_params$North_F <- coef(fit_north_F)
 
-summary(fit3,correlation=TRUE)
+fit_north_M <- nls(Length~vb3(Age,L1, L3,K, t1=2,t3=20),
+                   data = Alldat %>% filter(area=="north", Sex == "M"),
+                   start=SchStarts)
+schnute_params$North_M <- coef(fit_north_M)
 
+#south
+fit_south_F <- nls(Length~vb3(Age,L1, L3,K, t1=2,t3=20),
+                   data = Alldat %>% filter(area=="south", Sex == "F"),
+                   start=SchStarts)
+schnute_params$South_F <- coef(fit_south_F)
 
-plot(Length~Age,data=Areadat,pch=19,xlim=c(0,60),ylim=c(0,60))
-curve(vb3(x,L1=coef(fit3), t1=2, t3=20),from=0,to=60,col="green",lwd=2,add=TRUE)
+fit_south_M <- nls(Length~vb3(Age,L1, L3,K, t1=2,t3=20),
+                   data = Alldat %>% filter(area=="south", Sex == "M"),
+                   start=SchStarts)
+schnute_params$South_M <- coef(fit_south_M)
 
-newage = data.frame(Age = seq(0,60,1))
-newage$Length=predict(fit3, newdat=newage)
+write.csv(schnute_params, file.path(getwd(),"data","biology","External_growth_Schnute.csv"))
+
