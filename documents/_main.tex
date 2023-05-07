@@ -81,31 +81,6 @@
 
 %Define cslreferences environment, required by pandoc 2.8
 %https://github.com/rstudio/rmarkdown/issues/1649
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-% for Pandoc 2.8 to 2.10.1
-\newenvironment{cslreferences}%
-  {}%
-  {\par}
-% For Pandoc 2.11+
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
-  \fi
- }%
- {}
-\usepackage{calc}  % for \widthof, \maxof in minipage
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 
 \providecommand{\tightlist}{%
@@ -201,445 +176,140 @@ Correct citation for this publication:
 \newcommand\PtC{$34^\circ 27^\prime N$}
 \newcommand\CAOR{$42^\circ 00^\prime N$}
 
-\hypertarget{onboard-cpfv-index}{%
-\section{Appendix C. California Onboard CPFV Index of Abundance}\label{onboard-cpfv-index}}
+\hypertarget{cpfv-samples}{%
+\section{Appendix H. CPFV Fleet Description, Sampling, and Trip Types}\label{cpfv-samples}}
 
-The state of California implemented a statewide onboard observer sampling program in 1999 (Monk et al. 2014). California Polytechnic State University (Cal Poly) has conducted an independent onboard sampling program as of 2003 for boats in Port San Luis and Morro Bay, and follows the protocols established in Reilly et al. (1998). During an onboard observer trip the sampler rides along on the CPFV and records locationspecific catch and discard information to the species level for a subset of anglers onboard the vessel. The subset of observed anglers is usually a maximum of 15 people the observed anglers change during each fishing stop.
+During the 2021 copper rockfish stock assessment meeting and during the pre-assessment workshop for the 2023 groundfish assessments, concern was raised regarding possible biases in the available data by trip types. This appendix describes teh sampling and available data from two recent years as an example of the relationship between the available data and catches for copper rockfish.
 
-The catch cannot be linked to an individual, but rather to a specific fishing location. The sampler also records the starting and ending time, number of anglers observed, starting and ending depth, and measures discarded fish. The fine-scale catch and effort data allow us to better filter the data for indices to fishing stops within suitable habitat for copper rockfish. Cal Poly has modified protocols reflect sampling changes that CDFW has also adopted, e.g., observing fish as they are encountered instead of at the level of a fisher's bag. Therefore, the Cal Poly data area incorporated in the same index as the CDFW data from 1999-2019. The only difference is that Cal Poly measures the length of both retained and discarded fish.
+The CDFW conducts several surveys are part of the CRFS program, including an onboard observer survey, angler interviews, and a required CPFV logbook for each trip. The \href{https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=62348\&inline}{CRFS sampling manual} outlines the sampling methodologies for each survey component. The state of California allows the filleting of fish at sea; to accurately identify rockfish to species and obtain measurements of whole fish the majority of angler interviews occur onboard the vessel for the CPFV fleet.
 
-The CRFS onboard observer data went through a QA/QC process at the SWFSC which included mapping fishing drifts in ArcPro to determine if the recorded latitude and longitude were correct.
+The \href{https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=36136\&inline}{California Fisheries Recreational FIsheries Survey Methods} indicates the CPFV ``sampling goal is to sample onboard at the historical sampling frequency of two to five percent of estimated CPFV trips of interest (e.g., trips targeting groundfish, inshore and coastal pelagic species) at each CPFV landing and to sample other CPFV trip types dockside.'' The CPFV fleet is not required to speciate the catch in the logbooks. For this reasons the CPFV logbook data are rarely used to develop an index of abundance for groundfish species.
 
-In the assessment model, the recreational CPFV fleet is modeled as retained plus discarded fish. The proportion of observed discarded copper rockfish is small, averaging 3.5\% over the time series (\ref{tab:onboard-keepdiscard}) and are included in the index.
+The CPFV fleet north and south of Point Conception are fundamentally different in terms of the vessels fishing, available target species, and also fishery regulations over the past twenty years. The CPFVs north of Point Conception targeting groundfish to not typically target other species on the same trip, with the exception being a half day bottomfish trip mixed with a half day of Dungeness crab pot fishing. The fleet north of Fort Bodega Bay, California is dominated by smaller 6-pack vessels with limited capacity. It may not be possible for a sampler to ride onboard a 6-pack vessel if it's at capacity. Overnight trips are extremely rare in northern California.
 
-As described above the CDFW and Cal Poly onboard observer programs are identical in that the same protocols are followed. The only difference is that Cal Poly measures both retained and discarded fish from the observed anglers and CDFW measures only discarded fish from the observed anglers. CDFW measures retained fish as part of the angler interview at the bag and trip level.\\
-Therefore, only retained fish were modeled in this index. The data went through a QA/QC process at the SWFSC which included mapping fishing drifts in ArcPro to determine if the recorded latitude and longitude were correct.
+In southern California, the diveristy of targt species is higher an includes several bass species, state managed gamefish, coastal pelagics, and highly migratory species, as well as boats that fish in Mexican waters. The trip types in southern California include 1/2 trips where a CPFV will run two trips a day, 3/4 day trips to fishing grounds further offshore, such as the Channel Islands, and overnight trips that can access areas like San Nicholas in the southern Channel Island or may be combination trips fishing for tunas, but also catching rockfish limits. The diversity of trip types and mixed target trips in southern California pose a challenge for both sampling and managing the fisheries.
 
-We applied a number of data filters to the available data presented in Table \ref{tab:onboard-filter}. The onboard CPFV index restricts the time series to 2004-2019. The onboard observer survey began in 1999, but the sample sizes were small during the first years of the program. The years 1999-2003 also represent years where a number of regulations changed including gear limits, bag limits, and spatial closures. Due to COVID-19, no onboard sampling took place in 2020. In 2021 the onboard sampling resumed in August, but not at full capacity. The 2021 stock assessment had also been released by August 2021 indicating the stock was below the biomass at 40\%. The southern California CPFV began an organized effort to avoid copper rockfish and encourage their clientele to release and descend copper rockfish when encountered. The northern California fleet also participated in this effort to an extent. In 2022, the CDFW implemented the one copper rockfish sub-bag limit and combined with avoidance by the fleet, does not represent the available copper rockfish biomass. See the online supplementary material or the history of regulation changes section for details.
+The tables below represent the sum of trips from 2018 and 2019 combined as they are the two years pre-COVID that best represent the CPFV fleet's activity. The total mortality in metric tons by District in 2018-2019 is similar to that over the recent time period (Table \ref{tab:catch-example}). Approximately 52\% of the total rockfish mortality is from northern California and 48\% from southern California. Within northern California, 50\% of the catch originates form District 3 and in southern Californis 81\% of the catch originates from fish landed in District 2.
 
-The filters also included removal of the number of observed anglers and time fished at the tail ends of the distributions, removal of drifts occurring in depths outside copper rockfish's range (Table \ref{tab:onboard-filter} and Figure \ref{fig:onboard-depths}). We retained 17,458 drifts for index standardization, and 3,303 of those drifts encountered copper rockfish Table \ref{tab:onboard-percentpos}.
+We filtered the CPFV logbook data to trips that recorded at least one rockfish and the CPFV onboard observer data to trips that encountered at least 5\% rockfish species. We aggregated within each dataset across 2018 and 2019 and areas where necessary to ensure confidentiality requirements were met. The combined sampling rate from 2018-2019 was three percent of all CPFV trips in the data used. There were no observed trips in CRFS District 5 in 2018-2019 where 1,052 CPFV logbook records were submitted that recorded at least one rockfish.
 
-We modeled catch per angler minutes fished (CPUE) by fishing drift. Prior to any modeling, the SWFSC QA/QC'd the data to ensure the location information was correct. Each drift was overlaid with the available interpreted substrate layer that characterizes rocky and hard substrate, assigned to a rocky reef and the distance of the drift start location calculated. In addition, the depth of the start location was interpreted from the 2 m resolution bathymetry as well as 90 m resolution bathymetry layer for comparison. For drifts missing depth location, we assigned depth based on the best available depth based on the bathymetry.
+There were 60 trips recorded as multi-day trips in northern California. This represented less then 1\% of the trips in northern California and we did not investigate the accuracy of these entries. In southern California, 14\% of CPFV logbook trips were recorded as multi-day trips and 1\% of the CRFS onboard observer trips were from multi-day trips.
 
-To appropriately weight the onboard observer survey index by the available rocky substrate within a region, each drift was assigned to the closest area of rocky habitat. Hard bottom was extracted from the \href{http://seafloor.otterlabs.org/index.html}{California Seafloor Mapping Project}, along the mainland coast of southern California. These data were collected in state waters at a resolution of two meters, but did not extend into state waters past the mainland coast. Additional interpreted bathymetric data classifying the bottom type as rock or soft bottom were compiled by analysts at the University of California Santa Cruz and are now also available from CDFW's website. We used the available interpreted rocky substrate data to expand the known area of rocky substrate to areas in southern California that lack substrate type. This expansion of the estimated rocky substrate assumes that the proportions of rocky substrate within and outside state waters are similar. Copper rockfish are a nearshore species and the majority of observed encounters were within state waters (Table \ref{tab:onboard-waterarea}). is a course estimation of the amount of rocky substrate, and represents the best available data. The calculations can be found in the online supplementary material. Starting in 2017, depth restrictions eased in districts north of Point Conception and the recreational fleet targeted these depths (Figure \ref{fig:onboard-depths}). The deeper waters (40-50 fm) are outside of the mapped hard bottom habitat, but could be assigned to the larger areas considered as a factor in the index.
+In CRFS District 1, 79\% of the onboard observer trips were from 1/2 day trips, whereas in District 2 this represented 29\% of the observed trips. The vessels in District 2 typically offer fewer 1/2 day trips and fish the nearshore when weather precludes a trip to the northern Channel Islands.
 
-The covariates explored for model selection included year and four levels region as categorical region (CRFS Districts 3-6), a categorical variable for month, and continuous depth and depth-squared.\\
-rends in the average CPUE by region were similar in the filtered data set (Figure \ref{fig:onboard-regioncpue}). A year and region interaction was included after visualizing the trends in average CPUE over time, but was not significant (Figure @ref(fig:onboard-average\_cpue\_by\_region)). The full model was selected by AICc and included year, depth, depth squared and region (Table @ref(tab:onboard-model\_selection)).
+When weather allows, the northern Channel Islands can be accessed from CRFS District 2 during a 3/4-1 day trip or a multi-day trip, depending on the port. For instance, the CPFVs from Oxnard, California access the northern Channel Island during multi-day trips, and the same areas are accessed by the 3/4-1 day boats out of Santa Barbara Landing.
 
-Indices were fit via MLE from the sdmTMB package in R. The QQ plot for the negative binoimal model indicated a poor fit to the data, which as not surprising given the low percent of observed drifts encountering copper rockfish. A delta-Lognormal was selected over a delta-gamma by a delta AIC of 487. The QQ plot indicated a much improved fit compared to the negative binomial model (Table \ref{fig:onboard-qq}). The relative abundance is relatively flat during the time series, with a visible increase in CPUE in 2017 when deeper waters opened in portions of northern California after a 17 year closure (Table \ref{tab:onboard-index} and Figure \ref{fig:onboard-index}).
+Approximately 6\% of the logbooks from District 1 recorded a block number in Mexican waters as the primary location fished. Fewer than 10 trips that recorded block numbers along the mainland of southern California were recorded a multi-day trips. These were removed from the tables below.
+
+One block number is recorded per CPFV logbook. In southern California, 70\% of the trips fishing the northern Channel Island and 57\% of the trips fishing the southern Channel Islands were recorded as single day trips.
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:onboard-keepdiscard}Number of observed copper rockfish retained and discarded by year.}\\
+\caption{\label{tab:catch-example}Catch in metric tons of copper rockfish by CRFS District for 2018 and 2019.}\\
 \toprule
-year & kept & discard & Proportion.discarded\\
+District & 2018 & 2019 & Total\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:onboard-keepdiscard}Number of observed copper rockfish retained and discarded by year. \textit{(continued)}}\\
+\caption[]{\label{tab:catch-example}Catch in metric tons of copper rockfish by CRFS District for 2018 and 2019. \textit{(continued)}}\\
 \toprule
-year & kept & discard & Proportion.discarded\\
+District & 2018 & 2019 & Total\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-1999 & 43 & 0 & 0.0000000\\
-2000 & 44 & 0 & 0.0000000\\
-2001 & 66 & 2 & 0.0294118\\
-2002 & 66 & 3 & 0.0434783\\
-2003 & 129 & 8 & 0.0583942\\
-2004 & 348 & 29 & 0.0769231\\
-2005 & 431 & 29 & 0.0630435\\
-2006 & 535 & 38 & 0.0663176\\
-2007 & 523 & 17 & 0.0314815\\
-2008 & 266 & 4 & 0.0148148\\
-2009 & 262 & 9 & 0.0332103\\
-2010 & 480 & 19 & 0.0380762\\
-2011 & 313 & 16 & 0.0486322\\
-2012 & 327 & 19 & 0.0549133\\
-2013 & 332 & 11 & 0.0320700\\
-2014 & 374 & 11 & 0.0285714\\
-2015 & 369 & 8 & 0.0212202\\
-2016 & 404 & 12 & 0.0288462\\
-2017 & 823 & 5 & 0.0060386\\
-2018 & 584 & 7 & 0.0118443\\
-2019 & 398 & 7 & 0.0172840\\*
+1 & 9.2 & 23.1 & 32.3\\
+2 & 87.0 & 51.8 & 138.8\\
+3 & 49.3 & 44.3 & 93.6\\
+4 & 30.0 & 27.9 & 57.9\\
+5 & 7.7 & 13.1 & 20.7\\
+6 & 6.0 & 7.3 & 13.2\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
 
-\newpage
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\caption{\label{tab:percent-observed}The percent of observed trips by trip type and area for 2018 and 2019.}\\
+\toprule
+Area & Single day & Multi day\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:percent-observed}The percent of observed trips by trip type and area for 2018 and 2019. \textit{(continued)}}\\
+\toprule
+Area & Single day & Multi day\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+Northern CA & 6\% & NA\\
+Southern CA & 10\% & 1\%\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
-\caption{\label{tab:onboard-waterarea}Number of observed drifts inside and outside of state waters.}\\
+\caption{\label{tab:onboard-trips}Number of CPFV trips observed onboard during 2018-2019 by trip type and District.}\\
 \toprule
-X & district & year & N & O & percent\_N\\
+District & 1/2 day trips & 3/4-1 day trips & Overnight trips & Percent observed with copper & Total copper observed\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:onboard-waterarea}Number of observed drifts inside and outside of state waters. \textit{(continued)}}\\
+\caption[]{\label{tab:onboard-trips}Number of CPFV trips observed onboard during 2018-2019 by trip type and District. \textit{(continued)}}\\
 \toprule
-X & district & year & N & O & percent\_N\\
+District & 1/2 day trips & 3/4-1 day trips & Overnight trips & Percent observed with copper & Total copper observed\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-1 & 3 & 2004 & 86 & NA & NA\\
-2 & 3 & 2005 & 133 & 13 & 0.9109589\\
-3 & 3 & 2006 & 137 & 22 & 0.8616352\\
-4 & 3 & 2007 & 144 & 33 & 0.8135593\\
-5 & 3 & 2008 & 61 & 10 & 0.8591549\\
-6 & 3 & 2009 & 69 & 4 & 0.9452055\\
-7 & 3 & 2010 & 128 & 29 & 0.8152866\\
-8 & 3 & 2011 & 119 & 13 & 0.9015152\\
-9 & 3 & 2012 & 125 & 20 & 0.8620690\\
-10 & 3 & 2013 & 175 & 9 & 0.9510870\\
-11 & 3 & 2014 & 136 & 9 & 0.9379310\\
-12 & 3 & 2015 & 131 & 23 & 0.8506494\\
-13 & 3 & 2016 & 153 & 12 & 0.9272727\\
-14 & 3 & 2017 & 136 & 29 & 0.8242424\\
-15 & 3 & 2018 & 68 & 68 & 0.5000000\\
-16 & 3 & 2019 & 109 & 27 & 0.8014706\\
-17 & 4 & 2004 & 10 & NA & NA\\
-18 & 4 & 2005 & 8 & NA & NA\\
-19 & 4 & 2006 & 21 & 2 & 0.9130435\\
-20 & 4 & 2007 & 24 & 4 & 0.8571429\\
-21 & 4 & 2008 & 18 & NA & NA\\
-22 & 4 & 2009 & 23 & 3 & 0.8846154\\
-23 & 4 & 2010 & 14 & NA & NA\\
-24 & 4 & 2011 & 25 & 3 & 0.8928571\\
-25 & 4 & 2012 & 15 & 1 & 0.9375000\\
-26 & 4 & 2013 & 17 & NA & NA\\
-27 & 4 & 2014 & 33 & 5 & 0.8684211\\
-28 & 4 & 2015 & 32 & 7 & 0.8205128\\
-29 & 4 & 2016 & 52 & 1 & 0.9811321\\
-30 & 4 & 2017 & 40 & 29 & 0.5797101\\
-31 & 4 & 2018 & 17 & 8 & 0.6800000\\
-32 & 4 & 2019 & 30 & 10 & 0.7500000\\
-33 & 5 & 2004 & 1 & NA & NA\\
-34 & 5 & 2008 & 4 & NA & NA\\
-35 & 5 & 2009 & 2 & NA & NA\\
-36 & 5 & 2010 & 4 & NA & NA\\
-37 & 5 & 2011 & 3 & NA & NA\\
-38 & 5 & 2012 & 3 & NA & NA\\
-39 & 5 & 2014 & 5 & NA & NA\\
-40 & 5 & 2015 & 1 & NA & NA\\
-41 & 5 & 2017 & 1 & NA & NA\\
-42 & 6 & 2008 & 3 & NA & NA\\
-43 & 6 & 2011 & 1 & NA & NA\\
-44 & 6 & 2012 & 2 & NA & NA\\
-45 & 6 & 2014 & 3 & NA & NA\\
-46 & 6 & 2015 & 1 & NA & NA\\
-47 & 6 & 2018 & 7 & NA & NA\\*
+1 & 391 & 104 & 4 & 24\% & 296\\
+2 & 36 & 87 & 4 & 76\% & 783\\
+3 & 86 & 55 & NA & 99\% & 864\\
+4 and 6 & 10 & 69 & NA & 61\% & 150\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
-\caption{\label{tab:onboard-percentpos}Data filtering steps for the onboard CPFV survey.}\\
-\toprule
-year & tripsWithTarget & tripsWOTarget & totalTrips & percentpos\\
-\midrule
-\endfirsthead
-\caption[]{\label{tab:onboard-percentpos}Data filtering steps for the onboard CPFV survey. \textit{(continued)}}\\
-\toprule
-year & tripsWithTarget & tripsWOTarget & totalTrips & percentpos\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-1999 & 14 & 167 & 181 & 0.0773481\\
-2000 & 13 & 90 & 103 & 0.1262136\\
-2001 & 31 & 168 & 199 & 0.1557789\\
-2002 & 19 & 159 & 178 & 0.1067416\\
-2003 & 57 & 515 & 572 & 0.0996503\\
-2004 & 88 & 831 & 919 & 0.0957563\\
-2005 & 150 & 559 & 709 & 0.2115656\\
-2006 & 172 & 635 & 807 & 0.2131351\\
-2007 & 203 & 669 & 872 & 0.2327982\\
-2008 & 95 & 694 & 789 & 0.1204056\\
-2009 & 100 & 752 & 852 & 0.1173709\\
-2010 & 170 & 857 & 1027 & 0.1655307\\
-2011 & 158 & 996 & 1154 & 0.1369151\\
-2012 & 163 & 864 & 1027 & 0.1587147\\
-2013 & 199 & 960 & 1159 & 0.1716997\\
-2014 & 186 & 858 & 1044 & 0.1781609\\
-2015 & 198 & 767 & 965 & 0.2051813\\
-2016 & 221 & 1017 & 1238 & 0.1785137\\
-2017 & 240 & 650 & 890 & 0.2696629\\
-2018 & 170 & 547 & 717 & 0.2370990\\
-2019 & 178 & 621 & 799 & 0.2227785\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\newpage
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:onboard-index}Estimated relative index of abundance for the onboard CPFV survey.}\\
+\caption{\label{tab:logbook-triptype}Number of CPFV logbook entries with at least one rockfish grouped by region fishedand trip type during 2018-2019 by trip type and District.}\\
 \toprule
-Year & Estimate & logSE\\
+Region & Multi-day & Single day\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:onboard-index}Estimated relative index of abundance for the onboard CPFV survey. \textit{(continued)}}\\
+\caption[]{\label{tab:logbook-triptype}Number of CPFV logbook entries with at least one rockfish grouped by region fishedand trip type during 2018-2019 by trip type and District. \textit{(continued)}}\\
 \toprule
-Year & Estimate & logSE\\
+Region & Multi-day & Single day\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-2004 & 0.0071710 & 0.1026699\\
-2005 & 0.0082869 & 0.0959658\\
-2006 & 0.0077566 & 0.0948186\\
-2007 & 0.0075606 & 0.0927893\\
-2008 & 0.0073246 & 0.1048729\\
-2009 & 0.0088566 & 0.1045802\\
-2010 & 0.0076344 & 0.0936492\\
-2011 & 0.0073209 & 0.0935917\\
-2012 & 0.0075198 & 0.0942729\\
-2013 & 0.0079753 & 0.0906166\\
-2014 & 0.0081479 & 0.0908896\\
-2015 & 0.0080234 & 0.0884672\\
-2016 & 0.0113242 & 0.0864655\\
-2017 & 0.0108471 & 0.0869631\\
-2018 & 0.0101541 & 0.0916336\\
-2019 & 0.0099923 & 0.0885035\\*
+Mexico & 223 & 636\\
+District 1 mainland & NA & 8324\\
+Southern Channel Islands & 1170 & 1572\\
+District 2 mainland & NA & 663\\
+Northern Channel Islands & 1135 & 2600\\
+Southern CA Offshore & 119 & 2243\\
+District 3 & 58 & 5195\\
+District 4 & NA & 3156\\
+District 5 & NA & 1051\\
+District 6 & NA & 1189\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:onboard-filter}Data filtering steps for the onboard CPFV survey.}\\
-\toprule
-Filter & Description & Number of Samples & Positive Samples\\
-\midrule
-\endfirsthead
-\caption[]{\label{tab:onboard-filter}Data filtering steps for the onboard CPFV survey. \textit{(continued)}}\\
-\toprule
-Filter & Description & Number of Samples & Positive Samples\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-All data & All data & 28554 & 4551\\
-Years & Start time series in 2004 due to sparse data & 25267 & 4291\\
-Errors and Missing Data & Remove drifts with missing data and identified errors & 25107 & 4288\\
-Area fished & Remove drifts in bays & 24667 & 4288\\
-Months fished & Remove Jan-March; recreational rockfish fishery closed & 23935 & 4196\\
-Depth & Remove upper and lower 1\% of depth with observed coppers;
-                                           Remaining drifts between 50 and 300 feet & 22444 & 4146\\
-Observed anglers & Remove upper and lower 2.5\% of observed anglers;
-                                           Remaining drifts with 4-12 observed anglers & 21032 & 3988\\
-Time fished & Remove upper and lower 2.5\% time fished and
-                                         time fished; Remaining drifts with 5-73 minutes time fished & 19406 & 3797\\
-Distance from rocky substrate & After removing observations further
-than 0.5km from rocky substrate, keep 95\% of the data; drifts within 10.1 m of rocky substrate & 17458 & 3403\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/start2004/deltalogn/index.png}
-\caption{Index for the onboard CPFV survey.\label{fig:onboard-index}}
-\end{figure}
-
-\newpage
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/start2004/deltalogn/qq.png}
-\caption{QQ-plot for the onboard CPFV survey.\label{fig:onboard-qq}}
-\end{figure}
-
-\newpage
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/start2004/average_cpue_by_district.png}
-\caption{Average CPUE by district prior to standardization.\label{fig:onboard-regioncpue}}
-\end{figure}
-
-\newpage
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/start2004/copper_depths_gisdepthadded.png}
-\caption{Distribution by year of depths where copper rockfish observed.\label{fig:onboard-depths}}
-\end{figure}
-
-\newpage
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/start2004/drifts_by_depth_district.png}
-\caption{Stacked bar plot of the depth of observed copper rockfish by district.\label{fig:onboard-depths}}
-\end{figure}
-
-\newpage
-
-\hypertarget{dwv-cpfv-index}{%
-\section{Appendix D. Deb Wilson-Vandenberg Onboard CPFV Index of Abundance}\label{dwv-cpfv-index}}
-
-The Deb Wilson-Vandenberg data set is an onboard observer survey data conducted by CDFW survey in California north of Point Conception from 1987-1998 and referred to as the Deb Wilson-Vandenberg onboard observer survey, (\textbf{Reilly1998?}). During an onboard observer trip the sampler rode along on the CPFV and recorded location-specific catch and discard information to the species level for a subset of anglers onboard the vessel. The subset of observed anglers is usually a maximum of 15 people the observed anglers change during each fishing stop. The catch cannot be linked to an individual, but rather to a specific fishing location. The sampler also records the starting and ending time, number of anglers observed, starting and ending depth, and measured retained and discarded fish. The fine-scale catch and effort data allow us to better filter the data for indices to fishing stops within suitable habitat for the target species.
-
-A large effort was made by the SWFSC to recover data from the original data sheets for this survey and developed into a relational database (\textbf{Monk2016?}). The specific fishing locations at each fishing stop were recorded at a finer scale than the catch data for this survey. We aggregated the relevant location information (time and number of observed anglers) to match the available catch information. Between April 1987 and July 1992 the number of observed anglers was not recorded for each fishing stop, but the number of anglers aboard the vessel is available. We imputed the number of observed anglers using the number of anglers aboard the vessel and the number of observed anglers at each fishing stop from the August 1992-December 1998 data (see Supplemental materials for details). In 1987, trips were only observed in Monterey, CA and were therefore excluded from the analysis (Table \ref{tab:deb-filte}). Sampling targeted areas of central California. Of the 2,256 trips observed, only 12 of those launched from port in District 6, the most northern district in California.
-
-Each fishing location was assigned to a reef based on the on the bathymetric maps and interpretation of hard bottom was extracted from the \href{http://seafloor.otterlabs.org/index.html}{California Seafloor Mapping Project}. Reefs were aggregated to four regions produce adequate sample sizes; the California/Oregon border to San Francisco (V1), San Francisco to Moss Landing (V2), Moss Landing to Big Sur (V3), San Luis Obispo county to Point Conception (V4). The ports in San Luis Obispo county were sampled more frequently than other regions and the arithmetic mean of CPUE by year was higher also higher in this area (Figure \ref{fig:fig-areacpue-debwv})
-
-The filters also included removal of the number of observed anglers and time fished at the tail ends of the distributions, removal of drifts occurring in depths outside copper rockfish's range (Table \ref{tab:deb-filter} and Figure \ref{fig:deb-depths}). We retained 5,546 drifts for index standardization, with 1,389 fishing location encountering copper rockfish.\\
-Tables of the number of samples and positive observations by factors depth, region and year, can be found in Tables \ref{tab:deb}, \ref{tab:tab-region-debwv}, and \ref{tab:tab-year-debwv}.
-
-We modeled catch per angler hour fished (CPUE) by fishing stop where the angler hours were summed across drfts at a fishing stop. To explore weighting of the onboard observer survey index by the available rocky substrate within a region, each drift was assigned to the closest area of rocky habitat. Hard bottom was extracted from the \href{http://seafloor.otterlabs.org/index.html}{California Seafloor Mapping Project}, along the mainland coast of southern California. These data were collected in state waters at a resolution of two meters, but did not extend into state waters past the mainland coast. Additional interpreted bathymetric data classifying the bottom type as rock or soft bottom were compiled by analysts at the University of California Santa Cruz and are now also available from CDFW's website. We used the available interpreted rocky substrate data to expand the known area of rocky substrate to areas in southern California that lack substrate type. This expansion of the estimated rocky substrate assumes that the proportions of rocky substrate within and outside state waters are similar.
-
-The covariates explored for model selection included year and four levels region as categorical region, and continuous depth and depth-squared.\\
-rends in the average CPUE by region were similar in the filtered data set (Figure \ref{fig:deb-regioncpue}). A year and region interaction was included after visualizing the trends in average CPUE over time, but was not significant (Figure @ref(fig:deb-average\_cpue\_by\_region)). The full model was selected by AICc and included year, depth, depth squared and region (Table @ref(tab:deb-model\_selection)).
-
-Indices were fit via MLE from the sdmTMB package in R. The QQ plot for the negative binoimal model indicated a poor fit to the data, which as not surprising given the low percent of observed drifts encountering copper rockfish. A delta-gamma was selected over a delta-lognormal by a delta AIC of 43. The QQ plot indicated a much improved fit compared to the negative binomial model (Table \ref{fig:onboard-qq}). The relative abundance indicates a decreasing trend during the time series (Table \ref{tab:deb-index} and Figure \ref{fig:deb-index}).
-
-\newpage
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:deb-index}Estimated relative index of abundance for the onboard CPFV survey.}\\
-\toprule
-Year & Estimate & logSE\\
-\midrule
-\endfirsthead
-\caption[]{\label{tab:deb-index}Estimated relative index of abundance for the onboard CPFV survey. \textit{(continued)}}\\
-\toprule
-Year & Estimate & logSE\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-1988 & 0.0769861 & 0.1418433\\
-1989 & 0.1146774 & 0.1182943\\
-1990 & 0.1123325 & 0.2015819\\
-1991 & 0.0977634 & 0.1939432\\
-1992 & 0.0996815 & 0.1285433\\
-1993 & 0.0924724 & 0.1163238\\
-1994 & 0.0691958 & 0.1272628\\
-1995 & 0.0684479 & 0.1139051\\
-1996 & 0.0544628 & 0.1192105\\
-1997 & 0.0479375 & 0.1262798\\
-1998 & 0.0414038 & 0.1355518\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:deb-filter}Data filtering steps for the onboard CPFV survey.}\\
-\toprule
-Filter & Description & Number of Samples & Positive Samples\\
-\midrule
-\endfirsthead
-\caption[]{\label{tab:deb-filter}Data filtering steps for the onboard CPFV survey. \textit{(continued)}}\\
-\toprule
-Filter & Description & Number of Samples & Positive Samples\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-All & None & 7569 & 1634\\
-No catch & Remove no catch trips & 7569 & 1634\\
-Only sampled Monterey & Remove 1987 and depths >80fm & 7053 & 1612\\
-Time fished & Remove upper and lower 2.5\% of time fished; keep 6-218 minutes & 6714 & 1488\\
-Observed anglers & Remove upper and lower 2.5\% of observed anglers; keep 4-15 & 6490 & 1428\\
-Depth & Retain drifts between 8-56 fm & 5692 & 1401\\
-Target & Retain trips with at least 71.5\% groundfish catch (97.5\% of trips) & 5546 & 1380\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/deltagamma/index.png}
-\caption{Index for the onboard CPFV survey.\label{fig:deb-index}}
-\end{figure}
-
-\newpage
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/deltagamma/qq.png}
-\caption{QQ-plot for the onboard CPFV survey.\label{fig:deb-qq}}
-\end{figure}
-
-\newpage
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/average_cpue_by_reef.png}
-\caption{Average CPUE by region to standardization.\label{fig:deb-regioncpue}}
-\end{figure}
-
-\newpage
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/percent_gfish.png}
-\caption{Percent of catch by trip that consisted of groundfish.\label{fig:deb-percent-gfish}}
-\end{figure}
-
-\newpage
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/depth_by_reef.png}
-\caption{Stacked bar plot of the depth of observed copper rockfish by region.\label{fig:deb-depths}}
-\end{figure}
-
-\newpage
-
-\hypertarget{refs}{}
-\begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-monk_documentation_2014}{}}%
-Monk, M.H., Dick, E.J., and Pearson, D. 2014. Documentation of a relational database for the {California} recreational fisheries survey onboard observer sampling program, 1999-2011. NOAA-TM-NMFS-SWFSC-529.
-
-\leavevmode\vadjust pre{\hypertarget{ref-reilly_onboard_1998}{}}%
-Reilly, P.N., Wilson-Vandenberg, D., Wilson, C.E., and Mayer, K. 1998. Onboard sampling of the rockfish and lingcod commercial passenger fishing vessel industry in northern and central {California}, {January} through {December} 1995. Marine region, Admin. Rep. \textbf{98-1}: 1--110.
-
-\end{CSLReferences}
 \end{document}
