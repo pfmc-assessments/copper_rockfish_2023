@@ -1,0 +1,15 @@
+# Appendix H. CPFV Fleet Description, Sampling, and Trip Types  {#cpfv-samples}
+
+The CDFW conducts several surveys are part of the CRFS program, including an onboard observer survey, angler interviews, and a required CPFV logbook for each trip. The [CRFS sampling manual](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=62348&inline) outlines the sampling methodologies for each survey component.  The state of California allows the filleting of fish at sea; to accurately identify rockfish to species and obtain measurements of whole fish the majority of angler interviews occur onboard the vessel for the CPFV fleet. 
+
+The [California Fisheries Recreational FIsheries Survey Methods](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=36136&inline) indicates the CPFV "sampling goal is to sample onboard at the historical sampling frequency of two to five percent of estimated CPFV trips of interest (e.g., trips targeting groundfish, inshore and coastal pelagic species) at each CPFV landing and to sample other CPFV trip types dockside."  
+
+The CPFV fleet north and south of Point Conception are fundamentally different in terms of the vessels fishing, available target species, and also fishery regulations over the past twenty years. The CPFVs north of Point Conception targeting groundfish to not typically target other species on the same trip, with the exception being a half day bottomfish trip mixed with a half day of Dungeness crab pot fishing. The fleet north of Fort Bodega Bay, California is dominated by smaller 6-pack vessels with limited capacity.  It may not be possible for a sampler to ride onboard a 6-pack vessel if it's at capacity. There are no overnight trips in California.
+
+In southern California, the diveristy of targt species is higher an includes several bass species, state managed gamefish, coastal pelagics, and highly migratory species, as well as boats that fish in Mexican waters. The trip types in southern California include 1/2 trips where vessel will run two trips a day, 3/4 day trips to fishing grounds further offshore, such as the Channel Islands, and overnight boats that can access areas like San Nicholas in the southern Channel Island or may be combination trips fishing for tunas, but also catching rockfish limits. The diversity of trip types and mixed target trips in southern California pose a challenge for both sampling and managing the fisheries.
+
+Add tables of cpfv logbook by block (or district) and year
+Add table of the number of onboard trips by year
+Add the number of trips fishin in the cdfw blocks 
+
+
