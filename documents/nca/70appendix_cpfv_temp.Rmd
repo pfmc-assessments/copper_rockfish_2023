@@ -10,8 +10,7 @@ The CPFV fleet north and south of Point Conception are fundamentally different i
 
 In southern California, the diveristy of targt species is higher an includes several bass species, state managed gamefish, coastal pelagics, and highly migratory species, as well as boats that fish in Mexican waters. The trip types in southern California include 1/2 trips where a CPFV will run two trips a day, 3/4 day trips to fishing grounds further offshore, such as the Channel Islands, and overnight trips that can access areas like San Nicholas in the southern Channel Island or may be combination trips fishing for tunas, but also catching rockfish limits. The diversity of trip types and mixed target trips in southern California pose a challenge for both sampling and managing the fisheries.
 
-The tables below represent the sum of trips from 2018 and 2019 combined as they are the two years pre-COVID that best represent the CPFV fleet's activity.  The total mortality in metric tons from 2018-2019 from the CPFV fleet by CRFS District in 2018-2019 is in Table \@ref(tab:catch-example).  Approximately 52% of the total rockfish mortality is from northern California and 48% from southern California.  Within northern California, 50% of the catch originates form District 3 and in southern Californis 81% of the catch originates from District 2. 
-
+The tables below represent the sum of trips from 2018 and 2019 combined as they are the two years pre-COVID that best represent the CPFV fleet's activity.  The total mortality in metric tons by District in 2018-2019 is similar to that over the recent time period (Table \@ref(tab:catch-example)).  Approximately 52% of the total rockfish mortality is from northern California and 48% from southern California.  Within northern California, 50% of the catch originates form District 3 and in southern Californis 81% of the catch originates from fish landed in District 2. 
 
 We filtered the CPFV logbook data to trips that recorded at least one rockfish and the CPFV onboard observer data to trips that encountered at least 5% rockfish species. We aggregated within each dataset across 2018 and 2019 and areas where necessary to ensure confidentiality requirements were met. The combined sampling rate from 2018-2019 was three percent of all CPFV trips in the data used. There were no observed trips in CRFS District 5 in 2018-2019 where 1,052 CPFV logbook records were submitted that recorded at least one rockfish.  
 
@@ -28,39 +27,22 @@ Approximately 6% of the logbooks from District 1 recorded a block number in Mexi
 One block number is recorded per CPFV logbook.  In southern California, 70% of the trips fishing the northern Channel Island and 57% of the trips fishing the southern Channel Islands were recorded as single day trips. 
 
 
-\newpage 
-
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "copp_catch_2018_2019.csv"))
 col_names = c("District", "2018", "2019", "Total")
 
 sa4ss::table_format(x = ind,
-             caption = "Total mortality in metric tons of copper rockfish from 2018 and 2019 from the CPFV fleet by CRFS District.",
+             caption = "Catch in metric tons of copper rockfish by CRFS District for 2018 and 2019.",
              label = "catch-example",
-              align = "r",
              col_names = col_names)                         
 ```
-
-\newpage
-
-```{r, results = 'asis'}
-ind <- read.csv(file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "fordoc_Onboard_trip_duration_observed.csv"))
-col_names = c("District", "1/2 day trips", "3/4-1 day trips","Overnight trips", "Percent of trips with copper", "Total number of copper observed")
-
-sa4ss::table_format(x = ind,
-             caption = "Number of CPFV trips sampled as part of the onboard observer sruvey during 2018-2019 by trip type and District. District 4 and 6 were combined to retain confidentiality.  No trips from District 5 were sampled.",
-             label = "onboard-trips",
-             col_names = col_names)                         
-```
-
-\newpage
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "area_percent_observed.csv"))
 col_names = c("Area", "Single day", "Multi day")
 
 sa4ss::table_format(x = ind,
-             caption = "The percent of trips sampled onboard by trip type and area for 2018 and 2019.",
+             caption = "The percent of observed trips by trip type and area for 2018 and 2019.",
              label = "percent-observed",
              col_names = col_names)                         
 ```
@@ -68,14 +50,22 @@ sa4ss::table_format(x = ind,
 
 
 
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "fordoc_Onboard_trip_duration_observed.csv"))
+col_names = c("District", "1/2 day trips", "3/4-1 day trips","Overnight trips", "Percent observed with copper", "Total copper observed")
+
+sa4ss::table_format(x = ind,
+             caption = "Number of CPFV trips observed onboard during 2018-2019 by trip type and District.",
+             label = "onboard-trips",
+             col_names = col_names)                         
+```
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "fordoc_logbook_by_triptype.csv"))
 col_names = c("Region", "Multi-day", "Single day")
 
 sa4ss::table_format(x = ind,
-             caption = "Number of CPFV logbook entries with at least one rockfish, grouped by region fished and trip type from 2018-2019.",
-              align = "r",
+             caption = "Number of CPFV logbook entries with at least one rockfish grouped by region fishedand trip type during 2018-2019 by trip type and District.",
              label = "logbook-triptype",
              col_names = col_names)                         
 ```
