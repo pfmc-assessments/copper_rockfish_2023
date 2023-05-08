@@ -20,14 +20,14 @@ read_child(filein)
 
 ## Historical and Current Fishery Information
 
-Off the coast of California south of Point Conception `r spp` is caught in both commercial and recreational fisheries. Recreational removals have been the largest source of fishing mortality of `r spp` across all years (Table \ref{tab:allcatches} and Figure \ref{fig:catch}). The recreational fishery is comprised of individual recreational fishers (Private/Rental, PR) and charter recreational private vessels (CPFV) which take groups of individuals out for day fishing trips. Across both types of recreational fishing the majority of effort occurs around rocky reefs that can be accessed via a day-trips. 
+Off the coast of California south of Point Conception `r spp` is caught in both commercial and recreational fisheries. Recreational removals have been the largest source of fishing mortality of `r spp` across all years (Table \ref{tab:allcatches} and Figure \ref{fig:catch}). The recreational fishery is comprised of individual recreational fishers (Private/Rental, PR) and commercial passenger fishing vessels (CPFV) also known as party/charter (PC) which take groups of individuals out for day fishing trips. Across both types of recreational fishing the majority of effort occurs around rocky reefs that can be accessed via a day-trips. 
 
 ```{r, echo=FALSE, results='asis'}
 filein <- file.path(doc_dir, "shared_text",'1_intro_ca_commercial.Rmd')
 read_child(filein)
 ```
 
-`r Spp` residing between Point Conception and the California/Oregon border are assessed here as a separate sub-area (Figure \ref{fig:ca-map}). This designation was made based on oceanographic, geographic, and fishery conditions. The `r spp` population in California waters was split at Point Conception due to water circulation patterns that create a natural barrier between nearshore rockfish populations to the north and south. The northern border for this assessment was defined as the California/Oregon border due to substantial differences in historical and current exploitation levels. Additionally, the fairly sedentary nature of adult `r spp`, likely limits flow of fish between northern California and areas to the north. 
+`r Spp` residing between Point Conception and the California/Oregon border are assessed here as a separate sub-area (Figure \ref{fig:ca-map}). This designation was made based on oceanographic, geographic, and fishery conditions. The `r spp` population in California waters was split at Point Conception due to water circulation patterns that create a natural barrier between nearshore rockfish populations to the north and south. The northern border for this assessment was defined as the California/Oregon border due to substantial differences in historical and current exploitation levels. Additionally, the fairly sedentary nature of adult `r spp` likely limits flow of fish between south and north of Point Conception. 
 
 ## Summary of Management History and Performance
 
