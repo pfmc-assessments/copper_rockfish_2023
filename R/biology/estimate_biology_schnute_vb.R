@@ -115,39 +115,8 @@ BIC(fitGen, fit1L2K2T, fit2L1K2T, fit2L2K1T, fit1L1K2T, fit1L2K1T, fit2L1K1T, fi
 anova(fitGen,fit2L2K1T, fitCom)  #no difference
 
 coef(fitGen)
-#Linf1      Linf2         K1         K2        t01        t02 
-#46.8333503 45.7232419  0.2061381  0.2337891 -0.8046669 -0.5878047 
-
-coef(fitCom)
-#Linf          K         t0 
-#46.2392153  0.2198119 -0.6867527
 
 
-
-
-
-
-
-
-### Plot the fit1L1K2T model
-x11()
-#png("vonB_fitGen.png", res=500,units='in',width=7,height=7)
-plot(Length~jitter(Age,0.3),data=Alldat,subset=Growth_var=="F",pch=16,xlab="Age (yrs)",
-     col=gray(level=0, alpha=0.2),ylab="Total Length (cm)",xlim=c(0,30),ylim=c(0,40))
-points(Length~jitter(Age,0.3),data=Alldat,subset=Growth_var=="M",pch=15,col=gray(level=0, alpha=0.2))
-points(Length~jitter(Age,0.3),data=Alldat,subset=Growth_var=="U",pch=17,col=gray(level=0, alpha=0.2))
-vbTypical <- vbFuns("typical")
-curve(vbTypical(x,Linf = coef(fit1L1K2T)[1], K=coef(fit1L1K2T)[2], t0=coef(fit1L1K2T)[3]),from=1,to=30,lwd=2,add=TRUE,col="maroon3")
-curve(vbTypical(x,Linf = coef(fit1L1K2T)[1], K=coef(fit1L1K2T)[2], t0=coef(fit1L1K2T)[4]),from=1,to=30,lwd=2,add=TRUE,col="dodgerblue3")
-curve(vbTypical(x,Linf = coef(fitCom)[1], K=coef(fitCom)[2], t0=coef(fitCom)[3]),from=1,to=30,lwd=2,add=TRUE,col="green")
-legend("topleft",legend=c("BYEL","BYEL","GPHR","GPHR","Unkown","Common"),
-       col=c("maroon3","gray","dodgerblue2","gray",'gray','green'),
-       lwd=3,lty=c(1,NA,1,NA,NA,1),pch=c(NA,16,NA,15,17,NA),cex=.9)
-
-
-text(12,8,"BYEL \nLinf = 28.5  \nK = 0.223  \nt0 = -0.443", cex=.9)
-text(20,8,"GPHR  \nLinf = 28.5  \nK = 0.223  \nt0 = -1.215", cex=.9)
-text(28,8,"GPHR  \nLinf = 28.39  \nK = 0.245  \nt0 = -0.217", cex=.9)
 
 ################################################################################
 #Now look at north and south differnces
@@ -206,5 +175,24 @@ fit_south_M <- nls(Length~vb3(Age,L1, L3,K, t1=2,t3=20),
                    start=SchStarts)
 schnute_params$South_M <- coef(fit_south_M)
 
-write.csv(schnute_params, file.path(getwd(),"data","biology","External_growth_Schnute.csv"))
+#write.csv(schnute_params, file.path(getwd(),"data","biology","External_growth_Schnute.csv"))
 
+
+#####Plot
+newagem = data.frame(Age = seq(0,50,1))
+newagem$Length = predict(fit_north_M, newdat=newagem)
+
+
+newagef = data.frame(Age = seq(0,50,1))
+newagef$Length = predict(fit_north_F, newdat=newagef)
+
+ggplot(newagef, aes(Age, Length)) +
+  geom_line()
+
+
+#png("vonB_fitGen.png", res=500,units='in',width=7,height=7)
+plot(Length~jitter(Age,0.3),data=Alldat %>% filter(Sex=="F", area=="south"),pch=16,xlab="Age (yrs)",
+     col=gray(level=0, alpha=0.2),ylab="Total Length (cm)",xlim=c(0,60),ylim=c(0,60))
+points(Length~jitter(Age,0.3),data=Alldat %>% filter(Sex=="M", area=="south"),pch=15,col=gray(level=0, alpha=0.2))
+curve(vb3(x,L1=coef(fit_south_M),t1=c(0,60)),from=0,to=60,col="dodgerblue",lwd=2,add=TRUE)
+curve(vb3(x,L1=coef(fit_south_F),t1=c(0,60)),from=0,to=60,col="maroon3",lwd=2,add=TRUE)
