@@ -35,5 +35,5 @@ address:
   - ^2^Southwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 110 McAllister
     Way, Santa Cruz, California 95060
-  - ^3^California Department of Fish and Wildlife, Marine Region, 1933 Cliff Drive, Suite     9, Santa Barbara, California 93109
+  - ^3^California Department of Fish and Wildlife, Marine Region, 1933 Cliff Drive, Suite 9, Santa Barbara, California 93109
 ---
