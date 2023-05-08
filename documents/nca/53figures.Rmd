@@ -53,6 +53,7 @@ filein = file.path(model_dir, "plots", "data_plot.png"),
 caption = "Summary of data sources used in the base model",
 label = 'data-plot')
 ```	
+
 \pagebreak
 
 <!-- ======================================================= -->
