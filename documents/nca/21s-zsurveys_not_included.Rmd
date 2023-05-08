@@ -1,17 +1,9 @@
 ## Additional Considered Data Sources
 
 ```{r, echo=FALSE, results='asis'}
-filein <- file.path(doc_dir, "shared_text",'21_surveys_not_included_pisco_scuba.Rmd')
+filein = file.path(doc_dir, "shared_text",'21_surveys_not_included.Rmd')
 read_child(filein)
 ```
-
-Early years with less consistent sampling were eliminated such that the time series for UCSC began in 2001 and extended through 2021.  The majority of UCSC sites occurred within sites that became MPAs.  Three sites that did not become MPAs were removed to create an index with a consistent change in selectivity following MPA implementation.  After filtering, sites that remained in the UCSC dataset were centered around the Monterey peninsula.  Sample sizes of `r spp` observed by year at all retained UCSC sites ranged from 1 to 28 fish (Table \ref{tab:pisco-data}).
-
-```{r, echo=FALSE, results='asis'}
-filein <- file.path(doc_dir, "shared_text",'21_surveys_not_included_other.Rmd')
-read_child(filein)
-```
-
 
 ### Northwest Fisheries Science Center West Coast Groundfish Bottom Trawl Survey
 
