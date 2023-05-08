@@ -19,9 +19,7 @@ fish within a 30 x 2 x 2-m volume on the bottom, mid-way up the water column, an
 the surface just below the kelp canopy.  Three replicate transects are performed within
 inner, inner-mid, outer-mid, and deep zones of the reef corresponding to depths between 
 5 and 20 m.  This results in 12 transect locations per reef site and 36 transect swims 
-incorporating the three levels.  Divers count fish by species and estimate sizes.  
-Survey sites are typically grouped within a geographic area, i.e., there are three 
-sites on Naples reef near Santa Barbara (Naples Central, Naples East, and Naples West).  
+incorporating the three levels.  Divers count fish by species and estimate sizes.  Survey sites are typically grouped within a geographic area, i.e., there are three sites on Naples reef near Santa Barbara (Naples Central, Naples East, and Naples West).  
 
 The full dataset was filtered for quality and habitat appropriate for `r spp`. 
 Data was limited to surveys conducted by UCSC and UCSB because `r spp` were not 
@@ -30,7 +28,5 @@ or were not consistently sampled across the time series. The UCSC and UCSB campu
 sites were separated to develop two indices for the northern and southern model regions.
 We eliminated sites that were sampled in less than 80% of the survey years for each campus.  
 `r Spp` were only observed on bottom transects and so mid-water and canopy transects were 
-removed.  The inner reef (shallow) transects were removed due to rare `r spp` observations.  
-Divers noted approximate water visibility and transects with visibility less than 3 m were 
-removed. We also retained only fish greater than 17 cm to construct an adult index.  
+removed.  The inner reef (shallow) transects were removed due to rare `r spp` observations.  Divers noted approximate water visibility and transects with visibility less than 3 m were removed. We also retained only fish greater than 17 cm to construct an adult index.  
 
