@@ -30,18 +30,18 @@ productivity characterized by the life history and susceptibility that
 characterized how the stock could be impacted by fisheries and other activities. 
 
 `r Spp` are opportunistic carnivores and commonly consume crustaceans, mollusks, 
-and fish whole [@lea_biological_1999; @bizzarro_diet_2017]. -@prince_food_1972 
-observed a shift in a diet dominated by arthropods in age 0 and 1 fish, and a shift to a more 
-diverse diet including molluscs and fish as they aged. the study also noted that 
-juvenile copper rockfish were predated on by harbor seals and lingcod.
+and fish whole [@lea_biological_1999; @bizzarro_diet_2017]. [-@prince_food_1972] 
+observed a shift in a diet dominated by arthropods in age 0 and 1 fish to a more 
+diverse diet including molluscs and fish as they aged. The study also noted that 
+juvenile copper rockfish were preyed upon by harbor seals and lingcod.
  
 There is currently no evidence of significant stock structure from genetic 
 studies of `r spp` across the west coast. -@buonaccorsi_population_2002 looked 
 at genetic variation across six micosatellite 
 DNA loci from samples ranging from British Columbia to southern California. 
-Significant population subdivision was detected between th Puget Sound and coastal 
-samples and support the model of isolation-by-distance for `r spp`.
--@sivasundar_life_2010 conducted a genetic study to determine the potential for 
+Significant population subdivision was detected between the Puget Sound and coastal 
+samples which supports the model of isolation-by-distance for `r spp`.
+@sivasundar_life_2010 conducted a genetic study to determine the potential for 
 biogeographic boundaries to prohibit gene flow for 15 *Sebastes* species.
 The study's sample sizes of `r spp` with samples form Oregon, Monterey Bay and Santa Barbara. 
 -@sivasundar_life_2010 used mtDNA and could differentiate samples from Santa Barbara from those collected 

@@ -15,7 +15,7 @@ filein = file.path(doc_dir, "shared_text",'2_biology_maturity.Rmd')
 read_child(filein)
 ```
 
-The 50 percent size-at-maturity for `r spp` `r area `was estimated at `r round(model$MGparmAdj[,"Mat50%_Fem_GP_1"][1], 1)` cm with a slope of `r round(model$MGparmAdj$Mat_slope_Fem_GP_1[1], 2)` (Figure \ref{fig:maturity}). This area-specific maturity-at-length estimate is relatively similar but with fish maturing at a slightly smaller size compared to the biological maturity curve assumed for `r spp` north of Point Conception. Additionally, these values are both slightly smaller compared to estimates by Hannah [-@hannah_length_2014] for fish observed in Oregon waters (34.8 cm) which estimated the 50 percent size-at-maturity of and slope of -0.60.
+The 50 percent size-at-maturity for `r spp` `r area ` was estimated at `r round(model$MGparmAdj[,"Mat50%_Fem_GP_1"][1], 1)` cm with a slope of `r round(model$MGparmAdj$Mat_slope_Fem_GP_1[1], 2)` (Figure \ref{fig:maturity}). This area-specific maturity-at-length estimate is relatively similar but with fish maturing at a slightly smaller size compared to the biological maturity curve assumed for `r spp` north of Point Conception. Additionally, these values are both slightly smaller compared to estimates by Hannah [-@hannah_length_2014] for fish observed in Oregon waters (34.8 cm) which estimated the 50 percent size-at-maturity of and slope of -0.60.
 
 ```{r, echo=FALSE, results='asis'}
 filein = file.path(doc_dir, "shared_text",'2_biology_fecundity.Rmd')
@@ -41,7 +41,7 @@ read_child(filein)
 
 ### Growth (Length-at-Age) {#length-at-age}
 
-Length-at-age was estimated for male and female `r spp` informed by age data from the fisheries, the CCFRP survey, and independent age data collected effort from three programs `r `area` since 2002: 207 otoliths collected by the NWFSC WCGBT survey, 427 otoliths collected by a research survey conducted by Don Pearson, 77 from a research survey conducted by Abrams, and 508 otoliths collected by a cooperative research survey by the SWFSC and CPFV funded by the Sportfishing Association of California (Table \ref{tab:growth-age-samps}). The ages collected by these three sources were included in the model as a "growth" fleet that was not associated with removals or an index of abundance. 
+Length-at-age was estimated for male and female `r spp` informed by age data from the fisheries, the CCFRP survey, and independent efforts from four `r area` programs since 2002: 207 otoliths collected by the NWFSC WCGBT survey, 427 otoliths collected by a research survey conducted by Don Pearson, 77 from a research survey conducted by Abrams, and 508 otoliths collected by a cooperative research survey by the SWFSC and CPFV funded by the Sportfishing Association of California (Table \ref{tab:growth-age-samps}). The ages collected by these three sources were included in the model as a "growth" fleet that was not associated with removals or an index of abundance. 
 
 Sex-specific growth parameters `r area` were initially estimated external to the model at the following values:
 

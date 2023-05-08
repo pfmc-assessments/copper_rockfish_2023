@@ -37,7 +37,7 @@ read_child(filein)
 filein = file.path(doc_dir, "shared_text", '1_intro_management.Rmd')
 read_child(filein)
 ```
-
+Most commercial catch of `r spp` since about 2000 has been from the hook and line gear type and thus the most impactful management actions have been non-trawl RCA depth adjustments. Adjustment of that boundary north of 40$^\circ$ 10' N. lat. in 2009, restricting the nearshore fishery to waters less than 20 fathoms from their previous 30 fathom allowance, may have resulted in a shift in the size of `r spp` being landed to smaller fish as the fleet adjusted and markets developed for smaller "plate-sized" fish within the live fishery.  
 
 ## Foreign Fisheries
 

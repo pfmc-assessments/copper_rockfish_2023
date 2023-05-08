@@ -13,7 +13,7 @@ author:
   - name: Julia Coates
     code: 3
     first: J
-    middle: ''
+    middle: 'H'
     family: Coates
 author_list: Wetzel, C.R., M.H. Monk, J. Coates
 affiliation:
@@ -26,7 +26,8 @@ affiliation:
       Oceanic and Atmospheric Administration, National Marine Fisheries Service, 110
       McAllister Way, Santa Cruz, California 95060
   - code: 3
-    address: .na.character
+    address: California Department of Fish and Wildlife, Marine Region
+      1933 Cliff Drive, Suite 9, Santa Barbara, California 93109
 address:
   - ^1^Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 2725 Montlake
@@ -34,5 +35,5 @@ address:
   - ^2^Southwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 110 McAllister
     Way, Santa Cruz, California 95060
-  - ^3^NA
+  - ^3^California Department of Fish and Wildlife, Marine Region, 1933 Cliff Drive, Suite     9, Santa Barbara, California 93109
 ---
