@@ -43,7 +43,7 @@ of hook-and-line or troll gear.  A number of trips with the primary gear reporte
 a secondary gear of hook-and-line. To determine if the angler(s) interviewed targeted rockfish and
 fished in rocky habitat, we retained trips if the angler reported the primary target species 
 as rockfish or bottomfish or if rockfish was reported as the secondary target species. This filter 
-replaced the Stephens-MacCall (@stephens-multispecies-2004) filtering approach.
+replaced the Stephens-MacCall [@stephens_multispecies_2004] filtering approach.
 
 We retained 13,340 angler interviews for 
 index standardization, with 3,739 included sampled examined copper rockfish

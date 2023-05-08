@@ -6,13 +6,25 @@ Proper convergence was determined by starting the minimization process from disp
 
 ### Sensitivity Analyses
 
-Sensitivity analyses were conducted to examine the relative influence of specific changes to data inputs and model structural assumptions to further address uncertainty associated with the base model estimates and derived management quantities.  The majority of the sensitivity models are the result of a single change relative to base model (i.e., they are not the result of cumulative changes such as the modeling approach used with the bridging analysis). Comparisons of likelihood values and estimates of key parameters from the sensitivity analysis are shown in Tables \ref{tab:tab-sens-1}-\ref{tab:tab-sens-2} and Figures \ref{fig:sens-ssb-1}-\ref{fig:sens-depl-2}. Many additional sensitivity runs were explored during development and testing of the base model. This section focuses on the main data and structural sensitivity model runs and includes the following:
+Sensitivity analyses were conducted to examine the relative influence of specific changes to data inputs and model structural assumptions to further address uncertainty associated with the base model estimates and derived management quantities.  The majority of the sensitivity models are the result of a single change relative to base model (i.e., they are not the result of cumulative changes such as the modeling approach used with the bridging analysis). Comparisons of likelihood values and estimates of key parameters from the sensitivity analysis are shown in Tables \ref{tab:sensitivities-1}-\ref{tab:sensitivities-3}. Comparison of all sensitivities relative to the base model is shown in Figure \ref{fig:sens-all} with Figures \ref{fig:sens-ssb-1}-\ref{fig:sens-depl-3} showing the change in spawning output and the relative spawning output trajectories. Many additional sensitivity runs were explored during development and testing of the base model. This section focuses on the main data and structural sensitivity model runs and includes the following:
 
 Structural Sensitivities
 
 \begin{enumerate}
    
-  \item  list of items
+  \item  Estimate natural mortality ($M$) for each sex.
+  
+  \item Estimate steepness ($h$).
+  
+  \item Estimate $M$ for each sex and $h$.
+  
+  \item Fix growth at external Schnute growth estimates.
+  
+  \item Fix recruitment to be equal to the stock-recruitment curve (no recruitment deviations).
+  
+  \item Apply Dirichlet data weights.
+  
+  \item Apply McAllister-Ianelli data weights.
 
 \end{enumerate}
 
@@ -20,7 +32,27 @@ Data Sensitivities
 
 \begin{enumerate}
    
-  \item Remove ...
+  \item Reduce the CPFV and PR catch between 1970-1982 to half of each fleet's average catch for that period of time.
+  
+  \item Move the historical CPFV ages into the growth fleet.
+  
+  \item Retain only length data within the model (no indices or ages) and fix growth at the estimates.
+  
+  \item Remove the CPFV cooperative collection ages in 2022.
+  
+  \item Remove all age data and fix growth at the estimates.
+  
+  \item Remove the CCFRP Hook and Line survey data (index, lengths, and ages).
+  
+  \item Remove the CDFW ROV survey data (index and lengths).
+  
+  \item Remove both the CCFRP Hook and Line and CDFW ROV survey data (indices, lengths, and ages).
+  
+  \item Remove the CRFS CPFV index of abundance.
+  
+  \item Remove the Deb-Wilson Vandenberg CPFV index of abundance.
+  
+  \item Remove the CRFS PR index of abundance.
   
 \end{enumerate}
 

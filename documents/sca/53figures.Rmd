@@ -3,6 +3,20 @@
 
 ## Data 
 
+
+<!-- ======================================================= -->
+<!-- ***************  life history  ************************ --> 
+<!-- ======================================================= -->
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "copper_length_by_half_month.png"), 
+caption = "Distribution of YOY copper rockfish lengths from fish genetically identified from D. Baetscher.",
+label = 'copper-smurf-length')
+```
+
+\pagebreak
+
 <!-- ====================================================================== --> 
 <!-- *******************    Assessment Map      *************************** --> 
 <!-- ====================================================================== --> 
@@ -16,6 +30,7 @@ label = 'ca-map')
 
 \pagebreak
 
+
 <!-- ====================================================================== -->  
 <!-- ****************** Catches Used in the Model ************************* --> 
 <!-- ====================================================================== -->  
@@ -28,6 +43,9 @@ label = 'catch')
 ```	
 
 \pagebreak
+
+
+
 <!-- ====================================================================== --> 
 <!-- ******************* Data Used in the Model *************************** --> 
 <!-- ====================================================================== --> 
@@ -465,18 +483,6 @@ label = 'wcgbt-len-age')
 
 ## Biology
 
-<!-- ======================================================= -->
-<!-- ***************  life history  ************************ --> 
-<!-- ======================================================= -->
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(doc_dir, "shared_figures", "copper_length_by_half_month.png"), 
-caption = "Distribution of YOY copper rockfish lengths from fish genetically identified from D. Baetscher.",
-label = 'copper-smurf-length')
-```
-
-\pagebreak
 
 <!-- ======================================================= -->  
 <!-- ******************   Biology  ************************* --> 
@@ -1072,6 +1078,17 @@ label = 'depl-all')
 
  
 ```{r, echo=FALSE, results='asis'}
+add_figure(
+filein = file.path(sens_dir, "_plots",  "Sensi_REplot_all_horizontal"),
+caption = "Comparison of the relative change in estimated management quantities as compared to the base model. The quantities compared are the estimate of unfished spawning biomass (SB0), spawning output in 2023 (SB2023), the relative spawnin output (SB2023/SB0), the yield based on a spawner per recruit harvest rate (YieldSPR=0.50), and the fishing mortality at that harvest rate (FSPR=0.50). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend.  A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
+label = 'sens-all')
+```
+
+
+\newpage
+
+ 
+```{r, echo=FALSE, results='asis'}
 nm = paste0(south_model_name, "_final_1_compare2_spawnbio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots",  nm),
@@ -1107,6 +1124,27 @@ add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated fraction unfished by sensitivity",
 label = 'sens-depl-2')
+```
+
+\newpage
+
+
+```{r, echo=FALSE, results='asis'}
+nm = paste0(south_model_name, "_final_3_compare2_spawnbio_uncertainty.png")
+add_figure(
+filein = file.path(sens_dir, "_plots", nm),
+caption = "Change in estimated spawning output by sensitivity",
+label = 'sens-ssb-3')
+```
+
+\newpage
+
+```{r, echo=FALSE, results='asis'}
+nm = paste0(south_model_name, "_final_3_compare4_Bratio_uncertainty.png")
+add_figure(
+filein = file.path(sens_dir, "_plots", nm),
+caption = "Change in estimated fraction unfished by sensitivity",
+label = 'sens-depl-3')
 ```
 
 \newpage
