@@ -2,6 +2,8 @@
 do_projections <- function(
     model1_dir = NULL, 
     model2_dir = NULL,
+    sigma = c(0.50, 0.50),
+    pstar = 0.45,
     fore_years = 2025:2034,
     prop = c(0.50, 0.50),
     fleet1_num = 1:4,
@@ -10,9 +12,6 @@ do_projections <- function(
     model2_fleets = c(0.10, 0.10, 0.30, 0.50),
     hcr = c(0.4, 0.1)
 ){
-  
-  model1_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/sca/forecast_test/5.2_crfs_pr_index"
-  model2_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/nca/forecast_test/5.2_crfs_pr_index"
 
   # Turn off the estimation for both models
   starter = r4ss::SS_readstarter(file.path(model1_dir, "starter.ss"), verbose = FALSE)
@@ -50,8 +49,15 @@ do_projections <- function(
   model1 <- r4ss::SS_output(model1_dir, covar = FALSE, verbose = FALSE, printstats = FALSE)
   model2 <- r4ss::SS_output(model2_dir, covar = FALSE, verbose = FALSE, printstats = FALSE)
   
-  model1_summary <- model2_summary <- NULL
+  output <- NULL
   
+  # Calculate buffer
+  buffer1 <- PEPtools::get_buffer(years = (fore_years[1]-2):max(fore_years), sigma = sigma[1], pstar = pstar)
+  buffer1 <- buffer1[3:nrow(buffer1), 2]
+  buffer2 <- PEPtools::get_buffer(years = (fore_years[1]-2):max(fore_years), sigma = sigma[2], pstar = pstar)
+  buffer2 <- buffer2[3:nrow(buffer2), 2]
+  ind <- 1
+    
   for (y in fore_years){
     # Calculate the pooled depletion
     sb0 <- model1$timeseries[model1$timeseries$Yr == startyr, "SpawnBio"] + 
@@ -60,10 +66,19 @@ do_projections <- function(
       model2$timeseries[model2$timeseries$Yr == y, "SpawnBio"]
     depl <- sby / sb0
     
-    abc <- model1$derived_quants[model1$derived_quants$Label == paste0("ForeCatch_",y), "Value"] +
-      model2$derived_quants[model2$derived_quants$Label == paste0("ForeCatch_",y), "Value"]
+    ofl1 <- model1$derived_quants[model1$derived_quants$Label == paste0("OFLCatch_",y), "Value"] 
+    ofl2 <- model2$derived_quants[model2$derived_quants$Label == paste0("OFLCatch_",y), "Value"] 
+    ofl  <- ofl1 + ofl2
     
-    acl <- abc * (hcr[1]/ (hcr[1] - hcr[2])) * (depl - hcr[2]) / depl
+    abc <- ofl1 * buffer1[ind] + ofl2  * buffer2[ind]
+    #abc <- model1$derived_quants[model1$derived_quants$Label == paste0("ForeCatch_",y), "Value"] +
+    #  model2$derived_quants[model2$derived_quants$Label == paste0("ForeCatch_",y), "Value"]
+    
+    if( depl < 0.40) {
+      acl <- abc * (hcr[1]/ (hcr[1] - hcr[2])) * (depl - hcr[2]) / depl
+    } else {
+      acl <- abc
+    }
     
     acl1 <- prop[1] * acl
     acl2 <- prop[2] * acl
@@ -88,9 +103,10 @@ do_projections <- function(
     
     model1 <- r4ss::SS_output(model1_dir, covar = FALSE, verbose = FALSE, printstats = FALSE)
     model2 <- r4ss::SS_output(model2_dir, covar = FALSE, verbose = FALSE, printstats = FALSE)
+    ind <- ind + 1
     
-    model1_summary <- rbind(model1_summary, c(y, abc, acl, depl, prop[1], sum(acl1)))
-    model2_summary <- rbind(model2_summary, c(y, abc, acl, depl, prop[2], sum(acl2)))
+    output <- rbind(output, c(y, ofl, abc, acl, depl, prop[1], prop[2], sum(acl1), sum(acl2)))
+
   }
   
   # Reset the harvest control rule
@@ -116,7 +132,25 @@ do_projections <- function(
   starter$last_estimation_phase = max_phase2
   r4ss::SS_writestarter(starter, dir = model2_dir, overwrite = TRUE, verbose = FALSE)
   
-  colnames(model1_summary) <- colnames(model2_summary) <- c("Year", "ABC", "ACL", "Depl.", "ACL Prop.", "Removals")
-  write.csv(model1_summary, file = file.path(model1_dir, "Projection_Values.csv"), row.names = FALSE)
-  write.csv(model2_summary, file = file.path(model2_dir, "Projection_Values.csv"), row.names = FALSE)
+  colnames(output) <- c("Year", "OFL", "ABC", "ACL", "Depl.", "ACL Prop.Model1", "ACL Prop. Model2",  "Removals Model1", "Removals Model2")
+  write.csv(output, file = file.path(model1_dir, "Projection_Values.csv"), row.names = FALSE)
+  write.csv(output, file = file.path(model2_dir, "Projection_Values.csv"), row.names = FALSE)
 }
+
+
+model1_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/sca/14.0_base_forecast"
+model2_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast"
+
+
+do_projections(
+    sigma = c(0.50, 0.50),
+    pstar = 0.45,
+    model1_dir = model1_dir, 
+    model2_dir = model2_dir,
+    fore_years = 2025:2034,
+    prop = c(0.29, 0.71),
+    fleet1_num = 1:4,
+    fleet2_num = 1:4,
+    model1_fleets = c(0.04, 0.03, 0.72, 0.21),
+    model2_fleets = c(0.03, 0.05, 0.38, 0.54),
+    hcr = c(0.4, 0.1))
