@@ -27,6 +27,7 @@ sa4ss::table_format(x = tab,
              caption = "Model selection for the ROV survey.",
              label = "rov-model-selection",
              align = 'l',
+             digits = 2, 
              longtable = TRUE,
              font_size = 7,
              landscape = TRUE)                         
