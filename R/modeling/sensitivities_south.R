@@ -82,6 +82,11 @@ sens3_6  <- SS_output( file.path(wd, model_list3[6]), printstats = FALSE, verbos
 sens3_7  <- SS_output( file.path(wd, model_list3[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 
 
+SSunavailableSpawningOutput(
+  replist = sens3_3,
+  print = TRUE,
+  plotdir = file.path(wd, "_plots"))
+
 modelnames <- c("Base Model",
                "Estimate M",
                "Estimate h", 

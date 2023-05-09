@@ -1811,7 +1811,7 @@ SSplotComparisons(mysummary,
 # Remove Pearson Ages in order to better fit the COOP Ages
 #====================================================================================
 
-base_model <- SS_output(file.path(wd,  "14.0_base_mi"))
+base_model <- SS_output(file.path(wd,  "14.0_base_forecast"))
 tune_comps(replist = base_model, dir = file.path(wd, "14.0_base"), 
            option = "MI", write = FALSE, allow_up_tuning = TRUE)
 SS_plots(base_model)
@@ -1830,3 +1830,8 @@ SSplotComparisons(mysummary,
                   ylimAdj = 1.20,
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+SSunavailableSpawningOutput(
+  replist = base_model,
+  print = TRUE,
+  plotdir = file.path(wd, "14.0_base_forecast", "plots"))
