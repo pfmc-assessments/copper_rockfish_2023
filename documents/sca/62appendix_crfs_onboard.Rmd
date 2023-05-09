@@ -6,40 +6,34 @@ filein = file.path(doc_dir, "shared_text",'21f_crfs_cpfv_index.Rmd')
 read_child(filein)
 ```
 
-The CRFS onboard observer data went through a QA/QC process at the SWFSC which included mapping 
-fishing drifts in ArcPro to determine if the recorded latitude and longitude were correct.  
-
-In the assessment model, the recreational CPFV fleet is modeled as retained plus
-discarded fish. The proportion of observed discarded copper rockfish is small, 
-averaging 4% over the time series (\@ref(tab:onboard-keepdiscard)) and are included in the index.
-
 We applied a number of data filters to the available data presented in Table 
 \@ref(tab:onboard-filter). The onboard CPFV index restricts the time series to 2005-2019. The onboard observer survey 
 began in 1999, but the sample sizes were small during the first year of the program. The 
 years 1999-2004 also represent years where a number of regulations changed including gear limits, 
-bag limits, and spatial closures.  Due to COVID-19, no onboard sampling took place in 2020. In 2021 the onboard sampling 
+bag limits, and spatial closures.  Due to COVID-19, no onboard sampling took place in 2020. In 2021, the onboard sampling 
 resumed in August, at which point a large portion of the southern California fleet 
-had switched target species and fish highly migratory species. The 2021 stock assessment 
+had switched target species to fish highly migratory species. The 2021 stock assessment 
 had also been released by August 2021 indicating the stock was below the biomass 
-at 40%.  The southern California CPFV began an organized effort to avoid copper 
+at 40%.  The southern California CPFV fleet began an organized effort to avoid copper 
 rockfish and encourage their clientele to release and descend copper rockfish 
 when encountered. In 2022, the CDFW implemented the one copper rockfish sub-bag 
-limit and combined with avoidance by the fleet, does not represent the available 
+limit and combined with avoidance by the fleet, the data in this year does not represent the available 
 copper rockfish biomass. See the online supplementary material
 or the history of regulation changes section for details.
 
 The filters also included removal of the number of observed anglers and time fished at the tail 
-ends of the distributions, remooval of drifts occurring in depths outside copper rockfish's range 
+ends of the distributions, and removal of drifts occurring in depths outside copper rockfish's range 
 (Table \@ref(tab:onboard-filter) and Figure \@ref(fig:onboard-depths)). Because the availability of high resolution data were lacking 
 for the south, we retained all drifts from within a CDFW block that had at least 100 drifts and 
 at least 5% of those encountered copper rockfish. We retained 17,605 drifts for index
  standardization, and 3,035 of those drifts encountered copper rockfish 
 Table \@ref(tab:onboard-percentpos). 
 
-We modeled catch per angler minutes fished (CPUE) by fishing drift. Prior to any modeling,
+In the assessment model, the recreational CPFV fleet is modeled as retained plus
+discarded fish. The proportion of observed discarded copper rockfish is small, 
+averaging 4% over the time series (\@ref(tab:onboard-keepdiscard)) and are included in the index. We modeled catch per angler minutes fished (CPUE) by fishing drift. Prior to any modeling,
 the SWFSC QA/QC'd the data to ensure the location information was correct. 
-Each drift was overlaid with the available interpreted substrate layer that characterizes rocky and hard substrate, assigned to a rocky reef and the distance of the 
-drift start location calculated.  In addition, the depth of the start location was 
+Each drift was overlaid in ArcPro with the available interpreted substrate layer that characterizes rocky and hard substrate, assigned to a rocky reef and the distance of the drift start location calculated.  In addition, the depth of the start location was 
 interpreted from the 2 m resolution bathymetry as well as 90 m resolution bathymetry 
 layer for comparison. For drifts missing depth location, we assigned depth based on the best available depth based on the bathymetry.
 
@@ -53,26 +47,24 @@ past the mainland coast. Additional interpreted bathymetric data classifying the
 rock or soft bottom were compiled by analysts at the University of California Santa Cruz and are now
 also available from CDFW's website. We used the available interepreted rocky substrate data to expand the 
 known area of rocky substrate to areas in southern California that lack substrate type.  This 
-expansion of the estiamated rocky substrate assumes that the proportions of rocky substrate within 
+expansion of the estimated rocky substrate assumes that the proportions of rocky substrate within 
 and outside state waters are similar.  Copper rockfish are a nearshore species and the majority of 
 observed encounters were within state waters (Table \@ref(tab:onboard-waterarea)).
-is a course estimation of the amount of rocky substrate, and represents the best available data. 
+This is, of course, an estimation of the amount of rocky substrate, and represents the best available data. 
 The calculations can be found in the online supplementary material.
 
-The covariates explored for model selection included year and four levels region as categorical 
-region (District 1 mainland, District 2 mainland, Southern Channel Islands and Northern 
-Channel Islands), a year and area interaction, categorical variable for month, and continuous depth and depth-squared.
-rends in the average CPUE by region were similar 
+The covariates explored for model selection included year and four categorical region levels (District 1 mainland, District 2 mainland, Southern Channel Islands and Northern Channel Islands), a year and area interaction, a categorical variable for month, and continuous depth and depth-squared.
+Trends in the average CPUE by region were similar 
 in the filtered data set (Figure \@ref(fig:onboard-regioncpue)). A year and region interaction 
 was included after visualizing the trends in average CPUE over time (Figure \@ref(fig:onboard-average_cpue_by_region)). The full model was selected by AICc 
-(Table \@ref(tab:onboard-model_selection)). In southern California, whether a trip is a 1/3 or 3/4 or overnight 
+(Table \@ref(tab:onboard-model_selection)). In southern California, whether a trip is a 1/2 day or 3/4 day or overnight 
 trip has a significant impact on the available fishing grounds.  The 1/2 day CPFV vessels 
-fishnthe shallower, nearshore waters along the along the mainland areas. The 3/4 and overnight or multi-day
+fish in the shallower, nearshore waters along the along the mainland coast. The 3/4 and overnight or multi-day
 vessels are able to access the same areas of the Northern Channel Islands, where as the southern Channel Islands 
 are further offshore and the observations are predominantly from overnight trips. The overnight and 
 multi-day trips may target multiple target species, i.e., tuna and rockfish, depending on the time of the year.
 
-Indices were fit via MLE from the sdmTMB package in R. The QQ plot fot the negative binoimal 
+Indices were fit via MLE from the sdmTMB package in R. The QQ plot for the negative binoimal 
 model indicated a poor fit to the data, which as not surprising given the low percent of 
 observed drifts encountering copper rockfish. A delta-lognormal 
 was selected over a delta-gamma based on AIC.  The QQ plot indicated a much improved fit compared to the negative 
