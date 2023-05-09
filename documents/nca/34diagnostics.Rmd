@@ -56,9 +56,11 @@ Data Sensitivities
   
 \end{enumerate}
 
-Across all the sensitivities conducted only a subset resulted in distinct changes in the model estimates and the discussion here will focus on the sensitivities that were identified in Figure \ref{fig:sens-all}.
+Across all the sensitivities conducted only a subset resulted in distinct changes in the model estimates and the discussion here will focus on the sensitivities that were identified in Figure \ref{fig:sens-all}. The sensitivity without recruitment deviaations and recruitment was predicted directly from the stock-recruitment curve, the estimate of initial unfished reccruitment ($R_0$) increased and the contribution of the length contributed to the increased model likelihood (Table \ref{{tab:sensitivities-1}, Figures \ref{fig:sens-ssb-1} and \ref{fig:sens-depl-1}).  In addition, the model estimated a 63% increase in the 2023 spawning biomass.
 
+The sensitivities estimating naturaly moratlity and/or steepness all resulted in a decreased 2023 spawning biomass. In both senstivities where natural mortality was estimated, the estimates were considered too low for a rockfish with a max age of less than 55.  The model estimating only steepness also resulted in an estimate of less than half the prior (Table \ref{{tab:sensitivities-1}).
 
+The leave one out sensitivities provide insight into the contribution of each datastream to the base model.  While the Deb Wilson-Vandenberg index was not fit well by the model, the remove of the index results in the same directional increase in estimated 2023 spawning biomass, as the removal of the more recent onboard observer CPFV survey (Figure \ref{fig:sens-all}).  Remove all survey fleets (2 fishery-dependent and 2 fishery-independent) xxxxx.
 
 
 
