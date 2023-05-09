@@ -126,7 +126,7 @@ Chantel R. Wetzel\textsuperscript{2}\\
 Julia Coates\textsuperscript{3}\vfill
 \textsuperscript{1}Southwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Marine Fisheries Service, 110 McAllister Way, Santa Cruz, California 95060\\
 \textsuperscript{2}Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Marine Fisheries Service, 2725 Montlake Boulevard East, Seattle, Washington 98112\\
-\textsuperscript{3}.na.character\vfill
+\textsuperscript{3}California Department of Fish and Wildlife, Marine Region 1933 Cliff Drive, Suite 9, Santa Barbara, California 93109\vfill
 \trMonth{} \trYear{}
 \end{center}
 \clearpage
@@ -172,47 +172,116 @@ Correct citation for this publication:
 
 \linenumbers
 
-\newcommand\CapeM{$40^\circ 10^\prime N$}
-\newcommand\PtC{$34^\circ 27^\prime N$}
-\newcommand\CAOR{$42^\circ 00^\prime N$}
+\newcommand\CapeM{$40^\circ 10^\prime$ N. lat.}
+\newcommand\PtC{$34^\circ 27^\prime$ N. lat.}
+\newcommand\CAOR{$42^\circ 00^\prime$ N. lat.}
+
+\hypertarget{base-model-results}{%
+\subsection{Base Model Results}\label{base-model-results}}
+
+The base model described here is only for the portion of the stock copper rockfish in California from Point Conception, $34^\circ 27^\prime$ N. lat. to the California/Oregon border, $42^\circ 00^\prime$ N. lat.. Descriptions of the summed biomass and stock status for the California stock of copper rockfish are described in later sections.
+
+The base model parameter estimates along with approximate asymptotic standard errors are shown in Table \ref{tab:north-params} and the likelihood components are shown in Table \ref{tab:north-likes}. Estimates of derived reference points and approximate 95 percent asymptotic confidence intervals are shown in Table \ref{tab:north-referenceES}. Estimates of stock size and status over time are shown in Table \ref{tab:north-timeseries}.
+
+\hypertarget{parameter-estimates}{%
+\subsubsection{Parameter Estimates}\label{parameter-estimates}}
+
+Estimated parameter values are provided in Table \ref{tab:north-params}. The log(\(R_0\)) was estimated at 6.34.
+
+The northern California base model estimated reasonable growth parameters for \(k\) and lengths at age 2 and age 20 for males and females, and differed from the external estimates of growth.
+
+The direct estimation of male \(L_{age=2}=6.02\) cm was reasonable compared to female \(L_{age=20}=7.8\). While \(k\) was estimated larger for males (0.19) than females (0.15), female \(L_{age=30}\) of 55 cm was larger than males at 49 cm. These results are consistent with other studies that have looked at sex-specific growth in vermilion rockfish. The full r4ss plotting output is available in the supplementary material on the Council's website. The selectivity curves for the commercial and recreational fleet are shown in Figure \ref{fig:selex}. The commercial selectivity was estimated in two blocks of time; 1916 - 2008 and 2009 - 2022. The block in selectivity was aimed to capture the shift in observations of smaller fish in recent years (Figure \ref{fig:com-len-data}). The early block estimated a gradual slope of increasing selectivity across lengths with selectivity reaching 1.0 at the largest sizes, with the parameter hitting the upper bound of 55 cm. To reduce problems in convergence the final model fixed this parameter at cm, just below the upper bound. In recent years, commercial selectivity shifted left-ward, resulting in increased selectivity of smaller fish with peak selectivity occurring at cm. The cause of this shift in selectivity is not entirely clear but may be related to management changes shifting effort into shallower depths, the live fish fishery which favors age 3 fish (Dan Platt, personal communication), and or combined with a strong recruitment event entering the fishery that could have resulted in a shift in size targeted by the fishery.
+
+Selectivity in the recreational fishery was assumed constant across the modeled period with maximum selectivity occurring for fish of cm and greater. The peak selectivity for both fleets, commercial and recreational fishery, is less than the length-at-50 percent maturity (34.04 cm).
+
+The estimated annual recruitment and recruitment deviations are shown in Figures \ref{fig:recruits} and \ref{fig:rec-devs}. The bias adjustment applied to the annual recruimtent deviations across time is shown in Figure \ref{fig:bias-adj}. Strong recruitments are estimated to have occurred in 2008, 2009, and 2010. While there could have been three above average recruitments occurring in subsequent years, alternatively there may have been a single year with high recruitment that the model is unable to accurately assign to a single year due to the variability in length data. Above average recruitment in 2008 has been estimated in other rockfish assessments off the West Coast {[}@gertseva\_status\_2015;@hicks\_status\_2015;@wetzel\_status\_2017{]}. The stock-recruit curve resulting from a value of steepness fixed at 0.72 is shown in Figure \ref{fig:bh-curve}.
+
+\hypertarget{fits-to-the-data}{%
+\subsubsection{Fits to the Data}\label{fits-to-the-data}}
+
+\hypertarget{population-trajectory}{%
+\subsubsection{Population Trajectory}\label{population-trajectory}}
+
+Thee predicted spawning output (in millions of eggs) is given in Table \ref{tab:timeseries} and shown in Figure \ref{fig:north-ssb}. The estimated spawning output decreases sharply in the late-1970s and continues to decline until reaching low levels in the late-1990s. The spawning output slowly increases between 2000 - 2010 with the rate of population growth increasing after 2011 as fish from recent strong year-classes begin to mature. The estimate of total biomass over time is shown in Figure \ref{fig:tot-bio}.
+
+\hypertarget{reference-points}{%
+\subsubsection{Reference Points}\label{reference-points}}
+
+Reference points were calculated using the estimated selectivities and catch distribution among fleets in the most recent year of the model, 2022. Sustainable total yield (landings plus discards) was 124.05 mt when using an \(SPR_{50\%}\) reference harvest rate. The spawning output equivalent to 40\% of the unfished level (\(SB_{40\%}\)) was 194 million eggs.
+
+The 2022 spawning biomass relative to unfished equilibrium spawning biomass is just below the target of 40\% of unfished levels (Figure \ref{fig:depl}). The relative fishing intensity, \((1-SPR)/(1-SPR_{50\%})\), was near the management target in 2020, and has fluctuated around the target level for the past decade (Figure \ref{fig:1-spr} and \ref{fig:phase}).
+
+Table \ref{tab:north-referenceES} shows the full suite of estimated reference points for the base model and Figures \ref{fig:north-yield2} and \ref{fig:north-yield3} show the equilibrium yield curve and net production based on a steepness value fixed at 0.72.
 
 \hypertarget{cpfv-samples}{%
 \section{Appendix H. CPFV Fleet Description, Sampling, and Trip Types}\label{cpfv-samples}}
 
-During the 2021 copper rockfish stock assessment meeting and during the pre-assessment workshop for the 2023 groundfish assessments, concern was raised regarding possible biases in the available data by trip types. This appendix describes teh sampling and available data from two recent years as an example of the relationship between the available data and catches for copper rockfish.
+During the 2021 copper rockfish stock assessment meeting and during the pre-assessment workshop for the 2023 groundfish assessments, concern was raised regarding possible biases in the available data by trip types. This appendix describes the sampling and available data from two recent years as an example of the relationship between the available data and catches for copper rockfish.
 
-The CDFW conducts several surveys are part of the CRFS program, including an onboard observer survey, angler interviews, and a required CPFV logbook for each trip. The \href{https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=62348\&inline}{CRFS sampling manual} outlines the sampling methodologies for each survey component. The state of California allows the filleting of fish at sea; to accurately identify rockfish to species and obtain measurements of whole fish the majority of angler interviews occur onboard the vessel for the CPFV fleet.
+The CDFW conducts several surveys are part of the CRFS program, including an onboard observer survey, angler interviews, and a required CPFV logbook for each trip. The \href{https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=62348\&inline}{CRFS sampling manual} outlines the sampling methodologies for each survey component. The state of California allows the filleting of fish at sea; to accurately identify rockfish to species and obtain measurements of whole fish the majority of angler interviews occur onboard the vessel for the CPFV fleet. The CPFV fleet is not required to speciate the catch in the and only one block number is recorded per entry. For this reasons the CPFV logbook data are rarely used to develop an index of abundance for groundfish species. However, the CPFV logbook data provide insight into the spatial distribution of fishing effort.
 
-The \href{https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=36136\&inline}{California Fisheries Recreational FIsheries Survey Methods} indicates the CPFV ``sampling goal is to sample onboard at the historical sampling frequency of two to five percent of estimated CPFV trips of interest (e.g., trips targeting groundfish, inshore and coastal pelagic species) at each CPFV landing and to sample other CPFV trip types dockside.'' The CPFV fleet is not required to speciate the catch in the logbooks. For this reasons the CPFV logbook data are rarely used to develop an index of abundance for groundfish species.
+The \href{https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=36136\&inline}{California Fisheries Recreational FIsheries Survey Methods} indicates the CPFV ``sampling goal is to sample onboard at the historical sampling frequency of two to five percent of estimated CPFV trips of interest (e.g., trips targeting groundfish, inshore and coastal pelagic species) at each CPFV landing and to sample other CPFV trip types dockside.'' California is divided into six regions for the CRFS sampling, and these represent the finest stratification for catch and effort estimates (Figure @ref(fig:crfs\_districts)).
 
-The CPFV fleet north and south of Point Conception are fundamentally different in terms of the vessels fishing, available target species, and also fishery regulations over the past twenty years. The CPFVs north of Point Conception targeting groundfish to not typically target other species on the same trip, with the exception being a half day bottomfish trip mixed with a half day of Dungeness crab pot fishing. The fleet north of Fort Bodega Bay, California is dominated by smaller 6-pack vessels with limited capacity. It may not be possible for a sampler to ride onboard a 6-pack vessel if it's at capacity. Overnight trips are extremely rare in northern California.
+The CPFV fleet north and south of Point Conception are fundamentally different in terms of the vessels fishing, available target species, and also fishery regulations over the past twenty years. The CPFVs north of Point Conception targeting groundfish to not typically target other species on the same trip, with the exception being a half day bottomfish trip mixed with a half day of Dungeness crab pot fishing. The fleet north of Bodega Bay California is dominated by smaller 6-pack vessels with limited capacity. It may not be possible for a sampler to ride onboard a 6-pack vessel if it's at capacity. Overnight trips are extremely rare in northern California. In addition, it's important to note that even though Santa Barbara spans Point Conception, all of the fish are landed in San Luis Obispo county in District 3.
 
 In southern California, the diveristy of targt species is higher an includes several bass species, state managed gamefish, coastal pelagics, and highly migratory species, as well as boats that fish in Mexican waters. The trip types in southern California include 1/2 trips where a CPFV will run two trips a day, 3/4 day trips to fishing grounds further offshore, such as the Channel Islands, and overnight trips that can access areas like San Nicholas in the southern Channel Island or may be combination trips fishing for tunas, but also catching rockfish limits. The diversity of trip types and mixed target trips in southern California pose a challenge for both sampling and managing the fisheries.
 
-The tables below represent the sum of trips from 2018 and 2019 combined as they are the two years pre-COVID that best represent the CPFV fleet's activity. The total mortality in metric tons by District in 2018-2019 is similar to that over the recent time period (Table \ref{tab:catch-example}). Approximately 52\% of the total rockfish mortality is from northern California and 48\% from southern California. Within northern California, 50\% of the catch originates form District 3 and in southern Californis 81\% of the catch originates from fish landed in District 2.
+We filtered the CPFV logbook data to trips that recorded at least one rockfish and the CPFV onboard observer data to trips that encountered at least 1\% groundfish species. We aggregated within each dataset across 2018 and 2019 and areas where necessary to ensure confidentiality requirements were met. The tables below represent an aggregation of data from 2018 and 2019 combined as they are the two years pre-COVID that best represent the CPFV fleet's activity. We extracted data from the CPFV logbook data and the onboard observer sampled trips to describe the differences in portion of trips sampled and the distribution of copper rockfish catches. In the CPFV logbooks, 60 trips were recorded as multi-day trips in northern California. This represented less then 1\% of the trips in northern California and we did not investigate the accuracy of these entries. Approximately 6\% of the logbooks from District 1 recorded a block number in Mexican waters as the primary location fished. Fewer than 10 trips that recorded block numbers along the mainland of southern California were recorded a multi-day trips. These were removed from the tables below.
 
-We filtered the CPFV logbook data to trips that recorded at least one rockfish and the CPFV onboard observer data to trips that encountered at least 5\% rockfish species. We aggregated within each dataset across 2018 and 2019 and areas where necessary to ensure confidentiality requirements were met. The combined sampling rate from 2018-2019 was three percent of all CPFV trips in the data used. There were no observed trips in CRFS District 5 in 2018-2019 where 1,052 CPFV logbook records were submitted that recorded at least one rockfish.
+The combined onboard observer sampling rate for 2018-2019 was 3\% percent of all CPFV trips in the data used. There were no trips observed onboard in CRFS District 5 during 2018-2019, but 1,052 CPFV logbook records were submitted that recorded at least one rockfish. Grouping the districts by north and south of Point Conception, 2\% of all trips in northern California were sampled onboard (Table @ref(\url{tag:percent-observed})). In southern California, 4\% of single day trips were observed and less than 1\% of multi-day trips were observed.
 
-There were 60 trips recorded as multi-day trips in northern California. This represented less then 1\% of the trips in northern California and we did not investigate the accuracy of these entries. In southern California, 14\% of CPFV logbook trips were recorded as multi-day trips and 1\% of the CRFS onboard observer trips were from multi-day trips.
+We broke the data in southern California down further to explore sampling effort by trip type, and assigned a CPFV logbook entry to a region based on the recorded block number (Table \ref{tab:logbook-triptype}). The offshore region was a catch-all that included blocks outside the range of a 1/2 trip, but not within the vicinity of an island. In CRFS District 1, 79\% of the observd trips were 1/2 day trips, which can access the District 1 mainland. In District 2, 29\% of the observed trips were 1/2 day trips. The vessels in District 2 typically offer fewer 1/2 day trips and fish the nearshore when weather precludes crossing the channel to the northern Channel Islands.
 
-In CRFS District 1, 79\% of the onboard observer trips were from 1/2 day trips, whereas in District 2 this represented 29\% of the observed trips. The vessels in District 2 typically offer fewer 1/2 day trips and fish the nearshore when weather precludes a trip to the northern Channel Islands.
+To put these sampling rates in context for copper rockfish, we explored the total estimated moratlity related to the distribution of sampling. The total mortality of copper rockfish in metric tons from 2018-2019 from the CPFV fleet by CRFS District is in Table \ref{tab:catch-example}. Fifty-two percent of the total copper rockfish mortality was from northern California and 48\% from southern California. Within northern California, 50\% of the total mortality originated from District 3, and in southern California, 81\% of the total mortality originated from District 2.
 
-When weather allows, the northern Channel Islands can be accessed from CRFS District 2 during a 3/4-1 day trip or a multi-day trip, depending on the port. For instance, the CPFVs from Oxnard, California access the northern Channel Island during multi-day trips, and the same areas are accessed by the 3/4-1 day boats out of Santa Barbara Landing.
+From the onboard observer trips in District 1, 37\% of the observed coppers were from 1/2 day trips, 42\% from 3/4-1 day trips, and 21\% of the observed copper rockfish were from the five observed multi-day trips (Table \ref{tab:onboard-coppers}).
 
-Approximately 6\% of the logbooks from District 1 recorded a block number in Mexican waters as the primary location fished. Fewer than 10 trips that recorded block numbers along the mainland of southern California were recorded a multi-day trips. These were removed from the tables below.
+In District 2, 17\% of the observed copper were from 1/2 day trips, 75\% from the 3/4-1 day trips and 8\% from overnight trips. When weather allows, the northern Channel Islands can be accessed from CRFS District 2 during a 3/4-1 day trip or a multi-day trip, depending on the port. For instance, the CPFVs from Oxnard, California access the northern Channel Island during multi-day trips, and the same areas are accessed by the 3/4-1 day boats out of Santa Barbara Landing.
 
-One block number is recorded per CPFV logbook. In southern California, 70\% of the trips fishing the northern Channel Island and 57\% of the trips fishing the southern Channel Islands were recorded as single day trips.
+\newpage
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/cpfv_logbook_summaries/crfs_districts.png}
+\caption{Map of the CDFW CRFS sampling Districts.\label{fig:crfs-districts}}
+\end{figure}
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:catch-example}Catch in metric tons of copper rockfish by CRFS District for 2018 and 2019.}\\
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\caption{\label{tab:percent-observed}The percent of trips sampled onboard by trip type and area for 2018 and 2019, using the number of trips observed and CPFV logbook trips described in the text.}\\
+\toprule
+Area & Single day & Multi day\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:percent-observed}The percent of trips sampled onboard by trip type and area for 2018 and 2019, using the number of trips observed and CPFV logbook trips described in the text. \textit{(continued)}}\\
+\toprule
+Area & Single day & Multi day\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+Northern CA & 6\% & NA\\
+Southern CA & 10\% & 1\%\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\newpage
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
+\caption{\label{tab:catch-example}Total mortality in metric tons of copper rockfish from 2018 and 2019 from the CPFV fleet by CRFS District.}\\
 \toprule
 District & 2018 & 2019 & Total\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:catch-example}Catch in metric tons of copper rockfish by CRFS District for 2018 and 2019. \textit{(continued)}}\\
+\caption[]{\label{tab:catch-example}Total mortality in metric tons of copper rockfish from 2018 and 2019 from the CPFV fleet by CRFS District. \textit{(continued)}}\\
 \toprule
 District & 2018 & 2019 & Total\\
 \midrule
@@ -231,66 +300,74 @@ District & 2018 & 2019 & Total\\
 \endgroup{}
 \endgroup{}
 
+\newpage
+
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:percent-observed}The percent of observed trips by trip type and area for 2018 and 2019.}\\
+\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
+\caption{\label{tab:onboard-coppers}Number of copper rockfish observed during the CPFV trips sampled onboard by district and trip type from 2018-2019.}\\
 \toprule
-Area & Single day & Multi day\\
+District & 1/2 day trips & 3/4-1 day trips & Overnight trips\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:percent-observed}The percent of observed trips by trip type and area for 2018 and 2019. \textit{(continued)}}\\
+\caption[]{\label{tab:onboard-coppers}Number of copper rockfish observed during the CPFV trips sampled onboard by district and trip type from 2018-2019. \textit{(continued)}}\\
 \toprule
-Area & Single day & Multi day\\
+District & 1/2 day trips & 3/4-1 day trips & Overnight trips\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-Northern CA & 6\% & NA\\
-Southern CA & 10\% & 1\%\\*
+1 & 111 & 123 & 62\\
+2 & 136 & 588 & 59\\
+3 & 140 & 351 & NA\\
+4 and 6 & 12 & 138 & NA\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
+
+\newpage
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
-\caption{\label{tab:onboard-trips}Number of CPFV trips observed onboard during 2018-2019 by trip type and District.}\\
+\caption{\label{tab:onboard-trips}Number of CPFV trips sampled as part of the onboard observer sruvey during 2018-2019 by trip type and District. District 4 and 6 were combined to retain confidentiality.  No trips from District 5 were sampled.}\\
 \toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips & Percent observed with copper & Total copper observed\\
+District & 1/2 day trips & 3/4-1 day trips & Overnight trips & Percent of trips with copper & Total number of copper observed\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:onboard-trips}Number of CPFV trips observed onboard during 2018-2019 by trip type and District. \textit{(continued)}}\\
+\caption[]{\label{tab:onboard-trips}Number of CPFV trips sampled as part of the onboard observer sruvey during 2018-2019 by trip type and District. District 4 and 6 were combined to retain confidentiality.  No trips from District 5 were sampled. \textit{(continued)}}\\
 \toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips & Percent observed with copper & Total copper observed\\
+District & 1/2 day trips & 3/4-1 day trips & Overnight trips & Percent of trips with copper & Total number of copper observed\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-1 & 391 & 104 & 4 & 24\% & 296\\
-2 & 36 & 87 & 4 & 76\% & 783\\
-3 & 86 & 55 & NA & 99\% & 864\\
+1 & 435 & 119 & 5 & 21\% & 296\\
+2 & 36 & 93 & 4 & 72\% & 783\\
+3 & 86 & 55 & NA & 67\% & 864\\
 4 and 6 & 10 & 69 & NA & 61\% & 150\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
 
+\newpage
+
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:logbook-triptype}Number of CPFV logbook entries with at least one rockfish grouped by region fishedand trip type during 2018-2019 by trip type and District.}\\
+\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
+\caption{\label{tab:logbook-triptype}Number of CPFV logbook entries with at least one rockfish, grouped by region fished and trip type from 2018-2019.}\\
 \toprule
 Region & Multi-day & Single day\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:logbook-triptype}Number of CPFV logbook entries with at least one rockfish grouped by region fishedand trip type during 2018-2019 by trip type and District. \textit{(continued)}}\\
+\caption[]{\label{tab:logbook-triptype}Number of CPFV logbook entries with at least one rockfish, grouped by region fished and trip type from 2018-2019. \textit{(continued)}}\\
 \toprule
 Region & Multi-day & Single day\\
 \midrule
