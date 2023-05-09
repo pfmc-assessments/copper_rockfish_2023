@@ -2,7 +2,7 @@
 
 
 ```{r, echo=FALSE, results='asis'}
-filein = file.path(getwd(), "shared_text",'crfs_cpfv_index.Rmd')
+filein = file.path(doc_dir, "shared_text",'21f_crfs_cpfv_index.Rmd')
 read_child(filein)
 ```
 
