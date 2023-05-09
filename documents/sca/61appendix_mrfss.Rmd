@@ -1,3 +1,6 @@
+<!-- 
+
+
 # Appendix B. MRFSS CPFV Dockside Index of Abundance {#mrfss-cpfv-index}
 
 ```{r, echo=FALSE, results='asis'}
@@ -102,11 +105,10 @@ to Santa Cruz ("N") and 2) Monterey to San Luis Obispo ("C"). For assessment mod
 of Point Conception, the region represents individual counties. Note that Santa Barbara 
 county spans north and south of Point Conception, but all accessible fishing ports in Santa Barbara county are south of Point Conception and vessels rarely (if ever) transit Point Conception.  Indices with a year and area interaction were not considered in model selection; trends in the average CPUE by region were similar in the filtered data set (Figure \@ref(fig:fig-areacpue-mrfss)). 
 
-<!--For models that span counties north and south of Pt. Conception, Santa Barbara to 
-San Diego counties compose a third region ("S"). 
--->
 
 The positive observations were modeled with a Lognormal distribution 
 that was selected over a Gamma model
 by a $\Delta AIC$ of 51.8, and supported by Q-Q plots of the positive observations fit to both distributions (Figure \@ref(fig:fig-dist-fits-mrfss)).  The delta-GLM
 method allows selection of differing linear predictors between the binomial and positive models. Based on AIC values from maximum likelihood fits, 
+
+-->

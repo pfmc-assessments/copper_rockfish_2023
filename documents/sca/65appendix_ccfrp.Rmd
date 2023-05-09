@@ -29,7 +29,7 @@ the six year time series inside and outside of the MPA both show a decline in co
 A negative binomial model was fit to the drift-level data (catch with a log offset for angler 
 hours). Because the average observed CPUE among the MPAs indicated differing trends, we explore 
 a region:year interaction, which was not significant. The model selected by AICc included depth, 
-depth squared, region and MPA or reference site \@ref(tab:ccfrp-model)), The final model included
+depth squared, region and MPA or reference site \@ref(tab:ccfrp-model-selection)), The final model included
 year, mpa/reference categorization, depth, depth squared, and a year:mpa/reference interaction. 
 The model was fit using the sdmTMB R package. The final index (Table \@ref(tab:ccfrp-index)) represents a similar trend to the unstandardized average CPUE (Figure \@ref(fig:ccfrp-index)).
 

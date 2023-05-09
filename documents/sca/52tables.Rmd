@@ -268,16 +268,6 @@ create_biomass_table(
 
 
 <!-- ======================================================= -->
-<!-- ********  Reference Points & Management *************** --> 
-<!-- ======================================================= -->
-
-\include{tex_tables/south_e_ReferencePoints.tex}
-
-\newpage
-
-
-
-<!-- ======================================================= -->
 <!-- ****************     Sensitivities      *************** --> 
 <!-- ======================================================= -->
 
@@ -299,6 +289,14 @@ create_biomass_table(
 <!-- ======================================================= -->
 <!-- ********  Reference Points & Management *************** --> 
 <!-- ======================================================= -->
+
+\include{tex_tables/south_e_ReferencePoints.tex}
+
+\newpage
+
+\include{tex_tables/north_e_ReferencePoints.tex}
+
+\newpage
 
 
 ```{r, results = 'asis'}
