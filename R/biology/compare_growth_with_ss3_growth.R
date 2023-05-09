@@ -1,5 +1,7 @@
 library(here)
 
+external_fits <- read.csv(file.path(here(), "data","biology","external_vb_predictions.csv"))
+
 ages <- 1:50
 a.linear <- 1
 L1f <- 21.4
@@ -59,11 +61,11 @@ len[(a.linear+2):max(ages), 1] <- Linf_f+(L1f-Linf_f)*exp(-kf*((seq(a.linear+2,m
 #=======================================================================
 colors <- viridis::viridis(2)
 
-HandyCode::pngfun(wd = file.path(here(), "data", "biology", "plots"), 'north_external_schnute_model_estiamted.png.png', w = 10, h = 7)
+pngfun(dir = file.path(here(), "data", "biology", "plots"), 'north_external_schnute_model_estiamted.png.png', w = 10, h = 7)
 
-plot(ages, len_m, type = 'l', col = colors[1], lwd = 2, ylim = c(0, 55),
+plot(ages, external_fits$north_m[1:50], type = 'l', col = colors[1], lwd = 2, ylim = c(0, 55),
      ylab = "Length (cm)", xlab = "Age")
-lines(ages, len_f, lty = 1, col = colors[2], lwd = 2)
+lines(ages, external_fits$north_f[1:50], lty = 1, col = colors[2], lwd = 2)
 lines(1:50, len[,2], lty = 2, col = colors[1], lwd = 2)
 lines(1:50, len[,1], lty = 2, col = colors[2], lwd = 2)
 legend('bottomright', bty = 'n', lty = c(1,1,2,2), col = c(colors[1:2], colors[1:2]), lwd = 2, 

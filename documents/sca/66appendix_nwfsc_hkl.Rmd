@@ -58,4 +58,4 @@ caption = "Residuals by sample location and year.",
 label = 'nwfsc-hkl-resid-2')
 ```
 
-
+\newpage

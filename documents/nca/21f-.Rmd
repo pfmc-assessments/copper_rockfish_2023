@@ -1,6 +1,6 @@
 ## Fishery-Dependent Data
 
-### Commercial Fishery
+### Commercial Fishery {#commercial-fishery}
 
 #### Landings and Discards
 \
@@ -12,7 +12,7 @@ read_child(filein)
 ```
 
 
-#### Composition Data {#commercial-fishery}
+#### Composition Data 
 \
 
 Biological data were extracted from the PacFIN Biological Data System on March 20, 2023. Length data for the commercial fleet were extracted from the PacFIN Biological Data System (BDS) with samples from north↨ of Point Conception beginning in 1978 (Tables \ref{tab:dead-com-len} and \ref{tab:live-com-len}). The commercial data was split by landed condition, live or dead, with the first data for the live fish fishery beginning in 1994. The number of length samples by fleet were highly variable with the largest number of samples by year being recorded in the 1990s for the dead fish fishery. In recent years, the number of length samples by year are limited for both fleets with annual sample sizes less than 100 per year. The number of samples prior to the 1990s and in the 2000s for the dead fish fishery were sparse and variable across sizes. During model explorations any years with less than 20 sampled fish were considered too sparse to accurately reflect the fleet selectivity for that year (see [Appendix A](#excluded-data) for implied fits to these lengths). 
@@ -31,7 +31,7 @@ Input effN = $7.06 * N_{\text{trips}}$ if $N_{\text{fish}}/N_{\text{trips}}$ is 
 
 \end{centering}
 
-### Recreational Fishery
+### Recreational Fishery {#recreational-fishery}
 
 #### Landings and Discards
 \
@@ -74,7 +74,7 @@ The CRFS CPFV index of abundance was low in the early years of the time-series b
 Catch and effort data from CRFS dockside sampling of private boats from 2004-2019 and 2021-2022 were provided by CDFW for use in this assessment. The data include catch (number of fish) by species, number of anglers (i.e., effort units are angler trips), angler-reported distance from shore (Area X: inside/outside of 3 nm), county, port, interview site, year, month, and CRFS district. Only data through 2019 were used to develop an index of abundance due to potential changes in angler behavior in 2021 and management changes in 2022. See [Appendix D](#crfs-pr-index) for details on the data filtering, processing, and model selection. The CRFS PR index of abundance generally increased between 2004-2016, with the final years of the index stabilizing or slightly declining (Figure \ref{fig:crfs-pr-index-main}).
 
 
-#### Composition Data {#recreational-fishery}
+#### Composition Data 
 \
 
 Length compositions were available from the following sources: 

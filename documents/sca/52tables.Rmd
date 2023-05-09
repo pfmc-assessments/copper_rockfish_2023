@@ -224,13 +224,24 @@ table_format(x = mod_params,
 
 \newpage
 
+
 <!-- ======================================================= -->
-<!-- ********  Reference Points & Management *************** --> 
+<!-- ***********   Data Weights         ******************** --> 
 <!-- ======================================================= -->
 
-\include{tex_tables/south_e_ReferencePoints.tex}
 
-\newpage
+```{r, results = 'asis'}
+tab <- read.csv(file.path(sens_dir, "data_weights.csv"))
+col_names <- c("Fleet", "Data Type", "Francis", "MI", "Dirichlet")
+
+sa4ss::table_format(x = tab,
+             caption = "Suggested data weights for each data weighting methodology by fleet and data type.",
+             label = "dw",
+             align = 'l',
+             digits = 2,
+             col_names = col_names) 
+```
+
 
 
 <!-- ======================================================= -->
@@ -249,10 +260,21 @@ create_biomass_table(
     prefix = NULL,
     doc_names = c("nca", 'sca'),
     years = 1916:2023)
+# tab:ca-status
 
 ```
 
 \newpage
+
+
+<!-- ======================================================= -->
+<!-- ********  Reference Points & Management *************** --> 
+<!-- ======================================================= -->
+
+\include{tex_tables/south_e_ReferencePoints.tex}
+
+\newpage
+
 
 
 <!-- ======================================================= -->
@@ -263,23 +285,7 @@ create_biomass_table(
 \include{tex_tables/sensitivities_1_final.tex}
 
 
-
 \newpage
-
-
-
-```{r, results = 'asis'}
-tab <- read.csv(file.path(sens_dir, "data_weights.csv"))
-col_names <- c("Fleet", "Data Type", "Francis", "MI", "Dirichlet")
-
-sa4ss::table_format(x = tab,
-             caption = "Suggested data weights for each data weighting methodology by fleet and data type.",
-             label = "dw",
-             align = 'l',
-             digits = 2,
-             col_names = col_names) 
-```
-
 
 
 \include{tex_tables/sensitivities_2_final.tex}

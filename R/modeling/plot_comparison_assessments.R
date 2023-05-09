@@ -13,7 +13,7 @@ north_base <- "9.8_selex_fix"
 #===============================================================================
 
 dir_2013 = "E:/Assessments/2021/copper_rockfish_2021/models/ca_s_pt_c/_bridge"
-model_2013 = SS_output(file.path(dir_2013, "1.0_single_sex_growth"))
+model_2013 = SS_output(file.path(dir_2013, "1.1_single_sex_growth_fecund"))
 
 dir_2021 = "E:/Assessments/2021/copper_rockfish_2021/models/ca_s_pt_c/12.1_base"
 model_2021 <- SS_output(dir_2021)

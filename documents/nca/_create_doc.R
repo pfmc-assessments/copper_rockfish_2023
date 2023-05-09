@@ -7,8 +7,8 @@ library(here)
 #devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 
 # Specify the directory for the document
-north_model_name <- "9.8_selex_fix"
-south_model_name <- "14.0_base"
+north_model_name <- "9.8_selex_fix_forecast"
+south_model_name <- "14.0_base_forecast"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -20,29 +20,38 @@ if( grepl("Chantel", user) ){
 # Based on the user
 doc_dir <- file.path(user_dir, "documents")
 
+assess_dir <- "S:/copper_rockfish_2023"
 #bridging model
-bridge_dir <- here("models", "nca", "_bridging")
+#bridge_dir <- here("models", "nca", "_bridging")
+bridge_dir <- file.path(assess_dir, "models", "nca", "_bridging")
 
 #point to the northern model for document
-model_dir <- here("models", "nca", north_model_name)
+#model_dir <- here("models", "nca", north_model_name)
+model_dir <- file.path(assess_dir, "models", "nca", north_model_name)
 
 #point to both models for documentsection
-north_model_dir <- here("models", "nca", north_model_name)
-south_model_dir <- here("models", "sca", south_model_name)
+#north_model_dir <- here("models", "nca", north_model_name)
+#south_model_dir <- here("models", "sca", south_model_name)
+north_model_dir <- file.path(assess_dir, "models", "nca", north_model_name)
+south_model_dir <- file.path(assess_dir, "models", "sca", south_model_name)
 
 #north model sensitivities
-sens_dir <- here("models", "nca", "_sensitivities")
+#sens_dir <- here("models", "nca", "_sensitivities")
+sens_dir <-file.path(assess_dir, "models", "nca", "_sensitivities")
 
 #management
-management_dir <- here("management")
+#management_dir <- here("management")
+management_dir <- file.path(assess_dir, "management")
+
 #data
-data_dir<- here("data")
-r_dir <- here("R")
+#data_dir<- here("data")
+data_dir<- file.path(assess_dir, "data")
+#r_dir <- here("R")
 
 #save to Rdata file
 save(model_dir, bridge_dir, doc_dir, data_dir, management_dir, north_model_dir, south_model_dir,
      sens_dir, south_model_name, north_model_name,
-     file = file.path(doc_dir, "sca", "saved_directories.Rdata"))
+     file = file.path(doc_dir, "nca", "saved_directories.Rdata"))
 
 setwd(file.path(doc_dir, "nca"))
 
@@ -84,12 +93,12 @@ bookdown::render_book("00a.Rmd",
 # Read in a new model ----
 # Create a model Rdata object and executive summary ES tex files
 #===============================================================================
-read_model(
-  mod_loc = south_model_dir,
-  add_prefix = "south",
-  add_text = "south of Point Conception",
-  create_plots = FALSE, 
-  save_loc = file.path(doc_dir, "nca", "tex_tables"))
+#read_model(
+#  mod_loc = south_model_dir,
+#  add_prefix = "south",
+#  add_text = "south of Point Conception",
+#  create_plots = FALSE, 
+#  save_loc = file.path(doc_dir, "sca", "tex_tables"))
 
 read_model(
   mod_loc = north_model_dir,

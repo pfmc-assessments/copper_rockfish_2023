@@ -7,8 +7,8 @@ devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/sa4ss")
 devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 
 # Specify the directory for the document
-south_model_name <- "14.0_base"
-north_model_name <- "9.8_selex_fix"
+south_model_name <- "14.0_base_forecast"
+north_model_name <- "9.8_selex_fix_forecast"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -81,7 +81,7 @@ read_model(
   add_prefix = "north",
   add_text = "north of Point Conception",
   create_plots = FALSE, 
-  save_loc = file.path(doc_dir, "sca",  "tex_tables"))
+  save_loc = file.path(doc_dir, "nca",  "tex_tables"))
 
 # Create a management projection table from both of the the sub-area models
 
