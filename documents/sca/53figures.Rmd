@@ -732,7 +732,7 @@ label = 'bias-adjust')
 add_figure(
 filein = file.path(model_dir, "plots",  "comp_lenfit__aggregated_across_time.png"), 
 caption = "Length composition aggregated across years by fleet with the model estimated fit to the data by sex (green unsexed, red female, and blue male).",
-label = 'len-len-agg-fit')
+label = 'len-agg-fit')
 ```
 
 \pagebreak
