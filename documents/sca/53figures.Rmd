@@ -207,6 +207,8 @@ label = 'ref-mpa')
 ```
 
 \pagebreak
+
+
 <!-- ======================================================= -->
 <!-- ***************     CCFRP           ******************* --> 
 <!-- ======================================================= -->
@@ -214,7 +216,7 @@ label = 'ref-mpa')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "south", "area_weighted", "Index.png"), 
-caption = "Estimated index of abundance from the CCFRP survey",
+caption = "Estimated index of abundance from the CCFRP Hook and LIne survey",
 label = 'ccfrp-index-main')
 ```
 
@@ -223,7 +225,7 @@ label = 'ccfrp-index-main')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_bubflt5mkt0.png"), 
-caption = "Length composition data from the CCFRP survey",
+caption = "Length composition data from the CCFRP Hook and Line survey",
 label = 'ccfrp-len-data')
 ```
 
@@ -232,7 +234,7 @@ label = 'ccfrp-len-data')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_gstagedat_bubflt5mkt0.png"), 
-caption = "Age composition data from the CCFRP survey",
+caption = "Age composition data from the CCFRP Hook and Line survey",
 label = 'ccfrp-age-data')
 ```
 
@@ -241,7 +243,7 @@ label = 'ccfrp-age-data')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_CCFRP.png"), 
-caption = "Mean length for the CCFRP survey with 95 percent confidence intervals",
+caption = "Mean length for the CCFRP Hook and Line survey with 95 percent confidence intervals",
 label = 'ccfrp-mean-len-data')
 ```
 
@@ -381,6 +383,17 @@ label = 'mean-rov-len-data')
 ```
 
 \pagebreak
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "index9_standcpueall.png"), 
+caption = "Standardized indices overlaid with each index rescaled to have a mean observation equal to 1.0. Note, the MRFSS CPFV (Rec_CPFV) fishery-dependent index of abundance was not fit in the model but is included here for illustration.",
+label = 'stand-cpue')
+```
+
+\pagebreak
+
 
 <!-- ======================================================= -->
 <!-- ***************     Growth Data      ****************** --> 
@@ -637,6 +650,7 @@ caption = "Assumed weight-length relationship for each sex.",
 label = 'est-len-wght')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -712,6 +726,17 @@ label = 'bias-adjust')
 <!-- ====================================================================== -->
 <!-- *************** Fit to the Length & Age Data  ************************ --> 
 <!-- ====================================================================== -->
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots",  "comp_lenfit__aggregated_across_time.png"), 
+caption = "Length composition aggregated across years by fleet with the model estimated fit to the data by sex (green unsexed, red female, and blue male).",
+label = 'len-len-agg-fit')
+```
+
+\pagebreak
+
 
 ```{r, results = 'asis'}
 add_figure(
@@ -815,7 +840,7 @@ label = 'rec-pr-mean-len-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt5mkt0.png"), 
-caption = "Pearson residuals for CCFRP survey length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for CCFRP Hook and Line survey length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'ccfrp-len-pearson')
 ```
 
@@ -824,7 +849,7 @@ label = 'ccfrp-len-pearson')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_CCFRP.png"), 
-caption = "Mean length for CCFRP survey lengths with 95 percent confidence intervals based on current samples sizes",
+caption = "Mean length for CCFRP Hook and Line survey lengths with 95 percent confidence intervals based on current samples sizes",
 label = 'ccfrp-mean-len-fit')
 ```
 
@@ -833,7 +858,7 @@ label = 'ccfrp-mean-len-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAAlfit_residsflt5mkt0.png"), 
-caption = "Pearson residuals for CCFRP survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for CCFRP Hook and Line survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'ccfrp-age-pearson')
 ```
 
@@ -911,11 +936,31 @@ label = 'nwfsc-hkl-mean-age-fit')
 
 \pagebreak
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt9mkt0.png"), 
+caption = "Pearson residuals for NWFSC WCGBT survey fleet length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'wcgbt-len-pearson')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_WCGBT_Growth.png"), 
+caption = "Mean length for the NWFSC WCGBT survey lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'wcgbt-mean-len-fit')
+```
+
+\pagebreak
+
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt9mkt0_page1.png"), 
-caption = "Pearson residuals for the growth conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-label = 'growth-age-pearson-1')
+caption = "Pearson residuals for the NWFSC WCGBT survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'wcgbt-age-pearson-1')
 ```
 
 \pagebreak
@@ -923,8 +968,8 @@ label = 'growth-age-pearson-1')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt9mkt0_page2.png"), 
-caption = "Pearson residuals for the growth conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-label = 'growth-age-pearson-2')
+caption = "Pearson residuals for the NWFSC WCGBT survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'wcgbt-age-pearson-2')
 ```
 
 \pagebreak
@@ -932,46 +977,71 @@ label = 'growth-age-pearson-2')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt9mkt0_page3.png"), 
-caption = "Pearson residuals for the growth conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-label = 'growth-age-pearson-3')
+caption = "Pearson residuals for the NWFSC WCGBT survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'wcgbt-age-pearson-3')
 ```
 
 \pagebreak
+
 
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_data_weighting_TA1.8_condAgeWCGBT_Growth.png"), 
-caption = "Mean age for the growth age data with 95 percent confidence intervals based on current samples sizes",
-label = 'growth-mean-age-fit-wcgbt')
+caption = "Mean age for the NWFSC WCGBT survey age data with 95 percent confidence intervals based on current samples sizes",
+label = 'wcgbt-mean-age-fit')
 ```
 
 \pagebreak
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt10mkt0.png"), 
+caption = "Pearson residuals for Pearson and CPFV cooperative collection length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'coop-len-pearson')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_COOP_Growth.png"), 
+caption = "Mean length for the Pearson and CPFV cooperative collection lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'coop-mean-len-fit')
+```
+
+\pagebreak
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt10mkt0.png"), 
+caption = "Pearson residuals for the Pearson and CPFV cooperative collection conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'coop-age-pearson')
+```
+
+\pagebreak
+
 
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_data_weighting_TA1.8_condAgeCOOP_Growth.png"), 
-caption = "Mean age for the growth age data with 95 percent confidence intervals based on current samples sizes",
-label = 'growth-mean-age-fit')
+caption = "Mean age for the Pearson and CPFV cooperative collection age data with 95 percent confidence intervals based on current samples sizes",
+label = 'coop-mean-age-fit')
 ```
 
 \pagebreak
+
+
 <!-- ======================================================= -->  
 <!-- ************* Fit to the Indices ********************** --> 
 <!-- ======================================================= -->
 
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_CPFV.png"), 
-caption = "Fit to log index data on log scale for the recreational (MRFSS) CPFV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
-label = 'mrfss-cpfv-index-fit')
-```
-
-\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_CRFS_CPFV.png"), 
-caption = "Fit to log index data on log scale for the recreational CRFS CPFV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+caption = "Fit to log index data on log scale for the recreational CRFS CPFV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.",
 label = 'crfs-cpfv-index-fit')
 ```
 
@@ -980,7 +1050,7 @@ label = 'crfs-cpfv-index-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_Private.png"), 
-caption = "Fit to log index data on log scale for the recreational private index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+caption = "Fit to log index data on log scale for the recreational private index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.",
 label = 'crfs-pr-index-fit')
 ```
 
@@ -989,7 +1059,7 @@ label = 'crfs-pr-index-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_CCFRP.png"), 
-caption = "Fit to log index data on log scale for the CCFRP index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+caption = "Fit to log index data on log scale for the CCFRP Hook and Line survey index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.",
 label = 'ccfrp-index-fit')
 ```
 
@@ -998,7 +1068,7 @@ label = 'ccfrp-index-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_CDFW_ROV.png"), 
-caption = "Fit to log index data on log scale for the CDFW ROV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+caption = "Fit to log index data on log scale for the CDFW ROV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.",
 label = 'rov-index-fit')
 ```
 
@@ -1007,7 +1077,7 @@ label = 'rov-index-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_NWFSC_HKL.png"), 
-caption = "Fit to log index data on log scale for the NWFSC Hook and Line index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+caption = "Fit to log index data on log scale for the NWFSC Hook and Line index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.",
 label = 'nwfsc-hkl-index-fit')
 ```
 
@@ -1023,7 +1093,7 @@ label = 'nwfsc-hkl-index-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
-caption = "Estimated time series of spawning biomass",
+caption = "Estimated time series of spawning output for the area south of Point Conception in California.",
 label = 'ssb')
 ```
 
@@ -1032,7 +1102,7 @@ label = 'ssb')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "ts1_Total_biomass_(mt).png"), 
-caption = "Estimated time series of total biomass",
+caption = "Estimated time series of total biomass for the area south of Point Conception in California",
 label = 'tot-bio')
 ```
 
@@ -1041,7 +1111,7 @@ label = 'tot-bio')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "ts9_Relative_spawning_output_intervals.png"), 
-caption = "Estimated time series of fraction of unfished spawning biomass",
+caption = "Estimated time series of relative spawning output for the area south of Point Conception in California",
 label = 'depl')
 ```
 
@@ -1063,7 +1133,7 @@ label = 'sb-all')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "depletion_combined.png"), 
-caption = "Estimated combined time series of fraction of relative spawning output for copper rockfish in California waters",
+caption = "Estimated combined time series of relative spawning output for copper rockfish in California waters",
 label = 'depl-all')
 
 ```
