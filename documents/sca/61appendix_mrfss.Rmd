@@ -9,25 +9,7 @@ filein = file.path(doc_dir, "shared_text",'21f_mrfss_index.Rmd')
 read_child(filein)
 ```
 
-From 1980 to 2003 the MRFSS program conducted dockside intercept surveys of the 
-recreational CPFV fishing fleet. No MRFSS CPUE data are available for the years 
-1990-1992, due to a hiatus in sampling related to funding issues. Sampling of 
-California CPFVs north of Point Conception was further delayed, and CPFV samples 
-in 1993 and 1994 are limited to San Luis Obispo County. 
-For purposes of this assessment, the MRFSS time series was truncated at 1999 due 
-to sampling overlap with the 
-onboard observer program, i.e., the same observer samples the catch while 
-onboard the vessel and also conducts the dockside intercept survey for 
-the same vessel.  The onboard observer data provide higher resolution data of retained 
-and discarded catch.
-
-Each entry in the RecFIN Type 3 database corresponds to a 
-single fish examined by a sampler at a particular survey site. Since only a 
-subset of the catch may be sampled, each record also 
-identifies the total number of that species possessed by the group of anglers 
-being interviewed.  The number of anglers and the hours fished are also recorded. 
-The data, as they exist in RecFIN, do not indicate which records 
-belong to the same boat trip. A description of the algorithms and process used to 
+A description of the algorithms and process used to 
 aggregate the RecFIN records to the trip level is outlined in the Supplemental Materials 
 (“Identifying Trips in RecFIN”).
 
@@ -56,15 +38,7 @@ kelp bass, Pacific bonito, white croaker, California sheephead, and barred sandb
 While the filter is useful in identifying co-occurring or non-occurring species 
 assuming all effort was exerted in pursuit of a single target, the targeting of 
 more than one species or species complex ("mixed trips") can result in co-occurrence of species in the catch that do not truly co-occur in terms of habitat
-associations informative for an index of abundance. Stephens and MacCall 
-[-@stephens_multispecies_2004] recommended including all trips above a threshold where the 
-false negatives and false positives are equally balanced.  However, this does 
-not have any biological relevance and for this data set, and we assume that if a 
-copper rockfish was landed, the anglers fished in appropriate habitat, 
-especially given copper rockfish is strongly associated with rocky habitat.
-
-
-Stephens and MacCall [-@stephens_multispecies_2004] proposed filtering (excluding) trips from the index 
+associations informative for an index of abundance. Stephens and MacCall [-@stephens_multispecies_2004] proposed filtering (excluding) trips from the index 
 standardization based on a criterion of balancing the number of false positives 
 and false negatives. False positives (FP) are trips that are predicted to catch 
 a copper rockfish based on the species composition of the catch, but did not. False 
