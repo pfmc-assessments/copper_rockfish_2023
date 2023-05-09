@@ -35,7 +35,7 @@ category due to the social distancing requirements (Table \@ref(tab:pr-rfgen)). 
 implemented a one fish sub-bag 
 limit for copper rockfish in 2022 and the qauntiles and distribution of CPUE suggest that this 
 regulation change impacted fishing behavior in the private boat fleet (Table \@ref(tab:pr-cpue) and 
-Figure \@ref(pr-bag)).
+Figure \@ref(fig:pr-bag)).
 
 The angler reported water area was restricted to ocean areas in U.S. waters 
 and a reported primary gear 
@@ -43,11 +43,7 @@ of hook-and-line or troll gear.  A number of trips with the primary gear reporte
 a secondary gear of hook-and-line. To determine if the angler(s) interviewed targeted rockfish and
 fished in rocky habitat, we retained trips if the angler reported the primary target species 
 as rockfish or bottomfish or if rockfish was reported as the secondary target species. This filter 
-replaced the Stephens-MacCall [@stephens_multispecies_2004] filtering approach.
-
-We retained 13,340 angler interviews for 
-index standardization, with 3,739 included sampled examined copper rockfish
-(Table \@ref(tab:pr-filter)).  
+replaced the Stephens-MacCall [@stephens_multispecies_2004] filtering approach.We retained 13,340 angler interviews for index standardization, with 3,739 included sampled examined copper rockfish (Table \@ref(tab:pr-filter)).  
 
 We modeled retained catch per angler days with a negative binomial GLM in the R package sdmTMB.
 The QQ plots indicate a reasonable fit (Figure \@ref(fig:pr-qq)).  There are a handful of samples 

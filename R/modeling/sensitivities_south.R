@@ -62,9 +62,9 @@ sens_2  <- SS_output( file.path(wd, model_list[2]), printstats = FALSE, verbose 
 sens_3  <- SS_output( file.path(wd, model_list[3]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens_4  <- SS_output( file.path(wd, model_list[4]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens_5  <- SS_output( file.path(wd, model_list[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-#sens_6  <- SS_output( file.path(wd, model_list[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens_6  <- SS_output( file.path(wd, model_list[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens_7  <- SS_output( file.path(wd, model_list[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_8  <- SS_output( file.path(wd, model_list[8]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+#sens_8  <- SS_output( file.path(wd, model_list[8]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 
 sens2_1  <- SS_output( file.path(wd, model_list2[1]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_2  <- SS_output( file.path(wd, model_list2[2]), printstats = FALSE, verbose = FALSE, covar = FALSE)
@@ -109,7 +109,7 @@ modelnames3 <- c("Base Model",
                  "Rm. NWFSC HKL Index",
                  "Rm. All Surveys")
 
-x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_7, sens_8))
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
 x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6))
 x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7))
 
@@ -118,7 +118,7 @@ SSplotComparisons(x,
                   legendlabels = modelnames, 
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
-                  filenameprefix = paste0(base_model, "_final_1_"),
+                  filenameprefix = paste0(base_model, "_forecast_final_1_"),
                   subplot = c(2,4), 
                   btarg = -1,
                   minbthresh = -1,
@@ -129,7 +129,7 @@ SSplotComparisons(x,
                   legendlabels = modelnames, 
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topleft", 
-                  filenameprefix = paste0(base_model, "_final_1_"),
+                  filenameprefix = paste0(base_model, "_forecast_final_1_"),
                   subplot = c(11), 
                   print = TRUE)
 
@@ -139,7 +139,7 @@ SSplotComparisons(x2,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_final_2_"),
+                  filenameprefix = paste0(base_model, "_forecast_final_2_"),
                   subplot = c(2,4), 
                   btarg = -1,
                   minbthresh = -1,
@@ -151,7 +151,7 @@ SSplotComparisons(x2,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topleft", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_final_2_"),
+                  filenameprefix = paste0(base_model, "_forecast_final_2_"),
                   subplot = c(11), 
                   print = TRUE)
 
@@ -161,7 +161,7 @@ SSplotComparisons(x3,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_final_3_"),
+                  filenameprefix = paste0(base_model, "_forecast_final_3_"),
                   subplot = c(2,4), 
                   btarg = -1,
                   minbthresh = -1,
@@ -173,7 +173,7 @@ SSplotComparisons(x3,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topleft", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_final_3_"),
+                  filenameprefix = paste0(base_model, "_forecast_final_3_"),
                   subplot = c(11), 
                   print = TRUE)
 
@@ -205,7 +205,7 @@ modelnames <- c("Base Model",
                  "Rm. NWFSC HKL Index",
                  "Rm. All Surveys")
 
-x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_7, sens_8,
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7,
                       sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, 
                       sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7))
 
@@ -236,7 +236,7 @@ Sensi_plot_dover(model.summaries=x,
 # Create a Table of Results
 ###################################################################################
 
-x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_7, sens_8))
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
 modelnames <- c("Base Model",
                 "Estimate M",
                 "Estimate h", 

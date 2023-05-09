@@ -74,8 +74,8 @@ multi-day trips may target multiple target species, i.e., tuna and rockfish, dep
 
 Indices were fit via MLE from the sdmTMB package in R. The QQ plot fot the negative binoimal 
 model indicated a poor fit to the data, which as not surprising given the low percent of 
-observed drifts encountering copper rockfish. A delta-Lognormal 
-was selected over a delta-gamma by a delta AIC of xxxxx.  The QQ plot indicated a much improved fit compared to the negative 
+observed drifts encountering copper rockfish. A delta-lognormal 
+was selected over a delta-gamma based on AIC.  The QQ plot indicated a much improved fit compared to the negative 
 binomaial model (Table \@ref(fig:onboard-qq)).
 
 The final index was weighted based on the estimates of rocky substrate within each of the four regions. 

@@ -7,8 +7,8 @@ library(here)
 #devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 
 # Specify the directory for the document
-north_model_name <- "9.8_selex_fix"
-south_model_name <- "14.0_base"
+north_model_name <- "9.8_selex_fix_forecast"
+south_model_name <- "14.0_base_forecast"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -51,7 +51,7 @@ data_dir<- file.path(assess_dir, "data")
 #save to Rdata file
 save(model_dir, bridge_dir, doc_dir, data_dir, management_dir, north_model_dir, south_model_dir,
      sens_dir, south_model_name, north_model_name,
-     file = file.path(doc_dir, "sca", "saved_directories.Rdata"))
+     file = file.path(doc_dir, "nca", "saved_directories.Rdata"))
 
 setwd(file.path(doc_dir, "nca"))
 
@@ -93,12 +93,12 @@ bookdown::render_book("00a.Rmd",
 # Read in a new model ----
 # Create a model Rdata object and executive summary ES tex files
 #===============================================================================
-read_model(
-  mod_loc = south_model_dir,
-  add_prefix = "south",
-  add_text = "south of Point Conception",
-  create_plots = FALSE, 
-  save_loc = file.path(doc_dir, "nca", "tex_tables"))
+#read_model(
+#  mod_loc = south_model_dir,
+#  add_prefix = "south",
+#  add_text = "south of Point Conception",
+#  create_plots = FALSE, 
+#  save_loc = file.path(doc_dir, "sca", "tex_tables"))
 
 read_model(
   mod_loc = north_model_dir,

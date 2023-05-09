@@ -48,6 +48,7 @@ Spp <- "Copper rockfish"
 hkl <- "NWFSC Hook and Line survey"
 wcgbt <- "NWFSC WCGBT survey"
 area <- "south of Point Conception"
+model.area <- "south"
 
 load(file.path(doc_dir, "nca", "00mod.Rdata"))
 north_model <- model
@@ -69,7 +70,7 @@ sb0 <- south_model$derived_quants[south_model$derived_quants$Label == "SSB_Virgi
   north_model$derived_quants[north_model$derived_quants$Label == "SSB_Virgin", "Value"]
 
 sb <-  round(sb1 + sb2, 2)
-depl <- round(quants[,2] / sb0, 2)
+depl <- round(sb / sb0, 2)
 quants <- data.frame(year = years, 
                      sb = sb, 
                      depl = depl)
