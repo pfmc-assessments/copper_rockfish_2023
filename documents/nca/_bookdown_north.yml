@@ -15,18 +15,18 @@ rmd_files: ['00a.Rmd',
 #             '22biology.Rmd',
 #              '23enviro.Rmd',
 #             '40management.Rmd',
+              '33results.Rmd',
 #             '61appendix_mrfss.Rmd',
 #            '62appendix_crfs_onboard.Rmd',
 #            '63appendix_dwv_cpfv.Rmd'
 #             '64appendix_crfs_dockside.Rmd',
 #            '65appendix_ccfrp.Rmd',
 #           '67appendix_rov.Rmd',
-             '70appendix_cpfv_temp.Rmd'
+             '70appendix_cpfv.Rmd',
 #            "35model-prestar-base-results-north.Rmd",
 #            "36model-uncertainty-north.Rmd",
 #            '40management.Rmd',
 #            '41acknowledgements.Rmd',
-#           '52tables.Rmd',
-#             '53figures.Rmd'
-
+           '52tables.Rmd',
+             '53figures.Rmd'
 ]

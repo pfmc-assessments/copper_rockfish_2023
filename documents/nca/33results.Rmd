@@ -1,12 +1,55 @@
 ## Base Model Results
 
+The base model described here is only for the portion of the stock `r spp` in California from Point Conception, \PtC to the California/Oregon border, \CAOR  Descriptions of the summed biomass and stock status for the California stock of `r spp` are described in later sections.  
+
+The base model parameter estimates along with approximate asymptotic standard errors are shown in Table \ref{tab:north-params} and the likelihood components are shown in Table \ref{tab:likes}. Estimates of derived reference points and approximate 95 percent asymptotic confidence intervals are shown in Table \ref{tab:referenceES}. Estimates of stock size and status over time are shown in Table \ref{tab:timeseries}. 
+
+The full r4ss plotting output is available in the supplementary material on the Council's website.
 
 ### Parameter Estimates
 
+Estimated parameter values are provided in Table \ref{tab:params}. The log($R_0$) was estimated at `r round(model$parameters[model$parameters$Label == 'SR_LN(R0)', 'Value'], 2)`. 
+
+
+The northern California base model estimated reasonable growth parameters for $k$ and lengths at age 2 and age 20 for males and females. The estimates differed from those estimated externally, which was not unexpected given the lack of consistent age data across fleets and years. The direct estimation of male $L_{age=2}=12.6$ cm was reasonable compared to female  $L_{age=20}=14.6.  While $k$ was estimated larger for males (0.20) than females (0.15), female $L_{age=30}$ of 48.3 cm was larger than males at 46.4 cm.  These results are consistent with other studies that have looked at sex-specific growth in copper rockfish and similar to estimates from the southern California pre-STAR base model.
+
+Length-based selectivity curves were estimated for the fishery and survey fleets, and age-based selectivity of 1.0 starting at age 1 for the growth fleet. Model explorations included parameterizing the fleets with double normal selectivity. Selectivity of the commercial dead fleet and the CDFW ROV survey were continually estimated as asypmtotic through base model development and were simplified to two parameter logistic selectivity in the base model. Peak selectivity for the commercial dead fleet was estimated at 34 cm and 32 cm for the ROV survey. Plots of the estimated selectivities are shown in Figure \ref{fig:est-selex}. 
+
+The commercial live fishery selectivity was estimated in two blocks of time; `r startyr` - 2010 and 2011 - `r endyr`. The block in selectivity was included to capture a shift from asymptotic selectivity prior to 2011 to the selection of plate-sized (approx. 2 pounds) fish preferred in the live-fish fishery (Figure \ref{fig:com-len-data}). Both recreational fleets were fit to the same three time blocks. From 1916-2001, peak selectivity was estimated around 36 cm with selectivity decreasing for larger fish; dome-shaped selectivity was estimated from  2002-2016 representing the years the fishery was restricted to shallower depths, and asymptotic selectivity starting in 2017 when the fishery gained access to deeper depths. The two estimated PR fleet selecitivities were both dome-shape with the wider peak selecitivity estimted in 2017-2022 representing the change in depth regulations.
+
+The CCFRP survey estimated peak selectivity at 33 cm in both time blocks with the first time blocks estimating decreased selectivity of larger fish. The survey expanded to northern California in 2017 where larger copper rockfish were observed and estimated asymptotic selecitivity for fish larger than 33 cm.
+
+ The catchability for each of the surveys was analytically solved comparing observed to expected vulnerable biomass across all years. The analytical values for catchability were very small given the survey methodologies and are reported in Table \ref{tab:params} in log-space. 
+
+The estimated annual recruitment and recruitment deviations are shown in  Figures \ref{fig:recruits} and \ref{fig:rec-devs}. The bias adjustment applied to the annual recruimtent deviations across time is shown in Figure \ref{fig:bias-adj}. Strong recruitments are estimated to have occurred in 1966-1967, 2007 and 2017 and the years of lowest estimated recuitment being 1979 and 1980. The uncertainy in recruitment deviations is highest for the first two years 1970 and 1971 and relatively consistent for the remainder of the time series. There is limited information in the data on recruitment variability and very little signal in the data indicating year classes moving through a fishery or survey. None of the available length composition data. 
+
+Recruitment is estimated based on the spawner-recruit curve in 2021 and 2022  (Figure \ref{fig:bh-curve}). The recruitment bias adjustment applied within the model across years is shown in Figure \ref{fig:bias-adjust}.
+
+
+
 ### Fits to the Data
+
+
+
+
 
 ### Population Trajectory
 
+Thee predicted spawning output (in millions of eggs) is given in Table \ref{tab:timeseries} and shown in Figure \ref{fig:north-ssb}. The estimated spawning output decreases sharply in the late-1970s and continues to decline until reaching low levels in the late-1990s. The spawning output slowly increases between 2000 - 2010 with the rate of population growth increasing after 2011 as fish from recent strong year-classes begin to mature. The estimate of total biomass over time is shown in Figure \ref{fig:tot-bio}.
+
+```{r, echo=FALSE, results='asis'}
+
+filein = file.path(doc_dir, "shared_text",'33_population.Rmd')
+read_child(filein)
+```
+
+
 ### Reference Points
 
+Reference points were calculated using the estimated selectivities and catch distribution among fleets in the most recent year of the model, `r endyr`. Sustainable total yield (landings plus discards) was `r round(model$derived_quants[model$derived_quants$Label == 'Dead_Catch_SPR', 'Value'], 2)` mt when using an $SPR_{50\%}$ 
+reference harvest rate. The spawning output equivalent to 40% of the unfished level ($SB_{40\%}$) was `r round(model$derived_quants[model$derived_quants$Label == 'SSB_Btgt', 'Value'], 0)` 
+million eggs. 
 
+The `r endyr` spawning biomass relative to unfished equilibrium spawning biomass is just below the target of 40% of unfished levels (Figure \@ref(fig:depl)). The relative fishing intensity, $(1-SPR)/(1-SPR_{50\%})$, was near the management target in 2020, and has fluctuated around the target level for the past decade (Figure \@ref(fig:1-spr) and \@ref(fig:phase)). 
+
+Table \@ref(tab:north-referenceES) shows the full suite of estimated reference points for the base model and Figures \@ref(fig:north-yield2) and \@ref(fig:north-yield3) show the equilibrium yield curve and net production based on a steepness value fixed at `r round(model$parameters[model$parameters$Label == "SR_BH_steep","Value"], 2)`.
