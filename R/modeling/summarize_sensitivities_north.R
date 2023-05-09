@@ -29,7 +29,7 @@ base_loc <- file.path(user_dir, "models", area, base_model)
 model_list <- c("est_m", #1
                 "est_h", #2
                 "est_m_h", #3
-                "schnute",#4
+                #"schnute",#4
                 "no_devs", #5
                 "dirichlet", #6
                 "mi") #7
@@ -60,7 +60,7 @@ sens_3  <- SS_output( file.path(wd, model_list[3]), printstats = FALSE, verbose 
 sens_4  <- SS_output( file.path(wd, model_list[4]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens_5  <- SS_output( file.path(wd, model_list[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens_6  <- SS_output( file.path(wd, model_list[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens_7  <- SS_output( file.path(wd, model_list[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+#sens_7  <- SS_output( file.path(wd, model_list[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_1  <- SS_output( file.path(wd, model_list2[1]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_2  <- SS_output( file.path(wd, model_list2[2]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_3  <- SS_output( file.path(wd, model_list2[3]), printstats = FALSE, verbose = FALSE, covar = FALSE)
@@ -78,7 +78,7 @@ modelnames <- c("Base Model",
                 "Estimate M",
                 "Estimate h", 
                 "Estimate M & h",
-                "Fix Schnute Growth",
+                #"Fix Schnute Growth",
                 "No Rec. Devs.",
                 "Dirichlet DW", 
                 "McAllister-Ianelli DW")
@@ -98,7 +98,7 @@ modelnames3 <- c("Base Model",
                  "Rm. DWV Index",
                  "Rm. PR Index")
 
-x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6))
 x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5))
 x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6))
 
@@ -107,7 +107,7 @@ SSplotComparisons(x,
                   legendlabels = modelnames, 
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
-                  filenameprefix = paste0(base_model, "_final_1_"),
+                  filenameprefix = paste0(base_model, "_forecast_final_1_"),
                   subplot = c(2,4), 
                   btarg = -1,
                   minbthresh = -1,
@@ -118,7 +118,7 @@ SSplotComparisons(x,
                   legendlabels = modelnames, 
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topleft", 
-                  filenameprefix = paste0(base_model, "_final_1_"),
+                  filenameprefix = paste0(base_model, "_forecast_final_1_"),
                   subplot = c(9:14), 
                   print = TRUE)
 
@@ -128,7 +128,7 @@ SSplotComparisons(x2,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_final_2_"),
+                  filenameprefix = paste0(base_model, "_forecast_final_2_"),
                   subplot = c(2,4), 
                   btarg = -1,
                   minbthresh = -1,
@@ -140,7 +140,7 @@ SSplotComparisons(x2,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topleft", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_final_2_"),
+                  filenameprefix = paste0(base_model, "_forecast_final_2_"),
                   subplot = c(11), 
                   print = TRUE)
 
@@ -150,7 +150,7 @@ SSplotComparisons(x3,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_final_3_"),
+                  filenameprefix = paste0(base_model, "_forecast_final_3_"),
                   subplot = c(2,4), 
                   btarg = -1,
                   minbthresh = -1,
@@ -162,7 +162,7 @@ SSplotComparisons(x3,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topleft", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_final_3_"),
+                  filenameprefix = paste0(base_model, "_forecast_final_3_"),
                   subplot = c(11), 
                   print = TRUE)
 
@@ -174,7 +174,7 @@ modelnames <- c("Base Model",
                 "Estimate M",
                 "Estimate h", 
                 "Estimate M & h",
-                "Fix Schnute Growth",
+                #"Fix Schnute Growth",
                 "No Rec. Devs.",
                 "Dirichlet DW", 
                 "McAllister-Ianelli DW",
@@ -191,7 +191,7 @@ modelnames <- c("Base Model",
                  "Rm. PR Index")
 
 x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6,
-                      sens_7, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5,
+                      sens2_1, sens2_2, sens2_3, sens2_4, sens2_5,
                       sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6))
 
 wd_dat <- file.path(paste0(wd,"/_plots")) 
@@ -221,12 +221,12 @@ Sensi_plot_dover(model.summaries=x,
 # Create a Table of Results
 ###################################################################################
 
-x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6))
 modelnames <- c("Base Model",
                 "Estimate M",
                 "Estimate h", 
                 "Estimate M & h",
-                "Fix Schnute Growth",
+                #"Fix Schnute Growth",
                 "No Rec. Devs.",
                 "Dirichlet DW", 
                 "McAllister-Ianelli DW")
