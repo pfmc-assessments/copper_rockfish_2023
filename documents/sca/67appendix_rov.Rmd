@@ -22,6 +22,7 @@ The model estimates were then area-weighted based on the estimated percent of ha
 ```{r, results = 'asis'}
 
 tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", "rov_south_model_selection.csv"))
+tab <- tab[1:20, ]
 
 sa4ss::table_format(x = tab,
              caption = "Model selection for the ROV survey.",
