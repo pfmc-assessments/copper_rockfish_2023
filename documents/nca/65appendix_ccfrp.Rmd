@@ -19,7 +19,7 @@ selected within a stratum (MPA and/or reference cells).  CPFVs are chartered
 for the survey and the fishing captain is allowed to search within the cell for 
 a fishing location.  During a sampling event, each cell is fished for a total of 
 30-45 minutes by volunteer anglers. Each fish encountered is recorded, measured, 
-and can be linked back to a particular angler, and released (or descended to depth). 
+and released (or descended to depth) and can later be linked back to a particular angler, . 
  CCFRP samples shallower depths to avoid barotrauma-induced mortality.  
  Starting in 2017, a subset of fish have been retained to collect otoliths and fin 
 clips that provide needed biological information for nearshore species. For the 
@@ -45,9 +45,9 @@ represents a similar trend to the arithmetic mean of the annual CPUE (Figure \@r
 We modeled retained catch per angler hour (CPUE; number of fish per angler hour) 
 using MLE fr. Indices with a year and area (location along the coast) interaction were not 
 considered in model selection; trends in the average CPUE by region were similar 
-in the filtered data set (Figure \@ref(fig:fig-areacpue-ccfrp)). Plots of the arithmetic 
-mean by inside (MPA) and outside (REF) MPAs over time is in Figure \@ref(fig:fig-sitecpue-ccfrp) 
-and shows the distinct trends of increasing average CPUE over time.
+in the filtered data set (Figure \@ref(fig:fig-areacpue-ccfrp)). Figure \@ref(fig:fig-sitecpue-ccfrp) shows arithmetic 
+mean by inside (MPA) and outside (REF) MPAs over time  
+and illustrates the distinct trends of increasing average CPUE over time.
 
 A negative binomial model was fit to the drift-level data (catch with a log offset for angler 
 hours). Because the average observed CPUE inside MPAs and in the reference sites exhibited 
