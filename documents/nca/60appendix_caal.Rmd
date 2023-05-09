@@ -81,7 +81,9 @@ for (a in plot.vec){
 
 ```
 
-## Implied Fit to Excluded Length Data {#excluded-data}
+## Implied Fit to Excluded Data {#excluded-data}
+
+### Length Data 
 
 The implied fits to the data not included in the base model due to low annual sample size are shown below.  
 
@@ -103,3 +105,15 @@ for (a in plot.vec){
 ``` 
 
 \newpage
+
+
+### Fishery-Dependent Indices of Abundance
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_CPFV.png"), 
+caption = "Implied fit to log index data on log scale for the recreational (MRFSS) CPFV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+label = 'mrfss-cpfv-index-fit')
+```
+
+\pagebreak
