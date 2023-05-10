@@ -2,7 +2,7 @@
 
 The base model described here is only for the portion of the stock `r spp` in California from Point Conception, \PtC to the California/Oregon border, \CAOR  Descriptions of the summed biomass and stock status for the California stock of `r spp` are described in later sections.  
 
-The base model parameter estimates along with approximate asymptotic standard errors are shown in Table \ref{tab:north-params} and the likelihood components are shown in Table \ref{tab:north-likes}. Estimates of derived reference points and approximate 95 percent asymptotic confidence intervals are shown in Table \ref{tab:north-reference}. Estimates of stock size and status over time are shown in Table \ref{tab:north-timeseries}. 
+The base model parameter estimates along with approximate asymptotic standard errors are shown in Table \ref{tab:params} and the likelihood components are shown in Table \ref{tab:likes}. Estimates of derived reference points and approximate 95 percent asymptotic confidence intervals are shown in Table \ref{tab:reference}. Estimates of stock size and status over time are shown in Table \ref{tab:timeseries}. 
 
 The full r4ss plotting output is available in the supplementary material on the Council's website.
 
