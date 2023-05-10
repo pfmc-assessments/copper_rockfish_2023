@@ -1,4 +1,6 @@
-# Appendix California Onboard CPFV Index of Abundance {#onboard-cpfv-index}
+## Development of Indices of Abundance
+
+## California Onboard CPFV Index of Abundance {#onboard-cpfv-index}
 
 
 ```{r, echo=FALSE, results='asis'}
@@ -53,22 +55,21 @@ observed encounters were within state waters (Table \@ref(tab:onboard-waterarea)
 This is, of course, an estimation of the amount of rocky substrate, and represents the best available data. 
 The calculations can be found in the online supplementary material.
 
-The covariates explored for model selection included year and four categorical region levels (District 1 mainland, District 2 mainland, Southern Channel Islands and Northern Channel Islands), a year and area interaction, a categorical variable for month, and continuous depth and depth-squared.
-Trends in the average CPUE by region were similar 
+The covariates explored for model selection included year and four categorical region levels (District 1 mainland, District 2 mainland, Southern Channel Islands and Northern Channel Islands), a year and area interaction, a categorical variable for month, and continuous depth and depth-squared. Trends in the average CPUE by region were similar 
 in the filtered data set (Figure \@ref(fig:onboard-regioncpue)). A year and region interaction 
-was included after visualizing the trends in average CPUE over time (Figure \@ref(fig:onboard-average_cpue_by_region)). The full model was selected by AICc 
-(Table \@ref(tab:onboard-model_selection)). In southern California, whether a trip is a 1/2 day or 3/4 day or overnight 
+was included after visualizing the trends in average CPUE over time. The full model was selected by AICc 
+(Table \@ref(tab:onboard-modelselect)). In southern California, whether a trip is a 1/2 day or 3/4 day or overnight 
 trip has a significant impact on the available fishing grounds.  The 1/2 day CPFV vessels 
 fish in the shallower, nearshore waters along the along the mainland coast. The 3/4 and overnight or multi-day
 vessels are able to access the same areas of the Northern Channel Islands, where as the southern Channel Islands 
 are further offshore and the observations are predominantly from overnight trips. The overnight and 
 multi-day trips may target multiple target species, i.e., tuna and rockfish, depending on the time of the year.
 
-Indices were fit via MLE from the sdmTMB package in R. The QQ plot for the negative binoimal 
+Indices were fit via MLE from the sdmTMB package in R. The QQ plot for the negative binomial 
 model indicated a poor fit to the data, which as not surprising given the low percent of 
 observed drifts encountering copper rockfish. A delta-lognormal 
 was selected over a delta-gamma based on AIC.  The QQ plot indicated a much improved fit compared to the negative 
-binomaial model (Table \@ref(fig:onboard-qq)).
+binomial model (Table \@ref(fig:onboard-qq)).
 
 The final index was weighted based on the estimates of rocky substrate within each of the four regions. 
 The relative abundance increases during the first part of the time series (Table \@ref(tab:onboard-index) 
@@ -131,8 +132,10 @@ sa4ss::table_format(x = ind,
              caption = "Data filtering steps for the onboard CPFV survey.",
              label = "onboard-filter",
              col_names = col_names,
-             col_to_adjust = c(3),
-             width = c('5cm'))
+             landscape = TRUE,
+             custom_width = TRUE,
+             col_to_adjust = c(2),
+             width = c('6cm'))
 ```
 
 

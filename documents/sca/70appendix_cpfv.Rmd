@@ -4,7 +4,7 @@ During the 2021 copper rockfish stock assessment meeting and during the pre-asse
 
 CDFW conducts several surveys are part of the CRFS program, including an onboard observer survey, angler interviews, and a required CPFV logbook for each trip. The [CRFS sampling manual](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=62348&inline) outlines the sampling methodologies for each survey component.  The state of California allows the filleting of fish at sea; to accurately identify rockfish to species and obtain measurements of whole fish the majority of angler interviews occur onboard the vessel for the CPFV fleet.  The CPFV fleet is not required to speciate the catch and only one block number is recorded per entry. For this reasons the CPFV logbook data are rarely used to develop an index of abundance for groundfish species. However, the CPFV logbook data provide insight into the spatial distribution of fishing effort.
 
-The [California Fisheries Recreational FIsheries Survey Methods](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=36136&inline) indicates the CPFV "sampling goal is to sample onboard at the historical sampling frequency of two to five percent of estimated CPFV trips of interest (e.g., trips targeting groundfish, inshore and coastal pelagic species) at each CPFV landing and to sample other CPFV trip types dockside." California is divided into six regions for the CRFS sampling, and these represent the finest stratification for catch and effort estimates (Figure \@ref(fig:crfs_districts)).  
+The [California Fisheries Recreational FIsheries Survey Methods](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=36136&inline) indicates the CPFV "sampling goal is to sample onboard at the historical sampling frequency of two to five percent of estimated CPFV trips of interest (e.g., trips targeting groundfish, inshore and coastal pelagic species) at each CPFV landing and to sample other CPFV trip types dockside." California is divided into six regions for the CRFS sampling, and these represent the finest stratification for catch and effort estimates (Figure \@ref(fig:crfs-districts)).  
 
 The CPFV fleet north and south of Point Conception are fundamentally different in terms of the vessels fishing, available target species, and also fishery regulations over the past twenty years. The CPFVs north of Point Conception targeting groundfish do not typically target other species on the same trip, with the exception being a half-day bottomfish trip mixed with a half-day of Dungeness crab pot fishing. The fleet north of Bodega Bay California is dominated by smaller 6-pack vessels with limited capacity.  It may not be possible for a sampler to ride onboard a 6-pack vessel if the vessel is at capacity. Overnight trips are extremely rare in northern California. In addition, it's important to note that even though Santa Barbara spans Point Conception, all of the fish are landed in San Luis Obispo county in District 3. 
 
@@ -32,6 +32,7 @@ caption = "Map of the CDFW CRFS sampling Districts.",
 label = 'crfs-districts')
 ```
 
+\pagebreak
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "area_percent_observed.csv"))
@@ -42,7 +43,6 @@ sa4ss::table_format(x = ind,
              label = "percent-observed",
              col_names = col_names)                         
 ```
-
 
 \newpage 
 

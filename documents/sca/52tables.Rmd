@@ -19,10 +19,10 @@ for (i in 1:nfleets){
 total.dead  <- round(apply(dead_all, 1, sum), 1)
 out = cbind(years, round(dead_all, 1), total.dead)
 out = as.data.frame(out)
-col_names = c("Year", "Commercial (Dead)", "Commercial (Live)", "Rec. CPFV", "Rec. PR", "Total Landings")
+col_names = c("Year", "Commercial (Dead)", "Commercial (Live)", "Rec. CPFV", "Rec. PR", "Total Catch")
 
 table_format(x = out,
-             caption = "Removals (mt) by fleet and the summed total landings (mt).",
+             caption = "Catch (mt) by fleet and the summed total catch (mt).",
              label = "allcatches",
              digits = 1,
              align = 'l',
@@ -73,7 +73,58 @@ create_management_table(
 <!-- ************* Recreational Data *********************** --> 
 <!-- ======================================================= -->
 
-\include{tex_tables/rec_south_sample_size_by_program.tex}
+
+```{r, results = 'asis'}
+# Add rec landings by district
+tab <- read.csv(file.path(data_dir, "rec_catch", "forSS", "south_percent_catch_by_district.csv"))
+col_names <- c("Year", "District 2 (Channel)", "District 1 (South)", "Percent District 2", "Percent District 1")
+
+sa4ss::table_format(x = tab,
+             caption = "Summary of the CPFV catch data in CRFS by CDFW district south of Point Conception.",
+             label = "crfs-by-district",
+             align = 'l',
+             col_names = col_names,
+             digits = 2) 
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+#\include{tex_tables/rec_south_sample_size_by_program.tex}
+
+tab <- read.csv(file.path(data_dir, "rec_bds", "forSS", "rec_south_sample_size_by_program.csv"))
+tab <- tab[, -1]
+col_names <- c("Year", "Source", "CPFV Trips", "CPFV Samples", "PR Trips", "PR Samples")
+
+sa4ss::table_format(x = tab,
+             caption = "Summary of the recreational length samples and estimated trips for the CPFV and PR fleets.",
+             label = "rec-len-samps",
+             align = 'l',
+             longtable = TRUE,
+             col_names = col_names,
+             font_size = 9,
+             custom_width = TRUE,
+             col_to_adjust = 2:6, 
+             width = c("4cm", "2cm", "2cm", "2cm", "2cm"),
+             digits = 0) 
+```
+
+\newpage
+
+```{r, results = 'asis'}
+
+tab <- read.csv(file.path(data_dir, "rec_bds", "forSS", "rec_bds_cpfv_samples_by_district.csv"))
+tab <- tab[, -1]
+col_names <- c("Year", "District 2 (Channel)", "District 1 (South)", "District 2 Percent", "District 1 Percent")
+
+sa4ss::table_format(x = tab,
+             caption = "Summary of the total recreational length samples and percentage collected in district 1 and 2.",
+             label = "rec-samps-by-district",
+             align = 'l',
+             col_names = col_names,
+             digits = 2) 
+```
 
 
 \newpage
@@ -106,18 +157,66 @@ create_management_table(
 
 \pagebreak
 
-\input{tex_tables/nwfsc_hkl_sample_number_by_site_cca.tex}
+
+
+```{r, results = 'asis'}
+#\input{tex_tables/nwfsc_hkl_sample_number_by_site_cca.tex}
+
+tab <- read.csv(file.path(data_dir, "survey_indices", "nwfsc_hkl", "forSS", "sample_number_by_site_cca.csv"))
+col_names <- c("Year",  "Drops", "Observations - Outside", "Observations - CCA")
+
+sa4ss::table_format(x = tab,
+             caption = "Summary of the number of observations by year and unique drops between sites outside the CCAs and inside the CCAs for copper rockfish from the NWFSC Hook and Line survey.",
+             label = "nwfsc-hkl-obs",
+             align = 'l',
+             col_names = col_names) 
+```
+
+
+\pagebreak
+
+
+```{r, results = 'asis'}
+#\input{tex_tables/nwfsc_hkl_sample_number_by_site_cca.tex}
+
+tab <- read.csv(file.path(data_dir, "survey_indices", "nwfsc_hkl", "forSS", "sample_number_by_site_cca.csv"))
+col_names <- c("Year", "Drops", "Observations - Outside", "Observations - Closed")
+
+sa4ss::table_format(x = tab,
+             caption = "Summary of the number of observations by year and unique drops between sites open to fishing (outside) and sites within either CCA areas with no take or MPAs (closed) for copper rockfish from the NWFSC Hook and Line survey.",
+             label = "nwfsc-hkl-obs-mpa",
+             align = 'l',
+             col_names = col_names) 
+```
+
 
 \pagebreak
 
 \input{tex_tables/nwfsc_hkl_effn_lengths_ages.tex}
 
+\newpage
 
 <!-- ======================================================= -->
 <!-- *************     CDFW  ROV     *********************** --> 
 <!-- ======================================================= -->
 
-\input{tex_tables/rov_south_samples_transects.tex}
+
+```{r, results = 'asis'}
+#\input{tex_tables/rov_south_samples_transects.tex}
+
+tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", "south_obs_designation_mpa_group_year.csv"))
+col_names <- c("Year", "Location",  "Designation",  "Transects", "Observations")
+
+sa4ss::table_format(x = tab,
+             caption = "Number of transect and number of observations of copper rockfish for each year, sample location, and site designation for the CDFW ROV survey",
+             label = "rov-obs",
+             align = 'l',
+             col_names = col_names,
+             custom_width = TRUE,
+             col_to_adjust = 2, 
+             width = c("3cm"),
+             digits = 0) 
+```
 
 \newpage
 
@@ -125,7 +224,24 @@ create_management_table(
 <!-- *************    Growth Ages    *********************** --> 
 <!-- ======================================================= -->
 
-\input{tex_tables/south_growth_age_samples.tex}
+
+```{r, results = 'asis'}
+#\input{tex_tables/south_growth_age_samples.tex}
+
+tab <- read.csv(file.path(data_dir, "ages", "forSS", "south_growth_age_samples.csv"))
+col_names <- c("Year", "Source", "Number of Ages")
+
+sa4ss::table_format(x = tab,
+             caption = "Available age data by year and source used in the growth fleets.",
+             label = "growth-age-samps",
+             align = 'l',
+             col_names = col_names,
+             custom_width = TRUE,
+             col_to_adjust = 2, 
+             width = c("4cm"),
+             digits = 0) 
+```
+
 
 \newpage
 
@@ -146,7 +262,7 @@ table_format(x = tab,
              col_names = col_names)
 ```
 
-
+\newpage
 
 <!-- ======================================================= -->
 <!-- *************  NWFSC WCGBT  Data  *********************** --> 
@@ -242,7 +358,7 @@ sa4ss::table_format(x = tab,
              col_names = col_names) 
 ```
 
-
+\newpage
 
 <!-- ======================================================= -->
 <!-- ***********       Time Series      ******************** --> 

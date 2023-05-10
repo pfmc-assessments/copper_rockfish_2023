@@ -73,6 +73,8 @@ hkl <- hkl[hkl$include_fish == 1, ]
 
 # There area only 4 unsexed fish all from different years, dropping them from the comps
 hkl <- hkl[hkl$sex != "U", ]
+hkl$area_cca <- "Outside"
+hkl$area_cca[hkl$site_number >= 500] <- "CCA"
 
 samples_area <- hkl %>%
   group_by(year, area_cca) %>%
@@ -80,8 +82,21 @@ samples_area <- hkl %>%
     Drops = length(unique(set_id_drop)),
     Observations = sum(count)
   )
-colnames(samples_area)[1:2] <- c("Year", "Area")
-write.csv(samples_area, file = file.path(dir, "forSS", "sample_number_by_site_cca.csv"), row.names = FALSE)
+out <- samples_area %>% pivot_wider(names_from = area_cca, values_from = Observations)
+colnames(out)[1:2] <- c("Year", "Drops", "Outside", "CCA")
+write.csv(out, file = file.path(dir, "forSS", "sample_number_by_site_cca.csv"), row.names = FALSE)
+
+
+samples_area_protection <- hkl %>%
+  group_by(year, protection) %>%
+  reframe(
+    Drops = length(unique(set_id_drop)),
+    Observations = sum(count)
+  )
+out <- samples_area_protection %>% pivot_wider(names_from = protection, values_from = Observations)
+colnames(out)<- c("Year", "Drops", "Observations - Open", "Observations - Closed")
+is.na(out) <- "-"
+write.csv(out, file = file.path(dir, "forSS", "sample_number_by_site_protection.csv"), row.names = FALSE)
 
 
 samples_area <- hkl %>%

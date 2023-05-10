@@ -266,6 +266,18 @@ for(a in unique(all_data$area)) {
   }
 }
 
+# Create a comparison plot for the MRFSS and DWV data
+keep <- which(all_data$program %in% c("deb_wilson-vandenberg", "mrfss") & all_data$year %in% 1987:1998 &
+                all_data$mode == "cpfv" & all_data$area == "north")
+
+ggplot(all_data[keep, ])  +
+  geom_density(aes(x = lengthcm, color = program, fill = program), alpha = 0.5) +
+  facet_wrap('year') +
+  xlab("Year") + 
+  scale_color_viridis_d(begin = 0, end = 1)
+ggsave(width = 10, height = 7,
+       file = here("data", "rec_bds", "plots", "mrfss_dwv_length_comparison.png"))
+
 
 # Remove the MRFSS sample years that overlap with Deb's data
 find_mrfss <- which(all_data$program == "mrfss" & all_data$year %in% 1987:1998 &

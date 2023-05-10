@@ -809,6 +809,16 @@ label = 'rec-cpfv-mean-len-fit')
 
 \pagebreak
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "rec_bds",  "plots", "rec_south_ggridges_lengths_cpfv_district.png"), 
+caption = "Length distributions observed in the CPFV fleet by CDFW district 1 (South) and 2 (Channel) since 2004",
+label = 'rec-cpfv-dist')
+```
+
+\pagebreak
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_agefit_residsflt3mkt0.png"), 

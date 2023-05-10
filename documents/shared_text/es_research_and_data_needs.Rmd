@@ -13,7 +13,7 @@ There were some major sources of uncertainty within the assessments for `r spp`.
 
 	\item There are very limited age data for `r spp` across California arising from fishery-dependent sources.  Collecting otoliths from the recreational fishery, a large source of mortality, would support future assessments and would improve the understanding of the population structure and life history of `r spp`. 
 
-	\item There is limited information for `r spp` on maturity and fecundity and the variability of these parameters with increasing latitude.  The `r wcbts` provided the only available information on the maturity ogive, which is not the most appropriate gear to target copper rockfish and the timing of the survey does not overlap with the expected peak spawning season.  The SWFSC has egg samples from a total of ten copper rockfish, which is too few to draw conclusions regarding fecundity.
+	\item There is limited information for `r spp` on maturity and fecundity and the variability of these parameters with increasing latitude.  The NWFSC WCGBT and Hook and Line surveys provided the only available information on the maturity ogive, which is not the most appropriate gear to target copper rockfish and the timing of the survey does not overlap with the expected peak spawning season.  The SWFSC has egg samples from a total of ten copper rockfish, which is too few to draw conclusions regarding fecundity.
 
 	\item Some of the PR mode recreational data that should be available via RecFIN were found to contain information inconsistent with datasheets available from CDFW. There is also a question if length data collected by the Deb Wilson-Vandenberg onboard observer survey is duplicated within RecFIN and attributed to MRFSS dockside samples of the CPFV fleet.
 
