@@ -1,4 +1,4 @@
-## Development of Indices of Abundance
+
 
 ### CRFS PR Dockside Index of Abundance {#crfs-pr-index}
 
@@ -7,7 +7,7 @@ were provided by CDFW for use in this assessment. The PR dockside data housed
 on the Recreational Fisheries Information Network (RecFIN) were 
 determined to include a number of complexities that precluded the ability to 
 use them for an index of abundance. For the time period from 2004-2014 the authors 
-re-created the interivew, or trip level, data from the "i" sample files.  For 2015-2022 
+re-created the interview, or trip level, data from the "i" sample files.  For 2015-2022 
 the authors used files provided by CDFW from the CRFS dockside sampling program.
 
 The data for both time periods included catch by species, number of anglers contributing to the catch, angler-reported area of fishing, 
@@ -139,8 +139,9 @@ sa4ss::table_format(
   col_names = col_names,
   font_size = 9,
   landscape = TRUE,
+  longtable = TRUE,
   custom_width = TRUE,
-  col_to_adjust = c(3),
+  col_to_adjust = c(2),
   width = c("8cm")
 )
 ```

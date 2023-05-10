@@ -82,8 +82,9 @@ for (a in plot.vec){
 
 ```
 
-## Implied Fits to Exluded Data {#excluded-data}
+\pagebreak
 
+## Implied Fits to Exluded Data {#excluded-data}
 
 ### Length Data 
 
@@ -106,7 +107,7 @@ for (a in plot.vec){
 }
 ``` 
 
-\newpage
+\pagebreak
 
 
 ### MRFSS CPFV Fishery-Dependent Indices of Abundance

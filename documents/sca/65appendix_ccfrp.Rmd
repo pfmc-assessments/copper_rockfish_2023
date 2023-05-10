@@ -2,8 +2,7 @@
 
 The California Collaborative Fisheries Research Program, [CCFRP](https://www.mlml.calstate.edu/ccfrp/), 
 is a fishery-independenthook-and-line survey designed to monitor nearshore fish populations at a series of sampling locations both inside and adjacent to MPAs [@starr_variation_2015a; @wendt_collaborative_2009].  The CCFRP survey began in 2007 along the central coast of California and was designed in collaboration 
-with academics, NMFS scientists and fishermen. From 2007-2016 the CCFRP project was focused on the central California coast, and has monitored four MPAs consistently. In 2017, the CCFRP expanded coastwide within California. The University of California Santa Barbara and Scripps Institute of Oceanography conduct the 
-southern California CCFRP sampling and monitor xxx MPA and reference paired sites.
+with academics, NMFS scientists and fishermen. From 2007-2016 the CCFRP project was focused on the central California coast, and has monitored four MPAs consistently. In 2017, the CCFRP expanded coastwide within California. The University of California Santa Barbara and Scripps Institute of Oceanography conduct the southern California CCFRP sampling and monitor MPA and reference paired sites.
 
 The survey design for CCFRP consists 500 x 500 m cells both within and 
 adjacent to each MPA. On any given survey day site cells are randomly 
@@ -57,13 +56,16 @@ within areas closed to fishing in southern California state waters.
 ```{r, results = 'asis'}
 
 tab <- read.csv(file.path(data_dir, "survey_indices", "ccfrp", "south", "dataFilters.csv"))
+tab <- tab[,-ncol(tab)]
 
 sa4ss::table_format(x = tab,
              caption = "Data filtering for the CCFRP survey.",
              label = "ccfrp-data-filter",
              align = 'l',
+             custom_width = TRUE,
+             col_to_adjust = 2, 
+             width = c("6cm"),
              longtable = TRUE,
-             font_size = 7,
              landscape = TRUE)                         
 ```
 
@@ -78,7 +80,8 @@ sa4ss::table_format(x = tab,
              label = "ccfrp-model-selection",
              align = 'l',
              longtable = TRUE,
-             font_size = 7,
+             font_size = 10,
+             digits = 2,
              landscape = TRUE)                         
 ```
 

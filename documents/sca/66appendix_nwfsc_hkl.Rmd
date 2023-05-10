@@ -6,7 +6,22 @@ Over time, select sampling sites in the original survey design have been convert
 
 The sites considered for the creation of a relative index of abundance were limited to sites that have caught at least 1 `r spp` across all years. To appropriately weight the survey index by the available rocky substrate by region in the California Bight, each site was assigned as mainland, Northern Channel Island, or Southern Channel Island. Estimates of hard bottom were extracted from the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html) for each of these regions. These data were collected in state waters at a resolution of two meters. South of Point  Conception, additional interpreted bathymetric data classifying the bottom type as  rock or soft bottom were compiled by Emily Saarman (University of California Santa Cruz) and also available  from CDFW's website. The estimates of rocky substrate for each of these regions were 19.5, 36.5, and 44.1 percent in the mainland, Southern Channel Islands, and Northern Channel Islands, respectively. 
 
-A range of alternative model structures were explored to generate an index of abundances. This included alternative levels of aggregation (hook, drop, or site), probability distributions (negative binomial, delta-gamma, or delta-lognormal), and covariates (year, site, depth, swell height, region, year-region interaction, and/or the number of vermilion/sunset or bocaccio rockfishes observed). The overall trends in the index of abundance were highly similar across the explored probability distributions and model configurations. Based on QQ-plots, residuals, and AIC the delta-lognormal distribution was selected for the final model using sdmTMB with covariates for year, region, drop, polynomial depth term, number of bocaccio, number of vermilion, year-region interaction, and site as a random-effect [@anderson_sdmtmb_2022] (Figures \ref{fig:nwfsc-hkl-qq}, \ref{fig:nwfsc-hkl-resid-1}, and \ref{fig:nwfsc-hkl-resid-2}). 
+A range of alternative model structures were explored to generate an index of abundances. This included alternative levels of aggregation (hook, drop, or site), probability distributions (negative binomial, delta-gamma, or delta-lognormal), and covariates (year, site, depth, swell height, region, year-region interaction, and/or the number of vermilion/sunset or bocaccio rockfishes observed, Table \ref{tab:nwfsc-hkl-model-select}). The overall trends in the index of abundance were highly similar across the explored probability distributions and model configurations. Based on QQ-plots, residuals, and AIC the delta-lognormal distribution was selected for the final model using sdmTMB with covariates for year, region, drop, polynomial depth term, number of bocaccio, number of vermilion, year-region interaction, and site as a random-effect [@anderson_sdmtmb_2022] (Figures \ref{fig:nwfsc-hkl-qq}, \ref{fig:nwfsc-hkl-resid-1}, and \ref{fig:nwfsc-hkl-resid-2}). 
+
+
+```{r, results = 'asis'}
+tab <- read.csv(file.path(data_dir, "survey_indices", "nwfsc_hkl", "forSS", "area_weighted_model_selection.csv"))
+tab <- tab[1:15, ]
+
+sa4ss::table_format(x = tab,
+             caption = "Model selection.",
+             label = "nwfsc-hkl-model-select",
+             align = 'l',
+             longtable = TRUE,
+             font_size = 9,
+             landscape = TRUE,
+             digits = 2) 
+```
 
 
 \newpage
