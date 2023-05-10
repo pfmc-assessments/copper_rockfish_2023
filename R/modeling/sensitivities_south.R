@@ -39,9 +39,10 @@ model_list2 =  c("cut_rec_catch", #1
                 "lambda_age", #2
                 "rm_ages", #3
                 "rm_coop", #4
-                "rm_wcgbt", #5
-                "wcgbt_index", #6
-                "rm_fishery_indices") #7
+                "add_coop_cpfv", #5
+                "rm_wcgbt", #6
+                "wcgbt_index", #7
+                "rm_fishery_indices") #8
 
 model_list3 =  c("rm_ccfrp", #1
                  "rm_rov", #2
@@ -75,6 +76,7 @@ sens2_4  <- SS_output( file.path(wd, model_list2[4]), printstats = FALSE, verbos
 sens2_5  <- SS_output( file.path(wd, model_list2[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_6  <- SS_output( file.path(wd, model_list2[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_7  <- SS_output( file.path(wd, model_list2[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens2_8  <- SS_output( file.path(wd, model_list2[8]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 
 sens3_1  <- SS_output( file.path(wd, model_list3[1]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens3_2  <- SS_output( file.path(wd, model_list3[2]), printstats = FALSE, verbose = FALSE, covar = FALSE)
@@ -106,6 +108,7 @@ modelnames2 <- c("Base Model",
                 "Hist. CPFV Ages Lambda = 1",
                 "Rm. All Ages",
                 "Rm. Coop. Ages", 
+                "Add Coop. Ages to CPFV",
                 "Rm. WCGBT Ages",
                 "Add WCGBT Index",
                 "Rm. CPFV & PR Indices")
@@ -121,7 +124,7 @@ modelnames3 <- c("Base Model",
                  "Rm. All Surveys")
 
 x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
-x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, sens2_7))
+x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, sens2_7, sens3_8))
 x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
 
 SSplotComparisons(x, 
@@ -206,6 +209,7 @@ modelnames <- c("Base Model",
                  "Hist. CPFV Ages Lambda = 1",
                  "Rm. All Ages",
                  "Rm. Coop. Ages", 
+                 "Add Coop. Ages to CPFV",
                  "Rm. WCGBT Ages",
                  "Add WCBT Index",
                  "Rm. CPFV & PR Indices",
@@ -219,7 +223,7 @@ modelnames <- c("Base Model",
                  "Rm. All Surveys")
 
 x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7,
-                      sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, sens2_7, 
+                      sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, sens2_7, sens2_8, 
                       sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
 
 wd_dat <- file.path(paste0(wd,"/_plots")) 
