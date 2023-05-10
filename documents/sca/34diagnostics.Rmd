@@ -54,6 +54,8 @@ Data Sensitivities
   
   \item Remove the NWFSC Hook and Line survey length and age data (retain only the index of abundance).
   
+  \item Move NWFSC Hook and Line survey data prior to the sampling expansion to include CCAs in 2014 to be associated with the Pearson Research Cooperative Collection growth fleet. This approach has been applied in other assessments where the expansion into the CCA were thought to impact the size and age of fish being encountered by the survey. 
+  
   \item Remove the NWFSC Hook and Line survey index of abundance (retain the lengths and ages).
   
   \item Remove the NWFSC Hook and Line, CCFRP Hook and Line, and CDFW ROV survey data (indices, lengths, and ages).
