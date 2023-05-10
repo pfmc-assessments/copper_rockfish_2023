@@ -25,7 +25,7 @@ vessel is available.  We imputed the number of observed anglers using the number
 of anglers aboard the vessel and the number of observed anglers at each fishing 
 stop from the August 1992-December 1998 data (see Supplemental materials for 
 details). In 1987, trips were only observed in Monterey, CA and were therefore 
-excluded from the analysis (Table \@ref(tab:deb-filte)). Sampling mainly
+excluded from the analysis (Table \@ref(tab:deb-filter)). Sampling mainly
 targeted areas of central California.  Of the 2,256 trips observed, only 12 of 
 those launched from port in District 6, the most northern district in California.
 
