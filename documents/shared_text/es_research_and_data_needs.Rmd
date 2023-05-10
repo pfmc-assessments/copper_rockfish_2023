@@ -7,7 +7,7 @@ There were some major sources of uncertainty within the assessments for `r spp`.
   \item Continue to investigate the most appropriate model structure for the NWFSC Hook and Line survey index. The NWFSC Hook and Line survey is the only long-term fishery-independent survey in rocky (untrawlable) habitat in the Southern California Bight. We also recommend evaluating how to structure the NWFSC Hook and Line survey index, given its expansion into the CCAs and increase of site now within designated MPAs, and independent analysis of information content in NWFSC Hook and Line survey across observed species. Finally, increased spatiotemporal sampling around Point Conception would aid in identifying stock boundaries.
 
 
-	\item The assessment area appears to have a mixture of observations from areas experiencing variable fishing mortality. In the region there are likely a mixture of areas: open access rocky reefs that are close to port that are heavily fished, open access rocky reefs that are inaccessible via day-trips that are fished but likely lower levels, and rocky reefs that fall within marine protect areas.  A spatially-explicit assessment model may be able to capture this complexity but will require data (indices of abundance and composition data) from each of the regions. 
+	\item The assessment area south of Point Conception appears to have a mixture of observations from areas experiencing variable fishing mortality. In the region there are likely a mixture of areas: open access rocky reefs that are close to port that are heavily fished, open access rocky reefs that are inaccessible via day-trips that are fished but likely lower levels, and rocky reefs that fall within marine protect areas.  A spatially-explicit assessment model may be able to capture this complexity but will require data (indices of abundance and composition data) from each of the regions. 
 	
 	\item Future nearshore assessments would greatly benefit from additional CDFW ROV surveys which could increase the power of these data to inform assessments.
 
@@ -19,15 +19,15 @@ There were some major sources of uncertainty within the assessments for `r spp`.
 
 	\item The interpreted substrate data for the areas north of Point Conception within state waters is complete. Additional data needs include high resolution interpretted substrate maps for areas outside of state waters. The avaialble interpreted bathymetry data from south of Point Concpetion is incomplete within state waters  around the northern and southern Channel Islands. This poses a challenge for estimating available rocky substrate both by district and also inside and outside closed areas. 
 
-	\item The genetic stock structure of `r spp` warrants further investigation to ensure appropraite management of `r spp` along the West Coast. 
+	\item The genetic stock structure of `r spp` warrants further investigation to ensure appropriate management of `r spp` along the West Coast. 
 
-	\item The Marine Recreational Fisheries Statistics Survey (MRFSS) index was excluded from both California assessment models. The standardized trends in abundance were marked by extreme peaks in the data throughout the timeseries that the STAT did not think represented the data. Additional investigations of the MRFSS dataset could help resolve some of the issues.
+	\item The Marine Recreational Fisheries Statistics Survey (MRFSS) index was excluded from both California assessment models. The standardized trends in abundance were marked by extreme peaks in the data throughout the time series that the STAT did not think represented the data. Additional investigations of the MRFSS dataset could help resolve some of the issues.
 
- \item Continue to investigate the the effect of the MPA network on `r spp` and other nearshore rockfish species.  The trend inside the MPAs in northern California exhibited an increasing trend compared to outside the MPAs, similar to what was observed furing the 2021 vermilion rockfish assessment.  This is the only long-term coastwide survey for nearshore rockfish that also provides information on age and growth.
+ \item Continue to investigate the the effect of the MPA network on `r spp` and other nearshore rockfish species.  The trend inside the MPAs in northern California exhibited an increasing trend compared to outside the MPAs, similar to what was observed during the 2021 assessment of vermilion rockfish.  
 
  \item Continue investigations of other available fishery-independent data such as the PISCO kelp forest index. 
 
- \item Larval and smaller young-of-the-year copper rockfish can only be identified with certainty genetically. Existing sources of data (ClaCOFI and SMURFs) where genetic samples can be analyzed would provide key infomation to inform recruitment for copper rockfish.
+ \item Larval and smaller young-of-the-year copper rockfish can only be identified with certainty genetically. Existing sources of data (CalCOFI and SMURFs) where genetic samples can be analyzed would provide key information to inform recruitment for copper rockfish.
 
 
 \end{enumerate}
