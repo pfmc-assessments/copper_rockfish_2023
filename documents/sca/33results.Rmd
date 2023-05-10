@@ -1,8 +1,8 @@
 ## Base Model Results
 
-The base model described here is only for the portion of the stock `r spp` in California.  Descriptions of the summed biomass and stock status for the California stock of `r spp` are described in later sections.  
+The base model described here is only for the portion of the stock `r spp` in California.  Descriptions of the summed total biomass, spawning output, and stock status for the California stock of `r spp` are described in later sections.  
 
-The base model parameter estimates along with approximate asymptotic standard errors (SD column) are shown in Table \ref{tab:params} and the likelihood components are shown in Table \ref{tab:south-likes}. The estimated data weights by the Francis method are shown in Table \ref{tab:dw}. Estimates of derived reference points and approximate 95 percent asymptotic confidence intervals for only the population `r area` are shown in Table \ref{tab:south-referenceES}. Estimates of the `r spp` population size `r area` over time are shown in Table \ref{tab:south-timeseries}. 
+The base model parameter estimates along with approximate asymptotic standard errors (SD column) are shown in Table \ref{tab:params} and the likelihood components are shown in Table \ref{tab:south-likes}. The estimated data weights by the Francis method are shown in Table \ref{tab:dw}. Estimates of derived reference points and approximate 95 percent asymptotic confidence intervals for only the population `r area` are shown in Table \ref{tab:south-reference}. Estimates of the `r spp` population size `r area` over time are shown in Table \ref{tab:south-timeseries}. 
 
 ### Parameter Estimates
 
