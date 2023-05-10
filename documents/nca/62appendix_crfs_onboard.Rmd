@@ -6,9 +6,6 @@ read_child(filein)
 ```
 
 
-The CRFS onboard observer data went through a QA/QC process at the SWFSC which included mapping 
-fishing drifts in ArcPro to determine if the recorded latitude and longitude were correct.  
-
 In the assessment model, the recreational CPFV fleet is modeled as retained plus 
 discarded fish. The proportion of observed discarded copper rockfish is small, 
 averaging 3.5% over the time series (\@ref(tab:onboard-keepdiscard)) and are included in the index.
@@ -35,12 +32,12 @@ at 40%.  The southern California CPFV began an organized effort to avoid copper
 rockfish and encourage their clientele to release and descend copper rockfish 
 when encountered. The northern California fleet also participated in this effort to an extent. 
 In 2022, the CDFW implemented the one copper rockfish sub-bag 
-limit and combined with avoidance by the fleet, does not represent the available 
+limit and combined with avoidance by the fleet, the data for this year do not represent the available 
 copper rockfish biomass. See the online supplementary material
 or the history of regulation changes section for details.
 
 The filters also included removal of the number of observed anglers and time fished at the tail 
-ends of the distributions, removal of drifts occurring in depths outside copper rockfish's range 
+ends of the distributions and removal of drifts occurring in depths outside copper rockfish's range 
 (Table \@ref(tab:onboard-filter) and Figure \@ref(fig:onboard-depths)). 
 We retained 17,458 drifts for index
  standardization, and 3,303 of those drifts encountered copper rockfish 
@@ -49,7 +46,7 @@ Table \@ref(tab:onboard-percentpos).
 We modeled catch per angler minutes fished (CPUE) by fishing drift. 
 Prior to any modeling, the SWFSC QA/QC'd the data to ensure the location information was correct. 
 Each drift was overlaid with the available interpreted substrate layer that characterizes 
-rocky and hard substrate, assigned to a rocky reef and the distance of the 
+rocky and hard substrate, assigned to a rocky reef, and the distance of the 
 drift start location calculated.  In addition, the depth of the start location was 
 interpreted from the 2 m resolution bathymetry as well as 90 m resolution bathymetry 
 layer for comparison. For drifts missing depth location, we assigned depth based on the 
@@ -68,7 +65,7 @@ known area of rocky substrate to areas in southern California that lack substrat
 expansion of the estimated rocky substrate assumes that the proportions of rocky substrate within 
 and outside state waters are similar.  Copper rockfish are a nearshore species and the majority of 
 observed encounters were within state waters (Table \@ref(tab:onboard-waterarea)).
-is a course estimation of the amount of rocky substrate, and represents the best available data. 
+This is, of course, an estimation of the amount of rocky substrate, and represents the best available data. 
 The calculations can be found in the online supplementary material. Starting in 2017, 
 depth restrictions eased in districts 
 north of Point Conception and the recreational fleet targeted these depths 
@@ -77,9 +74,8 @@ outside of the mapped hard bottom habitat, but could be assigned to the larger
 areas considered as a factor in the index.
 
 
-The covariates explored for model selection included year and four levels region as categorical 
-region (CRFS Districts 3-6), a categorical variable for month, and continuous depth and depth-squared.  
-rends in the average CPUE by region were similar 
+The covariates explored for model selection included year and four categorical region levels (CRFS Districts 3-6), a categorical variable for month, and continuous depth and depth-squared.  
+Trends in the average CPUE by region were similar 
 in the filtered data set (Figure \@ref(fig:onboard-regioncpue)). A year and region interaction 
 was included after visualizing the trends in average CPUE over time, but was not significant 
 (Figure \@ref(fig:onboard-average_cpue_by_region)). The full model was selected by AICc and 
@@ -91,7 +87,7 @@ model indicated a poor fit to the data, which as not surprising given the low pe
 observed drifts encountering copper rockfish. A delta-Lognormal 
 was selected over a delta-gamma by a delta AIC of 487.  The QQ plot indicated a much 
 improved fit compared to the negative binomial model (Table \@ref(fig:onboard-qq)).
-The relative abundance is relatively flat during the time series, with a visible increase 
+The relative abundance is predominantly flat during the time series, with a visible increase 
 in CPUE in 2017 when deeper waters opened in portions of northern California after a 17 year closure (Table \@ref(tab:onboard-index) 
 and Figure \@ref(fig:onboard-index)).  
 
