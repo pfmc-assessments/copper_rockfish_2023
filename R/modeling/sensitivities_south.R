@@ -40,7 +40,8 @@ model_list2 =  c("cut_rec_catch", #1
                 "rm_ages", #3
                 "rm_coop", #4
                 "rm_wcgbt", #5
-                "rm_fishery_indices") #6
+                "wcgbt_index", #6
+                "rm_fishery_indices") #7
 
 model_list3 =  c("rm_ccfrp", #1
                  "rm_rov", #2
@@ -48,14 +49,15 @@ model_list3 =  c("rm_ccfrp", #1
                  "rm_hkl_ages", #4
                  "rm_hkl_len_age", #5
                  "rm_hkl_index", #6
-                 "rm_surveys") #7
+                 "hkl_rm_2014_data", #7
+                 "rm_surveys") #8
 
 model_list <- paste0(base_model, "_", model_list)
 model_list2 <- paste0(base_model, "_", model_list2)
 model_list3 <- paste0(base_model, "_", model_list3)
 
 #out.list = NULL	
-base   <- SS_output( base_loc, printstats = FALSE, verbose = FALSE) 
+base   <- SS_output( paste0(base_loc, "_forecast"), printstats = FALSE, verbose = FALSE) 
 
 sens_1  <- SS_output( file.path(wd, model_list[1]), printstats = FALSE, verbose = FALSE, covar = FALSE) 
 sens_2  <- SS_output( file.path(wd, model_list[2]), printstats = FALSE, verbose = FALSE, covar = FALSE) 
@@ -72,6 +74,7 @@ sens2_3  <- SS_output( file.path(wd, model_list2[3]), printstats = FALSE, verbos
 sens2_4  <- SS_output( file.path(wd, model_list2[4]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_5  <- SS_output( file.path(wd, model_list2[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_6  <- SS_output( file.path(wd, model_list2[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens2_7  <- SS_output( file.path(wd, model_list2[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 
 sens3_1  <- SS_output( file.path(wd, model_list3[1]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens3_2  <- SS_output( file.path(wd, model_list3[2]), printstats = FALSE, verbose = FALSE, covar = FALSE)
@@ -80,6 +83,7 @@ sens3_4  <- SS_output( file.path(wd, model_list3[4]), printstats = FALSE, verbos
 sens3_5  <- SS_output( file.path(wd, model_list3[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens3_6  <- SS_output( file.path(wd, model_list3[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens3_7  <- SS_output( file.path(wd, model_list3[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens3_8  <- SS_output( file.path(wd, model_list3[8]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 
 
 SSunavailableSpawningOutput(
@@ -103,6 +107,7 @@ modelnames2 <- c("Base Model",
                 "Rm. All Ages",
                 "Rm. Coop. Ages", 
                 "Rm. WCGBT Ages",
+                "Add WCGBT Index",
                 "Rm. CPFV & PR Indices")
 
 modelnames3 <- c("Base Model",
@@ -112,11 +117,12 @@ modelnames3 <- c("Base Model",
                  "Rm. NWFSC HKL Ages",
                  "Rm. NWFSC HKL Lens. & Ages",
                  "Rm. NWFSC HKL Index",
+                 "Move NWFSC HKL Data Before 2014",
                  "Rm. All Surveys")
 
 x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
-x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6))
-x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7))
+x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, sens2_7))
+x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
 
 SSplotComparisons(x, 
                   endyrvec = 2023, 
@@ -201,6 +207,7 @@ modelnames <- c("Base Model",
                  "Rm. All Ages",
                  "Rm. Coop. Ages", 
                  "Rm. WCGBT Ages",
+                 "Add WCBT Index",
                  "Rm. CPFV & PR Indices",
                  "Rm. CCFRP",
                  "Rm. CDFW ROV",
@@ -208,11 +215,12 @@ modelnames <- c("Base Model",
                  "Rm. NWFSC HKL Ages",
                  "Rm. NWFSC HKL Lens. & Ages",
                  "Rm. NWFSC HKL Index",
+                 "Move NWFSC HKL Data Before 2014",
                  "Rm. All Surveys")
 
 x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7,
-                      sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, 
-                      sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7))
+                      sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, sens2_7, 
+                      sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
 
 wd_dat <- file.path(paste0(wd,"/_plots")) 
 # Sensitivity figure is something I adapted from Jason's Original that is in r4ss (SS_Sensi_plot)
