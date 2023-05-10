@@ -1,21 +1,21 @@
 # Appendix D. Deb Wilson-Vandenberg Onboard CPFV Index of Abundance {#dwv-cpfv-index}
 
-The Deb Wilson-Vandenberg data set is an onboard observer survey data conducted 
-by CDFW survey in California north of Point Conception from 1987-1998 and referred to as the Deb 
-Wilson-Vandenberg onboard observer survey, @reilly-onboard-1998. During an onboard 
+The Deb Wilson-Vandenberg data set is derived from an onboard observer survey conducted 
+by CDFW in California north of Point Conception from 1987-1998 and referred to as the Deb 
+Wilson-Vandenberg onboard observer survey, @reilly-onboard-1998. During an 
 observer trip the sampler rode along on the CPFV and recorded location-specific 
 catch and discard information to the species level for a subset of anglers 
 onboard the vessel. The subset of observed anglers is usually a maximum of 15 
-people the observed anglers change during each fishing stop.  The catch cannot be 
+people and the observed anglers change during each fishing stop.  The catch cannot be 
 linked to an individual, but rather to a specific fishing location.  The sampler 
-also records the starting and ending time, number of anglers observed, starting 
+also recorded the starting and ending time, number of anglers observed, starting 
 and ending depth, and measured retained and discarded fish. The fine-scale catch and effort 
 data allow us to better filter the data for indices 
 to fishing stops within suitable habitat for the target species.
 
 
 A large effort was made by the SWFSC to recover data from the original data 
-sheets for this survey and developed into a relational database @monk-documentation-2016. 
+sheets for this survey and develop a relational database @monk-documentation-2016. 
 The specific fishing locations at each fishing stop  were recorded at a finer 
 scale than the catch data for this survey. We aggregated the relevant location 
 information (time and number of observed anglers) to match the available catch 
@@ -25,7 +25,7 @@ vessel is available.  We imputed the number of observed anglers using the number
 of anglers aboard the vessel and the number of observed anglers at each fishing 
 stop from the August 1992-December 1998 data (see Supplemental materials for 
 details). In 1987, trips were only observed in Monterey, CA and were therefore 
-excluded from the analysis (Table \@ref(tab:deb-filte)). Sampling 
+excluded from the analysis (Table \@ref(tab:deb-filter)). Sampling mainly
 targeted areas of central California.  Of the 2,256 trips observed, only 12 of 
 those launched from port in District 6, the most northern district in California.
 
@@ -33,25 +33,25 @@ those launched from port in District 6, the most northern district in California
 Each fishing location was assigned to a reef based on the on the bathymetric maps 
 and interpretation of hard bottom was extracted from 
 the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html).
-Reefs were aggregated to four regions produce adequate sample sizes; 
+Reefs were aggregated to four regions to produce adequate sample sizes; 
 the California/Oregon border to San Francisco (V1), San Francisco to Moss Landing (V2), 
-Moss Landing to Big Sur (V3), San Luis Obispo county to Point Conception (V4).  The ports in San 
+Moss Landing to Big Sur (V3), and San Luis Obispo county to Point Conception (V4).  The ports in San 
 Luis Obispo county were sampled more frequently than other regions and the arithmetic 
-mean of CPUE by year was higher also higher in this area (Figure \@ref(fig:fig-areacpue-debwv))
+mean of CPUE by year was also higher in this area (Figure \@ref(fig:fig-areacpue-debwv))
 
 
 The filters also included removal of the number of observed anglers and time fished at the tail 
-ends of the distributions, removal of drifts occurring in depths outside copper rockfish's range 
+ends of the distributions and removal of drifts occurring in depths outside copper rockfish's range 
 (Table \@ref(tab:deb-filter) and Figure \@ref(fig:deb-depths)). 
 We retained 5,546 drifts for index standardization, with 
-1,389 fishing location encountering copper rockfish.  
+1,389 fishing locations encountering copper rockfish.  
 Tables of the number of samples and positive observations by factors depth, region and year, 
 can be found in Tables \@ref(tab:deb), \@ref(tab:tab-region-debwv), and 
 \@ref(tab:tab-year-debwv).
 
 
 We modeled catch per angler hour fished (CPUE) by fishing stop where the angler 
-hours were summed across drfts at a fishing stop. To explore weighting of the onboard observer survey index by the available 
+hours were summed across drifts at a fishing stop. To explore weighting of the onboard observer survey index by the available 
 rocky substrate within a region, each drift was assigned to the closest area 
 of rocky habitat. Hard bottom was extracted from 
 the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html), 
@@ -65,9 +65,8 @@ expansion of the estimated rocky substrate assumes that the proportions of rocky
 and outside state waters are similar.
 
 
-The covariates explored for model selection included year and four levels region as categorical 
-region, and continuous depth and depth-squared.  
-rends in the average CPUE by region were similar 
+The covariates explored for model selection included year, four categorical region levels, and continuous depth and depth-squared.  
+Trends in the average CPUE by region were similar 
 in the filtered data set (Figure \@ref(fig:deb-regioncpue)). A year and region interaction 
 was included after visualizing the trends in average CPUE over time, but was not significant 
 (Figure \@ref(fig:deb-average_cpue_by_region)). The full model was selected by AICc and 

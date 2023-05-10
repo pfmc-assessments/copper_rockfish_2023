@@ -19,7 +19,7 @@ selected within a stratum (MPA and/or reference cells).  CPFVs are chartered
 for the survey and the fishing captain is allowed to search within the cell for 
 a fishing location.  During a sampling event, each cell is fished for a total of 
 30-45 minutes by volunteer anglers. Each fish encountered is recorded, measured, 
-and can be linked back to a particular angler, and released (or descended to depth). 
+and released (or descended to depth) and can later be linked back to a particular angler, . 
  CCFRP samples shallower depths to avoid barotrauma-induced mortality.  
  Starting in 2017, a subset of fish have been retained to collect otoliths and fin 
 clips that provide needed biological information for nearshore species. For the 
@@ -39,22 +39,22 @@ for index standardization, with 1,757 drifts encountering `r spp`.
 The CCFRP index includes all of the 
 MPAs currently sampled from 2017-2020 and the core central California sampling sites 
 from 2007-2016. Trends among all of the MPAs sampled increased along the entire coast 
-from 2017-2020. The final index (Table \@ref(tab:tab-index-ccfrp)) 
-represents a similar trend to the arithmetic mean of the annual CPUE (Figure \@ref(fig:fig-cpue-ccfrp)).
+from 2017-2020. The final index (Table \@ref(tab:index-ccfrp)) 
+represents a similar trend to the arithmetic mean of the annual CPUE (Figure \@ref(fig:ccfrp-avg-cpue)).
 
 We modeled retained catch per angler hour (CPUE; number of fish per angler hour) 
 using MLE fr. Indices with a year and area (location along the coast) interaction were not 
 considered in model selection; trends in the average CPUE by region were similar 
-in the filtered data set (Figure \@ref(fig:fig-areacpue-ccfrp)). Plots of the arithmetic 
-mean by inside (MPA) and outside (REF) MPAs over time is in Figure \@ref(fig:fig-sitecpue-ccfrp) 
-and shows the distinct trends of increasing average CPUE over time.
+in the filtered data set (Figure \@ref(fig:fig-areacpue-ccfrp)). Figure \@ref(fig:fig-sitecpue-ccfrp) shows arithmetic 
+mean by inside (MPA) and outside (REF) MPAs over time  
+and illustrates the distinct trends of increasing average CPUE over time.
 
 A negative binomial model was fit to the drift-level data (catch with a log offset for angler 
 hours). Because the average observed CPUE inside MPAs and in the reference sites exhibited 
 differing trends, we explored a YEAR:SITE interaction, which was selected as the best 
-fit model by AIC Table \@ref(tab:tab-model-select-ccfrp)), The final model included
+fit model by AIC Table \@ref(tab:ccfrp-model-selection)), The final model included
 yrea, mpa/reference categorization, depth, depth squared, and a year:mpa/reference interaction. 
-The model was fit using the sdmTMB R package (version xxx1). 
+The model was fit using the sdmTMB R package (version 0.3.0). 
 
 Based on work completed at the SWFSC, we estimate that the percent of rocky reef habitat from Point Conception to the California border within California state waters is 892 $km^2$, of which approximately 23% is in MPAs that prohibit the harvest of groundfish (pers comm. Rebecca Miller, UCSC). There is recreational fishing outside of state waters, but habitat maps are not available at the same 2-m resolution and do not allow for direct comparisons. To estimate the area 
 of rocky substrate south of Point conception, we separted the southern California Bight into four areas, 1) CRFS District 

@@ -1,1 +1,17 @@
-shared text
+There were some major sources of uncertainty within the assessments for `r spp`. To improve our understanding of the `r spp` stock in California waters the following research and data collection should be prioritized:
+
+\begin{enumerate}
+
+  \item Continue to investigate historical catch reconstructions and all other historical data sources.
+
+  \item Continue to investigate the most appropriate model structure for the NWFSC Hook and Line survey index. The NWFSC Hook and Line survey is the only long-term fishery-independent survey in rocky (untrawlable) habitat in the Southern California Bight. We also recommend evaluating how to structure the NWFSC Hook and Line survey index, given its expansion into the CCAs and increase of site now within designated MPAs, and independent analysis of information content in NWFSC Hook and Line survey across observed species. Finally, increased spatiotemporal sampling around Point Conception would aid in identifying stock boundaries.
+
+
+	\item The assessment area appears to have a mixture of observations from areas experiencing variable fishing mortality. In the region there are likely a mixture of areas: open access rocky reefs that are close to port that are heavily fished, open access rocky reefs that are inaccessible via day-trips that are fished but likely lower levels, and rocky reefs that fall within marine protect areas.  A spatially-explicit assessment model may be able to capture this complexity but will require data (indices of abundance and composition data) from each of the regions. 
+	
+	\item Future nearshore assessments would greatly benefit from additional CDFW ROV surveys which could increase the power of these data to inform assessments.
+
+	\item There are very limited age data for `r spp` across California arising from fishery-dependent sources.  Collecting otoliths from the recreational fishery, a large source of mortality, would support future assessments  and would improve the understanding of the population structure and life history of `r spp`. 
+
+
+\end{enumerate}
