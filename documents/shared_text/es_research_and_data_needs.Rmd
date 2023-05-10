@@ -11,7 +11,23 @@ There were some major sources of uncertainty within the assessments for `r spp`.
 	
 	\item Future nearshore assessments would greatly benefit from additional CDFW ROV surveys which could increase the power of these data to inform assessments.
 
-	\item There are very limited age data for `r spp` across California arising from fishery-dependent sources.  Collecting otoliths from the recreational fishery, a large source of mortality, would support future assessments  and would improve the understanding of the population structure and life history of `r spp`. 
+	\item There are very limited age data for `r spp` across California arising from fishery-dependent sources.  Collecting otoliths from the recreational fishery, a large source of mortality, would support future assessments and would improve the understanding of the population structure and life history of `r spp`. 
+
+	\item There is limited information for `r spp` on maturity and fecundity and the variability of these parameters with increasing latitude.  The `r wcbts` provided the only available information on the maturity ogive, which is not the most appropriate gear to target copper rockfish and the timing of the survey does not overlap with the expected peak spawning season.  The SWFSC has egg samples from a total of ten copper rockfish, which is too few to draw conclusions regarding fecundity.
+
+	\item Some of the PR mode recreational data that should be available via RecFIN were found to contain information inconsistent with datasheets available from CDFW. There is also a question if length data collected by the Deb Wilson-Vandenberg onboard observer survey is duplicated within RecFIN and attributed to MRFSS dockside samples of the CPFV fleet.
+
+	\item The interpreted substrate data for the areas north of Point Conception within state waters is complete. Additional data needs include high resolution interpretted substrate maps for areas outside of state waters. The avaialble interpreted bathymetry data from south of Point Concpetion is incomplete within state waters  around the northern and southern Channel Islands. This poses a challenge for estimating available rocky substrate both by district and also inside and outside closed areas. 
+
+	\item The genetic stock structure of `r spp` warrants further investigation to ensure appropraite management of `r spp` along the West Coast. 
+
+	\item The Marine Recreational Fisheries Statistics Survey (MRFSS) index was excluded from both California assessment models. The standardized trends in abundance were marked by extreme peaks in the data throughout the timeseries that the STAT did not think represented the data. Additional investigations of the MRFSS dataset could help resolve some of the issues.
+
+ \item Continue to investigate the the effect of the MPA network on `r spp` and other nearshore rockfish species.  The trend inside the MPAs in northern California exhibited an increasing trend compared to outside the MPAs, similar to what was observed furing the 2021 vermilion rockfish assessment.  This is the only long-term coastwide survey for nearshore rockfish that also provides information on age and growth.
+
+ \item Continue investigations of other available fishery-independent data such as the PISCO kelp forest index. 
+
+ \item Larval and smaller young-of-the-year copper rockfish can only be identified with certainty genetically. Existing sources of data (ClaCOFI and SMURFs) where genetic samples can be analyzed would provide key infomation to inform recruitment for copper rockfish.
 
 
 \end{enumerate}
