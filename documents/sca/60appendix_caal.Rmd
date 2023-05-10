@@ -1,6 +1,8 @@
-# Appendix A {#detailed-fit-comps}
+# Appendices 
 
-## Detailed Fit to Length Composition Data {#length-data}
+## Detailed Fits to Composition Data {#detailed-fit-comps}
+
+### Length Composition Data {#length-data}
 
 ```{r, results='asis'}
 plot_info = read.csv(file.path(model_dir, "plots", "plotinfotable_for_doc.csv"))
@@ -18,7 +20,7 @@ for (a in plot.vec){
 
 \newpage
 
-## Detailed Fit to Age Composition Data {#age-data}
+### Age Composition Data {#age-data}
 
 
 ```{r, results='asis'}
@@ -39,7 +41,7 @@ for (a in plot.vec){
 
 
 
-## Detailed Fit to Conditional-Age-at-Length Composition Data {#caal-data}
+### Conditional-Age-at-Length Composition Data {#caal-data}
 
 
 ```{r, results='asis'}
@@ -80,7 +82,10 @@ for (a in plot.vec){
 
 ```
 
-## Implied Fit to Excluded Length Data {#excluded-data}
+## Implied Fits to Exluded Data {#excluded-data}
+
+
+### Length Data 
 
 The implied fits to the data not included in the base model due to low annual sample size are shown below.  
 
@@ -102,3 +107,15 @@ for (a in plot.vec){
 ``` 
 
 \newpage
+
+
+### MRFSS CPFV Fishery-Dependent Indices of Abundance
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_CPFV.png"), 
+caption = "Implied fit to log index data on log scale for the recreational (MRFSS) CPFV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+label = 'mrfss-cpfv-index-fit')
+```
+
+\pagebreak

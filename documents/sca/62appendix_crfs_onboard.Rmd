@@ -1,4 +1,4 @@
-# Appendix C. California Onboard CPFV Index of Abundance {#onboard-cpfv-index}
+# Appendix California Onboard CPFV Index of Abundance {#onboard-cpfv-index}
 
 
 ```{r, echo=FALSE, results='asis'}
