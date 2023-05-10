@@ -675,8 +675,7 @@ caption = "Estimated selectivity for each fleet and survey in the base model.",
 label = 'est-selex')
 ```
 
-
-
+\newpage
 
 ### Recruitment
 
@@ -719,7 +718,7 @@ caption = "Points are transformed variances. Red line shows current settings for
 label = 'bias-adjust')
 ```
 
-
+\newpage
 
 ### Fits to Data
 

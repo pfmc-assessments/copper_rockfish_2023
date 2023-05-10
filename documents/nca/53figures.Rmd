@@ -431,7 +431,7 @@ label = 'frac-sex-len')
 add_figure(
 filein = file.path(data_dir, "biology", "plots", "Length_Weight_All.png"), 
 caption = "Estimated weight-at-length",
-label = 'weight-length')
+label = 'est-len-wght')
 ```
 
 \pagebreak
@@ -556,6 +556,14 @@ label = 'mod-est-len-age')
 <!-- *********************    Selectivity            ********************** --> 
 <!-- ====================================================================== -->
 
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "north_selectivity.png"),
+caption = "Estimated selectivity for each fleet and survey in the base model.",
+label = 'est-selex')
+```
+
+
 \pagebreak
 
 ### Recruitment
@@ -583,6 +591,18 @@ label = 'rec-devs')
 
 \pagebreak
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "recruit_fit_bias_adjust.png"), 
+caption = "Points are transformed variances. Red line shows current settings for bias adjustment specified in control file. Blue line shows least squares estimate of alternative bias adjustment relationship for recruitment deviations (which may or may not be an improvement)",
+label = 'bias-adjust')
+```
+
+
+\newpage
+
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "SR_curve.png"), 
@@ -599,6 +619,162 @@ label = 'bh-curve')
 <!-- ====================================================================== -->
 
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots",  "comp_lenfit__aggregated_across_time.png"), 
+caption = "Length composition aggregated across years by fleet with the model estimated fit to the data by sex (green unsexed, red female, and blue male).",
+label = 'len-agg-fit')
+```
+
+\pagebreak
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt1mkt0.png"), 
+caption = "Pearson residuals for commercial fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'com-dead-pearson')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Commercial_dead.png"), 
+caption = "Mean length for commercial dead lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'com-dead-mean-len-fit')
+```
+
+\pagebreak
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_agefit__aggregated_across_time.png"), 
+caption = "Age composition data aggregated across time by fleet.",
+label = 'agg-marg-age-fit')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_agefit_residsflt1mkt0.png"), 
+caption = "Pearson residuals for commercial dead age data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'com-dead-age-pearson')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt2mkt0.png"), 
+caption = "Pearson residuals for commercial live fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'com-live-pearson')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Commercial_live.png"), 
+caption = "Mean length for commercial live fish lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'com-live-mean-len-fit')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt3mkt0_page2.png"), 
+caption = "Pearson residuals for recreational CPFV fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'rec-cpfv-pearson')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Rec_CPFV.png"), 
+caption = "Mean length for recreational CPFV lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'rec-cpfv-mean-len-fit')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_agefit_residsflt3mkt0.png"), 
+caption = "Pearson residuals for recreational CPFV age data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'rec-cpfv-age-pearson')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt4mkt0_page2.png"), 
+caption = "Pearson residuals for recreational private/rental fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'rec-pr-pearson')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Rec_Private.png"), 
+caption = "Mean length for recreational private/rental lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'rec-pr-mean-len-fit')
+```
+
+\pagebreak
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt5mkt0.png"), 
+caption = "Pearson residuals for CCFRP Hook and Line survey length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'ccfrp-len-pearson')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_CCFRP.png"), 
+caption = "Mean length for CCFRP Hook and Line survey lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'ccfrp-mean-len-fit')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_condAAlfit_residsflt5mkt0.png"), 
+caption = "Pearson residuals for CCFRP Hook and Line survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'ccfrp-age-pearson')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_residsflt6mkt0.png"), 
+caption = "Pearson residuals for CDFW ROV survey length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+label = 'rov-pearson')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_CDFW_ROV.png"), 
+caption = "Mean length for CDFW ROV survey lengths with 95 percent confidence intervals based on current samples sizes",
+label = 'rov-mean-len-fit')
+```
+
+\pagebreak
 
 
 <!-- ====================================================================== -->
