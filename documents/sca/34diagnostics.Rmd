@@ -42,6 +42,8 @@ Data Sensitivities
   
   \item Remove the NWFSC WCGBT survey lengths and ages.
   
+  \item Add the NWFSC WCGBT index of abundance.
+  
   \item Remove all fishery-dependent indices of abundance.
   
   \item Remove the CCFRP Hook and Line survey data (index, lengths, and ages).
