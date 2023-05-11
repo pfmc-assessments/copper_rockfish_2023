@@ -1,5 +1,5 @@
 ### Partnership for Interdisciplinary Studies of Coastal Oceans
-*add citation*
+
 The Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO) is an 
 academic consortium conducting monitoring of coastal ecosystems in California as 
 well as research to support marine protected area design.  Their work includes SCUBA 
@@ -7,7 +7,6 @@ surveys and fish recruitment monitoring within rocky reef habitats at a suite of
 across the state using standardized protocols so that multiple participating universities 
 collect compatible data. 
 
-#### SCUBA Fish Transects
 We examined fish transect data collected by participating PISCO researchers at 
 the University of California Santa Cruz (UCSC), University of California Santa Barbara 
 (UCSB), the Vantuna Research Group (VRG) and Humboldt State University (HSU) for potential 
@@ -21,9 +20,7 @@ fish within a 30 x 2 x 2-m volume on the bottom, mid-way up the water column, an
 the surface just below the kelp canopy.  Three replicate transects are performed within
 inner, inner-mid, outer-mid, and deep zones of the reef corresponding to depths between 
 5 and 20 m.  This results in 12 transect locations per reef site and 36 transect swims 
-incorporating the three levels.  Divers count fish by species and estimate sizes.  
-Survey sites are typically grouped within a geographic area, i.e., there are three 
-sites on Naples reef near Santa Barbara (Naples Central, Naples East, and Naples West).  
+incorporating the three levels.  Divers count fish by species and estimate sizes.  Survey sites are typically grouped within a geographic area, i.e., there are three sites on Naples reef near Santa Barbara (Naples Central, Naples East, and Naples West).  
 
 The full dataset was filtered for quality and habitat appropriate for `r spp`. 
 Data was limited to surveys conducted by UCSC and UCSB because `r spp` were not 
@@ -34,39 +31,43 @@ We eliminated sites that were sampled in less than 80% of the survey years for e
 
 ```{asis, echo = model.area=='north'}
 
-Early years with less consistent sampling were eliminated such that the time series for UCSC began in 2001 and extended through 2021.  The majority of UCSC sites occurred within sites that became MPAs.  Three sites that did not become MPAs were removed to create an index with a consistent change in selectivity following MPA implementation.  After filtering, sites that remained in the UCSC dataset were centered around the Monterey peninsula.  Sample sizes of copper rockfish observed by year at all retained UCSC sites ranged from 1 to 28 fish (Table X, nCPR_table_N_S.csv).
+Early years with less consistent sampling were eliminated such that the time series for UCSC began in 2001 and extended through 2021.  The majority of UCSC sites occurred within sites that became MPAs.  Three sites that did not become MPAs were removed to create an index with a consistent change in selectivity following MPA implementation.  After filtering, sites that remained in the UCSC dataset were centered around the Monterey peninsula.  Sample sizes of copper rockfish observed by year at all retained UCSC sites ranged from 1 to 28 fish (Table \ref{tab:pisco-data}).
 
 ```
 
 ```{asis, echo = model.area=='south'}
 
-Early years with less consistent sampling were eliminated such that the time series for UCSB began in 2004 and extended through 2021.  Sites surveyed by UCSB were mixed in distribution inside and outside MPA locations and therefore were not filtered for this criterion.  After filtering, sites that remained in the UCSC dataset were centered around the northern Channel Islands with a few on the Santa Barbara Channel mainland.  Sample sizes of copper rockfish observed by year at all retained sites ranged from 15 to 39 fish for UCSB (Table X, nCPR_table_N_S.csv).  
+Early years with less consistent sampling were eliminated such that the time series for UCSB began in 2004 and extended through 2021.  Sites surveyed by UCSB were mixed in distribution inside and outside MPA locations and therefore were not filtered for this criterion.  After filtering, sites that remained in the UCSC dataset were centered around the northern Channel Islands with a few on the Santa Barbara Channel mainland.  Sample sizes of copper rockfish observed by year at all retained sites ranged from 15 to 39 fish for UCSB (Table \ref{tab:pisco-data}).  
 
 ```
 
-#### Standard Monitoring Units for Recruitment of Fishes
-
 The PISCO program conducts larval fish recruitment monitoring by sampling 
 artificial settlement substrates called Standard Monitoring Units for Recruitment
- of Fishes (SMURFs).  Similar to the SCUBA surveys, SMURF surveys are conducted by 
- multiple universities using standardized protocols.  We examined data collected by 
- the UCSB and UCSC campuses in southern and central California.  Surveys by UCSB were 
- conducted between 2000 and 2018 and by UCSC between 1999 and 2016.  Juvenile `r spp` 
- are difficult to distinguish from juvenile gopher rockfish (*Sebastes carnatus*) and the 
- data from UCSB combines counts of these species into a complex.  For this reason, 
- we determined this data to be inappropriate for construction of a `r spp` recrutiment 
- index to be used within the assessment.  While data from UCSC reports distinct counts 
- of copper and gopher rockfish, the concern remains that the `r spp` counts may not be 
- accurate due to this morphological identification difficulty.  Additionally, collections 
- of `r spp` in this data set were very sparse with many years seeing none.  However, 
- an extremely high number were recorded for 2016.  
+of Fishes (SMURFs).  Similar to the SCUBA surveys, SMURF surveys are conducted by 
+multiple universities using standardized protocols.  We examined data collected by 
+the UCSB and UCSC campuses in southern and central California.  Surveys by UCSB were 
+conducted between 2000 and 2018 and by UCSC between 1999 and 2016.  Juvenile `r spp` 
+are difficult to distinguish from juvenile gopher rockfish (*Sebastes carnatus*) and the 
+data from UCSB combines counts of these species into a complex.  For this reason, 
+we determined this data to be inappropriate for construction of a `r spp` recrutiment 
+index to be used within the assessment.  While data from UCSC reports distinct counts 
+of copper and gopher rockfish, the concern remains that the `r spp` counts may not be 
+accurate due to this morphological identification difficulty.  Additionally, collections 
+of `r spp` in this data set were very sparse with many years seeing none.  However, 
+an extremely high number were recorded for 2016.  
 
 ### Reef Check
 
 Reef Check is an international non-profit organization leading citizen scientists 
 to monitor reef habitats.  Data from SCUBA surveys of fish in California are available 
 since 2006.  Given the low proportion of `r spp` detections on PISCO surveys, we did not 
-dedicate time to analysis of Reef Check survey data for the purpose of abundance index d
-evelopment.  However, given the wide distribution of Reef Check survey sites, the data 
-may warrant further exploration for future assessments.  
-**Reef Check doesn't identify anything less than 10 cm and I don't think speciates - check on this**
+dedicate time to analysis of Reef Check survey data for the purpose of abundance index development.  However, given the wide distribution of Reef Check survey sites, the data may warrant further exploration for future assessments.  
+
+### MRFSS Dockside Survey of CPFV/PC Vessels
+
+```{r, echo=FALSE, results='asis'}
+filein = file.path(doc_dir, "shared_text",'21f_mrfss_index.Rmd')
+read_child(filein)
+```
+
+The data were filtered to identify rockfish trips, standardized across the time-series, and modeled to estimate and index of abundance for `r spp`. The MRFSS CPFV index of abundance between 1980-1999 is generally variable but with a flat trend in abundance except for three years that spike in abundance estimates. These same patterns in sharp increases in the index for select years were also observed in the raw data. Given the limited information in the data to understand what was behind these unexpected spikes in the time series, the MRFSS index of abundance was not used in the final base model. 

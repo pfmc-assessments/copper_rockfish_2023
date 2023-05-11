@@ -51,25 +51,17 @@ Recreational catch data is reported by district in CRFS where district 1 (aka So
 
 A number of indices of abundance were explored for the recreational fleet. Discarded catch is available from onboard observer surveys, but was not included in indices. Indices developed for the assessment include:
 
-* MRFSS era dockside survey of the CPFV/PC fleet (1980-1999)
 * CDFW CPFV/PC onboard observer index (1999-2019)
 * CRFS PR1 sites dockside survey (2004-2019)
 
 Due to limited sampling during 2020 due to the COVID-19 pandemic and inseason action taken by CDFW for 2022 reducing sub-bag limits for `r spp` across California, both recreational fishery indices of abundance excluded data collected after 2019.
 
 ```{r, echo=FALSE, results='asis'}
-filein = file.path(doc_dir, "shared_text",'21f_mrfss_index.Rmd')
-read_child(filein)
-```
-
-The data were filtered to identify rockfish trips, standardized across the time-series, and modeled to estimate and index of abundance for `r spp` (see [Appendix B](#mrfss-cpfv-index) for details). The MRFSS CPFV index of abundance between 1980-1999 is generally variable but with a flat trend in abundance except for three years that spike in abundance estimates (Figure \ref{fig:mrfss-index-main}). These same patterns in sharp increases in the index for select years were also observed in the raw data. Given the limited information in the data to understand what was behind these unexpected spikes in the time series, the MRFSS index of abundance was not used in the final base model. 
-
-```{r, echo=FALSE, results='asis'}
 filein = file.path(doc_dir, "shared_text",'21f_crfs_cpfv_index.Rmd')
 read_child(filein)
 ```
 
-The CRFS CPFV index of abundance was low in the early years of the time-series between 1999-2004 and then began to increase with variability among years until 2013, and declined in the final years (Figure \ref{fig:crfs-index-main}). See [Appendix C](#onboard-cpfv-index) for details on the data filtering, processing, and model selection.
+The CRFS CPFV index of abundance was low in the early years of the time-series between 1999-2004 and then began to increase with variability among years until 2013, and declined in the final years (Figure \ref{fig:crfs-index-main}). See the Appendix Section {onboard-cpfv-index} for details on the data filtering, processing, and model selection.
 
 Catch and effort data from CRFS dockside sampling of private boats, 2004-2019, and 2021-2022, were provided by CDFW for use in this assessment. The data include catch (number of fish) by species, number of anglers (i.e., effort units are angler trips), angler-reported distance from shore (Area X: inside/outside of 3 nm), county, port, interview site, year, month, and CRFS district. Only data through 2019 were used to develop an index of abundance due to potential changes in angler behavior in 2021 and management changes in 2022. See [Appendix D](#crfs-pr-index) for details on the data filtering, processing, and model selection. The CRFS PR index of abundance generally increased between 2004-2016, with the final years of the index stabilizing or slightly declining (Figure \ref{fig:crfs-pr-index-main}).
 
