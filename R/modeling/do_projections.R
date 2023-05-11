@@ -57,6 +57,8 @@ do_projections <- function(
   buffer2 <- PEPtools::get_buffer(years = (fore_years[1]-2):max(fore_years), sigma = sigma[2], pstar = pstar)
   buffer2 <- buffer2[3:nrow(buffer2), 2]
   ind <- 1
+  
+  startyr <- model1$startyr 
     
   for (y in fore_years){
     # Calculate the pooled depletion
