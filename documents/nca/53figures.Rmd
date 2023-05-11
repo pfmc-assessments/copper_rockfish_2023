@@ -649,20 +649,16 @@ label = 'com-dead-mean-len-fit')
 \pagebreak
 
 
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "comp_agefit__aggregated_across_time.png"), 
-caption = "Age composition data aggregated across time by fleet.",
-label = 'agg-marg-age-fit')
-```
+```{r, include = F}
+#add_figure(
+#filein = file.path(model_dir, "plots", "comp_agefit__aggregated_across_time.png"), 
+#caption = "Age composition data aggregated across time by fleet.",
+#label = 'agg-marg-age-fit')
 
-\pagebreak
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "comp_agefit_residsflt1mkt0.png"), 
-caption = "Pearson residuals for commercial dead age data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-label = 'com-dead-age-pearson')
+#add_figure(
+#filein = file.path(model_dir, "plots", "comp_agefit_residsflt1mkt0.png"), 
+#caption = "Pearson residuals for commercial dead age data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+#label = 'com-dead-age-pearson')
 ```
 
 \pagebreak
@@ -723,7 +719,7 @@ label = 'rec-pr-pearson')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Rec_Private.png"), 
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Rec_PR.png"), 
 caption = "Mean length for recreational private/rental lengths with 95 percent confidence intervals based on current samples sizes",
 label = 'rec-pr-mean-len-fit')
 ```

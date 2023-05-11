@@ -2,16 +2,16 @@
 
 The base model described here is only for the portion of the stock `r spp` in California from Point Conception, \PtC to the California/Oregon border, \CAOR  Descriptions of the summed biomass and stock status for the California stock of `r spp` are described in later sections.  
 
-The base model parameter estimates along with approximate asymptotic standard errors are shown in Table \ref{tab:params} and the likelihood components are shown in Table \ref{tab:likes}. Estimates of derived reference points and approximate 95 percent asymptotic confidence intervals are shown in Table \ref{tab:reference}. Estimates of stock size and status over time are shown in Table \ref{tab:timeseries}. 
+The base model parameter estimates along with approximate asymptotic standard errors are shown in Table \@ref(tab:params) and the likelihood components are shown in Table \ref{tab:north-likes}. Estimates of derived reference points and approximate 95 percent asymptotic confidence intervals are shown in Table \ref{tab:north-referenceES}. Estimates of stock size and status over time are shown in Table \ref{tab:north-timeseries}. 
 
 The full r4ss plotting output is available in the supplementary material on the Council's website.
 
 ### Parameter Estimates
 
-Estimated parameter values are provided in Table \ref{tab:north-params}. The log($R_0$) was estimated at `r round(model$parameters[model$parameters$Label == 'SR_LN(R0)', 'Value'], 2)`. 
+Estimated parameter values are provided in Table \ref{tab:params}. The log($R_0$) was estimated at `r round(model$parameters[model$parameters$Label == 'SR_LN(R0)', 'Value'], 2)`. 
 
 
-The northern California base model estimated reasonable growth parameters for $k$ and lengths at age 2 and age 20 for males and females. The estimates differed from those estimated externally, which was not unexpected given the lack of consistent age data across fleets and years. The direct estimation of male $L_{age=2}$ = 12 cm was reasonable compared to female  $L_{age=2% = 14.6 cm.  While $k$ was estimated larger for males (0.20 yr^-^) than females (0.15 yr^-1^), female $L_{age=30}$ of 48.3 cm was larger than males at 46.4 cm.  These results are consistent with other studies that have looked at sex-specific growth in copper rockfish and similar to estimates from the southern California pre-STAR base model.
+The northern California base model estimated reasonable growth parameters for $k$ and lengths at age 2 and age 20 for males and females. The estimates differed from those estimated externally, which was not unexpected given the lack of consistent age data across fleets and years. The direct estimation of male $L_{age=2}$ = 12 cm was reasonable compared to female  $L_{age=2}$ = 14.6 cm.  While $k$ was estimated larger for males (0.20 yr^-1^) than females (0.15 yr^-1^), female $L_{age=30}$ of 48.3 cm was larger than males at 46.4 cm.  These results are consistent with other studies that have looked at sex-specific growth in copper rockfish and similar to estimates from the southern California pre-STAR base model.
 
 Length-based selectivity curves were estimated for the fishery and survey fleets, and age-based selectivity of 1.0 starting at age 1 for the growth fleet. Model explorations included parameterizing the fleets with double normal selectivity. Selectivity of the commercial dead fleet and the CDFW ROV survey were continually estimated as asymptotic through base model development and were simplified to two parameter logistic selectivity in the base model. Peak selectivity for the commercial dead fleet was estimated at 34 cm and 32 cm for the ROV survey. Plots of the estimated selectivities are shown in Figure \ref{fig:est-selex}. 
 

@@ -179,30 +179,71 @@ Correct citation for this publication:
 \hypertarget{base-model-results}{%
 \subsection{Base Model Results}\label{base-model-results}}
 
-The base model described here is only for the portion of the stock copper rockfish in California from Point Conception, $34^\circ 27^\prime$ N. lat. to the California/Oregon border, $42^\circ 00^\prime$ N. lat.. Descriptions of the summed biomass and stock status for the California stock of copper rockfish are described in later sections.
+The base model described here is only for the portion of the stock copper rockfish in California from Point Conception, $34^\circ 27^\prime$ N. lat. to the California/Oregon border, $42^\circ 00^\prime$ N. lat. Descriptions of the summed biomass and stock status for the California stock of copper rockfish are described in later sections.
 
-The base model parameter estimates along with approximate asymptotic standard errors are shown in Table \ref{tab:north-params} and the likelihood components are shown in Table \ref{tab:north-likes}. Estimates of derived reference points and approximate 95 percent asymptotic confidence intervals are shown in Table \ref{tab:north-referenceES}. Estimates of stock size and status over time are shown in Table \ref{tab:north-timeseries}.
+The base model parameter estimates along with approximate asymptotic standard errors are shown in Table \ref{tab:params} and the likelihood components are shown in Table \ref{tab:likes}. Estimates of derived reference points and approximate 95 percent asymptotic confidence intervals are shown in Table \ref{tab:reference}. Estimates of stock size and status over time are shown in Table \ref{tab:timeseries}.
+
+The full r4ss plotting output is available in the supplementary material on the Council's website.
 
 \hypertarget{parameter-estimates}{%
 \subsubsection{Parameter Estimates}\label{parameter-estimates}}
 
 Estimated parameter values are provided in Table \ref{tab:north-params}. The log(\(R_0\)) was estimated at 6.34.
 
-The northern California base model estimated reasonable growth parameters for \(k\) and lengths at age 2 and age 20 for males and females, and differed from the external estimates of growth.
+The northern California base model estimated reasonable growth parameters for \(k\) and lengths at age 2 and age 20 for males and females. The estimates differed from those estimated externally, which was not unexpected given the lack of consistent age data across fleets and years. The direct estimation of male \(L_{age=2}\) = 12 cm was reasonable compared to female \$L\_\{age=2\% = 14.6 cm. While \(k\) was estimated larger for males (0.20 yr\textsuperscript{-}) than females (0.15 yr\textsuperscript{-1}), female \(L_{age=30}\) of 48.3 cm was larger than males at 46.4 cm. These results are consistent with other studies that have looked at sex-specific growth in copper rockfish and similar to estimates from the southern California pre-STAR base model.
 
-The direct estimation of male \(L_{age=2}=6.02\) cm was reasonable compared to female \(L_{age=20}=7.8\). While \(k\) was estimated larger for males (0.19) than females (0.15), female \(L_{age=30}\) of 55 cm was larger than males at 49 cm. These results are consistent with other studies that have looked at sex-specific growth in vermilion rockfish. The full r4ss plotting output is available in the supplementary material on the Council's website. The selectivity curves for the commercial and recreational fleet are shown in Figure \ref{fig:selex}. The commercial selectivity was estimated in two blocks of time; 1916 - 2008 and 2009 - 2022. The block in selectivity was aimed to capture the shift in observations of smaller fish in recent years (Figure \ref{fig:com-len-data}). The early block estimated a gradual slope of increasing selectivity across lengths with selectivity reaching 1.0 at the largest sizes, with the parameter hitting the upper bound of 55 cm. To reduce problems in convergence the final model fixed this parameter at cm, just below the upper bound. In recent years, commercial selectivity shifted left-ward, resulting in increased selectivity of smaller fish with peak selectivity occurring at cm. The cause of this shift in selectivity is not entirely clear but may be related to management changes shifting effort into shallower depths, the live fish fishery which favors age 3 fish (Dan Platt, personal communication), and or combined with a strong recruitment event entering the fishery that could have resulted in a shift in size targeted by the fishery.
+Length-based selectivity curves were estimated for the fishery and survey fleets, and age-based selectivity of 1.0 starting at age 1 for the growth fleet. Model explorations included parameterizing the fleets with double normal selectivity. Selectivity of the commercial dead fleet and the CDFW ROV survey were continually estimated as asymptotic through base model development and were simplified to two parameter logistic selectivity in the base model. Peak selectivity for the commercial dead fleet was estimated at 34 cm and 32 cm for the ROV survey. Plots of the estimated selectivities are shown in Figure \ref{fig:est-selex}.
 
-Selectivity in the recreational fishery was assumed constant across the modeled period with maximum selectivity occurring for fish of cm and greater. The peak selectivity for both fleets, commercial and recreational fishery, is less than the length-at-50 percent maturity (34.04 cm).
+The commercial live fishery selectivity was estimated in two blocks of time; 1916 - 2010 and 2011 - 2022. The block in selectivity was included to capture a shift from asymptotic selectivity prior to 2011 to the selection of plate-sized (approx. 2 pounds) fish preferred in the live-fish fishery (Figure \ref{fig:com-live-len-data}). Both recreational fleets were fit to the same three time blocks. From 1916-2001, peak selectivity was estimated around 36 cm with selectivity decreasing for larger fish; dome-shaped selectivity was estimated from 2002-2016 representing the years the fishery was restricted to shallower depths, and asymptotic selectivity starting in 2017 when the fishery gained access to deeper depths. The two estimated PR fleet selecitivities were both dome-shape with the wider peak selecitivity estimated in 2017-2022 representing the change in depth regulations.
 
-The estimated annual recruitment and recruitment deviations are shown in Figures \ref{fig:recruits} and \ref{fig:rec-devs}. The bias adjustment applied to the annual recruimtent deviations across time is shown in Figure \ref{fig:bias-adj}. Strong recruitments are estimated to have occurred in 2008, 2009, and 2010. While there could have been three above average recruitments occurring in subsequent years, alternatively there may have been a single year with high recruitment that the model is unable to accurately assign to a single year due to the variability in length data. Above average recruitment in 2008 has been estimated in other rockfish assessments off the West Coast {[}@gertseva\_status\_2015;@hicks\_status\_2015;@wetzel\_status\_2017{]}. The stock-recruit curve resulting from a value of steepness fixed at 0.72 is shown in Figure \ref{fig:bh-curve}.
+The CCFRP survey estimated peak selectivity at 33 cm in both time blocks with the first time blocks estimating decreased selectivity of larger fish. The survey expanded to northern California in 2017 where larger copper rockfish were observed and estimated asymptotic selecitivity for fish larger than 33 cm.
+
+The catchability for each of the surveys was analytically solved comparing observed to expected vulnerable biomass across all years. The analytical values for catchability were very small given the survey methodologies and are reported in Table \ref{tab:north-params} in log-space. Additional fishery and survey index variability, process error added directly to each year's input standard deviation for the were estimated within the model. The model estimated the largest added variance of for the recreational PR fishery index. In contrast the model estimated only limited additional variability in order to fit the recreational CRFS CPFV fishery index (0.095). The model fit the trend in the CCFRP survey with added variance estimated to fit the time series of 0.22, while the model added and still did not fit the trend in the index. The model fit the CDFW ROV survey index well and estimated a small added variance of 0.089.
+
+The estimated annual recruitment and recruitment deviations are shown in Figures \ref{fig:recruits} and \ref{fig:rec-devs}. The bias adjustment applied to the annual recruitment deviations across time is shown in Figure \ref{fig:bias-adj}. Strong recruitments are estimated to have occurred in 1966-1967, 2007 and 2017 and the years of lowest estimated recruitment being 1979 and 1980. The uncertainy in recruitment deviations is highest for the first two years 1970 and 1971 and relatively consistent for the remainder of the time series. There is limited information in the data on recruitment variability from the available data. During model explorations the recruitment deviations were most sensitive to the removal of the available age and fishery index data.
+
+Recruitment is estimated based on the spawner-recruit curve in 2021 and 2022 (Figure \ref{fig:bh-curve}). The recruitment bias adjustment applied within the model across years is shown in Figure \ref{fig:bias-adjust}.
 
 \hypertarget{fits-to-the-data}{%
 \subsubsection{Fits to the Data}\label{fits-to-the-data}}
 
-\hypertarget{population-trajectory}{%
-\subsubsection{Population Trajectory}\label{population-trajectory}}
+\hypertarget{fits-to-length-and-age-composition}{%
+\paragraph{Fits to length and age composition}\label{fits-to-length-and-age-composition}}
 
-Thee predicted spawning output (in millions of eggs) is given in Table \ref{tab:timeseries} and shown in Figure \ref{fig:north-ssb}. The estimated spawning output decreases sharply in the late-1970s and continues to decline until reaching low levels in the late-1990s. The spawning output slowly increases between 2000 - 2010 with the rate of population growth increasing after 2011 as fish from recent strong year-classes begin to mature. The estimate of total biomass over time is shown in Figure \ref{fig:tot-bio}.
+Fits to the length data are shown based on the Pearson residuals-at-length, the annual mean lengths, and aggregated length composition data for the commercial and recreational fleets. Annual length composition fits are shown in the Appendix, Section \ref{detailed-fit-comps}. Aggregate fits by fleet are shown in Figure \ref{fig:agg-len-fit}.
+
+The aggregated lengths for the commercial dead fleet reflected a wide selection across sizes, with the model under-predicting the selection for both small males and females. The majority of the length data for the commercial dead fleet consisted of unsexed fish with sex-specific lengths available from 1980, 1984, 1999, and 2019-2022. The aggregate length composition fit well with the asymptotic selectivity curve for the commercial dead fleet. Multiple sensitivities were conducted to explore alternative parameterization of commercial dead fleet selectivity. The Pearson residuals for the commercial dead fishery length data area shown in Figure \ref{fig:com-dead-pearson}. The mean length observed in the commercial lengths of unsexed fish were generally stable between 1990 - 2019 and decreased to smaller sizes from 2019 - 2022, with high undertainty in the mean lengths of unsexed fish in 2022 (Figure \ref{fig:com-dead-mean-len-fit}). The observations of larger fish, greater than 40 cm, are minimally greater than the model expectations after 2010. A limited number of ages from the commercial dead fleet were available from 2019-2022. The model estimated mean age was within the bounds of uncertainty, but not well fit (Figure \ref{fig:agg-marg-age-fit})
+
+Starting in 2010, the commercial live fleet length data shifts to smaller fish with observations greater than model expectations for fish between 25 - 30 cm. All available lengths for the commercial live fleet were from unsexed fish and the aggregated length data were fit relatively well given the change in selectivity in 2011. There were no ages available from the commercial live fleet and the The Pearson residuals for the commercial dead fishery length data area shown in Figure \ref{fig:com-live-pearson}. The mean length observed in the commercial lengths of unsexed fish were not stable prior to 2011 (Figure \ref{fig:com-dead-mean-len-fit}). From 2011-2022 the mean length of fish in the live fishery are relatively stable, with a notable decreased in 2016.
+
+The lenth composition fits to the recreational CPFV fleet were relatively well fit throughout the time series, except for a efw years where the a number of fish in a single size class were observed that the model did not expect given the selectivity. The Pearson residuals do not show an indication of any strong year classes from the avaialble lengths (Figure \ref{fig:rec-cpfv-pearson}). The mean length observed, unsexed fish from the CPFV fleet was fit relatively well, indicating a slight increase in mean size around 2000, a decrease from 2007-2011 and a slight increase again from 2013-2018 (Figure \textbackslash ref\{fig:rec-cpfv-mean-len-fit). The number of sexed fish available from the CPFV fleet is small andthe last year of data was not well fit and estimated with high uncertainty. Only one year of age data were available, 2022, from a combination of NMFS Coopeartive Reserach collections and the CDFW groundfish group. A small fraction of these fish were unsexed, and the Pearson residuls indicate these data were generally well-fit (Figure \ref{fig:rec-cpfv-age-pearson}).
+
+The Pearson residuals for the recreational PR length data are variable by year (Figure \ref{fig:rec-pr-pearson}). Pearson residuals were positive, observations greater than expected, for small fish prior to 1997 and are generally variable showing no clear misfit in the model in recent years. The aggregate length composition data from the PR fleet had a slightly higher peak around 29 cm with fewer observations. The length composition across yeras is fit well from 2004-2022 when CDFW implemented the CRFS sampling program. A wide range of sizes were observed from 1959-1987 with poorer fits in years with less data such as 1989 and 1996-2002. The mean length by year for the recreational PR fleet was highly variable across years (Figure \ref{fig:rec-pr-mean-len-fit}). The implementation of the MPA network may have impacted the shift to smaller mean size in those years. The CDFW collected ages from the recreational PR fleet in 2022. The peak of the age distribution was underestimated by the model (Figure \ref{fig:agg-marg-age-fit}).
+
+The aggregated length composition to both fishery-independent surveys CCFRP and the CDFW ROV, were fit reasonably well with an underestimation of fish at around 40-45 cm in the ROV survey. Both of these surveys were conducted in California state waters and represent samples from inside and outside the MPAs. The annual fits to the CCFRP length data were not as well fit as other data sources in any given year, but the observation of larger fish when the survey expanded north in 2017 is pronounced. The Pearson residuals are presented in Figure \ref{fig:ccfrp-len-pearson} and exhibit no clear pattern. The model estiamted mean length was increaseing from 2014-2016 priot to the survey's expansion (Figure \ref{fig:ccfrp-mean-len-fit}). The model did not fit the decreased observed mean length in 2019. However, the model estimated mean length given the observed data from this survey. Age data were available from 2018, 2019 and 2022 from the CCFRP survey and input as condition age-at-length data. The data had a slightly higher proportion of older fish given estimated growth (Figure \ref{fig:ccfrp-age-pearson}). Of note is that all of these ages represent the time period after the survey expanded and selectivity was estimated to be asymptotic.
+
+The length composition data for the ROV survey were available at a finer scale than the super years available for the index of abundance. Not surprising, the year with the most available length observations, 2021, had the best fit to the length data, although was an underestimate for fish in the 35-45 cm range. No trend was observed from the Pearson residuals (Figure \ref{fig:ccfrp-len-pearson}). The survey covered a wide range of depths and the same increasing trend in mean size as the CCFRP data show, was observed in the ROV survey from 2019-2021 (Figure \ref{fig:rov-mean-len-fit}).
+
+\hypertarget{fits-to-indices-of-abundance}{%
+\paragraph{Fits to Indices of Abundance}\label{fits-to-indices-of-abundance}}
+
+Fits to the indices vary in quality. The Deb Wilson-Vandenberg onboard survey from 1988-1998 indicated a decline from 1992-1998 that was not fit well by the model. However, this is the highest quality data source for the time period and with the added variance, the model fit was fairly flat and uninformative (Figure @ref(fig:dwv\_cpfv-index-fit)). The index spans the years where the stock biomass begins to increase, creating a conflict between the index and the population trend. The Deb Wilson-Vandenberg survey effort was concentrated in central California, similar to the area surveyed from 2007-2016 in the CCFRP survey.
+
+The CDFW and Cal Poly onboard index was flat from 2004-2015 and the increase in relative CPUE in the ending years 2017-2019 represent time periods when the fishery had access to deeper water, but the increase in relative CPUE in 2016 was not due to changes in regulations (Figure @ref(fig:rec\_cpfv-index-fit)). The model fit the ending years or data to the upper bound of the added variability.
+
+The recreaitonal dockside PR index showed a similar trends to the CPFV onboard index. Tndex was well fit during the first part of the time series when it was relatively flat (2004-2015), but the increase in relative CPUE in the ending years 2017-2019 was not well captured by the model. Even with selectivity time blocks for these periods, the index was not fit in 2017.
+
+The CDFW ROW survey contained data grouped into two super years and the model estimated a relatively flat line with the added variance (Figure \ref{fig:crfs-pr-index-fit}). The CCFRP index reflects the same increase in relative cpue in 2016 as the CPFV and PR indicies, prior to the survey expansion and releae of recreational depth restrictions. This index was weighted by the area within the MPAs, which exhibits an increasing trends compared to sites outside the survey at the end of the time series (Figure \ref{fig:ccfrp-index-fit}). The fit to the early part of the time series was reasonable given the available data. Similar to the 2019 gopher/black-and-yellow rockfish complex CCFRP survey, the lowest estimate year in the CCFRP year was 2013, which was also not fit in the 2019 gopher stock assessment. No explanation for the decrease in relative CPUE was identified.
+
+\hypertarget{population-trajectory-in-the-modeled-area}{%
+\subsubsection{Population Trajectory in the Modeled Area}\label{population-trajectory-in-the-modeled-area}}
+
+The predicted spawning output (in millions of eggs) is given in Table \ref{tab:timeseries} and shown in Figure \ref{fig:north-ssb}. The estimated spawning output decreases sharply in the late-1970s and continues to decline until reaching low levels in the late-1990s. The spawning output slowly increases between 2000 - 2010 with the rate of population growth increasing after 2011 as fish from recent years of above average recruitment begin to mature. The estimate of total biomass follows the same trend over time is shown in Figure \ref{fig:tot-bio}. The estimated spawning output relative to unfished equilibrium spawning output for the sub-area north of Point Conception reached a minimum of 0.17 in 1994 and then increased over the recent time period, with an ending year estimate of 0.52 in 2022 (Figure \ref{fig:depl}).
+
+\hypertarget{population-trajectory-for-the-stock}{%
+\subsubsection{Population Trajectory for the Stock}\label{population-trajectory-for-the-stock}}
+
+The predicted spawning output for the California stock or copper rockfish is given in Table \ref{tab:ca-status} and shown in Figure \ref{fig:sb-all}. The predicted trajectory of spawning output for the stock is generally similar to the trend observed for each area north and south of Point Conception with spawning output declining starting late 1970s when catches across California peaked. The spawning output of the stock declined the the lowest level in the mid-1990s and then began to steadily increase through the end of the time series. The spawning output relative unfished spawning output declined to the stock's lowest point in 1994 of 0.15 of spawning output (Figure \ref{fig:depl-all}). After hitting a low in 1994, the relative spawning output of the stock has steadily increased with an estimated final stock status of 40 percent in 2023.
 
 \hypertarget{reference-points}{%
 \subsubsection{Reference Points}\label{reference-points}}
@@ -213,59 +254,136 @@ The 2022 spawning biomass relative to unfished equilibrium spawning biomass is j
 
 Table \ref{tab:north-referenceES} shows the full suite of estimated reference points for the base model and Figures \ref{fig:north-yield2} and \ref{fig:north-yield3} show the equilibrium yield curve and net production based on a steepness value fixed at 0.72.
 
-\hypertarget{cpfv-samples}{%
-\section{Appendix H. CPFV Fleet Description, Sampling, and Trip Types}\label{cpfv-samples}}
+\clearpage
 
-During the 2021 copper rockfish stock assessment meeting and during the pre-assessment workshop for the 2023 groundfish assessments, concern was raised regarding possible biases in the available data by trip types. This appendix describes the sampling and available data from two recent years as an example of the relationship between the available data and catches for copper rockfish.
-
-The CDFW conducts several surveys are part of the CRFS program, including an onboard observer survey, angler interviews, and a required CPFV logbook for each trip. The \href{https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=62348\&inline}{CRFS sampling manual} outlines the sampling methodologies for each survey component. The state of California allows the filleting of fish at sea; to accurately identify rockfish to species and obtain measurements of whole fish the majority of angler interviews occur onboard the vessel for the CPFV fleet. The CPFV fleet is not required to speciate the catch in the and only one block number is recorded per entry. For this reasons the CPFV logbook data are rarely used to develop an index of abundance for groundfish species. However, the CPFV logbook data provide insight into the spatial distribution of fishing effort.
-
-The \href{https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=36136\&inline}{California Fisheries Recreational FIsheries Survey Methods} indicates the CPFV ``sampling goal is to sample onboard at the historical sampling frequency of two to five percent of estimated CPFV trips of interest (e.g., trips targeting groundfish, inshore and coastal pelagic species) at each CPFV landing and to sample other CPFV trip types dockside.'' California is divided into six regions for the CRFS sampling, and these represent the finest stratification for catch and effort estimates (Figure @ref(fig:crfs\_districts)).
-
-The CPFV fleet north and south of Point Conception are fundamentally different in terms of the vessels fishing, available target species, and also fishery regulations over the past twenty years. The CPFVs north of Point Conception targeting groundfish to not typically target other species on the same trip, with the exception being a half day bottomfish trip mixed with a half day of Dungeness crab pot fishing. The fleet north of Bodega Bay California is dominated by smaller 6-pack vessels with limited capacity. It may not be possible for a sampler to ride onboard a 6-pack vessel if it's at capacity. Overnight trips are extremely rare in northern California. In addition, it's important to note that even though Santa Barbara spans Point Conception, all of the fish are landed in San Luis Obispo county in District 3.
-
-In southern California, the diveristy of targt species is higher an includes several bass species, state managed gamefish, coastal pelagics, and highly migratory species, as well as boats that fish in Mexican waters. The trip types in southern California include 1/2 trips where a CPFV will run two trips a day, 3/4 day trips to fishing grounds further offshore, such as the Channel Islands, and overnight trips that can access areas like San Nicholas in the southern Channel Island or may be combination trips fishing for tunas, but also catching rockfish limits. The diversity of trip types and mixed target trips in southern California pose a challenge for both sampling and managing the fisheries.
-
-We filtered the CPFV logbook data to trips that recorded at least one rockfish and the CPFV onboard observer data to trips that encountered at least 1\% groundfish species. We aggregated within each dataset across 2018 and 2019 and areas where necessary to ensure confidentiality requirements were met. The tables below represent an aggregation of data from 2018 and 2019 combined as they are the two years pre-COVID that best represent the CPFV fleet's activity. We extracted data from the CPFV logbook data and the onboard observer sampled trips to describe the differences in portion of trips sampled and the distribution of copper rockfish catches. In the CPFV logbooks, 60 trips were recorded as multi-day trips in northern California. This represented less then 1\% of the trips in northern California and we did not investigate the accuracy of these entries. Approximately 6\% of the logbooks from District 1 recorded a block number in Mexican waters as the primary location fished. Fewer than 10 trips that recorded block numbers along the mainland of southern California were recorded a multi-day trips. These were removed from the tables below.
-
-The combined onboard observer sampling rate for 2018-2019 was 3\% percent of all CPFV trips in the data used. There were no trips observed onboard in CRFS District 5 during 2018-2019, but 1,052 CPFV logbook records were submitted that recorded at least one rockfish. Grouping the districts by north and south of Point Conception, 2\% of all trips in northern California were sampled onboard (Table @ref(\url{tag:percent-observed})). In southern California, 4\% of single day trips were observed and less than 1\% of multi-day trips were observed.
-
-We broke the data in southern California down further to explore sampling effort by trip type, and assigned a CPFV logbook entry to a region based on the recorded block number (Table \ref{tab:logbook-triptype}). The offshore region was a catch-all that included blocks outside the range of a 1/2 trip, but not within the vicinity of an island. In CRFS District 1, 79\% of the observd trips were 1/2 day trips, which can access the District 1 mainland. In District 2, 29\% of the observed trips were 1/2 day trips. The vessels in District 2 typically offer fewer 1/2 day trips and fish the nearshore when weather precludes crossing the channel to the northern Channel Islands.
-
-To put these sampling rates in context for copper rockfish, we explored the total estimated moratlity related to the distribution of sampling. The total mortality of copper rockfish in metric tons from 2018-2019 from the CPFV fleet by CRFS District is in Table \ref{tab:catch-example}. Fifty-two percent of the total copper rockfish mortality was from northern California and 48\% from southern California. Within northern California, 50\% of the total mortality originated from District 3, and in southern California, 81\% of the total mortality originated from District 2.
-
-From the onboard observer trips in District 1, 37\% of the observed coppers were from 1/2 day trips, 42\% from 3/4-1 day trips, and 21\% of the observed copper rockfish were from the five observed multi-day trips (Table \ref{tab:onboard-coppers}).
-
-In District 2, 17\% of the observed copper were from 1/2 day trips, 75\% from the 3/4-1 day trips and 8\% from overnight trips. When weather allows, the northern Channel Islands can be accessed from CRFS District 2 during a 3/4-1 day trip or a multi-day trip, depending on the port. For instance, the CPFVs from Oxnard, California access the northern Channel Island during multi-day trips, and the same areas are accessed by the 3/4-1 day boats out of Santa Barbara Landing.
-
-\newpage
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/cpfv_logbook_summaries/crfs_districts.png}
-\caption{Map of the CDFW CRFS sampling Districts.\label{fig:crfs-districts}}
-\end{figure}
+\hypertarget{tables}{%
+\section{Tables}\label{tables}}
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:percent-observed}The percent of trips sampled onboard by trip type and area for 2018 and 2019, using the number of trips observed and CPFV logbook trips described in the text.}\\
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}}
+\caption{\label{tab:allcatches}Removals (mt) by fleet and the summed total landings (mt).}\\
 \toprule
-Area & Single day & Multi day\\
+Year & Commercial (Dead) & Commercial (Live) & Rec. CPFV & Rec. PR & Total Landings\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:percent-observed}The percent of trips sampled onboard by trip type and area for 2018 and 2019, using the number of trips observed and CPFV logbook trips described in the text. \textit{(continued)}}\\
+\caption[]{\label{tab:allcatches}Removals (mt) by fleet and the summed total landings (mt). \textit{(continued)}}\\
 \toprule
-Area & Single day & Multi day\\
+Year & Commercial (Dead) & Commercial (Live) & Rec. CPFV & Rec. PR & Total Landings\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-Northern CA & 6\% & NA\\
-Southern CA & 10\% & 1\%\\*
+1916 & 4.0 & 0.0 & 0.0 & 0.0 & 4.0\\
+1917 & 6.2 & 0.0 & 0.0 & 0.0 & 6.2\\
+1918 & 7.5 & 0.0 & 0.0 & 0.0 & 7.5\\
+1919 & 4.9 & 0.0 & 0.0 & 0.0 & 4.9\\
+1920 & 5.1 & 0.0 & 0.0 & 0.0 & 5.1\\
+1921 & 4.3 & 0.0 & 0.0 & 0.0 & 4.3\\
+1922 & 3.7 & 0.0 & 0.0 & 0.0 & 3.7\\
+1923 & 3.9 & 0.0 & 0.0 & 0.0 & 3.9\\
+1924 & 2.6 & 0.0 & 0.0 & 0.0 & 2.6\\
+1925 & 3.8 & 0.0 & 0.0 & 0.0 & 3.8\\
+1926 & 4.9 & 0.0 & 0.0 & 0.0 & 4.9\\
+1927 & 3.6 & 0.0 & 0.0 & 0.0 & 3.6\\
+1928 & 3.6 & 0.0 & 1.0 & 0.6 & 5.2\\
+1929 & 3.0 & 0.0 & 1.9 & 1.2 & 6.2\\
+1930 & 5.3 & 0.0 & 2.2 & 1.4 & 9.0\\
+1931 & 6.3 & 0.0 & 3.0 & 1.9 & 11.1\\
+1932 & 5.7 & 0.0 & 3.7 & 2.4 & 11.7\\
+1933 & 4.9 & 0.0 & 4.4 & 2.8 & 12.1\\
+1934 & 3.6 & 0.0 & 5.2 & 3.3 & 12.0\\
+1935 & 5.7 & 0.0 & 5.9 & 3.8 & 15.3\\
+1936 & 5.2 & 0.0 & 6.6 & 4.2 & 16.1\\
+1937 & 5.9 & 0.0 & 7.9 & 5.0 & 18.8\\
+1938 & 5.2 & 0.0 & 7.7 & 5.0 & 17.9\\
+1939 & 5.0 & 0.0 & 6.8 & 4.3 & 16.1\\
+1940 & 4.8 & 0.0 & 9.7 & 6.2 & 20.8\\
+1941 & 5.2 & 0.0 & 9.0 & 5.8 & 20.0\\
+1942 & 1.8 & 0.0 & 4.8 & 3.1 & 9.6\\
+1943 & 2.9 & 0.0 & 4.6 & 2.9 & 10.4\\
+1944 & 8.7 & 0.0 & 3.8 & 2.4 & 14.8\\
+1945 & 21.4 & 0.0 & 5.0 & 3.2 & 29.6\\
+1946 & 23.9 & 0.0 & 8.6 & 5.5 & 38.0\\
+1947 & 7.2 & 0.0 & 6.8 & 4.4 & 18.3\\
+1948 & 9.6 & 0.0 & 13.6 & 8.7 & 31.9\\
+1949 & 5.2 & 0.0 & 17.6 & 11.3 & 34.1\\
+1950 & 4.1 & 0.0 & 21.5 & 13.8 & 39.3\\
+1951 & 8.9 & 0.0 & 24.5 & 20.5 & 53.9\\
+1952 & 5.9 & 0.0 & 21.3 & 17.8 & 45.1\\
+1953 & 2.9 & 0.0 & 18.2 & 15.2 & 36.3\\
+1954 & 5.5 & 0.0 & 22.6 & 18.9 & 46.9\\
+1955 & 2.9 & 0.0 & 26.9 & 22.5 & 52.4\\
+1956 & 4.9 & 0.0 & 30.1 & 25.1 & 60.1\\
+1957 & 5.6 & 0.0 & 28.1 & 24.5 & 58.3\\
+1958 & 6.5 & 0.0 & 52.4 & 40.3 & 99.2\\
+1959 & 7.4 & 0.0 & 39.2 & 33.7 & 80.3\\
+1960 & 10.0 & 0.0 & 32.3 & 26.1 & 68.3\\
+1961 & 7.3 & 0.0 & 24.1 & 19.7 & 51.1\\
+1962 & 5.2 & 0.0 & 27.1 & 31.3 & 63.6\\
+1963 & 6.2 & 0.0 & 32.3 & 40.8 & 79.3\\
+1964 & 4.2 & 0.0 & 22.5 & 44.0 & 70.7\\
+1965 & 4.5 & 0.0 & 37.1 & 63.3 & 104.9\\
+1966 & 5.5 & 0.0 & 40.8 & 74.8 & 121.0\\
+1967 & 6.2 & 0.0 & 38.3 & 83.8 & 128.4\\
+1968 & 3.3 & 0.0 & 37.6 & 95.1 & 136.0\\
+1969 & 2.4 & 0.0 & 36.8 & 106.6 & 145.8\\
+1970 & 2.5 & 0.0 & 53.7 & 125.0 & 181.2\\
+1971 & 4.4 & 0.0 & 39.8 & 125.0 & 169.2\\
+1972 & 6.9 & 0.0 & 60.9 & 147.5 & 215.2\\
+1973 & 6.7 & 0.0 & 69.3 & 170.4 & 246.3\\
+1974 & 15.7 & 0.0 & 70.4 & 184.3 & 270.4\\
+1975 & 8.4 & 0.0 & 67.3 & 192.2 & 268.0\\
+1976 & 15.9 & 0.0 & 69.5 & 211.1 & 296.5\\
+1977 & 13.9 & 0.0 & 78.6 & 213.7 & 306.1\\
+1978 & 2.5 & 0.0 & 62.3 & 216.7 & 281.5\\
+1979 & 2.8 & 0.0 & 56.4 & 233.6 & 292.8\\
+1980 & 39.6 & 0.0 & 55.1 & 210.4 & 305.2\\
+1981 & 9.6 & 0.0 & 106.9 & 171.2 & 287.8\\
+1982 & 12.9 & 0.0 & 106.7 & 164.4 & 284.0\\
+1983 & 69.0 & 0.0 & 64.4 & 76.3 & 209.8\\
+1984 & 43.2 & 0.0 & 49.0 & 92.9 & 185.1\\
+1985 & 25.4 & 0.0 & 42.6 & 138.4 & 206.5\\
+1986 & 10.4 & 0.0 & 47.6 & 106.9 & 165.0\\
+1987 & 13.8 & 0.0 & 17.6 & 68.8 & 100.2\\
+1988 & 17.9 & 0.0 & 25.5 & 69.2 & 112.7\\
+1989 & 33.8 & 0.0 & 42.3 & 46.3 & 122.4\\
+1990 & 43.3 & 0.0 & 28.5 & 61.4 & 133.2\\
+1991 & 52.4 & 0.0 & 25.7 & 53.7 & 131.8\\
+1992 & 71.3 & 0.0 & 24.7 & 46.0 & 142.0\\
+1993 & 68.6 & 0.2 & 22.8 & 71.2 & 162.7\\
+1994 & 25.4 & 6.0 & 17.1 & 44.9 & 93.5\\
+1995 & 34.3 & 8.5 & 11.3 & 21.9 & 76.1\\
+1996 & 36.5 & 17.3 & 10.3 & 19.9 & 84.0\\
+1997 & 38.6 & 7.1 & 18.5 & 15.8 & 80.0\\
+1998 & 23.2 & 5.3 & 5.2 & 11.1 & 44.9\\
+1999 & 8.0 & 7.8 & 11.8 & 9.4 & 37.0\\
+2000 & 2.9 & 4.8 & 19.8 & 4.2 & 31.6\\
+2001 & 4.3 & 7.4 & 12.3 & 4.9 & 28.9\\
+2002 & 3.2 & 6.2 & 10.3 & 2.1 & 21.8\\
+2003 & 1.0 & 1.6 & 3.8 & 17.4 & 23.8\\
+2004 & 1.3 & 2.0 & 6.5 & 9.1 & 18.9\\
+2005 & 0.9 & 2.8 & 18.2 & 13.0 & 34.9\\
+2006 & 0.8 & 2.2 & 16.8 & 16.5 & 36.2\\
+2007 & 1.1 & 4.7 & 17.4 & 18.8 & 42.0\\
+2008 & 1.0 & 4.0 & 9.8 & 17.0 & 31.8\\
+2009 & 0.8 & 1.7 & 14.7 & 22.0 & 39.2\\
+2010 & 0.6 & 1.1 & 14.3 & 11.5 & 27.5\\
+2011 & 0.6 & 1.9 & 8.8 & 14.6 & 25.9\\
+2012 & 0.9 & 2.3 & 12.2 & 19.5 & 34.9\\
+2013 & 0.7 & 2.1 & 8.8 & 14.0 & 25.6\\
+2014 & 0.7 & 2.5 & 16.1 & 17.6 & 36.9\\
+2015 & 0.8 & 2.7 & 24.2 & 37.8 & 65.5\\
+2016 & 0.8 & 2.6 & 28.7 & 34.2 & 66.3\\
+2017 & 1.4 & 4.6 & 56.5 & 76.1 & 138.6\\
+2018 & 3.0 & 6.4 & 44.0 & 49.0 & 102.4\\
+2019 & 2.5 & 6.9 & 39.2 & 53.4 & 101.9\\
+2020 & 3.9 & 7.5 & 59.6 & 85.1 & 156.2\\
+2021 & 3.1 & 7.5 & 54.9 & 41.4 & 107.0\\
+2022 & 1.2 & 1.9 & 11.5 & 32.5 & 47.1\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -275,58 +393,354 @@ Southern CA & 10\% & 1\%\\*
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
-\caption{\label{tab:catch-example}Total mortality in metric tons of copper rockfish from 2018 and 2019 from the CPFV fleet by CRFS District.}\\
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\caption{\label{tab:ca-management}The portion of the Overfishing Limit (OFL) and Annual Catch Limit (ACL) and estimated catch in California waters.}\\
 \toprule
-District & 2018 & 2019 & Total\\
+Year & OFL (mt) & ACL (mt) & Catch (mt)\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:catch-example}Total mortality in metric tons of copper rockfish from 2018 and 2019 from the CPFV fleet by CRFS District. \textit{(continued)}}\\
+\caption[]{\label{tab:ca-management}The portion of the Overfishing Limit (OFL) and Annual Catch Limit (ACL) and estimated catch in California waters. \textit{(continued)}}\\
 \toprule
-District & 2018 & 2019 & Total\\
+Year & OFL (mt) & ACL (mt) & Catch (mt)\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-1 & 9.2 & 23.1 & 32.3\\
-2 & 87.0 & 51.8 & 138.8\\
-3 & 49.3 & 44.3 & 93.6\\
-4 & 30.0 & 27.9 & 57.9\\
-5 & 7.7 & 13.1 & 20.7\\
-6 & 6.0 & 7.3 & 13.2\\*
+2012 & 163.15 & 136.17 & 85.95\\
+2013 & 148.00 & 123.42 & 105.18\\
+2014 & 148.00 & 123.42 & 98.65\\
+2015 & 303.75 & 277.32 & 147.64\\
+2016 & 286.88 & 261.95 & 165.27\\
+2017 & 313.70 & 286.38 & 225.48\\
+2018 & 319.60 & 291.85 & 203.69\\
+2019 & 325.08 & 296.83 & 182.59\\
+2020 & 330.35 & 301.60 & 242.73\\
+2021 & 249.85 & 206.43 & 164.20\\
+2022 & 249.48 & 204.02 & 66.67\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
+
+\include{tex_tables/historical_landings_tables_2020_revised_Avila_1953.tex}
 
 \newpage
 
+\include{tex_tables/north_dead_trips_and_samples.tex}
+
+\include{tex_tables/north_live_trips_and_samples.tex}
+
+\include{tex_tables/rec_north_sample_size_by_program.tex}
+
+\input{tex_tables/north_ccfrp_drifts_length_ages.tex}
+
+\include{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
+
+\include{tex_tables/north_growth_age_samples.tex}
+
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
-\caption{\label{tab:onboard-coppers}Number of copper rockfish observed during the CPFV trips sampled onboard by district and trip type from 2018-2019.}\\
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.2cm}}
+\caption{\label{tab:pisco-data}All and filtered observations by year and sampling institution for PISCO.}\\
 \toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips\\
+Year & UCSC Raw Count & UCSC Filtered Count & UCSB Raw Count & UCSB Filtered Count\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:onboard-coppers}Number of copper rockfish observed during the CPFV trips sampled onboard by district and trip type from 2018-2019. \textit{(continued)}}\\
+\caption[]{\label{tab:pisco-data}All and filtered observations by year and sampling institution for PISCO. \textit{(continued)}}\\
 \toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips\\
+Year & UCSC Raw Count & UCSC Filtered Count & UCSB Raw Count & UCSB Filtered Count\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-1 & 111 & 123 & 62\\
-2 & 136 & 588 & 59\\
-3 & 140 & 351 & NA\\
-4 and 6 & 12 & 138 & NA\\*
+1999 & 2 & NA & 7 & NA\\
+2000 & 1 & NA & 11 & NA\\
+2001 & 6 & 4 & 4 & NA\\
+2002 & 25 & 21 & 8 & NA\\
+2003 & 34 & 25 & 73 & NA\\
+2004 & 30 & 9 & 65 & 19\\
+2005 & 40 & 6 & 45 & 18\\
+2006 & 27 & 12 & 51 & 25\\
+2007 & 17 & 4 & 58 & 19\\
+2008 & 21 & 5 & 44 & 22\\
+2009 & 20 & 7 & 60 & 29\\
+2010 & 34 & 10 & 85 & 32\\
+2011 & 36 & 1 & 44 & 20\\
+2012 & 9 & 4 & 77 & 39\\
+2013 & 40 & 17 & 59 & 23\\
+2014 & 50 & 28 & 50 & 39\\
+2015 & 51 & 16 & 18 & 15\\
+2016 & 29 & 17 & 51 & 45\\
+2017 & 30 & 11 & 28 & 22\\
+2018 & 37 & 15 & 42 & 28\\
+2019 & 26 & 15 & 41 & 37\\
+2020 & 58 & 26 & 35 & 29\\
+2021 & 23 & 12 & 37 & 27\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
+
+\input{tex_tables/wcgbt_samples_by_year.tex}
+
+\input{tex_tables/model_structure_north.tex}
+
+\begingroup\fontsize{9}{11}\selectfont
+
+\begin{landscape}\begingroup\fontsize{9}{11}\selectfont
+
+\begin{longtable}[t]{>{\raggedright\arraybackslash}p{7cm}lllll>{\raggedright\arraybackslash}p{4cm}}
+\caption{\label{tab:params}List of parameters used in the base model, including estimated values and standard deviations (SD), bounds (minimum and maximum), estimation phase (negative values not estimated), status (indicates if parameters are near bounds), and prior type information (mean and SD).}\\
+\toprule
+Parameter & Value & Phase & Bounds & Status & SD & Prior (Exp.Val, SD)\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:params}List of parameters used in the base model, including estimated values and standard deviations (SD), bounds (minimum and maximum), estimation phase (negative values not estimated), status (indicates if parameters are near bounds), and prior type information (mean and SD). \textit{(continued)}}\\
+\toprule
+Parameter & Value & Phase & Bounds & Status & SD & Prior (Exp.Val, SD)\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+NatM uniform Fem GP 1 & 0.108 & -2 & (0.05, 0.4) & NA & NA & Log Norm (-2.2256, 0.31)\\
+L at Amin Fem GP 1 & 14.583 & -2 & (6, 25) & NA & NA & None\\
+L at Amax Fem GP 1 & 48.307 & 2 & (35, 54) & OK & 0.4116760 & None\\
+VonBert K Fem GP 1 & 0.154 & 2 & (0.03, 0.35) & OK & 0.0081489 & None\\
+CV young Fem GP 1 & 0.157 & 2 & (0.01, 0.3) & OK & 0.0209688 & None\\
+CV old Fem GP 1 & 0.074 & 2 & (0.01, 0.3) & OK & 0.0063267 & None\\
+Wtlen 1 Fem GP 1 & 0.000 & -9 & (0, 0.1) & NA & NA & None\\
+Wtlen 2 Fem GP 1 & 3.190 & -9 & (2, 4) & NA & NA & None\\
+Mat50\% Fem GP 1 & 34.040 & -9 & (10, 50) & NA & NA & None\\
+Mat slope Fem GP 1 & -0.410 & -9 & (-1, 0) & NA & NA & None\\
+Eggs scalar Fem GP 1 & 0.000 & -9 & (-3, 3) & NA & NA & None\\
+Eggs exp len Fem GP 1 & 3.679 & -9 & (-3, 4) & NA & NA & None\\
+NatM uniform Mal GP 1 & 0.108 & -2 & (0.05, 0.4) & NA & NA & Log Norm (-2.2256, 0.31)\\
+L at Amin Mal GP 1 & 12.637 & -2 & (6, 25) & NA & NA & None\\
+L at Amax Mal GP 1 & 46.488 & 2 & (35, 54) & OK & 0.3839610 & None\\
+VonBert K Mal GP 1 & 0.195 & 2 & (0.03, 0.3) & OK & 0.0088325 & None\\
+CV young Mal GP 1 & 0.157 & 2 & (0.01, 0.3) & OK & 0.0253907 & None\\
+CV old Mal GP 1 & 0.072 & 2 & (0.01, 0.3) & OK & 0.0075141 & None\\
+Wtlen 1 Mal GP 1 & 0.000 & -9 & (0, 0.1) & NA & NA & None\\
+Wtlen 2 Mal GP 1 & 3.150 & -9 & (2, 4) & NA & NA & None\\
+CohortGrowDev & 1.000 & -9 & (0, 1) & NA & NA & None\\
+FracFemale GP 1 & 0.500 & -9 & (0.01, 0.99) & NA & NA & None\\
+SR LN(R0) & 6.342 & 1 & (2, 20) & OK & 0.1036040 & None\\
+SR BH steep & 0.720 & -7 & (0.22, 1) & NA & NA & Normal (0.72, 0.16)\\
+SR sigmaR & 0.500 & -99 & (0.15, 0.9) & NA & NA & None\\
+SR regime & 0.000 & -99 & (-2, 2) & NA & NA & None\\
+SR autocorr & 0.000 & -99 & (0, 0) & NA & NA & None\\
+Early InitAge 16 & 0.002 & 5 & (-5, 5) & act & 0.5005760 & dev (NA, NA)\\
+Early InitAge 15 & 0.003 & 5 & (-5, 5) & act & 0.5006360 & dev (NA, NA)\\
+Early InitAge 14 & 0.003 & 5 & (-5, 5) & act & 0.5007020 & dev (NA, NA)\\
+Early InitAge 13 & 0.003 & 5 & (-5, 5) & act & 0.5007730 & dev (NA, NA)\\
+Early InitAge 12 & 0.004 & 5 & (-5, 5) & act & 0.5008500 & dev (NA, NA)\\
+Early InitAge 11 & 0.004 & 5 & (-5, 5) & act & 0.5009340 & dev (NA, NA)\\
+Early InitAge 10 & 0.004 & 5 & (-5, 5) & act & 0.5010240 & dev (NA, NA)\\
+Early InitAge 9 & 0.005 & 5 & (-5, 5) & act & 0.5011200 & dev (NA, NA)\\
+Early InitAge 8 & 0.005 & 5 & (-5, 5) & act & 0.5012230 & dev (NA, NA)\\
+Early InitAge 7 & 0.006 & 5 & (-5, 5) & act & 0.5013330 & dev (NA, NA)\\
+Early InitAge 6 & 0.006 & 5 & (-5, 5) & act & 0.5014500 & dev (NA, NA)\\
+Early InitAge 5 & 0.007 & 5 & (-5, 5) & act & 0.5015740 & dev (NA, NA)\\
+Early InitAge 4 & 0.007 & 5 & (-5, 5) & act & 0.5017090 & dev (NA, NA)\\
+Early InitAge 3 & 0.008 & 5 & (-5, 5) & act & 0.5018550 & dev (NA, NA)\\
+Early InitAge 2 & 0.008 & 5 & (-5, 5) & act & 0.5020130 & dev (NA, NA)\\
+Early InitAge 1 & 0.009 & 5 & (-5, 5) & act & 0.5021850 & dev (NA, NA)\\
+Early RecrDev 1916 & 0.010 & 5 & (-5, 5) & act & 0.5023720 & dev (NA, NA)\\
+Early RecrDev 1917 & 0.011 & 5 & (-5, 5) & act & 0.5025740 & dev (NA, NA)\\
+Early RecrDev 1918 & 0.012 & 5 & (-5, 5) & act & 0.5027920 & dev (NA, NA)\\
+Early RecrDev 1919 & 0.013 & 5 & (-5, 5) & act & 0.5030280 & dev (NA, NA)\\
+Early RecrDev 1920 & 0.014 & 5 & (-5, 5) & act & 0.5032840 & dev (NA, NA)\\
+Early RecrDev 1921 & 0.015 & 5 & (-5, 5) & act & 0.5035600 & dev (NA, NA)\\
+Early RecrDev 1922 & 0.016 & 5 & (-5, 5) & act & 0.5038590 & dev (NA, NA)\\
+Early RecrDev 1923 & 0.017 & 5 & (-5, 5) & act & 0.5041810 & dev (NA, NA)\\
+Early RecrDev 1924 & 0.019 & 5 & (-5, 5) & act & 0.5045290 & dev (NA, NA)\\
+Early RecrDev 1925 & 0.020 & 5 & (-5, 5) & act & 0.5049050 & dev (NA, NA)\\
+Early RecrDev 1926 & 0.022 & 5 & (-5, 5) & act & 0.5053110 & dev (NA, NA)\\
+Early RecrDev 1927 & 0.024 & 5 & (-5, 5) & act & 0.5057490 & dev (NA, NA)\\
+Early RecrDev 1928 & 0.026 & 5 & (-5, 5) & act & 0.5062220 & dev (NA, NA)\\
+Early RecrDev 1929 & 0.028 & 5 & (-5, 5) & act & 0.5068210 & dev (NA, NA)\\
+Early RecrDev 1930 & 0.031 & 5 & (-5, 5) & act & 0.5074760 & dev (NA, NA)\\
+Early RecrDev 1931 & 0.034 & 5 & (-5, 5) & act & 0.5081870 & dev (NA, NA)\\
+Early RecrDev 1932 & 0.037 & 5 & (-5, 5) & act & 0.5089660 & dev (NA, NA)\\
+Early RecrDev 1933 & 0.040 & 5 & (-5, 5) & act & 0.5098070 & dev (NA, NA)\\
+Early RecrDev 1934 & 0.044 & 5 & (-5, 5) & act & 0.5107070 & dev (NA, NA)\\
+Early RecrDev 1935 & 0.048 & 5 & (-5, 5) & act & 0.5117070 & dev (NA, NA)\\
+Early RecrDev 1936 & 0.052 & 5 & (-5, 5) & act & 0.5127780 & dev (NA, NA)\\
+Early RecrDev 1937 & 0.057 & 5 & (-5, 5) & act & 0.5139390 & dev (NA, NA)\\
+Early RecrDev 1938 & 0.062 & 5 & (-5, 5) & act & 0.5152090 & dev (NA, NA)\\
+Early RecrDev 1939 & 0.067 & 5 & (-5, 5) & act & 0.5166160 & dev (NA, NA)\\
+Early RecrDev 1940 & 0.073 & 5 & (-5, 5) & act & 0.5182010 & dev (NA, NA)\\
+Early RecrDev 1941 & 0.080 & 5 & (-5, 5) & act & 0.5200060 & dev (NA, NA)\\
+Early RecrDev 1942 & 0.088 & 5 & (-5, 5) & act & 0.5220630 & dev (NA, NA)\\
+Early RecrDev 1943 & 0.097 & 5 & (-5, 5) & act & 0.5243820 & dev (NA, NA)\\
+Early RecrDev 1944 & 0.107 & 5 & (-5, 5) & act & 0.5269290 & dev (NA, NA)\\
+Early RecrDev 1945 & 0.117 & 5 & (-5, 5) & act & 0.5296400 & dev (NA, NA)\\
+Early RecrDev 1946 & 0.128 & 5 & (-5, 5) & act & 0.5324030 & dev (NA, NA)\\
+Early RecrDev 1947 & 0.138 & 5 & (-5, 5) & act & 0.5350710 & dev (NA, NA)\\
+Early RecrDev 1948 & 0.147 & 5 & (-5, 5) & act & 0.5374910 & dev (NA, NA)\\
+Early RecrDev 1949 & 0.154 & 5 & (-5, 5) & act & 0.5394350 & dev (NA, NA)\\
+Early RecrDev 1950 & 0.160 & 5 & (-5, 5) & act & 0.5407560 & dev (NA, NA)\\
+Early RecrDev 1951 & 0.164 & 5 & (-5, 5) & act & 0.5414200 & dev (NA, NA)\\
+Early RecrDev 1952 & 0.166 & 5 & (-5, 5) & act & 0.5415230 & dev (NA, NA)\\
+Early RecrDev 1953 & 0.170 & 5 & (-5, 5) & act & 0.5413700 & dev (NA, NA)\\
+Early RecrDev 1954 & 0.175 & 5 & (-5, 5) & act & 0.5412900 & dev (NA, NA)\\
+Early RecrDev 1955 & 0.182 & 5 & (-5, 5) & act & 0.5416720 & dev (NA, NA)\\
+Early RecrDev 1956 & 0.191 & 5 & (-5, 5) & act & 0.5438740 & dev (NA, NA)\\
+Early RecrDev 1957 & 0.188 & 5 & (-5, 5) & act & 0.5467260 & dev (NA, NA)\\
+Early RecrDev 1958 & 0.186 & 5 & (-5, 5) & act & 0.5470060 & dev (NA, NA)\\
+Early RecrDev 1959 & 0.190 & 5 & (-5, 5) & act & 0.5481800 & dev (NA, NA)\\
+Early RecrDev 1960 & 0.212 & 5 & (-5, 5) & act & 0.5537480 & dev (NA, NA)\\
+Early RecrDev 1961 & 0.258 & 5 & (-5, 5) & act & 0.5659620 & dev (NA, NA)\\
+Early RecrDev 1962 & 0.318 & 5 & (-5, 5) & act & 0.5842860 & dev (NA, NA)\\
+Early RecrDev 1963 & 0.372 & 5 & (-5, 5) & act & 0.6057910 & dev (NA, NA)\\
+Early RecrDev 1964 & 0.451 & 5 & (-5, 5) & act & 0.6383690 & dev (NA, NA)\\
+Early RecrDev 1965 & 0.566 & 5 & (-5, 5) & act & 0.6895160 & dev (NA, NA)\\
+Early RecrDev 1966 & 0.652 & 5 & (-5, 5) & act & 0.7331070 & dev (NA, NA)\\
+Early RecrDev 1967 & 0.642 & 5 & (-5, 5) & act & 0.7014840 & dev (NA, NA)\\
+Early RecrDev 1968 & 0.517 & 5 & (-5, 5) & act & 0.6158590 & dev (NA, NA)\\
+Early RecrDev 1969 & 0.304 & 5 & (-5, 5) & act & 0.5303580 & dev (NA, NA)\\
+Main RecrDev 1970 & 0.110 & 2 & (-5, 5) & act & 0.4613340 & dev (NA, NA)\\
+Main RecrDev 1971 & -0.175 & 2 & (-5, 5) & act & 0.4162390 & dev (NA, NA)\\
+Main RecrDev 1972 & -0.412 & 2 & (-5, 5) & act & 0.3901040 & dev (NA, NA)\\
+Main RecrDev 1973 & -0.366 & 2 & (-5, 5) & act & 0.3627370 & dev (NA, NA)\\
+Main RecrDev 1974 & -0.423 & 2 & (-5, 5) & act & 0.3604100 & dev (NA, NA)\\
+Main RecrDev 1975 & -0.374 & 2 & (-5, 5) & act & 0.3458820 & dev (NA, NA)\\
+Main RecrDev 1976 & -0.462 & 2 & (-5, 5) & act & 0.3376970 & dev (NA, NA)\\
+Main RecrDev 1977 & -0.534 & 2 & (-5, 5) & act & 0.3093600 & dev (NA, NA)\\
+Main RecrDev 1978 & -0.767 & 2 & (-5, 5) & act & 0.3086280 & dev (NA, NA)\\
+Main RecrDev 1979 & -0.968 & 2 & (-5, 5) & act & 0.3113840 & dev (NA, NA)\\
+Main RecrDev 1980 & -0.811 & 2 & (-5, 5) & act & 0.3128190 & dev (NA, NA)\\
+Main RecrDev 1981 & -0.355 & 2 & (-5, 5) & act & 0.2671490 & dev (NA, NA)\\
+Main RecrDev 1982 & -0.683 & 2 & (-5, 5) & act & 0.3180890 & dev (NA, NA)\\
+Main RecrDev 1983 & -0.656 & 2 & (-5, 5) & act & 0.3399370 & dev (NA, NA)\\
+Main RecrDev 1984 & 0.013 & 2 & (-5, 5) & act & 0.3263580 & dev (NA, NA)\\
+Main RecrDev 1985 & 0.219 & 2 & (-5, 5) & act & 0.3167090 & dev (NA, NA)\\
+Main RecrDev 1986 & -0.304 & 2 & (-5, 5) & act & 0.3732110 & dev (NA, NA)\\
+Main RecrDev 1987 & -0.405 & 2 & (-5, 5) & act & 0.3624990 & dev (NA, NA)\\
+Main RecrDev 1988 & -0.296 & 2 & (-5, 5) & act & 0.3624310 & dev (NA, NA)\\
+Main RecrDev 1989 & 0.117 & 2 & (-5, 5) & act & 0.3175460 & dev (NA, NA)\\
+Main RecrDev 1990 & 0.298 & 2 & (-5, 5) & act & 0.2844420 & dev (NA, NA)\\
+Main RecrDev 1991 & -0.044 & 2 & (-5, 5) & act & 0.3326930 & dev (NA, NA)\\
+Main RecrDev 1992 & -0.163 & 2 & (-5, 5) & act & 0.3706750 & dev (NA, NA)\\
+Main RecrDev 1993 & 0.236 & 2 & (-5, 5) & act & 0.3200240 & dev (NA, NA)\\
+Main RecrDev 1994 & 0.016 & 2 & (-5, 5) & act & 0.3474600 & dev (NA, NA)\\
+Main RecrDev 1995 & -0.370 & 2 & (-5, 5) & act & 0.3577860 & dev (NA, NA)\\
+Main RecrDev 1996 & -0.292 & 2 & (-5, 5) & act & 0.3269950 & dev (NA, NA)\\
+Main RecrDev 1997 & -0.162 & 2 & (-5, 5) & act & 0.3181880 & dev (NA, NA)\\
+Main RecrDev 1998 & -0.108 & 2 & (-5, 5) & act & 0.3128890 & dev (NA, NA)\\
+Main RecrDev 1999 & -0.253 & 2 & (-5, 5) & act & 0.3290230 & dev (NA, NA)\\
+Main RecrDev 2000 & -0.467 & 2 & (-5, 5) & act & 0.3274040 & dev (NA, NA)\\
+Main RecrDev 2001 & -0.402 & 2 & (-5, 5) & act & 0.2959770 & dev (NA, NA)\\
+Main RecrDev 2002 & -0.287 & 2 & (-5, 5) & act & 0.2864020 & dev (NA, NA)\\
+Main RecrDev 2003 & -0.460 & 2 & (-5, 5) & act & 0.3080300 & dev (NA, NA)\\
+Main RecrDev 2004 & -0.640 & 2 & (-5, 5) & act & 0.3070820 & dev (NA, NA)\\
+Main RecrDev 2005 & -0.800 & 2 & (-5, 5) & act & 0.3248390 & dev (NA, NA)\\
+Main RecrDev 2006 & -0.239 & 2 & (-5, 5) & act & 0.3438300 & dev (NA, NA)\\
+Main RecrDev 2007 & 0.697 & 2 & (-5, 5) & act & 0.2538510 & dev (NA, NA)\\
+Main RecrDev 2008 & 0.431 & 2 & (-5, 5) & act & 0.3391750 & dev (NA, NA)\\
+Main RecrDev 2009 & 0.608 & 2 & (-5, 5) & act & 0.2872840 & dev (NA, NA)\\
+Main RecrDev 2010 & -0.172 & 2 & (-5, 5) & act & 0.3613040 & dev (NA, NA)\\
+Main RecrDev 2011 & -0.083 & 2 & (-5, 5) & act & 0.3528960 & dev (NA, NA)\\
+Main RecrDev 2012 & 0.471 & 2 & (-5, 5) & act & 0.2792570 & dev (NA, NA)\\
+Main RecrDev 2013 & 0.282 & 2 & (-5, 5) & act & 0.3130770 & dev (NA, NA)\\
+Main RecrDev 2014 & 0.097 & 2 & (-5, 5) & act & 0.3227050 & dev (NA, NA)\\
+Main RecrDev 2015 & 0.320 & 2 & (-5, 5) & act & 0.2687810 & dev (NA, NA)\\
+Main RecrDev 2016 & -0.443 & 2 & (-5, 5) & act & 0.3637980 & dev (NA, NA)\\
+Main RecrDev 2017 & 0.668 & 2 & (-5, 5) & act & 0.2497840 & dev (NA, NA)\\
+Main RecrDev 2018 & 0.268 & 2 & (-5, 5) & act & 0.2998240 & dev (NA, NA)\\
+Main RecrDev 2019 & -0.365 & 2 & (-5, 5) & act & 0.3784280 & dev (NA, NA)\\
+Late RecrDev 2020 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+Late RecrDev 2021 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+Late RecrDev 2022 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+ForeRecr 2023 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+ForeRecr 2024 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+ForeRecr 2025 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+ForeRecr 2026 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+ForeRecr 2027 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+ForeRecr 2028 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+ForeRecr 2029 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+ForeRecr 2030 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+ForeRecr 2031 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+ForeRecr 2032 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+ForeRecr 2033 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+ForeRecr 2034 & 0.000 & NA & (NA, NA) & NA & NA & dev (NA, NA)\\
+LnQ base Rec CPFV(3) & -9.898 & -1 & (-15, 15) & NA & NA & None\\
+LnQ base Rec PR(4) & -4.634 & -1 & (-15, 15) & NA & NA & None\\
+Q extraSD Rec PR(4) & 0.310 & 1 & (0, 0.5) & OK & 0.0716220 & None\\
+LnQ base CCFRP(5) & -10.046 & -1 & (-15, 15) & NA & NA & None\\
+Q extraSD CCFRP(5) & 0.220 & 1 & (0, 0.5) & OK & 0.0664570 & None\\
+LnQ base CDFW ROV(6) & -10.981 & -1 & (-15, 15) & NA & NA & None\\
+Q extraSD CDFW ROV(6) & 0.089 & 1 & (0, 0.5) & OK & 0.0970709 & None\\
+LnQ base DWV CPFV(7) & -9.848 & -1 & (-15, 15) & NA & NA & None\\
+Q extraSD DWV CPFV(7) & 0.248 & 1 & (0, 0.5) & OK & 0.0944555 & None\\
+LnQ base CRFS CPFV(8) & -12.051 & -1 & (-15, 15) & NA & NA & None\\
+Q extraSD CRFS CPFV(8) & 0.095 & 1 & (0, 0.5) & OK & 0.0431358 & None\\
+Size inflection Commercial Dead(1) & 33.927 & 4 & (20, 53) & OK & 1.6891100 & None\\
+Size 95\%width Commercial Dead(1) & 10.946 & 4 & (0.001, 50) & OK & 1.6774100 & None\\
+Size DblN peak Commercial Live(2) & 27.724 & 1 & (15, 53) & OK & 0.4255870 & None\\
+Size DblN top logit Commercial Live(2) & -6.838 & -3 & (-7, 7) & NA & NA & None\\
+Size DblN ascend se Commercial Live(2) & 1.716 & -3 & (-10, 10) & NA & NA & None\\
+Size DblN descend se Commercial Live(2) & 3.802 & 4 & (-10, 10) & OK & 0.3813730 & None\\
+Size DblN start logit Commercial Live(2) & -20.000 & -5 & (-20, 30) & NA & NA & None\\
+Size DblN end logit Commercial Live(2) & -3.891 & 4 & (-10, 10) & OK & 1.4258500 & None\\
+Size DblN peak Rec CPFV(3) & 37.303 & 2 & (15, 53) & OK & 2.1069200 & None\\
+Size DblN top logit Rec CPFV(3) & -1.047 & -3 & (-7, 7) & NA & NA & None\\
+Size DblN ascend se Rec CPFV(3) & 4.319 & 3 & (-10, 10) & OK & 0.3801860 & None\\
+Size DblN descend se Rec CPFV(3) & 0.738 & -4 & (-10, 10) & NA & NA & None\\
+Size DblN start logit Rec CPFV(3) & -20.000 & -9 & (-20, 30) & NA & NA & None\\
+Size DblN end logit Rec CPFV(3) & 10.000 & -4 & (-10, 10) & NA & NA & None\\
+Size DblN peak Rec PR(4) & 32.369 & 2 & (15, 53) & OK & 0.8489510 & None\\
+Size DblN top logit Rec PR(4) & -1.047 & -3 & (-7, 7) & NA & NA & None\\
+Size DblN ascend se Rec PR(4) & 3.626 & 3 & (-10, 10) & OK & 0.2146820 & None\\
+Size DblN descend se Rec PR(4) & 9.413 & -4 & (-10, 10) & NA & NA & None\\
+Size DblN start logit Rec PR(4) & -20.000 & -9 & (-20, 30) & NA & NA & None\\
+Size DblN end logit Rec PR(4) & -7.885 & -4 & (-10, 10) & NA & NA & None\\
+Size DblN peak CCFRP(5) & 33.183 & 1 & (15, 53) & OK & 1.0263300 & None\\
+Size DblN top logit CCFRP(5) & -3.965 & -3 & (-7, 7) & NA & NA & None\\
+Size DblN ascend se CCFRP(5) & 3.899 & 3 & (-10, 10) & OK & 0.2554170 & None\\
+Size DblN descend se CCFRP(5) & 6.447 & -4 & (-10, 10) & NA & NA & None\\
+Size DblN start logit CCFRP(5) & -20.000 & -5 & (-20, 30) & NA & NA & None\\
+Size DblN end logit CCFRP(5) & 8.784 & -4 & (-10, 10) & NA & NA & None\\
+Size inflection CDFW ROV(6) & 31.698 & 4 & (10, 53) & OK & 4.9517600 & None\\
+Size 95\%width CDFW ROV(6) & 13.370 & 4 & (0.001, 50) & OK & 5.8310300 & None\\
+Size DblN descend se Commercial Live(2) BLK1repl 1916 & 10.000 & -3 & (-10, 10) & NA & NA & None\\
+Size DblN end logit Commercial Live(2) BLK1repl 1916 & 10.000 & -3 & (-10, 10) & NA & NA & None\\
+Size DblN peak Rec CPFV(3) BLK2repl 1916 & 36.138 & 3 & (15, 53) & OK & 0.8349190 & None\\
+Size DblN peak Rec CPFV(3) BLK2repl 2002 & 34.107 & 3 & (15, 53) & OK & 0.7225480 & None\\
+Size DblN ascend se Rec CPFV(3) BLK2repl 1916 & 4.174 & 3 & (-10, 10) & OK & 0.1619150 & None\\
+Size DblN ascend se Rec CPFV(3) BLK2repl 2002 & 4.023 & 3 & (-10, 10) & OK & 0.1716760 & None\\
+Size DblN descend se Rec CPFV(3) BLK2repl 1916 & 4.443 & -6 & (-10, 10) & NA & NA & None\\
+Size DblN descend se Rec CPFV(3) BLK2repl 2002 & 3.003 & -6 & (-10, 10) & NA & NA & None\\
+Size DblN end logit Rec CPFV(3) BLK2repl 1916 & -2.190 & -5 & (-10, 10) & NA & NA & None\\
+Size DblN end logit Rec CPFV(3) BLK2repl 2002 & -0.916 & -5 & (-10, 10) & NA & NA & None\\
+Size DblN peak Rec PR(4) BLK2repl 1916 & 27.796 & -3 & (15, 53) & NA & NA & Normal (28, 3)\\
+Size DblN peak Rec PR(4) BLK2repl 2002 & 30.476 & 3 & (15, 53) & OK & 0.4567600 & None\\
+Size DblN ascend se Rec PR(4) BLK2repl 1916 & 3.659 & -3 & (-10, 10) & NA & NA & None\\
+Size DblN ascend se Rec PR(4) BLK2repl 2002 & 3.331 & 3 & (-10, 10) & OK & 0.1376350 & None\\
+Size DblN descend se Rec PR(4) BLK2repl 1916 & -5.198 & -6 & (-10, 10) & NA & NA & None\\
+Size DblN descend se Rec PR(4) BLK2repl 2002 & 3.643 & -6 & (-10, 10) & NA & NA & None\\
+Size DblN end logit Rec PR(4) BLK2repl 1916 & 0.689 & -5 & (-10, 10) & NA & NA & None\\
+Size DblN end logit Rec PR(4) BLK2repl 2002 & -0.868 & 5 & (-10, 10) & OK & 0.2282210 & None\\
+Size DblN top logit CCFRP(5) BLK3repl 1916 & -6.798 & -4 & (-7, 7) & NA & NA & None\\
+Size DblN descend se CCFRP(5) BLK3repl 1916 & 4.846 & -4 & (-10, 10) & NA & NA & None\\
+Size DblN end logit CCFRP(5) BLK3repl 1916 & -1.835 & -5 & (-10, 10) & NA & NA & None\\*
+\end{longtable}
+\endgroup{}
+\end{landscape}
+\endgroup{}
+
+\include{tex_tables/north_likelihoods.tex}
+
+\include{tex_tables/north_e_ReferencePoints.tex}
+
+\newpage
+
+\include{tex_tables/north_TimeSeries.tex}
 
 \newpage
 
@@ -334,59 +748,388 @@ District & 1/2 day trips & 3/4-1 day trips & Overnight trips\\
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
-\caption{\label{tab:onboard-trips}Number of CPFV trips sampled as part of the onboard observer sruvey during 2018-2019 by trip type and District. District 4 and 6 were combined to retain confidentiality.  No trips from District 5 were sampled.}\\
+\caption{\label{tab:ca-status}The estimated total biomass (mt), total biomass age 3+ (mt), age-0 recruits, spawning ouput in number of million eggs across California and fraction unfished by year.}\\
 \toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips & Percent of trips with copper & Total number of copper observed\\
+Year & Total Biomass (mt) & Total Biomass 3+ (mt) & Age-0 Recruits & Spawning Output & Fraction Unfished\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:onboard-trips}Number of CPFV trips sampled as part of the onboard observer sruvey during 2018-2019 by trip type and District. District 4 and 6 were combined to retain confidentiality.  No trips from District 5 were sampled. \textit{(continued)}}\\
+\caption[]{\label{tab:ca-status}The estimated total biomass (mt), total biomass age 3+ (mt), age-0 recruits, spawning ouput in number of million eggs across California and fraction unfished by year. \textit{(continued)}}\\
 \toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips & Percent of trips with copper & Total number of copper observed\\
+Year & Total Biomass (mt) & Total Biomass 3+ (mt) & Age-0 Recruits & Spawning Output & Fraction Unfished\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-1 & 435 & 119 & 5 & 21\% & 296\\
-2 & 36 & 93 & 4 & 72\% & 783\\
-3 & 86 & 55 & NA & 67\% & 864\\
-4 and 6 & 10 & 69 & NA & 61\% & 150\\*
+1916 & 6771.66 & 6726.78 & 483.56 & 688.74 & 1.001\\
+1917 & 6769.45 & 6724.56 & 483.64 & 688.45 & 1.001\\
+1918 & 6765.34 & 6720.40 & 483.72 & 687.93 & 1.000\\
+1919 & 6760.48 & 6715.54 & 483.82 & 687.31 & 0.999\\
+1920 & 6758.72 & 6713.74 & 483.92 & 687.02 & 0.999\\
+1921 & 6757.21 & 6712.21 & 484.04 & 686.76 & 0.999\\
+1922 & 6756.88 & 6711.84 & 484.16 & 686.62 & 0.998\\
+1923 & 6757.52 & 6712.45 & 484.30 & 686.60 & 0.998\\
+1924 & 6758.33 & 6713.22 & 484.45 & 686.59 & 0.998\\
+1925 & 6760.72 & 6715.57 & 484.61 & 686.76 & 0.999\\
+1926 & 6762.19 & 6716.99 & 484.79 & 686.83 & 0.999\\
+1927 & 6763.00 & 6717.75 & 484.98 & 686.81 & 0.999\\
+1928 & 6765.48 & 6720.18 & 485.19 & 686.97 & 0.999\\
+1929 & 6766.75 & 6721.40 & 485.42 & 687.01 & 0.999\\
+1930 & 6767.44 & 6722.01 & 485.67 & 686.99 & 0.999\\
+1931 & 6765.92 & 6720.42 & 485.95 & 686.70 & 0.998\\
+1932 & 6762.93 & 6717.34 & 486.24 & 686.24 & 0.998\\
+1933 & 6760.05 & 6714.37 & 486.56 & 685.76 & 0.997\\
+1934 & 6757.78 & 6712.00 & 486.92 & 685.34 & 0.996\\
+1935 & 6756.39 & 6710.51 & 487.30 & 685.00 & 0.996\\
+1936 & 6752.51 & 6706.51 & 487.71 & 684.36 & 0.995\\
+1937 & 6749.24 & 6703.12 & 488.15 & 683.76 & 0.994\\
+1938 & 6743.91 & 6697.65 & 488.62 & 682.90 & 0.993\\
+1939 & 6741.38 & 6694.98 & 489.14 & 682.32 & 0.992\\
+1940 & 6742.49 & 6695.93 & 489.72 & 682.08 & 0.992\\
+1941 & 6740.38 & 6693.65 & 490.33 & 681.51 & 0.991\\
+1942 & 6740.81 & 6693.87 & 491.00 & 681.16 & 0.990\\
+1943 & 6753.76 & 6706.59 & 491.72 & 682.09 & 0.992\\
+1944 & 6767.59 & 6720.14 & 492.49 & 683.10 & 0.993\\
+1945 & 6779.15 & 6731.41 & 493.30 & 683.81 & 0.994\\
+1946 & 6778.55 & 6730.48 & 494.16 & 683.12 & 0.993\\
+1947 & 6772.42 & 6724.01 & 495.04 & 681.79 & 0.991\\
+1948 & 6787.89 & 6739.13 & 495.92 & 682.78 & 0.993\\
+1949 & 6791.34 & 6742.26 & 496.75 & 682.50 & 0.992\\
+1950 & 6794.80 & 6745.41 & 497.53 & 682.23 & 0.992\\
+1951 & 6795.11 & 6745.48 & 498.22 & 681.61 & 0.991\\
+1952 & 6781.60 & 6731.78 & 498.76 & 679.48 & 0.988\\
+1953 & 6781.57 & 6731.62 & 499.17 & 678.73 & 0.987\\
+1954 & 6793.47 & 6743.42 & 499.31 & 679.27 & 0.988\\
+1955 & 6792.50 & 6742.32 & 498.98 & 678.64 & 0.987\\
+1956 & 6779.53 & 6729.16 & 498.24 & 676.97 & 0.984\\
+1957 & 6759.35 & 6708.78 & 497.29 & 674.55 & 0.981\\
+1958 & 6751.38 & 6700.63 & 496.75 & 673.22 & 0.979\\
+1959 & 6704.70 & 6654.08 & 496.83 & 667.98 & 0.971\\
+1960 & 6685.45 & 6634.85 & 498.53 & 665.34 & 0.967\\
+1961 & 6680.50 & 6629.60 & 501.47 & 664.12 & 0.966\\
+1962 & 6693.08 & 6641.20 & 505.68 & 664.72 & 0.966\\
+1963 & 6700.02 & 6646.33 & 512.94 & 664.72 & 0.966\\
+1964 & 6696.71 & 6640.70 & 527.17 & 663.35 & 0.964\\
+1965 & 6706.31 & 6647.79 & 557.75 & 662.63 & 0.963\\
+1966 & 6688.99 & 6626.36 & 613.84 & 658.30 & 0.957\\
+1967 & 6647.19 & 6578.69 & 692.63 & 650.44 & 0.946\\
+1968 & 6616.98 & 6543.59 & 741.31 & 642.11 & 0.934\\
+1969 & 6600.25 & 6526.41 & 632.10 & 633.79 & 0.922\\
+1970 & 6613.12 & 6545.34 & 524.22 & 628.00 & 0.913\\
+1971 & 6580.04 & 6524.32 & 456.46 & 619.92 & 0.901\\
+1972 & 6554.52 & 6508.80 & 537.03 & 616.60 & 0.897\\
+1973 & 6429.40 & 6391.48 & 585.75 & 609.13 & 0.886\\
+1974 & 6212.80 & 6175.67 & 472.20 & 596.90 & 0.868\\
+1975 & 5902.16 & 5864.17 & 413.01 & 576.83 & 0.839\\
+1976 & 5553.05 & 5519.48 & 408.18 & 551.71 & 0.802\\
+1977 & 5173.57 & 5141.51 & 460.98 & 520.85 & 0.757\\
+1978 & 4773.59 & 4742.85 & 403.81 & 485.31 & 0.706\\
+1979 & 4388.22 & 4358.13 & 320.16 & 449.06 & 0.653\\
+1980 & 3940.02 & 3915.05 & 278.61 & 405.26 & 0.589\\
+1981 & 3480.60 & 3459.55 & 293.65 & 358.87 & 0.522\\
+1982 & 3100.46 & 3078.34 & 269.30 & 319.71 & 0.465\\
+1983 & 2655.53 & 2629.80 & 243.16 & 274.64 & 0.399\\
+1984 & 2375.06 & 2353.56 & 291.89 & 243.45 & 0.354\\
+1985 & 2124.47 & 2100.97 & 423.38 & 214.84 & 0.312\\
+1986 & 1845.66 & 1811.35 & 375.11 & 183.11 & 0.266\\
+1987 & 1649.05 & 1610.57 & 318.75 & 158.20 & 0.230\\
+1988 & 1571.30 & 1543.51 & 319.57 & 143.47 & 0.209\\
+1989 & 1529.20 & 1504.06 & 302.07 & 132.51 & 0.193\\
+1990 & 1489.34 & 1461.83 & 360.71 & 124.09 & 0.180\\
+1991 & 1440.61 & 1407.47 & 390.95 & 117.50 & 0.171\\
+1992 & 1411.63 & 1375.51 & 274.30 & 112.78 & 0.164\\
+1993 & 1405.72 & 1375.57 & 182.29 & 109.06 & 0.159\\
+1994 & 1402.16 & 1376.33 & 178.25 & 105.70 & 0.154\\
+1995 & 1423.35 & 1396.07 & 206.33 & 106.98 & 0.156\\
+1996 & 1471.73 & 1449.13 & 160.47 & 111.22 & 0.162\\
+1997 & 1458.28 & 1439.05 & 129.43 & 111.93 & 0.163\\
+1998 & 1492.25 & 1473.17 & 160.71 & 116.54 & 0.169\\
+1999 & 1537.55 & 1517.25 & 357.39 & 123.32 & 0.179\\
+2000 & 1584.44 & 1561.51 & 181.13 & 130.99 & 0.190\\
+2001 & 1653.94 & 1628.49 & 123.13 & 139.74 & 0.203\\
+2002 & 1730.34 & 1711.89 & 208.19 & 148.22 & 0.216\\
+2003 & 1814.31 & 1795.64 & 351.55 & 157.39 & 0.229\\
+2004 & 1886.01 & 1863.06 & 161.07 & 166.29 & 0.242\\
+2005 & 1958.15 & 1934.51 & 236.37 & 175.25 & 0.255\\
+2006 & 1994.02 & 1977.00 & 87.93 & 180.82 & 0.263\\
+2007 & 2036.68 & 2017.34 & 330.52 & 186.63 & 0.271\\
+2008 & 2050.75 & 2023.30 & 317.18 & 189.90 & 0.276\\
+2009 & 2090.87 & 2038.55 & 851.87 & 193.68 & 0.282\\
+2010 & 2160.63 & 2111.31 & 913.18 & 195.80 & 0.285\\
+2011 & 2291.84 & 2226.56 & 408.77 & 198.79 & 0.289\\
+2012 & 2452.86 & 2404.67 & 552.88 & 202.49 & 0.294\\
+2013 & 2627.91 & 2588.61 & 928.75 & 210.14 & 0.306\\
+2014 & 2795.04 & 2739.48 & 244.85 & 223.28 & 0.325\\
+2015 & 2973.06 & 2916.90 & 102.22 & 240.91 & 0.350\\
+2016 & 3097.56 & 3064.44 & 245.60 & 255.75 & 0.372\\
+2017 & 3182.40 & 3150.11 & 122.12 & 268.46 & 0.390\\
+2018 & 3182.40 & 3153.24 & 96.39 & 273.80 & 0.398\\
+2019 & 3176.81 & 3131.98 & 112.02 & 279.23 & 0.406\\
+2020 & 3179.52 & 3148.18 & 163.48 & 283.32 & 0.412\\
+2021 & 3110.47 & 3087.05 & 317.57 & 278.75 & 0.405\\
+2022 & 3108.97 & 3077.18 & 302.69 & 279.64 & 0.407\\
+2023 & 3199.84 & 3163.70 & 299.87 & 289.74 & 0.421\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
 
 \newpage
 
+\include{tex_tables/sensitivities_1_final.tex}
+
+\newpage
+
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
-\caption{\label{tab:logbook-triptype}Number of CPFV logbook entries with at least one rockfish, grouped by region fished and trip type from 2018-2019.}\\
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.2cm}}
+\caption{\label{tab:dw}Suggested data weights for each data weighting methodology by fleet and data type.}\\
 \toprule
-Region & Multi-day & Single day\\
+Fleet & Data Type & Francis & MI & Dirichlet\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:logbook-triptype}Number of CPFV logbook entries with at least one rockfish, grouped by region fished and trip type from 2018-2019. \textit{(continued)}}\\
+\caption[]{\label{tab:dw}Suggested data weights for each data weighting methodology by fleet and data type. \textit{(continued)}}\\
 \toprule
-Region & Multi-day & Single day\\
+Fleet & Data Type & Francis & MI & Dirichlet\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-Mexico & 223 & 636\\
-District 1 mainland & NA & 8324\\
-Southern Channel Islands & 1170 & 1572\\
-District 2 mainland & NA & 663\\
-Northern Channel Islands & 1135 & 2600\\
-Southern CA Offshore & 119 & 2243\\
-District 3 & 58 & 5195\\
-District 4 & NA & 3156\\
-District 5 & NA & 1051\\
-District 6 & NA & 1189\\*
+Commercial Dead & Lengths & 0.20 & 0.23 & 0.97\\
+Commercial Live & Lengths & 0.29 & 0.58 & 0.99\\
+CPFV & Lengths & 0.33 & 0.24 & 0.99\\
+PR & Lengths & 0.45 & 0.42 & 0.99\\
+CCFRP & Lengths & 0.49 & 1.28 & 0.99\\
+CDFW ROV & Lengths & 0.24 & 1.49 & 0.96\\
+Commercial Dead & Ages & 0.17 & 0.60 & 0.99\\
+CPFV & Ages & 0.21 & 0.21 & 0.99\\
+PR & Ages & 0.56 & 0.56 & 0.99\\
+CCFRP & Ages & 0.53 & 0.76 & 0.99\\
+Growth & Ages & 0.40 & 0.47 & 0.99\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
+
+\include{tex_tables/sensitivities_2_final.tex}
+
+\newpage
+
+\include{tex_tables/sensitivities_3_final.tex}
+
+\newpage
+
+\include{tex_tables/north_e_ReferencePoints.tex}
+
+\newpage
+
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{landscape}\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}}
+\caption{\label{tab:ca-proj}The estimated spawning output in number of million eggs across California and fraction unfished by year.}\\
+\toprule
+Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC (mt) & Spawning Biomass & Fraction Unfished\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:ca-proj}The estimated spawning output in number of million eggs across California and fraction unfished by year. \textit{(continued)}}\\
+\toprule
+Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC (mt) & Spawning Biomass & Fraction Unfished\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2023 & 116.4 & 91.53 & 70 & - & - & 289.74 & 0.421\\
+2024 & 121.32 & 94.69 & 70 & - & - & 295.18 & 0.429\\
+2025 & - & - & - & 171.29 & 148.79 & 302.30 & 0.440\\
+2026 & - & - & - & 171.74 & 147.12 & 303.82 & 0.442\\
+2027 & - & - & - & 172.05 & 145.66 & 304.90 & 0.443\\
+2028 & - & - & - & 172.2 & 144 & 305.69 & 0.444\\
+2029 & - & - & - & 172.26 & 141.82 & 306.33 & 0.445\\
+2030 & - & - & - & 172.31 & 140.09 & 306.97 & 0.446\\
+2031 & - & - & - & 172.39 & 138.4 & 307.60 & 0.447\\
+2032 & - & - & - & 172.54 & 136.34 & 308.29 & 0.448\\
+2033 & - & - & - & 172.8 & 134.85 & 309.09 & 0.449\\
+2034 & - & - & - & 173.15 & 143.44 & 309.99 & 0.451\\*
+\end{longtable}
+\endgroup{}
+\end{landscape}
+\endgroup{}
+
+\include{tex_tables/north_TimeSeries.tex}
+
+\newpage
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{\label{tab:ca-status}The estimated total biomass (mt), total biomass age 3+ (mt), age-0 recruits, spawning ouput in number of million eggs across California and fraction unfished by year.}\\
+\toprule
+Year & Total Biomass (mt) & Total Biomass 3+ (mt) & Age-0 Recruits & Spawning Output & Fraction Unfished\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:ca-status}The estimated total biomass (mt), total biomass age 3+ (mt), age-0 recruits, spawning ouput in number of million eggs across California and fraction unfished by year. \textit{(continued)}}\\
+\toprule
+Year & Total Biomass (mt) & Total Biomass 3+ (mt) & Age-0 Recruits & Spawning Output & Fraction Unfished\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+1916 & 6771.66 & 6726.78 & 483.56 & 688.74 & 1.001\\
+1917 & 6769.45 & 6724.56 & 483.64 & 688.45 & 1.001\\
+1918 & 6765.34 & 6720.40 & 483.72 & 687.93 & 1.000\\
+1919 & 6760.48 & 6715.54 & 483.82 & 687.31 & 0.999\\
+1920 & 6758.72 & 6713.74 & 483.92 & 687.02 & 0.999\\
+1921 & 6757.21 & 6712.21 & 484.04 & 686.76 & 0.999\\
+1922 & 6756.88 & 6711.84 & 484.16 & 686.62 & 0.998\\
+1923 & 6757.52 & 6712.45 & 484.30 & 686.60 & 0.998\\
+1924 & 6758.33 & 6713.22 & 484.45 & 686.59 & 0.998\\
+1925 & 6760.72 & 6715.57 & 484.61 & 686.76 & 0.999\\
+1926 & 6762.19 & 6716.99 & 484.79 & 686.83 & 0.999\\
+1927 & 6763.00 & 6717.75 & 484.98 & 686.81 & 0.999\\
+1928 & 6765.48 & 6720.18 & 485.19 & 686.97 & 0.999\\
+1929 & 6766.75 & 6721.40 & 485.42 & 687.01 & 0.999\\
+1930 & 6767.44 & 6722.01 & 485.67 & 686.99 & 0.999\\
+1931 & 6765.92 & 6720.42 & 485.95 & 686.70 & 0.998\\
+1932 & 6762.93 & 6717.34 & 486.24 & 686.24 & 0.998\\
+1933 & 6760.05 & 6714.37 & 486.56 & 685.76 & 0.997\\
+1934 & 6757.78 & 6712.00 & 486.92 & 685.34 & 0.996\\
+1935 & 6756.39 & 6710.51 & 487.30 & 685.00 & 0.996\\
+1936 & 6752.51 & 6706.51 & 487.71 & 684.36 & 0.995\\
+1937 & 6749.24 & 6703.12 & 488.15 & 683.76 & 0.994\\
+1938 & 6743.91 & 6697.65 & 488.62 & 682.90 & 0.993\\
+1939 & 6741.38 & 6694.98 & 489.14 & 682.32 & 0.992\\
+1940 & 6742.49 & 6695.93 & 489.72 & 682.08 & 0.992\\
+1941 & 6740.38 & 6693.65 & 490.33 & 681.51 & 0.991\\
+1942 & 6740.81 & 6693.87 & 491.00 & 681.16 & 0.990\\
+1943 & 6753.76 & 6706.59 & 491.72 & 682.09 & 0.992\\
+1944 & 6767.59 & 6720.14 & 492.49 & 683.10 & 0.993\\
+1945 & 6779.15 & 6731.41 & 493.30 & 683.81 & 0.994\\
+1946 & 6778.55 & 6730.48 & 494.16 & 683.12 & 0.993\\
+1947 & 6772.42 & 6724.01 & 495.04 & 681.79 & 0.991\\
+1948 & 6787.89 & 6739.13 & 495.92 & 682.78 & 0.993\\
+1949 & 6791.34 & 6742.26 & 496.75 & 682.50 & 0.992\\
+1950 & 6794.80 & 6745.41 & 497.53 & 682.23 & 0.992\\
+1951 & 6795.11 & 6745.48 & 498.22 & 681.61 & 0.991\\
+1952 & 6781.60 & 6731.78 & 498.76 & 679.48 & 0.988\\
+1953 & 6781.57 & 6731.62 & 499.17 & 678.73 & 0.987\\
+1954 & 6793.47 & 6743.42 & 499.31 & 679.27 & 0.988\\
+1955 & 6792.50 & 6742.32 & 498.98 & 678.64 & 0.987\\
+1956 & 6779.53 & 6729.16 & 498.24 & 676.97 & 0.984\\
+1957 & 6759.35 & 6708.78 & 497.29 & 674.55 & 0.981\\
+1958 & 6751.38 & 6700.63 & 496.75 & 673.22 & 0.979\\
+1959 & 6704.70 & 6654.08 & 496.83 & 667.98 & 0.971\\
+1960 & 6685.45 & 6634.85 & 498.53 & 665.34 & 0.967\\
+1961 & 6680.50 & 6629.60 & 501.47 & 664.12 & 0.966\\
+1962 & 6693.08 & 6641.20 & 505.68 & 664.72 & 0.966\\
+1963 & 6700.02 & 6646.33 & 512.94 & 664.72 & 0.966\\
+1964 & 6696.71 & 6640.70 & 527.17 & 663.35 & 0.964\\
+1965 & 6706.31 & 6647.79 & 557.75 & 662.63 & 0.963\\
+1966 & 6688.99 & 6626.36 & 613.84 & 658.30 & 0.957\\
+1967 & 6647.19 & 6578.69 & 692.63 & 650.44 & 0.946\\
+1968 & 6616.98 & 6543.59 & 741.31 & 642.11 & 0.934\\
+1969 & 6600.25 & 6526.41 & 632.10 & 633.79 & 0.922\\
+1970 & 6613.12 & 6545.34 & 524.22 & 628.00 & 0.913\\
+1971 & 6580.04 & 6524.32 & 456.46 & 619.92 & 0.901\\
+1972 & 6554.52 & 6508.80 & 537.03 & 616.60 & 0.897\\
+1973 & 6429.40 & 6391.48 & 585.75 & 609.13 & 0.886\\
+1974 & 6212.80 & 6175.67 & 472.20 & 596.90 & 0.868\\
+1975 & 5902.16 & 5864.17 & 413.01 & 576.83 & 0.839\\
+1976 & 5553.05 & 5519.48 & 408.18 & 551.71 & 0.802\\
+1977 & 5173.57 & 5141.51 & 460.98 & 520.85 & 0.757\\
+1978 & 4773.59 & 4742.85 & 403.81 & 485.31 & 0.706\\
+1979 & 4388.22 & 4358.13 & 320.16 & 449.06 & 0.653\\
+1980 & 3940.02 & 3915.05 & 278.61 & 405.26 & 0.589\\
+1981 & 3480.60 & 3459.55 & 293.65 & 358.87 & 0.522\\
+1982 & 3100.46 & 3078.34 & 269.30 & 319.71 & 0.465\\
+1983 & 2655.53 & 2629.80 & 243.16 & 274.64 & 0.399\\
+1984 & 2375.06 & 2353.56 & 291.89 & 243.45 & 0.354\\
+1985 & 2124.47 & 2100.97 & 423.38 & 214.84 & 0.312\\
+1986 & 1845.66 & 1811.35 & 375.11 & 183.11 & 0.266\\
+1987 & 1649.05 & 1610.57 & 318.75 & 158.20 & 0.230\\
+1988 & 1571.30 & 1543.51 & 319.57 & 143.47 & 0.209\\
+1989 & 1529.20 & 1504.06 & 302.07 & 132.51 & 0.193\\
+1990 & 1489.34 & 1461.83 & 360.71 & 124.09 & 0.180\\
+1991 & 1440.61 & 1407.47 & 390.95 & 117.50 & 0.171\\
+1992 & 1411.63 & 1375.51 & 274.30 & 112.78 & 0.164\\
+1993 & 1405.72 & 1375.57 & 182.29 & 109.06 & 0.159\\
+1994 & 1402.16 & 1376.33 & 178.25 & 105.70 & 0.154\\
+1995 & 1423.35 & 1396.07 & 206.33 & 106.98 & 0.156\\
+1996 & 1471.73 & 1449.13 & 160.47 & 111.22 & 0.162\\
+1997 & 1458.28 & 1439.05 & 129.43 & 111.93 & 0.163\\
+1998 & 1492.25 & 1473.17 & 160.71 & 116.54 & 0.169\\
+1999 & 1537.55 & 1517.25 & 357.39 & 123.32 & 0.179\\
+2000 & 1584.44 & 1561.51 & 181.13 & 130.99 & 0.190\\
+2001 & 1653.94 & 1628.49 & 123.13 & 139.74 & 0.203\\
+2002 & 1730.34 & 1711.89 & 208.19 & 148.22 & 0.216\\
+2003 & 1814.31 & 1795.64 & 351.55 & 157.39 & 0.229\\
+2004 & 1886.01 & 1863.06 & 161.07 & 166.29 & 0.242\\
+2005 & 1958.15 & 1934.51 & 236.37 & 175.25 & 0.255\\
+2006 & 1994.02 & 1977.00 & 87.93 & 180.82 & 0.263\\
+2007 & 2036.68 & 2017.34 & 330.52 & 186.63 & 0.271\\
+2008 & 2050.75 & 2023.30 & 317.18 & 189.90 & 0.276\\
+2009 & 2090.87 & 2038.55 & 851.87 & 193.68 & 0.282\\
+2010 & 2160.63 & 2111.31 & 913.18 & 195.80 & 0.285\\
+2011 & 2291.84 & 2226.56 & 408.77 & 198.79 & 0.289\\
+2012 & 2452.86 & 2404.67 & 552.88 & 202.49 & 0.294\\
+2013 & 2627.91 & 2588.61 & 928.75 & 210.14 & 0.306\\
+2014 & 2795.04 & 2739.48 & 244.85 & 223.28 & 0.325\\
+2015 & 2973.06 & 2916.90 & 102.22 & 240.91 & 0.350\\
+2016 & 3097.56 & 3064.44 & 245.60 & 255.75 & 0.372\\
+2017 & 3182.40 & 3150.11 & 122.12 & 268.46 & 0.390\\
+2018 & 3182.40 & 3153.24 & 96.39 & 273.80 & 0.398\\
+2019 & 3176.81 & 3131.98 & 112.02 & 279.23 & 0.406\\
+2020 & 3179.52 & 3148.18 & 163.48 & 283.32 & 0.412\\
+2021 & 3110.47 & 3087.05 & 317.57 & 278.75 & 0.405\\
+2022 & 3108.97 & 3077.18 & 302.69 & 279.64 & 0.407\\
+2023 & 3199.84 & 3163.70 & 299.87 & 289.74 & 0.421\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{landscape}\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}}
+\caption{\label{tab:ca-proj}The estimated spawning output in number of million eggs across California and fraction unfished by year.}\\
+\toprule
+Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC (mt) & Spawning Biomass & Fraction Unfished\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:ca-proj}The estimated spawning output in number of million eggs across California and fraction unfished by year. \textit{(continued)}}\\
+\toprule
+Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC (mt) & Spawning Biomass & Fraction Unfished\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2023 & 116.4 & 91.53 & 70 & - & - & 289.74 & 0.421\\
+2024 & 121.32 & 94.69 & 70 & - & - & 295.18 & 0.429\\
+2025 & - & - & - & 171.29 & 148.79 & 302.30 & 0.440\\
+2026 & - & - & - & 171.74 & 147.12 & 303.82 & 0.442\\
+2027 & - & - & - & 172.05 & 145.66 & 304.90 & 0.443\\
+2028 & - & - & - & 172.2 & 144 & 305.69 & 0.444\\
+2029 & - & - & - & 172.26 & 141.82 & 306.33 & 0.445\\
+2030 & - & - & - & 172.31 & 140.09 & 306.97 & 0.446\\
+2031 & - & - & - & 172.39 & 138.4 & 307.60 & 0.447\\
+2032 & - & - & - & 172.54 & 136.34 & 308.29 & 0.448\\
+2033 & - & - & - & 172.8 & 134.85 & 309.09 & 0.449\\
+2034 & - & - & - & 173.15 & 143.44 & 309.99 & 0.451\\*
+\end{longtable}
+\endgroup{}
+\end{landscape}
+\endgroup{}
+
+\newpage
 \end{document}

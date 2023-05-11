@@ -45,7 +45,7 @@ management_dir <- file.path(assess_dir, "management")
 
 #data
 #data_dir<- here("data")
-data_dir<- file.path(assess_dir, "data")
+data_dir <- file.path(assess_dir, "data")
 #r_dir <- here("R")
 
 #save to Rdata file
@@ -65,8 +65,7 @@ if(file.exists("_main.Rmd")){
 bookdown::render_book(
   "00a.Rmd", 
   clean = FALSE, 
-  output_dir = getwd()
-)
+  output_dir = doc_dir)
 
 #==================================================================================================
 # Function to build a single section of the document - not recently tested

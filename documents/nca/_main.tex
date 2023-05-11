@@ -181,7 +181,7 @@ Correct citation for this publication:
 
 The base model described here is only for the portion of the stock copper rockfish in California from Point Conception, $34^\circ 27^\prime$ N. lat. to the California/Oregon border, $42^\circ 00^\prime$ N. lat. Descriptions of the summed biomass and stock status for the California stock of copper rockfish are described in later sections.
 
-The base model parameter estimates along with approximate asymptotic standard errors are shown in Table \ref{tab:north-params} and the likelihood components are shown in Table \ref{tab:likes}. Estimates of derived reference points and approximate 95 percent asymptotic confidence intervals are shown in Table \ref{tab:referenceES}. Estimates of stock size and status over time are shown in Table \ref{tab:timeseries}.
+The base model parameter estimates along with approximate asymptotic standard errors are shown in Table \ref{tab:params} and the likelihood components are shown in Table \ref{tab:north-likes}. Estimates of derived reference points and approximate 95 percent asymptotic confidence intervals are shown in Table \ref{tab:north-referenceES}. Estimates of stock size and status over time are shown in Table \ref{tab:north-timeseries}.
 
 The full r4ss plotting output is available in the supplementary material on the Council's website.
 
@@ -190,17 +190,17 @@ The full r4ss plotting output is available in the supplementary material on the 
 
 Estimated parameter values are provided in Table \ref{tab:params}. The log(\(R_0\)) was estimated at 6.34.
 
-The northern California base model estimated reasonable growth parameters for \(k\) and lengths at age 2 and age 20 for males and females. The estimates differed from those estimated externally, which was not unexpected given the lack of consistent age data across fleets and years. The direct estimation of male \(L_{age=2}=12.6\) cm was reasonable compared to female \$L\_\{age=20\}=14.6. While \(k\) was estimated larger for males (0.20) than females (0.15), female \(L_{age=30}\) of 48.3 cm was larger than males at 46.4 cm. These results are consistent with other studies that have looked at sex-specific growth in copper rockfish and similar to estimates from the southern California pre-STAR base model.
+The northern California base model estimated reasonable growth parameters for \(k\) and lengths at age 2 and age 20 for males and females. The estimates differed from those estimated externally, which was not unexpected given the lack of consistent age data across fleets and years. The direct estimation of male \(L_{age=2}\) = 12 cm was reasonable compared to female \(L_{age=2}\) = 14.6 cm. While \(k\) was estimated larger for males (0.20 yr\textsuperscript{-1}) than females (0.15 yr\textsuperscript{-1}), female \(L_{age=30}\) of 48.3 cm was larger than males at 46.4 cm. These results are consistent with other studies that have looked at sex-specific growth in copper rockfish and similar to estimates from the southern California pre-STAR base model.
 
-Length-based selectivity curves were estimated for the fishery and survey fleets, and age-based selectivity of 1.0 starting at age 1 for the growth fleet. Model explorations included parameterizing the fleets with double normal selectivity. Selectivity of the commercial dead fleet and the CDFW ROV survey were continually estimated as asypmtotic through base model development and were simplified to two parameter logistic selectivity in the base model. Peak selectivity for the commercial dead fleet was estimated at 34 cm and 32 cm for the ROV survey. Plots of the estimated selectivities are shown in Figure \ref{fig:est-selex}.
+Length-based selectivity curves were estimated for the fishery and survey fleets, and age-based selectivity of 1.0 starting at age 1 for the growth fleet. Model explorations included parameterizing the fleets with double normal selectivity. Selectivity of the commercial dead fleet and the CDFW ROV survey were continually estimated as asymptotic through base model development and were simplified to two parameter logistic selectivity in the base model. Peak selectivity for the commercial dead fleet was estimated at 34 cm and 32 cm for the ROV survey. Plots of the estimated selectivities are shown in Figure \ref{fig:est-selex}.
 
-The commercial live fishery selectivity was estimated in two blocks of time; 1916 - 2010 and 2011 - 2022. The block in selectivity was included to capture a shift from asymptotic selectivity prior to 2011 to the selection of plate-sized (approx. 2 pounds) fish preferred in the live-fish fishery (Figure \ref{fig:com-len-data}). Both recreational fleets were fit to the same three time blocks. From 1916-2001, peak selectivity was estimated around 36 cm with selectivity decreasing for larger fish; dome-shaped selectivity was estimated from 2002-2016 representing the years the fishery was restricted to shallower depths, and asymptotic selectivity starting in 2017 when the fishery gained access to deeper depths. The two estimated PR fleet selecitivities were both dome-shape with the wider peak selecitivity estimted in 2017-2022 representing the change in depth regulations.
+The commercial live fishery selectivity was estimated in two blocks of time; 1916 - 2010 and 2011 - 2022. The block in selectivity was included to capture a shift from asymptotic selectivity prior to 2011 to the selection of plate-sized (approx. 2 pounds) fish preferred in the live-fish fishery (Figure \ref{fig:com-live-len-data}). Both recreational fleets were fit to the same three time blocks. From 1916-2001, peak selectivity was estimated around 36 cm with selectivity decreasing for larger fish; dome-shaped selectivity was estimated from 2002-2016 representing the years the fishery was restricted to shallower depths, and asymptotic selectivity starting in 2017 when the fishery gained access to deeper depths. The two estimated PR fleet selecitivities were both dome-shape with the wider peak selecitivity estimated in 2017-2022 representing the change in depth regulations.
 
 The CCFRP survey estimated peak selectivity at 33 cm in both time blocks with the first time blocks estimating decreased selectivity of larger fish. The survey expanded to northern California in 2017 where larger copper rockfish were observed and estimated asymptotic selecitivity for fish larger than 33 cm.
 
-The catchability for each of the surveys was analytically solved comparing observed to expected vulnerable biomass across all years. The analytical values for catchability were very small given the survey methodologies and are reported in Table \ref{tab:params} in log-space. Additional fishery and survey index variability, process error added directly to each year's input standard deviation for the were estimated within the model. The model estimated the largest added variance of for the recreational PR fishery index. In contrast the model estimated only limited additional variability in order to fit the recreational CRFS CPFV fishery index (0.095). The model fit the trend in the CCFRP survey with added variance estimated to fit the time series of 0.22, while the model added and still did not fit the trend in the index. The model fit the CDFW ROV survey index well and estimated a small added variance of 0.089.
+The catchability for each of the surveys was analytically solved comparing observed to expected vulnerable biomass across all years. The analytical values for catchability were very small given the survey methodologies and are reported in Table \ref{tab:north-params} in log-space. Additional fishery and survey index variability, process error added directly to each year's input standard deviation for the were estimated within the model. The model estimated the largest added variance of for the recreational PR fishery index. In contrast the model estimated only limited additional variability in order to fit the recreational CRFS CPFV fishery index (0.095). The model fit the trend in the CCFRP survey with added variance estimated to fit the time series of 0.22, while the model added and still did not fit the trend in the index. The model fit the CDFW ROV survey index well and estimated a small added variance of 0.089.
 
-The estimated annual recruitment and recruitment deviations are shown in Figures \ref{fig:recruits} and \ref{fig:rec-devs}. The bias adjustment applied to the annual recruimtent deviations across time is shown in Figure \ref{fig:bias-adj}. Strong recruitments are estimated to have occurred in 1966-1967, 2007 and 2017 and the years of lowest estimated recuitment being 1979 and 1980. The uncertainy in recruitment deviations is highest for the first two years 1970 and 1971 and relatively consistent for the remainder of the time series. There is limited information in the data on recruitment variability from the available data. During model explorations the recruitment deviations were most sensitive to the removal of the available age and fishery index data.
+The estimated annual recruitment and recruitment deviations are shown in Figures \ref{fig:recruits} and \ref{fig:rec-devs}. The bias adjustment applied to the annual recruitment deviations across time is shown in Figure \ref{fig:bias-adj}. Strong recruitments are estimated to have occurred in 1966-1967, 2007 and 2017 and the years of lowest estimated recruitment being 1979 and 1980. The uncertainy in recruitment deviations is highest for the first two years 1970 and 1971 and relatively consistent for the remainder of the time series. There is limited information in the data on recruitment variability from the available data. During model explorations the recruitment deviations were most sensitive to the removal of the available age and fishery index data.
 
 Recruitment is estimated based on the spawner-recruit curve in 2021 and 2022 (Figure \ref{fig:bh-curve}). The recruitment bias adjustment applied within the model across years is shown in Figure \ref{fig:bias-adjust}.
 
@@ -210,11 +210,11 @@ Recruitment is estimated based on the spawner-recruit curve in 2021 and 2022 (Fi
 \hypertarget{fits-to-length-and-age-composition}{%
 \paragraph{Fits to length and age composition}\label{fits-to-length-and-age-composition}}
 
-Fits to the length data are shown based on the Pearson residuals-at-length, the annual mean lengths, and aggregated length composition data for the commercial and recreational fleets. Annual length composition fits are shown in the Appendix, Section \ref{append-fit}. Aggregate fits by fleet are shown in Figure \ref{fig:agg-len-fit}.
+Fits to the length data are shown based on the Pearson residuals-at-length, the annual mean lengths, and aggregated length composition data for the commercial and recreational fleets. Annual length composition fits are shown in the Appendix, Section \ref{detailed-fit-comps}. Aggregate fits by fleet are shown in Figure \ref{fig:agg-len-fit}.
 
-The aggregated lengths for the commercial dead fleet reflected a wide selection across sizes, with the model under-predicting the selection for both small males and females. The majority of the length data for the commercial dead fleet consisted of unsexed fish with sex-specific lengths available from 1980, 1984, 1999, and 2019-2022. The aggregate length compositionfit well with the asymptotic selectivity curve for the commercial dead fleet. Multiple sensitivities were conducted to explore alternative parameterization of commercial dead fleet selectivity. The Pearson residuals for the commercial dead fishery length data area shown in Figure \ref{fig:com-dead-pearson}. The mean length observed in the commercial lengths of unsexed fish were generally stable between 1990 - 2019 and decreased to smaller sizes from 2019 - 2022, with high undertainty in the mean lengths of unsexed fish in 2022 (Figure \ref{fig:com-dead-mean-len-fit}). The observations of larger fish, greater than 40 cm, are minimally greater than the model expectations after 2010. A limited number of ages from the commercial dead fleet were available from 2019-2022. The model estimated mean age was within the bounds of uncertainty, but not well fit (Figure \ref{fig:agg-marg-age-fit})
+The aggregated lengths for the commercial dead fleet reflected a wide selection across sizes, with the model under-predicting the selection for both small males and females. The majority of the length data for the commercial dead fleet consisted of unsexed fish with sex-specific lengths available from 1980, 1984, 1999, and 2019-2022. The aggregate length composition fit well with the asymptotic selectivity curve for the commercial dead fleet. Multiple sensitivities were conducted to explore alternative parameterization of commercial dead fleet selectivity. The Pearson residuals for the commercial dead fishery length data area shown in Figure \ref{fig:com-dead-pearson}. The mean length observed in the commercial lengths of unsexed fish were generally stable between 1990 - 2019 and decreased to smaller sizes from 2019 - 2022, with high undertainty in the mean lengths of unsexed fish in 2022 (Figure \ref{fig:com-dead-mean-len-fit}). The observations of larger fish, greater than 40 cm, are minimally greater than the model expectations after 2010. A limited number of ages from the commercial dead fleet were available from 2019-2022. The model estimated mean age was within the bounds of uncertainty, but not well fit (Figure \ref{fig:agg-marg-age-fit})
 
-Starting in 2010, the commercial live fleet length data shifts to smaller fish with observations greater than model expectations for fish between 25 - 30 cm. All available lengths for the commercial live fleet were from unsexed fish and the aggregated length data were fit relativley well given the change in selectivity in 2011. There were no ages available from the commercial live fleet and the The Pearson residuals for the commercial dead fishery length data area shown in Figure \ref{fig:com-live-pearson}. The mean length observed in the commercial lengths of unsexed fish were not stable prior to 2011 (Figure \ref{fig:com-dead-mean-len-fit}). From 2011-2022 the mean length of fish in the live fishery are relatively stable, with a notable decreased in 2016.
+Starting in 2010, the commercial live fleet length data shifts to smaller fish with observations greater than model expectations for fish between 25 - 30 cm. All available lengths for the commercial live fleet were from unsexed fish and the aggregated length data were fit relatively well given the change in selectivity in 2011. There were no ages available from the commercial live fleet and the The Pearson residuals for the commercial dead fishery length data area shown in Figure \ref{fig:com-live-pearson}. The mean length observed in the commercial lengths of unsexed fish were not stable prior to 2011 (Figure \ref{fig:com-dead-mean-len-fit}). From 2011-2022 the mean length of fish in the live fishery are relatively stable, with a notable decreased in 2016.
 
 The lenth composition fits to the recreational CPFV fleet were relatively well fit throughout the time series, except for a efw years where the a number of fish in a single size class were observed that the model did not expect given the selectivity. The Pearson residuals do not show an indication of any strong year classes from the avaialble lengths (Figure \ref{fig:rec-cpfv-pearson}). The mean length observed, unsexed fish from the CPFV fleet was fit relatively well, indicating a slight increase in mean size around 2000, a decrease from 2007-2011 and a slight increase again from 2013-2018 (Figure \textbackslash ref\{fig:rec-cpfv-mean-len-fit). The number of sexed fish available from the CPFV fleet is small andthe last year of data was not well fit and estimated with high uncertainty. Only one year of age data were available, 2022, from a combination of NMFS Coopeartive Reserach collections and the CDFW groundfish group. A small fraction of these fish were unsexed, and the Pearson residuls indicate these data were generally well-fit (Figure \ref{fig:rec-cpfv-age-pearson}).
 
@@ -253,183 +253,6 @@ Reference points were calculated using the estimated selectivities and catch dis
 The 2022 spawning biomass relative to unfished equilibrium spawning biomass is just below the target of 40\% of unfished levels (Figure \ref{fig:depl}). The relative fishing intensity, \((1-SPR)/(1-SPR_{50\%})\), was near the management target in 2020, and has fluctuated around the target level for the past decade (Figure \ref{fig:1-spr} and \ref{fig:phase}).
 
 Table \ref{tab:north-referenceES} shows the full suite of estimated reference points for the base model and Figures \ref{fig:north-yield2} and \ref{fig:north-yield3} show the equilibrium yield curve and net production based on a steepness value fixed at 0.72.
-
-\hypertarget{cpfv-samples}{%
-\section{Appendix H. CPFV Fleet Description, Sampling, and Trip Types}\label{cpfv-samples}}
-
-During the 2021 copper rockfish stock assessment meeting and during the pre-assessment workshop for the 2023 groundfish assessments, concern was raised regarding possible biases in the available data by trip types. This appendix describes the sampling and available data from two recent years as an example of the relationship between the available data and catches for copper rockfish.
-
-The CDFW conducts several surveys are part of the CRFS program, including an onboard observer survey, angler interviews, and a required CPFV logbook for each trip. The \href{https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=62348\&inline}{CRFS sampling manual} outlines the sampling methodologies for each survey component. The state of California allows the filleting of fish at sea; to accurately identify rockfish to species and obtain measurements of whole fish the majority of angler interviews occur onboard the vessel for the CPFV fleet. The CPFV fleet is not required to speciate the catch in the and only one block number is recorded per entry. For this reasons the CPFV logbook data are rarely used to develop an index of abundance for groundfish species. However, the CPFV logbook data provide insight into the spatial distribution of fishing effort.
-
-The \href{https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=36136\&inline}{California Fisheries Recreational FIsheries Survey Methods} indicates the CPFV ``sampling goal is to sample onboard at the historical sampling frequency of two to five percent of estimated CPFV trips of interest (e.g., trips targeting groundfish, inshore and coastal pelagic species) at each CPFV landing and to sample other CPFV trip types dockside.'' California is divided into six regions for the CRFS sampling, and these represent the finest stratification for catch and effort estimates (Figure \ref{fig:crfs-districts}).
-
-The CPFV fleet north and south of Point Conception are fundamentally different in terms of the vessels fishing, available target species, and also fishery regulations over the past twenty years. The CPFVs north of Point Conception targeting groundfish to not typically target other species on the same trip, with the exception being a half day bottomfish trip mixed with a half day of Dungeness crab pot fishing. The fleet north of Bodega Bay California is dominated by smaller 6-pack vessels with limited capacity. It may not be possible for a sampler to ride onboard a 6-pack vessel if it's at capacity. Overnight trips are extremely rare in northern California. In addition, it's important to note that even though Santa Barbara spans Point Conception, all of the fish are landed in San Luis Obispo county in District 3.
-
-In southern California, the diveristy of targt species is higher an includes several bass species, state managed gamefish, coastal pelagics, and highly migratory species, as well as boats that fish in Mexican waters. The trip types in southern California include 1/2 trips where a CPFV will run two trips a day, 3/4 day trips to fishing grounds further offshore, such as the Channel Islands, and overnight trips that can access areas like San Nicholas in the southern Channel Island or may be combination trips fishing for tunas, but also catching rockfish limits. The diversity of trip types and mixed target trips in southern California pose a challenge for both sampling and managing the fisheries.
-
-We filtered the CPFV logbook data to trips that recorded at least one rockfish and the CPFV onboard observer data to trips that encountered at least 1\% groundfish species. We aggregated within each dataset across 2018 and 2019 and areas where necessary to ensure confidentiality requirements were met. The tables below represent an aggregation of data from 2018 and 2019 combined as they are the two years pre-COVID that best represent the CPFV fleet's activity. We extracted data from the CPFV logbook data and the onboard observer sampled trips to describe the differences in portion of trips sampled and the distribution of copper rockfish catches. In the CPFV logbooks, 60 trips were recorded as multi-day trips in northern California. This represented less then 1\% of the trips in northern California and we did not investigate the accuracy of these entries. Approximately 6\% of the logbooks from District 1 recorded a block number in Mexican waters as the primary location fished. Fewer than 10 trips that recorded block numbers along the mainland of southern California were recorded a multi-day trips. These were removed from the tables below.
-
-The combined onboard observer sampling rate for 2018-2019 was 3\% percent of all CPFV trips in the data used. There were no trips observed onboard in CRFS District 5 during 2018-2019, but 1,052 CPFV logbook records were submitted that recorded at least one rockfish. Grouping the districts by north and south of Point Conception, 2\% of all trips in northern California were sampled onboard (Table @ref(\url{tag:percent-observed})). In southern California, 4\% of single day trips were observed and less than 1\% of multi-day trips were observed.
-
-We broke the data in southern California down further to explore sampling effort by trip type, and assigned a CPFV logbook entry to a region based on the recorded block number (Table \ref{tab:logbook-triptype}). The offshore region was a catch-all that included blocks outside the range of a 1/2 trip, but not within the vicinity of an island. In CRFS District 1, 79\% of the observd trips were 1/2 day trips, which can access the District 1 mainland. In District 2, 29\% of the observed trips were 1/2 day trips. The vessels in District 2 typically offer fewer 1/2 day trips and fish the nearshore when weather precludes crossing the channel to the northern Channel Islands.
-
-To put these sampling rates in context for copper rockfish, we explored the total estimated moratlity related to the distribution of sampling. The total mortality of copper rockfish in metric tons from 2018-2019 from the CPFV fleet by CRFS District is in Table \ref{tab:catch-example}. Fifty-two percent of the total copper rockfish mortality was from northern California and 48\% from southern California. Within northern California, 50\% of the total mortality originated from District 3, and in southern California, 81\% of the total mortality originated from District 2.
-
-From the onboard observer trips in District 1, 37\% of the observed coppers were from 1/2 day trips, 42\% from 3/4-1 day trips, and 21\% of the observed copper rockfish were from the five observed multi-day trips (Table \ref{tab:onboard-coppers}).
-
-In District 2, 17\% of the observed copper were from 1/2 day trips, 75\% from the 3/4-1 day trips and 8\% from overnight trips. When weather allows, the northern Channel Islands can be accessed from CRFS District 2 during a 3/4-1 day trip or a multi-day trip, depending on the port. For instance, the CPFVs from Oxnard, California access the northern Channel Island during multi-day trips, and the same areas are accessed by the 3/4-1 day boats out of Santa Barbara Landing.
-
-\newpage
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/cpfv_logbook_summaries/crfs_districts.png}
-\caption{Map of the CDFW CRFS sampling Districts.\label{fig:crfs-districts}}
-\end{figure}
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:percent-observed}The percent of trips sampled onboard by trip type and area for 2018 and 2019, using the number of trips observed and CPFV logbook trips described in the text.}\\
-\toprule
-Area & Single day & Multi day\\
-\midrule
-\endfirsthead
-\caption[]{\label{tab:percent-observed}The percent of trips sampled onboard by trip type and area for 2018 and 2019, using the number of trips observed and CPFV logbook trips described in the text. \textit{(continued)}}\\
-\toprule
-Area & Single day & Multi day\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-Northern CA & 6\% & NA\\
-Southern CA & 10\% & 1\%\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
-\caption{\label{tab:catch-example}Total mortality in metric tons of copper rockfish from 2018 and 2019 from the CPFV fleet by CRFS District.}\\
-\toprule
-District & 2018 & 2019 & Total\\
-\midrule
-\endfirsthead
-\caption[]{\label{tab:catch-example}Total mortality in metric tons of copper rockfish from 2018 and 2019 from the CPFV fleet by CRFS District. \textit{(continued)}}\\
-\toprule
-District & 2018 & 2019 & Total\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-1 & 9.2 & 23.1 & 32.3\\
-2 & 87.0 & 51.8 & 138.8\\
-3 & 49.3 & 44.3 & 93.6\\
-4 & 30.0 & 27.9 & 57.9\\
-5 & 7.7 & 13.1 & 20.7\\
-6 & 6.0 & 7.3 & 13.2\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
-\caption{\label{tab:onboard-coppers}Number of copper rockfish observed during the CPFV trips sampled onboard by district and trip type from 2018-2019.}\\
-\toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips\\
-\midrule
-\endfirsthead
-\caption[]{\label{tab:onboard-coppers}Number of copper rockfish observed during the CPFV trips sampled onboard by district and trip type from 2018-2019. \textit{(continued)}}\\
-\toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-1 & 111 & 123 & 62\\
-2 & 136 & 588 & 59\\
-3 & 140 & 351 & NA\\
-4 and 6 & 12 & 138 & NA\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
-\caption{\label{tab:onboard-trips}Number of CPFV trips sampled as part of the onboard observer sruvey during 2018-2019 by trip type and District. District 4 and 6 were combined to retain confidentiality.  No trips from District 5 were sampled.}\\
-\toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips & Percent of trips with copper & Total number of copper observed\\
-\midrule
-\endfirsthead
-\caption[]{\label{tab:onboard-trips}Number of CPFV trips sampled as part of the onboard observer sruvey during 2018-2019 by trip type and District. District 4 and 6 were combined to retain confidentiality.  No trips from District 5 were sampled. \textit{(continued)}}\\
-\toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips & Percent of trips with copper & Total number of copper observed\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-1 & 435 & 119 & 5 & 21\% & 296\\
-2 & 36 & 93 & 4 & 72\% & 783\\
-3 & 86 & 55 & NA & 67\% & 864\\
-4 and 6 & 10 & 69 & NA & 61\% & 150\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
-\caption{\label{tab:logbook-triptype}Number of CPFV logbook entries with at least one rockfish, grouped by region fished and trip type from 2018-2019.}\\
-\toprule
-Region & Multi-day & Single day\\
-\midrule
-\endfirsthead
-\caption[]{\label{tab:logbook-triptype}Number of CPFV logbook entries with at least one rockfish, grouped by region fished and trip type from 2018-2019. \textit{(continued)}}\\
-\toprule
-Region & Multi-day & Single day\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-Mexico & 223 & 636\\
-District 1 mainland & NA & 8324\\
-Southern Channel Islands & 1170 & 1572\\
-District 2 mainland & NA & 663\\
-Northern Channel Islands & 1135 & 2600\\
-Southern CA Offshore & 119 & 2243\\
-District 3 & 58 & 5195\\
-District 4 & NA & 3156\\
-District 5 & NA & 1051\\
-District 6 & NA & 1189\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
 
 \clearpage
 
@@ -670,12 +493,12 @@ Year & UCSC Raw Count & UCSC Filtered Count & UCSB Raw Count & UCSB Filtered Cou
 \begin{landscape}\begingroup\fontsize{9}{11}\selectfont
 
 \begin{longtable}[t]{>{\raggedright\arraybackslash}p{7cm}lllll>{\raggedright\arraybackslash}p{4cm}}
-\caption{\label{tab:north-params}List of parameters used in the base model, including estimated values and standard deviations (SD), bounds (minimum and maximum), estimation phase (negative values not estimated), status (indicates if parameters are near bounds), and prior type information (mean and SD).}\\
+\caption{\label{tab:params}List of parameters used in the base model, including estimated values and standard deviations (SD), bounds (minimum and maximum), estimation phase (negative values not estimated), status (indicates if parameters are near bounds), and prior type information (mean and SD).}\\
 \toprule
 Parameter & Value & Phase & Bounds & Status & SD & Prior (Exp.Val, SD)\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:north-params}List of parameters used in the base model, including estimated values and standard deviations (SD), bounds (minimum and maximum), estimation phase (negative values not estimated), status (indicates if parameters are near bounds), and prior type information (mean and SD). \textit{(continued)}}\\
+\caption[]{\label{tab:params}List of parameters used in the base model, including estimated values and standard deviations (SD), bounds (minimum and maximum), estimation phase (negative values not estimated), status (indicates if parameters are near bounds), and prior type information (mean and SD). \textit{(continued)}}\\
 \toprule
 Parameter & Value & Phase & Bounds & Status & SD & Prior (Exp.Val, SD)\\
 \midrule
@@ -1652,7 +1475,7 @@ Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC
 \begin{figure}
 \centering
 \includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/biology/plots/Length_Weight_All.png}
-\caption{Estimated weight-at-length.\label{fig:weight-length}}
+\caption{Estimated weight-at-length.\label{fig:est-len-wght}}
 \end{figure}
 
 \pagebreak
@@ -1751,6 +1574,12 @@ Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC
 \hypertarget{selectivity}{%
 \subsubsection{Selectivity}\label{selectivity}}
 
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/north_selectivity.png}
+\caption{Estimated selectivity for each fleet and survey in the base model.\label{fig:est-selex}}
+\end{figure}
+
 \pagebreak
 
 \hypertarget{recruitment}{%
@@ -1774,6 +1603,14 @@ Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC
 
 \begin{figure}
 \centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/recruit_fit_bias_adjust.png}
+\caption{Points are transformed variances. Red line shows current settings for bias adjustment specified in control file. Blue line shows least squares estimate of alternative bias adjustment relationship for recruitment deviations (which may or may not be an improvement).\label{fig:bias-adjust}}
+\end{figure}
+
+\newpage
+
+\begin{figure}
+\centering
 \includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/SR_curve.png}
 \caption{Stock-recruit curve. Point colors indicate year, with warmer colors indicating earlier years and cooler colors in showing later years.\label{fig:bh-curve}}
 \end{figure}
@@ -1782,6 +1619,128 @@ Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC
 
 \hypertarget{fits-to-data}{%
 \subsubsection{Fits to Data}\label{fits-to-data}}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_lenfit__aggregated_across_time.png}
+\caption{Length composition aggregated across years by fleet with the model estimated fit to the data by sex (green unsexed, red female, and blue male).\label{fig:len-agg-fit}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_lenfit_residsflt1mkt0.png}
+\caption{Pearson residuals for commercial fleet. Closed bubble are positive residuals (observed \textgreater{} expected) and open bubbles are negative residuals (observed \textless{} expected).\label{fig:com-dead-pearson}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_lenfit_data_weighting_TA1.8_Commercial_dead.png}
+\caption{Mean length for commercial dead lengths with 95 percent confidence intervals based on current samples sizes.\label{fig:com-dead-mean-len-fit}}
+\end{figure}
+
+\pagebreak
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_lenfit_residsflt2mkt0.png}
+\caption{Pearson residuals for commercial live fleet. Closed bubble are positive residuals (observed \textgreater{} expected) and open bubbles are negative residuals (observed \textless{} expected).\label{fig:com-live-pearson}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_lenfit_data_weighting_TA1.8_Commercial_live.png}
+\caption{Mean length for commercial live fish lengths with 95 percent confidence intervals based on current samples sizes.\label{fig:com-live-mean-len-fit}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_lenfit_residsflt3mkt0_page2.png}
+\caption{Pearson residuals for recreational CPFV fleet. Closed bubble are positive residuals (observed \textgreater{} expected) and open bubbles are negative residuals (observed \textless{} expected).\label{fig:rec-cpfv-pearson}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_lenfit_data_weighting_TA1.8_Rec_CPFV.png}
+\caption{Mean length for recreational CPFV lengths with 95 percent confidence intervals based on current samples sizes.\label{fig:rec-cpfv-mean-len-fit}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_agefit_residsflt3mkt0.png}
+\caption{Pearson residuals for recreational CPFV age data. Closed bubble are positive residuals (observed \textgreater{} expected) and open bubbles are negative residuals (observed \textless{} expected).\label{fig:rec-cpfv-age-pearson}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_lenfit_residsflt4mkt0_page2.png}
+\caption{Pearson residuals for recreational private/rental fleet. Closed bubble are positive residuals (observed \textgreater{} expected) and open bubbles are negative residuals (observed \textless{} expected).\label{fig:rec-pr-pearson}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_lenfit_data_weighting_TA1.8_Rec_PR.png}
+\caption{Mean length for recreational private/rental lengths with 95 percent confidence intervals based on current samples sizes.\label{fig:rec-pr-mean-len-fit}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_lenfit_residsflt5mkt0.png}
+\caption{Pearson residuals for CCFRP Hook and Line survey length data. Closed bubble are positive residuals (observed \textgreater{} expected) and open bubbles are negative residuals (observed \textless{} expected).\label{fig:ccfrp-len-pearson}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_lenfit_data_weighting_TA1.8_CCFRP.png}
+\caption{Mean length for CCFRP Hook and Line survey lengths with 95 percent confidence intervals based on current samples sizes.\label{fig:ccfrp-mean-len-fit}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_condAAlfit_residsflt5mkt0.png}
+\caption{Pearson residuals for CCFRP Hook and Line survey conditional-age-at-length data. Closed bubble are positive residuals (observed \textgreater{} expected) and open bubbles are negative residuals (observed \textless{} expected).\label{fig:ccfrp-age-pearson}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_lenfit_residsflt6mkt0.png}
+\caption{Pearson residuals for CDFW ROV survey length data. Closed bubble are positive residuals (observed \textgreater{} expected) and open bubbles are negative residuals (observed \textless{} expected).\label{fig:rov-pearson}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast/plots/comp_lenfit_data_weighting_TA1.8_CDFW_ROV.png}
+\caption{Mean length for CDFW ROV survey lengths with 95 percent confidence intervals based on current samples sizes.\label{fig:rov-mean-len-fit}}
+\end{figure}
+
+\pagebreak
 
 \begin{figure}
 \centering
