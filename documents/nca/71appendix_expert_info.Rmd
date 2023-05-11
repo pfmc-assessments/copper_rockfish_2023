@@ -1,35 +1,37 @@
 ## Information Provided by the Commercial and Recreational Fleet Representatives
 
-
 The copper rockfish STAT held the following three informal virtual meetings with stakeholders as part of the data exploration process:
 
 \begin{enumerate}
-\item Copper Rockfish & the Commercial Fisheries on January 10, 2023 (24 attendees)
-\item Copper Rockfish  & the Recreational Fishery South of Pt. Conception on January 23, 2023 (17 attendees)
-\item  & the Recreational Fishery North of Pt. Conception on January 30, 2023 (19 attendees)
-\end{enumerate}
 
+    \item Copper Rockfish and the Commercial Fisheries on January 10, 2023 (24 attendees)
+
+    \item Copper Rockfish and the Recreational Fishery South of Pt. Conception on January 23, 2023 (17 attendees)
+    
+    \item Copper Rockfish and the Recreational Fishery North of Pt. Conception on January 30, 2023 (19 attendees)
+
+\end{enumerate}
 
 A summary of the information learned from these meetings is provided here. We would like to thank everyone who participated in our virtual meetings for their willingness to participate in the stock assessment process and provided additional insight into the fisheries for copper rockfish.
 
 ### Preferred Habitat and Life History Notes
 
-Coppers are "king" of the reef and appear to push other species off of the best habitat within a reef. The STAT consistently heard from all fishermen that copper rockfish are not caught in areas of high relief. Copper rockfish prefer aras of flatter or broken hard bottom, and also venture out over soft bottom habitat. It is often larger fish caught over soft bottom where they are feeding on sanddabs. Copper rockfish do not feed on pyrosomes as frequently as other rockfish species.  Copper rockfish will follow prey targets, especially the pelagic red crabs that have been observed farther north.
+Coppers are "king" of the reef and appear to push other species off of the best habitat within a reef. The STAT consistently heard from all fishermen that copper rockfish are not caught in areas of high relief. Copper rockfish prefer areas. Copper rockfish do not feed on pyrosomes as frequently as other rockfish species.  Copper rockfish will follow prey targets, especially the pelagic red crabs that have been observed farther north.
 In general rockfish catches decreased when prey (anchovies, mychtophids, and pyrosomes) are more abundance. 
 
-Onotogenetic shift and seasonal movements. Copper also tend to move based on weather conditions. North of \PtC, coppers cannot be found during bad weather and seem to move to deeper waters (swell and wind). 
+Ontogenetic shift and seasonal movements. Copper also tend to move based on weather conditions. North of \PtC, coppers cannot be found during bad weather and seem to move to deeper waters (swell and wind). 
 
 ### Commercial Fishery
 
 To fish copper rockfish commercial in California a deeper nearshore permit is needed.  The trip limits of 75 pounds per two month period in combinations with depth restrictions has impacted the commercial targeting of copper rockfish. The fleet is descending more fish now with the lower quotas. Copper rockfish are a component of the live fish fishery in both northern and southern California. They are intended to be sold live, but those fish that do not live will still be commercially sold as dead fish. Historically (pre RCAs), copper were found predominately in 45-80 fm. Coppers are encountered at an average depth of 45 fm, but can be found out to 60 fm. Copper are rarely seen outside of 60 fm.
 
-The live fish market is constantly in flux and can be difficult to predict. In southern California, a large portion of the live fish fishery collapsed during the COVID-19 pandemic and has not returned. A fisherman's market in San Diego has allowed individuals ot sell fish to the public.  Many of the live fish buyers in central California transport live fish to Las Vegas, Nevada or Los Angeles and San Jose in California. 
+The live fish market is constantly in flux and can be difficult to predict. In southern California, a large portion of the live fish fishery collapsed during the COVID-19 pandemic and has not returned. A fisherman's market in San Diego has allowed individuals to sell fish to the public.  Many of the live fish buyers in central California transport live fish to Las Vegas, Nevada or Los Angeles and San Jose in California. 
 
-North of Point Conception, copper rockfish is a target of the commercial fleet. North of Cape Mendocino (\CapeM), live fish sell for 3-4 times the price of dead copper. For fishermen targettig black rockfish in the north copper rockfish are incidental catch and still sold. Out of Morro Bay, coppers ranging between 1-6 pounds are most common in the 10-15 fm range and also sell for $7-8 a pound. In shallow waters, fishermen will use traps for the live fish fleet and vertical gear for deeper waters. In central California (near Morro Bay) the nearshore live fish live in the kelp beds and larger coppers on the outside edges of the reef - you can find larger coppers on isolated outcrops. It's rare for the commercial live fleet to fish outside fo 90 ft, and in central California it's harder to keep fish exhibiting barotrauma alive, and the price of live fish much higher.
+North of Point Conception, copper rockfish is a target of the commercial fleet. North of Cape Mendocino (\CapeM), live fish sell for 3-4 times the price of dead copper. For fishermen targeting black rockfish in the north copper rockfish are incidental catch and still sold. Out of Morro Bay, coppers ranging between 1-6 pounds are most common in the 10-15 fm range and also sell for $7-8 a pound. In shallow waters, fishermen will use traps for the live fish fleet and vertical gear for deeper waters. In central California (near Morro Bay) the nearshore live fish live in the kelp beds and larger coppers on the outside edges of the reef - you can find larger coppers on isolated outcrops. It's rare for the commercial live fleet to fish outside of 90 ft, and in central California it's harder to keep fish exhibiting barotrauma alive, and the price of live fish much higher.
 
 Commercial fishermen from multiple areas along the coast emphasized that the price difference for copper by size is not as pronounced as it is for other species landed in the live fish fishery. North of San Francisco, the commercial fleet encounters larger copper rockfish (~ 7 pounds) in general.  Fish smaller than 2.5 - 3 pounds (approximately 14-17 inches) are desired by the live fish buyers and the restaurant market and will sell for a higher price, and the larger fish can be sold to the general public.
 
-South of Point Conception, copper rockfish are not generally a target species for the live fishery and have been difficult to market. The fleet is now marketing copper rockfish in southern california to a species as close to the popular "grouper" (bocaccio rockfish) and it is increasing interest. The majority of commercial caught copper rockfish in southern California are sold dead.  The price of a dead copper in San Diego is around $6 a pound. The fleet can keep copper alive from depths up to 60 fms with no issue and seem to be the hardiest of the rockfish species. 
+South of Point Conception, copper rockfish are not generally a target species for the live fishery and have been difficult to market. The fleet is now marketing copper rockfish in southern California to a species as close to the popular "grouper" (bocaccio rockfish) and it is increasing interest. The majority of commercial caught copper rockfish in southern California are sold dead.  The price of a dead copper in San Diego is around $6 a pound. The fleet can keep copper alive from depths up to 60 fms with no issue and seem to be the hardiest of the rockfish species. 
 
 ### Recreational Fishery
 
@@ -45,7 +47,7 @@ Larger coppers can be found in 40-60 feet of water and swell is a good indicator
 
 In central California, small coppers can be found in 100+ feet of water at the edge of the Farallon Islands. The last 2-3 weeks of December, fishermen out of Emeryville, CA find aggregations of copper rockfish that are not usually present on shale beds.
 
-Small copper rockfish have been caught off the the jetties in Humboldt, Pillar Point Harbor, and San Francisco, California. In the Half Moon Bay CFPV fleet, coppers are rarely observed shallower than 35 fathoms and they tend to only bite the bottom hook. The gear regulations from unlimited hooks to 2 hooks per line and a one pole limit in 1999-2000 resulted in increased loss of fish to sea lions. 
+Small copper rockfish have been caught off the jetties in Humboldt, Pillar Point Harbor, and San Francisco, California. In the Half Moon Bay CFPV fleet, coppers are rarely observed shallower than 35 fathoms and they tend to only bite the bottom hook. The gear regulations from unlimited hooks to 2 hooks per line and a one pole limit in 1999-2000 resulted in increased loss of fish to sea lions. 
 
 #### South of Point Conception
 

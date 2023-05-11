@@ -6,6 +6,7 @@ preamble:
 header-includes: 
   - \usepackage{lineno}
   - \usepackage[inline]{showlabels}
+  - \usepackage{pdflscape}
 csl: canadian-journal-of-fisheries-and-aquatic-sciences.csl
 output:
   sa4ss::techreport_pdf:
@@ -49,6 +50,7 @@ hkl <- "NWFSC Hook and Line survey"
 wcgbt <- "NWFSC WCGBT survey"
 area <- "north of Point Conception"
 model.area <- "north"
+
 
 load(file.path(doc_dir, "sca", "00mod.Rdata"))
 south_model <- model

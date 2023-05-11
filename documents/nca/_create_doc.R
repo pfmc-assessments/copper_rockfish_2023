@@ -34,7 +34,7 @@ model_dir <- file.path(assess_dir, "models", "nca", north_model_name)
 #south_model_dir <- here("models", "sca", south_model_name)
 north_model_dir <- file.path(assess_dir, "models", "nca", north_model_name)
 south_model_dir <- file.path(assess_dir, "models", "sca", south_model_name)
-
+mod_loc <- north_model_dir
 #north model sensitivities
 #sens_dir <- here("models", "nca", "_sensitivities")
 sens_dir <-file.path(assess_dir, "models", "nca", "_sensitivities")
@@ -43,6 +43,7 @@ sens_dir <-file.path(assess_dir, "models", "nca", "_sensitivities")
 #management_dir <- here("management")
 management_dir <- file.path(assess_dir, "management")
 
+
 #data
 #data_dir<- here("data")
 data_dir <- file.path(assess_dir, "data")
@@ -50,7 +51,7 @@ data_dir <- file.path(assess_dir, "data")
 
 #save to Rdata file
 save(model_dir, bridge_dir, doc_dir, data_dir, management_dir, north_model_dir, south_model_dir,
-     sens_dir, south_model_name, north_model_name,
+     sens_dir, south_model_name, north_model_name, mod_loc,
      file = file.path(doc_dir, "nca", "saved_directories.Rdata"))
 
 setwd(file.path(doc_dir, "nca"))
@@ -83,6 +84,7 @@ if(file.exists("_main.Rmd")){
   file.remove("_main.Rmd")
 }
 bookdown::render_book("00a.Rmd", 
+                      output_format ="bookdown::pdf_document2", #for a faster compile time
                       output_dir = doc_dir, 
                       clean = FALSE, 
                       config_file = "_bookdown_north.yml")

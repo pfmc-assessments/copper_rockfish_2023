@@ -180,45 +180,13 @@ table_format(x = mod_params,
 
 \include{tex_tables/north_likelihoods.tex}
 
-<!-- ======================================================= -->
-<!-- ********  Reference Points & Management *************** --> 
-<!-- ======================================================= -->
-
-\include{tex_tables/north_e_ReferencePoints.tex}
-
-\newpage
-
-
-<!-- ======================================================= -->
-<!-- ***********       Time Series      ******************** --> 
-<!-- ======================================================= -->
-
-\include{tex_tables/north_TimeSeries.tex}
 
 
 \newpage
 
-
-```{r, results = 'asis'}
-create_biomass_table(
-    doc_dir = doc_dir, 
-    prefix = NULL,
-    doc_names = c("nca", 'sca'),
-    years = 1916:2023)
-
-```
-
-\newpage
-
 <!-- ======================================================= -->
-<!-- ****************     Sensitivities      *************** --> 
+<!-- ***********   Data Weights         ******************** --> 
 <!-- ======================================================= -->
-
-
-\include{tex_tables/sensitivities_1_final.tex}
-
-\newpage
-
 
 
 ```{r, results = 'asis'}
@@ -233,6 +201,40 @@ sa4ss::table_format(x = tab,
              col_names = col_names) 
 ```
 
+\newpage
+
+<!-- ======================================================= -->
+<!-- ***********       Time Series      ******************** --> 
+<!-- ======================================================= -->
+
+\include{tex_tables/south_TimeSeries.tex}
+
+
+\newpage
+
+
+```{r, results = 'asis'}
+create_biomass_table(
+    doc_dir = doc_dir, 
+    prefix = NULL,
+    doc_names = c("nca", 'sca'),
+    years = 1916:2023)
+# tab:ca-status
+
+```
+
+\newpage
+
+
+<!-- ======================================================= -->
+<!-- ****************     Sensitivities      *************** --> 
+<!-- ======================================================= -->
+
+
+\include{tex_tables/sensitivities_1_final.tex}
+
+
+\newpage
 
 
 \include{tex_tables/sensitivities_2_final.tex}
@@ -242,29 +244,6 @@ sa4ss::table_format(x = tab,
 \include{tex_tables/sensitivities_3_final.tex}
 
 \newpage
-
-
-<!-- ======================================================= -->
-<!-- ********  Reference Points & Management *************** --> 
-<!-- ======================================================= -->
-
-\include{tex_tables/north_e_ReferencePoints.tex}
-
-\newpage
-
-
-```{r, results = 'asis'}
-
-create_projection_table(
-    management_dir = management_dir, 
-    doc_dir = doc_dir, 
-    fixed_removals = c(70, 70),
-    doc_names = c("nca", 'sca'),
-    years = 2023:2034,
-    table_names = c("copper_ca_north.csv", "copper_ca_south.csv"),
-    prefix = NULL)
-
-```
 
 <!-- ======================================================= -->
 <!-- ***********       Time Series      ******************** --> 
@@ -291,16 +270,64 @@ create_biomass_table(
 
 
 
+
 <!-- ======================================================= -->
 <!-- ********  Reference Points & Management *************** --> 
 <!-- ======================================================= -->
 
+\include{tex_tables/south_e_ReferencePoints.tex}
+
+\newpage
+
+\include{tex_tables/north_e_ReferencePoints.tex}
+
+\newpage
+
+```{r, results = 'asis'}
+
+ref_south <- read.csv(file.path(south_model_dir, "tables", "e_ReferencePoints_ES.csv"))
+ref_north <- read.csv(file.path(north_model_dir, "tables", "e_ReferencePoints_ES.csv"))
+
+out <- c(
+  round(ref_south[1, "Estimate"] + ref_north[1, "Estimate"], 2),
+  round(ref_south[2, "Estimate"] + ref_north[2, "Estimate"], 2),
+  round(ref_south[3, "Estimate"] + ref_north[3, "Estimate"], 2),
+  round(ref_south[4, "Estimate"] + ref_north[4, "Estimate"], 2),
+  round((ref_south[4, "Estimate"] + ref_north[4, "Estimate"]) /(ref_south[1, "Estimate"] + ref_north[1, "Estimate"]), 3),
+  round(ref_south[7, "Estimate"] + ref_north[7, "Estimate"], 2),
+  round(ref_south[10, "Estimate"] + ref_north[10, "Estimate"], 2),
+  round(ref_south[12, "Estimate"] + ref_north[12, "Estimate"], 2),
+  round(ref_south[15, "Estimate"] + ref_north[15, "Estimate"], 2),
+  round(ref_south[17, "Estimate"] + ref_north[17, "Estimate"], 2),
+  round(ref_south[20, "Estimate"] + ref_north[20, "Estimate"], 2)
+)
+row_names <- c("Unfished Spawning Output", "Unfished Age 3+ Biomass (mt)", "Unfished Recruitment", "Spawning Output (2023)",
+               "Relative Spawning Ouput",
+               "Proxy Spawning Output (SB40%)", "Yield with SPR Based on SB40% (mt)", "Proxy Spawning Output (SPR50)", 
+               "Yield with SPR50 (mt)", "Spawning Output at MSY", "MSY (mt)")
+
+out <- cbind(row_names, out)
+col_names <- c("Quantity", "Estimate")
+
+table_format(x = out,
+             caption = "Summary of reference points and management quantities for copper rockfish in California waters",
+             label = "ref-point-all",
+             align = 'l',
+             digits = 3,
+             col_names = col_names,
+             longtable = TRUE,
+             custom_width = TRUE,
+             col_to_adjust = c(1), 
+             width = c("6cm"))  
+
+```
 
 ```{r, results = 'asis'}
 
 create_projection_table(
     management_dir = management_dir, 
     doc_dir = doc_dir, 
+    model_dir = model_dir, 
     fixed_removals = c(91.53, 94.69),
     doc_names = c("nca", 'sca'),
     years = 2023:2034,
