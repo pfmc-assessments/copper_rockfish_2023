@@ -420,6 +420,7 @@ create_biomass_table(
 create_projection_table(
     management_dir = management_dir, 
     doc_dir = doc_dir, 
+    model_dir = model_dir, 
     fixed_removals = c(91.53, 94.69),
     doc_names = c("nca", 'sca'),
     years = 2023:2034,
