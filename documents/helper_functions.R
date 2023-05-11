@@ -173,7 +173,10 @@ create_projection_table <- function(
     caption = "The estimated OFL, ABC, buffer, spawning output in number of million eggs across California, and relative spawning outut by year.",
     label = paste0(prefix, "ca-proj"),
     landscape = TRUE,
-    col_names = col_names
+    col_names = col_names,
+    custom_width = TRUE,
+    col_to_adjust = 2:8, 
+    width = c("1.5cm")
   )  
   
 }

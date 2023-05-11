@@ -414,6 +414,44 @@ create_biomass_table(
 
 \newpage
 
+```{r, results = 'asis'}
+
+ref_south <- read.csv(file.path(south_model_dir, "tables", "e_ReferencePoints_ES.csv"))
+ref_north <- read.csv(file.path(north_model_dir, "tables", "e_ReferencePoints_ES.csv"))
+
+out <- c(
+  round(ref_south[1, "Estimate"] + ref_north[1, "Estimate"], 2),
+  round(ref_south[2, "Estimate"] + ref_north[2, "Estimate"], 2),
+  round(ref_south[3, "Estimate"] + ref_north[3, "Estimate"], 2),
+  round(ref_south[4, "Estimate"] + ref_north[4, "Estimate"], 2),
+  round((ref_south[4, "Estimate"] + ref_north[4, "Estimate"]) /(ref_south[1, "Estimate"] + ref_north[1, "Estimate"]), 3),
+  round(ref_south[7, "Estimate"] + ref_north[7, "Estimate"], 2),
+  round(ref_south[10, "Estimate"] + ref_north[10, "Estimate"], 2),
+  round(ref_south[12, "Estimate"] + ref_north[12, "Estimate"], 2),
+  round(ref_south[15, "Estimate"] + ref_north[15, "Estimate"], 2),
+  round(ref_south[17, "Estimate"] + ref_north[17, "Estimate"], 2),
+  round(ref_south[20, "Estimate"] + ref_north[20, "Estimate"], 2)
+)
+row_names <- c("Unfished Spawning Output", "Unfished Age 3+ Biomass (mt)", "Unfished Recruitment", "Spawning Output (2023)",
+               "Relative Spawning Ouput",
+               "Proxy Spawning Output (SB40%)", "Yield with SPR Based on SB40% (mt)", "Proxy Spawning Output (SPR50)", 
+               "Yield with SPR50 (mt)", "Spawning Output at MSY", "MSY (mt)")
+
+out <- cbind(row_names, out)
+col_names <- c("Quantity", "Estimate")
+
+table_format(x = out,
+             caption = "Summary of reference points and management quantities for copper rockfish in California waters",
+             label = "ref-point-all",
+             align = 'l',
+             digits = 3,
+             col_names = col_names,
+             longtable = TRUE,
+             custom_width = TRUE,
+             col_to_adjust = c(1), 
+             width = c("6cm"))  
+
+```
 
 ```{r, results = 'asis'}
 
