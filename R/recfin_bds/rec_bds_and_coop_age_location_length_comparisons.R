@@ -1,10 +1,19 @@
 
 library(ggplot2)
+library(ggridges)
 library(tidyr)
 library(dplyr)
 library(viridis)
-load("S:/copper_rockfish_2023/data/ages/formatted_age_files/all_copper_ages.rdata")
-load("S:/copper_rockfish_2023/data/rec_bds/crfss_bds_filtered.rdata")
+library(here)
+load( file.path(here(), "data", "ages", "formatted_age_files", "all_copper_ages.rdata"))
+load(file.path(here(), "data", "rec_bds", "crfss_bds_filtered.rdata"))
+dir <- here("data", "rec_bds", "plots")
+
+# Add month to the CRFS data
+crfss_bds$convert_date <- crfss_bds$RECFIN_DATE
+crfss_bds <- crfss_bds %>%
+  tidyr::separate(convert_date, sep="/", into = c("month", "day", "year"))
+crfss_bds$RECFIN_MONTH <- crfss_bds$month
 
 ages <- all_ages %>% 
   filter(!program == "unknown") %>%
@@ -43,24 +52,27 @@ crfss_pr_annual <- crfss_pr %>%
   pivot_wider(names_from = area, values_from = n)
 
 
-ggplot(crfss_pc, aes(length_cm, y = RECFIN_YEAR,
-                      fill = RECFIN_YEAR)) +
-  geom_density_ridges(alpha = .6) +
-  theme_ridges() +
+ggplot(crfss_pc, aes(length_cm, y = RECFIN_YEAR, fill = RECFIN_YEAR)) +
+  geom_density_ridges(alpha = 0.6) +
+  #theme_ridges() +
   scale_fill_viridis(discrete=TRUE) +
   scale_color_viridis(discrete=TRUE) +
   theme(legend.position="none") +
+  xlab("Length (cm)") + ylab("Year") +
   facet_wrap(~area)
+ggsave(filename = file.path(dir, "crfss_cpfv_ggridges_year_area.png"),
+       width = 10, height = 10)
 
-ggplot(crfss_pr, aes(length_cm, y = RECFIN_YEAR,
-                      fill = RECFIN_YEAR)) +
+ggplot(crfss_pr, aes(length_cm, y = RECFIN_YEAR, fill = RECFIN_YEAR)) +
   geom_density_ridges(alpha = .6) +
-  theme_ridges() +
+  #theme_ridges() +
   scale_fill_viridis(discrete=TRUE) +
   scale_color_viridis(discrete=TRUE) +
   theme(legend.position="none") +
+  xlab("Length (cm)") + ylab("Year") +
   facet_wrap(~area)
-
+ggsave(filename = file.path(dir, "crfss_pr_ggridges_year_area.png"),
+       width = 10, height = 10)
 
 south  <- crfss_pc %>%
   filter(mode == "cpfv",
@@ -118,7 +130,7 @@ ggplot(south %>% filter(RECFIN_YEAR %in% c(2018, 2019,2020,2021,2022)), aes(leng
          facet_wrap(~RECFIN_YEAR)
 
 
-ggplot(north %>% filter(RECFIN_YEAR>2018), aes(length_cm, colour = as.factor(IS_RETAINED), 
+ggplot(north %>% filter(RECFIN_YEAR>2018), aes(lengthcm, colour = as.factor(IS_RETAINED), 
                   fill = as.factor(IS_RETAINED))) +
   geom_density(alpha = .5) +
   facet_wrap(~RECFIN_YEAR)
@@ -147,25 +159,28 @@ ggplot(crfs_2022, aes(length_cm)) +
                alpha = .5)
 
 
-coop_blocks <- read.csv("C:/users/melissa.monk/downloads/coop_data.csv")
+coop_blocks <- read.csv(file.path(here(), "data", "rec_bds", "coop_data.csv"))
 coop_block_summary <- coop_blocks %>%
   group_by(CDFWBlockID) %>%
   tally()
 
 coop_blocks <- coop_blocks %>%
   filter(!is.na(ForkLengthMM)) %>%
-  mutate(length_cm = ForkLengthMM/10) %>%
+  mutate(length_cm = as.numeric(ForkLengthMM)/10) %>%
   filter(area=="south") %>%
  # filter(CDFWBlockID %in% c(711,688,813)) %>%
   mutate_at(vars(CDFWBlockID), as.factor)
 
+crfs_2022$port <- sapply(strsplit(crfs_2022$RECFIN_PORT_NAME, '\\s*[()]'), '[',1)
 
 ggplot(coop_blocks, aes(length_cm)) +
-    geom_density(aes(fill = CDFWBlockID),
-               alpha = .5) +
+    geom_density(aes(fill = CDFWBlockID), alpha = .5) +
 geom_density(data = crfs_2022,
-             aes(length_cm, fill = as.factor(RECFIN_PORT_NAME)), alpha= .5) +
-  scale_fill_viridis_d()
+             aes(length_cm, fill = as.factor(port)), alpha= .5) +
+  scale_fill_viridis_d() + 
+  xlab("Length (cm)") + ylab("Density")
+ggsave(filename = file.path(dir, "crfs_coop_cpfv_len_by_block_2022.png"),
+       width = 10, height = 10)
 
 #just SB landing
 
@@ -173,13 +188,23 @@ ggplot(coop_blocks %>% filter(Vessel %in% c("Coral Sea", "Stardust"), CDFWBlockI
   geom_density(aes(fill = CDFWBlockID),
                alpha = .5) +
   geom_density(data = crfs_2022, #%>% filter(COUNTY_NUMBER==83, INTERVIEW_SITE==400),
-               aes(length_cm, fill = as.factor(RECFIN_PORT_NAME)), alpha= .5) +
-  scale_fill_viridis_d()
-
+               aes(length_cm, fill = as.factor(port)), alpha= .5) +
+  scale_fill_viridis_d() + 
+xlab("Length (cm)") + ylab("Density")
+ggsave(filename = file.path(dir, "sb_only_crfs_coop_cpfv_len_by_block_2022.png"),
+       width = 10, height = 10)
 
 
 ggplot(coop_blocks, aes(length_cm)) +
   geom_density() +
   geom_density(data = crfs_2022, aes(length_cm)) +
   scale_fill_viridis_d()
+
+ggplot(coop_blocks, aes(length_cm)) +
+  geom_density(aes(fill = CDFWBlockID), alpha = 0.5) +
+  scale_fill_viridis_d() + 
+  facet_grid(DurationType~.) +
+  xlab("Length (cm)") + ylab("Density")
+ggsave(filename = file.path(dir, "coop_cpfv_len_by_block_trip_duration_2022.png"),
+       width = 10, height = 10)
 

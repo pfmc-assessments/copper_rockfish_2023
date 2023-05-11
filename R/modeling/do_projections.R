@@ -4,8 +4,8 @@ do_projections <- function(
     model2_dir = NULL,
     sigma = c(0.50, 0.50),
     pstar = 0.45,
-    fore_years = 2025:2034,
-    prop = c(0.50, 0.50),
+    fore_years = 2023:2034,
+    prop = c(0.29, 0.71),
     fleet1_num = 1:4,
     fleet2_num = 1:4,
     model1_fleets = c(0.10, 0.10, 0.60, 0.20),
@@ -139,7 +139,7 @@ do_projections <- function(
 
 
 model1_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/sca/14.0_base_forecast"
-model2_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/nca/9.8_selex_fix_forecast"
+model2_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/nca/9.8_selex_fix"
 
 
 do_projections(

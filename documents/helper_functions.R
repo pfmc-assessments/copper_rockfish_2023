@@ -115,7 +115,8 @@ create_biomass_table <- function(
 create_projection_table <- function(
     management_dir = management_dir, 
     doc_dir = doc_dir, 
-    fixed_removals = c(70, 70),
+    model_dir = model,
+    fixed_removals = c(91.53, 94.69),
     doc_names = c("nca", 'sca'),
     years = 2023:2034,
     table_names = c("copper_ca_north.csv", "copper_ca_south.csv"),
@@ -143,28 +144,33 @@ create_projection_table <- function(
   ofl <- table1$OFL[table1$Year %in% 2023:2024] + table2$OFL[table2$Year %in% 2023:2024]
   acl <- table1$ACL[table1$Year %in% 2023:2024] + table2$ACL[table2$Year %in% 2023:2024]
   
-  est_ofl <- round(model1$derived_quants[model1$derived_quants$Label %in% paste0("OFLCatch_", years), "Value"] +
-    model2$derived_quants[model2$derived_quants$Label %in% paste0("OFLCatch_", years), "Value"], 2)
+  #est_ofl <- round(model1$derived_quants[model1$derived_quants$Label %in% paste0("OFLCatch_", years), "Value"] +
+  #  model2$derived_quants[model2$derived_quants$Label %in% paste0("OFLCatch_", years), "Value"], 2)
   
+  table_proj <- read.csv(file.path(model_dir, "Projection_Values.csv"))
+  est_ofl <- table_proj$OFL
   est_abc <- round(model1$derived_quants[model1$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"] +
-    model2$derived_quants[model2$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"], 2)
+    model2$derived_quants[model2$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"], 2)[c(-1, -2)]
+  
+  buffer <- round(est_abc/est_ofl, 3)
   
   out <- data.frame(
     Year = years, 
     ofl_set = c(round(ofl, 2), rep("-", 10)),
     abc_set = c(round(acl, 2), rep("-", 10)),
     removals = c(fixed_removals, rep("-", 10)),
-    ofl = c("-", "-", est_ofl[c(-1, -2)]),
-    obc = c("-", "-", est_abc[c(-1, -2)]),
+    ofl = c("-", "-", est_ofl),
+    abc = c("-", "-", est_abc),
+    buffer = c("-", "-", buffer),
     SB = round(sb, 2), 
     Depl = round(depl, 3))
   
   col_names <- c("Year", "Adopted OFL (mt)", "Adopted ABC (mt)", "Assumed Catch (mt)",
-                 "OFL (mt)", "ABC (mt)", "Spawning Biomass", "Fraction Unfished")
+                 "OFL (mt)", "ABC (mt)", "Buffer", "Spawning Output", "Relative Spawning Ouptut")
   
   sa4ss::table_format(
     x = out,
-    caption = "The estimated spawning output in number of million eggs across California and fraction unfished by year.",
+    caption = "The estimated OFL, ABC, buffer, spawning output in number of million eggs across California, and relative spawning outut by year.",
     label = paste0(prefix, "ca-proj"),
     landscape = TRUE,
     col_names = col_names

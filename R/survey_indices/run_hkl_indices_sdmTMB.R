@@ -1059,6 +1059,60 @@ do_diagnostics(
   dir = file.path(index_dir, name), 
   fit = fit)
 
+
+name <- "glm_delta_lognormal_year_area_depth_drop_all_areas_re_site_area_weighted"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+all_areas$site_number <- droplevels(all_areas$site_number)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + drop + year*area + (1|site_number),
+  data = all_areas,
+  offset = log(all_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = delta_lognormal()
+)
+
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = weighted_grid)
+
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
+
+name <- "glm_delta_lognormal_year_area_depth_drop_all_areas_area_weighted"
+dir.create(file.path(index_dir, name), showWarnings = FALSE)
+all_areas$site_number <- droplevels(all_areas$site_number)
+
+fit <- sdmTMB(
+  n ~ 0 + year + area + depth_scaled + depth_scaled_2 + drop + year*area,
+  data = all_areas,
+  offset = log(all_areas$effort),
+  time = "year",
+  spatial="off",
+  spatiotemporal = "off",
+  control = sdmTMBcontrol(newton_loops = 1),
+  family = delta_lognormal()
+)
+
+
+index <- calc_index(
+  dir = file.path(index_dir, name), 
+  fit = fit,
+  grid = weighted_grid)
+
+
+do_diagnostics(
+  dir = file.path(index_dir, name), 
+  fit = fit)
+
 #========================================================================================================
 
 #tmp <- species_data
