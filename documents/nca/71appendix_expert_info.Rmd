@@ -10,12 +10,20 @@ The copper rockfish STAT held the following three informal virtual meetings with
 \end{enumerate}
 
 
-A summary of the information learned is provided here.
+A summary of the information learned is provided here. We would like to thank everyone who participated in our virtual meetings and provided additional insight into the fisheries for copper rockfish and their perspective. 
+
+## Preferred Habitat and Diet
+
+Coppers are "king" of the reef and appear to push other species off of the best habitat within a reef.The STAT consistently heard from all fishermen that copper rockfish are not caught in areas of high relief. Copper rockfish prefer aras of flatter or broken hard bottom, and also venture out over soft bottom habitat. It is often larger fish caught over soft bottom where they are feeding on sanddabs. Copper rockfish do not feed on pyrosomes as frequently as other rockfish species.  When the pelagic red crabs are present, that is a preferred prey item. 
 
 
-Live fish fishery
 
-To fish copper rockfish commercial in California a deeper nearshore permit is needed.  The trip limits of 75 pounds per two month period for copper rockfish has impacted the commercial fleet. Copper rockfish intended to be sold live, but do not live will still be sold as dead fish.  
+
+
+
+## Commercial Fishery
+
+Copper rockfish are a component of the livefish fishery in both norhtern and southern California. They are intended to be sold live, but do not live will still be sold as dead fish. To fish copper rockfish commercial in California a deeper nearshore permit is needed.  The trip limits of 75 pounds per two month period for copper rockfish has impacted the commercial fleet. 
 North of \CapeM the commercial fleet is restricted to shallower than 30 fm.
 
 Many of the live fish buyers transport fish to Las Vegas Nevada or Los Angeles and San Jose in California. 
@@ -61,13 +69,56 @@ Issues raised
 Would liek to see regional management. Sampling of the commercial live fleet is prohibitive due to the high price of copper and the low quota.  Descending more fish now with the lower quotas.
 How will the stock assessment account for closed areas? They would like to see some accounting for these areas in the models.
 
-## Preferred Habitat 
-Coppers are not caught in areas of high relief. They prefer aras of flatter, hard, or broken bottom, and will also be caught over soft bottom habitat. Coppers are "king" of the reef and seem to push other species off of the best habitat on a reef. 
 
 
-Larger fish over soft bottom.
+
+## Recreational Fishery
+
+### North of Point Conception
+In 1997 there were 295 CPFVs in Califonria and in 2022 that number was 193 coastguard inspected active CPFVs that can carry 7 or more passengers. Of the 193 CPFVs in the state, 78 fish offshore exclusively.
+
+During the COVID-19 pandemic, reduced loads were required on the CPFVs to maintain distancing among passengers.  Customers preferred the reduced loads that resulted in a less crowded vessel and have been willing to pay the increased charter costs to maintain the reduced loads post-COVID. 
+
+The last 2-3 weeks of December, fishermen out of Emeryville, CA find aggregations of copper rockfihs that are not usually present on shale beds.
+
+Coppers found over sandy bottom are feeding on sanddabs
+
+Can find larger copper in 40-60 feet of water and swell is a good indicator for the presence of copper rockfish. If there's swell, the copper rockfish remain close to the bottm and are not as active, i.e., reduced chance of catching coppers.  In Eureka, copper are a desirable species in the recreational fleet due to the larger size. Coppers won't be caught more than 5-10 fm off the bottom. 
+
+In central Califronia, small coppers can be found in 100+ feet of water at the edge of the Farallon Islands.
+
+Copper are caught right on the bottom and are not eating pyrosome like some of the other species.  Small coppers have been caught off the the jetties in Humboldt, Pillar Point Harbor, and San Francisco, California
 
 
+
+In Half Moon Bay, coppers are rarely observed shallower than 35 fathoms and they tend to only bite the bottom hook.
+The gear regulations from unlimited hooks to 2 hoooks per line in 1999 resulted in increased loss of fish to sea lions. 
+
+The majority of vessels north of Bodega Bay areVessels fishing out of Eureka generally fish closer to shore due to weather and fuel costs. The target in this area is salmon, and vessels will switch to rockfish espeically if salmon are not biting.
+
+### South of Point Conception
+
+There is less rocky habitat in southern California compared to northern California.
+
+In southern California towards San Diego, coppers are typically found in less than 35 fathoms with juveniles in less than 10 fm.
+
+At the Coronado Islands in Mexico, coppers are typically found in 28-35 fm on low relief habitat.
+
+Southern california size classes of coppers are mixed and are not found in deeper waters, outside of 60 fm.
+
+After the depth restrictions and other closures the fleet moved to different fishing ground and the desire for copper rockfish increased retention. 
+
+Over half of the habiat regularly fished by the 1/2 vessels out of Misson Bay in San Diego is now in protected areas closed to fishing and the depth closures moved effort from offshore to inshore <50-60fm starting in 2001.
+
+The effort of the fleet in southern California shifts during the summer months to pelagic species and kelp and sand bass, the timing of which is dependent on ocean temperatures. There is more pressure on the rockfish stocks during cold water years.
+
+Around 2014/2014 as the economy recovered, business started increasing.
+
+Captains change their targets for the day based on customer preference. 
+
+The activity of private vessels is dependeing on ocean conditions, the vessel's size/range, and fuel costs.  Private vessels of >25 feet are usually focused on pelagic species and will fish rockfish during the transit to or from HMS grounds.  It's difficult for the private anglers to access offshore waters at depths of 50+ fm
+
+In 2022, the CPFV fleet in southern California made a concerted effort to avoid copper rockfish grounds, and when copper rockfish were encountered, encouraged their clients to descend the fish. Anglers who were not catching as many fish were more interested in retaining their copper rockfish.
 
 ## Additional notes from the fishermen
 
@@ -75,7 +126,8 @@ Some of the webinar attendees participate in Cooperative Research, such as the N
 
 During the NWFSC hook-and-line survey, the have been times when the vermilion and widow rockfish are abundant and the lines are reeled in before even reaching the bottom.  
 
+Some of the fishermen in the recreational fleet are interested in deploying CTDs
 
-## Recreational Fishery
+In general rockfish catches decreased when prey (anchovis, mychtophics, and pyrosomes) are more abundance. 
 
-In 1997 there were 295 CPFVs in Califonria and in 2022 that number was 193 coastguard inspected active CPFVs that can carry 7 or more passengers. Of the 193 CPFVs in the state, 78 fish offshore exclusively.
+Anglers who previously participated in ROV studies with NMFS observed rockfish species moving to the bottom and hiding in crevices when the ground swell reached 6-7 ft. There's interest in participation in future ROV surveys.
