@@ -207,7 +207,7 @@ sa4ss::table_format(x = tab,
 <!-- ***********       Time Series      ******************** --> 
 <!-- ======================================================= -->
 
-\include{tex_tables/south_TimeSeries.tex}
+\include{tex_tables/north_TimeSeries.tex}
 
 
 \newpage
@@ -274,6 +274,8 @@ create_biomass_table(
 <!-- ======================================================= -->
 <!-- ********  Reference Points & Management *************** --> 
 <!-- ======================================================= -->
+
+\newpage
 
 \include{tex_tables/south_e_ReferencePoints.tex}
 

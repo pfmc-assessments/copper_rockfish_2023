@@ -37,7 +37,7 @@ Reefs were aggregated to four regions to produce adequate sample sizes;
 the California/Oregon border to San Francisco (V1), San Francisco to Moss Landing (V2), 
 Moss Landing to Big Sur (V3), and San Luis Obispo county to Point Conception (V4).  The ports in San 
 Luis Obispo county were sampled more frequently than other regions and the arithmetic 
-mean of CPUE by year was also higher in this area (Figure \@ref(fig:fig-areacpue-debwv))
+mean of CPUE by year was also higher in this area (Figure \@ref(fig:deb-regioncpue))
 
 
 The filters also included removal of the number of observed anglers and time fished at the tail 
@@ -45,9 +45,7 @@ ends of the distributions and removal of drifts occurring in depths outside copp
 (Table \@ref(tab:deb-filter) and Figure \@ref(fig:deb-depths)). 
 We retained 5,546 drifts for index standardization, with 
 1,389 fishing locations encountering copper rockfish.  
-Tables of the number of samples and positive observations by factors depth, region and year, 
-can be found in Tables \@ref(tab:deb), \@ref(tab:tab-region-debwv), and 
-\@ref(tab:tab-year-debwv).
+Tables of the number of samples and positive observations can be found in Table \@ref(tab:deb-percentpos).
 
 
 We modeled catch per angler hour fished (CPUE) by fishing stop where the angler 
@@ -85,14 +83,12 @@ and Figure \@ref(fig:deb-index)).
 
 
 ```{r, results = 'asis'}
-#ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard", "north",
-#                     "percent_pos.csv"))
-#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
+ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard", "error_removed",
+                     "percent_pos.csv"))
 
-#sa4ss::table_format(x = ind,
-#             caption = "Data filtering steps for the onboard CPFV survey.",
-#             label = "deb-percentpos")#,
-        #     col_names = col_names)                         
+sa4ss::table_format(x = ind,
+             caption = "Data filtering steps for the onboard CPFV survey.",
+             label = "deb-percentpos")                         
 ```
 
 \newpage
