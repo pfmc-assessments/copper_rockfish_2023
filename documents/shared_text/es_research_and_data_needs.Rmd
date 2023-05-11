@@ -2,12 +2,9 @@ There were some major sources of uncertainty within the assessments for `r spp`.
 
 \begin{enumerate}
 
-  \item Continue to investigate historical catch reconstructions and all other historical data sources.
-
   \item Continue to investigate the most appropriate model structure for the NWFSC Hook and Line survey index. The NWFSC Hook and Line survey is the only long-term fishery-independent survey in rocky (untrawlable) habitat in the Southern California Bight. We also recommend evaluating how to structure the NWFSC Hook and Line survey index, given its expansion into the CCAs and increase of site now within designated MPAs, and independent analysis of information content in NWFSC Hook and Line survey across observed species. Finally, increased spatiotemporal sampling around Point Conception would aid in identifying stock boundaries.
 
-
-	\item The assessment area south of Point Conception appears to have a mixture of observations from areas experiencing variable fishing mortality. In the region there are likely a mixture of areas: open access rocky reefs that are close to port that are heavily fished, open access rocky reefs that are inaccessible via day-trips that are fished but likely lower levels, and rocky reefs that fall within marine protect areas.  A spatially-explicit assessment model may be able to capture this complexity but will require data (indices of abundance and composition data) from each of the regions. 
+	\item The assessment area south of Point Conception appears to have a mixture of observations from areas experiencing variable fishing mortality. In the region there are likely a mixture of areas: open access rocky reefs that are close to port that are heavily fished, open access rocky reefs that are inaccessible via day-trips that are fished but likely lower levels, and rocky reefs that fall within marine protect areas (MPAs). A spatially-explicit assessment model may be able to capture this complexity but will require data (indices of abundance and composition data) from each of the regions. 
 	
 	\item Future nearshore assessments would greatly benefit from additional CDFW ROV surveys which could increase the power of these data to inform assessments.
 
@@ -17,7 +14,7 @@ There were some major sources of uncertainty within the assessments for `r spp`.
 
 	\item Some of the PR mode recreational data that should be available via RecFIN were found to contain information inconsistent with datasheets available from CDFW. There is also a question if length data collected by the Deb Wilson-Vandenberg onboard observer survey is duplicated within RecFIN and attributed to MRFSS dockside samples of the CPFV fleet.
 
-	\item The interpreted substrate data for the areas north of Point Conception within state waters is complete. Additional data needs include high resolution interpretted substrate maps for areas outside of state waters. The avaialble interpreted bathymetry data from south of Point Concpetion is incomplete within state waters  around the northern and southern Channel Islands. This poses a challenge for estimating available rocky substrate both by district and also inside and outside closed areas. 
+	\item The interpreted substrate data for the areas north of Point Conception within state waters is complete. Additional data needs include high resolution interpreted substrate maps for areas outside of state waters. The available interpreted bathymetry data from south of Point Conception is incomplete within state waters  around the northern and southern Channel Islands. This poses a challenge for estimating available rocky substrate both by district and also inside and outside closed areas. 
 
 	\item The genetic stock structure of `r spp` warrants further investigation to ensure appropriate management of `r spp` along the West Coast. 
 
@@ -28,6 +25,9 @@ There were some major sources of uncertainty within the assessments for `r spp`.
  \item Continue investigations of other available fishery-independent data such as the PISCO kelp forest index. 
 
  \item Larval and smaller young-of-the-year copper rockfish can only be identified with certainty genetically. Existing sources of data (CalCOFI and SMURFs) where genetic samples can be analyzed would provide key information to inform recruitment for copper rockfish.
+ 
+  \item Continue to investigate historical catch reconstructions and all other historical data sources.
+
 
 
 \end{enumerate}
