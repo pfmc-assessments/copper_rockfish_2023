@@ -8,9 +8,9 @@ Adult copper rockfish have high site fidelity and are thought to not make long-r
 
 `r Spp` have a clearly defined long white band the posterior two-thirds of the lateral line. `r Spp` has high variation in coloration throughout its range, taking on coloration from dark brown, olive, orange-red and pink, with patches of yellow and pink [@miller_guide_1972]. In general, the `r spp` towards the northern part of the range are often darker in  color than fish encountered in southern California. The distinct change in coloration  resulted in copper rockfish initially being described as two separate species, copper rockfish (*S. caurinus*) and whitebelly rockfish (*S. vexillaris*). 
 
-The *Sebastes* genus are viviparous with internal fertilization, many exhibit dimorphic growth with females larger at size-at-age than males, and a number of species have reproductive strategies that vary with latitude. There are very few fecundity samples from `r spp` available from available from California, although `r spp` are assumed to produce a single brood annually during the winter months. 
+The *Sebastes* genus are viviparous with internal fertilization, many exhibit dimorphic growth with females larger at size-at-age than males, and a number of species have reproductive strategies that vary with latitude. There are very few fecundity samples from `r spp` available from California, although `r spp` are assumed to produce a single brood annually during the winter months. 
 
-The pelagic larvae are encountered in the California Cooperative Oceanic Fisheries Investigations (CalCOFI) surveys, but neither larval nor young-of-the-year can be identified `r spp` visually [@thompson_larval_2017]. The
+The pelagic larvae are encountered in the California Cooperative Oceanic Fisheries Investigations (CalCOFI) surveys, but neither larval nor young-of-the-year can be identified visually [@thompson_larval_2017]. The
 size at birth ranges from 5-6 mm and the larvae remain pelagic until approximately 22-23 mm standard length at which time they recruit to the kelp forest canopy [@anderson_identification_1983].
 
 Juvenile `r Spp` are indistinguishable from kelp (*S. atrovirens*), black-and-yellow 
@@ -36,14 +36,14 @@ diverse diet including molluscs and fish as they aged. The study also noted that
 juvenile copper rockfish were preyed upon by harbor seals and lingcod.
  
 There is currently no evidence of significant stock structure from genetic 
-studies of `r spp` across the west coast. -@buonaccorsi_population_2002 looked 
+studies of `r spp` across the west coast. @buonaccorsi_population_2002 looked 
 at genetic variation across six micosatellite 
 DNA loci from samples ranging from British Columbia to southern California. 
 Significant population subdivision was detected between the Puget Sound and coastal 
 samples which supports the model of isolation-by-distance for `r spp`.
 @sivasundar_life_2010 conducted a genetic study to determine the potential for 
 biogeographic boundaries to prohibit gene flow for 15 *Sebastes* species.
-The study's sample sizes of `r spp` with samples form Oregon, Monterey Bay and Santa Barbara. 
+The study's sample sizes of `r spp` with samples from Oregon, Monterey Bay and Santa Barbara. 
 -@sivasundar_life_2010 used mtDNA and could differentiate samples from Santa Barbara from those collected 
 in Oregon and Monterey Bay, but the Monterey Bay and Oregon samples could not be distinguished. 
 Micosatellite data did not reveal any genetic differentiation among the samples from 
