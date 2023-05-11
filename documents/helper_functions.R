@@ -115,7 +115,7 @@ create_biomass_table <- function(
 create_projection_table <- function(
     management_dir = management_dir, 
     doc_dir = doc_dir, 
-    model_dir = model,
+    model_dir = model_dir,
     fixed_removals = c(91.53, 94.69),
     doc_names = c("nca", 'sca'),
     years = 2023:2034,
