@@ -1,0 +1,6 @@
+
+### labels
+
+
+```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}
+```
