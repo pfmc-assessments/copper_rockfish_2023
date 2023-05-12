@@ -602,7 +602,7 @@ write.csv(driftTargets,
 # you can see in 2017 that they started fishing outside state waters
 waterarea_year <- onboard %>%
   filter(number.fish > 0) %>%
-  group_by(waterarea, district, year) %>%
+  group_by(waterarea, district) %>%
   tally() %>%
   pivot_wider(names_from = waterarea, values_from = n) %>%
   mutate(percent_N = N / (N + O))
