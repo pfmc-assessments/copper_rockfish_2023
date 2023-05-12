@@ -4,6 +4,8 @@ The base model described here is only for the portion of the `r spp` stock in Ca
 
 The base model parameter estimates along with approximate asymptotic standard errors (SD column) are shown in Table \ref{tab:params} and the likelihood components are shown in Table \ref{tab:south-likes}. The estimated data weights by the Francis method are shown in Table \ref{tab:dw}. Estimates of the `r spp` population size `r area` over time are shown in Table \ref{tab:south-timeseries}. 
 
+The full r4ss plotting output is available in the supplementary material on the [Pacific Fishery Management Council website](pcouncil.org).
+
 ### Parameter Estimates
 
 The estimates of growth parameters by sex varied relative to the externally estimated starting values.  The length-at-age 2 and the length-at-age 20 estimates for both sexes were slightly less than the external estimates but were well within the 95 percent confidence interval given the estimated uncertainty (Table \ref{tab:params} and Figure \ref{fig:mod-est-len-age}). The estimated $k$ for females was greater than the values estimated externally using the survey age data while the male value was similar to the external estimate (`r round(model$parameters[model$parameters$Label == "VonBert_K_Fem_GP_1", 3],3)` yr^-1^ for females and `r round(model$parameters[model$parameters$Label == "VonBert_K_Mal_GP_1", 3],3)` yr^-1^ for males).  The majority of female and male `r spp` growth occurs at younger ages, reaching near maximum length by age 10-15, with female `r spp` reaching marginally larger maximum lengths (Figure \ref{fig:mod-est-len-age}). 
