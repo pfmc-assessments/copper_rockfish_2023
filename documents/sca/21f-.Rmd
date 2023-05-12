@@ -49,7 +49,7 @@ Recreational catch data is reported by district in CRFS where district 1 (aka So
 #### Indices of Abundance
 \
 
-A number of indices of abundance were explored for the recreational fleet. Discarded catch is available from onboard observer surveys, but was not included in indices. Indices developed for the assessment include:
+A number of indices of abundance were explored for the recreational fleet (Figure \ref{fig:stand-cpue}). Discarded catch is available from onboard observer surveys, but was not included in indices. Indices developed for the assessment include:
 
 * CDFW CPFV/PC onboard observer index (1999-2019)
 * CRFS PR1 sites dockside survey (2004-2019)
@@ -63,7 +63,7 @@ read_child(filein)
 
 The CRFS CPFV index of abundance was low in the early years of the time-series between 1999-2004 and then began to increase with variability among years until 2013, and declined in the final years (Figure \ref{fig:crfs-index-main}). See the Appendix Section {onboard-cpfv-index} for details on the data filtering, processing, and model selection.
 
-Catch and effort data from CRFS dockside sampling of private boats, 2004-2019, and 2021-2022, were provided by CDFW for use in this assessment. The data include catch (number of fish) by species, number of anglers (i.e., effort units are angler trips), angler-reported distance from shore (Area X: inside/outside of 3 nm), county, port, interview site, year, month, and CRFS district. Only data through 2019 were used to develop an index of abundance due to potential changes in angler behavior in 2021 and management changes in 2022. See [Appendix D](#crfs-pr-index) for details on the data filtering, processing, and model selection. The CRFS PR index of abundance generally increased between 2004-2016, with the final years of the index stabilizing or slightly declining (Figure \ref{fig:crfs-pr-index-main}).
+Catch and effort data from CRFS dockside sampling of private boats, 2004-2019, and 2021-2022, were provided by CDFW for use in this assessment. The data include catch (number of fish) by species, number of anglers (i.e., effort units are angler trips), angler-reported distance from shore (Area X: inside/outside of 3 nm), county, port, interview site, year, month, and CRFS district. Only data through 2019 were used to develop an index of abundance due to potential changes in angler behavior in 2021 and management changes in 2022. See Appendix Section \ref{crfs-pr-index} for details on the data filtering, processing, and model selection. The CRFS PR index of abundance generally increased between 2004-2016, with the final years of the index stabilizing or slightly declining (Figure \ref{fig:crfs-pr-index-main}).
 
 
 #### Composition Data

@@ -1,64 +1,40 @@
 
-
-### CRFS PR Dockside Index of Abundance {#crfs-pr-index}
+## CRFS PR Dockside Index of Abundance {#crfs-pr-index}
 
 Catch and effort data from CRFS dockside sampling of private boats, 2004-2022, 
 were provided by CDFW for use in this assessment. The PR dockside data housed 
 on the Recreational Fisheries Information Network (RecFIN) were 
 determined to include a number of complexities that precluded the ability to 
-use them for an index of abundance. For the time period from 2004-2014 the authors 
-re-created the interview, or trip level, data from the "i" sample files.  For 2015-2022 
-the authors used files provided by CDFW from the CRFS dockside sampling program.
+use them for the development of an index of abundance. For the time period from 2004-2014 the STAT 
+re-created the interview, or trip level, data from the "i" sample files. For 2015-2022 
+the STAT used files provided by CDFW from the CRFS dockside sampling program.
 
-The data for both time periods included catch by species, number of anglers contributing to the catch, angler-reported area of fishing, 
-gear, county, port, interview site, year, month, and CRFS district. The catch included 
+The data for both time periods included catch by species, number of anglers contributing to the catch, angler-reported area of fishing, gear, county, port, interview site, year, month, and CRFS district. The catch included 
 the number of fish observed by the CRFS sample, the number of unobserved retained fish reported 
 by the angler, and the number of discarded and descended fish reported by the angler.
-The sample size of the 
-unfiltered private boat data is much larger than the CPFV onboard observer data set, 
-with 256,738 samples statewide from 2004-2022, 169,912 north
-of Point Conception and 86,826 south of Point Conception. 
+The sample size of the unfiltered private boat data is much larger than the CPFV onboard observer data set, 
+with 256,738 samples statewide from 2004-2022, 169,912 south of Point Conception and 86,826 north of Point Conception. 
 
-Records were limited to the primary private and rental boats public-access sites, 
-PR1 sites, which encompasses over 90% of the total private boat effort 
-(Table \@ref(tab:pr-filter)). The CRFS interviews contain a small fraction 
-(407 trips over the entire time series) of samples where the retained catch for 
-rockfish is over the daily bag limit of 10 
-fish per person. We did not remove these data from the index, but did 
-only include sampler examined catch.  Rockfish species can be difficult to distinguish and there 
-have not been any verification studies conducted to determine the uncertainty in angler reported 
-unobserved catch.
-Additional data filters included the exclusion of any samples from January and 
-February, since those months have been closed to the recreational fishery south of Point 
-Conception since 2005.  The time series was also restricted to 2004-2019.  Sampling during the 
-COVID period (2020-2021) resulted in a higher fraction of the sampler examined catch in the 
-"rockfish, general" 
-category due to the social distancing requirements (Table \@ref(tab:pr-rfgen)). The CDFW 
-implemented a one fish sub-bag 
-limit for copper rockfish in 2022 and the qauntiles and distribution of CPUE suggest that this 
-regulation change impacted fishing behavior in the private boat fleet (Table \@ref(tab:pr-cpue) and 
-Figure \@ref(fig:pr-bag)).
+Records were limited to the primary private and rental boats public-access sites, PR1 sites, which encompasses over 90 percent of the total private boat effort (Table \@ref(tab:pr-filter)). The CRFS interviews contain a small fraction 
+(407 trips over the entire time series) of samples where the retained catch for rockfish is over the daily bag limit of 10 fish per person. We did not remove these data from the index, but did only include sampler examined catch. Rockfish species can be difficult to distinguish and there have not been any verification studies conducted to determine the uncertainty in angler reported unobserved catch. Additional data filters included the exclusion of any samples from January and February, since those months have been closed to the recreational fishery south of Point 
+Conception since 2005.  The time series was also restricted to 2004-2019. Sampling during the COVID-19 period (2020-2021) resulted in a higher fraction of the sampler examined catch in the "rockfish, general" category due to the social distancing requirements (Table \@ref(tab:pr-rfgen)). The CDFW implemented a one fish sub-bag limit for copper rockfish in 2022 and the quantiles and distribution of CPUE suggest that this regulation change impacted fishing behavior in the private boat fleet (Table \@ref(tab:pr-cpue) and Figure \@ref(fig:pr-bag)).
 
-The angler reported water area was restricted to ocean areas in U.S. waters 
-and a reported primary gear 
-of hook-and-line or troll gear.  A number of trips reporting troll as the primary gear reported
-a secondary gear of hook-and-line. To determine if the angler(s) interviewed targeted rockfish and
+The angler reported water area was restricted to ocean areas in U.S. waters and a reported primary gear 
+of hook and line or troll gear.  A number of trips reporting troll as the primary gear reported
+a secondary gear of hook and line. To determine if the angler(s) interviewed targeted rockfish and
 fished in rocky habitat, we retained trips if the angler reported the primary target species 
 as rockfish or bottomfish or if rockfish was reported as the secondary target species. This filter 
-replaced the Stephens-MacCall [@stephens_multispecies_2004] filtering approach. We retained 13,340 angler interviews for index standardization, with 3,739 including sampled examined copper rockfish (Table \@ref(tab:pr-filter)).  
+replaced the Stephens-MacCall [@stephens_multispecies_2004] filtering approach that have been used for some assessment in the past. This filtering retained 13,340 angler interviews for index standardization, with 3,739 including sampled examined copper rockfish (Table \@ref(tab:pr-filter)).  
 
-We modeled retained catch per angler days with a negative binomial GLM in the R package sdmTMB.
-The QQ plots indicate a reasonable fit (Figure \@ref(fig:pr-qq)).  There are a handful of samples 
-with higher than average CPUE and the authors checked with CDFW to determine whether the samples should still be included. 
-CDFW indicated data sheets were not available prior to 2012, but the catches were less than 
+We modeled retained catch per angler days with a negative binomial genearlized linear model in the R package sdmTMB.
+The Q-Q plots indicate a reasonable fit (Figure \@ref(fig:pr-qq)).  There are a handful of samples 
+with higher than average CPUE and the authors checked with CDFW to determine whether the samples should still be included. CDFW indicated data sheets were not available prior to 2012, but the catches were less than 
 the bag limits, and should be assumed to be correct. Indices with a year and district interaction were not 
 considered in model selection due to the fact that fishing locations are unknown; the scale of the relative 
-abundance of copper is higher in District 2, but there is some overlap in the fishing locations accessed 
+abundance of copper rockfish is higher in District 2, but there is some overlap in the fishing locations accessed 
 by this fleet (Figure \@ref(fig:pr-districtcpue)). 
 
-Based on AICc values from maximum likelihood fits Table \@ref(tab:pr-modelselect)), 
-a main effects model including year, month and primary target species as categorical covariates 
-was selected (Table \@ref(tab:pr-index) and Figure \@ref(fig:pr-index)).
+Based on AICc values from maximum likelihood fits (Table \@ref(tab:pr-modelselect)), a main effects model including year, month and primary target species as categorical covariates was selected (Table \@ref(tab:pr-index) and Figure \@ref(fig:pr-index)).
 
 <!--Tables -->
 
@@ -78,6 +54,7 @@ sa4ss::table_format(
   caption = "Summary of the copper rockfish CPUE, number of fish retained per
              angler day, by year.",
   label = "pr-cpue",
+  digits = 2,
   col_names = col_names
 )
 ```
@@ -140,6 +117,7 @@ sa4ss::table_format(
   font_size = 9,
   landscape = TRUE,
   longtable = TRUE,
+  align = 'l',
   custom_width = TRUE,
   col_to_adjust = c(2),
   width = c("8cm")
@@ -176,6 +154,7 @@ sa4ss::table_format(
   x = ind,
   caption = "Estimated relative index of abundance for the dockside PR survey.",
   label = "pr-index",
+  digits = 4,
   col_names = col_names
 )
 ```
@@ -233,7 +212,7 @@ sa4ss::add_figure(
     data_dir, "rec_indices", "crfs_pr_dockside", "south",
     "rm_last2yrs", "qq.png"
   ),
-  caption = "QQ plot for the dockside PR survey.",
+  caption = "Q-Q plot for the dockside PR survey.",
   label = "pr-qq"
 )
 ```

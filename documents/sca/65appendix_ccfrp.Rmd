@@ -1,52 +1,34 @@
-### CCFRP Index of Abundance {#ccfrp-index}
+## CCFRP Index of Abundance {#ccfrp-index}
 
 The California Collaborative Fisheries Research Program, [CCFRP](https://www.mlml.calstate.edu/ccfrp/), 
-is a fishery-independenthook-and-line survey designed to monitor nearshore fish populations at a series of sampling locations both inside and adjacent to MPAs [@starr_variation_2015a; @wendt_collaborative_2009].  The CCFRP survey began in 2007 along the central coast of California and was designed in collaboration 
-with academics, NMFS scientists and fishermen. From 2007-2016 the CCFRP project was focused on the central California coast, and has monitored four MPAs consistently. In 2017, the CCFRP expanded coastwide within California. The University of California Santa Barbara and Scripps Institute of Oceanography conduct the southern California CCFRP sampling and monitor MPA and reference paired sites.
+is a fishery-independent hook and line survey designed to monitor nearshore fish populations at a series of sampling locations both inside and adjacent to MPAs [@starr_variation_2015a; @wendt_collaborative_2009].  The CCFRP survey began in 2007 along the central coast of California and was designed in collaboration with academics, NMFS scientists and fishermen. From 2007-2016 the CCFRP project was focused on the central California coast, and has monitored four MPAs consistently. In 2017, the CCFRP expanded coastwide within California. The University of California Santa Barbara and Scripps Institute of Oceanography conduct the southern California CCFRP sampling and monitor MPA and reference paired sites.
 
-The survey design for CCFRP consists 500 x 500 m cells both within and 
-adjacent to each MPA. On any given survey day site cells are randomly 
-selected within a stratum (MPA and/or reference cells). CPFVs are chartered 
+The survey design for CCFRP consists 500 x 500 m cells both within and  adjacent to each MPA. On any given survey day site cells are randomly selected within a stratum (MPA and/or reference cells). CPFVs are chartered 
 for the survey and the fishing captain is allowed to search within the cell for 
 a fishing location. During a sampling event, each cell is fished for a total of 
 30-45 minutes by volunteer anglers. Each fish encountered is recorded, measured, and released (or descended to depth)
-and can later be linked back to a particular angler. 
-CCFRP samples shallower depths to avoid barotrauma-induced mortality.  Starting in 2017, a subset of fish have been retained to collect otoliths and fin clips that provide needed biological information for nearshore species. For the index of abundance, CPUE was modeled at the level of the drift, similar to the fishery-dependent onboard observer survey described above.
+and can later be linked back to a particular angler. CCFRP samples shallower depths to avoid barotrauma-induced mortality. Starting in 2017, a subset of fish have been retained to collect otoliths and fin clips that provide needed biological information for nearshore species. For the index of abundance, CPUE was modeled at the level of the drift, similar to the fishery-dependent onboard observer survey described above.
 
 The CCFRP data are quality controlled at the time they are key punched and little 
 filtering was needed for the index. Cells not consistently sampled over time were 
 excluded as well as cells that never encountered `r spp`. Copper rockfish were observed 
-at the South La Jolla, Carrington Point and and Anacapa Island MPAs. After applying filters to remove drfits from sites that were not consistently sampled, marked for exclusion in the data, or did not fish a minimum of two minute, 856 drifts remained for for index standardization, with 399 drifts encountering `r spp`. 
+at the South La Jolla, Carrington Point and and Anacapa Island MPAs in the area south of Point Conception. After applying filters to remove drfits from sites that were not consistently sampled, marked for exclusion in the data, or did not fish a minimum of two minute, 856 drifts remained for for index standardization, with 399 drifts encountering `r spp`. 
 
-We modeled retained catch per angler hour (CPUE; number of fish per angler hour). Plots of the average CPUE inside (MPA) and outside (REF) MPAs at each site arein Figure \@ref(fig:ccfrp-avg-cpue) and shows the distinct trends of decreasing average 
-CPUE at Carrington Point. Trends among the three sampled MPAs differed with the majority of copper rockfish encountered by CCFRP at the Carrington Point MPA.  The trends in average CPUE over the six year time series inside and outside of the MPA both show a decline in copper rockfish CPUE. 
+We modeled retained catch per angler hour (CPUE; number of fish per angler hour). Plots of the average CPUE inside (MPA) and outside (REF) MPAs at each site  are shown in Figure \@ref(fig:ccfrp-avg-cpue). The average CPUE at Carrington Point, the location with the highest CPUE for the survey, from inside and outside MPAs by distinct show a trend of decreasing average CPUE during the time series. Trends among the two other paired sampling locations, Anacapa Island and South La Jolla, had much lower estimated CPUEs with potentially decreasing CPUE for the reference locations and potentially the MPA site at South La Jolla,
+On average, across all sampling locations south of Point Conception, the trends in average CPUE over the six year time series inside and outside of the MPA both show a decline in copper rockfish observations. 
 
 A negative binomial model was fit to the drift-level data (catch with a log offset for angler 
-hours). Because the average observed CPUE among the MPAs indicated differing trends, we explore 
-a region:year interaction, which was not significant. The model selected by AICc included depth, 
-depth squared, region and MPA or reference site \@ref(tab:ccfrp-model-selection)), The final model included
-year, mpa/reference categorization, depth, depth squared, and a year:mpa/reference interaction. 
-The model was fit using the sdmTMB R package. The final index (Table \@ref(tab:ccfrp-index)) represents a similar trend to the unstandardized average CPUE (Figure \@ref(fig:ccfrp-index)).
+hours) using the sdmTMB R package. Because the average observed CPUE among the MPAs indicated differing trends, we explore a region:year interaction, which was not significant. The model selected by AICc included depth, 
+depth squared, region and MPA or reference site (Table \@ref(tab:ccfrp-model-selection)), The final model included
+year, mpa/reference categorization, depth, depth squared, and a year:mpa/reference interaction. The Q-Q plots indicate a reasonable fit (Figure \@ref(fig:ccfrp-qq)). The final index (Table \@ref(tab:ccfrp-index)) represents a similar trend to the unstandardized average CPUE (Figure \@ref(fig:ccfrp-index)).
 
 
 Based on work completed at the SWFSC, we estimated that the percent of rocky reef habitat 
 from Point Conception to the California/Mexican border within state waters is 
-892 $km^2$, of which approximately 23% is in MPAs that prohibit the harvest of 
+892 $km^2$, of which approximately 23 percent is in MPAs that prohibit the harvest of 
 groundfish (pers comm. Rebecca Miller, UCSC). There is recreational fishing outside 
 of state waters, but habitat maps are not available at the same 2-m resolution and do 
-not allow for direct comparisons. To estimate the area 
-of rocky substrate south of Point Conception, we separated the southern California Bight 
-into four areas, 1) CRFS District 
-1 along the mainland coast, 2) CRFS District 2 along the mainland coast, 
-3) state waters encompassing the southern 
-Channel Islands, and 4) state waters encompassing the northern Channel Islands. 
- We calculated the total area in each of the 
-four regions, as well as the total area with available interpretted substrate. 
- By also calculating the total area open and closed to fishing, i.e., MPAs and CCAs, 
- we expanded the known fraction of rocky substrate to the areas within state 
-waters where no substrate interpretted maps exist.  This resulted in an estimate of 
-27% of the available rocky substrate 
-within areas closed to fishing in southern California state waters. 
+not allow for direct comparisons. To estimate the area of rocky substrate south of Point Conception, we separated the southern California Bight into four areas, 1) CRFS District 1 along the mainland coast, 2) CRFS District 2 along the mainland coast, 3) state waters encompassing the southern Channel Islands, and 4) state waters encompassing the northern Channel Islands. We calculated the total area in each of the four regions, as well as the total area with available interpreted substrate. By also calculating the total area open and closed to fishing, i.e., MPAs and CCAs, we expanded the known fraction of rocky substrate to the areas within state waters where no substrate interpreted maps exist.  This resulted in an estimate of 27 percent of the available rocky substrate within areas closed to fishing in southern California state waters. 
 
 
 ```{r, results = 'asis'}
@@ -59,8 +41,8 @@ sa4ss::table_format(x = tab,
              label = "ccfrp-data-filter",
              align = 'l',
              custom_width = TRUE,
-             col_to_adjust = 2, 
-             width = c("6cm"),
+             col_to_adjust = c(2), 
+             width = c("8cm"),
              longtable = TRUE,
              landscape = TRUE)                         
 ```
@@ -93,19 +75,12 @@ col_names = c("Year", "Estimate", "logSE")
 sa4ss::table_format(x = ind,
              caption = "Estimated relative index of abundance for the CCFRP survey.",
              label = "ccfrp-index",
+             digits = 4,
              col_names = col_names)                         
 ```
 
 \newpage
 
-```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "ccfrp", "south", "area_weighted", "qq.png"), 
-caption = "QQ-plot for the CCFRP survey.",
-label = 'ccfrp-qq')
-```
-
-\newpage 
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -124,4 +99,14 @@ label = 'ccfrp-index')
 ```
 
 \newpage
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "ccfrp", "south", "area_weighted", "qq.png"), 
+caption = "Q-Q plot for the CCFRP survey.",
+label = 'ccfrp-qq')
+```
+
+\newpage 
 

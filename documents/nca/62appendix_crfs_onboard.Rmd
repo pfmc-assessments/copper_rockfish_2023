@@ -84,10 +84,10 @@ was included after visualizing the trends in average CPUE over time, but was not
 included year, depth, depth squared and region
 (Table \@ref(tab:onboard-model_selection)). 
 
-Indices were fit via MLE from the sdmTMB package in R. The QQ plot for the negative binoimal 
+Indices were fit via MLE from the sdmTMB package in R. The Q-Q plot for the negative binoimal 
 model indicated a poor fit to the data, which as not surprising given the low percent of 
 observed drifts encountering copper rockfish. A delta-Lognormal 
-was selected over a delta-gamma by a delta AIC of 487.  The QQ plot indicated a much 
+was selected over a delta-gamma by a delta AIC of 487.  The Q-Q plot indicated a much 
 improved fit compared to the negative binomial model (Table \@ref(fig:onboard-qq)).
 The relative abundance is predominantly flat during the time series, with a visible increase 
 in CPUE in 2017 when deeper waters opened in portions of northern California after a 17 year closure (Table \@ref(tab:onboard-index) 
@@ -204,7 +204,7 @@ label = 'onboard-index')
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
                    "deltalogn", "qq.png"), 
-caption = "QQ-plot for the onboard CPFV survey.",
+caption = "Q-Q plot for the onboard CPFV survey.",
 label = 'onboard-qq')
 ```
 
