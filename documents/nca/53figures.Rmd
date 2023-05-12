@@ -736,7 +736,7 @@ label = 'rec-pr-mean-len-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt4mkt0.png"), 
-caption = "Mean length for recreational private/rental lengths with 95 percent confidence intervals based on current samples sizes",
+caption = "Pearson residuals for the recreational private/rental conditional age-at-ength data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'rec-pr-age-pearson')
 ```
 

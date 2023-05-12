@@ -1,4 +1,6 @@
-# Appendix C. California Onboard CPFV Index of Abundance {#onboard-cpfv-index}
+## Development of Indices of Abundance
+
+### California Onboard CPFV Index of Abundance {#onboard-cpfv-index}
 
 ```{r, echo=FALSE, results='asis'}
 filein = file.path(doc_dir, "shared_text",'21f_crfs_cpfv_index.Rmd')

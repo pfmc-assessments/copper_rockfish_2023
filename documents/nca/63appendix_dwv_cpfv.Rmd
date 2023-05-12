@@ -1,4 +1,4 @@
-# Appendix D. Deb Wilson-Vandenberg Onboard CPFV Index of Abundance {#dwv-cpfv-index}
+### Deb Wilson-Vandenberg Onboard CPFV Index of Abundance {#dwv-cpfv-index}
 
 The Deb Wilson-Vandenberg data set is derived from an onboard observer survey conducted 
 by CDFW in California north of Point Conception from 1987-1998 and referred to as the Deb 

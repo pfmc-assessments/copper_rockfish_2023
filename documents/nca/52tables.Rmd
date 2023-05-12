@@ -225,6 +225,23 @@ create_biomass_table(
 
 \newpage
 
+<!-- ======================================================= -->
+<!-- ***********       Time Series      ******************** --> 
+<!-- ======================================================= -->
+
+\include{tex_tables/north_TimeSeries.tex}
+
+\newpage
+
+
+```{r, results = 'asis'}
+create_biomass_table(
+    doc_dir = doc_dir, 
+    prefix = NULL,
+    doc_names = c("nca", 'sca'),
+    years = 1916:2023)
+
+```
 
 <!-- ======================================================= -->
 <!-- ****************     Sensitivities      *************** --> 
@@ -244,30 +261,6 @@ create_biomass_table(
 \include{tex_tables/sensitivities_3_final.tex}
 
 \newpage
-
-<!-- ======================================================= -->
-<!-- ***********       Time Series      ******************** --> 
-<!-- ======================================================= -->
-
-\include{tex_tables/north_TimeSeries.tex}
-
-\newpage
-
-
-```{r, results = 'asis'}
-create_biomass_table(
-    doc_dir = doc_dir, 
-    prefix = NULL,
-    doc_names = c("nca", 'sca'),
-    years = 1916:2023)
-
-```
-
-
-<!-- ======================================================= -->
-<!-- ****************     Sensitivities      *************** --> 
-<!-- ======================================================= -->
-
 
 
 
@@ -323,6 +316,8 @@ table_format(x = out,
              width = c("6cm"))  
 
 ```
+
+\newpage
 
 ```{r, results = 'asis'}
 

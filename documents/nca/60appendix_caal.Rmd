@@ -1,6 +1,8 @@
-# Appendix A {#detailed-fit-comps}
+# Appendices 
 
-## Detailed Fit to Length Composition Data {#length-data}
+## Detailed Fits to Composition Data {#detailed-fit-comps}
+
+### Length Composition Data {#length-data}
 
 ```{r, results='asis'}
 plot_info = read.csv(file.path(model_dir, "plots", "plotinfotable_for_doc.csv"))
@@ -18,7 +20,7 @@ for (a in plot.vec){
 
 \newpage
 
-## Detailed Fit to Age Composition Data {#age-data}
+### Age Composition Data {#age-data}
 
 
 ```{r, results='asis'}
@@ -39,7 +41,7 @@ for (a in plot.vec){
 
 
 
-## Detailed Fit to Conditional-Age-at-Length Composition Data {#caal-data}
+### Conditional-Age-at-Length Composition Data {#caal-data}
 
 
 ```{r, results='asis'}

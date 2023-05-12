@@ -1,4 +1,4 @@
-# Appendix F. CCFRP Index of Abundance {#ccfrp-index}
+### CCFRP Index of Abundance {#ccfrp-index}
 
 The California Collaborative Fisheries Research Program, [CCFRP](https://www.mlml.calstate.edu/ccfrp/), 
 is a fishery-independent 
@@ -31,7 +31,7 @@ filtering was needed for the index.
 Cells not consistently sampled over time were excluded as well as cells that never 
 encountered `r spp`.
 The full dataset for northern California contained 8,770 drifts, 23% of which encountered 
-`r spp`.  After applying filters to remove drfits from sites that were not consistently sampled,
+`r spp`.  After applying filters to remove drifts from sites that were not consistently sampled,
 marked for exclusion in the data, or did not fish a minimum of xxx, 7,078 drifts remained for 
 for index standardization, with 1,757 drifts encountering `r spp`.
 
