@@ -215,7 +215,7 @@ add_figure(
 filein = file.path(doc_dir, "shared_figures", "south_yield2_yield_curve_with_refpoints.png"), 
 caption = "Equilibrium yield curve for the base case model south of Point Conception. Values are based on the 2022
 fishery selectivities and with steepness fixed at 0.72",
-label = 'es-yield-south')
+label = 'south-es-yield')
 ```
 
 
@@ -224,7 +224,7 @@ add_figure(
 filein = file.path(doc_dir, "shared_figures", "north_yield2_yield_curve_with_refpoints.png"), 
 caption = "Equilibrium yield curve for the base case model north of Point Conception. Values are based on the 2022
 fishery selectivities and with steepness fixed at 0.72",
-label = 'es-yield-north')
+label = 'north-es-yield')
 ```
 
 
