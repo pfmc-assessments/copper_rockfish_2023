@@ -117,6 +117,21 @@ r4ss::SSplotComparisons(mysummary,
                   minbthresh = -1,
                   plotdir = file.path(doc_dir, "shared_figures"))
 
+# New yield figures
+SSplotYield(
+  replist = south, 
+  subplot = 2, 
+  ref = "Current", 
+  print = TRUE,
+  plotdir = file.path(doc_dir, "shared_figures"))
+
+SSplotYield(
+  replist = north, 
+  subplot = 2, 
+  ref = "Current", 
+  print = TRUE,
+  plotdir = file.path(doc_dir, "shared_figures"))
+
 #==================================================================================================
 # Create tex tables for all files listed in the all_tables.csv
 #==================================================================================================

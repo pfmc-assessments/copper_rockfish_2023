@@ -190,7 +190,7 @@ label = 'rec-cpfv-dist')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_bubflt4mkt0_page2.png"), 
-caption = "Length composition data from the recreation PR fleet",
+caption = "Length composition data from the recreational PR fleet",
 label = 'rec-pr-len-data')
 ```
 
@@ -236,7 +236,7 @@ label = 'ref-mpa')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "south", "area_weighted", "Index.png"), 
-caption = "Estimated index of abundance from the CCFRP Hook and LIne survey",
+caption = "Estimated CCFRP Hook and Line survey index of abundance for copper rockfish.",
 label = 'ccfrp-index-main')
 ```
 
@@ -306,7 +306,7 @@ label = 'nwfsc-hkl-region-main')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "nwfsc_hkl_observations_by_depth.png"), 
-caption = "Number of observations by depth (m) inside and outside the CCAs.",
+caption = "Number of observations by depth (m) inside and outside the CCAs by the NWFSC Hook and Line survey.",
 label = 'nwfsc-hkl-depth')
 ```
 
@@ -315,7 +315,7 @@ label = 'nwfsc-hkl-depth')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "Index.png"), 
-caption = "Estimated index of abundance for copper rockfish.",
+caption = "Estimated NWFSC Hook and Line survey index of abundance for copper rockfish.",
 label = 'nwfsc-hkl-index-main')
 ```
 
@@ -365,7 +365,7 @@ label = 'mean-hkl-len-data')
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "rov", "plots", "rov_transect_collapsed_copper_south_protection_count.png"), 
-caption = "The location and size of observations across all years and transects.",
+caption = "The location and size of observations across all years and transects for the CDFW ROV survey for copper rockfish.",
 label = 'rov-obs-loc')
 ```
 
@@ -374,7 +374,7 @@ label = 'rov-obs-loc')
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "rov", "plots", "south_raw_cpue_by_mpa_group_by_year.png"), 
-caption = "The trend of the calculated CPUE by each MPA and Reference group by year.",
+caption = "The trend of the calculated CPUE by each MPA and Reference group by year from the CDFW ROV survey.",
 label = 'rov-raw-cpue')
 ```
 
@@ -383,7 +383,7 @@ label = 'rov-raw-cpue')
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "rov", "plots", "rov_length_by_area_designation_april_data.png"), 
-caption = "The distribution of lengths across all years for MPA and Reference areas north and south of Point Conception.",
+caption = "The distribution of lengths across all years for MPA and Reference areas north and south of Point Conception from the CDFW ROV survey.",
 label = 'rov-len')
 ```
 
@@ -484,7 +484,7 @@ label = 'growth-age-dist')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "wcgbt", "south", "plots", "cpue_map.png"), 
-caption = "Location and catch-per-unit-effort by location caught south of Point Conception by the NWFSC WCGBT survey.",
+caption = "Location and catch-per-unit-effort by location south of Point Conception by the NWFSC WCGBT survey.",
 label = 'wcgbt-cpue')
 ```
 
@@ -493,7 +493,7 @@ label = 'wcgbt-cpue')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "wcgbt", "south", "plots", "presence-absence_proportion_by_depth.png"), 
-caption = "Number of positive tows across all years by depth in meters.",
+caption = "Number of positive tows from the NWFSC WCGBT survey across all years by depth in meters.",
 label = 'wcgbt-depth')
 ```
 
@@ -651,11 +651,14 @@ label = 'data-bridge-depl-2')
 
 ### Model Structure
 
-```{r, results = 'asis'}
+```{r, results = 'asis}
+
+# fig.cap = "\\The CDFW recreational season length and depth restriction for nearshore rockfish by month from 2000 to 2003. A triangle # indicates a regulation change mid-month. The regions defined base on the following latitudes: Northern ($42^\circ 00^\prime$ N lat. # to $40^\circ 10^\prime$ N lat.), Mendocino ($40^\circ 10^\prime$ N lat. to $38^\circ 57^\prime$ N lat.), San Francisco ($38^\circ # 57^\prime$ N lat. to $37^\circ 11^\prime$ N lat.), Central ($37^\circ 11^\prime$ N lat. to $34^\circ 27^\prime$ N lat.), Southern # ($34^\circ 27^\prime$ N lat. to US/Mexico border). Not all management areas have been consistently defined over time. The northern # and southern management areas have remained the same. From 2001-2003 the Central management area was defined as 40^\circ 10^\prime$ # N lat. to $34^\circ 27^\prime$ N lat. In 2004, the Central area was split into a North-Central and South-Central areas at $36^\circ # 00^\prime$ N lat. In 2005, the regions from 
+#  $40^\circ 10^\prime$ N lat. to $34^\circ $27^\prime$ N lat. were redefined. The North-Central encompasses $40^\circ 10^\prime$ N # lat. to $37^\circ 11^\prime$ N lat., Monterey South-Central from $37^\circ 11^\prime$ N lat. to $36^\circ ^\prime$ N lat., and # Morro # Bay South-Central from $36^\circ 00^\prime$ N lat. to $34^\circ 27^\prime$ N lat."}
 
 add_figure(
 filein = file.path(management_dir, "fishing_regs.png"),
-caption = "The CDFW recreational season lenght and depth restriction for nearshore rockfish by month from 2000 to 2003. A triangle indicates a regulation change mid-month. The regions defined base on the following latitudes: Northern , Mendocino , San Francisco, Central , Southern. Not all management areas have been consistently defined over time. The northern and southern management areas have remained the same.",
+caption = "The CDFW recreational season length and depth restriction for nearshore rockfish by month from 2000 to 2003. A triangle indicates a regulation change mid-month. The regions defined base on the following latitudes: Northern, Mendocino, San Francisco, Central, Southern. Not all management areas have been consistently defined over time. The northern and southern management areas have remained the same.",
 label = 'depth-closures')
 ```
 
@@ -725,8 +728,8 @@ label = 'rec-devs')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "SR_curve.png"), 
-caption = "Stock-recruit curve. Point colors indicate year, with warmer colors indicating earlier years and cooler colors in showing later years",
+filein = file.path(model_dir, "plots", "SR_curve2.png"), 
+caption = "Stock-recruit curve with labels on first, last, and years with log-deviations greater than 0.50.♣ Point colors indicate year, with warmer colors indicating earlier years and cooler colors in showing later years",
 label = 'bh-curve')
 ```
 
@@ -762,7 +765,7 @@ label = 'len-agg-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt1mkt0.png"), 
-caption = "Pearson residuals for commercial fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for commercial fleet. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'com-dead-pearson')
 ```
 
@@ -789,7 +792,7 @@ label = 'agg-marg-age-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_agefit_residsflt1mkt0.png"), 
-caption = "Pearson residuals for commercial dead age data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for commercial dead age data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'com-dead-age-pearson')
 ```
 
@@ -798,7 +801,7 @@ label = 'com-dead-age-pearson')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt2mkt0.png"), 
-caption = "Pearson residuals for commercial live fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for commercial live fleet. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'com-live-pearson')
 ```
 
@@ -816,7 +819,7 @@ label = 'com-live-mean-len-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt3mkt0_page2.png"), 
-caption = "Pearson residuals for recreational CPFV fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for recreational CPFV fleet. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'rec-cpfv-pearson')
 ```
 
@@ -835,7 +838,7 @@ label = 'rec-cpfv-mean-len-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_agefit_residsflt3mkt0.png"), 
-caption = "Pearson residuals for recreational CPFV age data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for recreational CPFV age data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'rec-cpfv-age-pearson')
 ```
 
@@ -844,7 +847,7 @@ label = 'rec-cpfv-age-pearson')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt4mkt0_page2.png"), 
-caption = "Pearson residuals for recreational private/rental fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for recreational private/rental fleet. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'rec-pr-pearson')
 ```
 
@@ -862,7 +865,7 @@ label = 'rec-pr-mean-len-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt5mkt0.png"), 
-caption = "Pearson residuals for CCFRP Hook and Line survey length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for CCFRP Hook and Line survey length data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'ccfrp-len-pearson')
 ```
 
@@ -880,7 +883,7 @@ label = 'ccfrp-mean-len-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAAlfit_residsflt5mkt0.png"), 
-caption = "Pearson residuals for CCFRP Hook and Line survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for CCFRP Hook and Line survey conditional-age-at-length data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'ccfrp-age-pearson')
 ```
 
@@ -889,7 +892,7 @@ label = 'ccfrp-age-pearson')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt6mkt0.png"), 
-caption = "Pearson residuals for CDFW ROV survey length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for CDFW ROV survey length data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'rov-pearson')
 ```
 
@@ -907,7 +910,7 @@ label = 'rov-mean-len-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt7mkt0.png"), 
-caption = "Pearson residuals for NWFSC Hook and Line survey length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for NWFSC Hook and Line survey length data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'nwfsc-hkl-pearson')
 ```
 
@@ -925,7 +928,7 @@ label = 'nwfsc-hkl-mean-len-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt7mkt0_page1.png"), 
-caption = "Pearson residuals for NWFSC Hook and Line survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for NWFSC Hook and Line survey conditional-age-at-length data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'nwfsc-hkl-age-pearson-1')
 ```
 
@@ -934,7 +937,7 @@ label = 'nwfsc-hkl-age-pearson-1')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt7mkt0_page2.png"), 
-caption = "Pearson residuals for NWFSC Hook and Line survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for NWFSC Hook and Line survey conditional-age-at-length data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'nwfsc-hkl-age-pearson-2')
 ```
 
@@ -943,7 +946,7 @@ label = 'nwfsc-hkl-age-pearson-2')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt7mkt0_page3.png"), 
-caption = "Pearson residuals for NWFSC Hook and Line survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for NWFSC Hook and Line survey conditional-age-at-length data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'nwfsc-hkl-age-pearson-3')
 ```
 
@@ -962,7 +965,7 @@ label = 'nwfsc-hkl-mean-age-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt9mkt0.png"), 
-caption = "Pearson residuals for NWFSC WCGBT survey fleet length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for NWFSC WCGBT survey fleet length data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'wcgbt-len-pearson')
 ```
 
@@ -981,7 +984,7 @@ label = 'wcgbt-mean-len-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt9mkt0_page1.png"), 
-caption = "Pearson residuals for the NWFSC WCGBT survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for the NWFSC WCGBT survey conditional-age-at-length data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'wcgbt-age-pearson-1')
 ```
 
@@ -990,7 +993,7 @@ label = 'wcgbt-age-pearson-1')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt9mkt0_page2.png"), 
-caption = "Pearson residuals for the NWFSC WCGBT survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for the NWFSC WCGBT survey conditional-age-at-length data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'wcgbt-age-pearson-2')
 ```
 
@@ -999,7 +1002,7 @@ label = 'wcgbt-age-pearson-2')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt9mkt0_page3.png"), 
-caption = "Pearson residuals for the NWFSC WCGBT survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for the NWFSC WCGBT survey conditional-age-at-length data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'wcgbt-age-pearson-3')
 ```
 
@@ -1019,7 +1022,7 @@ label = 'wcgbt-mean-age-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt10mkt0.png"), 
-caption = "Pearson residuals for Pearson and CPFV cooperative collection length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for Pearson and CPFV cooperative collection length data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'coop-len-pearson')
 ```
 
@@ -1038,7 +1041,7 @@ label = 'coop-mean-len-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt10mkt0.png"), 
-caption = "Pearson residuals for the Pearson and CPFV cooperative collection conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for the Pearson and CPFV cooperative collection conditional-age-at-length data. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'coop-age-pearson')
 ```
 
@@ -1172,7 +1175,7 @@ label = 'depl-all')
 ```{r, echo=FALSE, results='asis'}
 add_figure(
 filein = file.path(sens_dir, "_plots",  "Sensi_REplot_all_horizontal"),
-caption = "Comparison of the relative change in estimated management quantities as compared to the base model. The quantities compared are the estimate of unfished spawning biomass (SB0), spawning output in 2023 (SB2023), the relative spawnin output (SB2023/SB0), the yield based on a spawner per recruit harvest rate (YieldSPR=0.50), and the fishing mortality at that harvest rate (FSPR=0.50). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend.  A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
+caption = "Comparison of the relative change in estimated management quantities as compared to the base model. The quantities compared are the estimate of unfished spawning biomass (SB0), spawning output in 2023 (SB2023), the relative spawning output (SB2023/SB0), the yield based on a spawner per recruit harvest rate (YieldSPR=0.50), and the fishing mortality at that harvest rate (FSPR=0.50). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend.  A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
 label = 'sens-all')
 ```
 
