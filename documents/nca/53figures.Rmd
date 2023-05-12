@@ -431,7 +431,7 @@ label = 'frac-sex-len')
 add_figure(
 filein = file.path(data_dir, "biology", "plots", "Length_Weight_All.png"), 
 caption = "Estimated weight-at-length",
-label = 'est-len-wght')
+label = 'weight-length')
 ```
 
 \pagebreak
@@ -529,6 +529,22 @@ label = 'data-bridge-depl-2')
 
 \pagebreak
 
+
+<!-- ====================================================================== -->
+<!-- *********************   CA Regulations Figure   ********************** --> 
+<!-- ====================================================================== -->
+
+
+```{r, results = 'asis'}
+
+add_figure(
+filein = file.path(management_dir, "fishing_regs.png"),
+caption = "The CDFW recreational season lenght and depth restriction for nearshore rockfish by month from 2000 to 2003. A triangle indicates a regulation change mid-month. The regions defined base on the following latitudes: Northern , Mendocino , San Francisco, Central , Southern. Not all management areas have been consistently defined over time. The northern and southern management areas have remained the same.",
+label = 'depth-closures')
+```
+
+\pagebreak
+
 <!-- ====================================================================== -->
 <!-- *********************    Priors            ********************** --> 
 <!-- ====================================================================== -->
@@ -541,6 +557,16 @@ label = 'data-bridge-depl-2')
 <!-- ====================================================================== -->
 <!-- *********************  Model Est. Biology       ********************** --> 
 <!-- ====================================================================== -->
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "bio5_weightatsize.png"),
+caption = "Assumed weight-length relationship for each sex.",
+label = 'est-len-wght')
+```
+
+\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
