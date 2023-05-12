@@ -47,7 +47,7 @@ interviews for index standardization, with 15,549 including sampled examined cop
 We modeled retained catch per angler days with a negative binomial GLM in the R package sdmTMB. The initial model exploration included 
 a delta-lognormal model that did not converge and a delta-gamma model, which did converge.  However, the proportion of zeroes was 
 reproduced when the model was fit with a Bayesian negative binomial GLM (Figure \@ref(fig:pr-prop-zero)) and was retained despite the 
-tail on the QQ plot of the MLE fit (Figure \@ref(fig:pr-qq)).  There are a handful of samples 
+tail on the Q-Q plot of the MLE fit (Figure \@ref(fig:pr-qq)).  There are a handful of samples 
 with higher than average CPUE and the authors checked with CDFW to determine whether the samples should still be included. 
 CDFW indicated data sheets were not available prior to 2012, but the catches were less than 
 the bag limits, and should be assumed to be correct. The significant year and region interaction was included in the final 
@@ -260,7 +260,7 @@ sa4ss::add_figure(
     data_dir, "rec_indices", "crfs_pr_dockside", "north",
     "rm_last2yrs_area_weighted", "qq.png"
   ),
-  caption = "QQ plot for the dockside PR survey.",
+  caption = "Q-Q plot for the dockside PR survey.",
   label = "pr-qq"
 )
 ```
