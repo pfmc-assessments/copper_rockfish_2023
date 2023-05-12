@@ -8,9 +8,9 @@ read_child(filein)
 
 Minimal filtering was done to the data. Transects were removed based on four factors: 1) extreme estimates of effort (the estimated area of view below the ROV termed usable area), 2) any sites that were not visited multiple years, 3) transects that crossed from MPA into reference areas, and 4) transects conducted across depths that never observed `r spp` within the survey (Table \ref{tab:rov-filtered}). Once the data were filtered the average calculated CPUE for each of the MPA and Reference groups were plotted to visualize the data (Table \ref{tab:rov-obs} and Figure \ref{fig:rov-raw-cpue}).
 
-A range of alternative model structures were explored to generate an index of abundance including alternative error structures, covariates, and factors. Based on model selection a model where the numbers of fish observed were predicted by year, site designation (MPA or Reference), proportion soft terrain, year/site designation interaction, and random effect for the year/site interaction was selected (Table \ref{tab:rov-model-selection}). The site indicates the area of the sample where most sites included samples by MPA and reference designations. A delta-gamma model was selected based on the distribution of the data and diagnostics (Figure \ref{fig:rov-qq}) using sdmTMB [@anderson_sdmtmb_2022]. 
+A range of alternative model structures were explored to generate an index of abundance including alternative error structures, covariates, and factors. Based on model selection a model where the numbers of fish observed were predicted by year, site designation (MPA or Reference), proportion soft terrain, year/site designation interaction, and random effect for the year/site interaction was selected (Table \ref{tab:rov-model-selection}). The site indicates the area of the sample where most sites included samples by MPA and reference designations. A delta-gamma model was selected based on the distribution of the data and diagnostics (Figures \ref{fig:rov-qq} and \ref{fig:rov-resids}) using sdmTMB [@anderson_sdmtmb_2022]. 
 
-The model estimates were then area-weighted based on the estimated percent of habitat within MPAs and areas open to fishing. The area estimates were based on existing seafloor mapping data. Unfortunately, all areas `r area` have not been fully mapped for habitat structure. The STAT along with Rebecca Miller (SWFSC/University of California Santa Cruz) used existing seafloor mapping within state waters off the southern California coast to interpret the area of rocky habitat within three regions: mainland, southern Channel Islands, and northern Channel Islands. Within each region the fraction of interpreted rocky substrate area and the rocky substrate area within MPAs and CCAs were estimated. The area estimates by region and inside/outside MPAs and CCAs were extrapolated to provide estimates of unmapped seafloor within each region. The estimates by region were then combined to provide estimates of 73% of rocky habitat open to fishing with 27% within MPAs and CCAs. The weighted relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
+The model estimates were then area-weighted based on the estimated percent of habitat within MPAs and areas open to fishing. The area estimates were based on existing seafloor mapping data. Unfortunately, all areas `r area` have not been fully mapped for habitat structure. The STAT along with Rebecca Miller (SWFSC/University of California Santa Cruz) used existing seafloor mapping within state waters off the southern California coast to interpret the area of rocky habitat within three regions: mainland, southern Channel Islands, and northern Channel Islands. Within each region the fraction of interpreted rocky substrate area and the rocky substrate area within MPAs and CCAs were estimated. The area estimates by region and inside/outside MPAs and CCAs were extrapolated to provide estimates of unmapped seafloor within each region. The estimates by region were then combined to provide estimates of 73 percent of rocky habitat open to fishing with 27 percent within MPAs and CCAs. The weighted relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
 
 \newpage
 
@@ -45,6 +45,7 @@ col_names = c("Year", "Estimate", "logSE")
 sa4ss::table_format(x = ind,
              caption = "Estimated relative index of abundance for the ROV survey.",
              label = "rov-index",
+             digits = 4, 
              col_names = col_names)                         
 ```
 
@@ -54,8 +55,18 @@ sa4ss::table_format(x = ind,
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "rov", "delta_gamma_south_designation_depth_year_soft_73_27", "qq.png"), 
-caption = "QQ-plot for the ROV survey.",
+caption = "Q-Q plot for the CDFW ROV survey.",
 label = 'rov-qq')
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "survey_indices", "rov", "delta_gamma_south_designation_depth_year_soft_73_27","residuals_page1.png"), 
+caption = "Residuals by sample location and year.",
+label = 'rov-resids')
 ```
 
 \newpage
@@ -68,3 +79,5 @@ label = 'rov-index')
 ```
 
 \newpage
+
+

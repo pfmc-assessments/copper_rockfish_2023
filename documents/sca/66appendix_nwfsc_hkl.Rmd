@@ -1,4 +1,4 @@
-### NWFSC Hook and Line Index of Abundance {#nwfsc-hkl-model}
+## NWFSC Hook and Line Index of Abundance {#nwfsc-hkl-model}
 
 Since 2004, the NWFSC has conducted an annual hook and line survey targeting shelf rockfish in the genus *Sebastes* at fixed stations (e.g., sites, Figure \ref{fig:nwfsc-hkl-map}) in the Southern California Bight. Key species of rockfish targeted by the `r hkl` are bocaccio (*S. paucispinis*), cowcod (*S. levis*), greenspotted (*S. chlorostictus*), and vermilion/sunset (*S. miniatus* and *S. crocotulus*) rockfishes, although a wide range of rockfish species have been observed by this survey. During each site visit, three deckhands simultaneously deploy 5-hook sampling rigs (this is referred to as a single drop) for a maximum of 5 minutes per line, but individual lines may be retrieved sooner at the angler's discretion (e.g., to avoid losing fish). Five drops are attempted at each site for a maximum possible catch of 75 fish per site per year (3 anglers x 5 hooks x 5 drops). Further details regarding the sample frame, site selection, and survey methodology are described by Harms et al. [-@harms_noaa_2008]. 
 
@@ -6,7 +6,7 @@ Over time, select sampling sites in the original survey design have been convert
 
 The sites considered for the creation of a relative index of abundance were limited to sites that have caught at least 1 `r spp` across all years. To appropriately weight the survey index by the available rocky substrate by region in the California Bight, each site was assigned as mainland, Northern Channel Island, or Southern Channel Island. Estimates of hard bottom were extracted from the [California Seafloor Mapping Project](http://seafloor.otterlabs.org/index.html) for each of these regions. These data were collected in state waters at a resolution of two meters. South of Point  Conception, additional interpreted bathymetric data classifying the bottom type as rock or soft bottom were compiled by Emily Saarman (University of California Santa Cruz) and also available  from CDFW's website. The estimates of rocky substrate for each of these regions were 19.5, 36.5, and 44.1 percent in the mainland, Southern Channel Islands, and Northern Channel Islands, respectively. 
 
-A range of alternative model structures were explored to generate an index of abundance. This included alternative levels of aggregation (hook, drop, or site), probability distributions (negative binomial, delta-gamma, or delta-lognormal), and covariates (year, site, depth, swell height, region, year-region interaction, and/or the number of vermilion/sunset or bocaccio rockfishes observed, Table \ref{tab:nwfsc-hkl-model-select}). The overall trends in the index of abundance were highly similar across the explored probability distributions and model configurations. Based on QQ-plots, residuals, and AIC the delta-lognormal distribution was selected for the final model using sdmTMB with covariates for year, region, drop, polynomial depth term, number of bocaccio, number of vermilion, year-region interaction, and site as a random-effect [@anderson_sdmtmb_2022] (Figures \ref{fig:nwfsc-hkl-qq}, \ref{fig:nwfsc-hkl-resid-1}, and \ref{fig:nwfsc-hkl-resid-2}). 
+A range of alternative model structures were explored to generate an index of abundance. This included alternative levels of aggregation (hook, drop, or site), probability distributions (negative binomial, delta-gamma, or delta-lognormal), and covariates (year, site, depth, swell height, region, year-region interaction, and/or the number of vermilion/sunset or bocaccio rockfishes observed, Table \ref{tab:nwfsc-hkl-model-select}). The overall trends in the index of abundance were highly similar across the explored probability distributions and model configurations. Based on Q-Q plots, residuals, and AIC the delta-lognormal distribution was selected for the final model using sdmTMB with covariates for year, region, drop, polynomial depth term, number of bocaccio, number of vermilion, year-region interaction, and site as a random-effect [@anderson_sdmtmb_2022] (Figures \ref{fig:nwfsc-hkl-qq}, \ref{fig:nwfsc-hkl-resid-1}, and \ref{fig:nwfsc-hkl-resid-2}). 
 
 
 ```{r, results = 'asis'}
@@ -51,7 +51,7 @@ label = 'nwfsc-hkl-index')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "qq.png"), 
-caption = "QQ plot.",
+caption = "Q-Q plot for the NWFSC Hook and Line survey.",
 label = 'nwfsc-hkl-qq')
 ```
 

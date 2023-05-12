@@ -49,7 +49,7 @@ Recreational catch data is reported by district in CRFS where district 1 (aka So
 #### Indices of Abundance
 \
 
-A number of indices of abundance were explored for the recreational fleet. Discarded catch is available from onboard observer surveys, but was not included in indices. Indices developed for the assessment include:
+A number of indices of abundance were explored for the recreational fleet (Figure \ref{fig:stand-cpue}). Discarded catch is available from onboard observer surveys, but was not included in indices. Indices developed for the assessment include:
 
 * CDFW CPFV/PC onboard observer index (1999-2019)
 * CRFS PR1 sites dockside survey (2004-2019)

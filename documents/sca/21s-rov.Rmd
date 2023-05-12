@@ -12,8 +12,6 @@ The number of transects by year, location, site designation, and the numbers of 
 
 CDFW provided an initial analysis of the CDFW ROV survey data which helped in determination of which modeling approaches would be considered for these data. The STAT explored a range of alternative model structures to generate a standardized index of relative abundance for this survey. The final model selected was a delta-gamma hurdle model where the numbers of fish observed were predicted by year, site designation (MPA or Reference), proportion soft terrain, year/site designation interaction, and a random effect for the year/location interaction.  Details regarding the index of abundance, sample sizes and model selection can be found in the Appendix Section \ref{cdfw-rov-index}.
 
-A comparison of all indices, fishery-dependent and fishery-independent, is show in Figure \ref{fig:stand-cpue}.
-
 #### Composition Data 
 \
 
