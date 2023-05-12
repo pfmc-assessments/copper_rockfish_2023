@@ -528,6 +528,7 @@ label = 'data-bridge-depl-2')
 ```
 
 \pagebreak
+
 <!-- ====================================================================== -->
 <!-- *********************    Priors            ********************** --> 
 <!-- ====================================================================== -->
@@ -648,10 +649,10 @@ label = 'com-dead-mean-len-fit')
 
 \pagebreak
 
-```{r, include = F}
+```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_data_weighting_TA1.8_condAgeCommercial_Dead.png"), 
-caption = "Mean age from the conditional commercial dead fleet ages.",
+caption = "Mean age from the commercial dead fleet conditional ages.",
 label = 'com-dead-mean-age')
 
 ```
