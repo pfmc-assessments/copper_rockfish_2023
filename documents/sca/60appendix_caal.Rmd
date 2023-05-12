@@ -49,7 +49,7 @@ plot_info = read.csv(file.path(model_dir, "plots", "plotinfotable_for_doc.csv"))
 len_fit = plot_info[which(plot_info$category == "A@LComp"), ]
 plot.vec = c(grep("comp_condAALfit_residsflt5mkt0", len_fit$label),
   grep("comp_condAALfit_residsflt7mkt0", len_fit$label),
-	grep("comp_condAALfit_residsflt9mkt0", len_fit$label))
+	grep("comp_condAALfit_residsflt9mkt0", len_fit$label))[-8]
 find = sort(len_fit$label[plot.vec], index.return = TRUE)$ix
 plot.vec = plot.vec[find[2:length(find)]]
 filein = file.path(model_dir, "plots")
