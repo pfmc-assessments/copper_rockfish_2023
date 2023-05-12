@@ -392,14 +392,16 @@ write.csv(out, file = file.path(dir, "model_selection.csv"),
 #     species.name, "_",
 #     survey.name, "_Index.csv"
 #   ))
+
 load("S:\\copper_rockfish_2023\\data\\rec_indices\\crfs_pr_dockside\\north\\main_effects\\Dnbin.rdata")
+
 #   ## pp_check
    prop_zero <- function(y) mean(y == 0)
 #   # figure of proportion zero
    figure_Dnbin_prop_zero <- pp_check(Dnbin, 
    plotfun = "stat", stat = "prop_zero", binwidth = 0.001)
    figure_Dnbin_prop_zero
-  ggsave("/negbin_prop_zero_main_effects.png"))
+  ggsave("negbin_prop_zero_main_effects.png")
 # # figure of mean and sd from model
 #   pp_check(Dnbin, plotfun = "stat_2d", stat = c("mean", "sd"))
 #   ggsave(paste0(out.dir, "/negbin_pp_stat_mean_sd.png"))

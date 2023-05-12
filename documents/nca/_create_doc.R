@@ -84,8 +84,7 @@ if(file.exists("_main.Rmd")){
   file.remove("_main.Rmd")
 }
 bookdown::render_book("00a.Rmd", 
-                      output_format ="bookdown::pdf_document2", #for a faster compile time
-                      output_dir = doc_dir, 
+                       output_dir = doc_dir,
                       clean = FALSE, 
                       config_file = "_bookdown_north.yml")
 

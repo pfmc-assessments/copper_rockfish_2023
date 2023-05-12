@@ -72,14 +72,14 @@ ind <- read.csv(file.path(
 )) %>%
  mutate_at(2:6, funs(round(., 3)))
 
-col_names <- c("Year", "Minimum", "Q1", "Q2", "Q3", "Maximum")
+col_names <- c("Year", "Minimum", "25th Quantile", "Median", "75th Quantile", "Maximum")
 
 sa4ss::table_format(
   x = ind,
-  caption = "Summary of the copper rockfish CPUE, number of fish retained per
-             angler day, by year.",
+  caption = "Summary values of the copper rockfish retained per angler (CPUE) to look at the effects of the sub-bag limit.",
   label = "pr-cpue",
-  col_names = col_names
+  col_names = col_names,
+  align = "r"
 )
 ```
 
@@ -98,7 +98,9 @@ sa4ss::table_format(
   caption = "Summary of the number of speciated and unspeciated (RFGEN) rockfish 
   per year across all of California.",
   label = "pr-rfgen",
-  col_names = col_names
+  col_names = col_names,
+  align = "r",
+  format.args = list(big.mark = ",")
 )
 ```
 
@@ -119,7 +121,8 @@ sa4ss::table_format(
   x = ind,
   caption = "Number of samples and percent positive for the dockside PR survey.",
   label = "pr-percentpos",
-  col_names = col_names
+  col_names = col_names,
+  format.args = list(big.mark = ",")
 )
 ```
 
@@ -140,8 +143,9 @@ sa4ss::table_format(
   col_names = col_names,
   font_size = 9,
   landscape = TRUE,
-  longtable = TRUE,
+  align = "l",
   custom_width = TRUE,
+  format.args = list(big.mark = ","),
   col_to_adjust = c(2),
   width = c("8cm")
 )
@@ -154,11 +158,16 @@ ind <- read.csv(file.path(
   data_dir, "rec_indices", "crfs_pr_dockside", "north", "rm_last2yrs_area_weighted",
   "model_selection.csv"
 ))
+col_names <- c("Intercept",	"District",	"Month",	"Target Species",
+"Year",	"District:Year", "Offset", "DF",	"AICc",	"Delta AICc")
 
 sa4ss::table_format(
   x = ind,
   caption = "Model selection for the dockside PR survey.",
-  label = "pr-modelselect"
+  label = "pr-modelselect",
+  digits = 2,
+  font_size = 8,
+  col_names = col_names
 )
 ```
 
@@ -177,7 +186,8 @@ sa4ss::table_format(
   x = ind,
   caption = "Estimated relative index of abundance for the dockside PR survey.",
   label = "pr-index",
-  col_names = col_names
+  col_names = col_names,
+  digits = 4
 )
 ```
 
@@ -225,6 +235,22 @@ sa4ss::add_figure(
   label = "pr-index"
 )
 ```
+
+\newpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+  filein = file.path(
+    data_dir, "rec_indices", "crfs_pr_dockside", "north",
+    "rm_last2yrs_area_weighted", "negbin_prop_zero_main_effects.png"
+  ),
+  caption = "Predicted proportion of zeroes from the Bayesian fit to the main effects model.",
+  label = "pr-prop-zero"
+)
+```
+
+
+
 
 \newpage
 

@@ -2,12 +2,12 @@
 
 The Deb Wilson-Vandenberg data set is derived from an onboard observer survey conducted 
 by CDFW in California north of Point Conception from 1987-1998 and referred to as the Deb 
-Wilson-Vandenberg onboard observer survey, @reilly-onboard-1998. During an 
+Wilson-Vandenberg onboard observer survey, @reilly_onboard_1998. During an 
 observer trip the sampler rode along on the CPFV and recorded location-specific 
 catch and discard information to the species level for a subset of anglers 
 onboard the vessel. The subset of observed anglers is usually a maximum of 15 
-people and the observed anglers change during each fishing stop.  The catch cannot be 
-linked to an individual, but rather to a specific fishing location.  The sampler 
+people and the observed anglers change during each fishing stop. The catch cannot be 
+linked to an individual, but rather to a specific fishing location. The sampler 
 also recorded the starting and ending time, number of anglers observed, starting 
 and ending depth, and measured retained and discarded fish. The fine-scale catch and effort 
 data allow us to better filter the data for indices 
@@ -15,7 +15,7 @@ to fishing stops within suitable habitat for the target species.
 
 
 A large effort was made by the SWFSC to recover data from the original data 
-sheets for this survey and develop a relational database @monk-documentation-2016. 
+sheets for this survey and develop a relational database @monk_documentation_2016. 
 The specific fishing locations at each fishing stop  were recorded at a finer 
 scale than the catch data for this survey. We aggregated the relevant location 
 information (time and number of observed anglers) to match the available catch 
@@ -84,11 +84,18 @@ and Figure \@ref(fig:deb-index)).
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard", "error_removed",
-                     "percent_pos.csv"))
+                     "percent_pos.csv")) %>%
+  mutate(percentpos = scales::percent(round(percentpos, 3)))
 
+col_names <- c(
+  "Year", "Trips with Target", "Trips without Target", "Total trips",
+  "Percent with Target"
+)
 sa4ss::table_format(x = ind,
-             caption = "Data filtering steps for the onboard CPFV survey.",
-             label = "deb-percentpos")                         
+             caption = "Number of samples and percent positive for Deb Wilson-Vandenberg's onboard observer survey.",
+             label = "deb-percentpos",
+             col_names = col_names,
+             align = "r")                         
 ```
 
 \newpage
@@ -117,10 +124,11 @@ col_names = c("Year", "Estimate", "logSE")
 sa4ss::table_format(x = ind,
              caption = "Estimated relative index of abundance for the onboard CPFV survey.",
              label = "deb-index",
-             col_names = col_names)                         
+             col_names = col_names,
+             digits = 4)                         
 ```
 
-
+\newpage
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
@@ -128,10 +136,18 @@ ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
 #ind <- ind[, c(1,4,5)]
 col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
 
-sa4ss::table_format(x = ind,
-             caption = "Data filtering steps for the onboard CPFV survey.",
-             label = "deb-filter",
-             col_names = col_names)                         
+sa4ss::table_format(
+    x = ind,
+    caption = "Data filtering steps for the onboard CPFV survey.",
+    label = "deb-filter",
+    col_names = col_names,
+    font_size = 9,
+    landscape = TRUE,
+    align = "l",
+    custom_width = TRUE,
+    format.args = list(big.mark = ","),
+    col_to_adjust = c(2),
+    width = c("8cm"))                         
 ```
 
 \newpage
