@@ -79,8 +79,6 @@ row.names = FALSE)
 
 
 
-
-
 #-------------------------------------------------------------------------------
 # Add to filter dataframe
 dataFilters$Filter[filter.num] <- c("All data")
@@ -98,7 +96,7 @@ pivot_wider(names_from=district, values_from = n)
 
 #Remove 2020 due to covid
 cdfwpr <- cdfwpr %>%
-filter(!year %in% c(2020, 2021, 2022))
+filter(!year %in% c(2020, 2021, 2022)) 
 
 #-------------------------------------------------------------------------------
 # Add to filter dataframe
@@ -400,3 +398,4 @@ View(aa)
 #save the datafile and filters for the run file
 save(cdfwpr, dataFilters, 
 file = file.path(getwd(),modelArea, modelName, "/data_for_glm.RData"))
+

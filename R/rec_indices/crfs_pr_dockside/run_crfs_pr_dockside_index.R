@@ -30,7 +30,7 @@ library(fitdistrplus)
 #species and area identifiers - eventually put in function
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
-modelArea = "south"
+modelArea = "north"
 indexName <-  "crfs_pr_dockside"
 modelName <- "rm_last2yrs_area_weighted"
 covars <- c("month", "district", "year", "targetSpecies")#, "geara")
@@ -243,16 +243,16 @@ Model_selection
     time = "year",
     spatial="off",
     spatiotemporal = "off",
-    family = nbinom2(link = "log"),
+    family = delta_gamma(),#nbinom2(link = "log"),
     control = sdmTMBcontrol(newton_loops = 1))
  
   do_diagnostics(
-    dir = file.path(dir), 
+    dir = file.path(dir,"deltalogn"), 
     fit = fit.nb,
     plot_resid = FALSE)
   
   calc_index(
-    dir = file.path(dir), 
+    dir = file.path(dir, "deltalogn"), 
     fit = fit.nb,
     grid = grid_north)
 
@@ -393,13 +393,15 @@ write.csv(out, file = file.path(dir, "model_selection.csv"),
 #     survey.name, "_Index.csv"
 #   ))
 
+load("S:\\copper_rockfish_2023\\data\\rec_indices\\crfs_pr_dockside\\north\\main_effects\\Dnbin.rdata")
+
 #   ## pp_check
-#   prop_zero <- function(y) mean(y == 0)
+   prop_zero <- function(y) mean(y == 0)
 #   # figure of proportion zero
-#   figure_Dnbin_prop_zero <- pp_check(Dnbin, 
-#   plotfun = "stat", stat = "prop_zero", binwidth = 0.001)
-#   figure_Dnbin_prop_zero
-#  ggsave(paste0(dir, "/negbin_prop_zero.png"))
+   figure_Dnbin_prop_zero <- pp_check(Dnbin, 
+   plotfun = "stat", stat = "prop_zero", binwidth = 0.001)
+   figure_Dnbin_prop_zero
+  ggsave("negbin_prop_zero_main_effects.png")
 # # figure of mean and sd from model
 #   pp_check(Dnbin, plotfun = "stat_2d", stat = c("mean", "sd"))
 #   ggsave(paste0(out.dir, "/negbin_pp_stat_mean_sd.png"))
