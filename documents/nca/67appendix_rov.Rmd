@@ -9,7 +9,7 @@ read_child(filein)
 
 Minimal filtering was done to the data. Transects were removed based on four factors: 1) extreme estimates of effort (the estimated area of view below the ROV termed usable area), 2) any locations that were not sampled by both super year periods, 3) transects that crossed from MPA into reference areas, and 4) transects conducted across depths that never observed `r spp` within the survey (Table \ref{tab:rov-filtered}). Once the data were filtered the average calculated CPUE for each MPA and Reference group were plotted to visualize the data (Table \ref{tab:rov-obs} and Figure \ref{fig:rov-raw-cpue}).
 
-A range of alternative model structures were explored to generate an index of abundances including alternative error structures, covariates, and factors. Based on model selection a model with super year, site designation (MPA or Reference), and super year site designation interaction was selected (Table \ref{tab:rov-model-selection}). A negative-binomial model was selected based on the distribution of the data and diagnostics (Figures \ref{fig:rov-qq} and \ref{fig:rov-prop-zero}) using sdmTMB [@anderson_sdmtmb_2022]. The model estimates were then area-weighted based on the estimated percent of habitat within MPAs based on habitat seafloor mapping data within state waters, which for the region north of Point Conception were estimated to be 20% of rocky habitat within MPAs and 80% open to fishing. The weighted relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
+A range of alternative model structures were explored to generate an index of abundances including alternative error structures, covariates, and factors. Based on model selection a model with super year, site designation (MPA or Reference), and super year site designation interaction was selected (Table \ref{tab:rov-model-selection}). A negative-binomial model was selected based on the distribution of the data and diagnostics (Figures \ref{fig:rov-qq}, \ref{fig:rov-resid}, and \ref{fig:rov-prop-zero}) using sdmTMB [@anderson_sdmtmb_2022]. The model estimates were then area-weighted based on the estimated percent of habitat within MPAs based on habitat seafloor mapping data within state waters, which for the region north of Point Conception were estimated to be 20 percent of rocky habitat within MPAs and 80 percent open to fishing. The weighted relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
 
 \newpage
 
@@ -17,15 +17,31 @@ A range of alternative model structures were explored to generate an index of ab
 
 \newpage
 
-\input{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
+
+```{r, results = 'asis'}
+#\include{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
+
+tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", "north_copper_obs_designation_mpa_group_super_year.csv"))
+col_names <- c("Super Year", "Location",  "Designation",  "Transects", "Observations")
+
+sa4ss::table_format(x = tab,
+             caption = "Number of transect and number of observations of copper rockfish for each super year, sample location, and site designation for the CDFW ROV survey",
+             label = "rov-obs",
+             align = 'l',
+             col_names = col_names,
+             custom_width = TRUE,
+             col_to_adjust = 2, 
+             width = c("3cm"),
+             digits = 0) 
+```
 
 \newpage
-
 
 
 ```{r, results = 'asis'}
 
 tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", "north_model_selection.csv"))
+tab <- tab[1:15, ]
 
 sa4ss::table_format(x = tab,
              caption = "Model selection for the ROV survey.",
@@ -47,6 +63,7 @@ col_names = c("Year", "Estimate", "logSE")
 sa4ss::table_format(x = ind,
              caption = "Estimated relative index of abundance for the ROV survey.",
              label = "rov-index",
+             digits = 4,
              col_names = col_names)                         
 ```
 
@@ -56,8 +73,18 @@ sa4ss::table_format(x = ind,
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "rov", "glm_negbin_north_designation_depth", "qq.png"), 
-caption = "QQ-plot for the ROV survey.",
+caption = "Q-Q plot for the ROV survey.",
 label = 'rov-qq')
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "rov", "glm_negbin_north_designation_depth_resids", "residuals_page1.png"), 
+caption = "Estimated residuals for each super year fo the CDFW ROV survey.",
+label = 'rov-resid')
 ```
 
 \newpage
