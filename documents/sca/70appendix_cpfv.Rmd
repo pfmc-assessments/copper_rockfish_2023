@@ -12,11 +12,11 @@ In southern California, the diversity of target species is higher an includes se
 
 We filtered the CPFV logbook data to trips that recorded at least one rockfish and the CPFV onboard observer data to trips that encountered at least 1 percent groundfish species. We aggregated within each dataset across 2018 and 2019 and areas where necessary to ensure confidentiality requirements were met. The tables below represent an aggregation of data from 2018 and 2019 combined as they are the two years pre-COVID that best represent the CPFV fleet's activity. We extracted data from the CPFV logbook data and the onboard observer sampled trips to describe the differences in portion of trips sampled and the distribution of copper rockfish catches. In the CPFV logbooks, 60 trips were recorded as multi-day trips in northern California. This represented less then 1 percent of the trips in northern California and we did not investigate the accuracy of these entries. Approximately 6 percent of the logbooks from District 1 recorded a block number in Mexican waters as the primary location fished. Fewer than 10 trips that recorded block numbers along the mainland of southern California were recorded a multi-day trips.  These were removed from the tables below. 
 
-The combined onboard observer sampling rate for 2018-2019 was 3 percent of all CPFV trips in the data used. There were no trips observed onboard in CRFS District 5 during 2018-2019, but 1,052 CPFV logbook records were submitted that recorded at least one rockfish. Grouping the districts by north and south of Point Conception, 2 percen of all trips in northern California were sampled onboard (Table \@ref(tag:percent-observed)). In southern California, 4 percent of single day trips were observed and less than 1 percent of multi-day trips were observed.
+The combined onboard observer sampling rate for 2018-2019 was 3 percent of all CPFV trips in the data used. There were no trips observed onboard in CRFS District 5 during 2018-2019, but 1,052 CPFV logbook records were submitted that recorded at least one rockfish. Grouping the districts by north and south of Point Conception, 2 percent of all trips in northern California were sampled onboard (Table \ref{tag:percent-observed}). In southern California, 4 percent of single day trips were observed and less than 1 percent of multi-day trips were observed.
 
 We broke the data in southern California down further to explore sampling effort by trip type, and assigned a CPFV logbook entry to a region based on the recorded block number (Table \@ref(tab:logbook-triptype)). The offshore region was a catch-all that included blocks outside the range of a half-day trip, but not within the vicinity of an island. In CRFS District 1, 79 percent of the observed trips were half-day day trips, which can access the District 1 mainland. In District 2, 29 percent of the observed trips were half-day day trips. The vessels in District 2 typically offer fewer half-day day trips and fish the nearshore when weather precludes crossing the channel to the northern Channel Islands.
 
-To put these sampling rates in context for copper rockfish, we explored the total estimated moratlity related to the distribution of sampling. The total mortality of copper rockfish in metric tons from 2018-2019 from the CPFV fleet by CRFS District is in Table \@ref(tab:catch-example). Fifty-two percent of the total copper rockfish mortality was from northern California and 48 percent from southern California.  Within northern California, 50 percent of the total mortality originated from District 3, and in southern California, 81 percent of the total mortality originated from District 2. 
+To put these sampling rates in context for copper rockfish, we explored the total estimated mortality related to the distribution of sampling. The total mortality of copper rockfish in metric tons from 2018-2019 from the CPFV fleet by CRFS District is in Table \@ref(tab:catch-example). Fifty-two percent of the total copper rockfish mortality was from northern California and 48 percent from southern California.  Within northern California, 50 percent of the total mortality originated from District 3, and in southern California, 81 percent of the total mortality originated from District 2. 
 
 From the onboard observer trips in District 1, 37 percent of the observed coppers were from half-day day trips, 42 percent from three-quarter to full day trips, and 21 percent of the observed copper rockfish were from the five observed multi-day trips (Table \@ref(tab:onboard-coppers)). 
 
@@ -44,7 +44,9 @@ sa4ss::table_format(x = ind,
              col_names = col_names)                         
 ```
 
+
 \newpage 
+
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "copp_catch_2018_2019.csv"))
@@ -100,4 +102,4 @@ sa4ss::table_format(x = ind,
 ```
 
 
-
+\newpage
