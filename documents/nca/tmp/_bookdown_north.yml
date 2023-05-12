@@ -3,7 +3,7 @@ delete_merged_file: true
 rmd_files: ['00a.Rmd',
              '00authors.Rmd', 
               '00bibliography.Rmd',
-#               '01executive.Rmd',
+               '01executive.Rmd',
 #             '11introduction.Rmd',
 #             '20data.Rmd',
 #              '21f-.Rmd',
@@ -19,7 +19,7 @@ rmd_files: ['00a.Rmd',
              '61appendix_mrfss.Rmd',
             '62appendix_crfs_onboard.Rmd',
             '63appendix_dwv_cpfv.Rmd',
-            '64appendix_crfs_dockside.Rmd'
+            '64appendix_crfs_dockside.Rmd',
 #            '65appendix_ccfrp.Rmd',
 #           '67appendix_rov.Rmd',
  #            '70appendix_cpfv.Rmd',
@@ -28,6 +28,6 @@ rmd_files: ['00a.Rmd',
 #            '40management.Rmd',
 #            '41acknowledgements.Rmd',
 #           '52tables.Rmd',
- #           '53figures.Rmd',
- #           '72labels.Rmd'
+          '53figures.Rmd',
+           '72labels.Rmd'
 ]
