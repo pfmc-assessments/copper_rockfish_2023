@@ -16,8 +16,8 @@ the number of fish observed by the CRFS sample, the number of unobserved retaine
 by the angler, and the number of discarded and descended fish reported by the angler.
 The sample size of the 
 unfiltered private boat data is much larger than the CPFV onboard observer data set, 
-with 256,738 samples statewide from 2004-2022, 169,912 south 
-of Point Conception and 86,826 north of Point Conception. 
+with 256,738 samples statewide from 2004-2022, 169,912 north
+of Point Conception and 86,826 south of Point Conception. 
 
 Records were limited to the primary private and rental boats public-access sites, 
 PR1 sites, which encompasses over 90% of the total private boat effort 
@@ -26,7 +26,7 @@ PR1 sites, which encompasses over 90% of the total private boat effort
 rockfish is over the daily bag limit of 10 
 fish per person. We did not remove these data from the index, but did 
 only include sampler examined catch.  Rockfish species can be difficult to distinguish and there 
-have not been any verifiction studies conducted to determine the uncertainty in angler reported 
+have not been any verification studies conducted to determine the uncertainty in angler reported 
 unobserved catch.
 Additional data filters included the exclusion of any samples from January and 
 February, since those months have been closed to the recreational fishery south of Point 

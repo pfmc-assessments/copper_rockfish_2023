@@ -14,8 +14,8 @@ the number of fish observed by the CRFS sample, the number of unobserved retaine
 by the angler, and the number of discarded and descended fish reported by the angler.
 The sample size of the 
 unfiltered private boat data is much larger than the CPFV onboard observer data set, 
-with 256,738 samples statewide from 2004-2022, 169,912 south 
-of Point Conception and 86,826 north of Point Conception. 
+with 256,738 samples statewide from 2004-2022, 169,912 north 
+of Point Conception and 86,826 south of Point Conception. 
 
 Records were limited to the primary private and rental boats public-access sites, 
 PR1 sites, which encompasses over 90% of the total private boat effort 
@@ -27,13 +27,11 @@ only include sampler examined catch.  Rockfish species can be difficult to disti
 have not been any verification studies conducted to determine the uncertainty in angler reported 
 unobserved catch.
 Additional data filters included the exclusion of any samples from January and 
-February, since those months have been closed to the recreational fishery south of Point 
+March, since those months have been closed to the recreational fishery north of Point 
 Conception since 2005.  The time series was also restricted to 2004-2019.  Sampling during the 
 COVID period (2020-2021) resulted in a higher fraction of the sampler examined catch in the 
-"rockfish, general" 
-category due to the social distancing requirements (Table \@ref(tab:pr-rfgen)). The CDFW 
-implemented a one fish sub-bag 
-limit for copper rockfish in 2022 and the qauntiles and distribution of CPUE suggest that this 
+"rockfish, general" category due to the social distancing requirements (Table \@ref(tab:pr-rfgen)). The CDFW 
+implemented a one fish sub-bag limit for copper rockfish in 2022 and the quantiles and distribution of CPUE suggest that this 
 regulation change impacted fishing behavior in the private boat fleet (Table \@ref(tab:pr-cpue) and 
 Figure \@ref(fig:pr-bag)).
 
@@ -43,21 +41,24 @@ of hook-and-line or troll gear.  A number of trips reporting troll as the primar
 a secondary gear of hook-and-line. To determine if the angler(s) interviewed targeted rockfish and
 fished in rocky habitat, we retained trips if the angler reported the primary target species 
 as rockfish or bottomfish or if rockfish was reported as the secondary target species. This filter 
-replaced the Stephens-MacCall [@stephens_multispecies_2004] filtering approach. We retained 13,340 angler 
-interviews for index standardization, with 3,739 including sampled examined copper rockfish (Table \@ref(tab:pr-filter)).  
+replaced the Stephens-MacCall [@stephens_multispecies_2004] filtering approach. We retained 75,307 angler 
+interviews for index standardization, with 15,549 including sampled examined copper rockfish (Table \@ref(tab:pr-filter)).  
 
-We modeled retained catch per angler days with a negative binomial GLM in the R package sdmTMB.
-The QQ plots indicate a reasonable fit (Figure \@ref(fig:pr-qq)).  There are a handful of samples 
+We modeled retained catch per angler days with a negative binomial GLM in the R package sdmTMB. The initial model exploration included 
+a delta-lognormal model that did not converge and a delta-gamma model, which did converge.  However, the proportion of zeroes was 
+reproduced when the model was fit with a Bayesian negative binomial GLM (Figure \@ref(fig:pr-prop-zero)) and was retained despite the 
+tail on the QQ plot of the MLE fit (Figure \@ref(fig:pr-qq)).  There are a handful of samples 
 with higher than average CPUE and the authors checked with CDFW to determine whether the samples should still be included. 
 CDFW indicated data sheets were not available prior to 2012, but the catches were less than 
-the bag limits, and should be assumed to be correct. Indices with a year and district interaction were not 
-considered in model selection due to the fact that fishing locations are unknown; the scale of the relative 
-abundance of copper is higher in District 2, but there is some overlap in the fishing locations accessed 
-by this fleet (Figure \@ref(fig:pr-districtcpue)). 
+the bag limits, and should be assumed to be correct. The significant year and region interaction was included in the final 
+model selection and the index was area weighted based on the amount of interpreted rocky substrate in each district.  The ports along the northern 
+California port are such that there is little overlap in the fishing grounds between ports, with the exception being the San Francisco Bay area. 
+However, the private/rental fleet has a shorter range than the CPFV fleet and how we aggregated the data for the area weighting is appropriate (Figure \@ref(fig:pr-districtcpue)). 
 
 Based on AICc values from maximum likelihood fits Table \@ref(tab:pr-modelselect), 
-a main effects model including year, month and primary target species as categorical covariates 
-was selected (Table \@ref(tab:pr-index) and Figure \@ref(fig:pr-index)).
+a main effects model including year, district and a year and district interaction. 
+Month and primary target species were modeled as categorical covariates 
+ (Table \@ref(tab:pr-index) and Figure \@ref(fig:pr-index)).
 
 <!--Tables -->
 
@@ -128,7 +129,7 @@ sa4ss::table_format(
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(
   data_dir, "rec_indices", "crfs_pr_dockside", "north",
-   "rm_last2yrs_area_weighted", "dataFilters.csv"
+   "rm_last2yrs_area_weighted", "data_filters.csv"
 ))
 col_names <- c("Filter", "Description", "Number of Samples", "Positive Samples")
 
