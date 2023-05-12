@@ -67,13 +67,37 @@ create_management_table(
 
 \include{tex_tables/north_dead_trips_and_samples.tex}
 
+\newpage
+
 \include{tex_tables/north_live_trips_and_samples.tex}
+
+\newpage
 
 <!-- ======================================================= -->
 <!-- ************* Recreational Data *********************** --> 
 <!-- ======================================================= -->
 
-\include{tex_tables/rec_north_sample_size_by_program.tex}
+```{r, results = 'asis'}
+#\include{tex_tables/rec_north_sample_size_by_program.tex}
+
+tab <- read.csv(file.path(data_dir, "rec_bds", "forSS", "rec_north_sample_size_by_program.csv"))
+tab <- tab[, -1]
+col_names <- c("Year", "Source", "CPFV Trips", "CPFV Samples", "PR Trips", "PR Samples")
+
+sa4ss::table_format(x = tab,
+             caption = "Summary of the recreational length samples and estimated trips for the CPFV and PR fleets.",
+             label = "rec-len-samps",
+             align = 'l',
+             longtable = TRUE,
+             col_names = col_names,
+             font_size = 8,
+             custom_width = TRUE,
+             col_to_adjust = 2:6, 
+             width = c("5cm", "1.5cm", "1.5cm", "1.5cm", "1.5cm"),
+             digits = 0) 
+```
+
+\newpage
 
 <!-- ======================================================= -->
 <!-- ********************   CCFRP    *********************** --> 
@@ -82,19 +106,57 @@ create_management_table(
 \input{tex_tables/north_ccfrp_drifts_length_ages.tex}
 
 
+\newpage
+
 <!-- ======================================================= -->
 <!-- ********************  ROV       *********************** --> 
 <!-- ======================================================= -->
 
-\include{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
+
+```{r, results = 'asis'}
+#\include{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
+
+tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", "north_copper_obs_designation_mpa_group_super_year.csv"))
+col_names <- c("Super Year", "Location",  "Designation",  "Transects", "Observations")
+
+sa4ss::table_format(x = tab,
+             caption = "Number of transect and number of observations of copper rockfish for each super year, sample location, and site designation for the CDFW ROV survey",
+             label = "rov-obs",
+             align = 'l',
+             col_names = col_names,
+             custom_width = TRUE,
+             col_to_adjust = 2, 
+             width = c("3cm"),
+             digits = 0) 
+```
+
+\newpage
 
 
 <!-- ======================================================= -->
 <!-- ***************  Growth  Data  *********************** --> 
 <!-- ======================================================= -->
 
-\include{tex_tables/north_growth_age_samples.tex}
 
+```{r, results = 'asis'}
+#\include{tex_tables/north_growth_age_samples.tex}
+
+tab <- read.csv(file.path(data_dir, "ages", "forSS", "north_growth_age_samples.csv"))
+col_names <- c("Year", "Source", "Number of Ages")
+
+sa4ss::table_format(x = tab,
+             caption = "Available age data by year and source used in the growth fleets.",
+             label = "growth-age-samps",
+             align = 'l',
+             col_names = col_names,
+             custom_width = TRUE,
+             col_to_adjust = 2, 
+             width = c("4cm"),
+             digits = 0) 
+```
+
+
+\newpage
 
 <!-- ======================================================= -->
 <!-- *************  PISCO SAMPLES    *********************** --> 
@@ -112,17 +174,25 @@ table_format(x = tab,
              col_names = col_names)
 ```
 
+
+\newpage
+
 <!-- ======================================================= -->
 <!-- ***************  NWFSC WCGBTS  ************************ --> 
 <!-- ======================================================= -->
 
 \input{tex_tables/wcgbt_samples_by_year.tex}
 
+
+\newpage
 <!-- ======================================================= -->
 <!-- ***********   Model Structure      ******************** --> 
 <!-- ======================================================= -->
 
 \input{tex_tables/model_structure_north.tex}
+
+
+\newpage
 
 <!-- ======================================================= -->
 <!-- ***********   Model Parameters     ******************** --> 
@@ -174,12 +244,14 @@ table_format(x = mod_params,
              width = c("7cm", "4cm"))                         
 ```
 
+
+\newpage
+
 <!-- ======================================================= -->
 <!-- ***********    Like Contributions  ******************** --> 
 <!-- ======================================================= -->
 
 \include{tex_tables/north_likelihoods.tex}
-
 
 
 \newpage
@@ -226,33 +298,13 @@ create_biomass_table(
 \newpage
 
 <!-- ======================================================= -->
-<!-- ***********       Time Series      ******************** --> 
-<!-- ======================================================= -->
-
-\include{tex_tables/north_TimeSeries.tex}
-
-\newpage
-
-
-```{r, results = 'asis'}
-create_biomass_table(
-    doc_dir = doc_dir, 
-    prefix = NULL,
-    doc_names = c("nca", 'sca'),
-    years = 1916:2023)
-
-```
-
-<!-- ======================================================= -->
 <!-- ****************     Sensitivities      *************** --> 
 <!-- ======================================================= -->
 
 
 \include{tex_tables/sensitivities_1_final.tex}
 
-
 \newpage
-
 
 \include{tex_tables/sensitivities_2_final.tex}
 
@@ -268,7 +320,6 @@ create_biomass_table(
 <!-- ********  Reference Points & Management *************** --> 
 <!-- ======================================================= -->
 
-\newpage
 
 \include{tex_tables/south_e_ReferencePoints.tex}
 
