@@ -10,8 +10,7 @@ Adult copper rockfish have high site fidelity and are thought to not make long-r
 
 The *Sebastes* genus are viviparous with internal fertilization, many exhibit dimorphic growth with females larger at size-at-age than males, and a number of species have reproductive strategies that vary with latitude. There are very few fecundity samples from `r spp` available from California, although `r spp` are assumed to produce a single brood annually during the winter months. 
 
-The pelagic larvae are encountered in the California Cooperative Oceanic Fisheries Investigations (CalCOFI) surveys, but neither larval nor young-of-the-year can be identified visually [@thompson_larval_2017]. The
-size at birth ranges from 5-6 mm and the larvae remain pelagic until approximately 22-23 mm standard length at which time they recruit to the kelp forest canopy [@anderson_identification_1983].
+The pelagic larvae are encountered in the California Cooperative Oceanic Fisheries Investigations (CalCOFI) surveys, but neither larval nor young-of-the-year can be identified visually [@thompson_larval_2017]. The size at birth ranges from 5-6 mm and the larvae remain pelagic until approximately 22-23 mm standard length at which time they recruit to the kelp forest canopy [@anderson_identification_1983].
 
 Juvenile `r Spp` are indistinguishable from kelp (*S. atrovirens*), black-and-yellow 
 (*S. chrysomelas*), and gopher rockfishes (*S. carnatus*), all of which recruit to the 
@@ -33,7 +32,7 @@ characterized how the stock could be impacted by fisheries and other activities.
 and fish whole [@lea_biological_1999; @bizzarro_diet_2017]. @prince_food_1972 
 observed a shift in a diet dominated by arthropods in age 0 and 1 fish to a more 
 diverse diet including molluscs and fish as they aged. The study also noted that 
-juvenile copper rockfish were preyed upon by harbor seals and lingcod.
+juvenile copper rockfish were preyed upon by harbor seals and lingcod. Two tagging studies of copper rockfish indicated that most individuals have a small home range, with 91% of recaptures from CCFRP (unpublished data) and 49% of individuals from -@hanan_longterm_2012 within 1 km (straight line distance) of the original release site. Of the 117 recaptures from -@hanan_longterm_2012, four traveled greater than 50 km, with a maximum distance of 488 km (1,222 days at liberty), and four individuals crossed the biogeographic boundary of Point Conception. Of the 133 copper rockfish recaptures from CCFRP, four travelled greater than 50 km, and the maximum distanct traveled was 169 km by two different fish (291 and 524 days at liberty). 
  
 There is currently no evidence of significant stock structure from genetic 
 studies of `r spp` across the west coast. @buonaccorsi_population_2002 looked 
