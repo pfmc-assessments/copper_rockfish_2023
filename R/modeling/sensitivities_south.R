@@ -31,15 +31,16 @@ model_list <- c("est_m", #1
               "est_m_h", #3
               "no_devs", #4
               "cpfv_asym", #5
-              #"schnute", #6
-              "dirichlet", #7
-              "mi_no_hessian") #8
+              "growth_platoons", #6
+              "no_added_var", #7
+              "dirichlet", #8
+              "mi_no_hessian") #9
 
 model_list2 =  c("cut_rec_catch", #1
                 "lambda_age", #2
                 "rm_ages", #3
                 "rm_coop", #4
-                "add_coop_cpfv", #5
+                "add_coop_cpfv_lambda1", #5
                 "rm_wcgbt", #6
                 "wcgbt_index", #7
                 "rm_fishery_indices") #8
@@ -67,7 +68,9 @@ sens_4  <- SS_output( file.path(wd, model_list[4]), printstats = FALSE, verbose 
 sens_5  <- SS_output( file.path(wd, model_list[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens_6  <- SS_output( file.path(wd, model_list[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens_7  <- SS_output( file.path(wd, model_list[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-#sens_8  <- SS_output( file.path(wd, model_list[8]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens_8  <- SS_output( file.path(wd, model_list[8]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens_9  <- SS_output( file.path(wd, model_list[9]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+
 
 sens2_1  <- SS_output( file.path(wd, model_list2[1]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_2  <- SS_output( file.path(wd, model_list2[2]), printstats = FALSE, verbose = FALSE, covar = FALSE)
@@ -99,9 +102,23 @@ modelnames <- c("Base Model",
                "Estimate M & h",
                "No Rec. Devs.",
                "CPFV Selectivity Asym.",
-               #"Fix Schnute Growth",
+               "Growth Platoons",
+               "No Added Variance",
                "Dirichlet DW", 
                "McAllister-Ianelli DW")
+
+modelnames11 <- c("Base Model",
+                "Estimate M",
+                "Estimate h", 
+                "Estimate M & h",
+                "No Rec. Devs.")
+
+modelnames12 <- c("Base Model",
+                "CPFV Selectivity Asym.",
+                "Growth Platoons",
+                "No Added Variance",
+                "Dirichlet DW", 
+                "McAllister-Ianelli DW")
 
 modelnames2 <- c("Base Model",
                 "Reduce PR Catch 1970-82",
@@ -123,13 +140,16 @@ modelnames3 <- c("Base Model",
                  "Move NWFSC HKL Data Before 2014",
                  "Rm. All Surveys")
 
-x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7, sens_8, sens_9))
+x11 <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4))
+x12 <- SSsummarize(list(base, sens_5, sens_6, sens_7, sens_8, sens_9))
+
 x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, sens2_7, sens3_8))
 x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
 
-SSplotComparisons(x, 
+SSplotComparisons(x11, 
                   endyrvec = 2023, 
-                  legendlabels = modelnames, 
+                  legendlabels = modelnames11, 
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
                   filenameprefix = paste0(base_model, "_forecast_final_1_"),
@@ -138,12 +158,32 @@ SSplotComparisons(x,
                   minbthresh = -1,
                   print = TRUE)
 
-SSplotComparisons(x, 
+SSplotComparisons(x11, 
                   endyrvec = 2023, 
-                  legendlabels = modelnames, 
+                  legendlabels = modelnames11, 
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topleft", 
                   filenameprefix = paste0(base_model, "_forecast_final_1_"),
+                  subplot = c(11), 
+                  print = TRUE)
+
+SSplotComparisons(x12, 
+                  endyrvec = 2023, 
+                  legendlabels = modelnames12, 
+                  plotdir = file.path(getwd(), '_plots'), 
+                  legendloc = "topright", 
+                  filenameprefix = paste0(base_model, "_forecast_final_4_"),
+                  subplot = c(2,4), 
+                  btarg = -1,
+                  minbthresh = -1,
+                  print = TRUE)
+
+SSplotComparisons(x12, 
+                  endyrvec = 2023, 
+                  legendlabels = modelnames12, 
+                  plotdir = file.path(getwd(), '_plots'), 
+                  legendloc = "topleft", 
+                  filenameprefix = paste0(base_model, "_forecast_final_4_"),
                   subplot = c(11), 
                   print = TRUE)
 
@@ -202,9 +242,12 @@ modelnames <- c("Base Model",
                 "Estimate M & h",
                 "No Rec. Devs.",
                 "CPFV Selectivity Asym.",
-                #"Fix Schnute Growth",
+                "Growth Platoons",
+                "No Added Variance",
                 "Dirichlet DW", 
-                "McAllister-Ianelli DW",
+                "McAllister-Ianelli DW")
+
+modelnames_data <- c("Base Model",
                  "Reduce PR Catch 1970-82",
                  "Hist. CPFV Ages Lambda = 1",
                  "Rm. All Ages",
@@ -222,9 +265,8 @@ modelnames <- c("Base Model",
                  "Move NWFSC HKL Data Before 2014",
                  "Rm. All Surveys")
 
-x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7,
-                      sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, sens2_7, sens2_8, 
-                      sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7, sens_8, sens_9))
+
 
 wd_dat <- file.path(paste0(wd,"/_plots")) 
 # Sensitivity figure is something I adapted from Jason's Original that is in r4ss (SS_Sensi_plot)
@@ -248,19 +290,41 @@ Sensi_plot_dover(model.summaries=x,
                  horizontal = TRUE) 
 
 
+x <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, sens2_7, sens2_8, 
+            sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
+
+Sensi_plot_dover(model.summaries=x,
+                 dir = wd_dat,
+                 current.year=2023,
+                 mod.names=modelnames_data, #List the names of the sensitivity runs
+                 likelihood.out = c(0, 1, 0),
+                 Sensi.RE.out="Sensi_RE_out.DMP", #Saved file of relative errors
+                 CI=0.95, #Confidence interval box based on the reference model
+                 TRP.in=-1, #Target relative abundance value
+                 LRP.in=-1, #Limit relative abundance value
+                 sensi_xlab="Sensitivity scenarios", #X-axis label
+                 ylims.in=c(-1,1,-1,1,-1,1,-1,1,-1,1,-1,1,-1,1), #Y-axis label
+                 plot.figs=c(1,1,1,1,1,1), #Which plots to make/save? 
+                 #sensi.type.breaks=c(4.5, 6.5, 9.5), #vertical breaks that can separate out types of sensitivities
+                 #anno.x=c(3, 5.5, 8, 10.5), # Vertical positioning of the sensitivity types labels
+                 #anno.y=c(0.83,0.80,0.85,0.9), # Horizontal positioning of the sensitivity types labels
+                 #anno.lab=c("Parameters", "Data Weighting", "Selectivity", "Index"), #Sensitivity types labels
+                 horizontal = TRUE) 
+
 
 ###################################################################################
 # Create a Table of Results
 ###################################################################################
 
-x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7, sens_8, sens_9))
 modelnames <- c("Base Model",
                 "Estimate M",
                 "Estimate h", 
                 "Estimate M & h",
                 "No Rec. Devs.",
                 "CPFV Selectivity Asym.",
-                #"Fix Schnute Growth",
+                "Growth Platoons",
+                "No Added Variance",
                 "Dirichlet DW", 
                 "McAllister-Ianelli DW")
 

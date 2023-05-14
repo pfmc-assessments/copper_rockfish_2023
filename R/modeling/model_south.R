@@ -1837,6 +1837,8 @@ SSunavailableSpawningOutput(
   plotdir = file.path(wd, "14.0_base_forecast", "plots"))
 
 
-coop <- SS_output(file.path(wd, "14.0_base_add_coop_cpfv"))
-tune_comps(replist = coop, dir = file.path(wd, "_sensitivities", "14.0_base_add_coop_cpfv"), 
-           option = "Francis", write = FALSE, allow_up_tuning = TRUE))
+coop <- SS_output(file.path(wd, "_sensitivities", "14.0_base_add_coop_cpfv_lambda1"))
+tune_comps(replist = coop, dir = file.path(wd, "_sensitivities", "14.0_base_add_coop_cpfv_lambda1"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+
+no_var <- SS_output(file.path(wd, "_sensitivities", "14.0_base_no_added_var"))
