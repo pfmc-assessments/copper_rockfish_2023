@@ -57,6 +57,20 @@ caption = "Summary of data sources used in the base model",
 label = 'data-plot')
 ```	
 
+\FloatBarrier
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+  filein = file.path(
+    data_dir, "survey_indices", "NorthernCA.png"
+  ),
+  caption = "Map of northern California assessment area with the total number of copper rockfish observed by site for each of the fishery-indpendent
+  surveys considered. Also shown is the network of MPAs, the 3nm state maritime boundary and the CDFW blocks. The CDFW blocks are colored a darker blue 
+  if copper rockfish were observed by a survey and based on expert opinion from the fleet.",
+  label = "survey-map"
+)
+```
+
 \pagebreak
 
 <!-- ======================================================= -->

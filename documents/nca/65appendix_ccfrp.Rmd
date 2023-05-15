@@ -48,7 +48,7 @@ A negative binomial model was fit to the drift-level data (catch with a log offs
 hours). Because the average observed CPUE inside MPAs and in the reference sites exhibited 
 differing trends, we explored a year:mpa/reference site interaction, which was selected as the best 
 fit model by AIC Table \@ref(tab:ccfrp-model-selection)), The final model included
-yrea, mpa/reference categorization, depth, depth squared, and a year:mpa/reference interaction. 
+year, mpa/reference categorization, depth, depth squared, and a year:mpa/reference interaction. 
 The model was fit using the sdmTMB R package (version 0.3.0). 
 
 Based on work completed at the SWFSC, we estimate that the percent of rocky reef habitat from Point Conception to the California/Oregon border within California state waters is 892 $km^2$, of which approximately 23% is in MPAs that prohibit the harvest of groundfish (pers comm. Rebecca Miller, UCSC). There is recreational fishing outside of state waters, but habitat maps are not available at the same 2-m resolution and do not allow for direct comparisons. The final index was weighted, giving 20% of the model weight to MPAs and 80% of model 
