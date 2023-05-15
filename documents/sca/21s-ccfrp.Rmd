@@ -8,7 +8,7 @@ Since 2007, the \gls{s-ccfrp} has monitored several areas in California to evalu
 (A&ntilde;o Nuevo, Point Lobos, Point Buchon, and Piedras Blancas) to include the entire California coast.
 Fish are collected by volunteer anglers aboard \glspl{cpfv} guided by one of the following academic institutions based on proximity to fishing location: Humboldt State University; Bodega Marine Laboratories; Moss Landing Marine Laboratories; Cal Poly San Luis Obispo; University of California, Santa Barbara; and Scripps Institution of Oceanography.
 
-The survey consists of fishing with hook-and-line gear for 30-45 minutes within randomly chosen 500 by 500-m grid cells within and outside \glspl{mpa}. Prior to 2017, all fish were measured for length and release or descended to depth; since then, some were sampled for otoliths and fin clips.
+The survey consists of fishing with hook and line gear for 30-45 minutes within randomly chosen 500 by 500-m grid cells within and outside \glspl{mpa}. Prior to 2017, all fish were measured for length and release or descended to depth; since then, some were sampled for otoliths and fin clips.
 
 The estimated index of abundance was weighted based on sample locations outside (reference) and inside MPAs (73 and 80 percent of areas open to fishing in the north and south, respectively, see Appendix Section \ref{cdfw-rov-index} for additional information). The highest index point is associated with the first index year, 2017, varies between 2018-2021, and has the lowest value in 2022 (Figure \ref{fig:ccfrp-index-main}, see Appendix Section \ref{ccfrp-index} for additional information on the development of the index).
 
