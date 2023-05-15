@@ -1,4 +1,7 @@
 \clearpage
+
+\floatplacement{figure}{H}
+
 # Figures
 
 ## Data
