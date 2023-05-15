@@ -127,7 +127,7 @@ Data from the NWFSC WCGBT survey were not used in the base model to develop an i
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "survey_indices", "wcgbt", "110_2005minyear", "copper_rockfish", "wcgbts",  "delta_lognormal_mix", "index", "index.png"), 
+filein = file.path(data_dir, "survey_indices", "wcgbt", "110m_2005minyear", "copper_rockfish", "wcgbts",  "delta_lognormal_mix", "index", "index.png"), 
 caption = "Estimated index of abundance based on NWFSC WCGBT survey data starting in 2005 and limiting to observations between 55-110 m where CA is the area south of Point Conception and coastwide is all data within California.",
 label = 'wcgbt-index')
 ```
