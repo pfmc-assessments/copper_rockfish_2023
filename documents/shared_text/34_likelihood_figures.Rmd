@@ -28,7 +28,7 @@ label = 'r0-depl')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(paste0(model_dir, "_profile_SR_BH_steep_prior_like_1"),  "piner_panel_SR_BH_steep.png"), 
-caption = "Change in the negative log-likelihood across a range of steepness values",
+caption = "Change in the negative log-likelihood across a range of steepness (h) values",
 label = 'h-profile')
 ```
 
@@ -37,7 +37,7 @@ label = 'h-profile')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(paste0(model_dir, "_profile_SR_BH_steep_prior_like_1"),  "SR_BH_steep_trajectories_compare1_spawnbio.png"), 
-caption = "Change in the estimate of spawning output across a range of steepness values",
+caption = "Change in the estimate of spawning output across a range of steepness (h) values",
 label = 'h-ssb')
 ```
 
@@ -46,7 +46,7 @@ label = 'h-ssb')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(paste0(model_dir, "_profile_SR_BH_steep_prior_like_1"),  "SR_BH_steep_trajectories_compare3_Bratio.png"), 
-caption = "Change in the estimate of fraction unfished across a range of steepness values",
+caption = "Change in the estimate of fraction unfished across a range of steepness (h) values",
 label = 'h-depl')
 ```
 
@@ -55,7 +55,7 @@ label = 'h-depl')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(paste0(model_dir, "_profile_NatM_uniform_Fem_GP_1_prior_like_1"),  "piner_panel_NatM_uniform_Fem_GP_1.png"), 
-caption = "Change in the negative log-likelihood across a range of female natural mortality values",
+caption = "Change in the negative log-likelihood across a range of female natural mortality (M) values",
 label = 'm-profile')
 ```
 
@@ -65,7 +65,7 @@ label = 'm-profile')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(paste0(model_dir, "_profile_NatM_uniform_Fem_GP_1_prior_like_1"),  "NatM_uniform_Fem_GP_1_trajectories_compare1_spawnbio.png"), 
-caption = "Change in the estimate of spawning output across a range of female natural mortality values",
+caption = "Change in the estimate of spawning output across a range of female natural mortality (M) values",
 label = 'm-ssb')
 ```
 
@@ -75,7 +75,7 @@ label = 'm-ssb')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(paste0(model_dir, "_profile_NatM_uniform_Fem_GP_1_prior_like_1"),  "NatM_uniform_Fem_GP_1_trajectories_compare3_Bratio.png"), 
-caption = "Change in the estimate of fraction unfished across a range of female natural values",
+caption = "Change in the estimate of fraction unfished across a range of female natural (M) values",
 label = 'm-depl')
 ```
 
