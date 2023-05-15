@@ -27,17 +27,17 @@ Data was limited to surveys conducted by UCSC and UCSB because `r spp` were not
 observed by HSU and sites surveyed by VRG typically either saw very few `r spp` 
 or were not consistently sampled across the time series.  The UCSC and UCSB campus 
 sites were separated to develop two indices for the northern and southern model regions.
-We eliminated sites that were sampled in less than 80% of the survey years for each campus.  `r Spp` were only observed on bottom transects and so mid-water and canopy transects were removed.  The inner reef (shallow) transects were removed due to rare `r spp` observations.  Divers noted approximate water visibility and transects with visibility less than 3 m were removed.  We also retained only fish greater than 17 cm to construct an adult index.  
+We eliminated sites that were sampled in less than 80 percent of the survey years for each campus.  `r Spp` were only observed on bottom transects and so mid-water and canopy transects were removed.  The inner reef (shallow) transects were removed due to rare `r spp` observations.  Divers noted approximate water visibility and transects with visibility less than 3 m were removed.  We also retained only fish greater than 17 cm to construct an adult index.  
 
 ```{asis, echo = model.area=='north'}
 
-Early years with less consistent sampling were eliminated such that the time series for UCSC began in 2001 and extended through 2021.  The majority of UCSC sites occurred within sites that became MPAs.  Three sites that did not become MPAs were removed to create an index with a consistent change in selectivity following MPA implementation.  After filtering, sites that remained in the UCSC dataset were centered around the Monterey peninsula.  Sample sizes of copper rockfish observed by year at all retained UCSC sites ranged from 1 to 28 fish (Table \ref{tab:pisco-data}).
+Early years with less consistent sampling were eliminated such that the time series for UCSC began in 2001 and extended through 2021.  The majority of UCSC sites occurred within sites that became MPAs.  Three sites that did not become MPAs were removed to create an index with a consistent change in selectivity following MPA implementation.  After filtering, sites that remained in the UCSC dataset were centered around the Monterey peninsula. Sample sizes of copper rockfish observed by year at all retained UCSC sites ranged from 1 to 28 fish (Table \ref{tab:pisco-data}).
 
 ```
 
 ```{asis, echo = model.area=='south'}
 
-Early years with less consistent sampling were eliminated such that the time series for UCSB began in 2004 and extended through 2021.  Sites surveyed by UCSB were mixed in distribution inside and outside MPA locations and therefore were not filtered for this criterion.  After filtering, sites that remained in the UCSC dataset were centered around the northern Channel Islands with a few on the Santa Barbara Channel mainland.  Sample sizes of copper rockfish observed by year at all retained sites ranged from 15 to 39 fish for UCSB (Table \ref{tab:pisco-data}).  
+Early years with less consistent sampling were eliminated such that the time series for UCSB began in 2004 and extended through 2021.  Sites surveyed by UCSB were mixed in distribution inside and outside MPA locations and therefore were not filtered for this criterion.  After filtering, sites that remained in the UCSC dataset were centered around the northern Channel Islands with a few on the Santa Barbara Channel mainland. Sample sizes of copper rockfish observed by year at all retained sites ranged from 15 to 39 fish for UCSB (Table \ref{tab:pisco-data}).  
 
 ```
 
@@ -49,7 +49,7 @@ the UCSB and UCSC campuses in southern and central California.  Surveys by UCSB 
 conducted between 2000 and 2018 and by UCSC between 1999 and 2016.  Juvenile `r spp` 
 are difficult to distinguish from juvenile gopher rockfish (*Sebastes carnatus*) and the 
 data from UCSB combines counts of these species into a complex.  For this reason, 
-we determined this data to be inappropriate for construction of a `r spp` recrutiment 
+we determined this data to be inappropriate for construction of a `r spp` recruitment 
 index to be used within the assessment.  While data from UCSC reports distinct counts 
 of copper and gopher rockfish, the concern remains that the `r spp` counts may not be 
 accurate due to this morphological identification difficulty.  Additionally, collections 
