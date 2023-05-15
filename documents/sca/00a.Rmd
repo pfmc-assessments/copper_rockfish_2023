@@ -76,7 +76,7 @@ quants <- data.frame(year = years,
                      sb = sb, 
                      depl = depl)
 depl_final <- quants[quants$year == '2023', 'depl']
-sb_final <- quants[quants$years == '2023', 'sb']
+sb_final <- quants[quants$year == '2023', 'sb']
 min_depl <- min(quants$depl)
 min_depl_year <- quants[quants$depl == min_depl, 'year']
 
@@ -86,6 +86,10 @@ est_ofl <- round(south_model$derived_quants[south_model$derived_quants$Label %in
 
 est_abc <- round(south_model$derived_quants[south_model$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"] +
   north_model$derived_quants[north_model$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"], 2)
+
+
+model_recent_depl <- data.frame(year = 2011:2022, depl = model$derived_quants[model$derived_quants$Label %in% paste0("Bratio_", 2011:2022), "Value"])
+
 
 
 ```

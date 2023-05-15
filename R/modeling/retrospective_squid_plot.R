@@ -14,9 +14,9 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
 }
 
-model_dir <- file.path(user_dir, "models", "nca")
-base_name <- "9.8_selex_fix"
-retro.folder <- file.path(user_dir, "models", "nca", paste0(base_name, "_retro"))
+model_dir <- file.path(user_dir, "models", "sca")
+base_name <- "14.0_base"
+retro.folder <- file.path(user_dir, "models", "sca", paste0(base_name, "_retro"))
 
 
 # Read in the retrospective runs
@@ -63,12 +63,12 @@ dev.off()
 
 
 SSplotComparisons(mysummary,
-                  endyrvec = rev(20018:2022),
+                  endyrvec = 2023,
                   legendlabels = modelnames, 	
-                  plotdir = retro.folder,
+                  plotdir = file.path(retro.folder, "retro"),
                   btarg = -1,
-                  minbthresh = -1,
                   legendloc = "topright",
+                  filenameprefix = paste0(base_model, "_project_"),
                   print = TRUE,
                   plot = FALSE,
                   pdf = FALSE)
@@ -80,7 +80,7 @@ SSplotComparisons(mysummary,
 x <- mysummary
 ii <- 1:length(modelnames)
 n  <- length(modelnames)
-out <- matrix(NA, 28, max(ii))
+out <- matrix(NA, 29, max(ii))
 
 out <- rbind(
   as.numeric(x$likelihoods[x$likelihoods$Label == "TOTAL",1:n]), 
@@ -109,9 +109,10 @@ out <- rbind(
   as.numeric(x$pars[x$pars$Label == "CV_young_Mal_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "CV_old_Mal_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "Size_DblN_peak_Rec_CPFV(3)", 1:n]),
-  as.numeric(x$pars[x$pars$Label == "Size_DblN_peak_Rec_PR(4)", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "Size_DblN_peak_Rec_Private(4)", 1:n]),
   as.numeric(x$pars[x$pars$Label == "Size_DblN_peak_CCFRP(5)", 1:n]),
-  as.numeric(x$pars[x$pars$Label == "Size_inflection_CDFW_ROV(6)", 1:n]))  
+  as.numeric(x$pars[x$pars$Label == "Size_DblN_peak_CDFW_ROV(6)", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "Size_inflection_NWFSC_HKL(7)", 1:n]))  
 
 out = as.data.frame(out)
 colnames(out) = modelnames
@@ -143,6 +144,7 @@ rownames(out) = c("Total Likelihood",
                   "CPFV Peak Selex",
                   "PR Peak Selex",
                   "CCFRP Peak Selex", 
-                  "CDFW ROV Peak Selex")
+                  "CDFW ROV Peak Selex", 
+                  "NWFSC HKL Peak Selex")
 
 write.csv(out, file = file.path(retro.folder, paste0(base_name, "_retros.csv")))

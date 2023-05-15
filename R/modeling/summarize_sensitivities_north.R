@@ -34,18 +34,21 @@ model_list <- c("est_m", #1
                 "dirichlet", #6
                 "mi") #7
 
-model_list2 =  c("cut_pr_catch", #1
-                 "add_hist_rec_to_growth", #2
-                 "lens_only", #3
-                 "rm_coop_ages", #4
-                 "rm_all_ages") #5
+model_list2 =  c("lmin_equal_ave", #1
+                 "lmin_equal_south", #2
+                 "cut_pr_catch", #3
+                 "add_hist_rec_to_growth", #4
+                 "rov_super_period", #5
+                 "lens_only") #6
                 
-model_list3 =  c("rm_ccfrp", #1
-                 "rm_rov", #2
-                 "rm_all_surveys", #3
-                 "rm_cpfv_index", #4
-                 "rm_dwv", #5
-                 "rm_pr_index") #6
+model_list3 =  c("rm_coop_ages", #1
+                 "rm_all_ages", #2
+                 "rm_ccfrp", #3
+                 "rm_rov", #4
+                 "rm_all_surveys", #5
+                 "rm_cpfv_index", #6
+                 "rm_dwv", #7
+                 "rm_pr_index") #8
 
 model_list <- paste0(base_model, "_", model_list)
 model_list2 <- paste0(base_model, "_", model_list2)
@@ -61,17 +64,22 @@ sens_4  <- SS_output( file.path(wd, model_list[4]), printstats = FALSE, verbose 
 sens_5  <- SS_output( file.path(wd, model_list[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens_6  <- SS_output( file.path(wd, model_list[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens_7  <- SS_output( file.path(wd, model_list[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+
 sens2_1  <- SS_output( file.path(wd, model_list2[1]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_2  <- SS_output( file.path(wd, model_list2[2]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_3  <- SS_output( file.path(wd, model_list2[3]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_4  <- SS_output( file.path(wd, model_list2[4]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_5  <- SS_output( file.path(wd, model_list2[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens2_6  <- SS_output( file.path(wd, model_list2[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+
 sens3_1  <- SS_output( file.path(wd, model_list3[1]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens3_2  <- SS_output( file.path(wd, model_list3[2]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens3_3  <- SS_output( file.path(wd, model_list3[3]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens3_4  <- SS_output( file.path(wd, model_list3[4]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens3_5  <- SS_output( file.path(wd, model_list3[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens3_6  <- SS_output( file.path(wd, model_list3[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens3_7  <- SS_output( file.path(wd, model_list3[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens3_8  <- SS_output( file.path(wd, model_list3[8]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 
 
 modelnames <- c("Base Model",
@@ -84,13 +92,16 @@ modelnames <- c("Base Model",
                 "McAllister-Ianelli DW")
 
 modelnames2 <- c("Base Model",
+                 "L2 Equal to 13.6 cm",
+                 "L2 Equal to South Ests.",
                  "Reduce Rec. Catch 1970-82",
                  "Add Hist. CPFV Ages to Growth",
-                 "Lengths Only", 
-                 "Rm. Coop. Ages",
-                 "Rm. All Ages")
+                 "ROV Len. Super Period",
+                 "Lengths Only")
 
 modelnames3 <- c("Base Model",
+                 "Rm. Coop. Ages",
+                 "Rm. All Ages",
                  "Rm. CCFRP",
                  "Rm. CDFW ROV",
                  "Rm. All Surveys",
@@ -99,8 +110,8 @@ modelnames3 <- c("Base Model",
                  "Rm. PR Index")
 
 x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
-x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5))
-x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6))
+x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6))
+x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
 
 SSplotComparisons(x, 
                   endyrvec = 2023, 
@@ -119,7 +130,7 @@ SSplotComparisons(x,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topleft", 
                   filenameprefix = paste0(base_model, "_forecast_final_1_"),
-                  subplot = c(9:14), 
+                  subplot = c(11), 
                   print = TRUE)
 
 SSplotComparisons(x2, 
@@ -177,22 +188,9 @@ modelnames <- c("Base Model",
                 "No Added Variance",
                 "No Rec. Devs.",
                 "Dirichlet DW", 
-                "McAllister-Ianelli DW",
-                 "Reduce Rec. Catch 1970-82",
-                 "Add Hist. CPFV Ages to Growth",
-                 "Lengths Only", 
-                 "Rm. Coop. Ages",
-                 "Rm. All Ages",
-                 "Rm. CCFRP",
-                 "Rm. CDFW ROV",
-                 "Rm. All Surveys",
-                 "Rm. CPFV Index", 
-                 "Rm. DWV Index",
-                 "Rm. PR Index")
+                "McAllister-Ianelli DW")
 
-x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7,
-                      sens2_1, sens2_2, sens2_3, sens2_4, sens2_5,
-                      sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6))
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
 
 wd_dat <- file.path(paste0(wd,"/_plots")) 
 # Sensitivity figure is something I adapted from Jason's Original that is in r4ss (SS_Sensi_plot)
@@ -215,7 +213,25 @@ Sensi_plot_dover(model.summaries=x,
                  #anno.lab=c("Parameters", "Data Weighting", "Selectivity", "Index"), #Sensitivity types labels
                  horizontal = TRUE) 
 
+modelnames <- c("Base Model",
+                "L2 Equal to 13.6 cm",
+                "L2 Equal to South Ests.",
+                 "Reduce Rec. Catch 1970-82",
+                 "Add Hist. CPFV Ages to Growth",
+                 "ROV Lens. Super Period",
+                 "Lengths Only", 
+                 "Rm. Coop. Ages",
+                 "Rm. All Ages",
+                 "Rm. CCFRP",
+                 "Rm. CDFW ROV",
+                 "Rm. All Surveys",
+                 "Rm. CPFV Index", 
+                 "Rm. DWV Index",
+                 "Rm. PR Index")
 
+x <- SSsummarize(list(base, 
+                      sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, 
+                      sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
 
 ###################################################################################
 # Create a Table of Results
