@@ -100,7 +100,19 @@ sa4ss::table_format(x = ind,
 
 \newpage
 
+\FloatBarrier
 
+```{r, results = 'asis'}
+#sa4ss::add_figure(
+#filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "mpa_site_cpue.png"), 
+#caption = "Map of CCFRP and CDFW ROV sampling sites with the total number of copper rockfish 
+#observed by site. The 3nm maritime limit and outline of California MPAs are also shown.  The CDFW blocks are 
+##colored a darker blue where experts have indicated copper rockfish can be found.",
+#label = 'ccfrp-avg-cpue')
+```
+
+\FloatBarrier
+\newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
