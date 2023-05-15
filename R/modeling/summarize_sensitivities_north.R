@@ -29,7 +29,7 @@ base_loc <- file.path(user_dir, "models", area, base_model)
 model_list <- c("est_m", #1
                 "est_h", #2
                 "est_m_h", #3
-                #"schnute",#4
+                "no_added_var",#4
                 "no_devs", #5
                 "dirichlet", #6
                 "mi") #7
@@ -60,7 +60,7 @@ sens_3  <- SS_output( file.path(wd, model_list[3]), printstats = FALSE, verbose 
 sens_4  <- SS_output( file.path(wd, model_list[4]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens_5  <- SS_output( file.path(wd, model_list[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens_6  <- SS_output( file.path(wd, model_list[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-#sens_7  <- SS_output( file.path(wd, model_list[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
+sens_7  <- SS_output( file.path(wd, model_list[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_1  <- SS_output( file.path(wd, model_list2[1]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_2  <- SS_output( file.path(wd, model_list2[2]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens2_3  <- SS_output( file.path(wd, model_list2[3]), printstats = FALSE, verbose = FALSE, covar = FALSE)
@@ -78,7 +78,7 @@ modelnames <- c("Base Model",
                 "Estimate M",
                 "Estimate h", 
                 "Estimate M & h",
-                #"Fix Schnute Growth",
+                "No Added Variance",
                 "No Rec. Devs.",
                 "Dirichlet DW", 
                 "McAllister-Ianelli DW")
@@ -98,7 +98,7 @@ modelnames3 <- c("Base Model",
                  "Rm. DWV Index",
                  "Rm. PR Index")
 
-x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6))
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
 x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5))
 x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6))
 
@@ -174,7 +174,7 @@ modelnames <- c("Base Model",
                 "Estimate M",
                 "Estimate h", 
                 "Estimate M & h",
-                #"Fix Schnute Growth",
+                "No Added Variance",
                 "No Rec. Devs.",
                 "Dirichlet DW", 
                 "McAllister-Ianelli DW",
@@ -190,7 +190,7 @@ modelnames <- c("Base Model",
                  "Rm. DWV Index",
                  "Rm. PR Index")
 
-x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6,
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7,
                       sens2_1, sens2_2, sens2_3, sens2_4, sens2_5,
                       sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6))
 
@@ -221,12 +221,12 @@ Sensi_plot_dover(model.summaries=x,
 # Create a Table of Results
 ###################################################################################
 
-x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6))
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
 modelnames <- c("Base Model",
                 "Estimate M",
                 "Estimate h", 
                 "Estimate M & h",
-                #"Fix Schnute Growth",
+                "No Added Variance",
                 "No Rec. Devs.",
                 "Dirichlet DW", 
                 "McAllister-Ianelli DW")

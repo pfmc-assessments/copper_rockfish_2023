@@ -15,7 +15,7 @@ if( grepl("Chantel", user) ){
 }
 
 model_dir <- file.path(user_dir, "models", "nca")
-base_name <- "9.2_com_logistic"
+base_name <- "9.8_selex_fix"
 retro.folder <- file.path(user_dir, "models", "nca", paste0(base_name, "_retro"))
 
 
@@ -42,17 +42,17 @@ retro15 = SS_output(file.path(retro.folder, "retro", "retro-3"), printstats = FA
 #retro19 = SS_output(file.path(retro.folder, "retro", "retro-7"), printstats = FALSE, verbose = FALSE, covar = FALSE)
 #retro20 = SS_output(file.path(retro.folder, "retro", "retro-8"), printstats = FALSE, verbose = FALSE, covar = FALSE)
 
-modelnames <- c("Base Model", paste0("Retro -", 1:15))
+modelnames <- c("Base Model", paste0("Retro -", 1:5))
 
 # Summarize the results across models
-mysummary <- SSsummarize(list(base, retro1, retro2, retro3, retro4, retro5,
-                              retro6, retro7, retro8, retro9, retro10, retro11, retro12,
-                              retro13, retro14, retro15))#, retro16, retro17, retro18, retro19, retro20))
+mysummary <- SSsummarize(list(base, retro1, retro2, retro3, retro4, retro5))#,
+                              #retro6, retro7, retro8, retro9, retro10, retro11, retro12,
+                              #retro13, retro14, retro15))#, retro16, retro17, retro18, retro19, retro20))
 
 HandyCode::pngfun(wd = retro.folder, file = "Squid_RecDevs_short.png", h = 7, w = 7)
 SSplotRetroRecruits(retroSummary = mysummary,
-                    endyrvec = rev(2008:2023),
-                    cohorts = 2010:2023,
+                    endyrvec = rev(2013:2023), #rev(2008:2023),
+                    cohorts = 2016:2022, #2010:2023,
                     ylim=NULL,
                     uncertainty=FALSE,
                     labels=c('Recruitment deviation', 'Recruitment (billions)', 'relative to recent estimate', 'Age'),
@@ -80,7 +80,7 @@ SSplotComparisons(mysummary,
 x <- mysummary
 ii <- 1:length(modelnames)
 n  <- length(modelnames)
-out <- matrix(NA, 24, max(ii))
+out <- matrix(NA, 28, max(ii))
 
 out <- rbind(
   as.numeric(x$likelihoods[x$likelihoods$Label == "TOTAL",1:n]), 
@@ -107,7 +107,11 @@ out <- rbind(
   as.numeric(x$pars[x$pars$Label == "L_at_Amax_Mal_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "VonBert_K_Mal_GP_1", 1:n]),
   as.numeric(x$pars[x$pars$Label == "CV_young_Mal_GP_1", 1:n]),
-  as.numeric(x$pars[x$pars$Label == "CV_old_Mal_GP_1", 1:n]) )  
+  as.numeric(x$pars[x$pars$Label == "CV_old_Mal_GP_1", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "Size_DblN_peak_Rec_CPFV(3)", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "Size_DblN_peak_Rec_PR(4)", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "Size_DblN_peak_CCFRP(5)", 1:n]),
+  as.numeric(x$pars[x$pars$Label == "Size_inflection_CDFW_ROV(6)", 1:n]))  
 
 out = as.data.frame(out)
 colnames(out) = modelnames
@@ -135,6 +139,10 @@ rownames(out) = c("Total Likelihood",
                   "Length at Amax - Male",
                   "Von Bert. k - Male",
                   "CV young - Male",
-                  "CV old - Male")
+                  "CV old - Male",
+                  "CPFV Peak Selex",
+                  "PR Peak Selex",
+                  "CCFRP Peak Selex", 
+                  "CDFW ROV Peak Selex")
 
 write.csv(out, file = file.path(retro.folder, paste0(base_name, "_retros.csv")))
