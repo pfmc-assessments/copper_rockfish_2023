@@ -32,16 +32,12 @@ Cells not consistently sampled over time were excluded as well as cells that nev
 encountered `r spp`.
 The full dataset for northern California contained 8,770 drifts, 23% of which encountered 
 `r spp`.  After applying filters to remove drifts from sites that were not consistently sampled,
-marked for exclusion in the data, or did not fish a minimum of xxx, 7,078 drifts remained for 
+marked for exclusion in the data, or did not fish a minimum of 15 minutes, 7,078 drifts remained for 
 for index standardization, with 1,757 drifts encountering `r spp`.
 
-
-The CCFRP index includes all of the 
-MPAs currently sampled from 2017-2020 and the core central California sampling sites 
-from 2007-2016. Trends among all of the MPAs sampled increased along the entire coast 
-from 2017-2020. The final index (Table \@ref(tab:ccfrp-index)) 
+The CCFRP index includes all of the MPAs currently sampled from 2017-2022 and the core central California sampling sites 
+from 2007-2022. Trends inside all of the MPAs sampled increased from 2017-2020. The final index (Table \@ref(tab:ccfrp-index)) 
 represents a similar trend to the arithmetic mean of the annual CPUE (Figure \@ref(fig:ccfrp-avg-cpue)).
-
 We modeled retained catch per angler hour (CPUE; number of fish per angler hour) 
 using MLE fr. Indices with a year and area (location along the coast) interaction were not 
 considered in model selection, but a year and MPA interaction was modeled. Figure \@ref(fig:ccfrp-avg-cpue)
@@ -50,20 +46,12 @@ and illustrates the distinct trends of increasing average CPUE over time.
 
 A negative binomial model was fit to the drift-level data (catch with a log offset for angler 
 hours). Because the average observed CPUE inside MPAs and in the reference sites exhibited 
-differing trends, we explored a YEAR:SITE interaction, which was selected as the best 
+differing trends, we explored a year:mpa/reference site interaction, which was selected as the best 
 fit model by AIC Table \@ref(tab:ccfrp-model-selection)), The final model included
 yrea, mpa/reference categorization, depth, depth squared, and a year:mpa/reference interaction. 
 The model was fit using the sdmTMB R package (version 0.3.0). 
 
-Based on work completed at the SWFSC, we estimate that the percent of rocky reef habitat from Point Conception to the California border within California state waters is 892 $km^2$, of which approximately 23% is in MPAs that prohibit the harvest of groundfish (pers comm. Rebecca Miller, UCSC). There is recreational fishing outside of state waters, but habitat maps are not available at the same 2-m resolution and do not allow for direct comparisons. To estimate the area 
-of rocky substrate south of Point conception, we separated the southern California Bight into four areas, 1) CRFS District 
-1 along the mainland coast, 2) CRFS District 2 along the mainland coast, 3) state waters encompassing the southern 
-Channel Islands, and 4) state waters encompassing the northern Channel Islands.  We calculated the total area in each of the 
-four regions, as well as the total area with available interpreted substrate.  By also calculating the total area open and closed to fishing, i.e., MPAs and CCAs, we expanded the known fraction of rocky substrate to the areas within state 
-waters where no substrate interpreted maps exist.  This resulted in an estimate of 27% of the available rocky substrate 
-within closed areas to fishing in southern California state waters. 
-
-The final index was weighted, giving 20% of the model weight to MPAs and 80% of model 
+Based on work completed at the SWFSC, we estimate that the percent of rocky reef habitat from Point Conception to the California/Oregon border within California state waters is 892 $km^2$, of which approximately 23% is in MPAs that prohibit the harvest of groundfish (pers comm. Rebecca Miller, UCSC). There is recreational fishing outside of state waters, but habitat maps are not available at the same 2-m resolution and do not allow for direct comparisons. The final index was weighted, giving 20% of the model weight to MPAs and 80% of model 
 weight to the "open" areas within the state.
 
 
@@ -112,14 +100,7 @@ sa4ss::table_format(x = ind,
 
 \newpage
 
-```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "area_weighted", "qq.png"), 
-caption = "QQ-plot for the CCFRP survey.",
-label = 'ccfrp-qq')
-```
 
-\newpage 
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -127,6 +108,15 @@ filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "mpa_site_cpue.
 caption = "Average CPUE by site with trends prior to standardization in the MPA and REF areas.",
 label = 'ccfrp-avg-cpue')
 ```
+
+\newpage
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "area_weighted", "qq.png"), 
+caption = "QQ-plot for the CCFRP survey.",
+label = 'ccfrp-qq')
+```
+
 
 \newpage
 
