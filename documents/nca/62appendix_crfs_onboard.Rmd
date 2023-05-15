@@ -28,9 +28,7 @@ began in 1999, but the sample sizes were small during the first years of the pro
 years 1999-2003 also represent years where a number of regulations changed including gear limits, 
 bag limits, and spatial closures.  Due to COVID-19, no onboard sampling took place in 2020. 
 In 2021 the onboard sampling 
-resumed in August, but not at full capacity. The 2021 stock assessment 
-had also been released by August 2021 indicating the stock was below the biomass 
-at 40%.  The southern California CPFV began an organized effort to avoid copper 
+resumed in August, but not at full capacity. The southern California CPFV began an organized effort to avoid copper 
 rockfish and encourage their clientele to release and descend copper rockfish 
 when encountered. The northern California fleet also participated in this effort to an extent. 
 In 2022, the CDFW implemented the one copper rockfish sub-bag 
@@ -49,7 +47,7 @@ We modeled catch per angler minutes fished (CPUE) by fishing drift.
 Prior to any modeling, the SWFSC QA/QC'd the data to ensure the location information was correct. 
 Each drift was overlaid with the available interpreted substrate layer that characterizes 
 rocky and hard substrate, assigned to a rocky reef, and the distance of the 
-drift start location calculated.  In addition, the depth of the start location was 
+drift start location to rocky reef was calculated.  In addition, the depth of the start location was 
 interpreted from the 2 m resolution bathymetry as well as 90 m resolution bathymetry 
 layer for comparison. For drifts missing depth location, we assigned depth based on the 
 best available depth based on the bathymetry.
