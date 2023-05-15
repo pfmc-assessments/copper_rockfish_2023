@@ -3,7 +3,7 @@
 ##   May 2023
 ##
 ##
-################################################################
+
 
 library(ggplot2)
 library(dplyr)
@@ -18,8 +18,8 @@ tags <- tags1 %>%
   filter(Exclude != "TRUE") %>%
   mutate_at(vars(Distance_traveled_km, Recapture_Lat_DD, Release_Lat_DD), as.numeric) 
 
-over_halfKM <- tags %>%
-  filter(Distance_traveled_km>.5) %>%
+over_KM <- tags %>%
+  filter(Distance_traveled_km>49) %>%
   mutate(Direction_traveled = ifelse(Recapture_Lat_DD-Release_Lat_DD >0, "north", "south"))
 
 
