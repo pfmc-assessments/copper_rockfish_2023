@@ -1,6 +1,6 @@
 ## Base Model Results
 
-The base model described here is only for the portion of the `r spp` stock in California south of Point Conception.  Descriptions of the summed total biomass, spawning output, and stock status for the full California stock of `r spp` are described in later sections.  
+The base model described here is only for the portion of the `r spp` stock in California south of Point Conception, \PtC.  Descriptions of the summed total biomass, spawning output, and stock status for the full California stock of `r spp` are described in later sections.  
 
 The base model parameter estimates along with approximate asymptotic standard errors (SD column) are shown in Table \ref{tab:params} and the likelihood components are shown in Table \ref{tab:south-likes}. The estimated data weights by the Francis method are shown in Table \ref{tab:dw}. Estimates of the `r spp` population size `r area` over time are shown in Table \ref{tab:south-timeseries}. 
 
