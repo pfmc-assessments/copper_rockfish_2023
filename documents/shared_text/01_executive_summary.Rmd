@@ -43,7 +43,7 @@ the observed data while concomitantly balancing the desire to capture the centra
 
 ## Stock Output and Dynamics{-}
 
-Spawning output of `r spp` was estimated within each sub-area model and is reported here for each area (Tables \ref{tab:south-ssbES} and \ref{tab:north-ssbES}) and the combined estimates for the California stock (Table \ref{tab:es-ca-status}). Uncertainty is estimated within each model and is only reported for the model area results south and north of Point Conception. The spawning output, in terms of millions of eggs, south of Point Conception was estimated at `r round(south_model$derived_quants[south_model$derived_quants$Label %in% paste0("SSB_", endyr), "Value"], 2)`, an unfished spawning output of `r round(south_model$derived_quants[south_model$derived_quants$Label == "SSB_Virgin", "Value"], 2)`, and relative spawning output of `r round(south_model$derived_quants[south_model$derived_quants$Label %in% paste0("SSB_", endyr), "Value"]/south_model$derived_quants[south_model$derived_quants$Label == "SSB_Virgin", "Value"] , 2)`. The spawning output north of Point Conception was estimated at `r round(north_model$derived_quants[north_model$derived_quants$Label %in% paste0("SSB_", endyr), "Value"], 2)`, an unfished spawning output of `r round(north_model$derived_quants[north_model$derived_quants$Label == "SSB_Virgin", "Value"], 2)`, and relative spawning output of `r round(north_model$derived_quants[north_model$derived_quants$Label %in% paste0("SSB_", endyr), "Value"]/north_model$derived_quants[south_model$derived_quants$Label == "SSB_Virgin", "Value"] , 2)`. Across California, the stock for `r spp`, has a combined spawning output of `r sb_final`, unfished spawning output of `r sb0`, and a relative spawning output of `r depl_final`. The stock is estimated to be above the management target at the start of 2023 (Figures \ref{fig:es-sb-all} and \ref{fig:es-depl-all}).  
+Spawning output of `r spp` was estimated within each sub-area model and is reported here for each area (Tables \ref{tab:south-ssbES} and \ref{tab:north-ssbES}) and the combined estimates for the California stock (Table \ref{tab:es-ca-status}). Uncertainty is estimated within each model and is only reported for the model area results south and north of Point Conception. The spawning output, in terms of millions of eggs, south of Point Conception was estimated at `r round(south_model$derived_quants[south_model$derived_quants$Label %in% paste0("SSB_", endyr), "Value"], 2)`, an unfished spawning output of `r round(south_model$derived_quants[south_model$derived_quants$Label == "SSB_Virgin", "Value"], 2)`, and relative spawning output of `r round(south_model$derived_quants[south_model$derived_quants$Label %in% paste0("SSB_", endyr), "Value"]/south_model$derived_quants[south_model$derived_quants$Label == "SSB_Virgin", "Value"] , 2)`. The spawning output north of Point Conception was estimated at `r round(north_model$derived_quants[north_model$derived_quants$Label %in% paste0("SSB_", endyr), "Value"], 2)`, an unfished spawning output of `r round(north_model$derived_quants[north_model$derived_quants$Label == "SSB_Virgin", "Value"], 2)`, and relative spawning output of `r round(north_model$derived_quants[north_model$derived_quants$Label %in% paste0("SSB_", endyr), "Value"]/north_model$derived_quants[south_model$derived_quants$Label == "SSB_Virgin", "Value"] , 2)`. Across California, the stock for `r spp`, has a combined spawning output of `r sb_final`, unfished spawning output of `r sb0`, and a relative spawning output of `r 100*depl_final` percent. The stock is estimated to be above the management target at the start of 2023 (Figures \ref{fig:es-sb-all} and \ref{fig:es-depl-all}).  
 
 The spawning output declined for each sub-area between the early 1970s and continued through the mid-1990s (Figures \ref{fig:es-sb} and \ref{fig:es-depl}). South of Point Conception, the population has remained at low levels until the early 2000s at which point the population began slowly increasing up until 2019 with the spawning output declining in the final years of the time series. In contrast, the portion of the stock north of Point Conception has been continually increasing since the sub-area low point in spawning output in the 1990s. 
 
@@ -130,6 +130,8 @@ As a percentage of biomass (ages 3+), harvest rates south of Point Conception be
 
 \input{tex_tables/south_d_SPR_ES.tex}
 
+\newpage
+
 \input{tex_tables/north_d_SPR_ES.tex}
 
 ```{r, results = 'asis'}
@@ -156,8 +158,11 @@ filein = file.path(doc_dir, "shared_text",'es_reference_points.Rmd')
 read_child(filein)
 ```
 
+\newpage
 
 \input{tex_tables/south_e_ReferencePoints_ES.tex}
+
+\newpage
 
 \input{tex_tables/north_e_ReferencePoints_ES.tex}
 

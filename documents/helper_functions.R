@@ -57,7 +57,7 @@ create_management_table <- function(
   
   sa4ss::table_format(
     x = out,
-    digits = 2,
+    digits = 1,
     caption = "The portion of the Overfishing Limit (OFL) and Annual Catch Limit (ACL) and estimated catch in California waters.",
     label = paste0(prefix, "ca-management"),
     col_names = col_names
@@ -156,12 +156,12 @@ create_projection_table <- function(
   
   out <- data.frame(
     Year = years, 
-    ofl_set = c(round(ofl, 2), rep("-", 10)),
-    abc_set = c(round(acl, 2), rep("-", 10)),
+    ofl_set = c(round(ofl, 1), rep("-", 10)),
+    abc_set = c(round(acl, 1), rep("-", 10)),
     removals = c(fixed_removals, rep("-", 10)),
-    ofl = c("-", "-", est_ofl),
-    abc = c("-", "-", est_abc),
-    buffer = c("-", "-", buffer),
+    ofl = c("-", "-", round(est_ofl, 1)),
+    abc = c("-", "-", round(est_abc, 1)),
+    buffer = c("-", "-", round(buffer, 3)),
     SB = round(sb, 2), 
     Depl = round(depl, 3))
   
