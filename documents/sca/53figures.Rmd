@@ -212,8 +212,8 @@ label = 'mean-rec-pr-len-data')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "plots", "SouthernCAAllData.png"), 
-caption = "Sample locations from each of the fishery-independent data source indicating the number of observations across all years. The yellow outline indicates the location of MPAs. The CDFW area blocks are indicated by the grey grid lines with blocks were the fishery-dependent CPFV onboard survey observed copper rockfish shaded darker blue. All data were aggregageted to meet confidentiality standards.",
+filein = file.path(data_dir, "plots", "SouthernCAAllData_blocklabeled.png"), 
+caption = "Sample locations from each of the fishery-independent data source indicating the number of observations across all years. The yellow outline indicates the location of MPAs. The CDFW area blocks are indicated by the numerical values inside each grid area with blocks were copper rockfish would be expected to be found are shaded darker blue.",
 label = 'survey-locations')
 ```
 
