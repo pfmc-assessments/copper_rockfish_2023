@@ -42,22 +42,19 @@ Significant population subdivision was detected between the Puget Sound and coas
 samples which supports the model of isolation-by-distance for `r spp`.
 @sivasundar_life_2010 conducted a genetic study to determine the potential for 
 biogeographic boundaries to prohibit gene flow for 15 *Sebastes* species.
-The study's sample sizes of `r spp` with samples form Oregon, Monterey Bay and Santa Barbara. 
+The study included 45 observations of `r spp` with samples form Oregon (N = 18), Monterey Bay (N = 18), and Santa Barbara (N = 9). 
 @sivasundar_life_2010 used mtDNA and could differentiate samples from Santa Barbara from those collected 
 in Oregon and Monterey Bay, but the Monterey Bay and Oregon samples could not be distinguished. 
-Micosatellite data did not reveal any genetic differentiation among the samples from 
+Micosatellite data did no1t reveal any genetic differentiation among the samples from 
 the three locations for copper rockfish and suggests low genetic differentiation coastwide. 
 
-The most recent genetic analysis of `r spp` to date was conducted by 
- @johansson_influence_2008. The study included 
+An early genetic analysis of `r spp` was conducted by @johansson_influence_2008. The study included 
 749 samples from along the west coast ranging from Neah Bay, Washington to 
 San Diego, California with the majority of sampling locations clustered north 
 of Cape Mendocino in northern California.  The study included 185 samples collected 
-within California. Eleven microsatellite 
-DNA loci were analyzed. The study found significant evidence to support isolation 
+within California. Eleven microsatellite DNA loci were analyzed. The study found significant evidence to support isolation 
 by distance at the coast wide scale. Weak, but significant, genetic structure was 
-identified from samples collected 
-along the Oregon coast suggesting that habitat barriers may limit larval dispersal. 
+identified from samples collected along the Oregon coast suggesting that habitat barriers may limit larval dispersal. 
 
 
 
