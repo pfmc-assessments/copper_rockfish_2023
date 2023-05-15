@@ -29,6 +29,16 @@ load("S:/copper_rockfish_2023/data/survey_indices/ccfrp/CCFRP.RData")
 dir <- file.path("S:/copper_rockfish_2023/data/survey_indices/ccfrp",modelArea)
 setwd(dir)
 
+
+####data for Arc maps
+grid_cells <- dat %>%
+  group_by(gridCellID) %>%
+  summarise(sum_copper = sum(Target))
+grid_cells <- left_join(grid_cells, cellLocation, by = "gridCellID")
+write.csv(grid_cells, "S:/copper_rockfish_2023/data/survey_indices/ccfrp/copper_for_arc.csv")
+
+
+
 if(modelArea=="south"){
   dat <- dat %>%
   filter(region == "South")

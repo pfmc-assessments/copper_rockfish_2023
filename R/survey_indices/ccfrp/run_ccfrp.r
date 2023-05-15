@@ -36,7 +36,7 @@ for (a in 1:length(all)) { source(file.path(github_path, "R", "sdmTMB", all[a]))
 #species and area identifiers - eventually put in function
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
-modelArea = "south"
+modelArea = "north"
 ccfrpSpeciesCode <- "CPR"
 #setwd to the north or the south
 
@@ -48,6 +48,21 @@ setwd(dir)
 #Also assign the areas to a district to then use the habiat weights
 load("Filtered_data_CCFRP.RData")
 orginal_dat <- dat
+
+
+#grid cell summary for mapping
+grid_summary <- dat %>%
+  group_by(gridCellID) %>%
+  summarise(sum_copp = sum(Target),
+            avg_lat = mean(startLat),
+            avg_long = mean(startLong))
+
+grid_zeroes <- dat %>%
+  filter(Target==0) %>%
+  group_by(gridCellID) %>%
+ summarise(avg_lat = mean(startLat),
+avg_long = mean(startLong))
+  
 #-------------------------------------------------------------------------------
 #Ensure columns named appropriately and covariates are factors
 covars <- c("year", "month", "siteName", "MPAorREF", "gridCellID")
