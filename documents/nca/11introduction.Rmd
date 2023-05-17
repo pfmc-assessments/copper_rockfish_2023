@@ -1,6 +1,6 @@
 # Introduction
 
-This assessment report describes the sub-area population of `r spp` (*Sebastes caurinus*) off the California coast `r area` in U.S. waters, using data through 2022. The sub-area population south of Point Conception in California waters was also evaluated and is described in a separate assessment report. The `r spp` status for the California stock is determined by the combined estimates of spawning output from both sub-areas and is detailed in the [management](#management) Section. This assessment does not account for populations located in Mexico waters or other areas off the U.S. coast and assumes that these southern and northern populations do not contribute to the population being assessed here. 
+This assessment report describes the sub-area population of `r spp` (*Sebastes caurinus*) off the California coast `r area` in U.S. waters, using data through 2022. The sub-area population south of Point Conception in California waters was also evaluated and is described in a separate assessment report. The `r spp` status for the California stock is determined by the combined estimates of spawning output from both sub-areas and is detailed in the [management](#management) Section. This assessment does not account for populations located in Mexico waters or other areas off the U.S. West Coast and assumes that these southern and northern populations do not contribute to nor take from the population being assessed here.
 
 ## Basic Information and Life History
 
