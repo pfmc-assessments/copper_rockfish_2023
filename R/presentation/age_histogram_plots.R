@@ -121,7 +121,7 @@ pngfun <- function(wd, file,w=7,h=7,pt=12){
       units='in',res=300,pointsize=pt)
 }
 
-pngfun(wd = file.path(dir, "plots"), "copper_north_ages_by_source_presentation.png", w = 10, h = 10)
+pngfun(wd = file.path(dir, "plots"), "copper_north_ages_by_source_presentation.png", w = 18, h = 12)
 subvp <- grid::viewport(width = 0.6, height = 0.78, x = 0.68, y = 0.59)
 aa
 print(b, vp = subvp)
@@ -157,7 +157,7 @@ b <- ggplot(data = all_ages[all_ages$area == "south", ], aes(x = age)) +
   theme(legend.position = "none", strip.background = element_blank())
 
 
-pngfun(wd = file.path(dir, "plots"), "copper_south_ages_by_source_presentation.png", w = 10, h = 10)
+pngfun(wd = file.path(dir, "plots"), "copper_south_ages_by_source_presentation.png", w = 18, h = 12)
 subvp <- grid::viewport(width = 0.6, height = 0.78, x = 0.68, y = 0.59)
 aa
 print(b, vp = subvp)

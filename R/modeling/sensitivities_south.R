@@ -236,6 +236,61 @@ SSplotComparisons(x3,
 # Jason Style Sensitivity Figure
 ###################################################################################
 
+modelnames <- c("Base Model", 
+                "Estimate M", #1
+                "Estimate h", #2
+                "Estimate M & h",#3
+                #"No Rec. Devs.",#4
+                "CPFV Selectivity Asym.",#5
+                #"Growth Platoons",#6
+                #"No Added Variance",#7
+                #"Dirichlet DW", #8
+                #"McAllister-Ianelli DW",#9
+                "Reduce PR Catch 1970-82",#1
+              #"Hist. CPFV Ages Lambda = 1",#2
+              #"Rm. All Ages",#3
+              "Rm. Coop. Ages", #4
+              #"Add Coop. Ages to CPFV",#5
+              "Rm. WCGBT Ages",#6
+              #"Add WCBT Index",#7
+              "Rm. CPFV & PR Indices",#8
+              "Rm. CCFRP",#1
+              "Rm. CDFW ROV",#2
+              "Rm. NWFSC HKL All",#3
+              "Rm. NWFSC HKL Ages",#4
+              "Rm. NWFSC HKL Lens. & Ages",#5
+              "Rm. NWFSC HKL Index",#6
+              #"Move NWFSC HKL Data Before 2014",#7
+              "Rm. All Surveys")#8
+
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_5, 
+                      sens2_1, sens2_4, sens2_6, sens2_8, 
+                      sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6,  sens3_8))
+
+
+wd_dat <- file.path(paste0(wd,"/_plots")) 
+# Sensitivity figure is something I adapted from Jason's Original that is in r4ss (SS_Sensi_plot)
+# Here is where my version can be found: https://github.com/chantelwetzel-noaa/dover_sole_2021/blob/master/code/sensi_plot_Dover.R
+Sensi_plot_dover(model.summaries=x,
+                 dir = wd_dat,
+                 current.year=2023,
+                 mod.names=modelnames, #List the names of the sensitivity runs
+                 likelihood.out = c(0, 1, 0),
+                 Sensi.RE.out="Sensi_RE_out.DMP", #Saved file of relative errors
+                 CI=0.95, #Confidence interval box based on the reference model
+                 TRP.in=-1, #Target relative abundance value
+                 LRP.in=-1, #Limit relative abundance value
+                 sensi_xlab="Sensitivity scenarios", #X-axis label
+                 ylims.in=c(-1,1,-1,1,-1,1,-1,1,-1,1,-1,1,-1,1), #Y-axis label
+                 plot.figs=c(1,1,1,1,1,1), #Which plots to make/save? 
+                 #sensi.type.breaks=c(4.5, 6.5, 9.5), #vertical breaks that can separate out types of sensitivities
+                 #anno.x=c(3, 5.5, 8, 10.5), # Vertical positioning of the sensitivity types labels
+                 #anno.y=c(0.83,0.80,0.85,0.9), # Horizontal positioning of the sensitivity types labels
+                 #anno.lab=c("Parameters", "Data Weighting", "Selectivity", "Index"), #Sensitivity types labels
+                 horizontal = TRUE) 
+
+# Structural
+
 modelnames <- c("Base Model",
                 "Estimate M",
                 "Estimate h", 
