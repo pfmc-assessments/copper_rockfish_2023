@@ -4,7 +4,7 @@
 
 library(r4ss)
 area <- "sca"
-#area <- "nca"
+area <- "nca"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -31,6 +31,8 @@ SSplotComparisons(mysummary,
 	legendlabels = modelnames, 	
 	plotdir = file.path(wd, "_plots"),
 	print = TRUE,
+	btarg = -1,
+	minbthresh = -1,
 	pdf = FALSE)
 
 #===============================================================================
@@ -355,6 +357,8 @@ SSplotComparisons(mysummary,
                   legendlabels = modelnames, 	
                   plotdir = file.path(wd, "_plots"),
                   print = TRUE,
+                  btarg = -1,
+                  minbthresh = -1,
                   pdf = FALSE)
 
 
@@ -379,12 +383,14 @@ SSplotComparisons(mysummary,
                   legendlabels = modelnames, 	
                   plotdir = file.path(wd, "_plots"),
                   print = TRUE,
+                  btarg = -1,
+                  minbthresh = -1,
                   pdf = FALSE)
 
 modelnames <- c("2021",
                 "+ ROV Index and Lengths",
                 "+ CCFRP Index, Lengths, & Ages",
-                #"+ NWFSC HKL Index, Lengths, & Ages",
+                "+ NWFSC HKL Index, Lengths, & Ages",
                 "+ Blocks",
                 "+ Rec. Devs.",
                 "+ Growth Est.")
@@ -404,4 +410,6 @@ SSplotComparisons(mysummary,
                   legendlabels = modelnames, 	
                   plotdir = file.path(wd, "_plots"),
                   print = TRUE,
+                  btarg = -1,
+                  minbthresh = -1,
                   pdf = FALSE)
