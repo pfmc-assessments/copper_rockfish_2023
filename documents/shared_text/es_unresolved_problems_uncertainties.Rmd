@@ -1,5 +1,5 @@
 
-This assessment models the sub-areas north and south of Point Conception as separate stocks, but there is likely larval or juvenile dispersal, and potentially some adult movement, among these areas. Dispersal and movement rates are not well known. Improved understanding around the dispersal rates of `r spp` across California, particularly around the Point of Conception, are needed to support spatial modeling of the stock. 
+This assessment models the sub-areas north and south of Point Conception as separate non-mixing sub-populations, but there is likely larval or juvenile dispersal, and potentially some adult movement, among these areas. Dispersal and movement rates are not well known. Improved understanding around the dispersal rates of `r spp` across California, particularly around the Point of Conception, are needed to support spatial modeling of the stock. 
 
 The primary fishery-independent survey for West Coast groundfish, the NWFSC WCGBT survey, does not sample rocky habitats where most `r spp` are found, and thus does not provide a robust index of abundance. An alternative survey, the CCFRP Hook and Line survey, provides a reasonable signal for `r spp`, including relative abundance and demographic structure inside and outside a number of MPAs. 
 

@@ -2,5 +2,5 @@ A ten year projection using the combined estimates from each sub-area base model
 
 The removals in 2023 and 2024 were set equal to the portion of `r spp` species-specific ACL for California determined by summing the adopted ACLs South of \CapeM and the portion of the North of \CapeM allocated to California (25 percent - PFMC Groundfish Management Team pers. comm.). The portion of ACL to allocate to each sub-area was determined based on the proportion of the total removals by area in 2022 (71 percent north and 29 percent south). 
 
-Describe the decision table when determined 
+The decision table will be developed at the STAR panel and included in future drafts.
 
