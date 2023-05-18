@@ -97,6 +97,8 @@ sum(is.na(data$area))
 
 data$fleet <- paste0(data$state_area, ".", data$cond)
 
+save(data, file = file.path(dir, "pacfin_cleaned_data.rdata"))
+
 #################################################################################
 # Length samples and trips by area and fleet
 #################################################################################

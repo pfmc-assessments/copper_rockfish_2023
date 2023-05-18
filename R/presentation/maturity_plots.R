@@ -106,6 +106,8 @@ with(data_cert, table(month,Survey.Type))
 # 10  23    14
 
 
+data_cert_fall <- data_cert %>%
+  filter(month %in% c(9, 10))
 
 data.glm.fall <- glm(Functional_maturity ~ Length, data=data_cert_fall, 
                      family = binomial(link ="logit"))
@@ -218,7 +220,7 @@ south_ci <- seq(32.0, 35.5, 0.1)
 
 HandyCode::pngfun(wd = file.path(dir,  "plots"), file = "Mat_by_Area_CI.png", w = 7, h = 5, pt = 12)
 
-plot(ca_ci, rep(0.05, length(ca_ci)), type = 'l', lwd = 10, col = 'red', 
+plot(ca_ci, rep(0.05, length(ca_ci)), type = 'l', lwd = 10, col = 'yellow', 
      xlim = c(30, 39), ylim = c(0, 0.4), axes = FALSE, xlab = "Length (cm)",
      ylab = "", cex.lab = 1.5)
 axis(side = 1, cex.axis = 1.5)
