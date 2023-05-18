@@ -102,7 +102,7 @@ label = 'rov-prop-zero')
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "rov", "glm_negbin_north_designation_depth", "Index.png"), 
-caption = "The weighted relative index of abundance.",
+caption = "The weighted relative index of abundance fort the CDFW ROV survey.",
 label = 'rov-index')
 ```
 

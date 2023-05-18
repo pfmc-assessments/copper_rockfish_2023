@@ -20,7 +20,7 @@ read_child(filein)
 
 ## Historical and Current Fishery Information
 
-Off the coast of California south of Point Conception `r spp` is caught in both commercial and recreational fisheries. Recreational removals have been the largest source of fishing mortality of `r spp` across all years (Table \ref{tab:allcatches} and Figure \ref{fig:catch}). The recreational fishery is comprised of individual recreational fishers (Private/Rental, PR) and commercial passenger fishing vessels (CPFV) also known as party/charter (PC) which take groups of individuals out for day fishing trips. Across both types of recreational fishing the majority of effort occurs around rocky reefs that can be accessed via a day-trips. 
+Off the coast of California north of Point Conception `r spp` is caught in both commercial and recreational fisheries. Recreational removals have been the largest source of fishing mortality of `r spp` across all years (Table \ref{tab:allcatches} and Figure \ref{fig:catch}). The recreational fishery is comprised of individual recreational fishers (Private/Rental, PR) and commercial passenger fishing vessels (CPFV) also known as party/charter (PC) which take groups of individuals out for day fishing trips. Across both types of recreational fishing the majority of effort occurs around rocky reefs that can be accessed via a day-trips. 
 
 ```{r, echo=FALSE, results='asis'}
 filein <- file.path(doc_dir, "shared_text",'1_intro_ca_commercial.Rmd')

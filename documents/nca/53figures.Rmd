@@ -966,8 +966,12 @@ label = 'depl-all')
  
 ```{r, echo=FALSE, results='asis'}
 add_figure(
-filein = file.path(sens_dir, "_plots",  "Sensi_REplot_all_horizontal"),
-caption = "Comparison of the relative change in estimated management quantities as compared to the base model for structural sensitivities. The quantities compared are the estimate of unfished spawning biomass (SB~0~), spawning output in 2023 (SB~2023~), the relative spawning output (SB~2023~/SB~0~), the yield based on a spawner per recruit harvest rate (Yield~SPR=0.50~), and the fishing mortality at that harvest rate (F~SPR=0.50~). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend. A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
+filein = file.path(sens_dir, "_plots",  "Sensi_REplot_structure_horizontal.png"),
+caption = "Comparison of the relative change in estimated management quantities as compared to the 
+base model for structural sensitivities. The quantities compared are the estimate of unfished 
+spawning biomass (SB~0~), spawning output in 2023 (SB~2023~), the relative spawning output 
+SB~2023~/SB~0~), the yield based on a spawner per recruit harvest rate (Yield~SPR=0.50~), 
+and the fishing mortality at that harvest rate (F~SPR=0.50~). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend. A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
 label = 'sens-structure')
 ```
 
@@ -976,8 +980,11 @@ label = 'sens-structure')
  
 ```{r, echo=FALSE, results='asis'}
 add_figure(
-filein = file.path(sens_dir, "_plots",  "Sensi_REplot_all_horizontal"),
-caption = "Comparison of the relative change in estimated management quantities as compared to the base model for data senstivities. The quantities compared are the estimate of unfished spawning biomass (SB~0~), spawning output in 2023 (SB~2023~), the relative spawning output (SB~2023~/SB~0~), the yield based on a spawner per recruit harvest rate (Yield~SPR=0.50~), and the fishing mortality at that harvest rate (F~SPR=0.50~). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend. A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
+filein = file.path(sens_dir, "_plots",  "Sensi_REplot_data_horizontal.png"),
+caption = "Comparison of the relative change in estimated management quantities as compared to the 
+base model for data senstivities. The quantities compared are the estimate of unfished spawning 
+biomass (SB~0~), spawning output in 2023 (SB~2023~), the relative spawning output (SB~2023~/SB~0~), 
+the yield based on a spawner per recruit harvest rate (Yield~SPR=0.50~), and the fishing mortality at that harvest rate (F~SPR=0.50~). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend. A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
 label = 'sens-data')
 ```
 
