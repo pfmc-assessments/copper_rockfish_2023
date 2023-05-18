@@ -44,13 +44,13 @@ read_child(filein)
 
 Length-at-age was estimated for male and female `r spp` informed by age data from the fisheries, the CCFRP survey, and independent age data collection efforts from four programs `r area` since 2002: 207 otoliths collected by the NWFSC WCGBT survey, 426 otoliths collected by a research survey conducted by Don Pearson, 74 from a research survey conducted by Abrams, and 45 from CDFW special collections (Table \ref{tab:growth-age-samps}). The ages collected by these sources were included in the model as a "growth" fleet that was not associated with removals or an index of abundance. 
 
-Sex-specific growth parameters `area` were initially estimated external to the model at the following values:
+Sex-specific growth parameters `r area` were initially estimated external to the model using the von Bertanlaffy growth curve as parameterized within Stock Synthesis at the following values:
 
 \begin{centering}
 
-Females $L_{\infty}$ = 48.5 cm; $L_0$ = 9.1 cm; $k$ = 0.174 per year
+Females $L_{age=2}$ = 21.4 cm; $L_{age=20}$ = 47.3 cm; $k$ = 0.174 per year
 
-Males $L_{\infty}$ = 46.8 cm; $L_0$ = 5.3 cm; $k$ = 0.207 per year
+Males $L_{age=2}$ = 20.3 cm; $L_{age=20}$ = 46.4 cm; $k$ = 0.201 per year
 
 \end{centering}
 

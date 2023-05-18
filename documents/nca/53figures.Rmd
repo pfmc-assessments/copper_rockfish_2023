@@ -193,6 +193,16 @@ label = 'rec-cpfv-caal-data')
 
 \pagebreak
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", " comp_agedat__aggregated_across_time.png"), 
+caption = "Marginal age composition data aggregate across the 1978, 1981, 1984, and 2022 (carcass ages) data years from the CPFV fleet.",
+label = 'rec-cpfv-marg-age-data')
+```
+
+\pagebreak
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_agedat_data_weighting_TA1.8_Rec_CPFV.png"), 

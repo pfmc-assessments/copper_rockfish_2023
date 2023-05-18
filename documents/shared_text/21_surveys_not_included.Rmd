@@ -70,4 +70,13 @@ filein = file.path(doc_dir, "shared_text",'21f_mrfss_index.Rmd')
 read_child(filein)
 ```
 
-The data were filtered to identify rockfish trips, standardized across the time-series, and modeled to estimate and index of abundance for `r spp`. The MRFSS CPFV index of abundance between 1980-1999 is generally variable but with a flat trend in abundance except for three years that spike in abundance estimates. These same patterns in sharp increases in the index for select years were also observed in the raw data. Given the limited information in the data to understand what was behind these unexpected spikes in the time series, the MRFSS index of abundance was not used in the final base model. 
+```{asis, echo = model.area=='south'}
+
+The data were filtered to identify rockfish trips, standardized across the time series, and modeled to estimate and index of abundance for `r spp`. The MRFSS CPFV index of abundance between 1980-1999 is generally variable but with a flat trend in abundance except for three years that spike in abundance estimates (Figure \ref{fig:mrfss-cpfv-index-fit}). These same patterns in sharp increases in the index for select years were also observed in the raw data. Given the limited information in the data to understand what was behind these unexpected spikes in the time series, the MRFSS index of abundance was not used in the final base model. 
+```
+
+
+```{asis, echo = model.area=='north'}
+
+The data were filtered to identify rockfish trips, standardized across the time series, and modeled to estimate and index of abundance for `r spp`. The MRFSS CPFV index of abundance between 1980-1999 is quite variable with notable periods of an increasing trend followed by a decline and then another increasing tren (e.g., increasing between 1982-1984, drop in 1985, and increasing between 1985-1987, Figure \ref{fig:mrfss-cpfv-index-fit}). These same patterns in increases and decreases in the index for select years were also observed in the raw data. Given the limited information in the data to understand what was behind these unexpected spikes in the time series, the MRFSS index of abundance was not used in the final base model. 
+```
