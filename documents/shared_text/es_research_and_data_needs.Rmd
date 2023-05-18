@@ -22,13 +22,13 @@ There were some major sources of uncertainty within the assessments for `r spp`.
 
  \item Additional research on the effect of the MPA network on `r spp` and other nearshore rockfish species needs to be conducted. The trend inside the MPAs in northern California exhibited an increasing trend compared to outside the MPAs, similar to what was observed during the 2021 assessment of vermilion rockfish. However, the trends inside MPAs south of Point Conception varied by location with a number of site showing no increase in abundance or declining trends.  
 
- \item Further investigations of other available fishery-independent data such as the PISCO kelp forest index would benefit future assessments of nearshore species, including copper rockfish. 
+ \item Further investigations of other available fishery-independent data such as the Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO) kelp forest index would benefit future assessments of nearshore species, including copper rockfish. 
 
- \item Larval and smaller young-of-the-year copper rockfish can only be identified with certainty genetically. Existing sources of data (CalCOFI and SMURFs) where genetic samples can be analyzed would provide key information to inform recruitment for copper rockfish.
+ \item Larval and smaller young-of-the-year copper rockfish can only be identified with certainty genetically. Existing sources of data (CalCOFI and Standard Monitoring Units for the Recruitment of Fishes [SMURFs]) where genetic samples can be analyzed would provide key information to inform recruitment for copper rockfish.
  
   \item Continue to investigate historical catch reconstructions and all other historical data sources.
   
-  \item Existing catch estimates within RecFIN that are currently assigned only to "rockfish, general" should be investigated to determine if these removals can be assigned to specific-species.
+  \item Existing catch estimates within Recreational Fisheries Information Network (RecFIN) that are currently assigned only to "rockfish, general" should be investigated to determine if these removals can be assigned to specific-species.
 
 
 
