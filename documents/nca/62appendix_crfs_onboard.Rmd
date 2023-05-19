@@ -167,7 +167,7 @@ sa4ss::table_format(x = ind,
              col_names = col_names)                         
 ```
 
-
+\newpage
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
@@ -180,6 +180,7 @@ sa4ss::table_format(
         caption = "Data filtering steps for the onboard CPFV survey.",
         label = "onboard-filter",
         col_names = col_names,
+        landscape = TRUE,
         custom_width = TRUE,
         format.args = list(big.mark = ","),
         col_to_adjust = c(2),
