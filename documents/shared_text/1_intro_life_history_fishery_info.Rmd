@@ -30,7 +30,7 @@ observed a shift in a diet dominated by arthropods in age 0 and 1 fish to a more
 diverse diet including molluscs and fish as they aged. The study also noted that 
 juvenile copper rockfish were preyed upon by harbor seals and lingcod. Two tagging studies of copper rockfish indicated that most individuals have a small home range, with 91 percent of recaptures from CCFRP (unpublished data) and 49 percent of individuals from @hanan_longterm_2012 within 1 km (straight line distance) of the original release site. Of the 117 recaptures from @hanan_longterm_2012, four traveled greater than 50 km, with a maximum distance of 488 km (1,222 days at liberty), and four individuals crossed the biogeographic boundary of Point Conception. Of the 133 copper rockfish recaptures from CCFRP, four traveled greater than 50 km, and the maximum distance traveled was 169 km by two different fish (291 and 524 days at liberty). 
  
-There is currently littel evidence of significant stock structure from genetic 
+There is currently little evidence of significant stock structure from genetic 
 studies of `r spp` across the west coast. @buonaccorsi_population_2002 looked 
 at genetic variation across six micosatellite 
 DNA loci from samples ranging from British Columbia to southern California. 
