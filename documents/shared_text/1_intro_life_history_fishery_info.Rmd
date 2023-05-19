@@ -1,11 +1,11 @@
 
 `r Spp` have historically been a part of both commercial and recreational 
 fisheries throughout its range. `r Spp` are a demersal, relatively nearshore 
-species within the subgenus *Pteropodus.*  The core range of copper rockfish is comparatively large, ranging from northern Baja Mexico to the Gulf of Alaska, with `r spp` also found in Puget Sound. `r Spp` range from the sub-tidal (as juveniles) to depths of around 180 m [@love_rockfishes_2002]. `r Spp` are commonly found in waters less than 100 meters in depth inhabiting nearshore kelp forests and complex low-relief rocky habitat [@love_probably_1996]. Adult copper rockfish have high site fidelity and are thought to not make long-range movements. An acoustic telemetry study displaced `r spp` 4km from their capture location to an artificial reef and within 10 days, half of the `r spp` returned to the original capture location [@reynolds_application_2010]. 
+species within the subgenus *Pteropodus.*  The core range of copper rockfish is comparatively large, ranging from northern Baja Mexico to the Gulf of Alaska, with `r spp` also found in Puget Sound. `r Spp` range from the sub-tidal (as juveniles) to depths of around 180 m [@love_rockfishes_2002]. `r Spp` are commonly found in waters less than 100 m in depth inhabiting nearshore kelp forests and complex low-relief rocky habitat [@love_probably_1996]. Adult copper rockfish have high site fidelity and are thought to not make long-range movements. An acoustic telemetry study displaced `r spp` 4 km from their capture location to an artificial reef and within 10 days, half of the `r spp` returned to the original capture location [@reynolds_application_2010]. 
 
 `r Spp` have a clearly defined long white band the posterior two-thirds of the lateral line. `r Spp` have high variation in coloration throughout its range, taking on coloration from dark brown, olive, orange-red and pink, with patches of yellow and pink [@miller_guide_1972]. In general, the `r spp` towards the northern part of the range are often darker in  color than fish encountered in southern California. The distinct change in coloration  resulted in copper rockfish initially being described as two separate species, copper rockfish (*S. caurinus*) and whitebelly rockfish (*S. vexillaris*). 
 
-The *Sebastes* genus are viviparous with internal fertilization, many exhibit dimorphic growth with females larger at size-at-age than males, and a number of species have reproductive strategies that vary with latitude. There are very few fecundity samples from `r spp` available from California, although `r spp` are assumed to produce a single brood annually during the winter months. 
+The *Sebastes* genus is viviparous with internal fertilization, many species exhibit dimorphic growth with females larger at size-at-age than males, and a number of species have reproductive strategies that vary with latitude. There are very few fecundity samples from `r spp` available from California, although `r spp` are assumed to produce a single brood annually during the winter months. 
 
 The pelagic larvae are encountered in the California Cooperative Oceanic Fisheries Investigations (CalCOFI) surveys, but neither larval nor young-of-the-year can be identified visually [@thompson_larval_2017]. The size at birth ranges from 5-6 mm and the larvae remain pelagic until approximately 22-23 mm standard length at which time they recruit to the kelp forest canopy [@anderson_identification_1983].
 
@@ -14,7 +14,7 @@ Juvenile `r spp` are indistinguishable from kelp (*S. atrovirens*), black-and-ye
 kelp forest canopy in the spring months. `r Spp` is the first of the species group to 
 recruit to the kelp forest from April to May and can be distinguished from the other 
 species once it reaches a size around 50 mm standard length [@anderson_identification_1983]. 
-@baetscher_dispersal_2019 genetically identified young-of-the-year rockfish from surveys in Carmel and Monterey Bays in California and provided the authors with the length and genotyped species identifications from her study. The average length of young-of-the-year `r spp` in July was 3-4 cm total length (Figure \ref{fig:copper-smurf-length}). Anderson observed benthic `r spp` nocturnally active over sandy bottom outside the kelp forest [@anderson_identification_1983].
+@baetscher_dispersal_2019 genetically identified young-of-the-year rockfish from surveys in Carmel and Monterey Bays in California and provided the authors with the length and genotyped species identifications from her study. The average total length of young-of-the-year `r spp` in July was 3-4 cm (Figure \ref{fig:copper-smurf-length}). @anderson_identification_1983 observed benthic `r spp` nocturnally active over sandy bottom outside the kelp forest.
 
 `r Spp` are a relatively long-lived rockfish, estimated to live at least 50 years
 [@love_probably_1996]. `r Spp` were determined to have the highest 
@@ -38,7 +38,7 @@ Significant population subdivision was detected between the Puget Sound and coas
 samples which supports the model of isolation-by-distance for `r spp`.
 @sivasundar_life_2010 conducted a genetic study to determine the potential for 
 biogeographic boundaries to prohibit gene flow for 15 *Sebastes* species.
-The study included 45 observations of `r spp` with samples form Oregon (N = 18), Monterey Bay (N = 18), and Santa Barbara (N = 9). 
+The study included 45 observations of `r spp` with samples from Oregon (N = 18), Monterey Bay (N = 18), and Santa Barbara (N = 9). 
 @sivasundar_life_2010 used mtDNA and could differentiate samples from Santa Barbara from those collected 
 in Oregon and Monterey Bay, but the Monterey Bay and Oregon samples could not be distinguished. 
 Micosatellite data did not reveal any genetic differentiation among the samples from 
