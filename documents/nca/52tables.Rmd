@@ -19,7 +19,7 @@ for (i in 1:nfleets){
 total.dead  <- round(apply(dead_all, 1, sum), 1)
 out = cbind(years, round(dead_all, 1), total.dead)
 out = as.data.frame(out)
-col_names = c("Year", "Commercial (Dead)", "Commercial (Live)", "Rec. CPFV", "Rec. PR", "Total Landings")
+col_names = c("Year", "Commercial Dead", "Commercial Live", "CPFV", "PR", "Total Landings")
 
 table_format(x = out,
              caption = "Removals (mt) by fleet and the summed total landings (mt).",
