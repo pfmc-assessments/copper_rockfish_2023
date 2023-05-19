@@ -177,7 +177,7 @@ label = 'deb-qq')
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
                    "average_cpue_by_reef.png"), 
-caption = "Average CPUE by region to standardization.",
+caption = "Average CPUE by region prior to standardization.",
 label = 'deb-regioncpue')
 ```
 

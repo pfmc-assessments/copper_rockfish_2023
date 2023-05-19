@@ -35,14 +35,7 @@ The full dataset for northern California contained 8,770 drifts, 23% of which en
 marked for exclusion in the data, or did not fish a minimum of 15 minutes, 7,078 drifts remained for 
 for index standardization, with 1,757 drifts encountering `r spp`.
 
-The CCFRP index includes all of the MPAs currently sampled from 2017-2022 and the core central California sampling sites 
-from 2007-2022. Trends inside all of the MPAs sampled increased from 2017-2020. The final index (Table \@ref(tab:ccfrp-index)) 
-represents a similar trend to the arithmetic mean of the annual CPUE (Figure \@ref(fig:ccfrp-avg-cpue)).
-We modeled retained catch per angler hour (CPUE; number of fish per angler hour) 
-using MLE fr. Indices with a year and area (location along the coast) interaction were not 
-considered in model selection, but a year and MPA interaction was modeled. Figure \@ref(fig:ccfrp-avg-cpue)
-mean by inside (MPA) and outside (REF) MPAs over time  
-and illustrates the distinct trends of increasing average CPUE over time.
+The CCFRP index includes all of the MPAs currently sampled from 2017-2022 and the core central California sampling sites from 2007-2022. Trends inside all of the MPAs sampled increased from 2017-2020. The final index (Table \@ref(tab:ccfrp-index)) represents a similar trend to the arithmetic mean of the annual CPUE (Figure \@ref(fig:ccfrp-avg-cpue)). We modeled retained catch per angler hour (CPUE; number of fish per angler hour) using MLE in the sdmTMB package. Indices with a year and area (location along the coast) interaction were not considered in model selection due to the expansion of the survey in 2007, but a year and MPA interaction was modeled. Figure \@ref(fig:ccfrp-avg-cpue) mean by inside (MPA) and outside (REF) MPAs over  time and illustrates the distinct trends of increasing average CPUE over time.
 
 A negative binomial model was fit to the drift-level data (catch with a log offset for angler 
 hours). Because the average observed CPUE inside MPAs and in the reference sites exhibited 

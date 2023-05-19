@@ -217,7 +217,7 @@ sa4ss::add_figure(
     data_dir, "rec_indices", "crfs_pr_dockside", "north", "rm_last2yrs_area_weighted",
     "average_cpue_by_cnty.png"
   ),
-  caption = "Average CPUE by county prior to standardization.",
+  caption = "Average CPUE by district prior to standardization.",
   label = "pr-districtcpue"
 )
 ```
