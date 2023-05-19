@@ -244,7 +244,7 @@ table_format(x = mod_params,
              landscape = TRUE,
              custom_width = TRUE,
              col_to_adjust = c(1,7), 
-             width = c("7.5cm", ".5cm"))                         
+             width = c("7.5cm", ".5♣cm"))                         
 ```
 
 

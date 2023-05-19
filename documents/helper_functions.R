@@ -106,7 +106,7 @@ create_biomass_table <- function(
   
   sa4ss::table_format(
     x = out,
-    caption = "The estimated total biomass (mt), total biomass age 3+ (mt), age-0 recruits, spawning ouput in number of billions of eggs across California and fraction unfished by year.",
+    caption = "The estimated total biomass (mt), total biomass age 3+ (mt), age-0 recruits, and spawning ouput in number of billions of eggs across California and fraction unfished by year.",
     label = paste0(prefix, "ca-status"),
     col_names = col_names
     )
