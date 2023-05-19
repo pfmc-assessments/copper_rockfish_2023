@@ -1,7 +1,7 @@
 delete_merged_file: true
 
 rmd_files: ['00a.Rmd',
-             '00authors.Rmd', 
+             '00authors.Rmd' 
 #              '00bibliography.Rmd',
 #               '01executive.Rmd',
 #             '11introduction.Rmd',
@@ -22,7 +22,7 @@ rmd_files: ['00a.Rmd',
 #            '64appendix_crfs_dockside.Rmd',
 #            '65appendix_ccfrp.Rmd',
 #           '67appendix_rov.Rmd',
-             '70appendix_cpfv.Rmd'
+#             '70appendix_cpfv.Rmd'
 #            "35model-prestar-base-results-north.Rmd",
 #            "36model-uncertainty-north.Rmd",
 #            '40management.Rmd',
