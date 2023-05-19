@@ -68,10 +68,6 @@ dedicate time to analysis of Reef Check survey data for the purpose of abundance
 
 The SWFSC and UCSB both conduct visual surveys using ROVs and submersibles. We used the observations of copper rockfish from these data to inform our understanding of the distribution of `r spp` and to ensure that the available survey and fishery data were representative of the distribution of `r spp` from these additional data sources. The visual surveys ranged from 1993 to 2018 from Monterey south to the California/Mexico border. Observations from a total of 3,976 individual `r spp` were observed at average transect depths ranging from 20 to 156 m, with an average of 67 m.  The depth ranges of these surveys, especially dives from the 2007 submersible survey of the Southern California Bight extended into much deeper waters to cover the depth range of cowcod (@yoklavich_fisheryindependent_2007). 
 
-
-
-
-
 ### MRFSS Dockside Survey of CPFV/PC Vessels
 
 ```{r, echo=FALSE, results='asis'}

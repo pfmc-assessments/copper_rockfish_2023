@@ -50,8 +50,10 @@ all_ages$program[all_ages$program == "abrams"] <- "Research Ages"
 all_ages$program[all_ages$program == "Pearson Research"] <- "Research Ages"
 all_ages$program[all_ages$program == "commercial"] <- "Commercial"
 all_ages$program[all_ages$program %in% c("CRFS", "recreational")] <- "Recreational"
-remove <- which(all_ages$area == "south" & all_ages$program == "Research Ages")
-all_ages <- all_ages[-remove, ]
+
+# Use this line for the fishery age data plots
+#remove <- which(all_ages$area == "south" & all_ages$program == "Research Ages")
+#all_ages <- all_ages[-remove, ]
 
 save(all_ages, file = file.path(dir, "formatted_age_files", "all_copper_ages_05162023.rdata"))
 
@@ -241,3 +243,73 @@ subvp <- grid::viewport(width = 0.6, height = 0.78, x = 0.68, y = 0.59)
 aa
 print(b, vp = subvp)
 dev.off()
+
+
+#===============================================================================
+# Plot Available Ages by Area
+#===============================================================================
+
+load(file.path(dir, "2021_ages", "age_length_only_september_2021.Rdata"))
+df <- df[df$Area%in% c("Oregon", "Washington"), ]
+
+tmp <- data.frame(
+  Region = c(all_ages$area, df$Area),
+  length_cm = c(all_ages$length_cm, df$Length_cm),
+  age = c(all_ages$age, df$Age)
+)
+tmp$Region[tmp$Region == "north"] <- "CA: North of Point Conception"
+tmp$Region[tmp$Region == "south"] <- "CA: South of Point Conception"
+
+ggplot(data = tmp, aes(x = age)) +
+  geom_histogram(aes(y = ..count.., col = Region, fill = Region),
+                 binwidth = 1, position = "stack") +
+  xlab("Age") +
+  ylab("Count") +
+  #facet_grid(~factor(area, levels = c("south", "north"))) +
+  scale_fill_viridis_d() +
+  theme_bw(base_size = 20) +
+  theme(legend.position = c(0.6, 0.85),
+        axis.text = element_text(size = 20))
+ggsave(filename = file.path(dir, "plots", "west_coast_age_histogram.png"),
+       width = 12, height = 12)
+
+
+ggplot(data = tmp, aes(x = age)) +
+  geom_density(aes(col = Region, fill = Region), position = "identity") +
+  xlab("Age") +
+  ylab("Density") +
+  facet_wrap(factor(Region)~.) +
+  scale_fill_viridis_d() +
+  theme_bw() +
+  theme(legend.position = "none")
+#      axis.text = element_text(size = 20))
+ggsave(filename = file.path(dir, "plots", "west_coast_age_density.png"),
+       width = 12, height = 12)
+
+ggplot(tmp) + 
+  geom_point(aes(y = length_cm, x = age, color = Region), alpha = 0.50, size = 3) +
+  scale_color_viridis_d() +
+  theme_bw(base_size = 20) +
+  theme(legend.position = c(0.5, 0.15),
+        axis.text = element_text(size = 20)) +
+  ylim(c(0, 60)) + xlim(c(0, 55)) + 
+  xlab("Age") + ylab("Length (cm)") 
+ggsave(filename = file.path(dir, "plots", "west_coast_length_age.png"),
+       width = 12, height = 12)
+
+
+quantile_by_area <- tmp %>%
+  group_by(Region) %>%
+  reframe(
+    n = length(age),
+    min_age = min(age),
+    max_age = max(age),
+    quant_50 = quantile(age, 0.50),
+    quant_90 = quantile(age, 0.90),
+    quant_95 = quantile(age, 0.95),
+    quant_99 = quantile(age, 0.99),
+    quant_999 = quantile(age, 0.999)
+  )
+
+write.csv(quantile_by_area, file = file.path(dir, "forSS", "west_coast_age_quantiles_by_area.csv"), row.names = FALSE)
+
