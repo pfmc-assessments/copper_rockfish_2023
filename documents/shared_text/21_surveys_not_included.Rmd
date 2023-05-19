@@ -1,15 +1,16 @@
 ### Partnership for Interdisciplinary Studies of Coastal Oceans
 
-The Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO) is an 
+The Partnership for Interdisciplinary Studies of Coastal Oceans [(PISCO)](https://www.piscoweb.org/) is an 
 academic consortium conducting monitoring of coastal ecosystems in California as 
 well as research to support marine protected area design.  Their work includes SCUBA 
 surveys and fish recruitment monitoring within rocky reef habitats at a suite of sites 
 across the state using standardized protocols so that multiple participating universities 
 collect compatible data. 
 
+The PISCO kelp forest fish survey data were downloaded from [DataONE](https://www.dataone.org/). 
 We examined fish transect data collected by participating PISCO researchers at 
 the University of California Santa Cruz (UCSC), University of California Santa Barbara 
-(UCSB), the Vantuna Research Group (VRG) and Humboldt State University (HSU) for potential 
+(UCSB), the Vantuna Research Group (VRG) and Humboldt State University (HSU, now Cal Poly Humboldt) for potential 
 development of a fishery-independent abundance index for use in the assessment model.  We 
 ultimately concluded that the number of detections of `r spp` on transects was too low to 
 be representative of relative abundance over time and the spatial distribution of sites
@@ -26,7 +27,7 @@ The full dataset was filtered for quality and habitat appropriate for `r spp`.
 Data was limited to surveys conducted by UCSC and UCSB because `r spp` were not 
 observed by HSU and sites surveyed by VRG typically either saw very few `r spp` 
 or were not consistently sampled across the time series.  The UCSC and UCSB campus 
-sites were separated to develop two indices for the northern and southern model regions.
+sites were separated to develop two indices for the northern and southern models.
 We eliminated sites that were sampled in less than 80 percent of the survey years for each campus.  `r Spp` were only observed on bottom transects and so mid-water and canopy transects were removed.  The inner reef (shallow) transects were removed due to rare `r spp` observations.  Divers noted approximate water visibility and transects with visibility less than 3 m were removed.  We also retained only fish greater than 17 cm to construct an adult index.  
 
 ```{asis, echo = model.area=='north'}
@@ -41,7 +42,7 @@ Early years with less consistent sampling were eliminated such that the time ser
 
 ```
 
-The PISCO program conducts larval fish recruitment monitoring by sampling 
+The PISCO program also conducts larval fish recruitment monitoring by sampling 
 artificial settlement substrates called Standard Monitoring Units for Recruitment
 of Fishes (SMURFs).  Similar to the SCUBA surveys, SMURF surveys are conducted by 
 multiple universities using standardized protocols.  We examined data collected by 
@@ -58,10 +59,18 @@ an extremely high number were recorded for 2016.
 
 ### Reef Check
 
-Reef Check is an international non-profit organization leading citizen scientists 
+[Reef Check](https://www.reefcheck.org/) is an international non-profit organization utilizing citizen scientists 
 to monitor reef habitats.  Data from SCUBA surveys of fish in California are available 
 since 2006.  Given the low proportion of `r spp` detections on PISCO surveys, we did not 
-dedicate time to analysis of Reef Check survey data for the purpose of abundance index development.  However, given the wide distribution of Reef Check survey sites, the data may warrant further exploration for future assessments.  
+dedicate time to analysis of Reef Check survey data for the purpose of abundance index development.  
+
+### Visual Surveys
+
+The SWFSC and UCSB both conduct visual surveys using ROVs and submersibles. We used the observations of copper rockfish from these data to inform our understanding of the distribution of `r spp` and to ensure that the available survey and fishery data were representative of the distribution of `r spp` from these additional data sources. The visual surveys ranged from 1993 to 2018 from Monterey south to the California/Mexico border. Observations from a total of 3,976 individual `r spp` were observed at average transect depths ranging from 20 to 156 m, with an average of 67 m.  The depth ranges of these surveys, especially dives from the 2007 submersible survey of the Southern California Bight extended into much deeper waters to cover the depth range of cowcod (@yoklavich_fisheryindependent_2007). 
+
+
+
+
 
 ### MRFSS Dockside Survey of CPFV/PC Vessels
 
