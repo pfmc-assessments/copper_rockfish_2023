@@ -31,9 +31,10 @@ all <- list.files(file.path(user_dir, "R", "sdmTMB"))
 for (a in 1:length(all)) { source(file.path(user_dir, "R", "sdmTMB", all[a]))}
 
 dir <- file.path(here(), "data", "survey_indices", "rov")
-# Transect level data provided by John Budrick
-rov_south <- read.csv(file.path(dir, "TransectSouth.csv"))
-rov_north <- read.csv(file.path(dir, "TransectNorth.csv"))
+dir <- "//nwcfile/FRAM/Assessments/CurrentAssessments/copper_rockfish_2023/data/survey_indices/rov"
+# Transect level data provided by John Budrick (corrected data provided on 5/19/2023)
+rov_south <- read.csv(file.path(dir, "TransectDataSouth.csv"))
+rov_north <- read.csv(file.path(dir, "TransectDataNorth.csv"))
 
 # Give the columns more usable names
 rov_south <- as_tibble(rov_south)
@@ -46,17 +47,17 @@ rov_south <- rov_south %>%
     mpa_group = FirstOfMPAGroup,
     lat = AvgOfAvg_Lat,
     lon = AvgOfAvg_Lon,
-    effort = AvgOfEffort,
+    #effort = AvgOfEffort,
     depth = AvgOfAvg_Depth,
-    prop_hard = PropnHardTransect,
-    prop_mixed = PropnMixedTransect,
-    prop_soft = PropnSoftTransect,
+    prop_hard = AvgOfPropn_Hard, #PropnHardTransect,
+    prop_mixed = AvgOfPropn_Mixed, #PropnMixedTransect,
+    prop_soft = AvgOfPropn_Soft, #PropnSoftTransect,
     usable_area = SumOfUsable_Area_Fish, 
     distance = SumOfUsable_XYdist,
     protection = FirstOfProtection,
-    imp_year = AvgOfYears_since_imp,
-    port_dist = AvgOfportdistanceM,
-    n = SumOfCopper.Rockfish) %>%
+    #imp_year = AvgOfYears_since_imp,
+    #port_dist = AvgOfportdistanceM,
+    n = SumOfCopper_Rockfish) %>%
   #filter(designation != "MPA/Outside") %>%
   mutate(
     super_year = as.factor(super_year),
@@ -82,17 +83,17 @@ rov_north <- rov_north %>%
     mpa_group = FirstOfMPAGroup,
     lat = AvgOfAvg_Lat,
     lon = AvgOfAvg_Lon,
-    effort = AvgOfEffort,
+    #effort = AvgOfEffort,
     depth = AvgOfAvg_Depth,
-    prop_hard = PropnHardTransect,
-    prop_mixed = PropnMixedTransect,
-    prop_soft = PropnSoftTransect,
+    prop_hard = AvgOfPropn_Hard, #PropnHardTransect,
+    prop_mixed = AvgOfPropn_Mixed, #PropnMixedTransect,
+    prop_soft = AvgOfPropn_Soft, #PropnSoftTransect,
     usable_area = SumOfUsable_Area_Fish, 
     distance = SumOfUsable_XYdist,
     protection = FirstOfProtection,
-    imp_year = AvgOfYears_since_imp,
-    port_dist = AvgOfportdistanceM,
-    n = SumOfCopper.Rockfish) %>%
+    #imp_year = AvgOfYears_since_imp,
+    #port_dist = AvgOfportdistanceM,
+    n = SumOfCopper_Rockfish) %>%
   mutate(
     super_year = as.factor(super_year),
     designation = as.factor(designation),
@@ -142,14 +143,14 @@ filtered_data_south <- rbind(filtered_data_south,
 
 rov_south <- rov_south[rov_south$designation != "MPA/Outside", ]
 
-obs_by_des_loc <- aggregate(LineID ~ super_year + mpa_group + designation, rov_south, length)
+obs_by_des_loc <- aggregate(FirstOfLineID ~ super_year + mpa_group + designation, rov_south, length)
 
 remove_s <- which(rov_south$designation == "Reference" & rov_south$mpa_group == "Anacapa Island")
 filtered_data_south <- rbind(filtered_data_south,
   c("Reference or MPA locations without sampling for at least three years", length(remove_s)))
 
 
-obs_by_des_loc <- aggregate(LineID ~ super_year + mpa_group + designation, rov_north, length)
+obs_by_des_loc <- aggregate(FirstOfLineID ~ super_year + mpa_group + designation, rov_north, length)
 remove_n <- c(which(rov_north$designation == "Reference" & rov_north$mpa_group %in% c("Piedras Blancas")),
               which(rov_north$mpa_group %in% c("N Farallon Islands")))
 filtered_data_north <- rbind(filtered_data_north,
@@ -164,11 +165,11 @@ filtered_data_south <- rbind(filtered_data_south,
   c("Retained records", nrow(rov_south)))
 
 colnames(filtered_data_north) <- colnames(filtered_data_south) <- c("Removal reason", "Number")
-write.csv(filtered_data_north, file = file.path(dir, "forSS", "rov_removed_records_north.csv"), row.names = FALSE)
-write.csv(filtered_data_south, file = file.path(dir, "forSS", "rov_removed_records_south.csv"), row.names = FALSE)
+write.csv(filtered_data_north, file = file.path(dir, "forSS", "rov_removed_records_north_05192023.csv"), row.names = FALSE)
+write.csv(filtered_data_south, file = file.path(dir, "forSS", "rov_removed_records_south_05192023.csv"), row.names = FALSE)
 
-save(rov_south, file = file.path(dir, "rov_south_data_used_for_index_creation.rdata"))
-save(rov_north, file = file.path(dir, "rov_north_data_used_for_index_creation.rdata"))
+save(rov_south, file = file.path(dir, "rov_south_data_used_for_index_creation_05192023.rdata"))
+save(rov_north, file = file.path(dir, "rov_north_data_used_for_index_creation_05192023.rdata"))
 
 rov_south$designation <- droplevels(rov_south$designation)
 #=================================================================================
@@ -176,25 +177,25 @@ rov_south$designation <- droplevels(rov_south$designation)
 #==================================================================================
 
 copper_obs <- aggregate(n ~ super_year + mpa_group + designation, rov_south, sum)
-transects <- aggregate(LineID ~  super_year + mpa_group + designation, rov_south, length)
+transects <- aggregate(FirstOfLineID ~  super_year + mpa_group + designation, rov_south, length)
 both <- cbind(transects, copper_obs$n)
 colnames(both) <- c("Super Year", "Area", "Designation", "Transects",  "Observations")
-write.csv(both, file = file.path(dir, "forSS", "south_copper_obs_designation_mpa_group_super_year.csv"),  row.names = FALSE)
+write.csv(both, file = file.path(dir, "forSS", "south_copper_obs_designation_mpa_group_super_year_05192023.csv"),  row.names = FALSE)
 
 copper_obs <- aggregate(n ~ super_year + mpa_group + designation, rov_north, sum)
-transects <- aggregate(LineID ~  super_year + mpa_group + designation, rov_north, length)
+transects <- aggregate(FirstOfLineID ~  super_year + mpa_group + designation, rov_north, length)
 both <- cbind(transects, copper_obs$n)
 colnames(both) <- c("Super Year", "Area",  "Designation", "Transects", "Observations")
-write.csv(both, file = file.path(dir, "forSS", "north_copper_obs_designation_mpa_group_super_year.csv"),  row.names = FALSE)
+write.csv(both, file = file.path(dir, "forSS", "north_copper_obs_designation_mpa_group_super_year_05192023.csv"),  row.names = FALSE)
 
 south_samples <- rov_south %>%
   group_by(year, mpa_group, designation) %>%
   reframe(
-    transect = length(unique(LineID)),
+    transect = length(unique(FirstOfLineID)),
     n = sum(n)
   )
 colnames(south_samples) <- c("Year", "Location", "Designation", "Transect", "Obs.")
-write.csv(south_samples, file = file.path(dir, "forSS", "south_obs_designation_mpa_group_year.csv"),  row.names = FALSE)
+write.csv(south_samples, file = file.path(dir, "forSS", "south_obs_designation_mpa_group_year_05192023.csv"),  row.names = FALSE)
 
 transects_by_area <- rov_south %>%
   group_by(mpa_group, year) %>%
@@ -203,7 +204,7 @@ transects_by_area <- rov_south %>%
     n_ref = sum(designation == "Reference")
   )
 colnames(transects_by_area) <- c("Location", "Year", "MPA", "Reference")
-write.csv(transects_by_area, file = file.path(dir, "forSS", "south_obs_mpa_group_year.csv"),  row.names = FALSE)
+write.csv(transects_by_area, file = file.path(dir, "forSS", "south_obs_mpa_group_year_05192023.csv"),  row.names = FALSE)
 
 transects_by_area <- rov_north %>%
   group_by(mpa_group, year) %>%
@@ -212,7 +213,7 @@ transects_by_area <- rov_north %>%
     n_ref = sum(designation == "Reference")
   )
 colnames(transects_by_area) <- c("Location", "Year", "MPA", "Reference")
-write.csv(transects_by_area, file = file.path(dir, "forSS", "north_obs_mpa_group_year.csv"),  row.names = FALSE)
+write.csv(transects_by_area, file = file.path(dir, "forSS", "north_obs_mpa_group_year_05192023.csv"),  row.names = FALSE)
 
 
 #=================================================================================
@@ -224,7 +225,7 @@ ggplot(aes(x = n),
        data = rov_south) + geom_bar() + theme_bw() + 
   facet_wrap(c("designation")) +
   xlab("Numbers Observed by Transect") + ylab("Count")
-ggsave(file = file.path(dir, "plots", "observations_south.png"), width =10, height = 7)
+ggsave(file = file.path(dir, "plots", "observations_south_05192023.png"), width =10, height = 7)
 
 
 raw.cpue <- rov_south %>%
@@ -236,7 +237,7 @@ ggplot(aes(y = avg_cpue, x = super_year, colour = designation),
        data = raw.cpue) + geom_point(size = 3) + theme_bw() +
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.006)) + 
   scale_color_viridis_d()
-ggsave(file = file.path(dir, "plots", "south_raw_cpue.png"), width = 7, height = 7)
+ggsave(file = file.path(dir, "plots", "south_raw_cpue_05192023.png"), width = 7, height = 7)
 
 raw.cpue <- rov_south %>%
   mutate(cpue = n / usable_area) %>%
@@ -248,7 +249,7 @@ ggplot(aes(y = avg_cpue, x = year, colour = designation),
   geom_line(aes(x = year, y = avg_cpue, colour = designation)) +
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.0075)) + 
   scale_color_viridis_d()
-ggsave(file = file.path(dir, "plots", "south_raw_cpue_by_year.png"), width = 7, height = 7)
+ggsave(file = file.path(dir, "plots", "south_raw_cpue_by_year_05192023.png"), width = 7, height = 7)
 
 
 raw.cpue <- rov_south %>%
@@ -258,12 +259,12 @@ raw.cpue <- rov_south %>%
 
 ggplot(data = raw.cpue, aes(y = avg_cpue, x = super_year, colour = mpa_group)) + 
   geom_point(size = 3) + theme_bw() + 
-  geom_line(aes(x = super_year, y = avg_cpue, colour = mpa_group)) +
+  geom_line(aes(x = super_year, y = avg_cpue, colour = mpa_group, group = mpa_group)) +
   facet_wrap('designation') +
   #geom_errorbar(aes( ymin = avg_cpue - sd_cpue, ymax = avg_cpue + sd_cpue)) + 
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.015)) + 
   scale_color_viridis_d()
-ggsave(file = file.path(dir, "plots", "south_raw_cpue_by_mpa_group.png"), width = 7, height = 7)
+ggsave(file = file.path(dir, "plots", "south_raw_cpue_by_mpa_group_05192023.png"), width = 7, height = 7)
 
 raw.cpue <- rov_south %>%
   mutate(cpue = n / usable_area) %>%
@@ -276,7 +277,7 @@ ggplot(data = raw.cpue, aes(y = avg_cpue, x = year, colour = mpa_group)) +
   facet_wrap('designation') +
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.0155)) + 
   scale_color_viridis_d()
-ggsave(file = file.path(dir, "plots", "south_raw_cpue_by_mpa_group_by_year.png"), width = 7, height = 7)
+ggsave(file = file.path(dir, "plots", "south_raw_cpue_by_mpa_group_by_year_05192023.png"), width = 7, height = 7)
 
 
 raw.cpue <- rov_south %>%
@@ -306,7 +307,7 @@ write.csv(n_by_site, row.names = FALSE,
 ggplot(aes(x = n),
        data = rov_north) + geom_bar() + theme_bw() + facet_grid(designation~.) +
   xlab("Numbers Observed by Transect") + ylab("Count")
-ggsave(file = file.path(dir, "plots", "observations_north.png"), width = 7, height = 7)
+ggsave(file = file.path(dir, "plots", "observations_north_05192023.png"), width = 7, height = 7)
 
 raw.cpue <- rov_north %>%
   mutate(cpue = n / usable_area) %>%
@@ -317,7 +318,7 @@ ggplot(aes(y = avg_cpue, x = super_year, colour = designation),
        data = raw.cpue) + geom_point(size = 3) + theme_bw() +
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.006)) + 
   scale_color_viridis_d()
-ggsave(file = file.path(dir, "plots", "north_raw_cpue.png"), width = 7, height = 7)
+ggsave(file = file.path(dir, "plots", "north_raw_cpue_05192023.png"), width = 7, height = 7)
 
 raw.cpue <- rov_north %>%
   mutate(cpue = n / usable_area) %>%
@@ -329,7 +330,7 @@ ggplot(aes(y = avg_cpue, x = year, colour = designation),
   geom_line(aes(x = year, y = avg_cpue, colour = designation)) +
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.006)) + 
   scale_color_viridis_d()
-ggsave(file = file.path(dir, "plots", "north_raw_cpue_by_year.png"), width = 7, height = 7)
+ggsave(file = file.path(dir, "plots", "north_raw_cpue_by_year_05192023.png"), width = 7, height = 7)
 
 raw.cpue <- rov_north %>%
   mutate(cpue = n / usable_area) %>%
@@ -338,11 +339,11 @@ raw.cpue <- rov_north %>%
 
 ggplot(data = raw.cpue, aes(y = avg_cpue, x = super_year, colour = mpa_group)) + 
   geom_point(size = 3) + theme_bw() + facet_grid(designation~.) + 
-  geom_line(aes(x = super_year, y = avg_cpue, colour = mpa_group)) +
+  geom_line(aes(x = super_year, y = avg_cpue, colour = mpa_group, group = mpa_group)) +
   #geom_errorbar(aes( ymin = avg_cpue - sd_cpue, ymax = avg_cpue + sd_cpue)) + 
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.005)) + 
   scale_color_viridis_d()
-ggsave(file = file.path(dir, "plots", "north_raw_cpue_by_mpa_group.png"), width = 7, height = 7)
+ggsave(file = file.path(dir, "plots", "north_raw_cpue_by_mpa_group_05192023.png"), width = 7, height = 7)
 
 raw.cpue <- rov_north %>%
   mutate(cpue = n / usable_area) %>%
@@ -351,11 +352,11 @@ raw.cpue <- rov_north %>%
 
 ggplot(data = raw.cpue, aes(y = avg_cpue, x = year, colour = mpa_group)) + 
   geom_point(size = 3) + theme_bw() + facet_grid(designation~.) + 
-  geom_line(aes(x = year, y = avg_cpue, colour = mpa_group)) +
+  geom_line(aes(x = year, y = avg_cpue, colour = mpa_group, group = mpa_group)) +
   #geom_errorbar(aes( ymin = avg_cpue - sd_cpue, ymax = avg_cpue + sd_cpue)) + 
   xlab("Year") + ylab("Average CPUE") + ylim(c(0, 0.005)) + 
   scale_color_viridis_d()
-ggsave(file = file.path(dir, "plots", "north_raw_cpue_by_mpa_group_by_year.png"), width = 7, height = 7)
+ggsave(file = file.path(dir, "plots", "north_raw_cpue_by_mpa_group_by_year_05192023.png"), width = 7, height = 7)
 
 
 raw.cpue <- rov_north %>%
@@ -399,9 +400,9 @@ locs <- rov_south %>%
   dplyr::summarise(
     lat = lat[1],
     lon = lon[1],
+    prop_soft_scaled = prop_soft_scaled[1],
     depth_scaled = depth_scaled[1],
-    depth_scaled_2 = depth_scaled_2[1],
-    prop_soft_scaled = prop_soft_scaled[1])
+    depth_scaled_2 = depth_scaled_2[1])
 
 grid <- dplyr::left_join(grid, locs) %>%
   dplyr::filter(!is.na(lat + lon))
@@ -541,59 +542,88 @@ write.csv(out, file = file.path(dir, "forSS", "north_model_selection.csv"), row.
 # super year, designation, poly(depth, 2), prop_soft, year*designation
 #============================================================================
 
-name <- "glm_negbin_south_designation_depth_soft"
-dir.create(file.path(dir, name), showWarnings = FALSE)
+# name <- "glm_negbin_south_designation_depth_soft_super_year"
+# dir.create(file.path(dir, name), showWarnings = FALSE)
+# 
+# data <- rov_south
+# data$year <- data$super_year
+# data$log_usable_area <- log(data$usable_area)
+# 
+# south_model <- sdmTMB(
+#   n ~ poly(depth_scaled, 2) + prop_soft_scaled + as.factor(year)*as.factor(designation), 
+#   data = data,
+#   offset = log(data$usable_area),
+#   time = "year",
+#   spatial="off",
+#   spatiotemporal = "off",
+#   family = nbinom2(link = "log")
+# )
+# 
+# index <- calc_index(
+#   dir = file.path(dir, name), 
+#   fit = south_model,
+#   grid = grid_south)
+# 
+# do_diagnostics(
+#   dir = file.path(dir, name), 
+#   fit = south_model,
+#   plot_resids = FALSE)
+# 
 
-data <- rov_south
-data$year <- data$super_year
-data$log_usable_area <- log(data$usable_area)
 
-south_model <- sdmTMB(
-  n ~ poly(depth_scaled, 2) + prop_soft_scaled + as.factor(year)*as.factor(designation), 
-  data = data,
-  offset = log(data$usable_area),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = nbinom2(link = "log")
-)
-
-index <- calc_index(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  grid = grid_south)
-
-do_diagnostics(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  plot_resids = FALSE)
-
-name <- "delta_lognormal_south_designation_depth_soft_73_27"
-dir.create(file.path(dir, name), showWarnings = FALSE)
-
-data <- rov_south
-data$year <- data$super_year
-data$log_usable_area <- log(data$usable_area)
-
-south_model <- sdmTMB(
-  n ~ poly(depth_scaled, 2) + prop_soft_scaled + as.factor(year)*as.factor(designation), 
-  data = data,
-  offset = log(data$usable_area),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = delta_lognormal()
-)
-
-index <- calc_index(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  grid = grid_south)
-
-do_diagnostics(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  plot_resids = FALSE)
+ name <- "delta_gamma_south_designation_depth_soft_73_27_05092023"
+ dir.create(file.path(dir, name), showWarnings = FALSE)
+ 
+ data <- rov_south
+ data$year <- data$super_year
+ data$log_usable_area <- log(data$usable_area)
+ 
+ south_model <- sdmTMB(
+   n ~ poly(depth_scaled, 2) + prop_soft_scaled + as.factor(year)*as.factor(designation), 
+   data = data,
+   offset = log(data$usable_area),
+   time = "year",
+   spatial="off",
+   spatiotemporal = "off",
+   family = delta_gamma()
+ )
+ 
+ index <- calc_index(
+   dir = file.path(dir, name), 
+   fit = south_model,
+   grid = grid_south)
+ 
+ do_diagnostics(
+   dir = file.path(dir, name), 
+   fit = south_model,
+   plot_resids = TRUE)
+ 
+ name <- "delta_lognormal_south_designation_depth_soft_73_27_05092023"
+ dir.create(file.path(dir, name), showWarnings = FALSE)
+ 
+ data <- rov_south
+ data$year <- data$super_year
+ data$log_usable_area <- log(data$usable_area)
+ 
+ south_model <- sdmTMB(
+   n ~ poly(depth_scaled, 2) + prop_soft_scaled + as.factor(year)*as.factor(designation), 
+   data = data,
+   offset = log(data$usable_area),
+   time = "year",
+   spatial="off",
+   spatiotemporal = "off",
+   family = delta_lognormal()
+ )
+ 
+ index <- calc_index(
+   dir = file.path(dir, name), 
+   fit = south_model,
+   grid = grid_south)
+ 
+ do_diagnostics(
+   dir = file.path(dir, name), 
+   fit = south_model,
+   plot_resids = TRUE)
 
 # alternative approach - add area
 # total_area_km2 <- 200 # dummy number, units should be in whatever your area units are
@@ -603,91 +633,91 @@ do_diagnostics(
 # index <- get_index(pred, area = grid$area, bias_correct = TRUE)
 
 # South STAN Model Run
-start.time <- Sys.time()
-# use STAN to see how well 'best model' fits the data
-Dnbin<- stan_glm.nb(n ~ as.factor(year) + as.factor(designation) + poly(depth_scaled,2) + prop_soft_scaled + as.factor(year):as.factor(designation),
-                    data = data,
-                    offset = log(data$usable_area),
-                    prior_intercept = normal(location = 0, scale = 10),
-                    prior = normal(location = 0, scale = 10),
-                    prior_aux = cauchy(0, 5),
-                    chains = 4,
-                    iter = 5000
-) # iterations per chain
-Sys.time() - start.time
-save(Dnbin, file = file.pprath(dir, name, "rstan_glm_output.rdata"))
-
-## pp_check
-prop_zero <- function(y) mean(y == 0)
-
-# figure of proportion zero - does good job
-figure_Dnbin_prop_zero <- rstanarm::pp_check(Dnbin, plotfun = "stat", stat = "prop_zero", binwidth = 0.01)
-pngfun(wd = file.path(dir, name), file = "proportion_zero_south.png")
-figure_Dnbin_prop_zero
-dev.off()
-
-#plot of predictions with the mpa designation
-ptest4 <- ggeffects::ggpredict(mod2,c("year", "designation"))
-pngfun(wd = file.path(dir, name), file = "south_designation_predictions_from_nb_glm.png")
-plot(ptest4)
-dev.off()
-
-#Now get the weighted index
-allcoefs <- as.matrix(Dnbin)
-allmodmat <- model.matrix(Dnbin)
-colnames(allcoefs)
-
-# Order should be intercept, year, designation, year:designation terms
-coefind <- which(colnames(allcoefs) %in% c("(Intercept)", "as.factor(year)2020", "as.factor(designation)Reference", "as.factor(year)2020:as.factor(designation)Reference"))
-coefmat <- allcoefs[, coefind]
-modmat <- unique.matrix(allmodmat[, coefind])
-modmat <- modmat[c('1','56', '2','55'),]
-vals <- data[c(1, 56, 2, 55),c("year", "designation")]
-# vals (rows of modmat) need to be sorted by year, then designation, for weighting to work later
-
-predmat <- modmat %*% t(coefmat)
-predmatbt <- exp(predmat)
-vals$pmed <- apply(predmatbt, 1, median)
-vals$pmedl <- apply(predmatbt, 1, quantile, 0.025)
-vals$pmedu <- apply(predmatbt, 1, quantile, 0.975)
-
-# the values are not exactly the same as plot(ptest4), but the pattern is.
-# probably because ggpredict is conditioning on other vars e.g. mean depth
-ggplot2::ggplot(vals, aes(x = year,y = pmed, color = factor(designation))) +
-  geom_point(position = position_dodge(0.5)) +
-  geom_errorbar(aes(ymin = pmedl, ymax = pmedu),position = position_dodge(0.5), width=0.2) +
-  theme_bw() + ylab("Prediciton") + xlab("Year")
-ggsave(file = file.path(dir, name, "south_rstan_prediction.png"), width = 7, height = 7)
-
-phi <- 0.92 #weighting to allocate to MPA
-# The following won't work if there are more than 2 sites
-nyears <- nrow(modmat) / 2
-wmat <- matrix(c(1 - phi, phi, rep(0, nyears*2)), byrow = T, nrow = nyears, ncol = nyears*2)
-# the warning is fine, it produces the right matrix
-
-wpredmat <- wmat %*% predmatbt
-wpmed <- apply(wpredmat, 1, median)
-wpmedl <- apply(wpredmat, 1, quantile, 0.025)
-wpmedu <- apply(wpredmat, 1, quantile, 0.975)
-cvpred <- apply(wpredmat, 1, sd) / wpmed
-wres <- cbind.data.frame(year = unique(vals$year), wpmed, wpmedl, wpmedu, cvpred)
-
-save(wres, file = file.path(dir, name, "south_rstan_weighted_index.rdata"))
-
-ggplot(data = wres, aes(x=year, y=wpmed)) +
-  geom_point(position = position_dodge(0.5)) +
-  geom_errorbar(aes(ymin=wpmedl, ymax=wpmedu),position = position_dodge(0.5), width=0.2) +
-  theme_bw() + #ggtitle(paste("Predicted probibility, phi = ",phi)) +
-  xlab("Year") + ylab("Relative Index") +
-  ylim(c(0, 0.003))
-ggsave(file = file.path(dir, "plots", "south_weighted_stan_index.png"), width = 7, height = 7)
+# start.time <- Sys.time()
+# # use STAN to see how well 'best model' fits the data
+# Dnbin<- stan_glm.nb(n ~ as.factor(year) + as.factor(designation) + poly(depth_scaled,2) + prop_soft_scaled + as.factor(year):as.factor(designation),
+#                     data = data,
+#                     offset = log(data$usable_area),
+#                     prior_intercept = normal(location = 0, scale = 10),
+#                     prior = normal(location = 0, scale = 10),
+#                     prior_aux = cauchy(0, 5),
+#                     chains = 4,
+#                     iter = 5000
+# ) # iterations per chain
+# Sys.time() - start.time
+# save(Dnbin, file = file.pprath(dir, name, "rstan_glm_output.rdata"))
+# 
+# ## pp_check
+# prop_zero <- function(y) mean(y == 0)
+# 
+# # figure of proportion zero - does good job
+# figure_Dnbin_prop_zero <- rstanarm::pp_check(Dnbin, plotfun = "stat", stat = "prop_zero", binwidth = 0.01)
+# pngfun(wd = file.path(dir, name), file = "proportion_zero_south.png")
+# figure_Dnbin_prop_zero
+# dev.off()
+# 
+# #plot of predictions with the mpa designation
+# ptest4 <- ggeffects::ggpredict(mod2,c("year", "designation"))
+# pngfun(wd = file.path(dir, name), file = "south_designation_predictions_from_nb_glm.png")
+# plot(ptest4)
+# dev.off()
+# 
+# #Now get the weighted index
+# allcoefs <- as.matrix(Dnbin)
+# allmodmat <- model.matrix(Dnbin)
+# colnames(allcoefs)
+# 
+# # Order should be intercept, year, designation, year:designation terms
+# coefind <- which(colnames(allcoefs) %in% c("(Intercept)", "as.factor(year)2020", "as.factor(designation)Reference", "as.factor(year)2020:as.factor(designation)Reference"))
+# coefmat <- allcoefs[, coefind]
+# modmat <- unique.matrix(allmodmat[, coefind])
+# modmat <- modmat[c('1','56', '2','55'),]
+# vals <- data[c(1, 56, 2, 55),c("year", "designation")]
+# # vals (rows of modmat) need to be sorted by year, then designation, for weighting to work later
+# 
+# predmat <- modmat %*% t(coefmat)
+# predmatbt <- exp(predmat)
+# vals$pmed <- apply(predmatbt, 1, median)
+# vals$pmedl <- apply(predmatbt, 1, quantile, 0.025)
+# vals$pmedu <- apply(predmatbt, 1, quantile, 0.975)
+# 
+# # the values are not exactly the same as plot(ptest4), but the pattern is.
+# # probably because ggpredict is conditioning on other vars e.g. mean depth
+# ggplot2::ggplot(vals, aes(x = year,y = pmed, color = factor(designation))) +
+#   geom_point(position = position_dodge(0.5)) +
+#   geom_errorbar(aes(ymin = pmedl, ymax = pmedu),position = position_dodge(0.5), width=0.2) +
+#   theme_bw() + ylab("Prediciton") + xlab("Year")
+# ggsave(file = file.path(dir, name, "south_rstan_prediction.png"), width = 7, height = 7)
+# 
+# phi <- 0.92 #weighting to allocate to MPA
+# # The following won't work if there are more than 2 sites
+# nyears <- nrow(modmat) / 2
+# wmat <- matrix(c(1 - phi, phi, rep(0, nyears*2)), byrow = T, nrow = nyears, ncol = nyears*2)
+# # the warning is fine, it produces the right matrix
+# 
+# wpredmat <- wmat %*% predmatbt
+# wpmed <- apply(wpredmat, 1, median)
+# wpmedl <- apply(wpredmat, 1, quantile, 0.025)
+# wpmedu <- apply(wpredmat, 1, quantile, 0.975)
+# cvpred <- apply(wpredmat, 1, sd) / wpmed
+# wres <- cbind.data.frame(year = unique(vals$year), wpmed, wpmedl, wpmedu, cvpred)
+# 
+# save(wres, file = file.path(dir, name, "south_rstan_weighted_index.rdata"))
+# 
+# ggplot(data = wres, aes(x=year, y=wpmed)) +
+#   geom_point(position = position_dodge(0.5)) +
+#   geom_errorbar(aes(ymin=wpmedl, ymax=wpmedu),position = position_dodge(0.5), width=0.2) +
+#   theme_bw() + #ggtitle(paste("Predicted probibility, phi = ",phi)) +
+#   xlab("Year") + ylab("Relative Index") +
+#   ylim(c(0, 0.003))
+# ggsave(file = file.path(dir, "plots", "south_weighted_stan_index.png"), width = 7, height = 7)
 
 
 #=======================================================================
 # North 
 #=======================================================================
 
-name <- "glm_negbin_north_designation_depth"
+name <- "glm_negbin_north_designation_depth_80_20_05192023"
 dir.create(file.path(dir, name), showWarnings = FALSE)
 
 data <- rov_north
@@ -714,119 +744,118 @@ do_diagnostics(
   fit = north_model,
   plot_resids = FALSE)
 
-start.time <- Sys.time()
-# use STAN to see how well 'best model' fits the data
-Dnbin<- stan_glm.nb(n ~ as.factor(year) + as.factor(designation) + poly(depth_scaled,2) + as.factor(year):as.factor(designation),
-                    data = data,
-                    offset = log(data$usable_area),
-                    prior_intercept = normal(location = 0, scale = 10),
-                    prior = normal(location = 0, scale = 10),
-                    prior_aux = cauchy(0, 5),
-                    chains = 4,
-                    iter = 5000
-) # iterations per chain
-Sys.time() - start.time
-
-## pp_check
-prop_zero <- function(y) mean(y == 0)
-
-# figure of proportion zero - does good job
-figure_Dnbin_prop_zero <- pp_check(Dnbin, plotfun = "stat", stat = "prop_zero", binwidth = 0.01)
-pngfun(wd = file.path(dir, name), file = "proportion_zero.png")
-figure_Dnbin_prop_zero
-dev.off()
-
-#plot of predictions with the mpa designation
-ptest4 <- ggeffects::ggpredict(mod2,c("year", "designation"))
-pngfun(wd = file.path(dir, name), file = "north_predictions_from_nb_glm.png")
-plot(ptest4)
-dev.off()
-
-#Now get the weighted index
-allcoefs <- as.matrix(Dnbin)
-allmodmat <- model.matrix(Dnbin)
-colnames(allcoefs)
-
-# can probably automate generation of below, but order should be intercept, year, site, year:site terms
-coefind <- which(colnames(allcoefs) %in% c("(Intercept)", "as.factor(year)2020", "as.factor(designation)Reference", "as.factor(year)2020:as.factor(designation)Reference"))
-coefmat <-  allcoefs[, coefind]
-modmat <-  unique.matrix(allmodmat[, coefind])
-modmat <-  modmat[c('3','24','1','23'),]
-vals <-  data[c(3, 24, 1, 23),c("year", "designation")]
-#vals (rows of modmat) need to be sorted by year, then site, for weighting to work later
-
-predmat <-  modmat %*%t (coefmat)
-predmatbt <-  exp(predmat)
-vals$pmed <-  apply(predmatbt, 1, median)
-vals$pmedl <-  apply(predmatbt, 1, quantile, 0.025)
-vals$pmedu <-  apply(predmatbt, 1, quantile, 0.975)
-
-#the values are not exactly the same as plot(ptest4), but the pattern is.
-#probably because ggpredict is conditioning on other vars e.g. mean depth
-ggplot2::ggplot(vals, aes(x = year,y = pmed, color = factor(designation))) +
-  geom_point(position = position_dodge(0.5)) +
-  geom_errorbar(aes(ymin = pmedl, ymax = pmedu),position = position_dodge(0.5), width=0.2) +
-  theme_bw() + ylab("Prediciton") + xlab("Year") + ylim(c(0, 0.0025))
-ggsave(file = file.path(dir, name, "north_rstan_prediction.png"), width = 7, height = 7)
-
-phi <-  0.80 #weighting to allocate to MPA
-#the following won't work if there are more than 2 sites
-nyears <-  nrow(modmat) / 2
-wmat <-  matrix(c(1-phi, phi, rep(0, nyears*2)), byrow = T, nrow = nyears, ncol = nyears*2)
-#the warning is fine, it produces the right matrix
-
-wpredmat <-  wmat %*% predmatbt
-wpmed <-  apply(wpredmat, 1, median)
-wpmedl <- apply(wpredmat, 1, quantile, 0.025)
-wpmedu <- apply(wpredmat, 1, quantile, 0.975)
-wpmedcv<- apply(wpredmat, 1, sd) / wpmed
-wres <-  cbind.data.frame(year = unique(vals$year), wpmed, wpmedl, wpmedu, wpmedcv)
-
-save(wres, file = file.path(dir, name, "north_rstan_weighted_index.rdata"))
-
-ggplot(data = wres, aes(x=year, y=wpmed)) +
-  geom_point(position = position_dodge(0.5)) +
-  geom_errorbar(aes(ymin=wpmedl, ymax=wpmedu),position = position_dodge(0.5), width=0.2) +
-  theme_bw() + #ggtitle(paste("Predicted probibility, phi = ",phi)) +
-  xlab("Year") + ylab("Relative Index") + ylim(c(0, 0.0015))
-ggsave(file = file.path(dir, name, "north_weighted_stan_index.png"), width = 7, height = 7)
-
-
+# start.time <- Sys.time()
+# # use STAN to see how well 'best model' fits the data
+# Dnbin<- stan_glm.nb(n ~ as.factor(year) + as.factor(designation) + poly(depth_scaled,2) + as.factor(year):as.factor(designation),
+#                     data = data,
+#                     offset = log(data$usable_area),
+#                     prior_intercept = normal(location = 0, scale = 10),
+#                     prior = normal(location = 0, scale = 10),
+#                     prior_aux = cauchy(0, 5),
+#                     chains = 4,
+#                     iter = 5000
+# ) # iterations per chain
+# Sys.time() - start.time
+# 
+# ## pp_check
+# prop_zero <- function(y) mean(y == 0)
+# 
+# # figure of proportion zero - does good job
+# figure_Dnbin_prop_zero <- pp_check(Dnbin, plotfun = "stat", stat = "prop_zero", binwidth = 0.01)
+# pngfun(wd = file.path(dir, name), file = "proportion_zero.png")
+# figure_Dnbin_prop_zero
+# dev.off()
+# 
+# #plot of predictions with the mpa designation
+# ptest4 <- ggeffects::ggpredict(mod2,c("year", "designation"))
+# pngfun(wd = file.path(dir, name), file = "north_predictions_from_nb_glm.png")
+# plot(ptest4)
+# dev.off()
+# 
+# #Now get the weighted index
+# allcoefs <- as.matrix(Dnbin)
+# allmodmat <- model.matrix(Dnbin)
+# colnames(allcoefs)
+# 
+# # can probably automate generation of below, but order should be intercept, year, site, year:site terms
+# coefind <- which(colnames(allcoefs) %in% c("(Intercept)", "as.factor(year)2020", "as.factor(designation)Reference", "as.factor(year)2020:as.factor(designation)Reference"))
+# coefmat <-  allcoefs[, coefind]
+# modmat <-  unique.matrix(allmodmat[, coefind])
+# modmat <-  modmat[c('3','24','1','23'),]
+# vals <-  data[c(3, 24, 1, 23),c("year", "designation")]
+# #vals (rows of modmat) need to be sorted by year, then site, for weighting to work later
+# 
+# predmat <-  modmat %*%t (coefmat)
+# predmatbt <-  exp(predmat)
+# vals$pmed <-  apply(predmatbt, 1, median)
+# vals$pmedl <-  apply(predmatbt, 1, quantile, 0.025)
+# vals$pmedu <-  apply(predmatbt, 1, quantile, 0.975)
+# 
+# #the values are not exactly the same as plot(ptest4), but the pattern is.
+# #probably because ggpredict is conditioning on other vars e.g. mean depth
+# ggplot2::ggplot(vals, aes(x = year,y = pmed, color = factor(designation))) +
+#   geom_point(position = position_dodge(0.5)) +
+#   geom_errorbar(aes(ymin = pmedl, ymax = pmedu),position = position_dodge(0.5), width=0.2) +
+#   theme_bw() + ylab("Prediciton") + xlab("Year") + ylim(c(0, 0.0025))
+# ggsave(file = file.path(dir, name, "north_rstan_prediction.png"), width = 7, height = 7)
+# 
+# phi <-  0.80 #weighting to allocate to MPA
+# #the following won't work if there are more than 2 sites
+# nyears <-  nrow(modmat) / 2
+# wmat <-  matrix(c(1-phi, phi, rep(0, nyears*2)), byrow = T, nrow = nyears, ncol = nyears*2)
+# #the warning is fine, it produces the right matrix
+# 
+# wpredmat <-  wmat %*% predmatbt
+# wpmed <-  apply(wpredmat, 1, median)
+# wpmedl <- apply(wpredmat, 1, quantile, 0.025)
+# wpmedu <- apply(wpredmat, 1, quantile, 0.975)
+# wpmedcv<- apply(wpredmat, 1, sd) / wpmed
+# wres <-  cbind.data.frame(year = unique(vals$year), wpmed, wpmedl, wpmedu, wpmedcv)
+# 
+# save(wres, file = file.path(dir, name, "north_rstan_weighted_index.rdata"))
+# 
+# ggplot(data = wres, aes(x=year, y=wpmed)) +
+#   geom_point(position = position_dodge(0.5)) +
+#   geom_errorbar(aes(ymin=wpmedl, ymax=wpmedu),position = position_dodge(0.5), width=0.2) +
+#   theme_bw() + #ggtitle(paste("Predicted probibility, phi = ",phi)) +
+#   xlab("Year") + ylab("Relative Index") + ylim(c(0, 0.0015))
+# ggsave(file = file.path(dir, name, "north_weighted_stan_index.png"), width = 7, height = 7)
 
 
-name <- "delta_lognormal_north_designation_depth"
-dir.create(file.path(dir, name), showWarnings = FALSE)
 
-data <- rov_north
-data$year <- data$super_year
-data$log_usable_area <- log(data$usable_area)
-
-north_model <- sdmTMB(
-  n ~ poly(depth_scaled, 2) +  as.factor(year)*as.factor(designation), 
-  data = data,
-  offset = log(data$usable_area),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = delta_lognormal()
-)
-
-index <- calc_index(
-  dir = file.path(dir, name), 
-  fit = north_model,
-  grid = grid_north)
-
-do_diagnostics(
-  dir = file.path(dir, name), 
-  fit = north_model,
-  plot_resids = FALSE)
-
-# north STAN Model Run
-mod2 <- MASS::glm.nb(n ~ as.factor(year) + poly(depth_scaled,2) +
-                     as.factor(designation) + as.factor(year):as.factor(designation) +
-                     offset(log_usable_area),
-                     data = data)
-
+# name <- "delta_lognormal_north_designation_depth"
+# dir.create(file.path(dir, name), showWarnings = FALSE)
+# 
+# data <- rov_north
+# data$year <- data$super_year
+# data$log_usable_area <- log(data$usable_area)
+# 
+# north_model <- sdmTMB(
+#   n ~ poly(depth_scaled, 2) +  as.factor(year)*as.factor(designation), 
+#   data = data,
+#   offset = log(data$usable_area),
+#   time = "year",
+#   spatial="off",
+#   spatiotemporal = "off",
+#   family = delta_lognormal()
+# )
+# 
+# index <- calc_index(
+#   dir = file.path(dir, name), 
+#   fit = north_model,
+#   grid = grid_north)
+# 
+# do_diagnostics(
+#   dir = file.path(dir, name), 
+#   fit = north_model,
+#   plot_resids = FALSE)
+# 
+# # north STAN Model Run
+# mod2 <- MASS::glm.nb(n ~ as.factor(year) + poly(depth_scaled,2) +
+#                      as.factor(designation) + as.factor(year):as.factor(designation) +
+#                      offset(log_usable_area),
+#                      data = data)
+# 
 #=================================================================================
 # Analyze the data on a yearly basis
 #
@@ -1057,168 +1086,195 @@ for(a in 1:2){
 # South Model - Neg. Binomial Model
 #==================================================================================
 
-name <- "glm_negbin_south_designation_year"
-dir.create(file.path(dir, name), showWarnings = FALSE)
+# name <- "glm_negbin_south_designation_year"
+# dir.create(file.path(dir, name), showWarnings = FALSE)
+# 
+# data <- rov_south
+# data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
+# data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
+# 
+# south_model <- sdmTMB(
+#   n ~ 0 + as.factor(year) + as.factor(year)*as.factor(designation), # + (1|mpa_group_year), 
+#   data = data,
+#   offset = log(data$usable_area),
+#   time = "year",
+#   spatial="off",
+#   spatiotemporal = "off",
+#   family = nbinom2(link = "log"),
+#   control = sdmTMBcontrol(newton_loops = 1)
+# )
 
-data <- rov_south
-data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
-data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
+# index <- calc_index(
+#   dir = file.path(dir, name), 
+#   fit = south_model,
+#   grid = grid_south)
+# 
+# do_diagnostics(
+#   dir = file.path(dir, name), 
+#   fit = south_model,
+#   plot_resids = FALSE)
+# 
+# name <- "glm_negbin_south_designation_depth_year_soft"
+# dir.create(file.path(dir, name), showWarnings = FALSE)
 
-south_model <- sdmTMB(
-  n ~ 0 + as.factor(year) + as.factor(year)*as.factor(designation), # + (1|mpa_group_year), 
-  data = data,
-  offset = log(data$usable_area),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = nbinom2(link = "log"),
-  control = sdmTMBcontrol(newton_loops = 1)
-)
-
-index <- calc_index(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  grid = grid_south)
-
-do_diagnostics(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  plot_resids = FALSE)
-
-name <- "glm_negbin_south_designation_depth_year_soft"
-dir.create(file.path(dir, name), showWarnings = FALSE)
-
-data <- rov_south
-data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
-data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
-
-south_model <- sdmTMB(
-  n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation) + (1|mpa_group_year), 
-  data = data,
-  offset = log(data$usable_area),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = nbinom2(link = "log")
-)
-
-index <- calc_index(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  grid = grid_south)
-
-do_diagnostics(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  plot_resids = FALSE)
-
-
-# Check the proportion zero for the negative binomial model
-start.time <- Sys.time()
-# use STAN to see how well 'best model' fits the data
-Dnbin<- stan_glmer.nb(n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation) + (1|mpa_group_year),
-                  data = data,
-                  offset = log(data$usable_area),
-                  prior_intercept = normal(location = 0, scale = 10),
-                  prior = normal(location = 0, scale = 10),
-                  prior_aux = cauchy(0, 5),
-                  chains = 4,
-                  iter = 5000
-) # iterations per chain
-Sys.time() - start.time
-
-## pp_check
-prop_zero <- function(y) mean(y == 0)
-
-# figure of proportion zero - does good job
-figure_Dnbin_prop_zero <- pp_check(Dnbin, plotfun = "stat", stat = "prop_zero", binwidth = 0.01)
-pngfun(wd = file.path(dir, name), file = "proportion_zero.png")
-figure_Dnbin_prop_zero
-dev.off()
+# data <- rov_south
+# data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
+# data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
+# 
+# south_model <- sdmTMB(
+#   n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation) + (1|mpa_group_year), 
+#   data = data,
+#   offset = log(data$usable_area),
+#   time = "year",
+#   spatial="off",
+#   spatiotemporal = "off",
+#   family = nbinom2(link = "log")
+# )
+# 
+# index <- calc_index(
+#   dir = file.path(dir, name), 
+#   fit = south_model,
+#   grid = grid_south)
+# 
+# do_diagnostics(
+#   dir = file.path(dir, name), 
+#   fit = south_model,
+#   plot_resids = FALSE)
+# 
+# 
+# # Check the proportion zero for the negative binomial model
+# start.time <- Sys.time()
+# # use STAN to see how well 'best model' fits the data
+# Dnbin<- stan_glmer.nb(n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation) + (1|mpa_group_year),
+#                   data = data,
+#                   offset = log(data$usable_area),
+#                   prior_intercept = normal(location = 0, scale = 10),
+#                   prior = normal(location = 0, scale = 10),
+#                   prior_aux = cauchy(0, 5),
+#                   chains = 4,
+#                   iter = 5000
+# ) # iterations per chain
+# Sys.time() - start.time
+# 
+# ## pp_check
+# prop_zero <- function(y) mean(y == 0)
+# 
+# # figure of proportion zero - does good job
+# figure_Dnbin_prop_zero <- pp_check(Dnbin, plotfun = "stat", stat = "prop_zero", binwidth = 0.01)
+# pngfun(wd = file.path(dir, name), file = "proportion_zero.png")
+# figure_Dnbin_prop_zero
+# dev.off()
 
 #=================================================================================
 # South Model - Delta Lognormal
 #==================================================================================
 
-name <- "delta_lognormal_south_designation_depth_year_soft_73_27"
-dir.create(file.path(dir, name), showWarnings = FALSE)
+# name <- "delta_lognormal_south_designation_depth_year_soft_73_27"
+# dir.create(file.path(dir, name), showWarnings = FALSE)
+# 
+# data <- rov_south
+# data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
+# data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
+# 
+# south_model <- sdmTMB(
+#   n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation) + (1|mpa_group_year), 
+#   data = data,
+#   offset = log(data$usable_area),
+#   time = "year",
+#   spatial="off",
+#   spatiotemporal = "off",
+#   family = delta_lognormal()
+# )
+# 
+# index <- calc_index(
+#   dir = file.path(dir, name), 
+#   fit = south_model,
+#   grid = grid_south)
+# 
+# do_diagnostics(
+#   dir = file.path(dir, name), 
+#   fit = south_model,
+#   plot_resids = FALSE)
+# 
+# 
+# name <- "delta_lognormal_south_designation_depth_year_soft_no_re_73_27"
+# dir.create(file.path(dir, name), showWarnings = FALSE)
+# 
+# data <- rov_south
+# 
+# south_model <- sdmTMB(
+#   n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation), 
+#   data = data,
+#   offset = log(data$usable_area),
+#   time = "year",
+#   spatial="off",
+#   spatiotemporal = "off",
+#   family = delta_lognormal()
+# )
+# 
+# index <- calc_index(
+#   dir = file.path(dir, name), 
+#   fit = south_model,
+#   grid = grid_south)
+# 
+# do_diagnostics(
+#   dir = file.path(dir, name), 
+#   fit = south_model,
+#   plot_resids = FALSE)
+# 
+ name <- "delta_gamma_south_designation_depth_year_soft_73_27_05192023"
+ dir.create(file.path(dir, name), showWarnings = FALSE)
+ 
+ data <- rov_south
+ data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
+ data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
+ 
+ south_model <- sdmTMB(
+   n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation) + (1|mpa_group_year), 
+   data = data,
+   offset = log(data$usable_area),
+   time = "year",
+   spatial="off",
+   spatiotemporal = "off",
+   family = delta_gamma()
+ )
+ 
+ index <- calc_index(
+   dir = file.path(dir, name), 
+   fit = south_model,
+   grid = grid_south)
+ 
+ do_diagnostics(
+   dir = file.path(dir, name), 
+   fit = south_model,
+   plot_resids = TRUE)
 
-data <- rov_south
-data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
-data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
-
-south_model <- sdmTMB(
-  n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation) + (1|mpa_group_year), 
-  data = data,
-  offset = log(data$usable_area),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = delta_lognormal()
-)
-
-index <- calc_index(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  grid = grid_south)
-
-do_diagnostics(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  plot_resids = FALSE)
-
-
-name <- "delta_lognormal_south_designation_depth_year_soft_no_re_73_27"
-dir.create(file.path(dir, name), showWarnings = FALSE)
-
-data <- rov_south
-
-south_model <- sdmTMB(
-  n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation), 
-  data = data,
-  offset = log(data$usable_area),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = delta_lognormal()
-)
-
-index <- calc_index(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  grid = grid_south)
-
-do_diagnostics(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  plot_resids = FALSE)
-
-name <- "delta_gamma_south_designation_depth_year_soft_73_27"
-dir.create(file.path(dir, name), showWarnings = FALSE)
-
-data <- rov_south
-data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
-data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
-
-south_model <- sdmTMB(
-  n ~ as.factor(year) + poly(depth_scaled, 2) + prop_soft_scaled +  as.factor(year)*as.factor(designation) + (1|mpa_group_year), 
-  data = data,
-  offset = log(data$usable_area),
-  time = "year",
-  spatial="off",
-  spatiotemporal = "off",
-  family = delta_gamma()
-)
-
-index <- calc_index(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  grid = grid_south)
-
-do_diagnostics(
-  dir = file.path(dir, name), 
-  fit = south_model,
-  plot_resids = FALSE)
+name <- "delta_gamma_south_designation_depth_year_73_27_05192023"
+ dir.create(file.path(dir, name), showWarnings = FALSE)
+ 
+ data <- rov_south
+ data$mpa_group_year <- as.factor(paste0(data$mpa_group, "_", data$year))
+ data$mpa_group_year <- as.factor(as.numeric(data$mpa_group_year))
+ 
+ south_model <- sdmTMB(
+   n ~ as.factor(year) + poly(depth_scaled, 2) +  as.factor(year)*as.factor(designation) + (1|mpa_group_year), 
+   data = data,
+   offset = log(data$usable_area),
+   time = "year",
+   spatial="off",
+   spatiotemporal = "off",
+   family = delta_gamma()
+ )
+ 
+ index <- calc_index(
+   dir = file.path(dir, name), 
+   fit = south_model,
+   grid = grid_south)
+ 
+ do_diagnostics(
+   dir = file.path(dir, name), 
+   fit = south_model,
+   plot_resids = TRUE)
 
 #=================================================================================
 # North Model

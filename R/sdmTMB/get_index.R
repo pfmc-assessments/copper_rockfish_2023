@@ -1,6 +1,7 @@
 calc_index <- function(dir, fit, grid, ymax = NULL, bias_correct = TRUE){
   
   save(fit, file = file.path(dir, "fit.rdata"))
+  save(grid, file = file.path(dir, "grid.rdata"))
   
   pred <- predict(fit, newdata = grid, return_tmb_object = TRUE)
   
