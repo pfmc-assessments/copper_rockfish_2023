@@ -1296,8 +1296,8 @@ read_child(filein)
 
 ```{r, echo=FALSE, results='asis'}
 add_figure(
-filein = file.path(doc_dir, "shared_figures", "south_assess_compare_compare2_spawnbio_uncertainty.png"),
-caption = "Comparison of the estimated spawning output for the base model to previous assessments in 2021 and 2013",
+filein = file.path(doc_dir, "shared_figures", "south_total_biomass_comparison.png"),
+caption = "Comparison of the estimated total biomass (mt) for the base model to previous assessments in 2021 and 2013",
 label = 'comp-assess-sb')
 ```
 
