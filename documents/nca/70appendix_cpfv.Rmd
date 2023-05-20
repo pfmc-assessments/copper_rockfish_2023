@@ -21,17 +21,21 @@ The CPFV logbooks include information on the the general location fished, number
 
 We filtered the CPFV logbook data to trips that recorded at least one rockfish and the CPFV onboard observer data to trips that encountered at least 1 percent groundfish species. Additional filters were applied to the CPFV logbook data such as removing trips that recorded the primary fishing location in Mexican waters (6% of all trips). We also removed a small fraction (less than 10 trips) recorded as multi-day trips, but that reported a fishing location along the mainland of southern California. 
 
-The combined onboard observer sampling rate for 2018-2019 was 3 percent of all CPFV trips statewide in the filtered data. No trips were observed onboard in CRFS District 5 during 2018-2019. However, 1,052 CPFV logbooks were submitted from District 5 ports that recorded at least one rockfish. When we grouped the data by the modeled areas north and south of Point Conception, we found that  2 percent of all trips in northern California were sampled onboard (Table \@ref(tab:percent-observed)). In southern California, 4 percent of single day trips were observed and less than 1 percent of multi-day trips were observed.
+The combined onboard observer sampling rate for 2018-2019 was 3 percent of all CPFV trips statewide in the filtered data. No trips were observed onboard in CRFS District 5 during 2018-2019. However, 1,051 CPFV logbooks were submitted from District 5 ports that recorded at least one rockfish. When we grouped the data by the modeled areas north and south of Point Conception, we found that  2 percent of all trips in northern California were sampled onboard (Table \@ref(tab:percent-observed)). In southern California, 4 percent of single day trips were observed and less than 1 percent of multi-day trips were observed.
 
 We then explored the southern California data further to look at sampling effort by trip type. The CPFV logbooks indicated if a trip was a single or multi-day, but the logbooks do not differentiate between a half-day or three-quarter day trip. We assigned each CPFV logbook trip from southern California to a sub-region (District 1 mainland, District 2 mainland, northern Channel Islands, Southern Channel Islands, and Offshore) based upon the recorded block number (Table \@ref(tab:logbook-triptype)). The trips assigned to "Southern CA Offshore" were a catch-all that included blocks outside the range of a half-day trip, but not within the vicinity of an island. We separated out the "Southern CA Offshore" trips because it is likely their target species was not rockfish. Approximately 16 percent of the CPFV logbooks in southern California were from multi-day trips. As expected, the trips recording a CDFW block near the mainland were recorded as half-day trips. More than twice as many trips to the northern Channel Islands were single-day trips vs multi-day trips. The vessels in District 2 typically offer fewer half-day day trips and fish the nearshore when weather precludes crossing the channel to the northern Channel Islands on a three-quarter day trip. 
 
-In terms of the onboard sampling, in CRFS District 1, 79 percent of the observed trips were half-day day trips and in District 2, 29 percent of the observed trips were half-day day trips. 
 
 To put these sampling rates in context for copper rockfish, we looked at the total estimated mortality by district related to the distribution of sampling. The total mortality of copper rockfish in metric tons from 2018-2019 from the CPFV fleet by CRFS District is in Table \@ref(tab:catch-example). Fifty-two percent of the total copper rockfish mortality was from northern California and 48 percent from southern California.  Within northern California, 50 percent of the total mortality originated from District 3, and in southern California, 81 percent of the total mortality originated from District 2. 
 
 From the onboard observer trips in District 1, 37 percent of the observed coppers were from half-day day trips, 42 percent from three-quarter to full day trips, and 21 percent of the observed copper rockfish were from the five observed multi-day trips (Table \@ref(tab:onboard-coppers)). 
 
 In District 2, 17 percent of the observed copper were from half-day day trips, 75 percent from the three-quarter to full day trips and 8 percent from multi-day trips. When weather allows, the northern Channel Islands can be accessed from CRFS District 2 during a three-quarter to full day trip or a multi-day trip, depending on the port. For instance, the CPFVs from Channel Islands Sportfishing in Oxnard, California access the northern Channel Islands during multi-day trips, and the same areas are accessed by the three-quarter to full day trips out of Santa Barbara Landing. 
+
+The majority of length samples for the CPFV fleet are taken onboard the observed trips. The shift in the distribution of lengths from each trip type is evident from the overnight trips from District 1 with larger fish encountered on the overnight trips.  The average length of fish encountered on half-day trips out of District 2 is 33.1 cm compared to 36.3 for three-quarter day trips and 36.6 for overnight trips.  
+
+To account for the differences in the the differences in catch rates and size compositions observed across trip types and areas we would need to estimates of catch and effort at a finer scale than the CRFS district. While the logbooks are not perfect and there is a fraction of non-compliance they highlight the intense fishing pressure in some areas and may help identify the how to distribute sampling efforts. For example, increased sampling in Districts 4-6 would also provide information on the length composition of the fish encountered by the CPFV fleet, especially considering the increase in average length with latitude (Figure \@ref(fig:copper-lengths)). The The increased sampling in District 4-6 would also provide the data needed to create an accurate index of relative abundance from the onboard observer data, which can easily be considered one of the most valuable fishery-dependent data sources available. Based on additional data from the logbooks it may be possible to identify an approximate fraction of half-day to three-quarter day trips.
+The lengths in Table \@ref(tab:copper-lengths)) are currently all weighted equally in the length compositions within the current assessment models. Future research is needed to determine the effects of the changing size composition by trip type within stock assessment models, especially for southern California and a species for copper rockfish where larger fish are encountered on longer trips. Weighting the length composition data by the catch from each trip type is one possible method to account for the differences observed in Figure \@ref(fig:copper-lengths). 
 
 
 \newpage
@@ -46,15 +50,22 @@ label = 'crfs-districts')
 \pagebreak
 
 ```{r, results = 'asis'}
-ind <- read.csv(file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "area_percent_observed.csv"))
-col_names = c("Area", "Single day", "Multi day")
-
-sa4ss::table_format(x = ind,
-             caption = "The percent of trips sampled onboard by trip type and area for 2018 and 2019, using the number of trips observed and CPFV logbook trips described in the text.",
-             label = "percent-observed",
-             col_names = col_names)                         
+sa4ss::add_figure(
+filein = file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "length_by_triptype.png"), 
+caption = "Distribution of the lengths copper rockfish measured from 2018-2019 from angler interviews.",
+label = 'copper-lengths')
 ```
 
+
+```{r, include = FALSE}
+#ind <- read.csv(file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "area_percent_observed.csv"))
+#col_names = c("Area", "Single day", "Multi day")
+
+#sa4ss::table_format(x = ind,
+#             caption = "The percent of trips sampled onboard by trip type and area for 2018 and 2019, using the number of trips #observed and CPFV logbook trips described in the text.",
+#             label = "percent-observed",
+#             col_names = col_names)                         
+```
 
 
 ```{r, results = 'asis'}
@@ -70,6 +81,8 @@ sa4ss::table_format(x = ind,
 
 \newpage
 
+\FloatBarrier
+
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "fordoc_onboard_copper_summary.csv"))
 col_names = c("District",  "1/2 day trips", "3/4-1 day trips","Overnight trips")
@@ -80,6 +93,20 @@ sa4ss::table_format(x = ind,
              label = "onboard-coppers",
              col_names = col_names)                         
 ```
+
+
+```{r, results = 'asis'}
+ind <- read.csv(file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "number_copper_lengths_triptype.csv"))
+col_names = c("District",  "1/2 day trips", "3/4-1 day trips","Overnight trips")
+
+sa4ss::table_format(x = ind,
+             caption = "Number of copper rockfish measured by district and trip type from the angler interviews in 2018-2019.",
+              align = "r",
+             label = "copper-lengths",
+             col_names = col_names)                         
+```
+
+
 
 
 ```{r, results = 'asis'}
