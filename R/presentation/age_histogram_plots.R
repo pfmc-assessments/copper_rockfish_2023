@@ -249,19 +249,22 @@ dev.off()
 # Plot Available Ages by Area
 #===============================================================================
 
-load(file.path(dir, "2021_ages", "age_length_only_september_2021.Rdata"))
+load(file.path(dir, "other_ages", "west_coast_age_length_only_september_2021.Rdata"))
 df <- df[df$Area%in% c("Oregon", "Washington"), ]
 
+bc_ages <- read.csv(file.path(dir, "other_ages", "SWFSC_CARE_CopperRF_19May23.csv"))
+bc_ages$Region <- "Alaska"
+
 tmp <- data.frame(
-  Region = c(all_ages$area, df$Area),
-  length_cm = c(all_ages$length_cm, df$Length_cm),
-  age = c(all_ages$age, df$Age)
+  Region = c(all_ages$area, df$Area, bc_ages$Region),
+  length_cm = c(all_ages$length_cm, df$Length_cm, bc_ages$ForkLenght_mm / 10),
+  age = c(all_ages$age, df$Age, bc_ages$Average.of.AGE)
 )
 tmp$Region[tmp$Region == "north"] <- "CA: North of Point Conception"
 tmp$Region[tmp$Region == "south"] <- "CA: South of Point Conception"
 
 ggplot(data = tmp, aes(x = age)) +
-  geom_histogram(aes(y = ..count.., col = Region, fill = Region),
+  geom_histogram(aes(y = after_stat(count), col = Region, fill = Region),
                  binwidth = 1, position = "stack") +
   xlab("Age") +
   ylab("Count") +
@@ -278,7 +281,7 @@ ggplot(data = tmp, aes(x = age)) +
   geom_density(aes(col = Region, fill = Region), position = "identity") +
   xlab("Age") +
   ylab("Density") +
-  facet_wrap(factor(Region)~.) +
+  facet_wrap(facets = "Region", ncol = 1) +
   scale_fill_viridis_d() +
   theme_bw() +
   theme(legend.position = "none")
@@ -298,7 +301,7 @@ ggsave(filename = file.path(dir, "plots", "west_coast_length_age.png"),
        width = 12, height = 12)
 
 
-quantile_by_area <- tmp %>%
+quantile_by_area <- tmp[!is.na(tmp$age), ] %>%
   group_by(Region) %>%
   reframe(
     n = length(age),
