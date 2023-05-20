@@ -17,6 +17,7 @@ papersize: letter
 ---
 
 \linenumbers
+\counterwithin{table}{section}
 
 <!-- Common lat/long 
 Cape Mendocino, Pt. Conception and OR border -->

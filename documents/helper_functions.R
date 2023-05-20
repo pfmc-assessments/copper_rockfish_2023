@@ -58,7 +58,7 @@ create_management_table <- function(
   sa4ss::table_format(
     x = out,
     digits = 1,
-    caption = "The portion of the Overfishing Limit (OFL) and Annual Catch Limit (ACL) and estimated catch in California waters.",
+    caption = "The species-specific Overfishing Limit (OFL) and Annual Catch Limit (ACL) allocated to California and the total catch (mt) in California waters by year.",
     label = paste0(prefix, "ca-management"),
     col_names = col_names
   )
@@ -106,7 +106,7 @@ create_biomass_table <- function(
   
   sa4ss::table_format(
     x = out,
-    caption = "The estimated total biomass (mt), total biomass age 3+ (mt), age-0 recruits, spawning ouput in number of million eggs across California and fraction unfished by year.",
+    caption = "The estimated total biomass (mt), total biomass age 3+ (mt), age-0 recruits, and spawning ouput in number of billions of eggs across California and fraction unfished by year.",
     label = paste0(prefix, "ca-status"),
     col_names = col_names
     )

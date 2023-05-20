@@ -205,18 +205,20 @@ mod_params = model$parameters[,
                                 c("Num","Label","Value","Phase","Min",
                                   "Max","Status","Parm_StDev",
                                   "Pr_type","Prior","Pr_SD"))] 
-mod_params[,'Value'] = round(as.numeric(mod_params[,'Value']),3)                                 
+#mod_params[,'Value'] = round(as.numeric(mod_params[,'Value']),3)                                 
 # Combine bounds into one column
 mod_params$Min = paste('(', mod_params$Min, ', ', mod_params$Max, ')', sep='')
 # Combine prior info to one column
 mod_params$PR_type = ifelse(mod_params$Pr_type == 'No_prior' , 'None', paste(mod_params$Pr_type,' (', mod_params$Prior,  ', ', mod_params$Pr_SD, ')', sep = ''))
 # Set long value to scientific notation
-mod_params[mod_params$Label == "Wtlen_1_Fem",3] = format(mod_params[mod_params$Label == "Wtlen_1_Fem",3], scientific = TRUE)
-mod_params[mod_params$Label == "Wtlen_1_Mal",3] = format(as.numeric(mod_params[mod_params$Label == "Wtlen_1_Mal",3]), scientific = TRUE)
-mod_params[mod_params$Label == "Eggs_scalar_Fem",3] = format(as.numeric(mod_params[mod_params$Label == "Eggs_scalar_Fem",3]), scientific = TRUE)
+mod_params[mod_params$Label == "Wtlen_1_Fem_GP_1",3] = format(mod_params[mod_params$Label == "Wtlen_1_Fem_GP_1",3], scientific = TRUE)
+mod_params[mod_params$Label == "Wtlen_1_Mal_GP_1",3] = format(as.numeric(mod_params[mod_params$Label == "Wtlen_1_Mal_GP_1",3]), scientific = TRUE)
+mod_params[mod_params$Label == "Eggs_scalar_Fem_GP_1",3] = format(as.numeric(mod_params[mod_params$Label == "Eggs_scalar_Fem_GP_1",3]), scientific = TRUE)
 mod_params[mod_params$Label == "L_at_Amax_Mal_GP_1",3] = round(as.numeric(mod_params[mod_params$Label == "L_at_Amax_Mal_GP_1",3]), 4)
 mod_params[mod_params$Label == "VonBert_K_Mal_GP_1",3] = round(as.numeric(mod_params[mod_params$Label == "VonBert_K_Mal_GP_1",3]), 3)
 mod_params[mod_params$Label == "CV_old_Mal_GP_1",3] = round(as.numeric(mod_params[mod_params$Label == "CV_old_Mal_GP_1",3]), 3)
+remove <- which(grepl("ForeRecr", mod_params$Label ))
+mod_params <- mod_params[-remove, ]
 # Remove the max, prior and prior sd columns
 drops = c('Max', 'Prior', 'Pr_type', 'Pr_SD', 'Num')
 mod_params = mod_params[, !(names(mod_params) %in% drops)]
@@ -238,10 +240,11 @@ table_format(x = mod_params,
              col_names = col_names,
              longtable = TRUE,
              font_size = 9,
+             digits = 3,
              landscape = TRUE,
              custom_width = TRUE,
              col_to_adjust = c(1,7), 
-             width = c("7cm", "4cm"))                         
+             width = c("7.5cm", ".5♣cm"))                         
 ```
 
 

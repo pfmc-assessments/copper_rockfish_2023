@@ -56,6 +56,7 @@ The length composition data for the ROV survey were available at a finer scale t
 
 
 #### Fits to Indices of Abundance
+\
 
 Fits to the indices vary in quality.  The Deb Wilson-Vandenberg onboard survey from 1988-1998 indicated a decline from 1992-1998 that was not fit well by the model.  However, this is the highest quality data source for the time period and with the added variance, the model fit was fairly flat and uninformative (Figure \@ref(fig:dwv-cpfv-index-fit)). The index spans the years where the stock biomass begins to increase, creating a conflict between the index and the population trend. The Deb Wilson-Vandenberg survey effort was concentrated in central California, similar to the area surveyed from 2007-2016 in the CCFRP survey.  
 
