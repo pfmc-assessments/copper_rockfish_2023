@@ -6,7 +6,6 @@ preamble:
 header-includes: 
   - \usepackage{lineno}
   - \usepackage{placeins}
-  - \usepackage{pdflscape}
 csl: canadian-journal-of-fisheries-and-aquatic-sciences.csl
 output:
   sa4ss::techreport_pdf:
@@ -22,7 +21,6 @@ papersize: letter
 
 
 \linenumbers
-\counterwithin{table}{section}
 
 <!-- Common lat/long 
 Cape Mendocino, Pt. Conception and OR border -->
@@ -96,7 +94,4 @@ est_ofl <- round(south_model$derived_quants[south_model$derived_quants$Label %in
 
 est_abc <- round(south_model$derived_quants[south_model$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"] +
   north_model$derived_quants[north_model$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"], 2)
-
-
-
 ```
