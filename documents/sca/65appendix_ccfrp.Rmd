@@ -1,4 +1,4 @@
-## CCFRP Index of Abundance {#ccfrp-index}
+### CCFRP Index of Abundance {#ccfrp-index}
 
 The California Collaborative Fisheries Research Program, [CCFRP](https://www.mlml.calstate.edu/ccfrp/), 
 is a fishery-independent hook and line survey designed to monitor nearshore fish populations at a series of sampling locations both inside and adjacent to MPAs [@starr_variation_2015a; @wendt_collaborative_2009].  The CCFRP survey began in 2007 along the central coast of California and was designed in collaboration with academics, NMFS scientists and fishermen. From 2007-2016 the CCFRP project was focused on the central California coast, and has monitored four MPAs consistently. In 2017, the CCFRP expanded coastwide within California. The University of California Santa Barbara and Scripps Institute of Oceanography conduct the southern California CCFRP sampling and monitor MPA and reference paired sites.

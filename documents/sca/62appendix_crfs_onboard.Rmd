@@ -1,6 +1,6 @@
 ## Development of Indices of Abundance
 
-## California Onboard CPFV Index of Abundance {#onboard-cpfv-index}
+### California Onboard CPFV Index of Abundance {#onboard-cpfv-index}
 
 
 ```{r, echo=FALSE, results='asis'}
