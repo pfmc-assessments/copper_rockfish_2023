@@ -188,6 +188,25 @@ label = 'mean-rec-cpfv-len-data')
 
 \pagebreak
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_flt4mkt0_page2.png"), 
+caption = "Length composition data from the recreational PR fleet",
+label = 'rec-pr-len-data')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_PR.png"), 
+caption = "Mean length for recreational PR fleet with 95 percent confidence intervals",
+label = 'mean-rec-pr-len-data')
+```
+
+\FloatBarrier
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALdat_bubflt3mkt0.png"), 
@@ -200,6 +219,15 @@ label = 'rec-cpfv-caal-data')
 
 ```{r, results = 'asis'}
 add_figure(
+filein = file.path(model_dir, "plots", "comp_agedat_data_weighting_TA1.8_Rec_CPFV.png"), 
+caption = "Mean age for recreational CPFV fleet with 95 percent confidence intervals",
+label = 'mean-rec-cpfv-age-data')
+```
+
+\FrloatBarrier
+
+```{r, results = 'asis'}
+add_figure(
 filein = file.path(model_dir, "plots", "comp_agedat__aggregated_across_time.png"), 
 caption = "Marginal age composition data aggregate across the 1978, 1981, 1984, and 2022 (carcass ages) data years from the CPFV fleet.",
 label = 'rec-cpfv-marg-age-data')
@@ -207,14 +235,6 @@ label = 'rec-cpfv-marg-age-data')
 
 \pagebreak
 
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "comp_agedat_data_weighting_TA1.8_Rec_CPFV.png"), 
-caption = "Mean age for recreational CPFV fleet with 95 percent confidence intervals",
-label = 'mean-rec-cpfv-age-data')
-```
-
-\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -232,23 +252,7 @@ caption = "Conditional age-at-length data for recreational PR collected in 2022"
 label = 'rec-pr-caal-data')
 ```
 
-\pagebreak
 
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "comp_lendat_flt4mkt0_page2.png"), 
-caption = "Length composition data from the recreational PR fleet",
-label = 'rec-pr-len-data')
-```
-
-\pagebreak
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_PR.png"), 
-caption = "Mean length for recreational PR fleet with 95 percent confidence intervals",
-label = 'mean-rec-pr-len-data')
-```
 
 \pagebreak
 <!-- ======================================================= -->
@@ -392,6 +396,18 @@ label = 'growth-age-dist')
 ```
 
 \pagebreak
+
+<!-- ======================================================= -->
+<!-- ***************  Data not used ************************ --> 
+<!-- ======================================================= -->
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "rec_indices", "mrfss_cpue_dockside", "north", "plots", "raw_cpude_by_cnty.png"), 
+caption = "Average CPUE by county from the MRFSS dockside data north of Point Conception. Note the break in years from 1990-1994.",
+label = 'mrfss-cpue-county')
+```
+
 
 <!-- ======================================================= -->
 <!-- ***************  NWFSC WCGBTS  ************************ --> 
@@ -700,7 +716,7 @@ label = 'len-agg-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt1mkt0.png"), 
-caption = "Pearson residuals for commercial fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for commercial dead fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'com-dead-pearson')
 ```
 
@@ -892,6 +908,16 @@ caption = "Fit to log index data on log scale for recreational (CRFS) PR. Lines 
 label = 'crfs-pr-index-fit')
 ```
 
+
+\FloatBarrier
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir, "plots", "index5_logcpuefit_CDFW_ROV.png"), 
+caption = "Fit to log index data on log scale for CDFW ROV survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
+label = 'rov-index-fit')
+```
+
 \pagebreak
 
 
@@ -902,14 +928,6 @@ caption = "Fit to log index data on log scale for CCFRP survey. Lines indicate 9
 label = 'ccfrp-index-fit')
 ```
 
-\pagebreak
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "index5_logcpuefit_CDFW_ROV.png"), 
-caption = "Fit to log index data on log scale for CDFW ROV survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-label = 'rov-index-fit')
-```
 
 \pagebreak
 
