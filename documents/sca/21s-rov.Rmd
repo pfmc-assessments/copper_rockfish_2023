@@ -1,5 +1,7 @@
 ### California Department of Fish and Wildlife Remotely Operated Vehicle Survey
 
+On May 18th, 2023, approximately four days before the document deadline, CDFW contacted the STAT to inform them that an issue had been identified with the data provided for the CDFW ROV survey. It was determined that the line identifications for transects were not completely unique as previously thought. A small subset of transects were identified to have disparate sampling sites combined into transects (i.e., data collected across separate transects were combined into incorrect transects). This issue was identified to have occurred in a total of 24 out of the 1810 transects conducted statewide across all years. As a results the data within select transects were modified and 12 additional transects were added to the dataset. All data and analysis presented for the CDFW ROV survey is representative of the original data. Comparisons between the indices of abundance based on the original and the corrected data is provided in the CDFW ROV survey Appendix Section \ref{cdfw-rov-index}.
+
 #### Index of Abundance
 \
 

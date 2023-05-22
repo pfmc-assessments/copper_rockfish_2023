@@ -11,6 +11,8 @@ Minimal filtering was done to the data. Transects were removed based on four fac
 
 A range of alternative model structures were explored to generate an index of abundances including alternative error structures, covariates, and factors. Based on model selection a model with super year, site designation (MPA or Reference), and super year site designation interaction was selected (Table \ref{tab:rov-model-selection}). A negative-binomial model was selected based on the distribution of the data and diagnostics (Figures \ref{fig:rov-qq}, \ref{fig:rov-resid}, and \ref{fig:rov-prop-zero}) using sdmTMB [@anderson_sdmtmb_2022]. The model estimates were then area-weighted based on the estimated percent of habitat within MPAs based on habitat seafloor mapping data within state waters, which for the region north of Point Conception were estimated to be 20 percent of rocky habitat within MPAs and 80 percent open to fishing. The weighted relative index of abundance is shown in Table \ref{tab:rov-index} and Figure \ref{fig:rov-index}.
 
+On May 18th, 2023, approximately four days before the document deadline, CDFW contacted the STAT to inform them that an issue had been identified with the data provided for the CDFW ROV survey. It was determined that the line identifications for transects were not completely unique as previously thought. A small subset of transects were identified to have disparate sampling sites combined into transects (i.e., data collected across separate transects were combined into incorrect transects). This issue was identified to have occurred in a total of 24 out of the 1810 transects conducted statewide across all years. As a results the data within select transects were modified and 12 additional transects were added to the dataset. All data and analysis presented for the CDFW ROV survey is representative of the original data. Comparisons between the indices of abundance based on the original and the corrected data is shown in Figures \ref{fig:rov-corrected-index} and \ref{rov-corrected-index-stand}.
+
 \newpage
 
 \input{tex_tables/rov_removed_records_north.tex}
@@ -106,3 +108,22 @@ caption = "The weighted relative index of abundance fort the CDFW ROV survey.",
 label = 'rov-index')
 ```
 
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "rov", "plots", "north_index_comparison.png"), 
+caption = "Comparison of the estimated indices of abundance from the CDFW ROV survey based on the original data and the corrected data.",
+label = 'rov-corrected-index')
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(data_dir, "survey_indices", "rov", "plots", "north_index_comparison_standardized.png"), 
+caption = "Comparison of the standardized indices of abundance from the CDFW ROV survey based on the original data and the corrected data.",
+label = 'rov-corrected-index-stand')
+```
+
+\newpage
