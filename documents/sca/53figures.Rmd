@@ -224,6 +224,14 @@ label = 'survey-locations')
 <!-- ***************     CCFRP           ******************* --> 
 <!-- ======================================================= -->
 
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "ccfrp_map.png"), 
+caption = "Map depicting copper rockfish observations from the Piedras Blancas MPA and reference sites for CCFRP in northern California (A) and the Carrington Point MPA and reference sites in southern California. The examples from each area show the differences in the available interpreted rocky substrate. Rocky habitat (in brown) is depicted for northern California and the areas that have been interpreted for the area shown in southern California are in tan with the rocky substrate in brown.  The lower resolution rocky substrate (outside the tan areas) depicted in southern California represents interpreted substrate from courser bathymetry data. ",
+label = 'ccfrp-map')
+```
+
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "south", "area_weighted", "Index.png"), 

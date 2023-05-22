@@ -380,11 +380,11 @@ Two fishery-independent data sources with indices of abundance were included in 
 #### Index of Abundance
 \
 
-Since 2007, the \gls{s-ccfrp} has monitored several areas in California to evaluate the performance of \glspl{mpa} and understand nearshore fish populations [@starr_variation_2015; @wendt_collaborative_2009]. In 2017, the survey expanded beyond the four \Gls{mpa}s in central California (A&ntilde;o Nuevo, Point Lobos, Point Buchon, and Piedras Blancas) to include the entire California coast. Fish are collected by volunteer anglers aboard \glspl{cpfv} guided by one of the following academic institutions based on proximity to fishing location: Humboldt State University; Bodega Marine Laboratories; Moss Landing Marine Laboratories; Cal Poly San Luis Obispo; University of California, Santa Barbara; and Scripps Institution of Oceanography.
+Since 2007, the \gls{s-ccfrp} has monitored several areas in California to evaluate the performance of \glspl{mpa} and understand nearshore fish populations [@starr_variation_2015; @wendt_collaborative_2009]. In 2017, the survey expanded beyond the four \Gls{mpa}s in central California (A&ntilde;o Nuevo, Point Lobos, Point Buchon, and Piedras Blancas) to include the entire California coast. Fish are collected by volunteer anglers aboard \glspl{cpfv} guided by one of the following academic institutions based on proximity to fishing location: Humboldt State University; Bodega Marine Laboratories; Moss Landing Marine Laboratories; Cal Poly San Luis Obispo; University of California, Santa Barbara; and Scripps Institution of Oceanography. 
 
 Surveys consist of fishing with hook-and-line gear for 30-45 minutes within randomly chosen 500 by 500 m grid cells within and outside \glspl{mpa}. Prior to 2017, all fish were measured for length and released or descended to depth; since then, some were sampled for otoliths and fin clips.
 
-The CCFRP Hook and Line survey is one the longest fishery-independent time series available `r area` for nearshore rockfish, having occurred annually between 2007-2022. See the [CCFRP Index of Abundance](#ccfrp-index) appendix section for details on the data filtering, processing, and model selection for these data. The estimated index of abundance was weighted based sample locations outside (reference) and inside MPAs (73 and 80 percent of areas open to fishing in the north and south, respectively, see [CDFW ROV](cdfw-rov-index) appendix for additional information about the development of rocky habitat estimates). The estimated index of abundance was variable but generally flat between 2007-2016, increased in 2017 when sampling locations expanded across the northern coast with an increasing trend up until 2020, and slightly declined in the final two years in the dataset (Figure \ref{fig:ccfrp-index-main}). To account for the range expansion of this survey in areas with potentially larger `r spp` and/or areas with lower fishing pressure starting in 2017, a time block in selectivity was assumed in the model.  
+The CCFRP Hook and Line survey is one the longest fishery-independent time series available `r area` for nearshore rockfish, having occurred annually between 2007-2022. See the [CCFRP Index of Abundance](#ccfrp-index) appendix section for details on the data filtering, processing, and model selection for these data. The estimated index of abundance was weighted based sample locations outside (reference) and inside MPAs (73 and 80 percent of areas open to fishing in the north and south, respectively, see [CDFW ROV](cdfw-rov-index) appendix for additional information about the development of rocky habitat estimates). Interpreted bathymetry classifying substrate as rock or sand is available at high resolution for state waters north of Point Conception, but is not complete for southern California (Figure \ref{ccfrp-map}). The estimated index of abundance was variable but generally flat between 2007-2016, increased in 2017 when sampling locations expanded across the northern coast with an increasing trend up until 2020, and slightly declined in the final two years in the dataset (Figure \ref{fig:ccfrp-index-main}). To account for the range expansion of this survey in areas with potentially larger `r spp` and/or areas with lower fishing pressure starting in 2017, a time block in selectivity was assumed in the model.  
 
 
 #### Composition Data
@@ -1547,7 +1547,7 @@ caption = "Mean age for recreational CPFV fleet with 95 percent confidence inter
 label = 'mean-rec-cpfv-age-data')
 ```
 
-\FrloatBarrier
+\FloatBarrier
 
 ```{r, results = 'asis'}
 add_figure(
@@ -1603,6 +1603,13 @@ label = 'ref-mpa')
 <!-- ======================================================= -->
 <!-- ***************     CCFRP           ******************* --> 
 <!-- ======================================================= -->
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "ccfrp_map.png"), 
+caption = "Map depicting copper rockfish observations from the Piedras Blancas MPA and reference sites for CCFRP in northern California (A) and the Carrington Point MPA and reference sites in southern California. The examples from each area show the differences in the available interpreted rocky substrate. Rocky habitat (in brown) is depicted for northern California and the areas that have been interpreted for the area shown in southern California are in tan with the rocky substrate in brown.  The lower resolution rocky substrate (outside the tan areas) depicted in southern California represents interpreted substrate from courser bathymetry data. ",
+label = 'ccfrp-map')
+```
 
 ```{r, results = 'asis'}
 add_figure(
@@ -1726,7 +1733,14 @@ label = 'growth-age-dist')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(data_dir, "rec_indices", "mrfss_cpue_dockside", "north", "plots", "raw_cpude_by_cnty.png"), 
+filein = file.path(doc_dir, "shared_figures", "visual_surveys.png"), 
+caption = "Locations copper rockfish were observed from visual surveys from Milton Love's submersible survey of natural reefs and oil platforms (RIGS) and additional visual surveys conducted by the SWFSC.",
+label = 'visual-surveys')
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(data_dir, "rec_indices", "mrfss_cpfv_dockside", "north", "plots", "average_cpue_by_cnty.png"), 
 caption = "Average CPUE by county from the MRFSS dockside data north of Point Conception. Note the break in years from 1990-1994.",
 label = 'mrfss-cpue-county')
 ```
