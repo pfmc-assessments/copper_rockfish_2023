@@ -64,14 +64,14 @@ if(file.exists("00mod.Rdata")){
 source(file.path(doc_dir, "helper_functions.R"))
 
 #source(file.path(r_dir, "get_derived_quants.R"))
-years <- 1916:2023
+years <- 1916:2034
 sb1 <- south_model$derived_quants[south_model$derived_quants$Label %in% paste0("SSB_", years), "Value"]
 sb2 <- north_model$derived_quants[north_model$derived_quants$Label %in% paste0("SSB_", years), "Value"]
 sb0 <- south_model$derived_quants[south_model$derived_quants$Label == "SSB_Virgin", "Value"] +
   north_model$derived_quants[north_model$derived_quants$Label == "SSB_Virgin", "Value"]
 
 sb <-  round(sb1 + sb2, 2)
-depl <- round(sb / sb0, 2)
+depl <- round(sb / sb0, 3)
 quants <- data.frame(year = years, 
                      sb = sb, 
                      depl = depl)
