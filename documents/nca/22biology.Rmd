@@ -16,7 +16,7 @@ filein = file.path(doc_dir, "shared_text",'2_biology_maturity.Rmd')
 read_child(filein)
 ```
 
-The 50 percent size-at-maturity was estimated at `r round(model$MGparmAdj[,"Mat50%_Fem_GP_1"][1], 1)` cm with a slope of `r round(model$MGparmAdj$Mat_slope_Fem_GP_1[1], 2)` (Figure \ref{fig:maturity}). This area-specific maturity-at-length estimate is relatively similar but with fish maturing at a slightly larger size compared to the biological maturity curve assumed for `r spp` south of Point Conception. Additionally, these values are both slightly smaller compared to estimates by Hannah [-@hannah_length_2014] for fish observed in Oregon waters (34.8 cm) which estimated the 50 percent size-at-maturity of  and slope of -0.60.
+The 50 percent size-at-maturity was estimated at `r round(model$MGparmAdj[,"Mat50%_Fem_GP_1"][1], 1)` cm with a slope of `r round(model$MGparmAdj$Mat_slope_Fem_GP_1[1], 2)` (Figure \ref{fig:maturity}). This area-specific maturity-at-length estimate is relatively similar but with fish maturing at a slightly larger size compared to the biological maturity curve assumed for `r spp` south of Point Conception. Additionally, these values are both slightly smaller compared to estimates by Hannah [-@hannah_length_2014] for fish observed in Oregon waters. Hannah [-@hannah_length_2014]  estimated the size at 50 percent maturity of copper rockfish at 34.8 cm with a slope of -0.60.
 
 ```{r, echo=FALSE, results='asis'}
 filein = file.path(doc_dir, "shared_text",'2_biology_fecundity.Rmd')
