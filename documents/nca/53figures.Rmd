@@ -6,20 +6,6 @@
 
 ## Data
 
-<!-- ======================================================= -->
-<!-- ***************  life history  ************************ --> 
-<!-- ======================================================= -->
-
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(doc_dir, "shared_figures", "copper_length_by_half_month.png"), 
-caption = "Distribution of YOY copper rockfish lengths from fish genetically identified from D. Baetscher.",
-label = 'copper-smurf-length')
-```
-
-\pagebreak
-
-
 <!-- ====================================================================== --> 
 <!-- *******************    Assessment Map      *************************** --> 
 <!-- ====================================================================== --> 
@@ -30,6 +16,24 @@ filein = file.path(doc_dir, "shared_figures", "map.png"),
 caption = "Map of management area and the 2023 assessments areas for copper rockfish",
 label = 'ca-map')
 ```
+
+\FloatBarrier
+
+<!-- ======================================================= -->
+<!-- ***************  life history  ************************ --> 
+<!-- ======================================================= -->
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "copper_length_by_half_month.png"), 
+caption = "Distribution of YOY copper rockfish lengths from fish genetically identified from D. Baetscher's UCSC dissertation work.",
+label = 'copper-smurf-length')
+```
+
+\pagebreak
+
+
+
 
 \pagebreak
 
@@ -127,11 +131,11 @@ label = 'mean-com-live-len-data')
 <!-- ======================================================= -->
 
 
-```{r, results = 'asis'}
-add_figure(
-filein = file.path(data_dir, "rec_indices", "mrfss_cpfv_dockside", "north",  "forSS", "Index.png"), 
-caption = "Estimated annual index of abundances for the CPFV fleet based on MRFSS survey data.",
-label = 'mrfss-index-main')
+```{r, include = FALSE}
+#add_figure(
+#filein = file.path(data_dir, "rec_indices", "mrfss_cpfv_dockside", "north",  "forSS", "Index.png"), 
+#caption = "Estimated annual index of abundances for the CPFV fleet based on MRFSS survey data.",
+#label = 'mrfss-index-main')
 ```
 
 \pagebreak
