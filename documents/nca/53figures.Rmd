@@ -433,6 +433,15 @@ label = 'wcgbt-len-age')
 
 ```{r, results = 'asis'}
 add_figure(
+filein = file.path(data_dir, "ages", "plots", "west_coast_age_density.png"), 
+caption = "Densities of aged copper rockfish by West Coast area and limited samples from the Gulf of Alaska (25 fish).",
+label = 'west-coast-age-density')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
 filein = file.path(model_dir, "plots", "bio6_maturity.png"), 
 caption = "Maturity as a function of length",
 label = 'maturity')
