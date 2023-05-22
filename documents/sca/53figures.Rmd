@@ -469,6 +469,20 @@ label = 'growth-age-dist')
 \pagebreak
 
 <!-- ======================================================= -->
+<!-- ***************  Data not used ************************ --> 
+<!-- ======================================================= -->
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(doc_dir, "shared_figures", "visual_surveys.png"), 
+caption = "Locations copper rockfish were observed from visual surveys from Milton Love's submersible survey of natural reefs and oil platforms (RIGS) and additional visual surveys conducted by the SWFSC.",
+label = 'visual-surveys')
+```
+
+
+
+<!-- ======================================================= -->
 <!-- ***************  NWFSC WCGBT Survey  ****************** --> 
 <!-- ======================================================= -->
 
