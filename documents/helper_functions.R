@@ -170,7 +170,7 @@ create_projection_table <- function(
   
   sa4ss::table_format(
     x = out,
-    caption = "The estimated OFL, ABC, buffer, spawning output in number of million eggs across California, and relative spawning outut by year.",
+    caption = "The estimated OFL, ABC, buffer, spawning output in billions of eggs across California, and relative spawning outut by year.",
     label = paste0(prefix, "ca-proj"),
     landscape = TRUE,
     col_names = col_names,

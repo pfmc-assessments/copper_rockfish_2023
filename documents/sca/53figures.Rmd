@@ -14,7 +14,7 @@
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "copper_length_by_half_month.png"), 
-caption = "Distribution of YOY copper rockfish lengths from fish genetically identified from D. Baetscher.",
+caption = "Distribution of young-of-the-year copper rockfish lengths from fish genetically identified from D. Baetscher.",
 label = 'copper-smurf-length')
 ```
 
@@ -43,7 +43,7 @@ label = 'catch')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "map.png"), 
-caption = "Map of management area and the 2023 assessments areas for copper rockfish",
+caption = "Map of management area and the 2023 assessment areas for copper rockfish",
 label = 'ca-map')
 ```
 
