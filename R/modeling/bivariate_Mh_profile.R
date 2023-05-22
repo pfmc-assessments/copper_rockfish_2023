@@ -103,24 +103,24 @@ nllbase=basemodel$likelihoods_used["TOTAL","values"]
 #model with min NLL
 Sdgridmin=Sdgrid[which.min(Sdgrid$NLL),]
 #models within 2 of min NLL
-Sdgridminset=Sdgrid[which(abs(Sdgrid$NLL-nllbase)<1.386),]
+Sdgridminset=Sdgrid[which(abs(Sdgrid$NLL-nllbase) < 1.96),]
 
 p1=ggplot(Sdgrid,aes(x=M,y=h,fill=NLL)) +
   geom_tile() +
   geom_tile(data=Sdgridminset, color="tomato", lwd=1, fill=NA) +
   geom_point(data=data.frame(M=Mbase,h=hbase), fill="white", color="black",pch=21, size=2) +
-  geom_text(aes(label=round(NLL,1)), color="white") +
+  geom_text(aes(label=round(NLL,1)), color="white", size = 2.5, fontface = "bold") +
   #geom_text(data=Sdgridmin, aes(label=round(NLL,1)), color="tomato") +
   theme_bw() + scale_fill_viridis_c(direction = -1) +
   scale_x_continuous(expand = c(0,0), breaks = unique(Sdgrid$M)) + 
   scale_y_continuous(expand = c(0,0), breaks = unique(Sdgrid$h))
-#ggsave("bivariate_post-STAR/S_Mhgrid_nll.png",width = 5.5,height = 4)
+ggsave("bivariate_post-STAR/S_Mhgrid_nll.png",width = 5.5,height = 4)
 
 p2=ggplot(Sdgrid,aes(x=M,y=h,fill=Depletion)) +
   geom_tile() +
   geom_tile(data=Sdgridminset, color="tomato", lwd=1, fill=NA) +
   geom_point(data=data.frame(M=Mbase,h=hbase), fill="white", color="black",pch=21, size=2) +
-  geom_text(aes(label=round(Depletion,2)), color="white") +
+  geom_text(aes(label=round(Depletion,2)), color="white", size = 5, parse = TRUE) +
   #geom_text(data=Sdgridmin, aes(label=round(Depletion,2)), color="tomato") +
   theme_bw() + scale_fill_viridis_c(direction = 1) +
   scale_x_continuous(expand = c(0,0), breaks = unique(Sdgrid$M)) + 
@@ -151,3 +151,54 @@ p2=ggplot(Sdgrid,aes(x=M,y=h,fill=Depletion)) +
 
 plot_grid(p1,p2, nrow = 2)
 ggsave("bivariate_post-STAR/S_Mhgrid_ALL.png",width = 12,height = 18)
+
+
+#================================
+out.mle = nllbase
+output <- Sdgrid
+base_vec <- c(0.108, 0.72, out.mle, basemodel$current_depletion)
+output <- rbind(output, base_vec)
+colnames(output) <- c("M", "h", "negLogLike", "Depletion")
+
+out.mle <- output[nrow(output),]
+out <- as.data.frame(output[ -nrow(output), ])
+out$diffNegLogLike <- out$negLogLike - min(out$negLogLike)#out.mle["negLogLike"]
+#out$diff_M <- out$M_f - out$M_m
+out <- out[order(out$M, out$h),]
+
+x <- unique(round(out$M, 4))
+y <- unique(round(out$h, 4))
+z <- matrix(out$diffNegLogLike, 
+            ncol = length(y),
+            byrow = TRUE, 
+            dimnames = list(as.character(x), as.character(y)))
+
+library(reshape2); library(met$)
+mtrx_melt <- melt(z, id.vars = c("M", "h"), measure.vars = 'Delta_NLL')
+names(mtrx_melt) = c("M", "h", "Delta_NLL")
+
+# Plot_ly figure
+#plot_ly(mtrx_melt, x = ~M_f, y = ~M_m, z = ~Delta_NLL, type = 'contour', 
+#        width = 600, height = 600)
+
+#HandyCody::pngfun(wd = getwd(), file = "joint_m_profile_ggplot_large_range.png", w = 14, h = 12, pt = 12)
+ggplot(mtrx_melt, aes(x = M, y = h)) +
+    geom_contour_filled(aes(z = Delta_NLL), breaks = c(0, 2, 3, 4, 6, 10, 20, 50, seq(100, 600, 100))) +
+    geom_point(aes (x = 0.108, y = 0.72),  size = 4, col = "white") +
+    annotate("text", x = 0.12, y = 0.72, label = "Base Model", size =10, col = 'white') +
+    geom_text_contour(aes(z = Delta_NLL), 
+       breaks = c(2, 4, 6, seq(10, 30, 10)), size = 7, color = 'white') +
+    xlab("Natural Mortality (F)") +
+    ylab("Steepness (h)") +
+    scale_x_continuous(breaks = seq(0.05, 0.15, 0.01)) +
+    scale_y_continuous(breaks = seq(0.20, 0.90, 0.1)) +
+    theme(
+      axis.text.y = element_text(size = 15, color = 1),
+      axis.text.x = element_text(size = 15, color = 1), 
+      axis.title.x = element_text(size = 20), 
+      axis.title.y = element_text(size = 20),
+      legend.text = element_text(size = 15), 
+      legend.title = element_text(size = 15)) +
+    guides(fill = guide_legend(title = "Change in NLL"))
+ggsave(file.path(getwd(), "joint_m_h_profile_ggsave.png"), width = 14, height = 12)
+#dev.off()
