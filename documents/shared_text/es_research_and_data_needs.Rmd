@@ -26,7 +26,7 @@ There were some major sources of uncertainty within the assessments for `r spp`.
 
  \item Larval and smaller young-of-the-year copper rockfish can only be identified with certainty genetically. Existing sources of data (CalCOFI and Standard Monitoring Units for the Recruitment of Fishes [SMURFs]) where genetic samples can be analyzed would provide key information to inform spawning output estimates for copper rockfish.
  
-  \item continue to improve historical catch reconstructions, including attempting to quantify uncertainty with these and other historical data.
+  \item Continue to improve historical catch reconstructions, including attempting to quantify uncertainty with these and other historical data.
   
   \item Existing catch estimates within Recreational Fisheries Information Network (RecFIN) that are currently assigned only to "rockfish, general" should be investigated to determine if these removals can be assigned to specific-species.
 
