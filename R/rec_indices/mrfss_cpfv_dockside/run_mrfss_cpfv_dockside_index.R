@@ -12,7 +12,7 @@ library(ggeffects)
 #species and area identifiers - eventually put in function
 pacfinSpecies <- 'COPP'
 speciesName <- "copper"
-modelArea = "south"
+modelArea = "north"
 #other information
 indexName <-  "mrfss_cpfv_dockside"
 covars <- c("year", "county", "wave")
@@ -54,7 +54,7 @@ ggplot(cpue_cnty, aes(x = year, y = average_cpue, colour = county)) +
 geom_point(size = 3)  + theme_bw() +
 geom_line(aes(x = year, y = average_cpue, colour = county, group = county)) +
 xlab("Year") + ylab("Average CPUE") + ylim(c(0, .8)) + 
-scale_color_viridis_d()
+scale_color_viridis_d(name = "FIPS county code")
 ggsave(file = file.path(dir, "plots", "average_cpue_by_cnty.png"), width = 7, height = 7)
 
 cpue_wave <- dat %>% group_by(year, wave) %>% 
