@@ -112,6 +112,7 @@ sa4ss::table_format(x = tab,
 <!-- ********************  ROV       *********************** --> 
 <!-- ======================================================= -->
 
+\FloatBarrier
 
 ```{r, results = 'asis'}
 #\include{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
@@ -129,6 +130,8 @@ sa4ss::table_format(x = tab,
              width = c("3cm"),
              digits = 0) 
 ```
+
+\FloatBarrier
 
 \newpage
 

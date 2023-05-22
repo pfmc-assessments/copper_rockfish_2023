@@ -86,7 +86,7 @@ Length compositions were available from the following sources:
   + CRFS dockside PR survey (2004-2022)
   
   
-The number of available fish and unique trips by year and fleet are in Tables \ref{tab:rec-len-samps}. MRFSS historical biological data were downloaded from the RecFIN website in December 2022. CRFS biological data were also downloaded from RecFIN on February 18, 2023. The Miller and Goshall, Don Person, and Deb-Wilson Vandenberg recreational survey data were downloaded from the SWFSC databases in February 2023. 
+The number of available fish and unique trips by year and fleet are in Table \ref{tab:rec-len-samps}. MRFSS historical biological data were downloaded from the RecFIN website in December 2022. CRFS biological data were also downloaded from RecFIN on February 18, 2023. The Miller and Goshall, Don Person, and Deb-Wilson Vandenberg recreational survey data were downloaded from the SWFSC databases in February 2023. 
 
 Between 1987-1989 and 1993-1998 there were recreational length data for the CPFV fleet from both MRFSS and the Deb Wilson-Vandenberg data sets. During data exploration it was determined that the lengths in MRFSS from 1997 and 1998 were also included in the Deb Wilson-Vandenberg data, indicating that these data sources were duplicative for these years but also potentially other years where they overlapped. In order to avoid duplicate data, the length data from MRFSS, which had far fewer length samples for the overlapping years with Deb Wilson-Vandenberg for the CPFV fleet, were removed from the data used within the model (see [Appendix A](#excluded-data) for implied fits to these lengths).
 
