@@ -1842,3 +1842,17 @@ tune_comps(replist = coop, dir = file.path(wd, "_sensitivities", "14.0_base_add_
            option = "Francis", write = FALSE, allow_up_tuning = TRUE)
 
 no_var <- SS_output(file.path(wd, "_sensitivities", "14.0_base_no_added_var"))
+
+# Create comparison with the removal of the CDFW ROV data
+no_rov <- SS_output(file.path(wd, "_sensitivities", "14.0_base_rm_rov"))
+updated_rov <- SS_output(file.path(wd, "_sensitivities", "14.0_base_new_rov_index"))
+
+modelnames <- c("14.0 Pre-STAR base", "Remove CDFW ROV data", "Corrected CDFW ROV Index")
+mysummary <- SSsummarize(list(base_model, no_rov, updated_rov))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "14.0_rov_data_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.2,
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)

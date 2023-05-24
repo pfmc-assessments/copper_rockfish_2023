@@ -940,3 +940,18 @@ SS_plots(rov)
 tune_comps(replist = rov, 
            dir = file.path(wd, "9.7_rov_selex_dw"), 
            option = "Francis", write = TRUE, allow_up_tuning = TRUE)
+
+# Create comparison with the removal of the CDFW ROV data
+base_model <- SS_output(file.path(wd, "9.8_selex_fix"))
+no_rov <- SS_output(file.path(wd, "_sensitivities", "9.8_selex_fix_rm_rov"))
+updated_rov <- SS_output(file.path(wd, "_sensitivities", "9.8_selex_fix_update_rov_index"))
+
+modelnames <- c("9.8 Pre-STAR base", "Remove CDFW ROV data", "Corrected CDFW ROV Index")
+mysummary <- SSsummarize(list(base_model, no_rov, updated_rov))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.8_rov_data_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.2,
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)
