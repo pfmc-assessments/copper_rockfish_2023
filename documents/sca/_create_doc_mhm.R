@@ -65,8 +65,8 @@ if(file.exists("_main.Rmd")){
 bookdown::render_book(
   "00a.Rmd", 
   clean = FALSE, 
-  output_dir = doc_dir)
-
+  output_dir = file.path(doc_dir,"temp"))
+  
 #==================================================================================================
 # Function to build a single section of the document - not recently tested
 #==================================================================================================
