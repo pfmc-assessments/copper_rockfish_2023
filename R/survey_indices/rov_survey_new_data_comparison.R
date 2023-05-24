@@ -3,16 +3,103 @@
 
 library(here)
 library(ggplot2)
+library(cowplot)
+
+dir <- here("data", "survey_indices", "rov")
 
 load(here("data", "survey_indices", "rov", "rov_south_data_used_for_index_creation.rdata"))
-old <- rov_south 
+old <- rov_south
   
 load(here("data", "survey_indices", "rov", "rov_south_data_used_for_index_creation_05192023.rdata"))
 new <- rov_south
 
-ggplot(data = new, aes(x = prop_soft)) +
-  geom_histogram(position = "stack") +
-  facet_wrap("year")
+# Put everything in a single df for ease of grid plotting later
+data <- data.frame(
+  line = c(new$FirstOfLineID, old$LineID),
+  year = c(new$year, old$year),
+  usable_area = c(new$usable_area, old$usable_area),
+  depth = c(new$depth, old$depth),
+  prop_soft = c(new$prop_soft, old$prop_soft),
+  prop_hard = c(new$prop_hard, old$prop_hard),
+  designation = c(new$designation, old$designation),
+  mpa_group = c(new$mpa_group, old$mpa_group),
+  n = c(new$n, old$n),
+  source = c(rep("Corrected Data", nrow(new)), rep("Old Data", nrow(old)))
+)
+
+ind <- sort(old$LineID,index.return = TRUE)$ix
+tmp_old <- old[ind, ]
+ind <- sort(new$FirstOfLineID,index.return = TRUE)$ix
+tmp_new <- new[ind, ]
+
+HandyCode::pngfun(wd = file.path(dir, "plots"), "south_prop_soft_data_comparision.png", w = 18, h = 12)
+par(mfrow = c(2,2))
+plot(tmp_old$prop_soft[tmp_old$year == 2015], tmp_new$prop_soft[tmp_new$year == 2015], xlab = "Old Data", ylab = "Corrected Data", main = paste("Prop. Soft", 2015))
+plot(tmp_old$prop_soft[tmp_old$year == 2019], tmp_new$prop_soft[tmp_new$year == 2019], xlab = "Old Data", ylab = "Corrected Data", main = paste("Prop. Soft", 2019))
+plot(tmp_old$prop_soft[tmp_old$year == 2020], tmp_new$prop_soft[tmp_new$year == 2020], xlab = "Old Data", ylab = "Corrected Data", main = paste("Prop. Soft", 2020))
+plot(tmp_old$prop_soft[tmp_old$year == 2021], tmp_new$prop_soft[tmp_new$year == 2021], xlab = "Old Data", ylab = "Corrected Data", main = paste("Prop. Soft", 2021))
+dev.off()
+
+HandyCode::pngfun(wd = file.path(dir, "plots"), "south_depth_data_comparision.png", w = 18, h = 12)
+par(mfrow = c(2,2))
+plot(tmp_old$depth[tmp_old$year == 2015], tmp_new$depth[tmp_new$year == 2015], xlab = "Old Data", ylab = "Corrected Data", main = paste("Depth", 2015))
+plot(tmp_old$depth[tmp_old$year == 2019], tmp_new$depth[tmp_new$year == 2019], xlab = "Old Data", ylab = "Corrected Data", main = paste("Depth", 2019))
+plot(tmp_old$depth[tmp_old$year == 2020], tmp_new$depth[tmp_new$year == 2020], xlab = "Old Data", ylab = "Corrected Data", main = paste("Depth", 2020))
+plot(tmp_old$depth[tmp_old$year == 2021], tmp_new$depth[tmp_new$year == 2021], xlab = "Old Data", ylab = "Corrected Data", main = paste("Depth", 2021))
+dev.off()
+
+HandyCode::pngfun(wd = file.path(dir, "plots"), "south_usable_area_data_comparision.png", w = 18, h = 12)
+par(mfrow = c(2,2))
+plot(tmp_old$usable_area[tmp_old$year == 2015], tmp_new$usable_area[tmp_new$year == 2015],  xlab = "Old Data", ylab = "Corrected Data", main = paste("Usable Area", 2015))
+plot(tmp_old$usable_area[tmp_old$year == 2019], tmp_new$usable_area[tmp_new$year == 2019],  xlab = "Old Data", ylab = "Corrected Data", main = paste("Usable Area", 2015))
+plot(tmp_old$usable_area[tmp_old$year == 2020], tmp_new$usable_area[tmp_new$year == 2020],  xlab = "Old Data", ylab = "Corrected Data", main = paste("Usable Area", 2015))
+plot(tmp_old$usable_area[tmp_old$year == 2021], tmp_new$usable_area[tmp_new$year == 2021],  xlab = "Old Data", ylab = "Corrected Data", main = paste("Usable Area", 2015))
+dev.off()
+
+# filter down to only 2019 data to explore this further
+#old <- old[old$year == 2019, ]
+#new <- new[new$year == 2019, ]
+
+
+ggplot(data = data, aes(x = prop_soft)) +
+  geom_histogram(position = "stack", col = 'black', fill = 'blue') +
+  facet_grid(c("year", "source")) 
+
+ggplot(data = data, aes(x = prop_hard)) +
+  geom_histogram(position = "stack", col = 'black', fill = 'green') +
+  facet_grid(c("year", "source")) 
+
+ggplot(data = data, aes(x = usable_area)) +
+  geom_histogram(position = "stack", col = 'black', fill = 'green') +
+  facet_grid(c("year", "source")) 
+
+ggplot(data = data, aes(x = n)) +
+  geom_histogram(position = "stack", col = 'black', fill = 'green') +
+  facet_grid(c("year", "source")) 
+
+ggplot(data = data, aes(x = designation)) +
+  geom_histogram(position = "stack", stat = "count", col = 'black', fill = 'green') +
+  facet_grid(c("year", "source")) 
+
+ggplot(data = data, aes(x = mpa_group)) +
+  geom_histogram(position = "stack", stat = "count", col = 'black', fill = 'green') +
+  facet_grid(c("year", "source")) 
+
+
+ggplot(data = data, aes(x = depth)) +
+  geom_histogram(position = "stack", col = 'black', fill = 'blue') +
+  facet_grid(c("year", "source")) 
+
+
+p1 <- ggplot(data = new, aes(x = usable_area)) +
+  geom_histogram(position = "stack", col = 'black', fill = 'blue') +
+  facet_grid("year") + 
+  ylim(c(0, 35))
+
+p2 <- ggplot(data = old, aes(x = usable_area)) +
+  geom_histogram(position = "stack", col = 'black', fill = 'green') +
+  facet_grid("year") + 
+  ylim(c(0, 35))
 
 ggplot(data = old, aes(x = prop_soft), alpha = 0.2, col = 'green') +
   geom_histogram(position = "stack") +
@@ -41,6 +128,62 @@ ggplot(data = old, aes(x = n)) +
 
 table(old$year, old$designation)
 table(new$year, new$designation)
+
+#================================================================================
+# North data
+#===============================================================================
+load(here("data", "survey_indices", "rov", "rov_north_data_used_for_index_creation.rdata"))
+old <- rov_north
+
+load(here("data", "survey_indices", "rov", "rov_north_data_used_for_index_creation_05192023.rdata"))
+new <- rov_north
+
+# Put everything in a single df for ease of grid plotting later
+data <- data.frame(
+  line = c(new$FirstOfLineID, old$LineID),
+  year = c(new$year, old$year),
+  usable_area = c(new$usable_area, old$usable_area),
+  depth = c(new$depth, old$depth),
+  prop_soft = c(new$prop_soft, old$prop_soft),
+  prop_hard = c(new$prop_hard, old$prop_hard),
+  designation = c(new$designation, old$designation),
+  mpa_group = c(new$mpa_group, old$mpa_group),
+  n = c(new$n, old$n),
+  source = c(rep("Corrected Data", nrow(new)), rep("Old Data", nrow(old)))
+)
+
+# filter down to the same transects for comparisons
+keep <- unique(old$LineID)
+new_subset <- new[new$FirstOfLineID %in% keep, ]
+
+ind <- sort(old$LineID,index.return = TRUE)$ix
+tmp_old <- old[ind, ]
+ind <- sort(new_subset$FirstOfLineID,index.return = TRUE)$ix
+tmp_new <- new_subset[ind, ]
+
+par(mfrow = c(2,2))
+plot(tmp_old$prop_soft[tmp_old$year == 2014], tmp_new$prop_soft[tmp_new$year == 2014], xlab = "Old Data", ylab = "Corrected Data", main = 2015)
+plot(tmp_old$prop_soft[tmp_old$year == 2015], tmp_new$prop_soft[tmp_new$year == 2015], xlab = "Old Data", ylab = "Corrected Data", main = 2015)
+#plot(tmp_old$prop_soft[tmp_old$year == 2016], tmp_new$prop_soft[tmp_new$year == 2016], xlab = "Old Data", ylab = "Corrected Data", main = 2015)
+plot(tmp_old$prop_soft[tmp_old$year == 2019], tmp_new$prop_soft[tmp_new$year == 2019], xlab = "Old Data", ylab = "Corrected Data", main = 2019)
+#plot(tmp_old$prop_soft[tmp_old$year == 2020], tmp_new$prop_soft[tmp_new$year == 2020], xlab = "Old Data", ylab = "Corrected Data", main = 2020)
+#plot(tmp_old$prop_soft[tmp_old$year == 2021], tmp_new$prop_soft[tmp_new$year == 2021], xlab = "Old Data", ylab = "Corrected Data", main = 2021)
+
+par(mfrow = c(2,2))
+plot(tmp_old$depth[tmp_old$year == 2014], tmp_new$depth[tmp_new$year == 2014])
+plot(tmp_old$depth[tmp_old$year == 2015], tmp_new$depth[tmp_new$year == 2015])
+plot(tmp_old$depth[tmp_old$year == 2019], tmp_new$depth[tmp_new$year == 2019])
+#plot(tmp_old$depth[tmp_old$year == 2020], tmp_new$depth[tmp_new$year == 2020])
+#plot(tmp_old$depth[tmp_old$year == 2021], tmp_new$depth[tmp_new$year == 2021])
+
+
+
+par(mfrow = c(2,2))
+plot(tmp_old$usable_area[tmp_old$year == 2015], tmp_new$usable_area[tmp_new$year == 2015])
+plot(tmp_old$usable_area[tmp_old$year == 2019], tmp_new$usable_area[tmp_new$year == 2019])
+plot(tmp_old$usable_area[tmp_old$year == 2020], tmp_new$usable_area[tmp_new$year == 2020])
+plot(tmp_old$usable_area[tmp_old$year == 2021], tmp_new$usable_area[tmp_new$year == 2021])
+
 
 #===============================================================================
 # Plot Indices Comparisons
