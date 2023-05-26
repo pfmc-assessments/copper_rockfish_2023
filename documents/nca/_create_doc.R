@@ -7,8 +7,8 @@ library(here)
 #devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 
 # Specify the directory for the document
-north_model_name <- "9.8_selex_fix_forecast"
-south_model_name <- "14.0_base_forecast"
+south_model_name <- "14.3_revised_pre-star_base"
+north_model_name <- "9.11_revised_pre-star_base"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
