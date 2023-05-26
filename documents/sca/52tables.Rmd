@@ -179,7 +179,7 @@ sa4ss::table_format(x = tab,
 ```{r, results = 'asis'}
 #\input{tex_tables/nwfsc_hkl_sample_number_by_site_cca.tex}
 
-tab <- read.csv(file.path(data_dir, "survey_indices", "nwfsc_hkl", "forSS", "sample_number_by_site_cca.csv"))
+tab <- read.csv(file.path(data_dir, "survey_indices", "nwfsc_hkl", "forSS", "sample_number_by_site_protection.csv"))
 col_names <- c("Year", "Drops", "Observations - Outside", "Observations - Closed")
 
 sa4ss::table_format(x = tab,
