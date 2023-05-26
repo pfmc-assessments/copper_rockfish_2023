@@ -1,0 +1,221 @@
+---
+title: "Description of model revisions to the base models for copper rockfish"
+author: Chantel R. Wetzel, Melissa H. Monk, Julia Coates
+month: "`r format(Sys.Date(), '%B')`"
+year: "`r format(Sys.Date(), '%Y')`"
+output:
+  bookdown::pdf_document2:
+    keep_tex: true
+  sa4ss::techreport_pdf:
+    default
+lang: en
+papersize: letter
+---
+
+
+```{r opts, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+knitr::knit_hooks$set(plot = function(x,options) {
+      base = knitr::opts_knit$get('base.url')
+      if (is.null(base)) base = ''
+      alt = ifelse (is.null(options$alt),"",options$alt)
+      cap = ifelse (is.null(options$caption),"",options$caption)
+      if (alt != ""){
+        sprintf('![%s](%s%s "%s")', cap, base, x, alt)
+      } else {
+        sprintf('![%s](%s%s)', cap, base, x)
+        }
+  })
+library(sa4ss)
+library(r4ss)
+management_dir <- "N:/Assessments/CurrentAssessments/copper_rockfish_2023/management"
+south_model_dir <- "N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/sca/14.3_revised_pre-star_base"
+north_model_dir <- "N:/Assessments/CurrentAssessments/copper_rockfish_2023/models/nca/9.11_revised_pre-star_base"
+
+user <- Sys.getenv("USERNAME")
+if( grepl("Chantel", user) ){
+  user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
+} else {
+  # Fill in Melissa's document directory below
+  user_dir <- "C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023"
+}
+# Based on the user
+doc_dir <- file.path(user_dir, "documents")
+
+load(file.path(doc_dir, "nca", "00mod.Rdata"))
+north_model <- model
+
+load(file.path(doc_dir, "sca", "00mod.Rdata"))
+south_model <- model
+
+source(file.path(doc_dir, "helper_functions.R"))
+
+years <- 1916:2034
+sb1 <- south_model$derived_quants[south_model$derived_quants$Label %in% paste0("SSB_", years), "Value"]
+sb2 <- north_model$derived_quants[north_model$derived_quants$Label %in% paste0("SSB_", years), "Value"]
+sb0 <- south_model$derived_quants[south_model$derived_quants$Label == "SSB_Virgin", "Value"] +
+  north_model$derived_quants[north_model$derived_quants$Label == "SSB_Virgin", "Value"]
+
+sb <-  round(sb1 + sb2, 2)
+depl <- round(sb / sb0, 3)
+quants <- data.frame(year = years, 
+                     sb = sb, 
+                     depl = depl)
+depl_final <- quants[quants$year == '2023', 'depl']
+sb_final <- quants[quants$year == '2023', 'sb']
+min_depl <- min(quants$depl)
+min_depl_year <- quants[quants$depl == min_depl, 'year']
+
+years <- 2023:2026
+est_ofl <- round(south_model$derived_quants[south_model$derived_quants$Label %in% paste0("OFLCatch_", years), "Value"] +
+  north_model$derived_quants[north_model$derived_quants$Label %in% paste0("OFLCatch_", years), "Value"], 2)
+
+est_abc <- round(south_model$derived_quants[south_model$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"] +
+  north_model$derived_quants[north_model$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"], 2)
+
+
+model_recent_depl <- data.frame(year = 2011:2022, depl = model$derived_quants[model$derived_quants$Label %in% paste0("Bratio_", 2011:2022), "Value"])
+
+```
+
+# Overview
+
+Since the release of the documents and the start of the STAR panel each of the sub-area models, north and south of Point Conception, for copper rockfish in California have had revisions to the model data.  Each of these changes is described below and comparisons between the model as presented in the assessment documents and the revised base models are provide below.
+
+# Data Revisions
+
+## CDFW ROV Survey Data
+
+Revised data for the CDFW ROV survey were provided to the STAT late on Thursday May 18th, 2023. It was determined that the line identifications for transects were not completely unique as previously thought. A small subset of transects were identified to have disparate sampling sites combined into transects (i.e., data collected across separate transects were combined into incorrect transects). This issue was identified to have occurred in a total of 24 out of the 1810 transects conducted statewide across all years. As a results the data within select transects were modified and 12 additional transects were added to the dataset. However, when the revised data were analyzed there were changes in the estimated index of abundance south of Point Conception greater than would be expected given the limited changes in the data described by CDFW. Upon further analysis of the data there were revisions in estimates of varying attributes (e.g., proportion substrate type, depth) for 2019, a year where there were no revisions to the number of transects for the southern area appeared to have been made. The STAT communicated these unexpected findings to CDFW on May 24th.   
+
+Unfortunately, given the limited timing to properly review and analyze any potential data corrections, the STAT make the decision to remove the ROV data from both sub-area models. While the STAT only identified issues with the revised data south of Point Conception, there were overall concerns that all of the ROV data requires additional QA/QC to ensure that the data is accurate.  Comparisons to the base model described in each assessment report and the revised base models with these data removed are shown in Figures \ref{fig:south-ssb} - \ref{fig:north-depl}.
+
+## Recreational Removals in 2020 and 2021
+
+CDFW communicated to the STAT the 2020 and 2021 recreational catches for each sub-area appeared to be higher than expected.  The recreational catches for these years were comprised of information from three sources do to sampling impacts related to COVID-19: catches within RecFIN, proxy estimates for months with missing catches in 2020 provided by CDFW, and estimates of Sebastes genus catches in RecFIN that should be assigned as copper rockfish catches provided by CDFW. However, there was a miscommunication between the STAT and CDFW where the catch assigned to copper rockfish from the Sebastes genus also included the speciated catches for copper rockfish within RecFIN. Hence, adding the catches for copper rockfish within RecFIN resulted in a double counting of a subset of catches.  On May 25th, CDFW provided a revised Sebastes genus catch that did not include other copper rockfish RecFIN catches. The revised catches in each sub-area model by recreational fleet are:
+
+**South of Point Conception**\
+2020 CPFV 43.42 mt and PR 19.71 mt\
+2021 CPFV 32.21 mt and no revisions to PR
+
+**North of Point Conception**\
+2020 CPFV 36.47 mt and PR 55.13 mt \
+2021 CPFV 31.91 mt and no revisions to PR 
+
+## Revised Base Models
+
+These revisions to each sub-area base model only resulted in very small changes in the model estimates.  The California estimate of fraction unfished in 2023 change to `r 100*depl_final` percent from 42.1 percent. Comparison of the estimates spawning output and fraction unfished for each sub-area are shown in Figures \ref{fig:south-ssb} - \ref{fig:north-depl}. Summaries of the combined California revised time series are shown in Table \ref{tab:ca-status} and new projections are shown in Table \ref{tab:ca-proj}. Time series estimates for each sub-area model are shown in Tables \ref{tab:tab-south-ts} and \ref{tab:tab-north-ts}.
+
+# Tables
+
+## California Stock
+
+```{r, results = 'asis'}
+create_biomass_table(
+    doc_dir = doc_dir, 
+    prefix = NULL,
+    doc_names = c("nca", 'sca'),
+    years = 1916:2023)
+# tab:ca-status
+
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+
+create_projection_table(
+    management_dir = management_dir, 
+    doc_dir = doc_dir, 
+    model_dir = south_model_dir, 
+    fixed_removals = c(91.53, 94.69),
+    doc_names = c("nca", 'sca'),
+    years = 2023:2034,
+    table_names = c("copper_ca_north.csv", "copper_ca_south.csv"),
+    prefix = NULL)
+
+```
+
+\newpage
+
+## South of Point Conception
+
+
+
+```{r, results = 'asis'}
+
+tab <- read.csv("south_TimeSeries.csv")
+col_names <- c("Year",	"Total Biomass (mt)",	"Spawning Output",	"Total Biomass 3+ (mt)",	"Fraction Unfished",	"Age-0 Recruits",	"Total Mortality (mt)",	"1-SPR", 	"Exploitation Rate")
+
+table_format(x = tab,
+             caption = "Time series of population estimates from the base model for the sub-area south of Point Conception.",
+             label = "tab-south-ts",
+             align = 'l',
+             digits = 3,
+             col_names = col_names)
+```
+
+\newpage
+
+## North of Point Conception
+
+
+```{r, results = 'asis'}
+
+tab <- read.csv("north_TimeSeries.csv")
+col_names <- c("Year",	"Total Biomass (mt)",	"Spawning Output",	"Total Biomass 3+ (mt)",	"Fraction Unfished",	"Age-0 Recruits",	"Total Mortality (mt)",	"1-SPR", 	"Exploitation Rate")
+
+table_format(x = tab,
+             caption = "Time series of population estimates from the base model for the sub-area north of Point Conception.",
+             label = "tab-north-ts",
+             align = 'l',
+             digits = 3,
+             col_names = col_names)
+```
+
+\newpage
+
+# Figures
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = "14.3_corrected_base_compare2_spawnbio_uncertainty.png", 
+caption = "Estimated spawning output comparison for the sub-area model south of Point Conception between the original base model and models that remove CDFW ROV survey data, and the model with these data removed and revised 2020-21 recreational catches. The +Corrected Rec. Catches model is the revised base model.",
+label = 'south-ssb')
+```
+
+\pagebreak
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = "14.3_corrected_base_compare2_spawnbio_uncertainty.png", 
+caption = "Estimated fraction unfished comparison for the sub-area model south of Point Conception between the original base model and models that remove CDFW ROV survey data, and the model with these data removed and revised 2020-21 recreational catches. The +Corrected Rec. Catches model is the revised base model.",
+label = 'south-depl')
+```
+
+\pagebreak
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = "9.10_corrected_base_compare2_spawnbio_uncertainty.png", 
+caption = "Estimated spawning output comparison for the sub-area model north of Point Conception between the original base model and models that remove CDFW ROV survey data, and the model with these data removed and revised 2020-21 recreational catches. The +Corrected Rec. Catches model is the revised base model.",
+label = 'north-ssb')
+```
+
+\pagebreak
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = "9.10_corrected_base_compare2_spawnbio_uncertainty.png", 
+caption = "Estimated fraction unfished comparison for the sub-area model north of Point Conception between the original base model and models that remove CDFW ROV survey data, and the model with these data removed and revised 2020-21 recreational catches. The +Corrected Rec. Catches model is the revised base model.",
+label = 'north-depl')
+```
+
+\pagebreak
+
