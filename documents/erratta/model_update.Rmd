@@ -1,6 +1,6 @@
 ---
 title: "Description of model revisions to the base models for copper rockfish"
-author: Chantel R. Wetzel, Melissa H. Monk, Julia Coates
+author: Chantel R. Wetzel (NWFSC), Melissa H. Monk (SWFSC), and Julia Coates (CDFW)
 month: "`r format(Sys.Date(), '%B')`"
 year: "`r format(Sys.Date(), '%Y')`"
 output:
@@ -81,31 +81,33 @@ model_recent_depl <- data.frame(year = 2011:2022, depl = model$derived_quants[mo
 
 # Overview
 
-Since the release of the documents and the start of the STAR panel each of the sub-area models, north and south of Point Conception, for copper rockfish in California have had revisions to the model data.  Each of these changes is described below and comparisons between the model as presented in the assessment documents and the revised base models are provide below.
+Since the release of the documents and the start of the STAR panel each of the sub-area models, north and south of Point Conception, for copper rockfish in California have had revisions to the model data.  Each of these changes is described below and comparisons between the model as presented in the assessment documents and the revised base models are provide below in the [Figures Section](#figures).
 
 # Data Revisions
 
 ## CDFW ROV Survey Data
 
-Revised data for the CDFW ROV survey were provided to the STAT late on Thursday May 18th, 2023. It was determined that the line identifications for transects were not completely unique as previously thought. A small subset of transects were identified to have disparate sampling sites combined into transects (i.e., data collected across separate transects were combined into incorrect transects). This issue was identified to have occurred in a total of 24 out of the 1810 transects conducted statewide across all years. As a results the data within select transects were modified and 12 additional transects were added to the dataset. However, when the revised data were analyzed there were changes in the estimated index of abundance south of Point Conception greater than would be expected given the limited changes in the data described by CDFW. Upon further analysis of the data there were revisions in estimates of varying attributes (e.g., proportion substrate type, depth) for 2019, a year where there were no revisions to the number of transects for the southern area appeared to have been made. The STAT communicated these unexpected findings to CDFW on May 24th.   
+Revised data for the CDFW ROV survey were provided to the STAT late on Thursday May 18th, 2023. It was determined that the line identifications for transects were not completely unique as previously thought. A small subset of transects were identified to have disparate sampling sites combined into transects (i.e., data collected across separate transects were combined into incorrect transects). This issue was identified to have occurred in a total of 24 out of the 1810 transects conducted statewide across all years. As a result the data within select transects were modified and 12 additional transects were added to the dataset. However, when the revised data were analyzed there were changes in the estimated index of abundance south of Point Conception greater than would be expected given the limited changes in the data described by CDFW. Upon further analysis of the data there were non-trivial revisions in estimates of varying attributes (e.g., proportion substrate type, depth, effort estimated through usable transect area) for 2019. The number of data points where measurements varied were greater than the number of transects with revisions. Additionally, south of Point Conception none of the newly identified transects occurred in 2019. The STAT communicated these unexpected findings to CDFW on May 24th, 2023.   
 
-Unfortunately, given the limited timing to properly review and analyze any potential data corrections, the STAT make the decision to remove the ROV data from both sub-area models. While the STAT only identified issues with the revised data south of Point Conception, there were overall concerns that all of the ROV data requires additional QA/QC to ensure that the data is accurate.  Comparisons to the base model described in each assessment report and the revised base models with these data removed are shown in Figures \ref{fig:south-ssb} - \ref{fig:north-depl}.
+Unfortunately, given the limited timing to properly review and analyze any potential data corrections, the STAT make the decision to remove the ROV data from both sub-area models. While the STAT only identified issues with the revised data south of Point Conception, there were overall concerns that all of the ROV data requires additional QA/QC to ensure that the data are accurate.  
 
 ## Recreational Removals in 2020 and 2021
 
-CDFW communicated to the STAT the 2020 and 2021 recreational catches for each sub-area appeared to be higher than expected.  The recreational catches for these years were comprised of information from three sources do to sampling impacts related to COVID-19: catches within RecFIN, proxy estimates for months with missing catches in 2020 provided by CDFW, and estimates of Sebastes genus catches in RecFIN that should be assigned as copper rockfish catches provided by CDFW. However, there was a miscommunication between the STAT and CDFW where the catch assigned to copper rockfish from the Sebastes genus also included the speciated catches for copper rockfish within RecFIN. Hence, adding the catches for copper rockfish within RecFIN resulted in a double counting of a subset of catches.  On May 25th, CDFW provided a revised Sebastes genus catch that did not include other copper rockfish RecFIN catches. The revised catches in each sub-area model by recreational fleet are:
+CDFW communicated to the STAT that the 2020 and 2021 recreational catches for each sub-area appeared to be higher than expected.  The recreational catches for these years were comprised of information from three sources do to sampling impacts related to COVID-19: copper rockfish sepeciated catches within RecFIN, CDFW generated proxy estimates for months with missing catches in 2020, and estimates of Sebastes genus catches in RecFIN that should be assigned as copper rockfish catches provided by CDFW. However, there was a miscommunication between the STAT and CDFW where the catch assigned to copper rockfish from the Sebastes genus also included the speciated catches for copper rockfish within RecFIN. Hence, adding the catches for copper rockfish within RecFIN resulted in a double counting of a subset of catches. On May 25th, 2023 CDFW provided revised Sebastes genus catches that did not include other copper rockfish RecFIN catches. The revised catches for the recreational CPFV and PR fleets in 2020 and 2021 decreased from the values in the original base model. The revised catches by fleet and year are:
 
 **South of Point Conception**\
-2020 CPFV 43.42 mt and PR 19.71 mt\
-2021 CPFV 32.21 mt and no revisions to PR
+2020: CPFV 43.42 mt and PR 19.71 mt\
+2021: CPFV 32.21 mt and no revisions to the PR catches
 
 **North of Point Conception**\
-2020 CPFV 36.47 mt and PR 55.13 mt \
-2021 CPFV 31.91 mt and no revisions to PR 
+2020: CPFV 36.47 mt and PR 55.13 mt \
+2021: CPFV 31.91 mt and no revisions to the PR catches
 
 ## Revised Base Models
 
-These revisions to each sub-area base model only resulted in very small changes in the model estimates.  The California estimate of fraction unfished in 2023 change to `r 100*depl_final` percent from 42.1 percent. Comparison of the estimates spawning output and fraction unfished for each sub-area are shown in Figures \ref{fig:south-ssb} - \ref{fig:north-depl}. Summaries of the combined California revised time series are shown in Table \ref{tab:ca-status} and new projections are shown in Table \ref{tab:ca-proj}. Time series estimates for each sub-area model are shown in Tables \ref{tab:tab-south-ts} and \ref{tab:tab-north-ts}.
+These revisions to each sub-area base model resulted in very small changes in the model estimates.  The California estimate of fraction unfished in 2023 change to `r 100*depl_final` percent from 42.1 percent. The fraction of unfished spawning output in 2023 for the area south of Point Conception increased to `r 100*round(south_model$derived_quants[south_model$derived_quants$Label == "Bratio_2023", "Value"], 3)` percent from 13.7 percent and the area north of Point Conception decreased to `r 100*round(north_model$derived_quants[north_model$derived_quants$Label == "Bratio_2023", "Value"], 3)` percent from 53.9 percent. Comparisons of the estimated spawning output and fraction unfished for each sub-area are shown in Figures \ref{fig:south-ssb} - \ref{fig:north-depl}. Summaries of the combined California revised time series are shown in Table \ref{tab:ca-status} and new projections are shown in Table \ref{tab:ca-proj}. Time series estimates for each sub-area model are shown in Tables \ref{tab:tab-south-ts} and \ref{tab:tab-north-ts}.
+
+\pagebreak
 
 # Tables
 
@@ -143,14 +145,13 @@ create_projection_table(
 ## South of Point Conception
 
 
-
 ```{r, results = 'asis'}
 
 tab <- read.csv("south_TimeSeries.csv")
 col_names <- c("Year",	"Total Biomass (mt)",	"Spawning Output",	"Total Biomass 3+ (mt)",	"Fraction Unfished",	"Age-0 Recruits",	"Total Mortality (mt)",	"1-SPR", 	"Exploitation Rate")
 
 table_format(x = tab,
-             caption = "Time series of population estimates from the base model for the sub-area south of Point Conception.",
+             caption = "Time series of population estimates from the revised base model for the sub-area south of Point Conception.",
              label = "tab-south-ts",
              align = 'l',
              digits = 3,
@@ -168,7 +169,7 @@ tab <- read.csv("north_TimeSeries.csv")
 col_names <- c("Year",	"Total Biomass (mt)",	"Spawning Output",	"Total Biomass 3+ (mt)",	"Fraction Unfished",	"Age-0 Recruits",	"Total Mortality (mt)",	"1-SPR", 	"Exploitation Rate")
 
 table_format(x = tab,
-             caption = "Time series of population estimates from the base model for the sub-area north of Point Conception.",
+             caption = "Time series of population estimates from the revised base model for the sub-area north of Point Conception.",
              label = "tab-north-ts",
              align = 'l',
              digits = 3,
