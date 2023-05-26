@@ -165,7 +165,7 @@ create_projection_table <- function(
     SB = round(sb, 2), 
     Depl = round(depl, 3))
   
-  col_names <- c("Year", "Adopted OFL (mt)", "Adopted ABC (mt)", "Assumed Catch (mt)",
+  col_names <- c("Year", "Adopted OFL (mt)", "Adopted ACL (mt)", "Assumed Catch (mt)",
                  "OFL (mt)", "ABC (mt)", "Buffer", "Spawning Output", "Relative Spawning Ouptut")
   
   sa4ss::table_format(
