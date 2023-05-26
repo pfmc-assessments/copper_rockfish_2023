@@ -955,3 +955,27 @@ SSplotComparisons(mysummary,
                   ylimAdj = 1.2,
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+#================================================================================
+# Remove ROV Data
+remove_rov <- SS_output(file.path(wd, "9.9_selex_fix_rm_rov"))
+
+# Correct Sebastes Genus Catches in 2021 and 2022
+fixed_catch <- SS_output(file.path(wd, "9.10_selex_fix_sebastes_catch"))
+tune_comps(replist = fixed_catch, dir = file.path(wd, "9.10_selex_fix_sebastes_catch"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+SS_plots(fixed_catch, btarg = -1, minbthresh = -1)
+
+modelnames <- c("9.8 Pre-STAR base", "Remove CDFW ROV data", "+ Corrected Rec. Catches")
+mysummary <- SSsummarize(list(base_model, remove_rov, fixed_catch))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "9.10_corrected_base_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.2,
+                  plotdir = file.path(wd, '_plots'), 
+                  legendloc = "topright", 
+                  subplot = c(2, 4, 11), 
+                  btarg = -1,
+                  minbthresh = -1,
+                  print = TRUE)

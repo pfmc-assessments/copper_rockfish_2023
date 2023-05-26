@@ -140,8 +140,8 @@ do_projections <- function(
 }
 
 
-model1_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/sca/14.0_base_forecast"
-model2_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/nca/9.8_selex_fix"
+model1_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/sca/14.2_base_sebastes_catches"
+model2_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/nca/9.10_selex_fix_sebastes_catch"
 
 
 do_projections(
