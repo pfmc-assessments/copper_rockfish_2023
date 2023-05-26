@@ -11,6 +11,8 @@ library(ggplot2)
 library(dplyr)
 library(HandyCode)
 library(here)
+library(tidyr)
+library(ggridges)
 
 dir <- file.path(here::here(), "data", "survey_indices", "nwfsc_hkl")
 
@@ -183,6 +185,34 @@ ggplot(hkl, aes(x = length_cm, y = as.factor(year))) +
   stat_density_ridges(quantile_lines = TRUE, quantiles = 2) + 
   ylab("Year") + xlab("Length (cm)")
 ggsave(filename = file.path(dir, "plots", "nwfsc_hkl_ggridges_year_region_protection.png"),
+       width = 10, height = 10)
+
+ggplot(hkl, aes(x = length_cm, y = as.factor(year))) + 
+  #geom_density_ridges2(fill = "blue") +
+  geom_density_ridges(
+    jittered_points = TRUE, scale = 0.5, #rel_min_height = 0.5,
+    #point_shape = "|", point_size = 3, 
+    size = 0.25, col = 'blue',
+    position = position_points_jitter(height = 0)) +
+  scale_fill_viridis_d(name = "Length") +
+  facet_grid(~factor(protection, levels = c("Open", "MPA"))) +
+  stat_density_ridges(quantile_lines = TRUE, quantiles = 0.5, alpha = 0.75) + 
+  ylab("Year") + xlab("Length (cm)") +
+  theme_bw(base_size = 20) +
+  xlim(c(15, 60)) + 
+  theme(axis.text = element_text(size = 20))
+ggsave(filename = file.path(dir, "plots", "nwfsc_hkl_ggridges_year_protection.png"),
+       width = 15, height = 10)
+
+ggplot(hkl, aes(x = length_cm, fill = protection, color = protection)) + 
+  geom_histogram(binwidth = 2) + 
+  scale_fill_viridis_d(begin = 0, end = 0.5) +
+  xlim(c(0, 55)) + 
+  ylab("Count") + 
+  xlab("Length (cm)") +
+  theme_bw(base_size = 20) +
+  theme(axis.text = element_text(size = 20))
+ggsave(filename = file.path(dir, "plots", "nwfsc_hkl_barplot_lengths_by_protection.png"),
        width = 10, height = 10)
 
 hkl$region <- hkl$area
