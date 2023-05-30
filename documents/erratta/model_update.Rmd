@@ -193,7 +193,7 @@ label = 'south-ssb')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = "14.3_corrected_base_compare2_spawnbio_uncertainty.png", 
+filein = "14.3_corrected_base_compare4_Bratio_uncertainty.png", 
 caption = "Estimated fraction unfished comparison for the sub-area model south of Point Conception between the original base model and models that remove CDFW ROV survey data, and the model with these data removed and revised 2020-21 recreational catches. The +Corrected Rec. Catches model is the revised base model.",
 label = 'south-depl')
 ```
@@ -213,7 +213,7 @@ label = 'north-ssb')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = "9.10_corrected_base_compare2_spawnbio_uncertainty.png", 
+filein = "9.10_corrected_base_compare4_Bratio_uncertainty.png", 
 caption = "Estimated fraction unfished comparison for the sub-area model north of Point Conception between the original base model and models that remove CDFW ROV survey data, and the model with these data removed and revised 2020-21 recreational catches. The +Corrected Rec. Catches model is the revised base model.",
 label = 'north-depl')
 ```
