@@ -1,8 +1,9 @@
 
 library(r4ss)
 area <- "sca"
-base_model <- "14.0_base"
+base_model <- "14.3_revised_pre-star_base"
 #area <- 'nca'
+#base_model <- "9.11_revised_pre-star_base"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -12,7 +13,7 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
 }
 
-wd <- file.path(user_dir, "models", area)
+wd <- here("models", area)
 
 model <- SS_output(file.path(wd, base_model))
 
@@ -54,8 +55,8 @@ info10 <- SSplotSelex(model, fleets = 7, subplot = 1)
 info10$infotable$col <- c(colors[10])
 #info9$infotable$col <- colors[9]
 
-HandyCode::pngfun(wd = file.path(wd, base_model, "plots"), 'south_selectivity.png', w = 10, h = 12)
-par(mfrow=c(5,2),mar=c(2,4,3,1))
+HandyCode::pngfun(wd = file.path(wd, base_model, "plots"), 'south_selectivity.png', w = 12, h = 12)
+par(mfrow=c(3,2),mar=c(2,4,3,1))
 SSplotSelex(model, fleets=1,  infotable=info1$infotable, 
             subplot=1, legendloc='topleft', year = c(2022))
 grid()
@@ -71,9 +72,9 @@ grid()
 SSplotSelex(model, fleets=5, infotable=info5$infotable,subplot=1, 
             legendloc='topleft')
 grid()
-SSplotSelex(model, fleets=6, infotable=info6$infotable, subplot=1, 
-            legendloc='bottomright')
-grid()
+#SSplotSelex(model, fleets=6, infotable=info6$infotable, subplot=1, 
+#            legendloc='bottomright')
+#grid()
 SSplotSelex(model, fleets=7, infotable=info7$infotable, subplot=1, 
             legendloc='topleft')
 grid()
@@ -93,7 +94,7 @@ dev.off()
 #===============================================================================
 
 area <- "nca"
-base_model <- "9.8_selex_fix"
+base_model <- "9.11_revised_pre-star_base"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -155,10 +156,10 @@ grid()
 SSplotSelex(model, fleets=5, infotable=info5$infotable,subplot=1, 
             legendloc='topleft', year = c(2016, 2022))
 grid()
-SSplotSelex(model, fleets=6, infotable=info6$infotable, subplot=1, 
-            legendloc='bottomright')
-grid()
-#SSplotSelex(model, fleets=9, infotable=info9$infotable, subplot=14, 
-#            legendloc='topleft', agefactors = "Asel")
+#SSplotSelex(model, fleets=6, infotable=info6$infotable, subplot=1, 
+#            legendloc='bottomright')
 #grid()
+SSplotSelex(model, fleets=9, infotable=info9$infotable, subplot=14, 
+            legendloc='topleft', agefactors = "Asel")
+grid()
 dev.off()

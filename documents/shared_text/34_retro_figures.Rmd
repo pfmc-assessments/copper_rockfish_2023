@@ -1,6 +1,6 @@
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(paste0(model_dir, "_retro"),  "compare2_spawnbio_uncertainty.png"), 
+filein = file.path(retro_dir, paste0(retro_name, "_retro"),  "compare2_spawnbio_uncertainty.png"), 
 caption = "Change in the estimate of spawning output when the most recent 5 years of data area removed sequentially",
 label = 'retro-ssb')
 ```
@@ -9,7 +9,7 @@ label = 'retro-ssb')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(paste0(model_dir, "_retro"),  "compare4_Bratio_uncertainty.png"),
+filein = file.path(retro_dir, paste0(retro_name, "_retro"),  "compare4_Bratio_uncertainty.png"),
 caption = "Change in the estimate of fraction unfished when the most recent 5 years of data area removed sequentially",
 label = 'retro-depl')
 ```

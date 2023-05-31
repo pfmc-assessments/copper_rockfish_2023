@@ -44,6 +44,10 @@ knitr::knit_hooks$set(plot = function(x,options) {
 load('saved_directories.Rdata')
 load("00opts.Rdata")
 
+profile_name <- "14.0_base_forecast"
+retro_name <- "14.0_base_forecast"
+sens_name <- "14.0_base_forecast"
+
 spp <- "copper rockfish"
 Spp <- "Copper rockfish"
 hkl <- "NWFSC Hook and Line survey"

@@ -18,25 +18,25 @@ dir.create(file.path(north_dir, "presentation_plots"))
 
 fleet_names <- c("Commercial-Dead", "Commercial-Live", "Recreational-CPFV", 
                  "Recreational-PR")
-
+fleet_names <- c("CCFRP Hook and Line", "NWFSC Hook and Line", "NWFSC WCGBT", "Growth")
 
 SSplotComps(replist = south, subplots = 21, print = TRUE,
             kind = "LEN", 
-            fleets = 1:4, 
-            fleetnames = fleet_names,
+            fleets = c(5, 7, 9, 10), 
+            #fleetnames = "",#fleet_names,
             pwidth = 7, pheight = 7, 
             plotdir = file.path(south_dir, "presentation_plots"),
             cex.main = 2, 
-            datonly = TRUE, showeffN = FALSE)
+            datonly = FALSE, showeffN = TRUE)
 
 SSplotComps(replist = north, subplots = 21, print = TRUE,
             kind = "LEN", 
-            fleets = 1:4, 
-            fleetnames = fleet_names,
+            fleets = c(5), 
+            #fleetnames = fleet_names,
             pwidth = 7, pheight = 7, 
             plotdir = file.path(north_dir, "presentation_plots"),
             cex.main = 2, 
-            datonly = TRUE, showeffN = FALSE)
+            showeffN = FALSE)
 
 
 SS_plots(south,
