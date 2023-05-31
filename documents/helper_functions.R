@@ -134,8 +134,8 @@ create_projection_table <- function(
   sb0 <- model1$derived_quants[model1$derived_quants$Label == "SSB_Virgin", "Value"] +
     model2$derived_quants[model2$derived_quants$Label == "SSB_Virgin", "Value"]
   
-  sb <- round(sb1 + sb2, 2)
-  depl <- round(sb / sb0, 3)
+  sb <- sb1 + sb2
+  depl <- sb / sb0
   
   # read in the management tables for north and south of 4010 in CA
   table1 <- read.csv(file.path(management_dir, table_names[1]))
