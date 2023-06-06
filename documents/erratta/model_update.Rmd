@@ -57,11 +57,11 @@ sb2 <- north_model$derived_quants[north_model$derived_quants$Label %in% paste0("
 sb0 <- south_model$derived_quants[south_model$derived_quants$Label == "SSB_Virgin", "Value"] +
   north_model$derived_quants[north_model$derived_quants$Label == "SSB_Virgin", "Value"]
 
-sb <-  round(sb1 + sb2, 2)
-depl <- round(sb / sb0, 3)
+sb <-  sb1 + sb2
+depl <- sb / sb0
 quants <- data.frame(year = years, 
-                     sb = sb, 
-                     depl = depl)
+                     sb = round(sb, 2), 
+                     depl = round(depl, 3))
 depl_final <- quants[quants$year == '2023', 'depl']
 sb_final <- quants[quants$year == '2023', 'sb']
 min_depl <- min(quants$depl)
@@ -79,6 +79,8 @@ model_recent_depl <- data.frame(year = 2011:2022, depl = model$derived_quants[mo
 
 ```
 
+\pagebreak
+ 
 # Overview
 
 Since the release of the documents on May 22, 2023 and prior to the start of the STAR panel on June 5, 2023 each of the sub-area models for copper rockfish in California, north and south of Point Conception, have had two revisions to the model data.  Each of these changes is described below, and comparisons between the base models (as presented in the draft assessment documents) and the revised base models are provided below in the [Figures Section](#figures).
