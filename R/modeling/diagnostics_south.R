@@ -19,19 +19,30 @@ if( grepl("Chantel", user) ){
   user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
 }
 
-model_dir <- file.path(user_dir, "models", "sca", "_sensitivities")
+model_dir <- file.path(user_dir, "models", "sca")
 # Specify why model you would like to profile, retro, and/or jitter
-base_name <- "14.0_base_mi"
+base_name <- "14.4_base_sebastes_2021_catches"
 
 # Specify the parameters and the space to profile
 get = get_settings_profile(
   parameters =  c("NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
-  low =  c(0.08,0.30, -0.50),
-  high = c(0.12, 0.95,  0.70),
+  low =  c(0.06, 0.25, -0.80),
+  high = c(0.13, 0.95,  0.80),
   step_size = c(0.005, 0.05, 0.10),
   param_space = c('real', 'real', 'relative'),
   use_prior_like = c(1, 1, 0)
 )
+
+get = get_settings_profile(
+  parameters =  c("SR_sigmaR"),
+  low =  c(0.01),
+  high = c(1.0),
+  step_size = c(0.10),
+  param_space = c('real'),
+  use_prior_like = c(0)
+)
+
+
 
 # get = get_settings_profile(
 #   parameters =  c("L_at_Amin_Fem_GP_1", "L_at_Amin_Mal_GP_1", "NatM_uniform_Fem_GP_1",
@@ -57,7 +68,7 @@ model_settings = get_settings(
   settings = list(
     base_name = base_name,
     profile_details = get,
-    run =  c("retro", "profile", "jitter"), 
+    run =  c("profile"), 
     btarg = -1, 
     minbthresh = -1,
     retro_yrs = -1:-5,

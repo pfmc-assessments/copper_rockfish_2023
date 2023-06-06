@@ -21,24 +21,35 @@ if( grepl("Chantel", user) ){
 
 model_dir <- file.path(user_dir, "models", "nca")
 # Specify why model you would like to profile, retro, and/or jitter
-base_name <- "9.8_selex_fix"
+base_name <- "9.12_revised_sebastes_2021_catch"
 
 # Specify the parameters and the space to profile
+# get = get_settings_profile(
+#   parameters =  c( "NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
+#   low =  c(0.075, 0.30, -0.5),
+#   high = c(0.13,  0.95,  1.0),
+#   step_size = c(0.005,  0.05, 0.10),
+#   param_space = c('real', 'real', 'relative'),
+#   use_prior_like = c(1,  1, 0)
+# )
+
 get = get_settings_profile(
-  parameters =  c( "NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
-  low =  c(0.075, 0.30, -0.5),
-  high = c(0.13,  0.95,  1.0),
-  step_size = c(0.005,  0.05, 0.10),
-  param_space = c('real', 'real', 'relative'),
-  use_prior_like = c(1,  1, 0)
+  parameters =  c("SR_sigmaR"),
+  low =  c(0.01),
+  high = c(1.0),
+  step_size = c(0.10),
+  param_space = c('real'),
+  use_prior_like = c(0)
 )
 
 # This specifies to run ALL the diagnostics, if you want to do only some of them revise the "run" input line
 model_settings = get_settings(
   settings = list(
   base_name = base_name,
+  btarg = -1, 
+  minbthresh = -1,
   profile_details = get,
-  run = c("profile",  "jitter", "retro"),
+  run = c("profile"),
   retro_yrs = -1:-5,
   jitter_fraction = 0.10,
   Njitter = 100))
