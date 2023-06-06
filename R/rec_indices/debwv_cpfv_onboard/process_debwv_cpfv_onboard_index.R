@@ -367,6 +367,15 @@ dev.off()
 
 levels(dat$MegaReef) = c('V1','V2','V3','V4')
 #-------------------------------------------------------------------------------
+
+ggplot(dat, aes(x=as.factor(MegaReef), y = DEPTH, fill = MegaReef)) + 
+  geom_boxplot() +ylab("Depth (fm)") +
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank() 
+  ) + scale_fill_viridis_d()
+ggsave(file = file.path(getwd(), "depth_by_reef.png"), width = 7, height = 7)
+
+
 #Airthmetic area-weighted index
 CPUE_year_reef <- dat %>% group_by(MegaReef,YEAR) %>% summarise(Avg_CPUE = mean(CPUE)) %>% as.data.frame()
 
