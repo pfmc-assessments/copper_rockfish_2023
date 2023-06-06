@@ -22,7 +22,9 @@ setwd(wd)
 
 
 #===============================================================================
-# STAR panel reqests
+# STAR panel requests
+#===============================================================================
+# Request #2
 star_start <- SS_output(file.path(wd, "9.12_revised_sebastes_2021_catch"))
 star_request_2 <- SS_output(file.path(wd, "9.13_star_request_2"))
 SS_plots(star_request_2)
@@ -36,3 +38,35 @@ SSplotComparisons(mysummary,
                   ylimAdj = 1.2,
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+
+
+
+
+#===============================================================================
+# Request #4
+star_start <- SS_output(file.path(wd, "9.12_revised_sebastes_2021_catch"))
+star_request_4 <- SS_output(file.path(wd, "9.13_star_request_4"))
+SS_plots(star_request_4)
+modelnames <- c("9.12 STAR start", "Request 4 CCFRP q time block")
+mysummary <- SSsummarize(list(star_start, star_request_4))
+
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "STAR request 4_",
+                  legendlabels = modelnames,   
+                  ylimAdj = 1.1,
+                  plotdir = file.path(wd, '_plots','star_request_4'), 
+                  legendloc = "topright", 
+                  subplots = c(1, 3, 11, 13), 
+                  png = TRUE)
+
+
+#===============================================================================
+# Exploratory remove first part of CCFRP index
+star_ccfrp2017_Start <- SS_output(file.path(wd, "9.12_revised_sebastes_2021_catch_ccfrp2017"))
+SS_plots(star_ccfrp2017_Start)
+
+
+
+
