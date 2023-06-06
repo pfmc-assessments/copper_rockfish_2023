@@ -90,6 +90,9 @@ sens3_6  <- SS_output( file.path(wd, model_list3[6]), printstats = FALSE, verbos
 sens3_7  <- SS_output( file.path(wd, model_list3[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens3_8  <- SS_output( file.path(wd, model_list3[8]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 
+#tune_comps(replist = sens2_2, dir = file.path(wd, model_list2[2]), 
+#           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+
 
 SSunavailableSpawningOutput(
   replist = sens3_3,
@@ -144,7 +147,7 @@ x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens
 x11 <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4))
 x12 <- SSsummarize(list(base, sens_5, sens_6, sens_7, sens_8, sens_9))
 
-x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, sens2_7, sens3_8))
+x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, sens2_7, sens2_8))
 x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
 
 SSplotComparisons(x11, 
