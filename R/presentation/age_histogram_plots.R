@@ -258,7 +258,8 @@ bc_ages$Region <- "Alaska"
 tmp <- data.frame(
   Region = c(all_ages$area, df$Area, bc_ages$Region),
   length_cm = c(all_ages$length_cm, df$Length_cm, bc_ages$ForkLenght_mm / 10),
-  age = c(all_ages$age, df$Age, bc_ages$Average.of.AGE)
+  age = c(all_ages$age, df$Age, bc_ages$Average.of.AGE),
+  sex = c(all_ages$sex, df$Sex, bc_ages$Sex)
 )
 tmp$Region[tmp$Region == "north"] <- "CA: North of Point Conception"
 tmp$Region[tmp$Region == "south"] <- "CA: South of Point Conception"
@@ -289,16 +290,17 @@ ggplot(data = tmp, aes(x = age)) +
 ggsave(filename = file.path(dir, "plots", "west_coast_age_density.png"),
        width = 12, height = 12)
 
-ggplot(tmp) + 
-  geom_point(aes(y = length_cm, x = age, color = Region), alpha = 0.50, size = 3) +
+ggplot(tmp[tmp$Region != "Alaska", ]) + 
+  geom_point(aes(y = length_cm, x = age, color = sex), alpha = 0.7, size = 3) +
   scale_color_viridis_d() +
   theme_bw(base_size = 20) +
-  theme(legend.position = c(0.5, 0.15),
+  facet_wrap("Region") +
+  theme(legend.position = c(0.95, 0.15),
         axis.text = element_text(size = 20)) +
   ylim(c(0, 60)) + xlim(c(0, 55)) + 
   xlab("Age") + ylab("Length (cm)") 
-ggsave(filename = file.path(dir, "plots", "west_coast_length_age.png"),
-       width = 12, height = 12)
+ggsave(filename = file.path(dir, "plots", "west_coast_length_age_v2.png"),
+       width =20, height = 12)
 
 
 quantile_by_area <- tmp[!is.na(tmp$age), ] %>%
