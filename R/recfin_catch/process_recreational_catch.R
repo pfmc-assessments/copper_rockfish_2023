@@ -19,7 +19,7 @@ hist <- read.csv(file.path(dir, "2021.spp.rec.n.and.s.conception.csv"))
 # Load in the proxy values for 2020 provided by CDFW (will be added to existing removals)
 proxy_2020 <- read.csv(file.path(dir, "CDFWRec_CopperRF_AvgProxyValuesApr-Jun2020.csv"))
 # Load the 2020-21 allocation of rockfish genus catch
-genus <- read.csv(file.path(dir, "genus_allocate_revised.csv"))
+genus <- read.csv(file.path(dir, "genus_allocate_20230602.csv"))
 genus <- genus[genus$orig_allocated == "allocated", ]
 
 #===============================================================================================
@@ -316,10 +316,10 @@ colnames(private_south) <- c('year', 'seas', 'fleet', 'catch', 'se')
 private_south <- private_south[sort(private_south$year, decreasing = FALSE, index.return = TRUE)$ix, ]
 
 write.csv(rbind(cpfv_south, private_south),
-	file = file.path(dir, "forSS", "south_rec_landings_for_ss3_05252023.csv"), row.names = FALSE)
+	file = file.path(dir, "forSS", "south_rec_landings_for_ss3_06022023.csv"), row.names = FALSE)
 
 write.csv(rbind(cpfv_north, private_north),
-	file = file.path(dir, "forSS", "north_rec_landings_for_ss3_05252023.csv"), row.names = FALSE)
+	file = file.path(dir, "forSS", "north_rec_landings_for_ss3_06022023.csv"), row.names = FALSE)
 
 # =============================================================================================
 # Plot the data
