@@ -24,25 +24,23 @@ model_dir <- file.path(user_dir, "models", "sca")
 base_name <- "14.4_base_sebastes_2021_catches"
 
 # Specify the parameters and the space to profile
-get = get_settings_profile(
-  parameters =  c("NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
-  low =  c(0.06, 0.25, -0.80),
-  high = c(0.13, 0.95,  0.80),
-  step_size = c(0.005, 0.05, 0.10),
-  param_space = c('real', 'real', 'relative'),
-  use_prior_like = c(1, 1, 0)
-)
+# get = get_settings_profile(
+#   parameters =  c("NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
+#   low =  c(0.06, 0.25, -0.80),
+#   high = c(0.13, 0.95,  0.80),
+#   step_size = c(0.005, 0.05, 0.10),
+#   param_space = c('real', 'real', 'relative'),
+#   use_prior_like = c(1, 1, 0)
+# )
 
 get = get_settings_profile(
   parameters =  c("SR_sigmaR"),
-  low =  c(0.01),
-  high = c(1.0),
+  low =  c(0.10),
+  high = c(1.50),
   step_size = c(0.10),
   param_space = c('real'),
   use_prior_like = c(0)
 )
-
-
 
 # get = get_settings_profile(
 #   parameters =  c("L_at_Amin_Fem_GP_1", "L_at_Amin_Mal_GP_1", "NatM_uniform_Fem_GP_1",
@@ -54,14 +52,14 @@ get = get_settings_profile(
 #   use_prior_like = c(0, 0, 0, 0)
 # )
 # 
- get = get_settings_profile(
-   parameters =  c("SR_LN(R0)"),
-   low =  c(5),
-   high = c( 6.0),
-   step_size = c( 0.1),
-   param_space = c( 'real'),
-   use_prior_like = c( 0)
- )
+# get = get_settings_profile(
+#   parameters =  c("SR_LN(R0)"),
+#   low =  c(5),
+#   high = c( 6.0),
+#   step_size = c( 0.1),
+#   param_space = c( 'real'),
+#   use_prior_like = c( 0)
+# )
 
 # This specifies to run ALL the diagnostics, if you want to do only some of them revise the "run" input line
 model_settings = get_settings(

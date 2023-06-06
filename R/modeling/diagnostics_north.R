@@ -35,8 +35,8 @@ base_name <- "9.12_revised_sebastes_2021_catch"
 
 get = get_settings_profile(
   parameters =  c("SR_sigmaR"),
-  low =  c(0.01),
-  high = c(1.0),
+  low =  c(0.10),
+  high = c(1.50),
   step_size = c(0.10),
   param_space = c('real'),
   use_prior_like = c(0)
