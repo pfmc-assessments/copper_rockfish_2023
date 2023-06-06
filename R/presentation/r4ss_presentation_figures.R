@@ -6,8 +6,8 @@ library(here)
 
 
 dir <- here("models")
-south_base <- "14.0_base_forecast"
-north_base <- "9.8_selex_fix_forecast"
+south_base <- "14.3_revised_pre-star_base" # "14.3_revised_pre-star_base"
+north_base <- "9.11_revised_pre-star_base"
 south_dir <-  file.path(dir, "sca", south_base)
 north_dir <- file.path(dir, "nca", north_base)
   
@@ -22,34 +22,45 @@ fleet_names <- c("CCFRP Hook and Line", "NWFSC Hook and Line", "NWFSC WCGBT", "G
 
 SSplotComps(replist = south, subplots = 21, print = TRUE,
             kind = "LEN", 
-            fleets = c(5, 7, 9, 10), 
+            fleets = 9, 
             #fleetnames = "",#fleet_names,
             pwidth = 7, pheight = 7, 
-            plotdir = file.path(south_dir, "presentation_plots"),
+            plotdir = file.path(wd, south_base, "plots"),
             cex.main = 2, 
-            datonly = FALSE, showeffN = TRUE)
+            datonly = TRUE, showeffN = TRUE)
 
 SSplotComps(replist = north, subplots = 21, print = TRUE,
             kind = "LEN", 
-            fleets = c(5), 
+            fleets = 5, 
             #fleetnames = fleet_names,
             pwidth = 7, pheight = 7, 
             plotdir = file.path(north_dir, "presentation_plots"),
             cex.main = 2, 
-            showeffN = FALSE)
+            showeffN = TRUE)
 
 
 SS_plots(south,
-         png = TRUE,
-         html = FALSE,
+         plot = c(15, 18), #c(13, 14, 16, 18),
+         html = TRUE,
          datplot = TRUE,
          uncertainty = TRUE,
-         maxrows = 4, 
+         maxrows = 2, 
          maxcols = 4, 
-         maxrows2 = 4, 
+         maxrows2 = 2, 
          maxcols2 = 4, 
-         printfolder = 'bubble_size_data_plots',
-         bub.scale.dat= 6)
+         printfolder = 'presentation_plots')
+
+SS_plots(north,
+         png = TRUE,
+         plot = c(18), #c(13, 14, 16, 18),
+         html = TRUE,
+         datplot = TRUE,
+         uncertainty = TRUE,
+         maxrows = 2, 
+         maxcols = 4, 
+         maxrows2 = 2, 
+         maxcols2 = 4, 
+         printfolder = 'presentation_plots')
 
 SS_plots(north,
          png = TRUE,
