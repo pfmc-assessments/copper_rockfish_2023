@@ -188,12 +188,12 @@ plot(tmp_old$usable_area[tmp_old$year == 2021], tmp_new$usable_area[tmp_new$year
 #===============================================================================
 # Plot Indices Comparisons
 #===============================================================================
-area <- "north"
-#load(here("data", "survey_indices", "rov", "delta_gamma_south_designation_depth_year_soft_73_27", "index.rdata"))
-load(here("data", "survey_indices", "rov", "glm_negbin_north_designation_depth", "index.rdata"))
+area <- "south"
+load(here("data", "survey_indices", "rov", "delta_gamma_south_designation_depth_year_soft_73_27", "index.rdata"))
+#load(here("data", "survey_indices", "rov", "glm_negbin_north_designation_depth", "index.rdata"))
 old_index <- index
-#load(here("data", "survey_indices", "rov", "delta_gamma_south_designation_depth_year_soft_73_27_05192023", "index.rdata"))
-load(here("data", "survey_indices", "rov", "glm_negbin_north_designation_depth_80_20_05192023", "index.rdata"))
+load(here("data", "survey_indices", "rov", "delta_gamma_south_designation_depth_year_soft_73_27_05192023", "index.rdata"))
+#load(here("data", "survey_indices", "rov", "glm_negbin_north_designation_depth_80_20_05192023", "index.rdata"))
 data <- index
 
 years =   as.numeric(as.character(data$year))
