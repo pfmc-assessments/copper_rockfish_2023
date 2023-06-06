@@ -2,8 +2,8 @@
 library(r4ss)
 area <- "sca"
 base_model <- "14.3_revised_pre-star_base"
-#area <- 'nca'
-#base_model <- "9.11_revised_pre-star_base"
+area <- 'nca'
+base_model <- "9.11_revised_pre-star_base"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -129,7 +129,7 @@ info4 <- SSplotSelex(model, fleets = 4, subplot = 1, year = c(2000, 2016, 2022))
 info4$infotable$longname = c("PR 1916-2000", "PR 2001-2016", "PR 2017-2022")
 info4$infotable$col <- c(colors[4], colors[4], colors[4])
 
-info5 <- SSplotSelex(model, fleets = 5,  subplot = 1, year = c(2016, 2022))
+info5 <- SSplotSelex(model, fleets = 5,  subplot = 1, year = c(2016, 2022), lwd = 4, cex.main = 2)
 info5$infotable$longname = c("CCFRP 1916-2016", "CCFRP 2017-2022")
 info5$infotable$col <- c(colors[5], colors[5])
 
@@ -139,8 +139,8 @@ info6$infotable$col <- colors[6]
 info9 <- SSplotSelex(model, fleets = 9, agefactors = "Asel2", plot = 12, year = c(2022))
 info9$infotable$col <- colors[9]
 
-HandyCode::pngfun(wd = file.path(wd, base_model, "plots"), 'north_selectivity.png', w = 10, h = 12)
-par(mfrow=c(3,2),mar=c(2,4,3,1))
+HandyCode::pngfun(wd = file.path(wd, base_model, "presentation_plots"), 'north_survey_growth_selectivity.png', w = 18, h = 18)
+par(mfrow=c(1,1),mar=c(2,4,3,1))
 SSplotSelex(model, fleets=1,  infotable=info1$infotable, 
             subplot=1, legendloc='topleft', year = c(2022))
 grid()
@@ -150,7 +150,7 @@ grid()
 SSplotSelex(model, fleets=3, infotable=info3$infotable,subplot=1, 
             legendloc='topleft', year = c(2000, 2016, 2022))
 grid()
-SSplotSelex(model, fleets=4, infotable=info4$infotable,subplot=1, 
+ind = SSplotSelex(model, fleets=4, infotable=info4$infotable,subplot=1,
             legendloc='topleft', year = c(2000, 2016, 2022))
 grid()
 SSplotSelex(model, fleets=5, infotable=info5$infotable,subplot=1, 
