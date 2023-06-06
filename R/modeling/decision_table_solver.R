@@ -65,7 +65,7 @@ find_para <- function(dir, base, yr = 2023, parm = c("MGparm[1]"),
     #target = round(qnorm(quant[tt], mean = sb[,"Value"], sd = sb[,"StdDev"]), 1)
     
     if(missing(sigma)){
-      sigma = base$Pstar_sigma
+      sigma = round(base$Pstar_sigma,2)
     }
     
     if(quant[tt] == 0.125) {
