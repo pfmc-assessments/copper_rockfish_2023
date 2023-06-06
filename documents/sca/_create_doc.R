@@ -22,6 +22,7 @@ doc_dir <- file.path(user_dir, "documents")
 # Currently points to the network location but could be revised
 bridge_dir <- here("models", "sca", "_bridging")
 sens_dir <- here("models", "sca", "_sensitivities")
+retro_dir <- profile_dir <- here("models", "sca")
 model_dir <- here("models", "sca", south_model_name)
 north_model_dir <- here("models", "nca", north_model_name)
 south_model_dir <- here("models", "sca", south_model_name)
@@ -31,7 +32,7 @@ data_dir<- here("data")
 r_dir <- here("R")
 
 save(model_dir, bridge_dir, doc_dir, data_dir, management_dir, north_model_dir, south_model_dir,
-     sens_dir, south_model_name, north_model_name,
+     sens_dir, south_model_name, north_model_name, retro_dir, profile_dir,
      file = file.path(doc_dir, "sca", "saved_directories.Rdata"))
 
 setwd(file.path(doc_dir, "sca"))
