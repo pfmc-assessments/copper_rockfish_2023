@@ -6,8 +6,8 @@ user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
 fig_dir <- "C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures"
 
 
-south_base <- "14.0_base"
-north_base <- "9.8_selex_fix"
+south_base <- "15.0_south_post_star_base"
+north_base <- "10.0_north_post_star_base"
 
 #===============================================================================
 # Start with south of Point Conception
@@ -35,7 +35,7 @@ SSplotComparisons(mysummary,
                   minbthresh = -1,
                   plotdir = fig_dir)
 
-mod <- read.csv(here("models", "south_assessment_comparison.csv"))
+mod <- read.csv(here::here("models", "south_assessment_comparison.csv"))
 
 HandyCode::pngfun(wd = fig_dir, file = "south_total_biomass_comparison.png", w = 7, h = 5, pt = 12)
 
