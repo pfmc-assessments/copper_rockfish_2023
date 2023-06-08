@@ -18,8 +18,8 @@ if( grepl("Chantel", user) ){
 source(file.path(user_dir, "R", "modeling", "decision_table_solver.R"))
 
 wd = file.path(user_dir, "models")
-base_north = "9.11_revised_pre-star_base"
-base_south = "14.4_revised_pre-star_base_converged"
+base_north = "10.0_north_post_star_base"
+base_south = "15.0_south_post_star_base"
 
 
 # Approach #1----------------------------------------------------------------
@@ -29,16 +29,17 @@ base_south = "14.4_revised_pre-star_base_converged"
 north = SS_output(file.path(wd, "nca", "_decision_table", base_north))
 north_sb = north$derived_quants[north$derived_quants$Label == "SSB_2023", ]
 
-sigma <- north$Pstar_sigma # 0.273
-# Based on the SB sigma the low M = 0.084 with a SB = 181.14
-# Based on the SB sigma the high M = with a SB = 336.7
+sigma <- north$Pstar_sigma # 0.313
+# Based on the SB sigma the low M = xx with a SB = 145.6
+# Based on the SB sigma the high M = with a SB = 299.3
 # Unable to find a high M to match the upper SB estimates
 
-ofl_sigma <- north$OFL_sigma # 0.262
+ofl_sigma <- north$OFL_sigma # 0.30
 north_sb[,"Value"]/(exp(-1.15*ofl_sigma)); north_sb[,"Value"]/(exp(1.15*ofl_sigma))
-# SB low = 182.5278, SB = 333.8
+# SB low = 147.9, SB = 294.7
 # Look at steepness values instead, based on the profiles:
-# h =  0.637 and h = 0.892
+# pre-star base h =  0.637 and h = 0.892
+# post-star base h high = 0.859 and h low of = 0.655
 
 find_para(dir = file.path(wd, "nca", "_decision_table", base_north), 
           base = north, 
@@ -49,12 +50,12 @@ find_para(dir = file.path(wd, "nca", "_decision_table", base_north),
           sigma = round(ofl_sigma, 3), 
           tol = 0.005, use_115 = TRUE)
 
-low <- SS_output(file.path(wd, "nca", "_decision_table", "9.11_revised_pre-star_base_SR_parm[2]_decision_table_1.15_0.262_0.125"))
-hi <- SS_output(file.path(wd, "nca", "_decision_table", "9.11_revised_pre-star_base_SR_parm[2]_decision_table_1.15_0.262_0.875"))
+lo <- SS_output(file.path(wd, "nca", "_decision_table", "10.0_north_post_star_base_SR_parm[2]_decision_table_1.15_0.3_0.125"))
+hi <- SS_output(file.path(wd, "nca", "_decision_table", "10.0_north_post_star_base_SR_parm[2]_decision_table_1.15_0.3_0.875"))
 
 
-modelnames <- c("h = 0.72", " h = 0.637", "h = 0.892")
-mysummary <- SSsummarize(list(north, low, hi))
+modelnames <- c("Base Model: h = 0.72", "Low State of Nature: h = 0.655", "High State of Nature: h = 0.859")
+mysummary <- SSsummarize(list(north, lo, hi))
 
 SSplotComparisons(mysummary, 
                   endyrvec = 2023, 
@@ -87,32 +88,33 @@ SSplotComparisons(mysummary,
 south = SS_output(file.path(wd, "sca", "_decision_table", base_south))
 south_sb = south$derived_quants[south$derived_quants$Label == "SSB_2023", ]
 sb_cv <- south_sb[,3] / south_sb[,2] #0.306
-sigma <- south$Pstar_sigma # 0.299
-ofl_sigma <- south$OFL_sigma # 0.275
+sigma <- south$Pstar_sigma # 0.30
+ofl_sigma <- south$OFL_sigma # 0.277
 south_sb[,"Value"]/(exp(-1.15*ofl_sigma)); south_sb[,"Value"]/(exp(1.15*ofl_sigma))
 
-# SB low = 24.3, SB = 45.6
+# SB low = 23.3, SB = 44.103
 # Look at steepness values instead, based on the profiles:
 # Could not find a h that created the low state of nature 
-# SB high = 45.6 with an h = 0.93
-
+# Pre-STAR Base SB high = 45.6 with an h = 0.93
+# Post-STAR Base h low = none and h high = 0.929 (same as before) 
+# An h of 0.54 produces the lowest spawning output in the final model years
 
 find_para(dir = file.path(wd, "sca", "_decision_table", base_south), 
           base = south, 
           yr = 2023, 
           parm = c("SR_parm[2]"), 
-          quant = c(0.875), 
+          quant = c(0.875, 0.125), 
           est = FALSE, 
           sigma = round(ofl_sigma, 3), 
           tol = 0.005, use_115 = TRUE)
 
 
-low <- SS_output(file.path(wd, "sca", "_decision_table", "14.4_revised_pre-star_base_converged_SR_parm[2]_decision_table_1.15_0.275_0.125"))
-hi <- SS_output(file.path(wd, "sca", "_decision_table", "14.4_revised_pre-star_base_converged_SR_parm[2]_decision_table_1.15_0.275_0.875"))
+lo <- SS_output(file.path(wd, "sca", "_decision_table", "15.0_south_post_star_base_SR_parm[2]_decision_table_1.15_0.277_0.125"))
+hi <- SS_output(file.path(wd, "sca", "_decision_table", "15.0_south_post_star_base_SR_parm[2]_decision_table_1.15_0.277_0.875"))
 
 
-modelnames <- c("h = 0.72", " h = 0.637", "h = 0.93")
-mysummary <- SSsummarize(list(south, low, hi))
+modelnames <- c("Base Model: h = 0.72", "Low State of Nature: h = 0.54", "High State of Nature: h = 0.929")
+mysummary <- SSsummarize(list(south, lo, hi))
 
 SSplotComparisons(mysummary, 
                   endyrvec = 2023, 
