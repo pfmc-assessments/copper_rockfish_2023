@@ -17,6 +17,23 @@ wd <- file.path(user_dir, "models", area)
 
 base <- SS_output(file.path(wd, "14.3_revised_pre-star_base"))
 
+# Maturity 
+new_mat <- SS_output(file.path(wd, "_sensitivities", "14.4_base_sebastes_2021_catches_new_mat_est"))
+
+modelnames <- c("Base", "Updated Maturity")
+mysummary <- SSsummarize(list(base, new_mat))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "request_1_maturity_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.1,
+                  plotdir = file.path(wd, '_plots'), 
+                  legendloc = "topright", 
+                  subplot = c(2, 4), 
+                  btarg = -1,
+                  minbthresh = -1,
+                  print = TRUE)
+
 # STAR Panel Request 3: Sigma R
 sigmar <- SS_output(file.path(wd, "_sensitivities", "14.4_base_sebastes_2021_catches_sigmaR_0.80"))
 
