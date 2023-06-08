@@ -62,17 +62,23 @@ do_projections <- function(
     
   for (y in fore_years){
     # Calculate the pooled depletion
-    sb0 <- model1$timeseries[model1$timeseries$Yr == startyr, "SpawnBio"] + 
-      model2$timeseries[model2$timeseries$Yr == startyr, "SpawnBio"]
-    sby <- model1$timeseries[model1$timeseries$Yr == y, "SpawnBio"] +
-      model2$timeseries[model2$timeseries$Yr == y, "SpawnBio"]
-    depl <- sby / sb0
+    sb01 <- model1$timeseries[model1$timeseries$Yr == startyr, "SpawnBio"] 
+    sb02 <- model2$timeseries[model2$timeseries$Yr == startyr, "SpawnBio"]
+
+    sby1 <- model1$timeseries[model1$timeseries$Yr == y, "SpawnBio"] 
+    sby2 <-  model2$timeseries[model2$timeseries$Yr == y, "SpawnBio"]
+    sby <- sby1 + sby2
+    depl <- sby / (sb01 + sb02)
+    depl1 <- sby1 / sb01
+    depl2 <- sby2 / sb02
     
     ofl1 <- model1$derived_quants[model1$derived_quants$Label == paste0("OFLCatch_",y), "Value"] 
     ofl2 <- model2$derived_quants[model2$derived_quants$Label == paste0("OFLCatch_",y), "Value"] 
     ofl  <- ofl1 + ofl2
     
-    abc <- ofl1 * buffer1[ind] + ofl2  * buffer2[ind]
+    abc1 <- ofl1 * buffer1[ind]
+    abc2 <- ofl2 * buffer2[ind]
+    abc  <- abc1 + abc2 
     #abc <- model1$derived_quants[model1$derived_quants$Label == paste0("ForeCatch_",y), "Value"] +
     #  model2$derived_quants[model2$derived_quants$Label == paste0("ForeCatch_",y), "Value"]
     
@@ -107,7 +113,7 @@ do_projections <- function(
     model2 <- r4ss::SS_output(model2_dir, covar = FALSE, verbose = FALSE, printstats = FALSE)
     ind <- ind + 1
     
-    output <- rbind(output, c(y, ofl, abc, acl, depl, prop[1], prop[2], sum(acl1), sum(acl2)))
+    output <- rbind(output, c(y, ofl, ofl1, ofl2, abc, abc1, abc2, acl, sby, sby1, sby2, depl, depl1, depl2, prop[1], prop[2], sum(acl1), sum(acl2)))
 
   }
   
@@ -134,14 +140,14 @@ do_projections <- function(
   starter$last_estimation_phase = max_phase2
   r4ss::SS_writestarter(starter, dir = model2_dir, overwrite = TRUE, verbose = FALSE)
   
-  colnames(output) <- c("Year", "OFL", "ABC", "ACL", "Depl.", "ACL Prop.Model1", "ACL Prop. Model2",  "Removals Model1", "Removals Model2")
+  colnames(output) <- c("Year", "OFL", "OFL1", "OFL2", "ABC", "ABC1", "ABC2", "ACL", "SO", "SO1", "SO2", "Depl.", "Depl1", "Depl2", "ACL Prop.Model1", "ACL Prop. Model2",  "Removals Model1", "Removals Model2")
   write.csv(output, file = file.path(model1_dir, "Projection_Values.csv"), row.names = FALSE)
   write.csv(output, file = file.path(model2_dir, "Projection_Values.csv"), row.names = FALSE)
 }
 
 
-model1_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/sca/14.2_base_sebastes_catches"
-model2_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/nca/9.10_selex_fix_sebastes_catch"
+model1_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/sca/15.0_south_post_star_base_projection"
+model2_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/nca/10.0_north_post_star_base_projection"
 
 
 do_projections(
