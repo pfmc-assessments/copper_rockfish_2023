@@ -65,33 +65,23 @@ known area of rocky substrate to areas in southern California that lack substrat
 expansion of the estimated rocky substrate assumes that the proportions of rocky substrate within 
 and outside state waters are similar.  Copper rockfish are a nearshore species and the majority of 
 observed encounters were within state waters (Table \@ref(tab:onboard-waterarea)).
-This is, of course, an estimation of the amount of rocky substrate, and represents the best available data. 
-The calculations can be found in the online supplementary material. Starting in 2017, 
-depth restrictions eased in districts 
+This is, of course, an estimation of the amount of rocky substrate, and represents the best available data. The calculations can be found in the online supplementary material. Starting in 2017, depth restrictions eased in districts 
 north of Point Conception and the recreational fleet targeted these depths 
 (Figure \@ref(fig:onboard-depths)). The deeper waters (40-50 fm) are 
 outside of the mapped hard bottom habitat, but could be assigned to the larger 
 areas considered as a factor in the index.
 
 
-The covariates explored for model selection included year and four categorical region levels (CRFS Districts 3-6), a categorical variable for month, and continuous depth and depth-squared.  
-Trends in the average CPUE by region were similar 
-in the filtered data set (Figure \@ref(fig:onboard-regioncpue)). A year and region interaction 
-was included after visualizing the trends in average CPUE over time, but was not significant 
-(Figure \@ref(fig:onboard-average_cpue_by_region)). The full model was selected by AICc and 
+The covariates explored for model selection included year and four categorical region levels (CRFS Districts 3-6), a categorical variable for month, and continuous depth and depth-squared. Trends in the average CPUE by region were similar in the filtered data set (Figure \@ref(fig:onboard-regioncpue)). A year and region interaction 
+was included after visualizing the trends in average CPUE over time, but was not significant. The full model was selected by AICc and 
 included year, depth, depth squared and region
 (Table \@ref(tab:onboard-model_selection)). 
 
-Indices were fit via MLE from the sdmTMB package in R. The Q-Q plot for the negative binoimal 
-model indicated a poor fit to the data, which as not surprising given the low percent of 
-observed drifts encountering copper rockfish. A delta-Lognormal 
+Indices were fit via MLE from the sdmTMB package in R. The Q-Q plot for the negative binomial model indicated a poor fit to the data, which as not surprising given the low percent of observed drifts encountering copper rockfish. A delta-Lognormal 
 was selected over a delta-gamma by a delta AIC of 487.  The Q-Q plot indicated a much 
 improved fit compared to the negative binomial model (Table \@ref(fig:onboard-qq)).
-The relative abundance is predominantly flat during the time series, with a visible increase 
-in CPUE in 2017 when deeper waters opened in portions of northern California after a 17 year closure (Table \@ref(tab:onboard-index) 
+The relative abundance is predominantly flat during the time series, with a visible increase in CPUE in 2017 when deeper waters opened in portions of northern California after a 17 year closure (Table \@ref(tab:onboard-index) 
 and Figure \@ref(fig:onboard-index)).  
-
-
 
 
 ```{r, results = 'asis'}
@@ -190,6 +180,23 @@ sa4ss::table_format(
 \newpage
 
 ```{r, results = 'asis'}
+ind <- read.csv(file.path(
+  data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",  "model_selection.csv"
+))
+col_names <- c("Intercept",	"Depth", "Depth-squared",	"Month", "Region", "Year", "DF",	"AICc",	"Delta AICc")
+
+sa4ss::table_format(
+  x = ind,
+  caption = "Model selection for the dockside onboard CRFS CPFV survey.",
+  label = "onboard-model_selection",
+  digits = 2,
+  font_size = 8,
+  col_names = col_names
+)
+```
+
+\newpage
+```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
                    "deltalogn", "index.png"), 
@@ -235,8 +242,8 @@ label = 'onboard-depths')
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
                    "drifts_by_depth_district.png"), 
-caption = "Stacked bar plot of the depth of observed copper rockfish by district.",
-label = 'onboard-depths')
+caption = "Depths of observed copper rockfish by district.",
+label = 'onboard-depths2')
 ```
 
 \newpage
