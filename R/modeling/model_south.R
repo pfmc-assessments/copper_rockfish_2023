@@ -1892,3 +1892,22 @@ SSplotComparisons(mysummary,
                   btarg = -1,
                   minbthresh = -1,
                   print = TRUE)
+
+
+post_star_base <- SS_output(file.path(wd, "15.0_south_post_star_base"))
+tune_comps(replist = post_star_base, dir = file.path(wd, "15.0_south_post_star_base"), 
+           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+SS_plots(post_star_base, btarg = -1, minbthresh = -1)
+
+post_star_base_reweight <- SS_output(file.path(wd, "15.0_south_post_star_base_reweight"))
+modelnames <- c("Jittered", "Jittered Reweighted")
+mysummary <- SSsummarize(list(post_star_base, post_star_base_reweight))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "15.0_jitter_weighted_",
+                  legendlabels = modelnames, 
+                  ylimAdj = 1.2,
+                  btarg = -1,
+                  minbthresh = -1,
+                  plotdir = file.path(wd, "_plots"),
+                  pdf = TRUE)

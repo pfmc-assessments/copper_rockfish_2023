@@ -996,3 +996,6 @@ SSplotComparisons(mysummary,
                   ylimAdj = 1.2,
                   plotdir = file.path(wd, "_plots"),
                   pdf = TRUE)
+
+post_star_base <- SS_output(file.path(wd, "10._north_post_star_base"))
+SS_plots(post_star_base)
