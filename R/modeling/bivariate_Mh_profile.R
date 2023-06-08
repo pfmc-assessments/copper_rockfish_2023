@@ -26,8 +26,8 @@ getLtable=function(modelsum, legend.labels=NULL) {
 }
 
 #setwd("~/Rockfish/Rockfish assessment/vermillion 2021/SSmodel")
-setwd("C:/Assessments/2023/copper_rockfish_2023/models/nca/_sensitivities/9.8_selex_fix_bivariate_m_equal")
-setwd("C:/Assessments/2023/copper_rockfish_2023/models/sca/_sensitivities/14.0_base_bivariate_m_both")
+setwd("C:/Assessments/2023/copper_rockfish_2023/models/nca/_sensitivities/9.11_revised_pre-star_base_m_h_profile")
+setwd("C:/Assessments/2023/copper_rockfish_2023/models/sca/_sensitivities/14.4_revised_pre-star_base_converged_m_h_profile")
 
 
 # set 1 #####
@@ -96,8 +96,8 @@ Sdgrid = as.data.frame(sumtablelong)
 #write.csv(Sdgrid,"bivariate_post-STAR/south_bivariate_table.csv",row.names = F)
 
 #base model
-basemodel <- SS_output("C:/Assessments/2023/copper_rockfish_2023/models/nca/9.8_selex_fix")
-basemodel <- SS_output("C:/Assessments/2023/copper_rockfish_2023/models/sca/14.0_base_forecast")
+basemodel <- SS_output("C:/Assessments/2023/copper_rockfish_2023/models/nca/9.11_revised_pre-star_base")
+basemodel <- SS_output("C:/Assessments/2023/copper_rockfish_2023/models/sca/14.4_revised_pre-star_base_converged")
 
 Mbase=basemodel$parameters["NatM_uniform_Fem_GP_1","Value"]
 hbase=basemodel$parameters["SR_BH_steep","Value"]

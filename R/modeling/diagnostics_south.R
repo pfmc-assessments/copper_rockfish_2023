@@ -21,45 +21,26 @@ if( grepl("Chantel", user) ){
 
 model_dir <- file.path(user_dir, "models", "sca")
 # Specify why model you would like to profile, retro, and/or jitter
-base_name <- "14.4_base_sebastes_2021_catches"
+base_name <- "15.0_south_post_star_base_reweight"
 
 # Specify the parameters and the space to profile
-# get = get_settings_profile(
-#   parameters =  c("NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
-#   low =  c(0.06, 0.25, -0.80),
-#   high = c(0.13, 0.95,  0.80),
-#   step_size = c(0.005, 0.05, 0.10),
-#   param_space = c('real', 'real', 'relative'),
-#   use_prior_like = c(1, 1, 0)
-# )
+get = get_settings_profile(
+   parameters =  c("NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
+   low =  c(0.08, 0.25, -0.80),
+   high = c(0.13, 0.95,  0.80),
+   step_size = c(0.005, 0.05, 0.10),
+   param_space = c('real', 'real', 'relative'),
+   use_prior_like = c(1, 1, 0)
+ )
 
 get = get_settings_profile(
-  parameters =  c("SR_sigmaR"),
-  low =  c(0.10),
-  high = c(1.50),
+  parameters =  c("SR_LN(R0)"),
+  low =  c(-0.80),
+  high = c(0.80),
   step_size = c(0.10),
-  param_space = c('real'),
+  param_space = c('relative'),
   use_prior_like = c(0)
 )
-
-# get = get_settings_profile(
-#   parameters =  c("L_at_Amin_Fem_GP_1", "L_at_Amin_Mal_GP_1", "NatM_uniform_Fem_GP_1",
-#                    "Size_DblN_peak_Commercial_dead(1)"),
-#   low =  c(14, 14, 0.08, 38),
-#   high = c(20, 20, 0.13, 47),
-#   step_size = c(0.5, 0.5,  0.01, 1),
-#   param_space = c('real', 'real', 'real', 'real'),
-#   use_prior_like = c(0, 0, 0, 0)
-# )
-# 
-# get = get_settings_profile(
-#   parameters =  c("SR_LN(R0)"),
-#   low =  c(5),
-#   high = c( 6.0),
-#   step_size = c( 0.1),
-#   param_space = c( 'real'),
-#   use_prior_like = c( 0)
-# )
 
 # This specifies to run ALL the diagnostics, if you want to do only some of them revise the "run" input line
 model_settings = get_settings(
@@ -70,7 +51,7 @@ model_settings = get_settings(
     btarg = -1, 
     minbthresh = -1,
     retro_yrs = -1:-5,
-    Njitter = 100,
+    Njitter = 15,
     jitter_fraction = 0.10))
 
 # Run line
@@ -82,7 +63,7 @@ run_diagnostics(mydir = model_dir, model_settings = model_settings)
 rerun_profile_vals(mydir = file.path(model_dir, base_name),
            model_settings = model_settings,
            para_name =  "SR_LN(R0)",
-           run_num = c(2,3),
+           run_num = c(6, 4,3,2),
            data_file_nm = "2023_ca_s_copper.dat")
 
 
