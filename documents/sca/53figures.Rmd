@@ -198,7 +198,7 @@ label = 'rec-pr-len-data')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_PR.png"), 
+filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_Private.png"), 
 caption = "Mean length for recreational PR fleet with 95 percent confidence intervals",
 label = 'mean-rec-pr-len-data')
 ```
@@ -875,7 +875,7 @@ label = 'rec-pr-pearson')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Rec_PR.png"), 
+filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Rec_Private.png"), 
 caption = "Mean length for recreational private/rental lengths with 95 percent confidence intervals based on current samples sizes",
 label = 'rec-pr-mean-len-fit')
 ```
@@ -1094,7 +1094,7 @@ label = 'crfs-cpfv-index-fit')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_PR.png"), 
+filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_Private.png"), 
 caption = "Fit to log index data on log scale for the recreational private index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.",
 label = 'crfs-pr-index-fit')
 ```
