@@ -1,14 +1,14 @@
 # Install the package if needed
-# remotes::install_github("pfmc-assessments/sa4ss", ref ="sub-area_models")
-# remotes::install_github("r4ss/r4ss", ref ="sub-area_models_es")
-library(sa4ss)
+#remotes::install_github("pfmc-assessments/sa4ss", ref ="sub-area_models")
+#remotes::install_github("r4ss/r4ss", ref ="sub-area_models_es")
+#library(sa4ss)
 library(here)
 devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/sa4ss")
 devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 
 # Specify the directory for the document
-south_model_name <- "14.3_revised_pre-star_base"
-north_model_name <- "9.11_revised_pre-star_base"
+south_model_name <- "15.0_south_post_star_base"
+north_model_name <- "10.0_north_post_star_base"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
