@@ -79,8 +79,6 @@ do_projections <- function(
     abc1 <- ofl1 * buffer1[ind]
     abc2 <- ofl2 * buffer2[ind]
     abc  <- abc1 + abc2 
-    #abc <- model1$derived_quants[model1$derived_quants$Label == paste0("ForeCatch_",y), "Value"] +
-    #  model2$derived_quants[model2$derived_quants$Label == paste0("ForeCatch_",y), "Value"]
     
     if( depl < 0.40) {
       acl <- abc * (hcr[1]/ (hcr[1] - hcr[2])) * (depl - hcr[2]) / depl
@@ -88,9 +86,17 @@ do_projections <- function(
       acl <- abc
     }
     
-    acl1 <- prop[1] * acl
-    acl2 <- prop[2] * acl
-    
+    if (prop[1] < 0){
+      acl1 <- ofl1/ofl * acl
+      acl2 <- (1 - ofl1/ofl) * acl  
+      prop1 <- ofl1/ofl; prop2 <- 1 - prop1
+    } else {
+      acl1 <- prop[1] * acl
+      acl2 <- prop[2] * acl  
+      prop1 <- prop[1]
+      prop2 <- prop[2]
+    }
+
     # Set the forecast catch in the first model
     fore <- r4ss::SS_readforecast(file.path(model1_dir, "forecast.ss"), verbose = FALSE)
     add_catch <- cbind(y, 1, fleet1_num, round(acl1 * model1_fleets, 2))
@@ -113,7 +119,8 @@ do_projections <- function(
     model2 <- r4ss::SS_output(model2_dir, covar = FALSE, verbose = FALSE, printstats = FALSE)
     ind <- ind + 1
     
-    output <- rbind(output, c(y, ofl, ofl1, ofl2, abc, abc1, abc2, acl, sby, sby1, sby2, depl, depl1, depl2, prop[1], prop[2], sum(acl1), sum(acl2)))
+    output <- rbind(output, c(y, ofl, ofl1, ofl2, abc, abc1, abc2, acl, sby, sby1, sby2, depl, depl1, depl2, 
+                              prop1, prop2, acl1, acl2))
 
   }
   
@@ -146,8 +153,8 @@ do_projections <- function(
 }
 
 
-model1_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/sca/15.0_south_post_star_base_projection"
-model2_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/nca/10.0_north_post_star_base_projection"
+model1_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/sca/_decision_table/pstar_45/15.0_south_post_star_base"
+model2_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/nca/_decision_table/pstar_45/10.0_north_post_star_base"
 
 
 do_projections(
@@ -156,7 +163,7 @@ do_projections(
     model1_dir = model1_dir, 
     model2_dir = model2_dir,
     fore_years = 2025:2034,
-    prop = c(0.29, 0.71),
+    prop = c(-1, -1),
     fleet1_num = 1:4,
     fleet2_num = 1:4,
     model1_fleets = c(0.04, 0.03, 0.72, 0.21),
