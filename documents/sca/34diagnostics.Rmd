@@ -54,7 +54,7 @@ Data Sensitivities
   
   \item Remove the CCFRP Hook and Line survey data (index, lengths, and ages).
   
-  \item Remove the CDFW ROV survey data (index and lengths).
+  \item Add the CDFW ROV survey data (index and lengths).
   
   \item Remove the NWFSC Hook and Line survey data (index, lengths, and ages).
   
@@ -66,7 +66,7 @@ Data Sensitivities
   
   \item Remove the NWFSC Hook and Line survey index of abundance (retain the lengths and ages).
   
-  \item Remove the NWFSC Hook and Line, CCFRP Hook and Line, and CDFW ROV survey data (indices, lengths, and ages).
+  \item Remove the NWFSC Hook and Line and CCFRP Hook and Line survey (indices, lengths, and ages).
 
 \end{enumerate}
 
