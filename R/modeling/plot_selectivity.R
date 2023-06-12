@@ -94,7 +94,7 @@ dev.off()
 #===============================================================================
 
 area <- "nca"
-base_model <- "9.11_revised_pre-star_base"
+base_model <- "10.0_north_post_star_base"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
