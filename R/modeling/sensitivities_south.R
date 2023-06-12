@@ -10,7 +10,7 @@ library(here)
 # South of Pt Conception
 ###################################################################
 area <- 'sca'
-base_model = "14.0_base"
+base_model = "15.0_south_post_star_base"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -29,12 +29,12 @@ base_loc <- file.path(user_dir, "models", area, base_model)
 model_list <- c("est_m", #1
               "est_h", #2
               "est_m_h", #3
-              "no_devs", #4
+              "no_rec_devs", #4
               "cpfv_asym", #5
               "growth_platoons", #6
               "no_added_var", #7
               "dirichlet", #8
-              "mi_no_hessian") #9
+              "mi") #9
 
 model_list2 =  c("cut_rec_catch", #1
                 "lambda_age", #2
@@ -46,10 +46,10 @@ model_list2 =  c("cut_rec_catch", #1
                 "rm_fishery_indices") #8
 
 model_list3 =  c("rm_ccfrp", #1
-                 "rm_rov", #2
+                 "add_rov_survey", #2
                  "rm_hkl", #3
                  "rm_hkl_ages", #4
-                 "rm_hkl_len_age", #5
+                 "rm_hkl_len_ages", #5
                  "rm_hkl_index", #6
                  "hkl_rm_2014_data", #7
                  "rm_surveys") #8
@@ -59,7 +59,7 @@ model_list2 <- paste0(base_model, "_", model_list2)
 model_list3 <- paste0(base_model, "_", model_list3)
 
 #out.list = NULL	
-base   <- SS_output( paste0(base_loc, "_forecast"), printstats = FALSE, verbose = FALSE) 
+base   <- SS_output(base_loc, printstats = FALSE, verbose = FALSE) 
 
 sens_1  <- SS_output( file.path(wd, model_list[1]), printstats = FALSE, verbose = FALSE, covar = FALSE) 
 sens_2  <- SS_output( file.path(wd, model_list[2]), printstats = FALSE, verbose = FALSE, covar = FALSE) 
@@ -110,18 +110,18 @@ modelnames <- c("Base Model",
                "Dirichlet DW", 
                "McAllister-Ianelli DW")
 
-modelnames11 <- c("Base Model",
-                "Estimate M",
-                "Estimate h", 
-                "Estimate M & h",
-                "No Rec. Devs.")
-
-modelnames12 <- c("Base Model",
-                "CPFV Selectivity Asym.",
-                "Growth Platoons",
-                "No Added Variance",
-                "Dirichlet DW", 
-                "McAllister-Ianelli DW")
+#modelnames11 <- c("Base Model",
+#                "Estimate M",
+#                "Estimate h", 
+#                "Estimate M & h",
+#                "No Rec. Devs.")
+#
+#modelnames12 <- c("Base Model",
+#                "CPFV Selectivity Asym.",
+#                "Growth Platoons",
+#                "No Added Variance",
+#                "Dirichlet DW", 
+#                "McAllister-Ianelli DW")
 
 modelnames2 <- c("Base Model",
                 "Reduce PR Catch 1970-82",
@@ -135,7 +135,7 @@ modelnames2 <- c("Base Model",
 
 modelnames3 <- c("Base Model",
                  "Rm. CCFRP",
-                 "Rm. CDFW ROV",
+                 "Add CDFW ROV Survey",
                  "Rm. NWFSC HKL All",
                  "Rm. NWFSC HKL Ages",
                  "Rm. NWFSC HKL Lens. & Ages",
@@ -150,67 +150,45 @@ x12 <- SSsummarize(list(base, sens_5, sens_6, sens_7, sens_8, sens_9))
 x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, sens2_7, sens2_8))
 x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
 
-SSplotComparisons(x11, 
+SSplotComparisons(x, 
                   endyrvec = 2023, 
-                  legendlabels = modelnames11, 
+                  legendlabels = modelnames, 
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
-                  filenameprefix = paste0(base_model, "_forecast_final_1_"),
+                  filenameprefix = paste0(base_model, "_1_"),
                   subplot = c(2,4), 
                   btarg = -1,
                   minbthresh = -1,
                   print = TRUE)
 
-SSplotComparisons(x11, 
-                  endyrvec = 2023, 
-                  legendlabels = modelnames11, 
-                  plotdir = file.path(getwd(), '_plots'), 
-                  legendloc = "topleft", 
-                  filenameprefix = paste0(base_model, "_forecast_final_1_"),
-                  subplot = c(11), 
-                  print = TRUE)
-
-SSplotComparisons(x12, 
-                  endyrvec = 2023, 
-                  legendlabels = modelnames12, 
-                  plotdir = file.path(getwd(), '_plots'), 
-                  legendloc = "topright", 
-                  filenameprefix = paste0(base_model, "_forecast_final_4_"),
-                  subplot = c(2,4), 
-                  btarg = -1,
-                  minbthresh = -1,
-                  print = TRUE)
-
-SSplotComparisons(x12, 
-                  endyrvec = 2023, 
-                  legendlabels = modelnames12, 
-                  plotdir = file.path(getwd(), '_plots'), 
-                  legendloc = "topleft", 
-                  filenameprefix = paste0(base_model, "_forecast_final_4_"),
-                  subplot = c(11), 
-                  print = TRUE)
+#SSplotComparisons(x11, 
+#                  endyrvec = 2023, 
+#                  legendlabels = modelnames11, 
+#                  plotdir = file.path(getwd(), '_plots'), 
+#                  legendloc = "topleft", 
+#                  filenameprefix = paste0(base_model, "_1_"),
+#                  subplot = c(11), 
+#                  print = TRUE)
 
 SSplotComparisons(x2, 
                   endyrvec = 2023, 
                   legendlabels = modelnames2, 
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
-                  ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_forecast_final_2_"),
+                  filenameprefix = paste0(base_model, "_2_"),
                   subplot = c(2,4), 
                   btarg = -1,
                   minbthresh = -1,
                   print = TRUE)
 
-SSplotComparisons(x2, 
-                  endyrvec = 2023, 
-                  legendlabels = modelnames2, 
-                  plotdir = file.path(getwd(), '_plots'), 
-                  legendloc = "topleft", 
-                  ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_forecast_final_2_"),
-                  subplot = c(11), 
-                  print = TRUE)
+#SSplotComparisons(x12, 
+#                  endyrvec = 2023, 
+#                  legendlabels = modelnames12, 
+#                  plotdir = file.path(getwd(), '_plots'), 
+#                  legendloc = "topleft", 
+#                  filenameprefix = paste0(base_model, "_4_"),
+#                  subplot = c(11), 
+#                  print = TRUE)
 
 SSplotComparisons(x3, 
                   endyrvec = 2023, 
@@ -218,21 +196,43 @@ SSplotComparisons(x3,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_forecast_final_3_"),
+                  filenameprefix = paste0(base_model, "_3_"),
                   subplot = c(2,4), 
                   btarg = -1,
                   minbthresh = -1,
                   print = TRUE)
 
-SSplotComparisons(x3, 
-                  endyrvec = 2023, 
-                  legendlabels = modelnames3, 
-                  plotdir = file.path(getwd(), '_plots'), 
-                  legendloc = "topleft", 
-                  ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_forecast_final_3_"),
-                  subplot = c(11), 
-                  print = TRUE)
+#SSplotComparisons(x2, 
+#                  endyrvec = 2023, 
+#                  legendlabels = modelnames2, 
+#                  plotdir = file.path(getwd(), '_plots'), 
+#                  legendloc = "topleft", 
+#                  ylimAdj = 1.15,
+#                  filenameprefix = paste0(base_model, "_forecast_final_2_"),
+#                  subplot = c(11), 
+#                  print = TRUE)
+#
+#SSplotComparisons(x3, 
+#                  endyrvec = 2023, 
+#                  legendlabels = modelnames3, 
+#                  plotdir = file.path(getwd(), '_plots'), 
+#                  legendloc = "topright", 
+#                  ylimAdj = 1.15,
+#                  filenameprefix = paste0(base_model, "_forecast_final_3_"),
+#                  subplot = c(2,4), 
+#                  btarg = -1,
+#                  minbthresh = -1,
+#                  print = TRUE)
+#
+#SSplotComparisons(x3, 
+#                  endyrvec = 2023, 
+#                  legendlabels = modelnames3, 
+#                  plotdir = file.path(getwd(), '_plots'), 
+#                  legendloc = "topleft", 
+#                  ylimAdj = 1.15,
+#                  filenameprefix = paste0(base_model, "_forecast_final_3_"),
+#                  subplot = c(11), 
+#                  print = TRUE)
 
 
 ###################################################################################
@@ -312,10 +312,10 @@ modelnames_data <- c("Base Model",
                  "Rm. Coop. Ages", 
                  "Add Coop. Ages to CPFV",
                  "Rm. WCGBT Ages",
-                 "Add WCBT Index",
+                 "Add WCGBT Index",
                  "Rm. CPFV & PR Indices",
                  "Rm. CCFRP",
-                 "Rm. CDFW ROV",
+                 "Add CDFW ROV Survey",
                  "Rm. NWFSC HKL All",
                  "Rm. NWFSC HKL Ages",
                  "Rm. NWFSC HKL Lens. & Ages",

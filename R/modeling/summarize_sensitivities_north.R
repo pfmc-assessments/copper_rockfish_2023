@@ -10,7 +10,7 @@ library(here)
 # North of Pt Conception
 ###################################################################
 area <- 'nca'
-base_model = "9.8_selex_fix"
+base_model = "10.0_north_post_star_base"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -29,26 +29,25 @@ base_loc <- file.path(user_dir, "models", area, base_model)
 model_list <- c("est_m", #1
                 "est_h", #2
                 "est_m_h", #3
-                "no_added_var",#4
-                "no_devs", #5
+                "rm_add_var",#4
+                "rm_rec_devs", #5
                 "dirichlet", #6
                 "mi") #7
 
 model_list2 =  c("lmin_equal_ave", #1
                  "lmin_equal_south", #2
-                 "cut_pr_catch", #3
-                 "add_hist_rec_to_growth", #4
-                 "rov_super_period", #5
-                 "lens_only") #6
+                 "cut_rec_catch", #3
+                 "hist_age_to_growth", #4
+                 "rm_ages", #5
+                 "only_lens") #6
                 
-model_list3 =  c("rm_coop_ages", #1
-                 "rm_all_ages", #2
+model_list3 =  c("add_rov", #1
+                 "rm_coop", #2
                  "rm_ccfrp", #3
-                 "rm_rov", #4
-                 "rm_all_surveys", #5
-                 "rm_cpfv_index", #6
-                 "rm_dwv", #7
-                 "rm_pr_index") #8
+                 "rm_cpfv_index", #4
+                 "rm_dwv", #5
+                 "rm_pr", #6
+                 "rm_rec_indices") #7
 
 model_list <- paste0(base_model, "_", model_list)
 model_list2 <- paste0(base_model, "_", model_list2)
@@ -56,6 +55,9 @@ model_list3 <- paste0(base_model, "_", model_list3)
 
 #out.list = NULL	
 base   <- SS_output( base_loc, printstats = FALSE, verbose = FALSE) 
+tune_comps(replist = base, dir = file.path(user_dir, "models", area, "10.0_north_post_star_base"), 
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
+
 
 sens_1  <- SS_output( file.path(wd, model_list[1]), printstats = FALSE, verbose = FALSE, covar = FALSE) 
 sens_2  <- SS_output( file.path(wd, model_list[2]), printstats = FALSE, verbose = FALSE, covar = FALSE) 
@@ -79,7 +81,6 @@ sens3_4  <- SS_output( file.path(wd, model_list3[4]), printstats = FALSE, verbos
 sens3_5  <- SS_output( file.path(wd, model_list3[5]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens3_6  <- SS_output( file.path(wd, model_list3[6]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 sens3_7  <- SS_output( file.path(wd, model_list3[7]), printstats = FALSE, verbose = FALSE, covar = FALSE)
-sens3_8  <- SS_output( file.path(wd, model_list3[8]), printstats = FALSE, verbose = FALSE, covar = FALSE)
 
 
 modelnames <- c("Base Model",
@@ -96,29 +97,28 @@ modelnames2 <- c("Base Model",
                  "L2 Equal to South Ests.",
                  "Reduce Rec. Catch 1970-82",
                  "Add Hist. CPFV Ages to Growth",
-                 "ROV Len. Super Period",
-                 "Lengths Only")
+                 "Rm. Ages",
+                 "Rm. Ages and Indices")
 
 modelnames3 <- c("Base Model",
+                 "Add ROV Survey and Lengths",
                  "Rm. Coop. Ages",
-                 "Rm. All Ages",
                  "Rm. CCFRP",
-                 "Rm. CDFW ROV",
-                 "Rm. All Surveys",
                  "Rm. CPFV Index", 
                  "Rm. DWV Index",
-                 "Rm. PR Index")
+                 "Rm. PR Index",
+                 "Rm. All Rec. Indices")
 
 x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7))
 x2 <- SSsummarize(list(base, sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6))
-x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
+x3 <- SSsummarize(list(base, sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7))
 
 SSplotComparisons(x, 
                   endyrvec = 2023, 
                   legendlabels = modelnames, 
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
-                  filenameprefix = paste0(base_model, "_forecast_final_1_"),
+                  filenameprefix = paste0(base_model, "__1_"),
                   subplot = c(2,4), 
                   btarg = -1,
                   minbthresh = -1,
@@ -129,7 +129,7 @@ SSplotComparisons(x,
                   legendlabels = modelnames, 
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topleft", 
-                  filenameprefix = paste0(base_model, "_forecast_final_1_"),
+                  filenameprefix = paste0(base_model, "_1_"),
                   subplot = c(11), 
                   print = TRUE)
 
@@ -139,7 +139,7 @@ SSplotComparisons(x2,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_forecast_final_2_"),
+                  filenameprefix = paste0(base_model, "_2_"),
                   subplot = c(2,4), 
                   btarg = -1,
                   minbthresh = -1,
@@ -151,7 +151,7 @@ SSplotComparisons(x2,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topleft", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_forecast_final_2_"),
+                  filenameprefix = paste0(base_model, "_2_"),
                   subplot = c(11), 
                   print = TRUE)
 
@@ -161,7 +161,7 @@ SSplotComparisons(x3,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topright", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_forecast_final_3_"),
+                  filenameprefix = paste0(base_model, "_3_"),
                   subplot = c(2,4), 
                   btarg = -1,
                   minbthresh = -1,
@@ -173,7 +173,7 @@ SSplotComparisons(x3,
                   plotdir = file.path(getwd(), '_plots'), 
                   legendloc = "topleft", 
                   ylimAdj = 1.15,
-                  filenameprefix = paste0(base_model, "_forecast_final_3_"),
+                  filenameprefix = paste0(base_model, "_3_"),
                   subplot = c(11), 
                   print = TRUE)
 
@@ -185,15 +185,15 @@ modelnames <- c("Base Model",
                 "Estimate M",
                 "Estimate h", 
                 "Estimate M & h",
-                #"No Added Variance",
-                #"No Rec. Devs.",
-                #"Dirichlet DW", 
-                #"McAllister-Ianelli DW",
-                #"L2 Equal to 13.6 cm",
+                "No Added Variance",
+                "No Rec. Devs.",
+                "Dirichlet DW", 
+                "McAllister-Ianelli DW",
+                "L2 Equal to 13.6 cm",
                 "L2 Equal to South Ests.",
                 "Reduce Rec. Catch 1970-82",
-                #"Add Hist. CPFV Ages to Growth",
-                #"ROV Lens. Super Period",
+                "Add Hist. CPFV Ages to Growth",
+                "ROV Lens. Super Period",
                 "Lengths Only", 
                 "Rm. Coop. Ages",
                 "Rm. All Ages",
@@ -204,9 +204,9 @@ modelnames <- c("Base Model",
                 "Rm. DWV Index",
                 "Rm. PR Index")
 
-x <- SSsummarize(list(base, sens_1, sens_2, sens_3, #sens_4, sens_5, sens_6, sens_7,
+x <- SSsummarize(list(base, sens_1, sens_2, sens_3, sens_4, sens_5, sens_6, sens_7,
                       sens2_2, sens2_3, sens2_6, 
-                      sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
+                      sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7))
 
 wd_dat <- file.path(paste0(wd,"/_plots")) 
 # Sensitivity figure is something I adapted from Jason's Original that is in r4ss (SS_Sensi_plot)
@@ -268,20 +268,19 @@ modelnames <- c("Base Model",
                 "L2 Equal to South Ests.",
                  "Reduce Rec. Catch 1970-82",
                  "Add Hist. CPFV Ages to Growth",
-                 "ROV Lens. Super Period",
-                 "Lengths Only", 
+                 "Rm. Ages",
+                 "Rm. Ages and Inidices",
+                 "Add ROV Survey and Lengths",
                  "Rm. Coop. Ages",
-                 "Rm. All Ages",
                  "Rm. CCFRP",
-                 "Rm. CDFW ROV",
-                 "Rm. All Surveys",
                  "Rm. CPFV Index", 
                  "Rm. DWV Index",
-                 "Rm. PR Index")
+                 "Rm. PR Index", 
+                 "Rm. All Rec. Indices")
 
 x <- SSsummarize(list(base, 
                       sens2_1, sens2_2, sens2_3, sens2_4, sens2_5, sens2_6, 
-                      sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7, sens3_8))
+                      sens3_1, sens3_2, sens3_3, sens3_4, sens3_5, sens3_6, sens3_7))
 
 ###################################################################################
 # Create a Table of Results

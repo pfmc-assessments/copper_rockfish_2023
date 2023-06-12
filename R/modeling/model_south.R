@@ -1896,7 +1896,7 @@ SSplotComparisons(mysummary,
 
 post_star_base <- SS_output(file.path(wd, "15.0_south_post_star_base"))
 tune_comps(replist = post_star_base, dir = file.path(wd, "15.0_south_post_star_base"), 
-           option = "Francis", write = FALSE, allow_up_tuning = TRUE)
+           option = "MI", write = FALSE, allow_up_tuning = TRUE)
 SS_plots(post_star_base, btarg = -1, minbthresh = -1)
 
 post_star_base_reweight <- SS_output(file.path(wd, "15.0_south_post_star_base_reweight"))
