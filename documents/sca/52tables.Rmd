@@ -474,3 +474,5 @@ create_projection_table(
 ```
 
 \newpage
+
+\input{tex_tables/decision_table.tex}
