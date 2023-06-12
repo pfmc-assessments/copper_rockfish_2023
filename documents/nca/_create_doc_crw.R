@@ -7,8 +7,8 @@ devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/sa4ss")
 devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 
 # Specify the directory for the document
-south_model_name <- "14.3_revised_pre-star_base"
-north_model_name <- "9.11_revised_pre-star_base"
+south_model_name <- "15.0_south_post_star_base"
+north_model_name <- "10.0_north_post_star_base"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -98,7 +98,7 @@ read_model(
   add_prefix = "south",
   add_text = "south of Point Conception",
   create_plots = FALSE, 
-  save_loc = file.path(doc_dir, "sca", "tex_tables"))
+  save_loc = file.path(doc_dir, "nca", "tex_tables"))
 
 read_model(
   mod_loc = north_model_dir,
