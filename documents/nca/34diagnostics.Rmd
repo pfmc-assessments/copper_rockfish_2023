@@ -40,25 +40,23 @@ Data Sensitivities
   
   \item Move the historical CPFV ages into the growth fleet.
   
-  \item Enter the CDFW ROV length data as super periods.
+  \item Remove all age data and fix growth at the estimates.
   
   \item Retain only length data within the model (no indices or ages) and fix growth at the estimates.
   
+  \item Add the CDFW ROV survey index of abundance using super-years and lengths by year.
+  
   \item Remove the CPFV cooperative collection ages in 2022.
   
-  \item Remove all age data and fix growth at the estimates.
-  
   \item Remove the CCFRP Hook and Line survey data (index, lengths, and ages).
-  
-  \item Remove the CDFW ROV survey data (index and lengths).
-  
-  \item Remove both the CCFRP Hook and Line and CDFW ROV survey data (indices, lengths, and ages).
   
   \item Remove the CRFS CPFV index of abundance.
   
   \item Remove the Deb-Wilson Vandenberg CPFV index of abundance.
   
   \item Remove the CRFS PR index of abundance.
+  
+  \item Remove all fishery-dependent indices of abundance.
   
 \end{enumerate}
 
