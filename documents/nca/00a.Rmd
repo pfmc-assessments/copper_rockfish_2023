@@ -58,6 +58,10 @@ wcgbt <- "NWFSC WCGBT survey"
 area <- "north of Point Conception"
 model.area <- "north"
 
+profile_name <- "10.0_north_post_star_base"
+retro_name <- "10.0_north_post_star_base"
+sens_name <- "10.0_north_post_star_base"
+
 
 load(file.path(doc_dir, "sca", "00mod.Rdata"))
 south_model <- model

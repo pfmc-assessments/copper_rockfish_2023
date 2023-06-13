@@ -117,18 +117,18 @@ sa4ss::table_format(x = tab,
 ```{r, results = 'asis'}
 #\include{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
 
-tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", "north_copper_obs_designation_mpa_group_super_year.csv"))
-col_names <- c("Super Year", "Location",  "Designation",  "Transects", "Observations")
+#tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", #"north_copper_obs_designation_mpa_group_super_year.csv"))
+#col_names <- c("Super Year", "Location",  "Designation",  "Transects", "Observations")
 
-sa4ss::table_format(x = tab,
-             caption = "Number of transect and number of observations of copper rockfish for each super year, sample location, and site designation for the CDFW ROV survey",
-             label = "rov-obs",
-             align = 'l',
-             col_names = col_names,
-             custom_width = TRUE,
-             col_to_adjust = 2, 
-             width = c("3cm"),
-             digits = 0) 
+#sa4ss::table_format(x = tab,
+#             caption = "Number of transect and number of observations of copper rockfish for each super year, #sample location, and site designation for the CDFW ROV survey",
+#             label = "rov-obs",
+#             align = 'l',
+#             col_names = col_names,
+#             custom_width = TRUE,
+#             col_to_adjust = 2, 
+#             width = c("3cm"),
+#             digits = 0) 
 ```
 
 \FloatBarrier

@@ -329,55 +329,55 @@ label = 'ccfrp-age-data')
 <!-- ======================================================= -->
 
 ```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "plots", "rov_transect_collapsed_copper_north_protection_count.png"), 
-caption = "The location and size of observations across all years and transects.",
-label = 'rov-obs-loc')
+#sa4ss::add_figure(
+#filein = file.path(data_dir, "survey_indices", "rov", "plots", #"rov_transect_collapsed_copper_north_protection_count.png"), 
+#caption = "The location and size of observations across all years and transects.",
+#label = 'rov-obs-loc')
 ```
 
 \pagebreak
 
 ```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "plots", "north_raw_cpue_by_mpa_group.png"), 
-caption = "The trend of the calculated CPUE by each MPA and Reference group.",
-label = 'rov-raw-cpue')
+#sa4ss::add_figure(
+#filein = file.path(data_dir, "survey_indices", "rov", "plots", "north_raw_cpue_by_mpa_group.png"), 
+#caption = "The trend of the calculated CPUE by each MPA and Reference group.",
+#label = 'rov-raw-cpue')
 ```
 
 \pagebreak
 
 ```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "glm_negbin_north_designation_depth", "Index.png"), 
-caption = "The estimated weighted relative index of abundance.",
-label = 'rov-index-main')
+#sa4ss::add_figure(
+#filein = file.path(data_dir, "survey_indices", "rov", "glm_negbin_north_designation_depth", "Index.png"), 
+#caption = "The estimated weighted relative index of abundance.",
+#label = 'rov-index-main')
 ```
 
 \pagebreak
 
 ```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "plots", "rov_length_by_area_designation.png"), 
-caption = "The distribution of lengths across all years for MPA and Reference area north and south of Point Conception.",
-label = 'rov-len')
+#sa4ss::add_figure(
+#filein = file.path(data_dir, "survey_indices", "rov", "plots", "rov_length_by_area_designation.png"), 
+#caption = "The distribution of lengths across all years for MPA and Reference area north and south of Point #Conception.",
+#label = 'rov-len')
 ```
 
 \pagebreak
 
 ```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "comp_lendat_flt6mkt0.png"), 
-caption = "Length composition data from the CDFW ROV survey",
-label = 'rov-len-data')
+#add_figure(
+#filein = file.path(model_dir, "plots", "comp_lendat_flt6mkt0.png"), 
+#caption = "Length composition data from the CDFW ROV survey",
+#label = 'rov-len-data')
 ```
 
 \pagebreak
 
 ```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_CDFW_ROV.png"), 
-caption = "Mean length for CDWF ROV survey with 95 percent confidence intervals",
-label = 'mean-rov-len-data')
+#add_figure(
+#filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_CDFW_ROV.png"), 
+#caption = "Mean length for CDWF ROV survey with 95 percent confidence intervals",
+#label = 'mean-rov-len-data')
 ```
 
 \pagebreak
@@ -866,19 +866,19 @@ label = 'ccfrp-age-pearson')
 \pagebreak
 
 ```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "comp_lenfit_residsflt6mkt0.png"), 
-caption = "Pearson residuals for CDFW ROV survey length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-label = 'rov-pearson')
+#add_figure(
+#filein = file.path(model_dir, "plots", "comp_lenfit_residsflt6mkt0.png"), 
+#caption = "Pearson residuals for CDFW ROV survey length data. Closed bubble are positive residuals (observed > #expected) and open bubbles are negative residuals (observed < expected)",
+#label = 'rov-pearson')
 ```
 
 \pagebreak
 
 ```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_CDFW_ROV.png"), 
-caption = "Mean length for CDFW ROV survey lengths with 95 percent confidence intervals based on current samples sizes",
-label = 'rov-mean-len-fit')
+#add_figure(
+#filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_CDFW_ROV.png"), 
+#caption = "Mean length for CDFW ROV survey lengths with 95 percent confidence intervals based on current samples #sizes",
+#label = 'rov-mean-len-fit')
 ```
 
 \pagebreak
@@ -926,10 +926,10 @@ label = 'crfs-pr-index-fit')
 \FloatBarrier
 
 ```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "index5_logcpuefit_CDFW_ROV.png"), 
-caption = "Fit to log index data on log scale for CDFW ROV survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-label = 'rov-index-fit')
+#add_figure(
+#filein = file.path(model_dir, "plots", "index5_logcpuefit_CDFW_ROV.png"), 
+#caption = "Fit to log index data on log scale for CDFW ROV survey. Lines indicate 95% uncertainty interval around #index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input #uncertainty before addition of estimated additional uncertainty parameter",
+#label = 'rov-index-fit')
 ```
 
 \pagebreak
@@ -1047,7 +1047,7 @@ label = 'sens-data')
 
  
 ```{r, echo=FALSE, results='asis'}
-nm = paste0(north_model_name, "_final_1_compare2_spawnbio_uncertainty.png")
+nm = paste0(north_model_name, "_1_compare2_spawnbio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots",  nm),
 caption = "Change in estimated spawning output by sensitivity",
@@ -1057,7 +1057,7 @@ label = 'sens-ssb-1')
 \newpage
 
 ```{r, echo=FALSE, results='asis'}
-nm = paste0(north_model_name, "_final_1_compare4_Bratio_uncertainty.png")
+nm = paste0(north_model_name, "_1_compare4_Bratio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated fraction unfished by sensitivity",
@@ -1067,7 +1067,7 @@ label = 'sens-depl-1')
 \newpage
 
 ```{r, echo=FALSE, results='asis'}
-nm = paste0(north_model_name, "_final_2_compare2_spawnbio_uncertainty.png")
+nm = paste0(north_model_name, "_2_compare2_spawnbio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated spawning output by sensitivity",
@@ -1077,7 +1077,7 @@ label = 'sens-ssb-2')
 \newpage
 
 ```{r, echo=FALSE, results='asis'}
-nm = paste0(north_model_name, "_final_2_compare4_Bratio_uncertainty.png")
+nm = paste0(north_model_name, "_2_compare4_Bratio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated fraction unfished by sensitivity",
@@ -1088,7 +1088,7 @@ label = 'sens-depl-2')
 
 
 ```{r, echo=FALSE, results='asis'}
-nm = paste0(north_model_name, "_final_3_compare2_spawnbio_uncertainty.png")
+nm = paste0(north_model_name, "_3_compare2_spawnbio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated spawning output by sensitivity",
@@ -1098,7 +1098,7 @@ label = 'sens-ssb-3')
 \newpage
 
 ```{r, echo=FALSE, results='asis'}
-nm = paste0(north_model_name, "_final_3_compare4_Bratio_uncertainty.png")
+nm = paste0(north_model_name, "_3_compare4_Bratio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated fraction unfished by sensitivity",
