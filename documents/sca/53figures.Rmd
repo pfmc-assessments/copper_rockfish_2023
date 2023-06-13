@@ -119,7 +119,7 @@ label = 'mean-com-live-len-data')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index9_standcpueall.png"), 
-caption = "Standardized indices overlaid with each index rescaled to have a mean observation equal to 1.0. Note, the MRFSS CPFV (Rec_CPFV) fishery-dependent index of abundance was not fit in the model but is included here for illustration.",
+caption = "Standardized indices overlaid with each index rescaled to have a mean observation equal to 1.0. Note, the  MRFSSCPFV (Rec_CPFV) fishery-dependent and CDFW ROV fishery-independent indices of abundance were not fit in the model but are included here for illustration.",
 label = 'stand-cpue')
 ```
 
@@ -129,7 +129,7 @@ label = 'stand-cpue')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south",  "main_effects", "Index.png"), 
-caption = "Estimated annual index of abundances for the CPFV fleet based on CRFS survey data.",
+caption = "Estimated annual index of abundances for the recreational CPFV fleet based on CRFS survey data.",
 label = 'crfs-index-main')
 ```
 
@@ -138,7 +138,7 @@ label = 'crfs-index-main')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_pr_dockside", "south",  "rm_last2yrs", "Index.png"), 
-caption = "Estimated annual index of abundances for the CPFV fleet based on CRFS survey data.",
+caption = "Estimated annual index of abundances for the recreational PR fleet based on CRFS survey data.",
 label = 'crfs-pr-index-main')
 ```
 
@@ -362,31 +362,28 @@ label = 'mean-hkl-len-data')
 <!-- ======================================================= -->
 
 ```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "plots", "rov_transect_collapsed_copper_south_protection_count.png"), 
-caption = "The location and size of observations across all years and transects for the CDFW ROV survey for copper rockfish.",
-label = 'rov-obs-loc')
+#sa4ss::add_figure(
+#filein = file.path(data_dir, "survey_indices", "rov", "plots", #"rov_transect_collapsed_copper_south_protection_count.png"), 
+#caption = "The location and size of observations across all years and transects for the CDFW ROV #survey for copper rockfish.",
+#label = 'rov-obs-loc')
 ```
 
-\pagebreak
 
 ```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "plots", "south_raw_cpue_by_mpa_group_by_year.png"), 
-caption = "The trend of the calculated CPUE by each MPA and Reference group by year from the CDFW ROV survey.",
-label = 'rov-raw-cpue')
+#sa4ss::add_figure(
+#filein = file.path(data_dir, "survey_indices", "rov", "plots", #"south_raw_cpue_by_mpa_group_by_year.png"), 
+#caption = "The trend of the calculated CPUE by each MPA and Reference group by year from the CDFW #ROV survey.",
+#label = 'rov-raw-cpue')
 ```
 
-\pagebreak
 
 ```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(data_dir, "survey_indices", "rov", "plots", "rov_length_by_area_designation_april_data.png"), 
-caption = "The distribution of lengths across all years for MPA and Reference areas north and south of Point Conception from the CDFW ROV survey.",
-label = 'rov-len')
+#sa4ss::add_figure(
+#filein = file.path(data_dir, "survey_indices", "rov", "plots", #"rov_length_by_area_designation_april_data.png"), 
+#caption = "The distribution of lengths across all years for MPA and Reference areas north and south #of Point Conception from the CDFW ROV survey.",
+#label = 'rov-len')
 ```
 
-\pagebreak
 
 ```{r, results = 'asis'}
 #add_figure(
@@ -395,7 +392,6 @@ label = 'rov-len')
 #label = 'rov-len-data')
 ```
 
-\pagebreak
 
 ```{r, results = 'asis'}
 #add_figure(
@@ -403,9 +399,6 @@ label = 'rov-len')
 #caption = "Mean length for the CDFW ROV survey with 95 percent confidence intervals",
 #label = 'mean-rov-len-data')
 ```
-
-\pagebreak
-
 
 
 <!-- ======================================================= -->
@@ -867,7 +860,7 @@ label = 'rec-cpfv-age-pearson')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt4mkt0_page2.png"), 
-caption = "Pearson residuals for recreational private/rental fleet. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
+caption = "Pearson residuals for recreational PR fleet. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
 label = 'rec-pr-pearson')
 ```
 
@@ -876,7 +869,7 @@ label = 'rec-pr-pearson')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Rec_Private.png"), 
-caption = "Mean length for recreational private/rental lengths with 95 percent confidence intervals based on current samples sizes",
+caption = "Mean length for recreational PR lengths with 95 percent confidence intervals based on current samples sizes",
 label = 'rec-pr-mean-len-fit')
 ```
 
@@ -916,7 +909,6 @@ label = 'ccfrp-age-pearson')
 #label = 'rov-pearson')
 ```
 
-\pagebreak
 
 ```{r, results = 'asis'}
 #add_figure(
@@ -925,7 +917,6 @@ label = 'ccfrp-age-pearson')
 #label = 'rov-mean-len-fit')
 ```
 
-\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -1095,7 +1086,7 @@ label = 'crfs-cpfv-index-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_Private.png"), 
-caption = "Fit to log index data on log scale for the recreational private index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+caption = "Fit to log index data on log scale for the recreational PR index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.",
 label = 'crfs-pr-index-fit')
 ```
 
@@ -1111,13 +1102,13 @@ label = 'ccfrp-index-fit')
 \pagebreak
 
 ```{r, results = 'asis'}
-add_figure(
-filein = file.path(model_dir, "plots", "index5_logcpuefit_CDFW_ROV.png"), 
-caption = "Fit to log index data on log scale for the CDFW ROV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.",
-label = 'rov-index-fit')
+#add_figure(
+#filein = file.path(model_dir, "plots", "index5_logcpuefit_CDFW_ROV.png"), 
+#caption = "Fit to log index data on log scale for the CDFW ROV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+#label = 'rov-index-fit')
 ```
 
-\pagebreak
+
 
 ```{r, results = 'asis'}
 add_figure(
@@ -1194,7 +1185,7 @@ label = 'depl-all')
  
 ```{r, echo=FALSE, results='asis'}
 add_figure(
-filein = file.path(sens_dir, "_plots",  "Sensi_REplot_structure_horizontal.png"),
+filein = file.path(sens_dir, "_plots",  "Sensi_REplot_15_structure_horizontal.png"),
 caption = "Comparison of the relative change in estimated management quantities as compared to the base model for structural sensitivities. The quantities compared are the estimate of unfished spawning biomass (SB~0~), spawning output in 2023 (SB~2023~), the relative spawning output (SB~2023~/SB~0~), the yield based on a spawner per recruit harvest rate (Yield~SPR=0.50~), and the fishing mortality at that harvest rate (F~SPR=0.50~). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend.  A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
 label = 'sens-structure')
 ```
@@ -1206,7 +1197,7 @@ label = 'sens-structure')
  
 ```{r, echo=FALSE, results='asis'}
 add_figure(
-filein = file.path(sens_dir, "_plots",  "Sensi_REplot_data_horizontal.png"),
+filein = file.path(sens_dir, "_plots",  "Sensi_REplot_15_data_horizontal.png"),
 caption = "Comparison of the relative change in estimated management quantities as compared to the base model for data sensitivities. The quantities compared are the estimate of unfished spawning biomass (SB~0~), spawning output in 2023 (SB~2023~), the relative spawning output (SB~2023~/SB~0~), the yield based on a spawner per recruit harvest rate (Yield~SPR=0.50~), and the fishing mortality at that harvest rate (F~SPR=0.50~). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend.  A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
 label = 'sens-data')
 ```
@@ -1215,7 +1206,7 @@ label = 'sens-data')
 
  
 ```{r, echo=FALSE, results='asis'}
-nm = paste0(sens_name, "_final_1_compare2_spawnbio_uncertainty.png")
+nm = paste0(sens_name, "_1_compare2_spawnbio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots",  nm),
 caption = "Change in estimated spawning output by sensitivity",
@@ -1225,7 +1216,7 @@ label = 'sens-ssb-1')
 \newpage
 
 ```{r, echo=FALSE, results='asis'}
-nm = paste0(sens_name, "_final_1_compare4_Bratio_uncertainty.png")
+nm = paste0(sens_name, "_1_compare4_Bratio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated fraction unfished by sensitivity",
@@ -1236,29 +1227,9 @@ label = 'sens-depl-1')
 
  
 ```{r, echo=FALSE, results='asis'}
-nm = paste0(sens_name, "_final_4_compare2_spawnbio_uncertainty.png")
+nm = paste0(sens_name, "_2_compare2_spawnbio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots",  nm),
-caption = "Change in estimated spawning output by sensitivity",
-label = 'sens-ssb-4')
-```
-
-\newpage
-
-```{r, echo=FALSE, results='asis'}
-nm = paste0(sens_name, "_final_4_compare4_Bratio_uncertainty.png")
-add_figure(
-filein = file.path(sens_dir, "_plots", nm),
-caption = "Change in estimated fraction unfished by sensitivity",
-label = 'sens-depl-4')
-```
-
-\newpage
-
-```{r, echo=FALSE, results='asis'}
-nm = paste0(sens_name, "_final_2_compare2_spawnbio_uncertainty.png")
-add_figure(
-filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated spawning output by sensitivity",
 label = 'sens-ssb-2')
 ```
@@ -1266,7 +1237,7 @@ label = 'sens-ssb-2')
 \newpage
 
 ```{r, echo=FALSE, results='asis'}
-nm = paste0(sens_name, "_final_2_compare4_Bratio_uncertainty.png")
+nm = paste0(sens_name, "_2_compare4_Bratio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated fraction unfished by sensitivity",
@@ -1275,9 +1246,8 @@ label = 'sens-depl-2')
 
 \newpage
 
-
 ```{r, echo=FALSE, results='asis'}
-nm = paste0(sens_name, "_final_3_compare2_spawnbio_uncertainty.png")
+nm = paste0(sens_name, "_3_compare2_spawnbio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated spawning output by sensitivity",
@@ -1287,7 +1257,7 @@ label = 'sens-ssb-3')
 \newpage
 
 ```{r, echo=FALSE, results='asis'}
-nm = paste0(sens_name, "_final_3_compare4_Bratio_uncertainty.png")
+nm = paste0(sens_name, "_3_compare4_Bratio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated fraction unfished by sensitivity",

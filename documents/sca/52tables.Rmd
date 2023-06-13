@@ -204,18 +204,18 @@ sa4ss::table_format(x = tab,
 ```{r, results = 'asis'}
 #\input{tex_tables/rov_south_samples_transects.tex}
 
-tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", "south_obs_designation_mpa_group_year.csv"))
-col_names <- c("Year", "Location",  "Designation",  "Transects", "Observations")
+#tab <- read.csv(file.path(data_dir, "survey_indices", "rov", "forSS", #"south_obs_designation_mpa_group_year.csv"))
+#col_names <- c("Year", "Location",  "Designation",  "Transects", "Observations")
 
-sa4ss::table_format(x = tab,
-             caption = "Number of transect and number of observations of copper rockfish for each year, sample location, and site designation for the CDFW ROV survey",
-             label = "rov-obs",
-             align = 'l',
-             col_names = col_names,
-             custom_width = TRUE,
-             col_to_adjust = 2, 
-             width = c("3cm"),
-             digits = 0) 
+#sa4ss::table_format(x = tab,
+#             caption = "Number of transect and number of observations of copper rockfish for each #year, sample location, and site designation for the CDFW ROV survey",
+#             label = "rov-obs",
+#             align = 'l',
+#             col_names = col_names,
+#             custom_width = TRUE,
+#             col_to_adjust = 2, 
+#             width = c("3cm"),
+#             digits = 0) 
 ```
 
 \newpage
@@ -291,6 +291,14 @@ mod_params = model$parameters[,
                                 c("Num","Label","Value","Phase","Min",
                                   "Max","Status","Parm_StDev",
                                   "Pr_type","Prior","Pr_SD"))] 
+
+rm <- which(mod_params$Label %in% c("LnQ_base_Rec_CPFV(3)", "LnQ_base_CDFW_ROV(6)",
+      "Size_DblN_peak_CDFW_ROV(6)", "Size_DblN_top_logit_CDFW_ROV(6)",
+      "Size_DblN_ascend_se_CDFW_ROV(6)", "Size_DblN_descend_se_CDFW_ROV(6)",
+      "Size_DblN_start_logit_CDFW_ROV(6)", "Size_DblN_end_logit_CDFW_ROV(6)" ))
+
+
+mod_params <- mod_params[-rm, ]
 # Combine bounds into one column
 mod_params$Min = paste('(', mod_params$Min, ', ', mod_params$Max, ')', sep='')
 # Combine prior info to one column
@@ -439,7 +447,7 @@ out <- c(
   round(ref_south[20, "Estimate"] + ref_north[20, "Estimate"], 2)
 )
 row_names <- c("Unfished Spawning Output", "Unfished Age 3+ Biomass (mt)", "Unfished Recruitment", "Spawning Output (2023)",
-               "Relative Spawning Ouput",
+               "Relative Spawning Ouput (2023)",
                "Proxy Spawning Output (SB40%)", "Yield with SPR Based on SB40% (mt)", "Proxy Spawning Output (SPR50)", 
                "Yield with SPR50 (mt)", "Spawning Output at MSY", "MSY (mt)")
 

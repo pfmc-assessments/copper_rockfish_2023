@@ -121,6 +121,30 @@ label = 'mrfss-cpfv-index-fit')
 
 \pagebreak
 
+### CDFW ROV Survey
+
+Data from the CDFW ROV survey were not included in the base model. A sensitivity to the inclusion of these data were included in the Sensitivities Section \ref{sensitivities}. The estimated index of abundance from the uncorrected data (see Section \ref{cdfw-rov-not-included} for additional information) is shown below with a plot of the length composition data by year `r area`. 
+
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(model_dir, "plots", "index2_cpuefit_CDFW_ROV.png"), 
+caption = "The estimated weighted relative index of abundance for the CDFW ROV survy and the implied fit to the index from the model.",
+label = 'rov-index')
+```
+
+\newpage
+
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(model_dir,  "plots", "comp_gstlenfit_flt6mkt0.png"), 
+caption = "Annual length composition data from the CDFW ROV survey south of Point Conception and the implied model fit given a fixed selectivity curve.",
+label = 'rov-len-data')
+```
+
+\pagebreak
+
 ### NWFSC WCGBT Survey Index of Abundance
 
 Data from the NWFSC WCGBT survey were not used in the base model to develop an index of abundance. A sensitivity to the base model explored including the estimated index of abundance shown below 

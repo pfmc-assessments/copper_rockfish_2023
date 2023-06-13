@@ -16,9 +16,11 @@ bibilography: [pfmcassess.bib, wcassess.bib]
 papersize: letter
 ---
 
+<!-- 
 \linenumbers
 \counterwithin{table}{section}
-
+ -->
+ 
 <!-- Common lat/long 
 Cape Mendocino, Pt. Conception and OR border -->
 \newcommand\CapeM{$40^\circ 10^\prime$ N. lat.}
@@ -46,7 +48,7 @@ load("00opts.Rdata")
 
 profile_name <- "15.0_south_post_star_base"
 retro_name <- "15.0_south_post_star_base"
-sens_name <- "14.0_base_forecast"
+sens_name <- "15.0_south_post_star_base"
 
 spp <- "copper rockfish"
 Spp <- "Copper rockfish"
@@ -93,7 +95,5 @@ est_abc <- round(south_model$derived_quants[south_model$derived_quants$Label %in
 
 
 model_recent_depl <- data.frame(year = 2011:2022, depl = model$derived_quants[model$derived_quants$Label %in% paste0("Bratio_", 2011:2022), "Value"])
-
-
 
 ```
