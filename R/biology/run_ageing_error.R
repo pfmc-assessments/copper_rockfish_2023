@@ -2,7 +2,7 @@
 ########################################################
 # Ageing Error Analysis
 ########################################################
-devtools::install_github("nwfsc-assess/nwfscAgeingError")
+devtools::install_github("pfmc-assessments/nwfscAgeingError")
 
 
 # Load package
