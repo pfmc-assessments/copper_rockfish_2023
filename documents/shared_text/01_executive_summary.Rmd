@@ -185,7 +185,7 @@ out <- c(
 )
 row_names <- c("Unfished Spawning Output", "Unfished Age 3+ Biomass (mt)", "Unfished Recruitment", "Spawning Output (2023)",
                "Relative Spawning Ouput (2023)",
-               "Proxy Spawning Output (SB40%)", "Yield with SPR Based on SB40% (mt)", "Proxy Spawning Output (SPR50)", 
+               "Proxy Spawning Output (SO40%)", "Yield with SPR Based on SO40% (mt)", "Proxy Spawning Output (SPR50)", 
                "Yield with SPR50 (mt)", "Spawning Output at MSY", "MSY (mt)")
 
 out <- cbind(row_names, out)
