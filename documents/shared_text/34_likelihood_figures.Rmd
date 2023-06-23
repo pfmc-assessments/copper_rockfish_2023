@@ -75,7 +75,7 @@ label = 'm-ssb')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(profile_dir, paste0(profile_name, "_profile_NatM_uniform_Fem_GP_1_prior_like_1"),  "NatM_uniform_Fem_GP_1_trajectories_compare3_Bratio.png"), 
-caption = "Change in the estimate of fraction unfished across a range of female natural (M) values",
+caption = "Change in the estimate of fraction unfished across a range of female natural mortality (M) values",
 label = 'm-depl')
 ```
 
