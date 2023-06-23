@@ -119,7 +119,7 @@ label = 'mean-com-live-len-data')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index9_standcpueall.png"), 
-caption = "Standardized indices overlaid with each index rescaled to have a mean observation equal to 1.0. Note, the  MRFSSCPFV (Rec_CPFV) fishery-dependent and CDFW ROV fishery-independent indices of abundance were not fit in the model but are included here for illustration.",
+caption = "Standardized indices overlaid with each index rescaled to have a mean observation equal to 1.0. Note, the  MRFSS CPFV (Rec_CPFV) fishery-dependent and CDFW ROV fishery-independent indices of abundance were not fit in the model but are included here for illustration.",
 label = 'stand-cpue')
 ```
 
@@ -170,7 +170,7 @@ label = 'mean-rec-cpfv-len-data')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "ages", "plots", "coop_crfs_length_comparison.png"), 
-caption = "Comparison of all length collected by the CRFS sampling program for the CPFV fleet to the lengths from the fish with ages from the cooperative sampling program. The length distributions in the area north of Point Conception are in general agreement while the distribution of lengths collected by this program does not align with the length samples from CRFS.",
+caption = "Comparison of all length collected by the CRFS sampling program for the CPFV fleet to the lengths from the fish with ages from the cooperative sampling program north and south of Point Conception. The length distributions in the area north of Point Conception are in general agreement while the distribution of lengths south of Point Conception collected by this program does not align with the length samples from CRFS.",
 label = 'coop-len-comparison')
 ```
 
@@ -228,7 +228,7 @@ label = 'survey-locations')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "ccfrp_map.png"), 
-caption = "Map depicting copper rockfish observations from the Piedras Blancas MPA and reference sites for CCFRP in northern California (A) and the Carrington Point MPA and reference sites in southern California. The examples from each area show the differences in the available interpreted rocky substrate. Rocky habitat (in brown) is depicted for northern California and the areas that have been interpreted for the area shown in southern California are in tan with the rocky substrate in brown.  The lower resolution rocky substrate (outside the tan areas) depicted in southern California represents interpreted substrate from courser bathymetry data. ",
+caption = "Map depicting copper rockfish observations from the Piedras Blancas MPA and reference sites for CCFRP in northern California (A) and the Carrington Point MPA and reference sites in southern California. The examples from each area show the differences in the available interpreted rocky substrate. Rocky habitat (in brown) is depicted for northern California and the areas that have been interpreted for the area shown in southern California are in tan with the rocky substrate in brown.  The lower resolution rocky substrate (outside the tan areas) depicted in southern California represents interpreted substrate from courser bathymetry data",
 label = 'ccfrp-map')
 ```
 
@@ -453,7 +453,7 @@ label = 'growth-mean-coop-len')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "ages",  "plots", "south_growth_length_comparison.png"), 
-caption = "Length distribution of fish by collection source that were used as conditional age-at-length data in the growth fleet.",
+caption = "Length (cm) distribution of fish by collection source that were used as conditional age-at-length data in the growth fleets.",
 label = 'growth-len-dist')
 ```
 
@@ -463,7 +463,7 @@ label = 'growth-len-dist')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "ages",  "plots", "south_growth_age_comparison.png"), 
-caption = "Age distribution of fish by collection source that were used as conditional age-at-length data in the growth fleet.",
+caption = "Age (year) distribution of fish by collection source that were used as conditional age-at-length data in the growth fleets.",
 label = 'growth-age-dist')
 ```
 
@@ -490,7 +490,7 @@ label = 'visual-surveys')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "wcgbt", "south", "plots", "cpue_map.png"), 
-caption = "Location and catch-per-unit-effort by location south of Point Conception by the NWFSC WCGBT survey.",
+caption = "Location and catch-per-unit-effort (CPUE) measured in kilograms (kg) by kilometers-squared by location south of Point Conception by the NWFSC WCGBT survey.",
 label = 'wcgbt-cpue')
 ```
 
@@ -499,7 +499,7 @@ label = 'wcgbt-cpue')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "wcgbt", "south", "plots", "presence-absence_proportion_by_depth.png"), 
-caption = "Number of positive tows from the NWFSC WCGBT survey across all years by depth in meters.",
+caption = "Proportion of positive tows from the NWFSC WCGBT survey across all years by depth in meters.",
 label = 'wcgbt-depth')
 ```
 
@@ -525,7 +525,7 @@ label = 'wcgbt-len-age')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "ages", "plots", "west_coast_age_density.png"), 
-caption = "Densities of aged copper rockfish by West Coast area and limited samples from the Gulf of Alaska (25 fish).",
+caption = "Densities of aged copper rockfish by West Coast collection area and limited samples from the Gulf of Alaska (25 fish).",
 label = 'west-coast-age-density')
 ```
 
@@ -552,7 +552,7 @@ label = 'fecundity')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "wcgbt", "plots", "length_fraction_female.png"), 
-caption = "Fraction of each sex by length by the NWFSC WCGBT survey",
+caption = "Fraction of each sex by length observed by the NWFSC WCGBT survey",
 label = 'frac-sex-len')
 ```
 
@@ -561,7 +561,7 @@ label = 'frac-sex-len')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "biology", "plots", "Length_Weight_All.png"), 
-caption = "Estimated weight-at-length",
+caption = "Estimated weight-at-length using data from the NWFSC Hook and Line and WCGBT surveys",
 label = 'weight-length')
 ```
 
@@ -605,7 +605,7 @@ label = 'age-error-matrix')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(bridge_dir, "_plots", "0_model_convert_compare2_spawnbio_uncertainty.png"),
-caption = "Model version bridge comparison of estimated spawning output",
+caption = "Stock Synthesis version bridge model comparison of estimated spawning output",
 label = 'bridge-ssb')
 ```
 
@@ -615,7 +615,7 @@ label = 'bridge-ssb')
 
 add_figure(
 filein = file.path(bridge_dir, "_plots", "0_model_convert_compare4_Bratio_uncertainty.png"),
-caption = "Model version bridge comparison of estimated fraction unfished",
+caption = "Stock Synthesis version bridge model comparison of estimated fraction unfished",
 label = 'bridge-depl')
 ```
 
@@ -1119,7 +1119,7 @@ label = 'nwfsc-hkl-index-fit')
 
 \pagebreak
 
-### Time-series
+### Time Series
 
 <!-- ======================================================= -->  
 <!-- ****************** Time Series ************************ --> 
@@ -1186,7 +1186,7 @@ label = 'depl-all')
 ```{r, echo=FALSE, results='asis'}
 add_figure(
 filein = file.path(sens_dir, "_plots",  "Sensi_REplot_15_structure_horizontal.png"),
-caption = "Comparison of the relative change in estimated management quantities as compared to the base model for structural sensitivities. The quantities compared are the estimate of unfished spawning biomass (SB~0~), spawning output in 2023 (SB~2023~), the relative spawning output (SB~2023~/SB~0~), the yield based on a spawner per recruit harvest rate (Yield~SPR=0.50~), and the fishing mortality at that harvest rate (F~SPR=0.50~). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend.  A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
+caption = "Comparison of the relative change in estimated management quantities as compared to the base model for structural sensitivities. The quantities compared are the estimate of unfished spawning output (SB~0~), spawning output in 2023 (SB~2023~), the relative spawning output (SB~2023~/SB~0~), the yield based on a spawner per recruit harvest rate (Yield~SPR=0.50~), and the fishing mortality at that harvest rate (F~SPR=0.50~). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend.  A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
 label = 'sens-structure')
 ```
 

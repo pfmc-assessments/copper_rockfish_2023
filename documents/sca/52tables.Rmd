@@ -119,7 +119,7 @@ tab <- tab[, -1]
 col_names <- c("Year", "District 2 (Channel)", "District 1 (South)", "District 2 Percent", "District 1 Percent")
 
 sa4ss::table_format(x = tab,
-             caption = "Summary of the total recreational length samples and percentage collected in district 1 and 2.",
+             caption = "Summary of the total CPFV recreational length samples and percentage collected in district 1 and 2.",
              label = "rec-samps-by-district",
              align = 'l',
              col_names = col_names,
@@ -297,8 +297,11 @@ rm <- which(mod_params$Label %in% c("LnQ_base_Rec_CPFV(3)", "LnQ_base_CDFW_ROV(6
       "Size_DblN_ascend_se_CDFW_ROV(6)", "Size_DblN_descend_se_CDFW_ROV(6)",
       "Size_DblN_start_logit_CDFW_ROV(6)", "Size_DblN_end_logit_CDFW_ROV(6)" ))
 
-
 mod_params <- mod_params[-rm, ]
+
+sci_note <- which(mod_params$Label %in% c("Wtlen_1_Fem_GP_1", "Wtlen_1_Mal_GP_1", "Eggs_scalar_Fem_GP_1"))
+mod_params[-sci_note,'Value'] <- round(as.numeric(mod_params[-sci_note,'Value']), 3)
+
 # Combine bounds into one column
 mod_params$Min = paste('(', mod_params$Min, ', ', mod_params$Max, ')', sep='')
 # Combine prior info to one column
@@ -448,7 +451,7 @@ out <- c(
 )
 row_names <- c("Unfished Spawning Output", "Unfished Age 3+ Biomass (mt)", "Unfished Recruitment", "Spawning Output (2023)",
                "Relative Spawning Ouput (2023)",
-               "Proxy Spawning Output (SB40%)", "Yield with SPR Based on SB40% (mt)", "Proxy Spawning Output (SPR50)", 
+               "Proxy Spawning Output (SO40%)", "Yield with SPR Based on SO40% (mt)", "Proxy Spawning Output (SPR50)", 
                "Yield with SPR50 (mt)", "Spawning Output at MSY", "MSY (mt)")
 
 out <- cbind(row_names, out)
