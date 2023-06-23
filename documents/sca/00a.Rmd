@@ -23,9 +23,9 @@ papersize: letter
  
 <!-- Common lat/long 
 Cape Mendocino, Pt. Conception and OR border -->
-\newcommand\CapeM{$40^\circ 10^\prime$ N. lat.}
-\newcommand\PtC{$34^\circ 27^\prime$ N. lat.}
-\newcommand\CAOR{$42^\circ 00^\prime$ N. lat.}
+\newcommand\CapeM{$40^\circ$ $10^\prime$ N. lat.}
+\newcommand\PtC{$34^\circ$ $27^\prime$ N. lat.}
+\newcommand\CAOR{$42^\circ$ $00^\prime$ N. lat.}
 
 
 ```{r opts, include = FALSE}
