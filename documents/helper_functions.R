@@ -158,15 +158,17 @@ create_projection_table <- function(
   #  model2$derived_quants[model2$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"], 2)[c(-1, -2)]
    
   buffer <- est_abc/est_ofl
-  if (use_hcr){
-    south_abc <- table_proj$ABC1
-    south_acl <- south_abc * (hcr[1]/ (hcr[1] - hcr[2])) * (table_proj$Depl1 - hcr[2]) / table_proj$Depl1
-  } else {
-    percent <- median(table_proj$OFL1 / table_proj$OFL)
-    south_acl <- percent * est_acl
-  }
+  south_acl <- table_proj$Removals.Model1
+  north_acl <- table_proj$Removals.Model2 - north_4010_percent * table_proj$Removals.Model2
+  #if (use_hcr){
+  #  south_abc <- table_proj$ABC1
+  #  south_acl <- south_abc * (hcr[1]/ (hcr[1] - hcr[2])) * (table_proj$Depl1 - hcr[2]) / table_proj$Depl1
+  #} else {
+  #  percent <- median(table_proj$OFL1 / table_proj$OFL)
+  #  south_acl <- percent * est_acl
+  #}
 
-  north_ptc_4010 <- est_acl - est_acl * north_4010_percent - south_acl
+  north_ptc_4010 <- north_4010_percent * table_proj$Removals.Model2
   
   out <- data.frame(
     Year = years, 
@@ -179,20 +181,20 @@ create_projection_table <- function(
     buffer = c("-", "-", round(buffer, 3)),
     SB = round(sb, 2), 
     Depl = round(depl, 3),
-    acl_south_3427 = c("-", "-", round(south_acl, 2)),
-    acl_3427_4010 = c("-", "-", round(north_ptc_4010, 1)),
-    acl_4010_42 = c("-", "-", round(est_acl * north_4010_percent, 1))
+    acl_south_3427 = c("-", "-", round(south_acl, 1)),
+    acl_3427_4010 = c("-", "-", round(north_acl, 1)),
+    acl_4010_42 = c("-", "-", round(north_ptc_4010, 1))
   )
   
   col_names <- c("Year", 
                  #"Adopted OFL (mt)", "Adopted ACL (mt)", 
                  "Assumed Catch (mt)",
                  "OFL (mt)", "ABC (mt)", "ACL (mt)", "Buffer", "Spawning Output", "Fraction Unfished",
-                 "Sub-ACL South Pt. Concep. (mt)", "Sub-ACL Pt. Concep. to 40 10 N. lat. (mt)", "Sub-ACL North 40 10 N. lat. (mt)")
+                 "Sub-ACL South (mt)", "Sub-ACL Central (mt)", "Sub-ACL North (mt)")
   
   sa4ss::table_format(
     x = out,
-    caption = "The estimated OFL (mt), ABC (mt), ACL (mt), buffer, spawning output in billions of eggs across California, and relative spawning outut by year along with the sub-area allocations of the ACL south of Point Conception ($34^\\circ 27^\\prime$ N. lat.), north of Point Conception to $40^\\circ 10^\\prime$ N. lat., and $40^\\circ 10^\\prime$ to $42^\\circ$ N. lat.",
+    caption = "The estimated OFL (mt), ABC (mt), ACL (mt), buffer, spawning output in billions of eggs across California, and relative spawning outut by year along with the sub-area allocations of the ACL south of Point Conception (south, $34^\\circ 27^\\prime$ N. lat.), north of Point Conception to $40^\\circ 10^\\prime$ N. lat. (central), and $40^\\circ 10^\\prime$ to $42^\\circ$ N. lat. (north).",
     label = paste0(prefix, "ca-proj"),
     landscape = TRUE,
     col_names = col_names,
