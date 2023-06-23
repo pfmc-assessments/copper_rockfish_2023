@@ -134,6 +134,10 @@ ind <- read.csv(file.path(
 
 sa4ss::table_format(
   x = ind,
+  landscape = TRUE,
+  custom_width = TRUE,
+  col_to_adjust = c(3, 5, 7),
+  width = c('2cm', '2cm', '2cm'),
   caption = "Model selection for the dockside PR survey.",
   label = "pr-modelselect"
 )
@@ -199,7 +203,7 @@ sa4ss::add_figure(
     data_dir, "rec_indices", "crfs_pr_dockside", "south", "rm_last2yrs",
     "index.png"
   ),
-  caption = "Index for the dockside PR survey.",
+  caption = "Relative index of abundance for the dockside PR survey.",
   label = "pr-index"
 )
 ```

@@ -12,9 +12,13 @@ A range of alternative model structures were explored to generate an index of ab
 ```{r, results = 'asis'}
 tab <- read.csv(file.path(data_dir, "survey_indices", "nwfsc_hkl", "forSS", "area_weighted_model_selection.csv"))
 tab <- tab[1:15, ]
+col_names <- colnames(tab)
+col_names[9] <- "Area-Year"
+col_names[10] <- "Offset log(effort)"
 
 sa4ss::table_format(x = tab,
-             caption = "Model selection.",
+             caption = "Model selection for the NWFSC Hook and Line survey.",
+             col_names = col_names,
              label = "nwfsc-hkl-model-select",
              align = 'l',
              longtable = TRUE,
@@ -42,7 +46,7 @@ label = 'nwfsc-hkl-index-raw')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "Index.png"), 
-caption = "Estimated index of abundance by the NWFSC Hook and Line survey for copper rockfish.",
+caption = "Estimated relative index of abundance by the NWFSC Hook and Line survey for copper rockfish.",
 label = 'nwfsc-hkl-index')
 ```
 
@@ -60,7 +64,7 @@ label = 'nwfsc-hkl-qq')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "residuals_page1.png"), 
-caption = "Residuals by sample location and year.",
+caption = "Residuals by sample location and year NWFSC Hook and Line survey.",
 label = 'nwfsc-hkl-resid-1')
 ```
 
@@ -69,7 +73,7 @@ label = 'nwfsc-hkl-resid-1')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "residuals_page2.png"), 
-caption = "Residuals by sample location and year.",
+caption = "Residuals by sample location and year for the NWFSC Hook and Line survey.",
 label = 'nwfsc-hkl-resid-2')
 ```
 

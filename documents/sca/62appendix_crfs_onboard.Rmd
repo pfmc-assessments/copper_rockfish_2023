@@ -109,8 +109,8 @@ sa4ss::table_format(x = ind,
              landscape = TRUE,
              align = 'l',
              custom_width = TRUE,
-             col_to_adjust = c(2),
-             width = c('6cm'))
+             col_to_adjust = c(2, 3, 4),
+             width = c('8cm', '2cm', '2cm'))
 ```
 
 
@@ -121,6 +121,10 @@ ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south",
                     "model_selection.csv"))
 
 sa4ss::table_format(x = ind,
+             landscape = TRUE,
+             custom_width = TRUE,
+             col_to_adjust = c(5, 7),
+             width = c('2cm', '2cm'),
              caption = "Model selection for the onboard CPFV survey.",
              label = "onboard-modelselect")                         
 ```
@@ -184,7 +188,7 @@ label = 'onboard-regioncpue')
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south", "start2005",
                    "area_weighted_logn", "index.png"), 
-caption = "Index for the onboard CPFV survey.",
+caption = "Relative index of abundance for the onboard CPFV survey.",
 label = 'onboard-index')
 ```
 

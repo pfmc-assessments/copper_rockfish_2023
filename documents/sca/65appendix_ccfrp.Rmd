@@ -36,7 +36,7 @@ tab <- read.csv(file.path(data_dir, "survey_indices", "ccfrp", "south", "dataFil
 tab <- tab[,-ncol(tab)]
 
 sa4ss::table_format(x = tab,
-             caption = "Data filtering for the CCFRP survey.",
+             caption = "Data filtering for the CCFRP Hook and Line survey.",
              label = "ccfrp-data-filter",
              align = 'l',
              custom_width = TRUE,
@@ -51,14 +51,22 @@ sa4ss::table_format(x = tab,
 ```{r, results = 'asis'}
 
 tab <- read.csv(file.path(data_dir, "survey_indices", "ccfrp", "south", "model_selection.csv"))
+col_names <- colnames(tab)
+col_names[3] <- "Depth2"
+col_names[7] <- "Log-likelihood"
+col_names[9] <- "Delta"
 
 sa4ss::table_format(x = tab,
-             caption = "Model selection for the CCFRP survey.",
+             caption = "Model selection for the CCFRP Hook and Line survey.",
              label = "ccfrp-model-selection",
              align = 'l',
+             col_names = col_names,
              longtable = TRUE,
              font_size = 10,
              digits = 2,
+             custom_width = TRUE,
+             col_to_adjust = c(3, 7),
+             width = c('2cm', '2cm', '2cm'),
              landscape = TRUE)                         
 ```
 
@@ -72,7 +80,7 @@ ind <- ind[, c(1,4,5)]
 col_names = c("Year", "Estimate", "logSE")
 
 sa4ss::table_format(x = ind,
-             caption = "Estimated relative index of abundance for the CCFRP survey.",
+             caption = "Estimated relative index of abundance for the CCFRP Hook and Line survey.",
              label = "ccfrp-index",
              digits = 4,
              col_names = col_names)                         
@@ -84,7 +92,7 @@ sa4ss::table_format(x = ind,
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "south", "mpa_site_cpue.png"), 
-caption = "Average CPUE by site with trends prior to standardization in the MPA and REF areas.",
+caption = "Average CPUE by site with trends prior to standardization in the MPA and REF areas for the CCFRP Hook and Line survey.",
 label = 'ccfrp-avg-cpue')
 ```
 
@@ -93,7 +101,7 @@ label = 'ccfrp-avg-cpue')
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "south", "area_weighted", "Index.png"), 
-caption = "The weighted relative index of abundance.",
+caption = "The weighted relative index of abundance for the CCFRP Hook and Line survey.",
 label = 'ccfrp-index')
 ```
 
@@ -103,7 +111,7 @@ label = 'ccfrp-index')
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "south", "area_weighted", "qq.png"), 
-caption = "Q-Q plot for the CCFRP survey.",
+caption = "Q-Q plot for the CCFRP Hook and Line survey.",
 label = 'ccfrp-qq')
 ```
 
