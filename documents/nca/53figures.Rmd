@@ -291,7 +291,7 @@ label = 'ccfrp-map')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "area_weighted", "Index.png"), 
-caption = "Estimated index of abundance from the CCFRP survey",
+caption = "Estimated relative index of abundance from the CCFRP Hook and Line survey",
 label = 'ccfrp-index-main')
 ```
 
@@ -300,7 +300,7 @@ label = 'ccfrp-index-main')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_bubflt5mkt0.png"), 
-caption = "Length composition data from the CCFRP survey",
+caption = "Length composition data from the CCFRP Hook and Line survey",
 label = 'ccfrp-len-data')
 ```
 
@@ -309,7 +309,7 @@ label = 'ccfrp-len-data')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_CCFRP.png"), 
-caption = "Mean length for the CCFRP survey with 95 percent confidence intervals",
+caption = "Mean length for the CCFRP Hook and Line survey with 95 percent confidence intervals",
 label = 'ccfrp-mean-len-data')
 ```
 
@@ -318,7 +318,7 @@ label = 'ccfrp-mean-len-data')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALdat_bubflt5mkt0.png"), 
-caption = "Conditional age-at-length data from the CCFRP survey",
+caption = "Conditional age-at-length data from the CCFRP Hook and Line survey",
 label = 'ccfrp-age-data')
 ```
 
@@ -439,7 +439,7 @@ label = 'wcgbt-cpue')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "wcgbt", "north", "plots", "presence-absence_proportion_by_depth.png"), 
-caption = "Number of positive tows across all years by depth in meters.",
+caption = "Proportion of positive tows across all years by depth in meters from the NWFSC WCGBT survey.",
 label = 'wcgbt-depth')
 ```
 
@@ -464,7 +464,7 @@ label = 'wcgbt-len-age')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "ages", "plots", "west_coast_age_density.png"), 
-caption = "Densities of aged copper rockfish by West Coast area and limited samples from the Gulf of Alaska (25 fish).",
+caption = "Densities of aged copper rockfish by U.S. West Coast areas and limited samples from the Gulf of Alaska (25 fish).",
 label = 'west-coast-age-density')
 ```
 
@@ -500,7 +500,7 @@ label = 'frac-sex-len')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "biology", "plots", "Length_Weight_All.png"), 
-caption = "Estimated weight-at-length",
+caption = "Estimated weight-at-length using data from the NWFSC Hook and Line and WCGBT survey",
 label = 'weight-length')
 ```
 
@@ -948,7 +948,7 @@ label = 'ccfrp-index-fit')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index9_standcpueall.png"), 
-caption = "Standardized indices overlaid. Each index is rescaled to have mean observation = 1.0.",
+caption = "Standardized indices overlaid. Each index is rescaled to have mean observation = 1.0. Note, the  MRFSS CPFV (Rec_CPFV) fishery-dependent and CDFW ROV fishery-independent indices of abundance were not fit in the model but are included here for illustration.",
 label = 'standardized-indices')
 ```
 
