@@ -99,7 +99,7 @@ create_biomass_table <- function(
     Year = years, 
     tot_bio = round(tot_bio1 + tot_bio2, 2),
     smry_bio = round(smry1 + smry2, 2),
-    recr = round(recruits2 + recruits2, 2),
+    recr = round(recruits1 + recruits2, 2),
     SB = round(sb, 2), 
     Depl = round(depl, 3))
   col_names <- c("Year", "Total Biomass (mt)", "Total Biomass 3+ (mt)", "Age-0 Recruits", "Spawning Output", "Fraction Unfished")
