@@ -7,8 +7,9 @@ library(here)
 #devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 
 # Specify the directory for the document
-south_model_name <- "14.3_revised_pre-star_base"
-north_model_name <- "9.11_revised_pre-star_base"
+# Specify the directory for the document
+south_model_name <- "15.0_south_post_star_base"
+north_model_name <- "10.0_north_post_star_base"
 
 user <- Sys.getenv("USERNAME")
 if( grepl("Chantel", user) ){
@@ -38,7 +39,7 @@ mod_loc <- north_model_dir
 #north model sensitivities
 #sens_dir <- here("models", "nca", "_sensitivities")
 sens_dir <- file.path(assess_dir, "models", "nca", "_sensitivities")
-retro_dir <- profile_dir <- here("models", "nca")
+retro_dir <- profile_dir <-file.path(assess_dir, "models", "nca")
 
 #management
 #management_dir <- here("management")
