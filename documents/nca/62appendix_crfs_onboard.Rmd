@@ -185,14 +185,14 @@ ind <- read.csv(file.path(
 ))
 col_names <- c("Intercept",	"Depth", "Depth-squared",	"Month", "Region", "Year", "DF",	"AICc",	"Delta AICc")
 
-sa4ss::table_format(
-  x = ind,
-  caption = "Model selection for the dockside onboard CRFS CPFV survey.",
-  label = "onboard-model_selection",
-  digits = 2,
-  font_size = 8,
-  col_names = col_names
-)
+#sa4ss::table_format(
+#  x = ind,
+#  caption = "Model selection for the onboard CRFS CPFV survey.",
+#  label = "onboard-model_selection",
+#  digits = 2,
+#  font_size = 8,
+#  col_names = col_names
+#)
 ```
 
 \newpage
