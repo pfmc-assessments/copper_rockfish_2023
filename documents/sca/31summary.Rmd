@@ -22,4 +22,4 @@ read_child(filein)
 
 ### Response to Groundfish Subcommittee Requests
 
-To be completed post-STAR panel.
+To be completed after the SSC Groundfish Subcommittee meeting.
