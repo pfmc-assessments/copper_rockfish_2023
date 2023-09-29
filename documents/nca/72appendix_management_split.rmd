@@ -12,13 +12,13 @@ to determine the contribution of copper rockfish to the minor nearshore rockfish
 Allocation of the OFL could, ideally, be based on a fishery-independent survey of 
 abundance, but lacking that information several alternatives exist. Previous 
 allocations have used catch as a proxy for abundance when no other information 
-was available [@Dick2010; @Dick2011]. Recent advances in habitat mapping allow 
+was available. Recent advances in habitat mapping allow 
 us to estimate the relative amount of rocky substrate habitat within state waters 
 (0-3 nm) in each area, e.g., the [California Seafloor Mapping Project](https://walrus.wr.usgs.gov/mapping/csmp/). If we assumed that average density of copper rockfish is constant over the assessed area, the fraction of copper rockfish occurring north of Cape Mendocino would be equal to the fraction of habitat in the same area: approximately 18% (pers. comm. Rebecca Miller, UCSC). However, the assumption of equal density may not be accurate, and no direct estimates of density are available from a fishery-independent survey with adequate spatial coverage.
 
 The methods described in this appendix were also used in the 2021 assessment of vermilion and sunset rockfish in California north of Point Conception. The spatial coverage of the CDFW CRFS dockside interviews is complete across the state and provides information on northern management area. We therefore used the private boat (PR1) CPUE data to develop a spatial index (with CPUE assumed proportional to density), and multiplied the area-specific CPUE estimates by the amount of habitat to produce a spatial index of relative abundance.
 Data were filtered using the same methods detailed in the assessment for the CRFS 
-private boat dockside index. We limited the data to 2016-2019, removing the most recent years for the same reasons as in index development (COVID-19 and then the sub-bag limit), to create an index that is representative of recent catch rates in each area. Sample sizes (number of trips) for the final data set are shown in Table \@ref(tab:number-trips).
+private boat dockside index. We limited the data to 2016-2019, removing the most recent years for the same reasons as in index development (COVID-19 and then the sub-bag limit), to create an index that is representative of recent catch rates in each area. <!-- sizes (number of trips) for the final data set are shown in Table \@ref(tab:number-trips). -->
 
 Copper rockfish is a nearshore species and we recognize that there is a fraction of the 
 population and rocky habitat outside of state waters.  However, due to depth closures that began in 2002, samples from deeper waters are not available, nor is the associated habitat 
@@ -28,7 +28,7 @@ south of Cape Mendocino. We explored limiting the data to only angler-reported t
 We modeled CPUE (copper rockfish per angler trip) using a 
 Bayesian negative binomial regression with subregion defined as CRFS districts and pooling data across years 2016-2019. Including the subregion covariate reduced AIC by 1486 points relative to the null (intercept-only) model. 
 
-When CPUE is multiplied by the percentage of habitat area north of \CapeM latitude, the expected percentage of the stock that occurs north of Cape Mendocino is 5.47% (Table \@ref(tab:pr-split-cpue)).
+When CPUE is multiplied by the percentage of habitat area north of \CapeM latitude, the expected percentage of the stock that occurs north of Cape Mendocino is 5.86% (Table \@ref(tab:pr-split-cpue)).
 
 
 ```{r, results = 'asis'}
