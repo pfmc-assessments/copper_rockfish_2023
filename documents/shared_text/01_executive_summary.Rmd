@@ -285,8 +285,26 @@ create_projection_table(
 
 ```
 
-\pagebreak
+\pagebreak'
 
+
+```{r, results = 'asis'}
+
+create_projection_by_area_table(
+    management_dir = management_dir, 
+    doc_dir = doc_dir, 
+    model_dir = model_dir,
+    fixed_removals = c(91.5, 94.7),
+    doc_names = c("nca", 'sca'),
+    years = 2023:2034,
+    north_4010_percent = 0.0586,
+    table_names = c("copper_ca_north.csv", "copper_ca_south.csv"),
+    prefix = 'es')
+
+```
+
+
+\pagebreak
 
 \input{tex_tables/decision_table_es.tex}
 
