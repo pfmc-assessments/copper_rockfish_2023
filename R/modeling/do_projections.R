@@ -153,19 +153,19 @@ do_projections <- function(
 }
 
 
-model1_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/sca/_decision_table/pstar_45/15.0_south_post_star_base"
-model2_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/nca/_decision_table/pstar_45/10.0_north_post_star_base"
-
-
-do_projections(
-    sigma = c(0.50, 0.50),
-    pstar = 0.45,
-    model1_dir = model1_dir, 
-    model2_dir = model2_dir,
-    fore_years = 2025:2034,
-    prop = c(-1, -1),
-    fleet1_num = 1:4,
-    fleet2_num = 1:4,
-    model1_fleets = c(0.04, 0.03, 0.72, 0.21),
-    model2_fleets = c(0.03, 0.05, 0.38, 0.54),
-    hcr = c(0.4, 0.1))
+#model1_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/sca/_decision_table/pstar_45/15.0_south_post_star_base"
+#model2_dir <- "C:/Assessments/2023/copper_rockfish_2023/models/nca/_decision_table/pstar_45/10.0_north_post_star_base"
+#
+#
+#do_projections(
+#    sigma = c(0.50, 0.50),
+#    pstar = 0.45,
+#    model1_dir = model1_dir, 
+#    model2_dir = model2_dir,
+#    fore_years = 2025:2034,
+#    prop = c(-1, -1),
+#    fleet1_num = 1:4,
+#    fleet2_num = 1:4,
+#    model1_fleets = c(0.04, 0.03, 0.72, 0.21),
+#    model2_fleets = c(0.03, 0.05, 0.38, 0.54),
+#    hcr = c(0.4, 0.1))
