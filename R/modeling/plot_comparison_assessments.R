@@ -20,12 +20,13 @@ dir_2021 = "E:/Assessments/2021/copper_rockfish_2021/models/ca_s_pt_c/12.1_base"
 model_2021 <- SS_output(dir_2021)
 
 model_2023 <- SS_output(file.path(user_dir, "models", "sca", south_base))
+sens_2021 <- SS_output("E:/Assessments/2021/copper_rockfish_2021/models/ca_s_pt_c/_sensitivities/12.1_base_recdevs")
 
-modelnames <- c("Base Model", "2021", "2013")
-mysummary <- SSsummarize(list(model_2023, model_2021, model_2013))
+modelnames <- c("Base Model", "2021")#, "2021 w/ Rec. Devs.")#, "2013")
+mysummary <- SSsummarize(list(model_2023, model_2021))#, sens_2021))#, model_2013))
 
 SSplotComparisons(mysummary,
-                  filenameprefix = "south_assess_compare_",
+                  filenameprefix = "south_assess_compare_21_23_",
                   legendlabels = modelnames, 	
                   subplot = c(2, 4),
                   ylimAdj = 1.05,
@@ -80,6 +81,40 @@ SSplotComparisons(mysummary,
                   legendlabels = modelnames, 	
                   subplot = c(2, 4),
                   ylimAdj = 1.0,
+                  print = TRUE,
+                  pdf = FALSE,
+                  btarg = -1,
+                  minbthresh = -1,
+                  plotdir = fig_dir)
+
+
+#===============================================================================================
+# Both areas
+#===============================================================================================
+library(r4ss)
+user_dir <- "C:/Assessments/2023/copper_rockfish_2023"
+fig_dir <- "C:/Assessments/2023/copper_rockfish_2023/documents/shared_figures"
+
+south_base <- "15.0_south_post_star_base"
+north_base <- "10.0_north_post_star_base"
+
+dir_2021 = "E:/Assessments/2021/copper_rockfish_2021/models/ca_s_pt_c/12.1_base"
+southmodel_2021 <- SS_output(dir_2021)
+southmodel_2023 <- SS_output(file.path(user_dir, "models", "sca", south_base))
+
+dir_2021 = "E:/Assessments/2021/copper_rockfish_2021/models/ca_n_pt_c/10.3_base"
+northmodel_2021 <- SS_output(dir_2021)
+northmodel_2023 <- SS_output(file.path(user_dir, "models", "nca", north_base))
+
+
+modelnames <- c("South - 2023", "South - 2021", "North - 2023", "North - 2021")
+mysummary <- SSsummarize(list(southmodel_2023, southmodel_2021, northmodel_2023, northmodel_2021))
+
+SSplotComparisons(mysummary,
+                  filenameprefix = "both_areas_compare_21_23_",
+                  legendlabels = modelnames, 	
+                  subplot = c(2, 4),
+                  ylimAdj = 1.05,
                   print = TRUE,
                   pdf = FALSE,
                   btarg = -1,
