@@ -17,6 +17,7 @@ Catches of `r spp` off the coast of California began slowly in the 1910s with ca
 add_figure(
 filein = file.path(south_model_dir, "plots", "catch2 landings stacked.png"), 
 caption = "Catches by fleet used in the base model for the area south of Point Conception where catches in metric tons by fleet are stacked",
+alt_caption = "See Table 1",
 label = 'es-south-catch')
 ```
 
@@ -25,6 +26,7 @@ label = 'es-south-catch')
 add_figure(
 filein = file.path(north_model_dir, "plots", "catch2 landings stacked.png"), 
 caption = "Catches by fleet used in the base model for the area north of Point Conception where catches in metric tons by fleet are stacked",
+alt_caption = "See Table 1 in status of copper rockfish along the U.S. California coast north of Point Conception in 2023 document",
 label = 'es-north-catch')
 ```
 
@@ -66,11 +68,13 @@ create_biomass_table(
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "spawning_output_combined.png"), 
 caption = "Estimated combined time series of spawning output for copper rockfish in California waters",
+alt_caption = "See Table 23.",
 label = 'es-sb-all')
 
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "depletion_combined.png"), 
 caption = "Estimated combined time series of fraction of relative spawning output for copper rockfish in California waters",
+alt_caption = "See Table 23.",
 label = 'es-depl-all')
 
 ```
@@ -80,6 +84,7 @@ label = 'es-depl-all')
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "compare2_spawnbio_uncertainty.png"), 
 caption = "Estimated time series of spawning output (circles and line: median; light broken lines: 95 percent intervals) for the model areas south and north of Point Conception",
+alt_caption = "See Table 22 in this document and Table 15 in the north of Point Conception assessment document",
 label = 'es-sb')
 ```
 
@@ -88,6 +93,7 @@ label = 'es-sb')
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "compare4_Bratio_uncertainty.png"), 
 caption = "Estimated time series of fraction of relative spawning output (circles and line: median; light broken lines: 95 percent intervals) for the model areas south and north of Point Conception",
+alt_caption = "See Table 22 in this document and Table 15 in the north of Point Conception assessment document",
 label = 'es-depl')
 ```
 
@@ -107,6 +113,7 @@ Recruitment deviations were estimated from 1965-2020 south of Point Conception a
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "compare10_recruits_uncertainty.png"), 
 caption = "Estimated time series of age-0 recruits (1000s) for the model areas south and north of Point Conception with 95 percent intervals",
+alt_caption = "See Table 22 in this document and Table 15 in the north of Point Conception assessment document",
 label = 'es-recruits')
 ```
 
@@ -115,6 +122,7 @@ label = 'es-recruits')
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "compare12_recdevs_uncertainty.png"), 
 caption = "Estimated time series of recruitment deviations for the model areas south and north of Point Conception.",
+alt_caption = "See Table vi and vii",
 label = 'es-rec-devs')
 ```
 
@@ -136,6 +144,7 @@ As a percentage of biomass (ages 3+), harvest rates south of Point Conception be
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "compare6_SPRratio_uncertainty.png"), 
 caption = "Estimated 1 - relative spawning ratio (SPR) by year for the model areas south and north of Point Conception. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate",
+alt_caption = "See Table 22 in this document and Table 15 in the north of Point Conception assessment document",
 label = 'es-1-spr')
 ```
 
@@ -209,6 +218,7 @@ table_format(x = out,
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "compare15_phase_plot.png"), 
 caption = "Phase plot of estimated 1-SPR versus fraction unfished for the model areas south and north of Point Conception.",
+alt_caption = "See Table 22 in this document and Table 15 in the north of Point Conception assessment document",
 label = 'es-phase')
 ```
 
@@ -218,6 +228,7 @@ add_figure(
 filein = file.path(doc_dir, "shared_figures", "south_yield2_yield_curve_with_refpoints.png"), 
 caption = "Equilibrium yield curve for the base case model south of Point Conception. Values are based on the 2022
 fishery selectivities and with steepness fixed at 0.72",
+alt_caption = "Equilibrium curve peaks around 0.30 fraction of unfished with the estimated current fraction of unfished at 0.16",
 label = 'south-es-yield')
 ```
 
@@ -227,6 +238,7 @@ add_figure(
 filein = file.path(doc_dir, "shared_figures", "north_yield2_yield_curve_with_refpoints.png"), 
 caption = "Equilibrium yield curve for the base case model north of Point Conception. Values are based on the 2022
 fishery selectivities and with steepness fixed at 0.72",
+alt_caption = "Equilibrium curve peaks around 0.30 fraction of unfished with the estimated current fraction of unfished at 0.46",
 label = 'north-es-yield')
 ```
 
