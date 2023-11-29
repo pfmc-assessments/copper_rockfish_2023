@@ -44,6 +44,7 @@ The lengths in Table \@ref(tab:copper-lengths) are currently all weighted equall
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "crfs_districts.png"), 
 caption = "Map of the CDFW CRFS sampling Districts.",
+alt_caption = "There are six CRFS districts with district 1 (south) and 2 (channel) south of Point Conception. Districts 3-6 are north of Point Conception with district 6 (redwood) being the furthest north in California.", 
 label = 'crfs-districts')
 ```
 
@@ -53,6 +54,7 @@ label = 'crfs-districts')
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "length_by_triptype.png"), 
 caption = "Distribution of the lengths of copper rockfish measured from 2018-2019 from dockside angler interviews by district.",
+alt_caption = "Overnight CPRF trips only occur in district 1 and 2 where slightly larger copper rockfish are observed on these trips but the majority of the size distribution overlaps with half and full day trips. In district 4 through 6 the half day trips observe large sizes compared to the full day trips. This may be due to limited sample sizes (see Table 50 and 51).",
 label = 'copper-lengths')
 ```
 

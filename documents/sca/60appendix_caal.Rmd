@@ -10,11 +10,12 @@ len_fit = plot_info[which(plot_info$category == "LenComp"), ]
 plot.vec = grep("comp_lenfit_flt", len_fit$label)
 filein = file.path(model_dir, "plots")
 for (a in plot.vec){
-	cap = len_fit$caption[a]
-	lab = len_fit$label[a]
+	cap = gsub("<br>", " ", gsub("_", " ", len_fit$caption[a]))
+	lab = gsub("_", "-", len_fit$label[a])
 	add_figure(filein = file.path(filein, len_fit$file[a]), 
 			   caption = cap, 
-			   label = lab)
+			   label = lab,
+			   alt_caption = "See the CompReport file for detailed information on the composition data and the model fits.")
 }
 ```
 
@@ -29,11 +30,12 @@ len_fit = plot_info[which(plot_info$category == "AgeComp"), ]
 plot.vec = grep("comp_agefit_flt", len_fit$label)
 filein = file.path(model_dir, "plots")
 for (a in plot.vec){
-	cap = len_fit$caption[a]
-	lab = len_fit$label[a]
+	cap = gsub("<br>", " ", gsub("_", " ", len_fit$caption[a]))
+	lab = gsub("_", "-", len_fit$label[a])
 	add_figure(filein = file.path(filein, len_fit$file[a]), 
 			   caption = cap, 
-			   label = lab)
+			   label = lab, 
+			   alt_caption = "See the CompReport file for detailed information on the composition data and the model fits.")
 }
 ```
 
@@ -54,11 +56,12 @@ find = sort(len_fit$label[plot.vec], index.return = TRUE)$ix
 plot.vec = plot.vec[find[2:length(find)]]
 filein = file.path(model_dir, "plots")
 for (a in plot.vec){
-	cap = len_fit$caption[a]
-	lab = len_fit$label[a]
+	cap = gsub("_", " ", len_fit$caption[a])
+	lab = gsub("_", "-", len_fit$label[a])
 	add_figure(filein = file.path(filein, len_fit$file[a]), 
 			   caption = cap, 
-			   label = lab)
+			   label = lab, 
+			   alt_caption = "See the CompReport file for detailed information on the composition data and the model fits.")
 }
 ```
 
@@ -73,11 +76,12 @@ find = sort(len_fit$label[plot.vec], index.return = TRUE)$ix
 plot.vec = plot.vec[find[2:length(find)]]
 filein = file.path(model_dir, "plots")
 for (a in plot.vec){
-	cap = len_fit$caption[a]
-	lab = len_fit$label[a]
+	cap = gsub("\n", ". ", gsub("%", " percent", gsub("<br>", " ", gsub("_", " ", len_fit$caption[a]))))
+	lab = gsub("_", "-", len_fit$label[a])
 	add_figure(filein = file.path(filein, len_fit$file[a]), 
 			   caption = cap, 
-			   label = lab)
+			   label = lab, 
+			   alt_caption = "See the CompReport file for detailed information on the composition data and the model fits.")
 }
 
 ```
@@ -99,11 +103,12 @@ plot.vec = c(grep("comp_gstlenfit_flt1mkt0", len_fit$label),
              grep("comp_gstlenfit_flt4mkt0", len_fit$label))
 filein = file.path(model_dir, "plots")
 for (a in plot.vec){
-	cap = len_fit$caption[a]
-	lab = len_fit$label[a]
+	cap = gsub("<br>", " ", gsub("_", " ", len_fit$caption[a]))
+	lab = gsub("_", "-", len_fit$label[a])
 	add_figure(filein = file.path(filein, len_fit$file[a]), 
 			   caption = cap, 
-			   label = lab)
+			   label = lab,
+			   alt_caption = "See the CompReport file for detailed information on the composition data and the model fits.")
 }
 ``` 
 
@@ -115,7 +120,8 @@ for (a in plot.vec){
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_CPFV.png"), 
-caption = "Implied fit to log index data on log scale for the recreational (MRFSS) CPFV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+caption = "Implied fit to log index data on log scale for the recreational (MRFSS) CPFV index of abundance. Lines indicate 95 percent uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+alt_caption = "The implied model fit generally fits the trend in the index but the 1983 1988 and 1994 index points appear to be outliers with each year estimated well above the surrounding years. These years are well above the implied model fit.",
 label = 'mrfss-cpfv-index-fit')
 ```
 
@@ -130,6 +136,7 @@ Data from the CDFW ROV survey were not included in the base model. A sensitivity
 sa4ss::add_figure(
 filein = file.path(model_dir, "plots", "index2_cpuefit_CDFW_ROV.png"), 
 caption = "The estimated weighted relative index of abundance for the CDFW ROV survy and the implied fit to the index from the model.",
+alt_caption = "The implied model fit follows the same trend as the index with the implied fit falling within the uncertainty interval for all years.",
 label = 'rov-index')
 ```
 
@@ -140,6 +147,7 @@ label = 'rov-index')
 add_figure(
 filein = file.path(model_dir,  "plots", "comp_gstlenfit_flt6mkt0.png"), 
 caption = "Annual length composition data from the CDFW ROV survey south of Point Conception and the implied model fit given a fixed selectivity curve.",
+alt_caption = "The implied model fits align with the observed annual length distributions.",
 label = 'rov-len-data')
 ```
 
@@ -153,6 +161,7 @@ Data from the NWFSC WCGBT survey were not used in the base model to develop an i
 add_figure(
 filein = file.path(data_dir, "survey_indices", "wcgbt", "110m_2005minyear", "copper_rockfish", "wcgbts",  "delta_lognormal_mix", "index", "index.png"), 
 caption = "Estimated index of abundance based on NWFSC WCGBT survey data starting in 2005 and limiting to observations between 55-110 m where CA is the area south of Point Conception and coastwide is all data within California.",
+alt_caption = "The uncertainty intervals for numerous years are large and there is no clear trend in the index likely due to limited observations",
 label = 'wcgbt-index')
 ```
 

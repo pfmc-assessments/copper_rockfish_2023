@@ -38,6 +38,7 @@ sa4ss::table_format(x = tab,
 add_figure(
 filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "plots", "raw_cpue_nwfsc_hkl_by_mpa_vs_open_by_region.png"), 
 caption = "Raw catch-per-unit-effort by region and area protection for the NWFSC Hook and Line suvey.",
+alt_caption = "The raw CPUE is greatest but highly variable in the open Northern Channel Islands.",
 label = 'nwfsc-hkl-index-raw')
 ```
 
@@ -47,6 +48,7 @@ label = 'nwfsc-hkl-index-raw')
 add_figure(
 filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "Index.png"), 
 caption = "Estimated relative index of abundance by the NWFSC Hook and Line survey for copper rockfish.",
+alt_caption = "See Table 48.",
 label = 'nwfsc-hkl-index')
 ```
 
@@ -56,6 +58,7 @@ label = 'nwfsc-hkl-index')
 add_figure(
 filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "qq.png"), 
 caption = "Q-Q plot for the NWFSC Hook and Line survey.",
+alt_caption = "Sample quantiles and theoretical quantile align on the one to one line.",
 label = 'nwfsc-hkl-qq')
 ```
 
@@ -65,6 +68,7 @@ label = 'nwfsc-hkl-qq')
 add_figure(
 filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "residuals_page1.png"), 
 caption = "Residuals by sample location and year NWFSC Hook and Line survey.",
+alt_caption = "No clear pattern in the residuals.", 
 label = 'nwfsc-hkl-resid-1')
 ```
 
@@ -74,6 +78,7 @@ label = 'nwfsc-hkl-resid-1')
 add_figure(
 filein = file.path(data_dir, "survey_indices", "nwfsc_hkl", "glm_delta_lognormal_year_area_depth_drop_vermilion_bocaccio_all_areas_re_site_area_weighted", "residuals_page2.png"), 
 caption = "Residuals by sample location and year for the NWFSC Hook and Line survey.",
+alt_caption = "No clear pattern in the residuals.", 
 label = 'nwfsc-hkl-resid-2')
 ```
 

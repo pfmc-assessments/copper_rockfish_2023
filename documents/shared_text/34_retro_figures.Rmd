@@ -2,6 +2,7 @@
 add_figure(
 filein = file.path(retro_dir, paste0(retro_name, "_retro"),  "compare2_spawnbio_uncertainty.png"), 
 caption = "Change in the estimate of spawning output when the most recent 5 years of data area removed sequentially",
+alt_caption = "The retrospective estimates fall within the estimated base model uncertainty.",
 label = 'retro-ssb')
 ```
 
@@ -11,5 +12,6 @@ label = 'retro-ssb')
 add_figure(
 filein = file.path(retro_dir, paste0(retro_name, "_retro"),  "compare4_Bratio_uncertainty.png"),
 caption = "Change in the estimate of fraction unfished when the most recent 5 years of data area removed sequentially",
+alt_caption = "The retrospective estimates fall within the estimated base model uncertainty.",
 label = 'retro-depl')
 ```

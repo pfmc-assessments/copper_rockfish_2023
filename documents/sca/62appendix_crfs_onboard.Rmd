@@ -157,6 +157,7 @@ sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south", 
                    "copper_depths_gisdepthadded.png"), 
 caption = "Distribution by year of depths where copper rockfish observed.",
+alt_caption = "In 2019 copper rockfish were observed in the CPFV onboard data between 10 to 55 fathoms. In contrast in 1999 the depth range in the data were narrower between 20 to 45 fathoms. Shifts in the observations are likely due to changes in the operation of the CPFV fleet.",
 label = 'onboard-depths')
 ```
 
@@ -168,6 +169,7 @@ sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south",
                    "drifts_by_depth_district.png"),
 caption = "Stacked bar plot of the depth of observed copper rockfish by district.",
+alt_caption = "There are far more observations in district 2 compared to district 1. Additionally district 2 observation occur across all depths but the majority of district 1 observations are shallower in comparison.",
 label = 'onboard-depths')
 ```
 
@@ -178,6 +180,7 @@ sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south", "start2005",
                    "average_cpue_by_region.png"), 
 caption = "Average CPUE by region prior to standardization.",
+alt_caption = "The northern channel islands have the highest average CPUE of the regions.",
 label = 'onboard-regioncpue')
 ```
 
@@ -189,6 +192,7 @@ sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south", "start2005",
                    "area_weighted_logn", "index.png"), 
 caption = "Relative index of abundance for the onboard CPFV survey.",
+alt_caption = "The index increased between 2011 to 2018 and then decreases in 2019.",
 label = 'onboard-index')
 ```
 
@@ -199,6 +203,7 @@ sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "south","start2005",
                    "area_weighted_logn", "qq.png"), 
 caption = "Q-Q plot for the onboard CPFV survey.",
+alt_caption = "Sample quantiles and theoretical quantile align on the one to one line.",
 label = 'onboard-qq')
 ```
 

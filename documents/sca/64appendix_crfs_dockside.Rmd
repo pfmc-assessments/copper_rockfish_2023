@@ -177,6 +177,7 @@ sa4ss::add_figure(
   caption = "Distribution by year of the number of copper rockfish retained per angler. 
   This includes sampler observed and angler reported catch. The vertical line at 1 represents the sub-bag 
   limit implemented in 2022.",
+  alt_caption = "The distribution of retained copper rockfish is bimodal for all years with peaks at 0.5 and 1. The frequency of 1 retained copper has increased between 2015 and 2022.",
   label = "pr-bag"
 )
 ```
@@ -190,6 +191,7 @@ sa4ss::add_figure(
     "average_cpue_by_district.png"
   ),
   caption = "Average CPUE by district prior to standardization.",
+  alt_caption = "Average CPUE is greater in district 2 and is roughly increasing between 2004 and 2019. The average CPUE is district 1 is lower but also increasing during this period.",
   label = "pr-districtcpue"
 )
 ```
@@ -204,6 +206,7 @@ sa4ss::add_figure(
     "index.png"
   ),
   caption = "Relative index of abundance for the dockside PR survey.",
+  alt_caption = "See Table 43.",
   label = "pr-index"
 )
 ```
@@ -217,6 +220,7 @@ sa4ss::add_figure(
     "rm_last2yrs", "qq.png"
   ),
   caption = "Q-Q plot for the dockside PR survey.",
+  alt_caption = "Sample quantiles and theoretical quantile align on the one to one line.",
   label = "pr-qq"
 )
 ```

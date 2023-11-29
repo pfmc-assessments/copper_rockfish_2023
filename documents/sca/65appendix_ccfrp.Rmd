@@ -93,6 +93,7 @@ sa4ss::table_format(x = ind,
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "south", "mpa_site_cpue.png"), 
 caption = "Average CPUE by site with trends prior to standardization in the MPA and REF areas for the CCFRP Hook and Line survey.",
+alt_caption = "The average CPUE is greatest at the Carrington Point site for both the MPA and REF areas with decreasing CPUE between 2017 to 2022 in both areas. The REF average CPUE is decreasing at Anacapa Island and all other areas have relatively flat CPUE trends.",
 label = 'ccfrp-avg-cpue')
 ```
 
@@ -102,6 +103,7 @@ label = 'ccfrp-avg-cpue')
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "south", "area_weighted", "Index.png"), 
 caption = "The weighted relative index of abundance for the CCFRP Hook and Line survey.",
+alt_caption = "See Table 46.",
 label = 'ccfrp-index')
 ```
 
@@ -112,6 +114,7 @@ label = 'ccfrp-index')
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "south", "area_weighted", "qq.png"), 
 caption = "Q-Q plot for the CCFRP Hook and Line survey.",
+alt_caption = "Sample quantiles and theoretical quantile deviate slightly from the one to one line at the low and high tails of the quantiles.",
 label = 'ccfrp-qq')
 ```
 
