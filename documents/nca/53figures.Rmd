@@ -14,6 +14,7 @@
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "map.png"), 
 caption = "Map of management area and the 2023 assessment areas for copper rockfish",
+alt_caption = "The management range of copper rockfish off the West Coast covers Washington Oregon and California with the model areas for the California stock modeled south of Point Conception the the U.S. Mexico border and north of Point Conception to the California Oregon border.",
 label = 'ca-map')
 ```
 
@@ -27,15 +28,12 @@ label = 'ca-map')
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "copper_length_by_half_month.png"), 
 caption = "Distribution of young-of-the-year copper rockfish lengths from fish genetically identified from D. Baetscher's UCSC dissertation work.",
+alt_caption = "Observations of young of the year copper rockfish peak between 3 to 4 centimeters between June through August. Observations of young of the year observed in September has a bimodal distribution with sizes peaking between 6 to 7 centimeters and 8 centimeters.",
 label = 'copper-smurf-length')
 ```
 
 \pagebreak
 
-
-
-
-\pagebreak
 
 <!-- ====================================================================== -->  
 <!-- ****************** Catches Used in the Model ************************* --> 
@@ -45,6 +43,7 @@ label = 'copper-smurf-length')
 add_figure(
 filein = file.path(model_dir, "plots", "catch2 landings stacked.png"), 
 caption = "Landings by fleet used in the base model where catches in metric tons by fleet are stacked",
+alt_caption = "Stacked bar plot of landings by fleet used in the base model where catches in metric tons. The landings are below 50 metric tons total until the late 1950s and then increase peaking in the 1970s.  Landing then decline until the early 2000s.  From 2010 to present landings again increase.",
 label = 'catch')
 ```	
 
@@ -58,6 +57,7 @@ label = 'catch')
 add_figure(
 filein = file.path(model_dir, "plots", "data_plot.png"), 
 caption = "Summary of data sources used in the base model",
+alt_caption = "Catch data ar ablor all years modeled from the commercial dead fishery, from the mid 1990s for the commercial live fishery and from 1926 to present for the two recreational fleets.  A fishery-independent index from CCFRP was available from 2007 to present. Length composition data were available for all fleets. Marginal ages were available from the recreational charter boat fleet from sparse years in the 1970s and the most recent year.  Conditional age at length data were availble from the commercial dead fishery, both recreational fleets, CCFRP and various other sources input as a growth fleet.",
 label = 'data-plot')
 ```	
 
@@ -68,9 +68,8 @@ sa4ss::add_figure(
   filein = file.path(
     data_dir, "survey_indices", "NorthernCA.png"
   ),
-  caption = "Map of northern California assessment area with the total number of copper rockfish observed by site for each of the fishery-indpendent
-  surveys considered. Also shown is the network of MPAs, the 3nm state maritime boundary and the CDFW blocks. The CDFW blocks are colored a darker blue 
-  if copper rockfish were observed by a survey and based on expert opinion from the fleet.",
+  caption = "Map of northern California assessment area with the total number of copper rockfish observed by site for each of the fishery-indpendent surveys considered. Also shown is the network of MPAs, the 3nm state maritime boundary and the CDFW blocks. The CDFW blocks are colored a darker blue   if copper rockfish were observed by a survey and based on expert opinion from the fleet.",
+  alt_caption = "A map of the northern Califonria assessment area with the total number of copper rockfish observed by site for each of the fishery-indpendent surveys considered. Copper rockfish were most commonly observed in shallower waters and over rocky habitat.",
   label = "survey-map"
 )
 ```
@@ -85,6 +84,7 @@ sa4ss::add_figure(
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_bubflt1mkt0.png"), 
 caption = "Length composition data from the commercial dead fleet",
+alt_caption = "The commercial dead fishery generally catches fish of 25 centimeters or larger.",
 label = 'com-dead-len-data')
 ```
 
@@ -94,6 +94,7 @@ label = 'com-dead-len-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Commercial_Dead.png"), 
 caption = "Mean length for commercial dead fleet with 95 percent confidence intervals",
+alt_caption = "Mean length for the commercial dead fleet were availbe from 1979 to 1981, 1991 to 2000, 2001, and 2016 to 2021. Mean length was around 40 to 45 centimeters for the majority of the time period and decreased to around 30 centimeters startin in 2019.",
 label = 'mean-com-dead-len-data')
 ```
 
@@ -103,6 +104,7 @@ label = 'mean-com-dead-len-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALdat_bubflt1mkt0.png"), 
 caption = "Conditional age-at-length composition data from the commercial dead fleet",
+alt_caption = "The condition age at length composition through time follows the expected patter of the growth curve with the data trunkcated in some yeras to fish 40 centimeters and larger.",
 label = 'com-dead-age-data')
 ```
 
@@ -112,6 +114,7 @@ label = 'com-dead-age-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_bubflt2mkt0.png"), 
 caption = "Length composition data from the commercial live fleet",
+alt_caption = "The commercial live fishery generally catches fish between 22 and 50 centimeters.",
 label = 'com-live-len-data')
 ```
 
@@ -121,6 +124,7 @@ label = 'com-live-len-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Commercial_Live.png"), 
 caption = "Mean length for commercial live fleet with 95 percent confidence intervals",
+alt_caption = "The mean length for the commercial live fishery was between 34 and 45 centimeters until 2011 when it decreased to 27 to approximately 30 centimeters for the remainder of the time series. ",
 label = 'mean-com-live-len-data')
 ```
 
@@ -144,6 +148,7 @@ label = 'mean-com-live-len-data')
 add_figure(
 filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",  "deltalogn", "Index.png"), 
 caption = "Estimated annual index of abundances for the CPFV fleet based on the Deb Wilson-Vandenberg survey data.",
+alt_caption = "The recreational Deb Wilson-Vandenbergy CPFV index remains fairly constant from 1988 to 1992 and then then declines steadily from 1993 to 1998.",
 label = 'dwv-index-main')
 ```
 
@@ -153,6 +158,7 @@ label = 'dwv-index-main')
 add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north",  "area_weighted", "Index.png"), 
 caption = "Estimated annual index of abundances for the CPFV fleet based on CRFS survey data.",
+alt_caption = "The recreational CPFV index increases from 1999 to 2001, decreases slightly and remains constant for three years.  The index from 2005 to 2008 is steady at the level observed in 2001, and then decreases in 2008.  The index generally increases from 2009 to 2021.",
 label = 'crfs-index-main')
 ```
 
@@ -161,7 +167,8 @@ label = 'crfs-index-main')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_pr_dockside", "north",  "rm_last2yrs_area_weighted", "Index.png"), 
-caption = "Estimated annual index of abundances for the CPFV fleet based on CRFS survey data.",
+caption = "Estimated annual index of abundances for the private/rental fleet based on CRFS survey data.",
+alt_caption = "The private/rental mode index of abundance remains flat and uniformative from 2004 to 2014.  The index increaes in 2015 spikess to a high relative value from 20 to 50 in 2017.  The last two years of the index are higher than 2015, but lower than the value in 2017.",
 label = 'crfs-pr-index-main')
 ```
 
@@ -174,6 +181,7 @@ label = 'crfs-pr-index-main')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_bubflt3mkt0_page2.png"), 
 caption = "Length composition data from the recreational CPFV fleet",
+alt_caption = "The recreational fleet generally catches fish between 22 and 50 centimeters",
 label = 'rec-cpfv-len-data')
 ```
 
@@ -183,6 +191,7 @@ label = 'rec-cpfv-len-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_CPFV.png"), 
 caption = "Mean length for recreational CPFV fleet with 95 percent confidence intervals",
+alt_caption = "The mean length from the recreational CPFV fleet is uncertain until 1980 at which point it ranges from 35 to 40 centimeters for the remainder of the time series.",
 label = 'mean-rec-cpfv-len-data')
 ```
 
@@ -193,6 +202,7 @@ label = 'mean-rec-cpfv-len-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_flt4mkt0_page2.png"), 
 caption = "Length composition data from the recreational PR fleet",
+alt_caption = "The recreational private rental fleet catches fish range from 20 to 50 centimeters, with the after fish around 30 centimeters.",
 label = 'rec-pr-len-data')
 ```
 
@@ -202,6 +212,7 @@ label = 'rec-pr-len-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Rec_PR.png"), 
 caption = "Mean length for recreational PR fleet with 95 percent confidence intervals",
+alt_caption = "The mean length in the private rental fleet is more uncertain then tha charter fleet until 2003. The average length ranges from 35 to 40 centimeters from 1978 to 1985.  The average length then remains around 30 to 35 centimeters for the remainders of the time series.",
 label = 'mean-rec-pr-len-data')
 ```
 
@@ -211,6 +222,7 @@ label = 'mean-rec-pr-len-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALdat_bubflt3mkt0.png"), 
 caption = "Conditional age-at-length composition data from the recreational CPFV fleet",
+alt_caption = "The majority of the fish aged from the recreational CPFV fleet were less than 15 years old.",
 label = 'rec-cpfv-caal-data')
 ```
 
@@ -221,6 +233,7 @@ label = 'rec-cpfv-caal-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_agedat_data_weighting_TA1.8_Rec_CPFV.png"), 
 caption = "Mean age for recreational CPFV fleet with 95 percent confidence intervals",
+alt_caption = "There are sparse age data for the recreational CPFV fleet. The average age from 1978 to 1985 is 10 to 15 years and in 2021 is around 10 years old.",
 label = 'mean-rec-cpfv-age-data')
 ```
 
@@ -230,6 +243,7 @@ label = 'mean-rec-cpfv-age-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_agedat__aggregated_across_time.png"), 
 caption = "Marginal age composition data aggregate across the 1978, 1981, 1984, and 2022 (carcass ages) data years from the CPFV fleet.",
+alt_caption = "The marginal age compositions suggest the majority of fish caught by the CPFV fleet are less than 20 years old. ",
 label = 'rec-cpfv-marg-age-data')
 ```
 
@@ -240,6 +254,7 @@ label = 'rec-cpfv-marg-age-data')
 add_figure(
 filein = file.path(data_dir, "ages", "plots", "coop_crfs_length_comparison.png"), 
 caption = "Comparison of all length collected by the CRFS sampling program for the CPFV fleet to the lengths from the fish with ages from the cooperative sampling program. The length distributions in the area north of Point Conception are in general agreement while the distribution of lengths collected by this program does not align with the length samples from CRFS.",
+alt_caption = "Comparison of all length collected by the CRFS sampling program for the CPFV fleet to the lengths from the fish with ages from the cooperative sampling program. The length distributions in the area north of Point Conception are in general agreement while the distribution of lengths collected by this program does not align with the length samples from CRFS.",
 label = 'coop-len-comparison')
 ```
 
@@ -249,6 +264,7 @@ label = 'coop-len-comparison')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALdat_bubflt4mkt0.png"), 
 caption = "Conditional age-at-length data for recreational PR collected in 2022",
+alt_caption = "The conditional age at length compositions suggest the majority of fish caught by the CPFV fleet are less than 20 years old.",
 label = 'rec-pr-caal-data')
 ```
 
@@ -264,6 +280,7 @@ label = 'rec-pr-caal-data')
 add_figure(
 filein = file.path(data_dir, "survey_indices", "plots", "north_survey_locations_designation.png"), 
 caption = "Sample locations by each of the fishery-independent data sources used in the base model with indices of abundance, lengths, and ages if collected.",
+alt_caption = "A map of the nortern California assessment area showing locations sampled by the fishery-indpendent surveys and the MPAs.",
 label = 'survey-locations')
 ```
 
@@ -273,6 +290,7 @@ label = 'survey-locations')
 add_figure(
 filein = file.path(data_dir, "survey_indices", "plots", "north_survey_locations.png"), 
 caption = "Sample locations by area, areas open to fishing (reference) and MPAS, for each of the fishery-independent data sources used in the base model with indices of abundance, lengths, and ages if collected.",
+alt_caption = "Sample locations from the CCFRP and CDFW ROV surveys inside and adjacent to MPAs in northern California.",
 label = 'ref-mpa')
 ```
 
@@ -285,6 +303,7 @@ label = 'ref-mpa')
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "ccfrp_map.png"), 
 caption = "Map depicting copper rockfish observations from the Piedras Blancas MPA and reference sites for CCFRP in northern California (A) and the Carrington Point MPA and reference sites in southern California. The examples from each area show the differences in the available interpreted rocky substrate. Rocky habitat (in brown) is depicted for northern California and the areas that have been interpreted for the area shown in southern California are in tan with the rocky substrate in brown.  The lower resolution rocky substrate (outside the tan areas) depicted in southern California represents interpreted substrate from courser bathymetry data. ",
+alt_caption = ""Map depicting copper rockfish observations from the Piedras Blancas MPA and reference sites for CCFRP in northern California (A) and the Carrington Point MPA and reference sites in southern California. The examples from each area show the differences in the available interpreted rocky substrate. Rocky habitat (in brown) is depicted for northern California and the areas that have been interpreted for the area shown in southern California are in tan with the rocky substrate in brown.  The lower resolution rocky substrate (outside the tan areas) depicted in southern California represents interpreted substrate from courser bathymetry data. "",
 label = 'ccfrp-map')
 ```
 
@@ -292,6 +311,7 @@ label = 'ccfrp-map')
 add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "area_weighted", "Index.png"), 
 caption = "Estimated relative index of abundance from the CCFRP Hook and Line survey",
+alt_caption = "The relative index for CCFRP is flat from 2007 to 2015 and steadily increases for the remainder of the time series",
 label = 'ccfrp-index-main')
 ```
 
@@ -301,6 +321,7 @@ label = 'ccfrp-index-main')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_bubflt5mkt0.png"), 
 caption = "Length composition data from the CCFRP Hook and Line survey",
+alt_caption = "CCFRP generally catches fish ranging from 20 to 50 centimeters. ",
 label = 'ccfrp-len-data')
 ```
 
@@ -310,6 +331,7 @@ label = 'ccfrp-len-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_CCFRP.png"), 
 caption = "Mean length for the CCFRP Hook and Line survey with 95 percent confidence intervals",
+alt_caption = "The mean length of fish caught by CCFRP range increases from 34 cm in 2007 to 38 centimeters in 2022.",
 label = 'ccfrp-mean-len-data')
 ```
 
@@ -319,6 +341,7 @@ label = 'ccfrp-mean-len-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALdat_bubflt5mkt0.png"), 
 caption = "Conditional age-at-length data from the CCFRP Hook and Line survey",
+alt_caption = "The range of age at length of fish caught by CCFRp are younger than approximatley 10 years of age from 2018 to 2019 and in 2022 observed fihs older than 10.",
 label = 'ccfrp-age-data')
 ```
 
@@ -390,6 +413,7 @@ label = 'ccfrp-age-data')
 add_figure(
 filein = file.path(data_dir, "ages",  "plots", "south_growth_length_comparison.png"), 
 caption = "Length distribution of fish by collection source that were used as conditional age-at-length data in the growth fleet.",
+alt_caption = "The peak of the distirbution for the cooperative CPFV and Peasron lengths peaked around 35 centimeters and the WCGBT survey length distribution peaks around 45 centimeters.",
 label = 'growth-len-dist')
 ```
 
@@ -399,6 +423,7 @@ label = 'growth-len-dist')
 add_figure(
 filein = file.path(data_dir, "ages",  "plots", "south_growth_age_comparison.png"), 
 caption = "Age distribution of fish by collection source that were used as conditional age-at-length data in the growth fleet.",
+alt_caption = "The peasek of the distirbutions of ages for the cooperative CPFV and Pearson collections were around 10 years and the WCGBT survey age distribution peaked at around 6 years of age.",
 label = 'growth-age-dist')
 ```
 
@@ -412,6 +437,7 @@ label = 'growth-age-dist')
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "visual_surveys.png"), 
 caption = "Locations copper rockfish were observed from visual surveys from Milton Love's submersible survey of natural reefs and oil platforms (RIGS) and additional visual surveys conducted by the SWFSC.",
+alt_caption = "Locations of copper rockfish from visual surveys along the coast that were not included in the stock assessment.",
 label = 'visual-surveys')
 ```
 
@@ -419,6 +445,7 @@ label = 'visual-surveys')
 add_figure(
 filein = file.path(data_dir, "rec_indices", "mrfss_cpfv_dockside", "north", "plots", "average_cpue_by_cnty.png"), 
 caption = "Average CPUE by county from the MRFSS dockside data north of Point Conception. Note the break in years from 1989-1995.",
+alt_caption = "Indices of abundance that show improbable estimates of CPUE among counties and indicate a noisy dataset from teh MRFSS period of sampling.",
 label = 'mrfss-cpue-county')
 ```
 
@@ -431,6 +458,7 @@ label = 'mrfss-cpue-county')
 add_figure(
 filein = file.path(data_dir, "wcgbt", "north", "plots", "cpue_map.png"), 
 caption = "Location and catch-per-unit-effort by location caught north of Point Conception by the NWFSC WCGBT survey.",
+alt_caption = "Bubble plot showing the uncommmonly encountered copper rockfish fromt he WCGBT survey.  Most copper rockfish observered were near Monterey Bay and and Morro Bay",
 label = 'wcgbt-cpue')
 ```
 
@@ -440,6 +468,7 @@ label = 'wcgbt-cpue')
 add_figure(
 filein = file.path(data_dir, "wcgbt", "north", "plots", "presence-absence_proportion_by_depth.png"), 
 caption = "Proportion of positive tows across all years by depth in meters from the NWFSC WCGBT survey.",
+alt_caption = "Very few copper rockfish were observed in the WCGBTS.  The majority of coppers were observed between 50 and 100 meters depth.",
 label = 'wcgbt-depth')
 ```
 
@@ -449,6 +478,7 @@ label = 'wcgbt-depth')
 add_figure(
 filein = file.path(data_dir, "wcgbt", "plots", "wcgbt_north_age_at_length_by_area.png"), 
 caption = "Age and length by sex for copper rockfish caught north of Point Conception by the NWFSC WCGBT survey.",
+alt_caption = "The WCGBT survey provided age data for the assessment.  No clear trend of differences in growth rates between males and females were observed in the plot of the available age at length data. Some of the smallest fish observed had undetermined sex.",
 label = 'wcgbt-len-age')
 ```
 
@@ -465,7 +495,7 @@ label = 'wcgbt-len-age')
 add_figure(
 filein = file.path(data_dir, "ages", "plots", "west_coast_age_density.png"), 
 caption = "Densities of aged copper rockfish by U.S. West Coast areas and limited samples from the Gulf of Alaska (25 fish).",
-label = 'west-coast-age-density')
+alt_caption = "The highest frequency of older aged fish peaking between 5-15 years were observed in California north of Point Conception. Souths of Point Conception in California the the highest frequency of ages peaking around 6 years of age. The highest frequency of ages in both Oregon and Washington peaked around 8 years of age.", label = 'west-coast-age-density')
 ```
 
 \pagebreak
@@ -474,7 +504,7 @@ label = 'west-coast-age-density')
 add_figure(
 filein = file.path(model_dir, "plots", "bio6_maturity.png"), 
 caption = "Maturity as a function of length",
-label = 'maturity')
+alt_caption = "Logistic maturity curve with fish starting to become mature at 25 cenitmeters and full maturity by 43 centimeters.", label = 'maturity')
 ```
 
 \pagebreak
@@ -483,7 +513,7 @@ label = 'maturity')
 add_figure(
 filein = file.path(model_dir, "plots", "bio9_fecundity_len.png"), 
 caption = "Fecundity as a function of length",
-label = 'fecundity')
+alt_caption = "Exponential curve of fecundity by length with the largest length fish having the highest fecundity.", label = 'fecundity')
 ```
 
 \pagebreak
@@ -492,7 +522,7 @@ label = 'fecundity')
 add_figure(
 filein = file.path(data_dir, "wcgbt", "plots", "length_fraction_female.png"), 
 caption = "Fraction of each sex by length by the NWFSC WCGBT survey",
-label = 'frac-sex-len')
+alt_caption = "Proportion of fish by sex in two centimeter length bins.  The smallest fish below 10 centimeters had undetermined sex.  The largest average proportion is approximately 50 50 from 18 to 48 centeimeters.  The proportion of sexed fish larger than 52 females is skewed towards female in this dataset.", label = 'frac-sex-len')
 ```
 
 \pagebreak
@@ -501,7 +531,7 @@ label = 'frac-sex-len')
 add_figure(
 filein = file.path(data_dir, "biology", "plots", "Length_Weight_All.png"), 
 caption = "Estimated weight-at-length using data from the NWFSC Hook and Line and WCGBT survey",
-label = 'weight-length')
+alt_caption = "Fish weight increases with increasing fish length.  There is no difference in the weight to length relationship for males and females.", label = 'weight-length')
 ```
 
 \pagebreak
@@ -511,7 +541,7 @@ label = 'weight-length')
 add_figure(
 filein = file.path(data_dir, "ages", "ageing_error", "B0_S3", "Reader_1_vs_Reader_2.png"), 
 caption = "Distribution of double reads between age reader 1 and 2.",
-label = 'age-error-dist')
+alt_caption = "Ageing error increases linearly with age", label = 'age-error-dist')
 ```
 
 \pagebreak
@@ -520,7 +550,7 @@ label = 'age-error-dist')
 add_figure(
 filein = file.path(model_dir, "plots",  "numbers5_ageerrorSD.png"), 
 caption = "Ageing imprecision standard deviation of observed age in years.",
-label = 'age-error')
+alt_caption = "Linear increase in the ageing imprecision standard deviation.", label = 'age-error')
 ```
 
 \pagebreak
@@ -529,7 +559,7 @@ label = 'age-error')
 add_figure(
 filein = file.path(model_dir, "plots",  "numbers10_ageerror_matrix_1.png"), 
 caption = "Distribution of observed age at true age for ageing error type 1.",
-label = 'age-error-matrix')
+alt_caption = "Ageing error increases linear with age.", label = 'age-error-matrix')
 ```
 
 \pagebreak
@@ -545,8 +575,8 @@ label = 'age-error-matrix')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(bridge_dir, "_plots", "0_model_convert_compare2_spawnbio_uncertainty.png"),
-caption = "Model version bridge comparison of estimated spawning output",
-label = 'bridge-ssb')
+caption = "Stock synthesis model version bridge comparison of estimated spawning output",
+alt_caption = "The stock synthesis models produced the same values of spwaning output", label = 'bridge-ssb')
 ```
 
 \pagebreak
@@ -556,7 +586,7 @@ label = 'bridge-ssb')
 add_figure(
 filein = file.path(bridge_dir, "_plots", "0_model_convert_compare4_Bratio_uncertainty.png"),
 caption = "Model version bridge comparison of estimated fraction unfished",
-label = 'bridge-depl')
+alt_caption = "The stock synthesis models produced the same values of estimated fraction of unfished and uncertainty", label = 'bridge-depl')
 ```
 
 \pagebreak
@@ -565,7 +595,7 @@ label = 'bridge-depl')
 add_figure(
 filein = file.path(bridge_dir, "_plots", "full_bridge_1_compare2_spawnbio_uncertainty.png"),
 caption = "Model structure and data bridging comparison of estimated spawning output",
-label = 'data-bridge-ssb-1')
+alt_caption = "Additions and updates of data including fleet structure, biologily, removals, lengths and ages and fishery indices did not result in large overall changes in the model.  Addition of fishery lengths and ages and indices estimated a higher spawning output in the last three years of the model.", label = 'data-bridge-ssb-1')
 ```
 
 \pagebreak
@@ -575,7 +605,7 @@ label = 'data-bridge-ssb-1')
 add_figure(
 filein = file.path(bridge_dir, "_plots", "full_bridge_1_compare4_Bratio_uncertainty.png"),
 caption = "Model structure and data bridging comparison of estimated fraction unfished",
-label = 'data-bridge-depl-1')
+alt_caption = "Additions and updates of data including fleet structure, biologily, removals, lengths and ages and fishery indices did not result in large overall changes in the model.  Addition of fishery lengths and ages and indices estimated a higher fraction of unfished in the last three years of the model.", label = 'data-bridge-depl-1')
 ```
 
 \pagebreak
@@ -584,7 +614,7 @@ label = 'data-bridge-depl-1')
 add_figure(
 filein = file.path(bridge_dir, "_plots", "full_bridge_2_compare2_spawnbio_uncertainty.png"),
 caption = "Model structure and data bridging comparison of estimated spawning output",
-label = 'data-bridge-ssb-2')
+alt_caption = "", label = 'data-bridge-ssb-2')
 ```
 
 \pagebreak
@@ -594,7 +624,7 @@ label = 'data-bridge-ssb-2')
 add_figure(
 filein = file.path(bridge_dir, "_plots", "full_bridge_2_compare4_Bratio_uncertainty.png"),
 caption = "Model structure and data bridging comparison of estimated fraction unfished",
-label = 'data-bridge-depl-2')
+alt_caption = "Addition of the ROV indices and lengths and the fishery independent data ressulted in higher estimates of sapwning output in the ending years of the model.", label = 'data-bridge-depl-2')
 ```
 
 \pagebreak
@@ -610,7 +640,7 @@ label = 'data-bridge-depl-2')
 add_figure(
 filein = file.path(management_dir, "fishing_regs.png"),
 caption = "The CDFW recreational season length and depth restriction for nearshore rockfish by month from 2000 to 2003. A triangle indicates a regulation change mid-month. The regions defined base on the following latitudes: Northern ($42^\\circ 00^\\prime$ N. lat. to $40^\\circ 10^\\prime$ N. lat.), Mendocino ($40^\\circ 10^\\prime$ N. lat. to $38^\\circ 57^\\prime$ N. lat.), San Francisco ($38^\\circ 57^\\prime$ N. lat. to $37^\\circ 11^\\prime$ N. lat.), Central ($37^\\circ 11^\\prime$ N. lat. to $34^\\circ 27^\\prime$ N. lat.), Southern ($34^\\circ 27^\\prime$ N. lat. to U.S./Mexico border). Not all management areas have been consistently defined over time. The northern  and southern management areas have remained the same. From 2001-2003 the Central management area was defined as $40^\\circ 10^\\prime$ N. lat. to  $34^\\circ 27^\\prime$ N. lat. In 2004, the Central area was split into a North-Central and South-Central areas at $36^\\circ 00^\\prime$ N. lat. In 2005, the regions from $40^\\circ 10^\\prime$ N lat. to $34^\\circ 27^\\prime$ N. lat. were redefined. The North-Central encompasses $40^\\circ 10^\\prime$ N. lat. to $37^\\circ 11^\\prime$ N. lat., Monterey South-Central from $37^\\circ 11^\\prime$ N. lat. to $36^\\circ 00^\\prime$ N. lat., and Morro Bay South-Central from $36^\\circ 00^\\prime$ N. lat. to $34^\\circ 27^\\prime$ N. lat.",
-label = 'depth-closures')
+alt_caption = "The caption contains a detailed description of fishing regulations.", label = 'depth-closures')
 ```
 
 \pagebreak
@@ -633,7 +663,7 @@ label = 'depth-closures')
 add_figure(
 filein = file.path(model_dir, "plots", "bio5_weightatsize.png"),
 caption = "Assumed weight-length relationship for each sex.",
-label = 'est-len-wght')
+alt_caption = "Mean weight increases exponentially with length for males and females.", label = 'est-len-wght')
 ```
 
 \pagebreak
@@ -642,7 +672,7 @@ label = 'est-len-wght')
 add_figure(
 filein = file.path(model_dir, "plots", "bio1_sizeatage.png"),
 caption = "Model estimated length-at-age in the beginning of the year. Shaded area indicates 95 percent distribution of length-at-age around the estimated growth curve",
-label = 'mod-est-len-age')
+alt_caption = "Males and females have similar growth until approximately 12 years of age when female sthen grow to a larger size than males.", label = 'mod-est-len-age')
 ```
 
 \pagebreak
@@ -657,9 +687,8 @@ label = 'mod-est-len-age')
 add_figure(
 filein = file.path(model_dir, "plots", "north_selectivity.png"),
 caption = "Estimated selectivity for each fleet and survey in the base model.",
-label = 'est-selex')
+alt_caption = "Asymptotic selectivity is estimated for the commercial dead fleet and the commercial live fleet from 1916 to 2010 and the CPFV fleet from 2017 to 2022.  Dome shaped selectivity is estimated for the later years of the commercial live fleet, earlier years of the CDFW fleet, the private recfreational fleet, and 2007-2016 for CCFRP.", label = 'est-selex')
 ```
-
 
 \pagebreak
 
@@ -674,7 +703,7 @@ label = 'est-selex')
 add_figure(
 filein = file.path(model_dir, "plots", "ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png"), 
 caption = "Estimated time series of age-0 recruits (1000s)",
-label = 'recruits')
+alt_caption = "See table 22.", label = 'recruits')
 ```
 
 \pagebreak
@@ -683,7 +712,7 @@ label = 'recruits')
 add_figure(
 filein = file.path(model_dir, "plots", "recdevs2_withbars.png"), 
 caption = "Estimated time series of recruitment deviations",
-label = 'rec-devs')
+alt_caption = "The early period of recruitment deviations increases in the 1960s before the estimated period begins.  Recrutiment deviations decrease through 1980, increase to the mid 1990s, decrease again until 2007 and then bounces between negative and positive to the end of the time series.", label = 'rec-devs')
 ```
 
 \pagebreak
@@ -693,7 +722,8 @@ label = 'rec-devs')
 add_figure(
 filein = file.path(model_dir, "plots", "recruit_fit_bias_adjust.png"), 
 caption = "Points are transformed variances. Red line shows current settings for bias adjustment specified in control file. Blue line shows least squares estimate of alternative bias adjustment relationship for recruitment deviations (which may or may not be an improvement)",
-label = 'bias-adjust')
+alt_caption = "Bias adjustment ramps up linearly from 0 to 0.90 between 1966-2003 constant at 0.90 between 2003-2016 and then ramps down to 0 between 2016-2022.",
+", label = 'bias-adjust')
 ```
 
 
@@ -704,7 +734,7 @@ label = 'bias-adjust')
 add_figure(
 filein = file.path(model_dir, "plots", "SR_curve.png"), 
 caption = "Stock-recruit curve. Point colors indicate year, with warmer colors indicating earlier years and cooler colors in showing later years",
-label = 'bh-curve')
+alt_caption = "Beverton-holt stock recruitment relationship with a steepness of 0.72 with spawning output and the resulting recruitment estimates.", label = 'bh-curve')
 ```
 
 \pagebreak
@@ -721,7 +751,7 @@ label = 'bh-curve')
 add_figure(
 filein = file.path(model_dir, "plots",  "comp_lenfit__aggregated_across_time.png"), 
 caption = "Length composition aggregated across years by fleet with the model estimated fit to the data by sex (green unsexed, red female, and blue male).",
-label = 'len-agg-fit')
+alt_caption = "The predicted length compositions were generally well fit for for all fleets.", label = 'len-agg-fit')
 ```
 
 \pagebreak
@@ -731,7 +761,7 @@ label = 'len-agg-fit')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt1mkt0.png"), 
 caption = "Pearson residuals for commercial dead fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-label = 'com-dead-pearson')
+alt_caption = "There are no clear patters in the residuals in the observed fits.", label = 'com-dead-pearson')
 ```
 
 \pagebreak
@@ -740,7 +770,7 @@ label = 'com-dead-pearson')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Commercial_dead.png"), 
 caption = "Mean length for commercial dead lengths with 95 percent confidence intervals based on current samples sizes",
-label = 'com-dead-mean-len-fit')
+alt_caption = "The model predicted mean length generally fit the observed data well.", label = 'com-dead-mean-len-fit')
 ```
 
 \pagebreak
@@ -749,7 +779,7 @@ label = 'com-dead-mean-len-fit')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_data_weighting_TA1.8_condAgeCommercial_Dead.png"), 
 caption = "Mean age from the commercial dead fleet conditional ages.",
-label = 'com-dead-mean-age')
+alt_caption = "The model predicted mean length generally fit the observed data well.", label = 'com-dead-mean-age')
 
 ```
 
@@ -757,12 +787,12 @@ label = 'com-dead-mean-age')
 #add_figure(
 #filein = file.path(model_dir, "plots", "comp_agefit__aggregated_across_time.png"), 
 #caption = "Age composition data aggregated across time by fleet.",
-#label = 'agg-marg-age-fit')
+#alt_caption = "", label = 'agg-marg-age-fit')
 
 #add_figure(
 #filein = file.path(model_dir, "plots", "comp_agefit_residsflt1mkt0.png"), 
 #caption = "Pearson residuals for commercial dead age data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-#label = 'com-dead-age-pearson')
+#alt_caption = "", label = 'com-dead-age-pearson')
 ```
 
 \pagebreak
@@ -771,7 +801,7 @@ label = 'com-dead-mean-age')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt2mkt0.png"), 
 caption = "Pearson residuals for commercial live fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-label = 'com-live-pearson')
+alt_caption = "There are no clear patters in the residuals in the observed fits.", label = 'com-live-pearson')
 ```
 
 \pagebreak
@@ -780,7 +810,7 @@ label = 'com-live-pearson')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Commercial_live.png"), 
 caption = "Mean length for commercial live fish lengths with 95 percent confidence intervals based on current samples sizes",
-label = 'com-live-mean-len-fit')
+alt_caption = "The model predicted mean length generally fit the observed data well.", label = 'com-live-mean-len-fit')
 ```
 
 \pagebreak
@@ -789,7 +819,7 @@ label = 'com-live-mean-len-fit')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt3mkt0_page2.png"), 
 caption = "Pearson residuals for recreational CPFV fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-label = 'rec-cpfv-pearson')
+alt_caption = "There are no clear patters in the residuals in the observed fits.", label = 'rec-cpfv-pearson')
 ```
 
 \pagebreak
@@ -798,7 +828,7 @@ label = 'rec-cpfv-pearson')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Rec_CPFV.png"), 
 caption = "Mean length for recreational CPFV lengths with 95 percent confidence intervals based on current samples sizes",
-label = 'rec-cpfv-mean-len-fit')
+alt_caption = "The model predicted mean length generally fit the observed data well.", label = 'rec-cpfv-mean-len-fit')
 ```
 
 \pagebreak
@@ -807,7 +837,7 @@ label = 'rec-cpfv-mean-len-fit')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_agefit_residsflt3mkt0.png"), 
 caption = "Pearson residuals for recreational CPFV age data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-label = 'rec-cpfv-age-pearson')
+alt_caption = "There are no clear patters in the residuals in the observed fits.", label = 'rec-cpfv-age-pearson')
 ```
 
 \pagebreak
@@ -816,7 +846,7 @@ label = 'rec-cpfv-age-pearson')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt4mkt0_page2.png"), 
 caption = "Pearson residuals for recreational private/rental fleet. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-label = 'rec-pr-pearson')
+alt_caption = "There are no clear patters in the residuals in the observed fits.", label = 'rec-pr-pearson')
 ```
 
 \pagebreak
@@ -825,7 +855,7 @@ label = 'rec-pr-pearson')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_Rec_PR.png"), 
 caption = "Mean length for recreational private/rental lengths with 95 percent confidence intervals based on current samples sizes",
-label = 'rec-pr-mean-len-fit')
+alt_caption = "The model predicted mean length generally fit the observed data well.", label = 'rec-pr-mean-len-fit')
 ```
 
 \pagebreak
@@ -834,7 +864,7 @@ label = 'rec-pr-mean-len-fit')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALfit_residsflt4mkt0.png"), 
 caption = "Pearson residuals for the recreational private/rental conditional age-at-ength data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-label = 'rec-pr-age-pearson')
+alt_caption = "There are no clear patters in the residuals in the observed fits.", label = 'rec-pr-age-pearson')
 ```
 
 
@@ -842,7 +872,7 @@ label = 'rec-pr-age-pearson')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_residsflt5mkt0.png"), 
 caption = "Pearson residuals for CCFRP Hook and Line survey length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-label = 'ccfrp-len-pearson')
+alt_caption = "There are no clear patters in the residuals in the observed fits.", label = 'ccfrp-len-pearson')
 ```
 
 \pagebreak
@@ -851,7 +881,7 @@ label = 'ccfrp-len-pearson')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_CCFRP.png"), 
 caption = "Mean length for CCFRP Hook and Line survey lengths with 95 percent confidence intervals based on current samples sizes",
-label = 'ccfrp-mean-len-fit')
+alt_caption = "The model predicted mean length generally fit the observed data well.", label = 'ccfrp-mean-len-fit')
 ```
 
 \pagebreak
@@ -860,7 +890,7 @@ label = 'ccfrp-mean-len-fit')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAAlfit_residsflt5mkt0.png"), 
 caption = "Pearson residuals for CCFRP Hook and Line survey conditional-age-at-length data. Closed bubble are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)",
-label = 'ccfrp-age-pearson')
+alt_caption = "There are no clear patters in the residuals in the observed fits.", label = 'ccfrp-age-pearson')
 ```
 
 \pagebreak
@@ -869,7 +899,7 @@ label = 'ccfrp-age-pearson')
 #add_figure(
 #filein = file.path(model_dir, "plots", "comp_lenfit_residsflt6mkt0.png"), 
 #caption = "Pearson residuals for CDFW ROV survey length data. Closed bubble are positive residuals (observed > #expected) and open bubbles are negative residuals (observed < expected)",
-#label = 'rov-pearson')
+#alt_caption = "", label = 'rov-pearson')
 ```
 
 \pagebreak
@@ -878,7 +908,7 @@ label = 'ccfrp-age-pearson')
 #add_figure(
 #filein = file.path(model_dir, "plots", "comp_lenfit_data_weighting_TA1.8_CDFW_ROV.png"), 
 #caption = "Mean length for CDFW ROV survey lengths with 95 percent confidence intervals based on current samples #sizes",
-#label = 'rov-mean-len-fit')
+#alt_caption = "", label = 'rov-mean-len-fit')
 ```
 
 \pagebreak
@@ -892,7 +922,7 @@ label = 'ccfrp-age-pearson')
 #add_figure(
 #filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_CPFV.png"), 
 #caption = "Fit to log index data on log scale for recreational (MRFSS) CPFV. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-#label = 'mrfss-cpfv-index-fit')
+#alt_caption = "", label = 'mrfss-cpfv-index-fit')
 ```
 
 \pagebreak
@@ -901,7 +931,7 @@ label = 'ccfrp-age-pearson')
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_DWV_CPFV.png"), 
 caption = "Fit to log index data on log scale for Deb Wilson-Vandenberg CPFV survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-label = 'dwv-cpfv-index-fit')
+alt_caption = "The index was generally fit well, but hte model did not capture the observed decrfease in the index from 1996-1998", label = 'dwv-cpfv-index-fit')
 ```
 
 \pagebreak
@@ -910,7 +940,7 @@ label = 'dwv-cpfv-index-fit')
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_CRFS_CPFV.png"), 
 caption = "Fit to log index data on log scale for CRFS CPFV survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-label = 'crfs-cpfv-index-fit')
+alt_caption = "The model fit the index well and fit the index well, capturing the increase in 2016.", label = 'crfs-cpfv-index-fit')
 ```
 
 \pagebreak
@@ -919,7 +949,7 @@ label = 'crfs-cpfv-index-fit')
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_PR.png"), 
 caption = "Fit to log index data on log scale for recreational (CRFS) PR. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-label = 'crfs-pr-index-fit')
+alt_caption = "The general trend in the index was fit well, but did not capture the increase in 2017.", label = 'crfs-pr-index-fit')
 ```
 
 
@@ -929,7 +959,7 @@ label = 'crfs-pr-index-fit')
 #add_figure(
 #filein = file.path(model_dir, "plots", "index5_logcpuefit_CDFW_ROV.png"), 
 #caption = "Fit to log index data on log scale for CDFW ROV survey. Lines indicate 95% uncertainty interval around #index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input #uncertainty before addition of estimated additional uncertainty parameter",
-#label = 'rov-index-fit')
+#alt_caption = "", label = 'rov-index-fit')
 ```
 
 \pagebreak
@@ -939,7 +969,7 @@ label = 'crfs-pr-index-fit')
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_CCFRP.png"), 
 caption = "Fit to log index data on log scale for CCFRP survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-label = 'ccfrp-index-fit')
+alt_caption = "The CCFRP survey index was fit well by the model.  Only one year, 2013, did not intersect with the increased estimated uncertainty.", label = 'ccfrp-index-fit')
 ```
 
 
@@ -949,7 +979,7 @@ label = 'ccfrp-index-fit')
 add_figure(
 filein = file.path(model_dir, "plots", "index9_standcpueall.png"), 
 caption = "Standardized indices overlaid. Each index is rescaled to have mean observation = 1.0. Note, the  MRFSS CPFV (Rec_CPFV) fishery-dependent and CDFW ROV fishery-independent indices of abundance were not fit in the model but are included here for illustration.",
-label = 'standardized-indices')
+alt_caption = "The indices genearlly track trends in the same direction over time.", label = 'standardized-indices')
 ```
 
 \pagebreak
@@ -965,7 +995,7 @@ label = 'standardized-indices')
 add_figure(
 filein = file.path(model_dir, "plots", "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
 caption = "Estimated time series of spawning output in billions of eggs",
-label = 'ssb')
+alt_caption = "Spawning output is relatively unfished between the start of the model until 1960 with the spawning output sharply decreasing to low levels bythe late 1990s remaining low until the early 2000s where spawning output begins to increases to the end of the time series.", label = 'ssb')
 ```
 
 \pagebreak
@@ -974,7 +1004,8 @@ label = 'ssb')
 add_figure(
 filein = file.path(model_dir, "plots", "ts1_Total_biomass_(mt).png"), 
 caption = "Estimated time series of total biomass",
-label = 'tot-bio')
+alt_caption = "Total biomass in metric tons is relatively unfished between the start of the model through 1960 with the spawning output sharply decreasing to low levels by 1990s remaining low until the early 2000s where biomass increases to the end of the time series.",
+", label = 'tot-bio')
 ```
 
 \pagebreak
@@ -983,7 +1014,8 @@ label = 'tot-bio')
 add_figure(
 filein = file.path(model_dir, "plots", "ts9_Relative_spawning_output_intervals.png"), 
 caption = "Estimated time series of fraction of unfished spawning output",
-label = 'depl')
+alt_caption = "Estimated fraction of unfished is relatively unfished between the start of the model through 1960 with the spawning output sharply decreasing to low levels by 1990s remaining low until the early 2000s where it increases until the end of the time series.",
+", label = 'depl')
 ```
 
 \pagebreak
@@ -993,7 +1025,7 @@ label = 'depl')
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "spawning_output_combined.png"), 
 caption = "Estimated combined time series of spawning output for copper rockfish in California waters",
-label = 'sb-all')
+alt_caption = "Estimated spawning biomass is relatively unfished between the start of the model through 1960 with the spawning output sharply decreasing to low levels by 1990s remaining low until the early 2000s where it increases until the end of the time series.", label = 'sb-all')
 
 ```
 
@@ -1005,7 +1037,7 @@ label = 'sb-all')
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "depletion_combined.png"), 
 caption = "Estimated combined time series of fraction of relative spawning output for copper rockfish in California waters",
-label = 'depl-all')
+alt_caption = "Estimated fraction of unfished is relatively unfished between the start of the model through 1960 with the spawning output sharply decreasing to low levels by 1990s remaining low until the early 2000s where it increases until the end of the time series.", label = 'depl-all')
 
 ```
 
@@ -1027,7 +1059,7 @@ base model for structural sensitivities. The quantities compared are the estimat
 spawning output (SB~0~), spawning output in 2023 (SB~2023~), the relative spawning output 
 SB~2023~/SB~0~), the yield based on a spawner per recruit harvest rate (Yield~SPR=0.50~), 
 and the fishing mortality at that harvest rate (F~SPR=0.50~). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend. A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
-label = 'sens-structure')
+alt_caption = "", label = 'sens-structure')
 ```
 
 \newpage
@@ -1040,7 +1072,7 @@ caption = "Comparison of the relative change in estimated management quantities 
 base model for data senstivities. The quantities compared are the estimate of unfished spawning 
 output (SB~0~), spawning output in 2023 (SB~2023~), the relative spawning output (SB~2023~/SB~0~), 
 the yield based on a spawner per recruit harvest rate (Yield~SPR=0.50~), and the fishing mortality at that harvest rate (F~SPR=0.50~). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend. A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
-label = 'sens-data')
+alt_caption = "See Table 20 for additional details.", label = 'sens-data')
 ```
 
 \newpage
@@ -1051,7 +1083,7 @@ nm = paste0(north_model_name, "_1_compare2_spawnbio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots",  nm),
 caption = "Change in estimated spawning output by sensitivity",
-label = 'sens-ssb-1')
+alt_caption = "See Table 20.", label = 'sens-ssb-1')
 ```
 
 \newpage
@@ -1061,7 +1093,7 @@ nm = paste0(north_model_name, "_1_compare4_Bratio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated fraction unfished by sensitivity",
-label = 'sens-depl-1')
+alt_caption = "See Table 20.", label = 'sens-depl-1')
 ```
 
 \newpage
@@ -1071,7 +1103,7 @@ nm = paste0(north_model_name, "_2_compare2_spawnbio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated spawning output by sensitivity",
-label = 'sens-ssb-2')
+alt_caption = "See Table 20.", label = 'sens-ssb-2')
 ```
 
 \newpage
@@ -1081,7 +1113,7 @@ nm = paste0(north_model_name, "_2_compare4_Bratio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated fraction unfished by sensitivity",
-label = 'sens-depl-2')
+alt_caption = "See Table 20.", label = 'sens-depl-2')
 ```
 
 \newpage
@@ -1092,7 +1124,7 @@ nm = paste0(north_model_name, "_3_compare2_spawnbio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated spawning output by sensitivity",
-label = 'sens-ssb-3')
+alt_caption = "See Table 20.", label = 'sens-ssb-3')
 ```
 
 \newpage
@@ -1102,7 +1134,7 @@ nm = paste0(north_model_name, "_3_compare4_Bratio_uncertainty.png")
 add_figure(
 filein = file.path(sens_dir, "_plots", nm),
 caption = "Change in estimated fraction unfished by sensitivity",
-label = 'sens-depl-3')
+alt_caption = "See Table 20.", label = 'sens-depl-3')
 ```
 
 \newpage
@@ -1142,7 +1174,7 @@ read_child(filein)
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "north_assess_compare_compare2_spawnbio_uncertainty.png"),
 caption = "Comparison of the estimated spawning output for the base model to previous assessment in 2021.",
-label = 'comp-assess-sb')
+alt_caption = "The retrospective estimates fall within the estimated base model uncertainty.", label = 'comp-assess-sb')
 ```
 
 \newpage
@@ -1152,7 +1184,7 @@ label = 'comp-assess-sb')
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "north_assess_compare_compare4_Bratio_uncertainty.png"),
 caption = "Comparison of the estimated fraction unfished for the base model to previous assessment in 2021.",
-label = 'comp-assess-depl')
+alt_caption = "The retrospective estimates fall within the estimated base model uncertainty.", label = 'comp-assess-depl')
 ```
 
 \newpage
@@ -1168,7 +1200,7 @@ label = 'comp-assess-depl')
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "compare6_SPRratio_uncertainty.png"), 
 caption = "Estimated 1 - relative spawning ratio (SPR) by year for both sub-area models south and north of Point Conception",
-label = '1-spr')
+alt_caption = "The estimated fishing rate exceeded the target for nearly all years since 1970 in the  model south of Point Conception.", label = '1-spr')
 ```
 
 \clearpage
@@ -1177,7 +1209,7 @@ label = '1-spr')
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "compare15_phase_plot.png"), 
 caption = "Phase plot of the relative biomass (also referred to as fraction unfished) versus the SPR ratio where each point represents the biomass ratio at the start of the year and the relative fishing intensity in that same year. Lines through the final point show the 95 percent intervals based on the asymptotic uncertainty for each dimension. The shaded ellipse is a 95 percent region which accounts for the estimated correlations between the biomass ratio and SPR ratio",
-label = 'phase')
+alt_caption = "The estimated fishing rate is below the target and the stock is estimated to be above the refrence point target in northern California.", label = 'phase')
 ```
 
 \pagebreak
@@ -1187,7 +1219,7 @@ add_figure(
 filein = file.path(doc_dir, "shared_figures", "north_yield2_yield_curve_with_refpoints.png"), 
 caption = "Equilibrium yield curve for the base case model north of Point Conception. Values are based on the 2022
 fishery selectivities and with steepness fixed at 0.72",
-label = 'yield-north')
+alt_caption = "Equilibrium curve peaks around 0.30 fraction of unfished with the estimated current fraction of unfished at 0.46", label = 'yield-north')
 ```
 
 \pagebreak
@@ -1197,7 +1229,7 @@ add_figure(
 filein = file.path(doc_dir, "shared_figures", "south_yield2_yield_curve_with_refpoints.png"), 
 caption = "Equilibrium yield curve for the base case model south of Point Conception. Values are based on the 2022
 fishery selectivities and with steepness fixed at 0.72",
-label = 'yield-south')
+alt_caption = "Equilibrium curve peaks around 0.30 fraction of unfished with the estimated current fraction of unfished at 0.16", label = 'yield-south')
 ```
 
 

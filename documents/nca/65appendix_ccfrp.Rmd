@@ -111,6 +111,7 @@ sa4ss::table_format(x = ind,
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "mpa_site_cpue.png"), 
 caption = "Average CPUE by site with trends prior to standardization in the MPA and REF areas.",
+alt_caption = "The average CPUE is higher in the MPAs at Piedras Blancas, Point Lobos and Stewarts Point.",
 label = 'ccfrp-avg-cpue')
 ```
 
@@ -119,6 +120,7 @@ label = 'ccfrp-avg-cpue')
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "area_weighted", "qq.png"), 
 caption = "QQ-plot for the CCFRP survey.",
+alt_caption = "The q q plots indicates a fairly good fit to the index.",
 label = 'ccfrp-qq')
 ```
 
@@ -129,7 +131,7 @@ label = 'ccfrp-qq')
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "area_weighted", "Index.png"), 
 caption = "The weighted relative index of abundance.",
+alt_caption = "The weighted index is relatively flat until 2015 and then increases.",
 label = 'ccfrp-index')
 ```
-
 
