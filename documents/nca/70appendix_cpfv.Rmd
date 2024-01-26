@@ -32,7 +32,7 @@ From the onboard observer trips in District 1, 37 percent of the observed copper
 
 In District 2, 17 percent of the observed copper rockfish were from half-day day trips, 75 percent from the three-quarter to full day trips, and 8 percent from multi-day trips. When weather allows, the northern Channel Islands can be accessed from CRFS District 2 during a three-quarter to full-day trip or a multi-day trip, depending on the port. For instance, the CPFVs from Channel Islands Sportfishing in Oxnard, California access the northern Channel Islands during multi-day trips, and the same areas are accessed by the three-quarter to full-day trips out of Santa Barbara Landing. 
 
-The majority of length samples for the CPFV fleet are taken onboard the observed trips. The shift in the distribution of lengths from each trip type is evident from the overnight trips from District 1 with larger fish encountered on the overnight trips (Figure \ref{fig:copper-lengths}.  The average length of fish encountered on half-day trips out of District 2 is 33.1 cm compared to 36.3 for three-quarter day trips and 36.6 for overnight trips.  
+The majority of length samples for the CPFV fleet are taken onboard the observed trips. The shift in the distribution of lengths from each trip type is evident from the overnight trips from District 1 with larger fish encountered on the overnight trips (Figure \ref{fig:copper-lengths}).  The average length of fish encountered on half-day trips out of District 2 is 33.1 cm compared to 36.3 for three-quarter day trips and 36.6 for overnight trips.  
 
 To account for the differences in the the differences in catch rates and size compositions observed across trip types and areas, we would need to collect estimates of catch and effort at a finer-scale than the CRFS district. While the logbooks are not perfect, and there is a fraction of non-compliance, they highlight the intense fishing pressure in some areas and may help identify the how to distribute sampling efforts. For example, increased sampling in Districts 4-6 would also provide information on the length composition of the fish encountered by the CPFV fleet, especially considering the increase in average length with latitude (Figure \@ref(fig:copper-lengths)). The increased sampling in District 4-6 would also provide the data needed to create an accurate index of relative abundance from the onboard observer data, which can easily be considered one of the most valuable fishery-dependent data sources available. Based on additional data from the logbooks it may be possible to identify an approximate fraction of half-day to three-quarter day trips.
 The lengths in Table \@ref(tab:copper-lengths) are currently all weighted equally in the length compositions within the current assessment models. Future research is needed to determine the effects of the changing size composition by trip type within stock assessment models, especially for southern California where larger fish are encountered on longer trips. Weighting the length composition data by the catch from each trip type is one possible method to account for the differences observed in Figure \@ref(fig:copper-lengths). 
@@ -44,6 +44,7 @@ The lengths in Table \@ref(tab:copper-lengths) are currently all weighted equall
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "crfs_districts.png"), 
 caption = "Map of the CDFW CRFS sampling Districts.",
+alt_caption = "A map showing the six sampling districts, with district one and two south of Point Conception.",
 label = 'crfs-districts')
 ```
 
@@ -53,6 +54,7 @@ label = 'crfs-districts')
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "length_by_triptype.png"), 
 caption = "Distribution of the lengths of copper rockfish measured from 2018-2019 from dockside angler interviews by district.",
+alt_caption = "The length distribution of copper rockfish encountered on overnight trips is larger than on single day trips.",
 label = 'copper-lengths')
 ```
 

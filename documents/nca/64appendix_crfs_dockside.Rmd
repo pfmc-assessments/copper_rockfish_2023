@@ -205,6 +205,7 @@ sa4ss::add_figure(
   caption = "Distribution by year of the number of copper rockfish retained per angler. 
   This includes sampler observed and angler reported catch. The vertical line at 1 represents the sub-bag 
   limit implemented in 2022.",
+  alt_caption = "The number of copper rockfish retained did not significanly change with the changing bag limits",
   label = "pr-bag"
 )
 ```
@@ -218,6 +219,7 @@ sa4ss::add_figure(
     "average_cpue_by_cnty.png"
   ),
   caption = "Average CPUE by district prior to standardization.",
+    alt_caption = "The average CPUE by district shows a trend of increasing average CPUE and higher CPUE in district four.",
   label = "pr-districtcpue"
 )
 ```
@@ -232,6 +234,7 @@ sa4ss::add_figure(
     "index.png"
   ),
   caption = "Index for the dockside PR survey.",
+    alt_caption = "The index is relatively flat until an increase in 2015.",
   label = "pr-index"
 )
 ```
@@ -245,6 +248,7 @@ sa4ss::add_figure(
     "rm_last2yrs_area_weighted", "negbin_prop_zero_main_effects.png"
   ),
   caption = "Predicted proportion of zeroes from the Bayesian fit to the main effects model.",
+    alt_caption = "The predicted proportion of zeroes is within 0.5% of the data.",
   label = "pr-prop-zero"
 )
 ```
@@ -261,6 +265,7 @@ sa4ss::add_figure(
     "rm_last2yrs_area_weighted", "qq.png"
   ),
   caption = "Q-Q plot for the dockside PR survey.",
+    alt_caption = "The qq plot indicates a relatively good fit with some diversion of the 1:1 line on the upper quantiles.",
   label = "pr-qq"
 )
 ```
