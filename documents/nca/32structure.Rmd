@@ -27,15 +27,17 @@ read_child(filein)
 
 The exploration of models began by bridging from the 2021 data-moderate assessment to Stock Synthesis version 3.30.21, which produced the same estimates for spawning output and relative spawning output across the time series (Figures \ref{fig:bridge-ssb} and \ref{fig:bridge-depl}). Additional bridging analyses were conducted examining the impact of revised model structure and updating existing data sources, and adding new data into the model. First, the fishery fleet structure was modified from the 2021 structure where the new assessment separated commercial data into two fleets based on fish landed condition, dead or live, and the recreational data into two fleets, CPFV and PR. The 2021 recreational and commercial data were reprocessed  into the new model structure through 2021 and new selectivity parameters were added to the 2021 for the newly split data. The new data available in for this assessment were then added to the model retaining the same model structure where feasible in the following order:
 
-1. Update externally estimated biology parameters for length-at-age, weight-at-age, and maturity.
-2. Add new catch data for all fishery fleets.
-3. Add all updated commercial and recreational length and age data.
-4. Add the new fishery-dependent indices of abundance.
-5. Add the CDFW ROV survey index of abundance and length data.
-6. Add the CCFRP Hook and Line survey index of abundance, length, and age data.
-7. Add selectivity blocks for the commercial and recreational fleets.
-8. Adjust the estimation of annual recruitment deviations.
-9. Add conditional-age-at-length data for the growth fleet and estimate growth parameters for both sexes.
+\begin{enumerate}
+    \item Update externally estimated biology parameters for length-at-age, weight-at-age, and maturity.
+    \item Add new catch data for all fishery fleets.
+    \item Add all updated commercial and recreational length and age data.
+    \item Add the new fishery-dependent indices of abundance.
+    \item Add the CDFW ROV survey index of abundance and length data.
+    \item Add the CCFRP Hook and Line survey index of abundance, length, and age data.
+    \item Add selectivity blocks for the commercial and recreational fleets.
+    \item Adjust the estimation of annual recruitment deviations.
+    \item Add conditional-age-at-length data for the growth fleet and estimate growth parameters for both sexes.
+\end{enumerate}
 
 The data bridging results are shown in Figures \ref{fig:data-bridge-ssb-1}-\ref{fig:data-bridge-depl-2}. Revising the model structure, and updating biology and removals resulted in small changes to the estimated spawning output and stock status (Figures \ref{fig:data-bridge-ssb-1} and \ref{fig:data-bridge-depl-1}). Updating and adding the fishery lengths, ages, and indices resulted in a less depleted final population at the end of the time series. Adding and updating survey data, adding selectivity blocks, and estimating annual recruitment deviations and growth resulted in only minimal revisions in the population estimates (Figures \ref{fig:data-bridge-ssb-2} and \ref{fig:data-bridge-depl-2}). Adjusting the annual recruitment deviations (years estimates and bias adjustment) resulted in a small decline in final spawning output and relative spawning output. The final bridging step that added the conditional-age-at-length data for the growth fleet and allowed the estimation of growth resulted in an increase in spawning output and relative spawning output at the end of the time series. 
 

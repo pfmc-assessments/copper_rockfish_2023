@@ -57,7 +57,7 @@ label = 'catch')
 add_figure(
 filein = file.path(model_dir, "plots", "data_plot.png"), 
 caption = "Summary of data sources used in the base model",
-alt_caption = "Catch data ar ablor all years modeled from the commercial dead fishery, from the mid 1990s for the commercial live fishery and from 1926 to present for the two recreational fleets.  A fishery-independent index from CCFRP was available from 2007 to present. Length composition data were available for all fleets. Marginal ages were available from the recreational charter boat fleet from sparse years in the 1970s and the most recent year.  Conditional age at length data were availble from the commercial dead fishery, both recreational fleets, CCFRP and various other sources input as a growth fleet.",
+alt_caption = "Catch data ar ablor all years modeled from the commercial dead fishery from the mid 1990s for the commercial live fishery and from 1926 to present for the two recreational fleets.  A fishery-independent index from CCFRP was available from 2007 to present. Length composition data were available for all fleets. Marginal ages were available from the recreational charter boat fleet from sparse years in the 1970s and the most recent year.  Conditional age at length data were availble from the commercial dead fishery both recreational fleets CCFRP and various other sources input as a growth fleet.",
 label = 'data-plot')
 ```	
 
@@ -94,7 +94,7 @@ label = 'com-dead-len-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Commercial_Dead.png"), 
 caption = "Mean length for commercial dead fleet with 95 percent confidence intervals",
-alt_caption = "Mean length for the commercial dead fleet were availbe from 1979 to 1981, 1991 to 2000, 2001, and 2016 to 2021. Mean length was around 40 to 45 centimeters for the majority of the time period and decreased to around 30 centimeters startin in 2019.",
+alt_caption = "Mean length for the commercial dead fleet were availbe from 1979 to 1981 1991 to 2000 2001 and 2016 to 2021. Mean length was around 40 to 45 centimeters for the majority of the time period and decreased to around 30 centimeters startin in 2019.",
 label = 'mean-com-dead-len-data')
 ```
 
@@ -158,7 +158,7 @@ label = 'dwv-index-main')
 add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north",  "area_weighted", "Index.png"), 
 caption = "Estimated annual index of abundances for the CPFV fleet based on CRFS survey data.",
-alt_caption = "The recreational CPFV index increases from 1999 to 2001, decreases slightly and remains constant for three years.  The index from 2005 to 2008 is steady at the level observed in 2001, and then decreases in 2008.  The index generally increases from 2009 to 2021.",
+alt_caption = "The recreational CPFV index increases from 1999 to 2001 decreases slightly and remains constant for three years.  The index from 2005 to 2008 is steady at the level observed in 2001 and then decreases in 2008.  The index generally increases from 2009 to 2021.",
 label = 'crfs-index-main')
 ```
 
@@ -168,7 +168,7 @@ label = 'crfs-index-main')
 add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_pr_dockside", "north",  "rm_last2yrs_area_weighted", "Index.png"), 
 caption = "Estimated annual index of abundances for the private/rental fleet based on CRFS survey data.",
-alt_caption = "The private/rental mode index of abundance remains flat and uniformative from 2004 to 2014.  The index increaes in 2015 spikess to a high relative value from 20 to 50 in 2017.  The last two years of the index are higher than 2015, but lower than the value in 2017.",
+alt_caption = "The private/rental mode index of abundance remains flat and uniformative from 2004 to 2014.  The index increaes in 2015 spikess to a high relative value from 20 to 50 in 2017.  The last two years of the index are higher than 2015 but lower than the value in 2017.",
 label = 'crfs-pr-index-main')
 ```
 
@@ -202,7 +202,7 @@ label = 'mean-rec-cpfv-len-data')
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_flt4mkt0_page2.png"), 
 caption = "Length composition data from the recreational PR fleet",
-alt_caption = "The recreational private rental fleet catches fish range from 20 to 50 centimeters, with the after fish around 30 centimeters.",
+alt_caption = "The recreational private rental fleet catches fish range from 20 to 50 centimeters with the after fish around 30 centimeters.",
 label = 'rec-pr-len-data')
 ```
 
@@ -289,7 +289,7 @@ label = 'survey-locations')
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(data_dir, "survey_indices", "plots", "north_survey_locations.png"), 
-caption = "Sample locations by area, areas open to fishing (reference) and MPAS, for each of the fishery-independent data sources used in the base model with indices of abundance, lengths, and ages if collected.",
+caption = "Sample locations by area areas open to fishing (reference) and MPAS for each of the fishery-independent data sources used in the base model with indices of abundance, lengths, and ages if collected.",
 alt_caption = "Sample locations from the CCFRP and CDFW ROV surveys inside and adjacent to MPAs in northern California.",
 label = 'ref-mpa')
 ```
@@ -303,7 +303,7 @@ label = 'ref-mpa')
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "ccfrp_map.png"), 
 caption = "Map depicting copper rockfish observations from the Piedras Blancas MPA and reference sites for CCFRP in northern California (A) and the Carrington Point MPA and reference sites in southern California. The examples from each area show the differences in the available interpreted rocky substrate. Rocky habitat (in brown) is depicted for northern California and the areas that have been interpreted for the area shown in southern California are in tan with the rocky substrate in brown.  The lower resolution rocky substrate (outside the tan areas) depicted in southern California represents interpreted substrate from courser bathymetry data. ",
-alt_caption = ""Map depicting copper rockfish observations from the Piedras Blancas MPA and reference sites for CCFRP in northern California (A) and the Carrington Point MPA and reference sites in southern California. The examples from each area show the differences in the available interpreted rocky substrate. Rocky habitat (in brown) is depicted for northern California and the areas that have been interpreted for the area shown in southern California are in tan with the rocky substrate in brown.  The lower resolution rocky substrate (outside the tan areas) depicted in southern California represents interpreted substrate from courser bathymetry data. "",
+alt_caption = "Map depicting copper rockfish observations from the Piedras Blancas MPA and reference sites for CCFRP in northern California A and the Carrington Point MPA and reference sites in southern California. The examples from each area show the differences in the available interpreted rocky substrate. Rocky habitat (in brown) is depicted for northern California and the areas that have been interpreted for the area shown in southern California are in tan with the rocky substrate in brown.  The lower resolution rocky substrate (outside the tan areas) depicted in southern California represents interpreted substrate from courser bathymetry data.",
 label = 'ccfrp-map')
 ```
 
@@ -445,7 +445,7 @@ label = 'visual-surveys')
 add_figure(
 filein = file.path(data_dir, "rec_indices", "mrfss_cpfv_dockside", "north", "plots", "average_cpue_by_cnty.png"), 
 caption = "Average CPUE by county from the MRFSS dockside data north of Point Conception. Note the break in years from 1989-1995.",
-alt_caption = "Indices of abundance that show improbable estimates of CPUE among counties and indicate a noisy dataset from teh MRFSS period of sampling.",
+alt_caption = "Indices of abundance that show improbable estimates of CPUE among counties and indicate a noisy dataset from the MRFSS period of sampling.",
 label = 'mrfss-cpue-county')
 ```
 
@@ -595,7 +595,7 @@ alt_caption = "The stock synthesis models produced the same values of estimated 
 add_figure(
 filein = file.path(bridge_dir, "_plots", "full_bridge_1_compare2_spawnbio_uncertainty.png"),
 caption = "Model structure and data bridging comparison of estimated spawning output",
-alt_caption = "Additions and updates of data including fleet structure, biologily, removals, lengths and ages and fishery indices did not result in large overall changes in the model.  Addition of fishery lengths and ages and indices estimated a higher spawning output in the last three years of the model.", label = 'data-bridge-ssb-1')
+alt_caption = "Additions and updates of data including fleet structure biology removals lengths and ages and fishery indices did not result in large overall changes in the model.  Addition of fishery lengths and ages and indices estimated a higher spawning output in the last three years of the model.", label = 'data-bridge-ssb-1')
 ```
 
 \pagebreak
@@ -605,7 +605,7 @@ alt_caption = "Additions and updates of data including fleet structure, biologil
 add_figure(
 filein = file.path(bridge_dir, "_plots", "full_bridge_1_compare4_Bratio_uncertainty.png"),
 caption = "Model structure and data bridging comparison of estimated fraction unfished",
-alt_caption = "Additions and updates of data including fleet structure, biologily, removals, lengths and ages and fishery indices did not result in large overall changes in the model.  Addition of fishery lengths and ages and indices estimated a higher fraction of unfished in the last three years of the model.", label = 'data-bridge-depl-1')
+alt_caption = "Additions and updates of data including fleet structure biology removals lengths and ages and fishery indices did not result in large overall changes in the model.  Addition of fishery lengths and ages and indices estimated a higher fraction of unfished in the last three years of the model.", label = 'data-bridge-depl-1')
 ```
 
 \pagebreak
@@ -687,7 +687,7 @@ alt_caption = "Males and females have similar growth until approximately 12 year
 add_figure(
 filein = file.path(model_dir, "plots", "north_selectivity.png"),
 caption = "Estimated selectivity for each fleet and survey in the base model.",
-alt_caption = "Asymptotic selectivity is estimated for the commercial dead fleet and the commercial live fleet from 1916 to 2010 and the CPFV fleet from 2017 to 2022.  Dome shaped selectivity is estimated for the later years of the commercial live fleet, earlier years of the CDFW fleet, the private recfreational fleet, and 2007-2016 for CCFRP.", label = 'est-selex')
+alt_caption = "Asymptotic selectivity is estimated for the commercial dead fleet and the commercial live fleet from 1916 to 2010 and the CPFV fleet from 2017 to 2022.  Dome shaped selectivity is estimated for the later years of the commercial live fleet earlier years of the CDFW fleet the private recreational fleet and 2007-2016 for CCFRP.", label = 'est-selex')
 ```
 
 \pagebreak
@@ -712,7 +712,7 @@ alt_caption = "See table 22.", label = 'recruits')
 add_figure(
 filein = file.path(model_dir, "plots", "recdevs2_withbars.png"), 
 caption = "Estimated time series of recruitment deviations",
-alt_caption = "The early period of recruitment deviations increases in the 1960s before the estimated period begins.  Recrutiment deviations decrease through 1980, increase to the mid 1990s, decrease again until 2007 and then bounces between negative and positive to the end of the time series.", label = 'rec-devs')
+alt_caption = "The early period of recruitment deviations increases in the 1960s before the estimated period begins.  Recrutiment deviations decrease through 1980 increase to the mid 1990s decrease again until 2007 and then bounces between negative and positive to the end of the time series.", label = 'rec-devs')
 ```
 
 \pagebreak
@@ -722,8 +722,7 @@ alt_caption = "The early period of recruitment deviations increases in the 1960s
 add_figure(
 filein = file.path(model_dir, "plots", "recruit_fit_bias_adjust.png"), 
 caption = "Points are transformed variances. Red line shows current settings for bias adjustment specified in control file. Blue line shows least squares estimate of alternative bias adjustment relationship for recruitment deviations (which may or may not be an improvement)",
-alt_caption = "Bias adjustment ramps up linearly from 0 to 0.90 between 1966-2003 constant at 0.90 between 2003-2016 and then ramps down to 0 between 2016-2022.",
-", label = 'bias-adjust')
+alt_caption = "Bias adjustment ramps up linearly from 0 to 0.90 between 1966-2003 constant at 0.90 between 2003-2016 and then ramps down to 0 between 2016-2022.", label = 'bias-adjust')
 ```
 
 
@@ -931,7 +930,7 @@ alt_caption = "There are no clear patters in the residuals in the observed fits.
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_DWV_CPFV.png"), 
 caption = "Fit to log index data on log scale for Deb Wilson-Vandenberg CPFV survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-alt_caption = "The index was generally fit well, but hte model did not capture the observed decrfease in the index from 1996-1998", label = 'dwv-cpfv-index-fit')
+alt_caption = "The index was generally fit well but the model did not capture the observed decrease in the index from 1996-1998", label = 'dwv-cpfv-index-fit')
 ```
 
 \pagebreak
@@ -940,7 +939,7 @@ alt_caption = "The index was generally fit well, but hte model did not capture t
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_CRFS_CPFV.png"), 
 caption = "Fit to log index data on log scale for CRFS CPFV survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-alt_caption = "The model fit the index well and fit the index well, capturing the increase in 2016.", label = 'crfs-cpfv-index-fit')
+alt_caption = "The model fit the index well and fit the index well capturing the increase in 2016.", label = 'crfs-cpfv-index-fit')
 ```
 
 \pagebreak
@@ -949,7 +948,7 @@ alt_caption = "The model fit the index well and fit the index well, capturing th
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_PR.png"), 
 caption = "Fit to log index data on log scale for recreational (CRFS) PR. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-alt_caption = "The general trend in the index was fit well, but did not capture the increase in 2017.", label = 'crfs-pr-index-fit')
+alt_caption = "The general trend in the index was fit well but did not capture the increase in 2017.", label = 'crfs-pr-index-fit')
 ```
 
 
@@ -969,7 +968,7 @@ alt_caption = "The general trend in the index was fit well, but did not capture 
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_CCFRP.png"), 
 caption = "Fit to log index data on log scale for CCFRP survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
-alt_caption = "The CCFRP survey index was fit well by the model.  Only one year, 2013, did not intersect with the increased estimated uncertainty.", label = 'ccfrp-index-fit')
+alt_caption = "The CCFRP survey index was fit well by the model.  Only one year 2013 did not intersect with the increased estimated uncertainty.", label = 'ccfrp-index-fit')
 ```
 
 
@@ -1004,8 +1003,7 @@ alt_caption = "Spawning output is relatively unfished between the start of the m
 add_figure(
 filein = file.path(model_dir, "plots", "ts1_Total_biomass_(mt).png"), 
 caption = "Estimated time series of total biomass",
-alt_caption = "Total biomass in metric tons is relatively unfished between the start of the model through 1960 with the spawning output sharply decreasing to low levels by 1990s remaining low until the early 2000s where biomass increases to the end of the time series.",
-", label = 'tot-bio')
+alt_caption = "Total biomass in metric tons is relatively unfished between the start of the model through 1960 with the spawning output sharply decreasing to low levels by 1990s remaining low until the early 2000s where biomass increases to the end of the time series.", label = 'tot-bio')
 ```
 
 \pagebreak
@@ -1014,8 +1012,7 @@ alt_caption = "Total biomass in metric tons is relatively unfished between the s
 add_figure(
 filein = file.path(model_dir, "plots", "ts9_Relative_spawning_output_intervals.png"), 
 caption = "Estimated time series of fraction of unfished spawning output",
-alt_caption = "Estimated fraction of unfished is relatively unfished between the start of the model through 1960 with the spawning output sharply decreasing to low levels by 1990s remaining low until the early 2000s where it increases until the end of the time series.",
-", label = 'depl')
+alt_caption = "Estimated fraction of unfished is relatively unfished between the start of the model through 1960 with the spawning output sharply decreasing to low levels by 1990s remaining low until the early 2000s where it increases until the end of the time series.", label = 'depl')
 ```
 
 \pagebreak
@@ -1057,7 +1054,7 @@ filein = file.path(sens_dir, "_plots",  "Sensi_REplot_structure_horizontal.png")
 caption = "Comparison of the relative change in estimated management quantities as compared to the 
 base model for structural sensitivities. The quantities compared are the estimate of unfished 
 spawning output (SB~0~), spawning output in 2023 (SB~2023~), the relative spawning output 
-SB~2023~/SB~0~), the yield based on a spawner per recruit harvest rate (Yield~SPR=0.50~), 
+SB~2023~/SB~0~), the yield based on a spawner per recruit harvest rate (Yield~SPR=0.50~),
 and the fishing mortality at that harvest rate (F~SPR=0.50~). The colored boxes indicate the 95 percent confidence interval around the point estimate of the quantity from the base model where each color corresponds with a specific quantity in the legend. A model with matching estimates as the base model would reflect a relative change of 0, a model with estimates less than the base model would have a negative relative change, and a model with estimates greater than the base model would have a positive relative change.",
 alt_caption = "", label = 'sens-structure')
 ```

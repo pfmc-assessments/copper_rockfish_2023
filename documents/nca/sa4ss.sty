@@ -33,23 +33,28 @@
 
 % links - dark blue
 % hyperxmp works with hyperref and must be loaded before it
-\RequirePackage[hyphens]{url}
-\RequirePackage[pagebackref]{hyperref}
-\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
-\renewcommand{\backref}[1]{[p#1]}
-\RequirePackage{color}
-\definecolor{link}{rgb}{0.45,0.51,0.67}
-\hypersetup{
-  colorlinks,
-  citecolor=link,
-  filecolor=link,
-  linkcolor=link,
-  urlcolor=link
-}
+%\RequirePackage[hyphens]{url}
+%\RequirePackage[pagebackref]{hyperref}
+%\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
+%\renewcommand{\backref}[1]{[p#1]}
+%\RequirePackage{color}
+%\definecolor{link}{rgb}{0.45,0.51,0.67}
+%\hypersetup{
+%  colorlinks,
+%  citecolor=link,
+%  filecolor=link,
+%  linkcolor=link,
+%  urlcolor=link
+%}
 % todo: fix this from tagged-article.md
 % $if(colorlinks)$
 % \PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
 % $endif$
+
+\RequirePackage{bibentry} %Melissa added
+\makeatletter\let\saved@bibitem\@bibitem\makeatother %Melissa added
+\makeatletter\let\@bibitem\saved@bibitem\makeatother  %Melissa added
+
 
 % Generate date formatted in english
 \RequirePackage[english]{datetime2}

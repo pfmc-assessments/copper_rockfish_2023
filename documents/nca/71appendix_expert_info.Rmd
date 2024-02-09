@@ -5,10 +5,10 @@ The copper rockfish STAT held the following three informal virtual meetings with
 
 \begin{enumerate}
 
-  \item Copper Rockfish and the Commercial Fisheries on January 10, 2023 (24 attendees)
-  \item Copper Rockfish and the Recreational Fishery South of Point Conception on January 23, 2023 (17 attendees)
-  \item Copper Rockfish and the Recreational Fishery North of Point Conception on January 30, 2023 (19 attendees)
-  
+    \item Copper Rockfish and the Commercial Fisheries on January 10, 2023 with 24 attendees
+    \item Copper Rockfish and the Recreational Fishery South of Point Conception on January 23, 2023 with 17 attendees
+    \item Copper Rockfish and the Recreational Fishery North of Point Conception on January 30, 2023 with 19 attendees
+    
 \end{enumerate}
 
 
