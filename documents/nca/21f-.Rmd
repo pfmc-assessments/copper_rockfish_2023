@@ -45,7 +45,7 @@ read_child(filein)
 #### Indices of Abundance
 \
 
-A number of indices of abundance were explored for the recreational fleet. Discarded catch is available from onboard observer surveys, but was not included in indices. Indices developed for the assessment include:
+A number of indices of abundance were explored for the recreational fleet (Figure \ref{fig:standardized-indices}) . Discarded catch is available from onboard observer surveys, but was not included in indices. Indices developed for the assessment include:
 
 \begin{enumerate}
 

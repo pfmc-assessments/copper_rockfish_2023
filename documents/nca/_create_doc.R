@@ -1,5 +1,5 @@
 # Install the package if needed
-#remotes::install_github("pfmc-assessments/sa4ss")
+#remotes::install_github("pfmc-assessments/sa4ss", force = TRUE)
 # devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 library(sa4ss)
 library(here)
@@ -142,7 +142,7 @@ sa4ss::es_table_tex(
   csv_name = "table_labels.csv")
 
 # Read and create tex files for tables listed in "table" folder in the doc
-es_table_tex(
+sa4ss::es_table_tex(
   dir = getwd(), 
   save_loc = file.path(getwd(), "tex_tables"), 
   csv_name = "all_tables.csv")

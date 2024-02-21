@@ -1,6 +1,0 @@
----
-bibliography:
- - sa4ss.bib
- - pfmcassess.bib
- - wcassess.bib
----

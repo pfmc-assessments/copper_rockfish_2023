@@ -49,6 +49,7 @@ knitr::knit_hooks$set(plot = function(x,options) {
 
 library(dplyr)
 
+
 load('saved_directories.Rdata')
 load("00opts.Rdata")
 
@@ -144,15 +145,6 @@ address:
 ---
 
 <!--chapter:end:00authors.Rmd-->
-
----
-bibliography:
- - sa4ss.bib
- - pfmcassess.bib
- - wcassess.bib
----
-
-<!--chapter:end:00bibliography.Rmd-->
 
 ---
 title: Status of copper rockfish (_Sebastes caurinus_) along the U.S. California coast north
@@ -318,7 +310,7 @@ read_child(filein)
 #### Indices of Abundance
 \
 
-A number of indices of abundance were explored for the recreational fleet. Discarded catch is available from onboard observer surveys, but was not included in indices. Indices developed for the assessment include:
+A number of indices of abundance were explored for the recreational fleet (Figure \ref{fig:standardized-indices}) . Discarded catch is available from onboard observer surveys, but was not included in indices. Indices developed for the assessment include:
 
 \begin{enumerate}
 
@@ -1368,17 +1360,13 @@ label = 'data-plot')
 \FloatBarrier
 
 ```{r, results = 'asis'}
-sa4ss::add_figure(
-  filein = file.path(
-    data_dir, "survey_indices", "NorthernCA.png"
-  ),
-  caption = "Map of northern California assessment area with the total number of copper rockfish observed by site for each of the fishery-indpendent surveys considered. Also shown is the network of MPAs, the 3nm state maritime boundary and the CDFW blocks. The CDFW blocks are colored a darker blue   if copper rockfish were observed by a survey and based on expert opinion from the fleet.",
-  alt_caption = "A map of the northern Califonria assessment area with the total number of copper rockfish observed by site for each of the fishery-indpendent surveys considered. Copper rockfish were most commonly observed in shallower waters and over rocky habitat.",
-  label = "survey-map"
-)
+sa4ss::add_figure(filein = file.path(data_dir, "survey_indices", "NorthernCA.png"),
+  caption = "Map of northern California assessment area with the total number of copper rockfish observed by site for each of the fishery-indpendent surveys considered. Also shown is the network of MPAs, the 3nm state maritime boundary and the CDFW blocks. The CDFW blocks are colored a darker blue if copper rockfish were observed by a survey and based on expert opinion from the fleet.",
+  alt_caption = "A map of the northern Califonria assessment area with the total number of copper rockfish observed by site for each of the fishery indpendent surveys considered. Copper rockfish were most commonly observed in shallower waters and over rocky habitat.",
+  label = "survey-map")
 ```
 
-\pagebreak
+
 
 <!-- ======================================================= -->
 <!-- *************** Commercial Data *********************** --> 
@@ -1392,37 +1380,32 @@ alt_caption = "The commercial dead fishery generally catches fish of 25 centimet
 label = 'com-dead-len-data')
 ```
 
-\pagebreak
+
 
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_data_weighting_TA1.8_Commercial_Dead.png"), 
 caption = "Mean length for commercial dead fleet with 95 percent confidence intervals",
-alt_caption = "Mean length for the commercial dead fleet were availbe from 1979 to 1981 1991 to 2000 2001 and 2016 to 2021. Mean length was around 40 to 45 centimeters for the majority of the time period and decreased to around 30 centimeters startin in 2019.",
-label = 'mean-com-dead-len-data')
+alt_caption = "Mean length for the commercial dead fleet were availbe from 1979 to 1981 1991 to 2000 2001 and 2016 to 2021 Mean length was around 40 to 45 centimeters for the majority of the time period and decreased to around 30 centimeters starting in 2019", label = 'mean-com-dead-len-data')
 ```
 
-\pagebreak
+
 
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_condAALdat_bubflt1mkt0.png"), 
 caption = "Conditional age-at-length composition data from the commercial dead fleet",
-alt_caption = "The condition age at length composition through time follows the expected patter of the growth curve with the data trunkcated in some yeras to fish 40 centimeters and larger.",
-label = 'com-dead-age-data')
+alt_caption = "The condition age at length composition through time follows the expected patter of the growth curve with the data truncated in some years to fish 40 centimeters and larger", label = 'com-dead-age-data')
 ```
 
-\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "comp_lendat_bubflt2mkt0.png"), 
 caption = "Length composition data from the commercial live fleet",
-alt_caption = "The commercial live fishery generally catches fish between 22 and 50 centimeters.",
-label = 'com-live-len-data')
+alt_caption = "The commercial live fishery generally catches fish between 22 and 50 centimeters", label = 'com-live-len-data')
 ```
 
-\pagebreak
 
 ```{r, results = 'asis'}
 add_figure(
@@ -1431,8 +1414,6 @@ caption = "Mean length for commercial live fleet with 95 percent confidence inte
 alt_caption = "The mean length for the commercial live fishery was between 34 and 45 centimeters until 2011 when it decreased to 27 to approximately 30 centimeters for the remainder of the time series. ",
 label = 'mean-com-live-len-data')
 ```
-
-\pagebreak
 
 <!-- ======================================================= -->
 <!-- ************ Recreational Indices ********************* --> 
@@ -2270,22 +2251,21 @@ alt_caption = "The general trend in the index was fit well but did not capture t
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "index5_logcpuefit_CCFRP.png"), 
-caption = "Fit to log index data on log scale for CCFRP survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
+filein = file.path(model_dir, "plots", "index5_logcpuefit_CCFRP.png"),
+caption = "Fit to log index data on log scale for CCFRP survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",                        
 alt_caption = "The CCFRP survey index was fit well by the model.  Only one year 2013 did not intersect with the increased estimated uncertainty.", label = 'ccfrp-index-fit')
 ```
 
 
-\pagebreak
+
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(model_dir, "plots", "index9_standcpueall.png"), 
-caption = "Standardized indices overlaid. Each index is rescaled to have mean observation = 1.0. Note, the  MRFSS CPFV (Rec_CPFV) fishery-dependent and CDFW ROV fishery-independent indices of abundance were not fit in the model but are included here for illustration.",
-alt_caption = "The indices genearlly track trends in the same direction over time.", label = 'standardized-indices')
+filein = file.path(model_dir, "plots", "index9_standcpueall.png"),
+caption = "Standardized indices overlaid. Each index is rescaled to have mean observation equalt to 1.0. The  MRFSS CPFV (Rec CPFV) fishery-dependent and CDFW ROV fishery-independent indices of abundance were not fit in the model but are included here for illustration",
+alt_caption = "The indices generally track trends in the same direction over time", label = 'standardized-indices')
 ```
 
-\pagebreak
 
 ### Time-series
 
@@ -2550,8 +2530,8 @@ len_fit = plot_info[which(plot_info$category == "LenComp"), ]
 plot.vec = grep("comp_lenfit_flt", len_fit$label)
 filein = file.path(model_dir, "plots")
 for (a in plot.vec){
-	cap = len_fit$caption[a]
-	lab = len_fit$label[a]
+	cap = gsub("<br>", " ", gsub("_", " ", len_fit$caption[a]))
+	lab = gsub("_", "-", len_fit$label[a])
 	add_figure(filein = file.path(filein, len_fit$file[a]), 
 			   caption = cap, 
 			   label = lab,
@@ -2595,8 +2575,8 @@ find = sort(len_fit$label[plot.vec], index.return = TRUE)$ix
 plot.vec = plot.vec[find[2:length(find)]]
 filein = file.path(model_dir, "plots")
 for (a in plot.vec){
-	cap = len_fit$caption[a]
-	lab = len_fit$label[a]
+	cap = gsub("\n", ". ", gsub("%", " percent", gsub("<br>", " ", gsub("_", " ", len_fit$caption[a]))))
+	lab = gsub("_", "-", len_fit$label[a])
 	add_figure(filein = file.path(filein, len_fit$file[a]), 
 			   caption = cap, 
 			   label = lab,
@@ -2616,8 +2596,8 @@ find = sort(len_fit$label[plot.vec], index.return = TRUE)$ix
 plot.vec = plot.vec[find[2:length(find)]]
 filein = file.path(model_dir, "plots")
 for (a in plot.vec){
-	cap = len_fit$caption[a]
-	lab = len_fit$label[a]
+	cap = gsub("\n", ". ", gsub("%", " percent", gsub("<br>", " ", gsub("_", " ", len_fit$caption[a]))))
+	lab = gsub("_", "-", len_fit$label[a])
 	add_figure(filein = file.path(filein, len_fit$file[a]), 
 			   caption = cap, 
 			   label = lab,
