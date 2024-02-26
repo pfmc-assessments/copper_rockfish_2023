@@ -4,7 +4,6 @@ month: "`r format(Sys.Date(), '%B')`"
 year: "`r format(Sys.Date(), '%Y')`"
 preamble: 
 header-includes: 
-  - \usepackage{placeins}
 csl: canadian-journal-of-fisheries-and-aquatic-sciences.csl
 output:
   sa4ss::techreport_pdf:
@@ -16,15 +15,6 @@ bibilography: [pfmcassess.bib, wcassess.bib]
 papersize: letter
 ---
 
-<!--   - \usepackage[inline]{showlabels} 
-
-
-\linenumbers
-
--->
-
-<!-- Common lat/long 
-Cape Mendocino, Pt. Conception and OR border -->
 \newcommand\CapeM{$40^\circ 10^\prime$ N. lat.}
 \newcommand\PtC{$34^\circ 27^\prime$ N. lat.}
 \newcommand\CAOR{$42^\circ 00^\prime$ N. lat.}
@@ -32,9 +22,10 @@ Cape Mendocino, Pt. Conception and OR border -->
 
 
 
-```{r opts_start, include = FALSE}
+
+```{r opts, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
-knitr::opts_chunk$set(fig.pos = "H", out.extra = "")
+
 knitr::knit_hooks$set(plot = function(x,options) {
       base = knitr::opts_knit$get('base.url')
       if (is.null(base)) base = ''
@@ -46,9 +37,6 @@ knitr::knit_hooks$set(plot = function(x,options) {
         sprintf('![%s](%s%s)', cap, base, x)
         }
   })
-
-library(dplyr)
-
 
 load('saved_directories.Rdata')
 load("00opts.Rdata")
@@ -78,19 +66,19 @@ if(file.exists("00mod.Rdata")){
 source(file.path(doc_dir, "helper_functions.R"))
 
 #source(file.path(r_dir, "get_derived_quants.R"))
-years <- 1916:2023
+years <- 1916:2034
 sb1 <- south_model$derived_quants[south_model$derived_quants$Label %in% paste0("SSB_", years), "Value"]
 sb2 <- north_model$derived_quants[north_model$derived_quants$Label %in% paste0("SSB_", years), "Value"]
 sb0 <- south_model$derived_quants[south_model$derived_quants$Label == "SSB_Virgin", "Value"] +
   north_model$derived_quants[north_model$derived_quants$Label == "SSB_Virgin", "Value"]
 
 sb <-  round(sb1 + sb2, 2)
-depl <- round(sb / sb0, 2)
+depl <- round(sb / sb0, 3)
 quants <- data.frame(year = years, 
                      sb = sb, 
                      depl = depl)
 depl_final <- quants[quants$year == '2023', 'depl']
-sb_final <- quants[quants$years == '2023', 'sb']
+sb_final <- quants[quants$year == '2023', 'sb']
 min_depl <- min(quants$depl)
 min_depl_year <- quants[quants$depl == min_depl, 'year']
 
@@ -100,4 +88,8 @@ est_ofl <- round(south_model$derived_quants[south_model$derived_quants$Label %in
 
 est_abc <- round(south_model$derived_quants[south_model$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"] +
   north_model$derived_quants[north_model$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"], 2)
+
+
+model_recent_depl <- data.frame(year = 2011:2022, depl = model$derived_quants[model$derived_quants$Label %in% paste0("Bratio_", 2011:2022), "Value"])
+
 ```

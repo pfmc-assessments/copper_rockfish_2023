@@ -1,10 +1,10 @@
 delete_merged_file: true
 
 rmd_files: ['00a.Rmd',
-             '00authors.Rmd' ,
+             '00authors.Rmd' 
  #             '00bibliography.Rmd',
-               '01executive.Rmd',
-            '11introduction.Rmd'
+ #              '01executive.Rmd'
+ #           '11introduction.Rmd'
  #            '20data.Rmd',
 #              '21f-.Rmd',
 #              '21s-.Rmd',

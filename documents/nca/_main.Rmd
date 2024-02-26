@@ -4,7 +4,6 @@ month: "`r format(Sys.Date(), '%B')`"
 year: "`r format(Sys.Date(), '%Y')`"
 preamble: 
 header-includes: 
-  - \usepackage{placeins}
 csl: canadian-journal-of-fisheries-and-aquatic-sciences.csl
 output:
   sa4ss::techreport_pdf:
@@ -16,15 +15,6 @@ bibilography: [pfmcassess.bib, wcassess.bib]
 papersize: letter
 ---
 
-<!--   - \usepackage[inline]{showlabels} 
-
-
-\linenumbers
-
--->
-
-<!-- Common lat/long 
-Cape Mendocino, Pt. Conception and OR border -->
 \newcommand\CapeM{$40^\circ 10^\prime$ N. lat.}
 \newcommand\PtC{$34^\circ 27^\prime$ N. lat.}
 \newcommand\CAOR{$42^\circ 00^\prime$ N. lat.}
@@ -32,9 +22,10 @@ Cape Mendocino, Pt. Conception and OR border -->
 
 
 
-```{r opts_start, include = FALSE}
+
+```{r opts, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
-knitr::opts_chunk$set(fig.pos = "H", out.extra = "")
+
 knitr::knit_hooks$set(plot = function(x,options) {
       base = knitr::opts_knit$get('base.url')
       if (is.null(base)) base = ''
@@ -46,9 +37,6 @@ knitr::knit_hooks$set(plot = function(x,options) {
         sprintf('![%s](%s%s)', cap, base, x)
         }
   })
-
-library(dplyr)
-
 
 load('saved_directories.Rdata')
 load("00opts.Rdata")
@@ -78,19 +66,19 @@ if(file.exists("00mod.Rdata")){
 source(file.path(doc_dir, "helper_functions.R"))
 
 #source(file.path(r_dir, "get_derived_quants.R"))
-years <- 1916:2023
+years <- 1916:2034
 sb1 <- south_model$derived_quants[south_model$derived_quants$Label %in% paste0("SSB_", years), "Value"]
 sb2 <- north_model$derived_quants[north_model$derived_quants$Label %in% paste0("SSB_", years), "Value"]
 sb0 <- south_model$derived_quants[south_model$derived_quants$Label == "SSB_Virgin", "Value"] +
   north_model$derived_quants[north_model$derived_quants$Label == "SSB_Virgin", "Value"]
 
 sb <-  round(sb1 + sb2, 2)
-depl <- round(sb / sb0, 2)
+depl <- round(sb / sb0, 3)
 quants <- data.frame(year = years, 
                      sb = sb, 
                      depl = depl)
 depl_final <- quants[quants$year == '2023', 'depl']
-sb_final <- quants[quants$years == '2023', 'sb']
+sb_final <- quants[quants$year == '2023', 'sb']
 min_depl <- min(quants$depl)
 min_depl_year <- quants[quants$depl == min_depl, 'year']
 
@@ -100,6 +88,10 @@ est_ofl <- round(south_model$derived_quants[south_model$derived_quants$Label %in
 
 est_abc <- round(south_model$derived_quants[south_model$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"] +
   north_model$derived_quants[north_model$derived_quants$Label %in% paste0("ForeCatch_", years), "Value"], 2)
+
+
+model_recent_depl <- data.frame(year = 2011:2022, depl = model$derived_quants[model$derived_quants$Label %in% paste0("Bratio_", 2011:2022), "Value"])
+
 ```
 
 <!--chapter:end:00a.Rmd-->
@@ -119,9 +111,9 @@ author:
   - name: Julia Coates
     code: 3
     first: J
-    middle: 'H'
+    middle: H
     family: Coates
-author_list: Monk, M.H., C.R. Wetzel, J. Coates
+author_list: Monk, M.H., C.R. Wetzel, J. H. Coates
 affiliation:
   - code: 1
     address: Southwest Fisheries Science Center, U.S. Department of Commerce, National
@@ -141,7 +133,7 @@ address:
   - ^2^Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 2725 Montlake
     Boulevard East, Seattle, Washington 98112
-  - ^3^California Department of Fish and Wildlife, Marine Region, 1933 Cliff Drive, Suite     9, Santa Barbara, California 93109
+  - ^3^California Department of Fish and Wildlife, Marine Region, 1933 Cliff Drive, Suite 9, Santa Barbara, California 93109
 ---
 
 <!--chapter:end:00authors.Rmd-->
@@ -1008,7 +1000,7 @@ sa4ss::table_format(x = tab,
 <!-- ********************  ROV       *********************** --> 
 <!-- ======================================================= -->
 
-\FloatBarrier
+
 
 ```{r, results = 'asis'}
 #\include{tex_tables/north_copper_obs_designation_mpa_group_super_year.tex}
@@ -1027,7 +1019,7 @@ sa4ss::table_format(x = tab,
 #             digits = 0) 
 ```
 
-\FloatBarrier
+
 
 \newpage
 
@@ -1296,7 +1288,6 @@ create_projection_table(
 
 \clearpage
 
-\floatplacement{figure}{H}
 
 # Figures
 
@@ -1314,7 +1305,6 @@ alt_caption = "The management range of copper rockfish off the West Coast covers
 label = 'ca-map')
 ```
 
-\FloatBarrier
 
 <!-- ======================================================= -->
 <!-- ***************  life history  ************************ --> 
@@ -1357,7 +1347,7 @@ alt_caption = "Catch data ar ablor all years modeled from the commercial dead fi
 label = 'data-plot')
 ```	
 
-\FloatBarrier
+
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(filein = file.path(data_dir, "survey_indices", "NorthernCA.png"),
@@ -1501,7 +1491,7 @@ alt_caption = "The mean length in the private rental fleet is more uncertain the
 label = 'mean-rec-pr-len-data')
 ```
 
-\FloatBarrier
+
 
 ```{r, results = 'asis'}
 add_figure(
@@ -1522,7 +1512,6 @@ alt_caption = "There are sparse age data for the recreational CPFV fleet. The av
 label = 'mean-rec-cpfv-age-data')
 ```
 
-\FloatBarrier
 
 ```{r, results = 'asis'}
 add_figure(
@@ -2237,7 +2226,6 @@ alt_caption = "The general trend in the index was fit well but did not capture t
 ```
 
 
-\FloatBarrier
 
 ```{r, results = 'asis'}
 #add_figure(
@@ -2575,7 +2563,7 @@ find = sort(len_fit$label[plot.vec], index.return = TRUE)$ix
 plot.vec = plot.vec[find[2:length(find)]]
 filein = file.path(model_dir, "plots")
 for (a in plot.vec){
-	cap = gsub("\n", ". ", gsub("%", " percent", gsub("<br>", " ", gsub("_", " ", len_fit$caption[a]))))
+		cap = gsub("_", " ", len_fit$caption[a])
 	lab = gsub("_", "-", len_fit$label[a])
 	add_figure(filein = file.path(filein, len_fit$file[a]), 
 			   caption = cap, 
@@ -2621,8 +2609,8 @@ plot.vec = c(grep("comp_gstlenfit_flt1mkt0", len_fit$label),
              grep("comp_gstlenfit_flt4mkt0", len_fit$label))
 filein = file.path(model_dir, "plots")
 for (a in plot.vec){
-	cap = len_fit$caption[a]
-	lab = len_fit$label[a]
+	cap = gsub("<br>", " ", gsub("_", " ", len_fit$caption[a]))
+	lab = gsub("_", "-", len_fit$label[a])
 	add_figure(filein = file.path(filein, len_fit$file[a]), 
 			   caption = cap, 
 			   label = lab,
@@ -3435,11 +3423,9 @@ sa4ss::add_figure(
 ```{r, results = 'asis'}
 sa4ss::add_figure(
   filein = file.path(
-    data_dir, "rec_indices", "crfs_pr_dockside", "north", "rm_last2yrs_area_weighted",
-    "index.png"
-  ),
+    data_dir, "rec_indices", "crfs_pr_dockside", "north", "rm_last2yrs_area_weighted", "index.png"),
   caption = "Index for the dockside PR survey.",
-    alt_caption = "The index is relatively flat until an increase in 2015.",
+  alt_caption = "The index is relatively flat until an increase in 2015.",
   label = "pr-index"
 )
 ```
@@ -3453,7 +3439,7 @@ sa4ss::add_figure(
     "rm_last2yrs_area_weighted", "negbin_prop_zero_main_effects.png"
   ),
   caption = "Predicted proportion of zeroes from the Bayesian fit to the main effects model.",
-    alt_caption = "The predicted proportion of zeroes is within 0.5% of the data.",
+    alt_caption = "The predicted proportion of zeroes is within 0.5 percent of the data.",
   label = "pr-prop-zero"
 )
 ```
@@ -3470,7 +3456,7 @@ sa4ss::add_figure(
     "rm_last2yrs_area_weighted", "qq.png"
   ),
   caption = "Q-Q plot for the dockside PR survey.",
-    alt_caption = "The qq plot indicates a relatively good fit with some diversion of the 1:1 line on the upper quantiles.",
+    alt_caption = "The qq plot indicates a relatively good fit with some diversion of the 1 to 1 line on the upper quantiles.",
   label = "pr-qq"
 )
 ```
@@ -3575,7 +3561,7 @@ sa4ss::table_format(x = ind,
 
 \newpage
 
-\FloatBarrier
+
 
 ```{r, results = 'asis'}
 #sa4ss::add_figure(
@@ -3586,7 +3572,7 @@ sa4ss::table_format(x = ind,
 #label = 'ccfrp-avg-cpue')
 ```
 
-\FloatBarrier
+
 \newpage
 
 ```{r, results = 'asis'}

@@ -1,6 +1,5 @@
 \clearpage
 
-\floatplacement{figure}{H}
 
 # Figures
 
@@ -18,7 +17,6 @@ alt_caption = "The management range of copper rockfish off the West Coast covers
 label = 'ca-map')
 ```
 
-\FloatBarrier
 
 <!-- ======================================================= -->
 <!-- ***************  life history  ************************ --> 
@@ -61,7 +59,7 @@ alt_caption = "Catch data ar ablor all years modeled from the commercial dead fi
 label = 'data-plot')
 ```	
 
-\FloatBarrier
+
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(filein = file.path(data_dir, "survey_indices", "NorthernCA.png"),
@@ -205,7 +203,7 @@ alt_caption = "The mean length in the private rental fleet is more uncertain the
 label = 'mean-rec-pr-len-data')
 ```
 
-\FloatBarrier
+
 
 ```{r, results = 'asis'}
 add_figure(
@@ -226,7 +224,6 @@ alt_caption = "There are sparse age data for the recreational CPFV fleet. The av
 label = 'mean-rec-cpfv-age-data')
 ```
 
-\FloatBarrier
 
 ```{r, results = 'asis'}
 add_figure(
@@ -941,7 +938,6 @@ alt_caption = "The general trend in the index was fit well but did not capture t
 ```
 
 
-\FloatBarrier
 
 ```{r, results = 'asis'}
 #add_figure(

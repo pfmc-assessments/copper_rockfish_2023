@@ -55,7 +55,7 @@ find = sort(len_fit$label[plot.vec], index.return = TRUE)$ix
 plot.vec = plot.vec[find[2:length(find)]]
 filein = file.path(model_dir, "plots")
 for (a in plot.vec){
-	cap = gsub("\n", ". ", gsub("%", " percent", gsub("<br>", " ", gsub("_", " ", len_fit$caption[a]))))
+		cap = gsub("_", " ", len_fit$caption[a])
 	lab = gsub("_", "-", len_fit$label[a])
 	add_figure(filein = file.path(filein, len_fit$file[a]), 
 			   caption = cap, 
@@ -101,8 +101,8 @@ plot.vec = c(grep("comp_gstlenfit_flt1mkt0", len_fit$label),
              grep("comp_gstlenfit_flt4mkt0", len_fit$label))
 filein = file.path(model_dir, "plots")
 for (a in plot.vec){
-	cap = len_fit$caption[a]
-	lab = len_fit$label[a]
+	cap = gsub("<br>", " ", gsub("_", " ", len_fit$caption[a]))
+	lab = gsub("_", "-", len_fit$label[a])
 	add_figure(filein = file.path(filein, len_fit$file[a]), 
 			   caption = cap, 
 			   label = lab,

@@ -93,7 +93,7 @@ sa4ss::table_format(x = ind,
 
 \newpage
 
-\FloatBarrier
+
 
 ```{r, results = 'asis'}
 #sa4ss::add_figure(
@@ -104,7 +104,7 @@ sa4ss::table_format(x = ind,
 #label = 'ccfrp-avg-cpue')
 ```
 
-\FloatBarrier
+
 \newpage
 
 ```{r, results = 'asis'}
