@@ -77,7 +77,7 @@ col_names = c("District", "2018", "2019", "Total")
 
 sa4ss::table_format(x = ind,
              caption = "Total mortality in metric tons of copper rockfish from 2018 and 2019 from the CPFV fleet by CRFS District.",
-             label = "catch-example",
+             longtable = FALSE, label = "catch-example",
               align = "r",
              col_names = col_names)                         
 ```
@@ -90,7 +90,7 @@ col_names = c("District",  "1/2 day trips", "3/4-1 day trips","Overnight trips")
 sa4ss::table_format(x = ind,
              caption = "Number of copper rockfish observed during the CPFV trips sampled onboard by district and trip type from 2018-2019.",
               align = "r",
-             label = "onboard-coppers",
+             longtable = FALSE, label = "onboard-coppers",
              col_names = col_names)                         
 ```
 
@@ -102,7 +102,7 @@ col_names = c("District",  "1/2 day trips", "3/4-1 day trips","Overnight trips")
 sa4ss::table_format(x = ind,
              caption = "Number of copper rockfish measured by district and trip type from the angler interviews in 2018-2019.",
               align = "r",
-             label = "copper-lengths",
+             longtable = FALSE, label = "copper-lengths",
              col_names = col_names)                         
 ```
 
@@ -116,7 +116,7 @@ ind[is.na(ind$Copper.observed), c("Copper.observed", "Percent.of.trips.encounter
 
 sa4ss::table_format(x = ind,
              caption = "Number of CPFV trips sampled as part of the onboard observer survey during 2018-2019, the percent of trips with copper rockfish observed, and the total number of recorded copper rockfish by trip type and District. District 4 and 6 were combined to retain confidentiality.  No trips from District 5 were sampled.",
-             label = "onboard-trips",
+             longtable = FALSE, label = "onboard-trips",
              landscape = TRUE,
              align = 'l',
              col_names = col_names)                         
@@ -132,7 +132,7 @@ ind[is.na(ind)] <- 0
 sa4ss::table_format(x = ind,
              caption = "Number of CPFV logbook entries with at least one rockfish, grouped by region fished and trip type from 2018-2019.",
               align = "r",
-             label = "logbook-triptype",
+             longtable = FALSE, label = "logbook-triptype",
              col_names = col_names)                         
 ```
 

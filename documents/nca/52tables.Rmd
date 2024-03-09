@@ -23,7 +23,7 @@ col_names = c("Year", "Commercial Dead", "Commercial Live", "CPFV", "PR", "Total
 
 table_format(x = out,
              caption = "Removals (mt) by fleet and the summed total landings (mt).",
-             label = "allcatches",
+             longtable = FALSE, label = "allcatches",
              digits = 1,
              align = 'l',
              col_names = col_names)
@@ -149,7 +149,7 @@ col_names <- c("Year", "Source", "Number of Ages")
 
 sa4ss::table_format(x = tab,
              caption = "Available age data by year and source used in the growth fleets.",
-             label = "growth-age-samps",
+             longtable = FALSE, label = "growth-age-samps",
              align = 'l',
              col_names = col_names,
              custom_width = TRUE,
@@ -172,7 +172,7 @@ col_names <- c("Year", "UCSC Raw Count", "UCSC Filtered Count", "UCSB Raw Count"
 
 table_format(x = tab,
              caption = "All and filtered observations by year and sampling institution for PISCO.",
-             label = "pisco-data",
+             longtable = FALSE, label = "pisco-data",
              align = 'l',
              col_names = col_names)
 ```
@@ -275,7 +275,7 @@ col_names <- c("Fleet", "Data Type", "Francis", "MI", "Dirichlet")
 
 sa4ss::table_format(x = tab,
              caption = "Suggested data weights for each data weighting methodology by fleet and data type.",
-             label = "dw",
+             longtable = FALSE, label = "dw",
              align = 'l',
              digits = 2,
              col_names = col_names) 

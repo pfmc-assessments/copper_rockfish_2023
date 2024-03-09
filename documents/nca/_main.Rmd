@@ -164,22 +164,6 @@ title: Status of copper rockfish (_Sebastes caurinus_) along the U.S. California
 
 <!--chapter:end:01a.Rmd-->
 
-```{r executive, echo = FALSE}
-executive <- list()
-executive[["stock"]] <- paste0("This assessment reports the status of ",
-  spp, " (_", spp.sci, "_) off the ", coast, 
-  " coast using data through 2022.")
-```
-
-# Executive summary{-}
-
-```{r, echo=FALSE, results='asis'}
-filein = file.path(doc_dir, "shared_text",'01_executive_summary.Rmd')
-read_child(filein)
-```
-
-<!--chapter:end:01executive.Rmd-->
-
 \pagebreak
 \setlength{\parskip}{5mm plus1mm minus1mm}
 \pagenumbering{arabic}
@@ -869,24 +853,6 @@ read_child(filein)
 <!--chapter:end:41acknowledgments.Rmd-->
 
 \clearpage
-
-# References
-<!-- If you want to references to appear somewhere before the end, add: -->
-<div id="refs"></div>
-<!-- where you want it to appear -->
-<!-- The following sets the appropriate indentation for the references
-  but it cannot be used with bookdown and the make file because it leads
-  to a bad pdf.
-\noindent
-\vspace{-2em}
-\setlength{\parindent}{-0.2in}
-\setlength{\leftskip}{0.2in}
-\setlength{\parskip}{8pt}
- -->
-
-<!--chapter:end:49bibliography.Rmd-->
-
-\clearpage
 # Tables
 
 <!-- ======================================================= -->
@@ -911,7 +877,7 @@ col_names = c("Year", "Commercial Dead", "Commercial Live", "CPFV", "PR", "Total
 
 table_format(x = out,
              caption = "Removals (mt) by fleet and the summed total landings (mt).",
-             label = "allcatches",
+             longtable = FALSE, label = "allcatches",
              digits = 1,
              align = 'l',
              col_names = col_names)
@@ -1037,7 +1003,7 @@ col_names <- c("Year", "Source", "Number of Ages")
 
 sa4ss::table_format(x = tab,
              caption = "Available age data by year and source used in the growth fleets.",
-             label = "growth-age-samps",
+             longtable = FALSE, label = "growth-age-samps",
              align = 'l',
              col_names = col_names,
              custom_width = TRUE,
@@ -1060,7 +1026,7 @@ col_names <- c("Year", "UCSC Raw Count", "UCSC Filtered Count", "UCSB Raw Count"
 
 table_format(x = tab,
              caption = "All and filtered observations by year and sampling institution for PISCO.",
-             label = "pisco-data",
+             longtable = FALSE, label = "pisco-data",
              align = 'l',
              col_names = col_names)
 ```
@@ -1163,7 +1129,7 @@ col_names <- c("Fleet", "Data Type", "Francis", "MI", "Dirichlet")
 
 sa4ss::table_format(x = tab,
              caption = "Suggested data weights for each data weighting methodology by fleet and data type.",
-             label = "dw",
+             longtable = FALSE, label = "dw",
              align = 'l',
              digits = 2,
              col_names = col_names) 
@@ -2634,97 +2600,6 @@ label = 'mrfss-cpfv-index-fit')
 
 <!--chapter:end:60appendix_caal.Rmd-->
 
-<!-- 
-
-
-# Appendix B. MRFSS CPFV Dockside Index of Abundance {#mrfss-cpfv-index}
-
-```{r, echo=FALSE, results='asis'}
-
-filein = file.path(doc_dir, "shared_text",'21f_mrfss_index.Rmd')
-read_child(filein)
-```
-
-A description of the algorithms and process used to 
-aggregate the RecFIN records to the trip level is outlined in the Supplemental Materials 
-(“Identifying Trips in RecFIN”).
-
-Trips recorded with a primary area fished in Mexico or in bays, e.g., 
-San Francisco Bay, were excluded before any filtering on species composition.
-For indices representing only north of Point Conception, the years 1993-1994 were 
-excluded due to limited spatial coverage.
-
-The Stephens-MacCall [-@stephens_multispecies_2004] filtering approach was used to predict the 
-probability of catching copper rockfish, based 
-on the species composition of the sampler examined catch in a given trip. Prior 
-to applying the Stephens-MacCall filter, we identified potentially informative 
-predictor species, i.e., species with sufficient sample sizes and temporal coverage 
-(present in at least 5\% of all trips) to inform the binomial model.  The remaining 
- xx species all co-occurred with copper rockfish in at least one trip 
-and were retained for the Stephens-MacCall logistic regression. Coefficients 
-from the Stephens-MacCall analysis (a binomial GLM) are positive 
-for species that are more likely to co-occur with copper rockfish, 
-and negative for species that are less likely to be caught with copper rockfish 
-(Figure \@ref(fig:fig-sm-mrfss)).
-The top five species with high probability of co-occurrence with copper rockfish include
-copper, greenspotted, bocaccio, and olive rockfishes and ocean whitefish, all of which are associated with rocky reef and kelp 
-habitats. The five species with the lowest probability of co-occurrence were 
-kelp bass, Pacific bonito, white croaker, California sheephead, and barred sandbass.
-
-While the filter is useful in identifying co-occurring or non-occurring species 
-assuming all effort was exerted in pursuit of a single target, the targeting of 
-more than one species or species complex ("mixed trips") can result in co-occurrence of species in the catch that do not truly co-occur in terms of habitat
-associations informative for an index of abundance. Stephens and MacCall [-@stephens_multispecies_2004] proposed filtering (excluding) trips from the index 
-standardization based on a criterion of balancing the number of false positives 
-and false negatives. False positives (FP) are trips that are predicted to catch 
-a copper rockfish based on the species composition of the catch, but did not. False 
-negatives (FN) are trips that were not predicted to catch a copper rockfish, given the 
-catch composition, but caught at least one. The Stephens-MacCall filtering method identified the probability of occurrence at which the rate of "false 
-positives" equals "false negatives" of 0.31. The 
-trips selected using this criteria were compared to an alternative method 
-including all the "false positive" trips, regardless of the probability of 
-encountering copper rockfish. 
-This assumes that if copper rockfish were caught, the anglers must have fished in 
-appropriate habitat during the trip. The catch included in this index is 
-"sampler-examined" and the samplers are well trained in species identification.
-
-
-The threshold probability that balances FP and FN excludes 
-5383 trips that did not catch a copper rockfish (84% 
-of the trips), and 308 trips (5% of the data) that 
-caught a copper rockfish. We retained the latter set of trips (FN), assuming that 
-catching a copper rockfish indicates that a non-negligible fraction of the fishing 
-effort occurred in habitat where copper rockfish occur. Only “true negatives” 
-(the 5383 
-trips that neither caught copper rockfish, nor were predicted to catch them by the model) 
-were excluded from the index standardization. The final dataset selected included 
-1043 trips, 70% 
-of which encountered copper rockfish.  Sample sizes by the factors selected to model are in Tables 
-\@ref(tab:tab-region-mrfss) and \@ref(tab:tab-year-mrfss).
-
-
-Initial exploration of negative binomial models for this dataset proved to be 
-ill-fitting. The proportion of zeroes predicted by the Bayesian negative binomial 
-models were different enough from the fraction of zeroes in the raw data, that 
-a negative binomial model was not considered for model selection. We modeled catch 
-per angler hour (CPUE; number of fish per angler hour) with a Bayesian delta-GLM model. 
-Models incorporating temporal (year, 2-month waves) 
-and geographic (region and primary area fished (inshore <3 nm, offshore >3 nm) 
-factors were evaluated. For assessments north of Point Conception, two regions were defined based on counties, 1) Del Norte 
-to Santa Cruz ("N") and 2) Monterey to San Luis Obispo ("C"). For assessment models south 
-of Point Conception, the region represents individual counties. Note that Santa Barbara 
-county spans north and south of Point Conception, but all accessible fishing ports in Santa Barbara county are south of Point Conception and vessels rarely (if ever) transit Point Conception.  Indices with a year and area interaction were not considered in model selection; trends in the average CPUE by region were similar in the filtered data set (Figure \@ref(fig:fig-areacpue-mrfss)). 
-
-
-The positive observations were modeled with a Lognormal distribution 
-that was selected over a Gamma model
-by a $\Delta AIC$ of 51.8, and supported by Q-Q plots of the positive observations fit to both distributions (Figure \@ref(fig:fig-dist-fits-mrfss)).  The delta-GLM
-method allows selection of differing linear predictors between the binomial and positive models. Based on AIC values from maximum likelihood fits, 
-
--->
-
-<!--chapter:end:61appendix_mrfss.Rmd-->
-
 ## Development of Indices of Abundance
 
 ### California Onboard CPFV Index of Abundance {#onboard-cpfv-index}
@@ -2766,8 +2641,7 @@ or the history of regulation changes section for details.
 The filters also included removal of the number of observed anglers and time fished at the tail 
 ends of the distributions and removal of drifts occurring in depths outside copper rockfish's range 
 (Table \@ref(tab:onboard-filter) and Figure \@ref(fig:onboard-depths)). 
-We retained 17,458 drifts for index
- standardization, and 3,303 of those drifts encountered copper rockfish 
+We retained 17,458 drifts for index  standardization, and 3,303 of those drifts encountered copper rockfish 
 Table \@ref(tab:onboard-percentpos). 
 
 We modeled catch per angler minutes fished (CPUE) by fishing drift. 
@@ -2792,17 +2666,16 @@ known area of rocky substrate to areas in southern California that lack substrat
 expansion of the estimated rocky substrate assumes that the proportions of rocky substrate within 
 and outside state waters are similar.  Copper rockfish are a nearshore species and the majority of 
 observed encounters were within state waters (Table \@ref(tab:onboard-waterarea)).
-This is, of course, an estimation of the amount of rocky substrate, and represents the best available data. The calculations can be found in the online supplementary material. Starting in 2017, depth restrictions eased in districts 
+This is, of course, an estimation of the amount of rocky substrate, and represents the best available data. 
+The calculations can be found in the online supplementary material. Starting in 2017, depth restrictions eased in districts 
 north of Point Conception and the recreational fleet targeted these depths 
 (Figure \@ref(fig:onboard-depths)). The deeper waters (40-50 fm) are 
 outside of the mapped hard bottom habitat, but could be assigned to the larger 
 areas considered as a factor in the index.
 
 
-The covariates explored for model selection included year and four categorical region levels (CRFS Districts 3-6), a categorical variable for month, and continuous depth and depth-squared. Trends in the average CPUE by region were similar in the filtered data set (Figure \@ref(fig:onboard-regioncpue)). A year and region interaction 
-was included after visualizing the trends in average CPUE over time, but was not significant. The full model was selected by AICc and 
-included year, depth, depth squared and region
-(Table \@ref(tab:onboard-model_selection)). 
+The covariates explored for model selection included year and four categorical region levels (CRFS Districts 3-6), a categorical variable for month, and continuous depth and depth-squared. Trends in the average CPUE by region were similar in the filtered data set (Figure \@ref(fig:onboard-regioncpue)). A year and region interaction was included after visualizing the trends in average CPUE over time, but was not significant. The full model was selected by AICc and 
+included year, depth, depth squared and region (Table \@ref(tab:onboard-model_selection)). 
 
 Indices were fit via MLE from the sdmTMB package in R. The Q-Q plot for the negative binomial model indicated a poor fit to the data, which as not surprising given the low percent of observed drifts encountering copper rockfish. A delta-Lognormal 
 was selected over a delta-gamma by a delta AIC of 487.  The Q-Q plot indicated a much 
@@ -2812,19 +2685,19 @@ and Figure \@ref(fig:onboard-index)).
 
 
 ```{r, results = 'asis'}
-ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
-                    "keep_discard_prop.csv")) %>%
+library(dplyr)
+ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004", "keep_discard_prop.csv")) %>%
 mutate(Proportion.discarded = round(Proportion.discarded, 3)) %>%
 mutate(Proportion.discarded = scales::percent(Proportion.discarded))
 col_names = c("Year", "Number Kept", "Number Discarded", "Proprtion Discarded")
 
 sa4ss::table_format(x = ind,
              caption = "Number of observed copper rockfish retained and discarded by year.",
-             label = "onboard-keepdiscard",
+             longtable = FALSE, label = "onboard-keepdiscard",
              col_names = col_names)                         
 ```
 
-\newpage
+
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north",
@@ -2835,12 +2708,12 @@ col_names = c("District", "Inside State Waters", "Outside State Waters","Percent
 
 sa4ss::table_format(x = ind,
              caption = "Number of observed drifts inside and outside of state waters by district, summed across years.",
-             label = "onboard-waterarea",
+             longtable = FALSE, label = "onboard-waterarea",
             col_names = col_names)                         
 ```
 
 
-\newpage
+
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north",
@@ -2850,28 +2723,11 @@ col_names = c("Year", "Samples with Target", "Samples without Target", "Total Sa
 
 sa4ss::table_format(x = ind,
              caption = "Number of samples with and without copper rockfish.",
-             label = "onboard-percentpos")#,
-        #     col_names = col_names)                         
-```
-
-\newpage
-
-```{r, results = 'asis'}
-#ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north",
-#                    "model_selection.csv"))
-#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
-
-#sa4ss::table_format(x = ind,
-#             caption = "Data filtering steps for the onboard CPFV survey.",
-#             label = "onboard-filter",
-#             col_names = col_names)                         
+             longtable = FALSE, label = "onboard-percentpos")
 ```
 
 
-\newpage
-
 ```{r, results = 'asis'}
-
 ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
                    "deltalogn", "index_forSS.csv"))
 ind <- ind[, c(1,4,5)]
@@ -2879,12 +2735,11 @@ col_names = c("Year", "Estimate", "logSE")
 
 sa4ss::table_format(x = ind,
              caption = "Estimated relative index of abundance for the onboard CPFV survey.",
-             label = "onboard-index",
+             longtable = FALSE, label = "onboard-index",
              digits  = 4,
              col_names = col_names)                         
 ```
 
-\newpage
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
@@ -2895,7 +2750,7 @@ col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
 sa4ss::table_format(
         x = ind,
         caption = "Data filtering steps for the onboard CPFV survey.",
-        label = "onboard-filter",
+        longtable = FALSE, label = "onboard-filter",
         col_names = col_names,
         landscape = TRUE,
         custom_width = TRUE,
@@ -2904,46 +2759,29 @@ sa4ss::table_format(
         width = c("8cm"))                        
 ```
 
-\newpage
 
-```{r, results = 'asis'}
-ind <- read.csv(file.path(
-  data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",  "model_selection.csv"
-))
-col_names <- c("Intercept",	"Depth", "Depth-squared",	"Month", "Region", "Year", "DF",	"AICc",	"Delta AICc")
 
-#sa4ss::table_format(
-#  x = ind,
-#  caption = "Model selection for the onboard CRFS CPFV survey.",
-#  label = "onboard-model_selection",
-#  digits = 2,
-#  font_size = 8,
-#  col_names = col_names
-#)
-```
-
-\newpage
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
                    "deltalogn", "index.png"), 
 caption = "Index for the onboard CPFV survey.",
-alt_caption = "Index for the CPFV survey indicating a flat index until 2016 when the relative index indreases.",
+alt_caption = "Index for the CPFV survey indicating a flat index until 2016 when the relative index indreases",
 label = 'onboard-index')
 ```
 
-\newpage
+
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
                    "deltalogn", "qq.png"), 
 caption = "Q-Q plot for the onboard CPFV survey.",
-alt_caption = "The q q plot shows a decent fit to the data.",
+alt_caption = "The q q plot shows a decent fit to the data",
 label = 'onboard-qq')
 ```
 
-\newpage
+
 
 
 ```{r, results = 'asis'}
@@ -2951,11 +2789,10 @@ sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
                    "average_cpue_by_district.png"), 
 caption = "Average CPUE by district prior to standardization.",
-alt_caption = "Average CPUE by district whosing that the trends across district are similar.",
+alt_caption = "Average catch per unit effort by district showing that the trends across district are similar",
 label = 'onboard-regioncpue')
 ```
 
-\newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -2966,7 +2803,7 @@ alt_caption = "Distribution of depths showing an increase in the mean as you mov
 label = 'onboard-depths')
 ```
 
-\newpage
+
 
 
 ```{r, results = 'asis'}
@@ -2974,11 +2811,9 @@ sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "crfs_cpfv_onboard", "north", "start2004",
                    "drifts_by_depth_district.png"), 
 caption = "Depths of observed copper rockfish by district.",
-alt_caption = "Number of drifts with copper rockfish by depth indicating copper rockfish are mostly found shallower than 300 feet.",
+alt_caption = "Number of drifts with copper rockfish by depth indicating copper rockfish are mostly found shallower than 300 feet",
 label = 'onboard-depths2')
 ```
-
-\newpage
 
 <!--chapter:end:62appendix_crfs_onboard.Rmd-->
 
@@ -3067,6 +2902,7 @@ and Figure \@ref(fig:deb-index)).
 
 
 ```{r, results = 'asis'}
+library(dplyr)
 ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard", "error_removed",
                      "percent_pos.csv")) %>%
   mutate(percentpos = scales::percent(round(percentpos, 3)))
@@ -3077,26 +2913,14 @@ col_names <- c(
 )
 sa4ss::table_format(x = ind,
              caption = "Number of samples and percent positive for Deb Wilson-Vandenberg's onboard observer survey.",
-             label = "deb-percentpos",
+             longtable = FALSE, label = "deb-percentpos",
              col_names = col_names,
              align = "r")                         
 ```
 
-\newpage
-
-```{r, results = 'asis'}
-#ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard", "north",
-#                    "model_selection.csv"))
-#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
-
-#sa4ss::table_format(x = ind,
-#             caption = "Data filtering steps for the onboard CPFV survey.",
-#             label = "deb-filter",
-#             col_names = col_names)                         
-```
 
 
-\newpage
+
 
 ```{r, results = 'asis'}
 
@@ -3107,12 +2931,12 @@ col_names = c("Year", "Estimate", "logSE")
 
 sa4ss::table_format(x = ind,
              caption = "Estimated relative index of abundance for the onboard CPFV survey.",
-             label = "deb-index",
+             longtable = FALSE, label = "deb-index",
              col_names = col_names,
              digits = 4)                         
 ```
 
-\newpage
+
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
@@ -3123,7 +2947,7 @@ col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
 sa4ss::table_format(
     x = ind,
     caption = "Data filtering steps for the onboard CPFV survey.",
-    label = "deb-filter",
+    longtable = FALSE, label = "deb-filter",
     col_names = col_names,
     font_size = 9,
     landscape = TRUE,
@@ -3134,27 +2958,27 @@ sa4ss::table_format(
     width = c("8cm"))                         
 ```
 
-\newpage
+
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
                    "deltagamma", "index.png"), 
 caption = "Index for the onboard CPFV survey.",
+alt_caption = "The index for the onboard commercial passenger fishing vessel survey from 1989 to 1999",
 label = 'deb-index')
 ```
 
-\newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard", 
                    "deltagamma", "qq.png"), 
 caption = "Q-Q plot for the onboard CPFV survey.",
+alt_caption = "The q q plot indicates a decent fit to the data",
 label = 'deb-qq')
 ```
 
-\newpage
 
 
 ```{r, results = 'asis'}
@@ -3162,20 +2986,21 @@ sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
                    "average_cpue_by_reef.png"), 
 caption = "Average CPUE by region prior to standardization.",
+alt_caption = "The average catch per unit effort is similar across regions",
 label = 'deb-regioncpue')
 ```
 
-\newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
                    "percent_gfish.png"), 
 caption = "Percent of catch by trip that consisted of groundfish.",
+alt_caption = "A large percentage of trips encountered groundfish",
 label = 'deb-percent-gfish')
 ```
 
-\newpage
+
 
 
 ```{r, results = 'asis'}
@@ -3183,10 +3008,9 @@ sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
                    "depth_by_reef.png"), 
 caption = "Stacked bar plot of the depth of observed copper rockfish by region.",
+alt_caption = "Copper rockfish are observed in the expected depth from the fleet",
 label = 'deb-depths')
 ```
-
-\newpage
 
 
 <!--chapter:end:63appendix_dwv_cpfv.Rmd-->
@@ -3255,7 +3079,7 @@ Month and primary target species were modeled as categorical covariates
 
 <!--Tables -->
 
-\newpage
+
 
 ```{r, results = 'asis'}
 library(dplyr)
@@ -3270,13 +3094,13 @@ col_names <- c("Year", "Minimum", "25th Quantile", "Median", "75th Quantile", "M
 sa4ss::table_format(
   x = ind,
   caption = "Summary values of the copper rockfish retained per angler (CPUE) to look at the effects of the sub-bag limit.",
-  label = "pr-cpue",
+  longtable = FALSE, label = "pr-cpue",
   col_names = col_names,
   align = "r"
 )
 ```
 
-\newpage
+
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(
@@ -3290,14 +3114,14 @@ sa4ss::table_format(
   x = ind,
   caption = "Summary of the number of speciated and unspeciated (RFGEN) rockfish 
   per year across all of California.",
-  label = "pr-rfgen",
+  longtable = FALSE, label = "pr-rfgen",
   col_names = col_names,
   align = "r",
   format.args = list(big.mark = ",")
 )
 ```
 
-\newpage
+
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(
@@ -3313,13 +3137,13 @@ col_names <- c(
 sa4ss::table_format(
   x = ind,
   caption = "Number of samples and percent positive for the dockside PR survey.",
-  label = "pr-percentpos",
+  longtable = FALSE, label = "pr-percentpos",
   col_names = col_names,
   format.args = list(big.mark = ",")
 )
 ```
 
-\newpage
+
 
 
 ```{r, results = 'asis'}
@@ -3332,7 +3156,7 @@ col_names <- c("Filter", "Description", "Number of Samples", "Positive Samples")
 sa4ss::table_format(
   x = ind,
   caption = "Data filtering steps for the CRFS PR dockside survey.",
-  label = "pr-filter",
+  longtable = FALSE, label = "pr-filter",
   col_names = col_names,
   font_size = 9,
   landscape = TRUE,
@@ -3344,7 +3168,7 @@ sa4ss::table_format(
 )
 ```
 
-\newpage
+
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(
@@ -3357,7 +3181,7 @@ col_names <- c("Intercept",	"District",	"Month",	"Target Species",
 sa4ss::table_format(
   x = ind,
   caption = "Model selection for the dockside PR survey.",
-  label = "pr-modelselect",
+  longtable = FALSE, label = "pr-modelselect",
   digits = 2,
   font_size = 8,
   col_names = col_names
@@ -3365,7 +3189,7 @@ sa4ss::table_format(
 ```
 
 
-\newpage
+
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(
@@ -3378,15 +3202,13 @@ col_names <- c("Year", "Estimate", "logSE")
 sa4ss::table_format(
   x = ind,
   caption = "Estimated relative index of abundance for the dockside PR survey.",
-  label = "pr-index",
+  longtable = FALSE, label = "pr-index",
   col_names = col_names,
   digits = 4
 )
 ```
 
-\newpage
 
-<!--Figures -->
 
 
 ```{r, results = 'asis'}
@@ -3403,7 +3225,6 @@ sa4ss::add_figure(
 )
 ```
 
-\newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -3418,7 +3239,7 @@ sa4ss::add_figure(
 ```
 
 
-\newpage
+
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -3430,7 +3251,6 @@ sa4ss::add_figure(
 )
 ```
 
-\newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -3447,7 +3267,6 @@ sa4ss::add_figure(
 
 
 
-\newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -3456,12 +3275,11 @@ sa4ss::add_figure(
     "rm_last2yrs_area_weighted", "qq.png"
   ),
   caption = "Q-Q plot for the dockside PR survey.",
-    alt_caption = "The qq plot indicates a relatively good fit with some diversion of the 1 to 1 line on the upper quantiles.",
+  alt_caption = "The qq plot indicates a relatively good fit with some diversion of the 1 to 1 line on the upper quantiles.",
   label = "pr-qq"
 )
 ```
 
-\newpage
 
 
 <!--chapter:end:64appendix_crfs_dockside.Rmd-->
@@ -3525,7 +3343,7 @@ sa4ss::table_format(x = tab,
              caption = "Data filtering for the CCFRP survey.",
              label = "ccfrp-data-filter",
              align = 'l',
-             longtable = TRUE,
+             longtable = FALSE,
              font_size = 7,
              landscape = TRUE)                         
 ```
@@ -3540,7 +3358,7 @@ sa4ss::table_format(x = tab,
              caption = "Model selection for the CCFRP survey.",
              label = "ccfrp-model-selection",
              align = 'l',
-             longtable = TRUE,
+             longtable = FALSE,
              font_size = 7,
              landscape = TRUE)                         
 ```
@@ -3555,7 +3373,7 @@ col_names = c("Year", "Estimate", "logSE")
 
 sa4ss::table_format(x = ind,
              caption = "Estimated relative index of abundance for the CCFRP survey.",
-             label = "ccfrp-index",
+             longtable = FALSE, label = "ccfrp-index",
              col_names = col_names)                         
 ```
 
@@ -3685,7 +3503,7 @@ col_names = c("District", "2018", "2019", "Total")
 
 sa4ss::table_format(x = ind,
              caption = "Total mortality in metric tons of copper rockfish from 2018 and 2019 from the CPFV fleet by CRFS District.",
-             label = "catch-example",
+             longtable = FALSE, label = "catch-example",
               align = "r",
              col_names = col_names)                         
 ```
@@ -3698,7 +3516,7 @@ col_names = c("District",  "1/2 day trips", "3/4-1 day trips","Overnight trips")
 sa4ss::table_format(x = ind,
              caption = "Number of copper rockfish observed during the CPFV trips sampled onboard by district and trip type from 2018-2019.",
               align = "r",
-             label = "onboard-coppers",
+             longtable = FALSE, label = "onboard-coppers",
              col_names = col_names)                         
 ```
 
@@ -3710,7 +3528,7 @@ col_names = c("District",  "1/2 day trips", "3/4-1 day trips","Overnight trips")
 sa4ss::table_format(x = ind,
              caption = "Number of copper rockfish measured by district and trip type from the angler interviews in 2018-2019.",
               align = "r",
-             label = "copper-lengths",
+             longtable = FALSE, label = "copper-lengths",
              col_names = col_names)                         
 ```
 
@@ -3724,7 +3542,7 @@ ind[is.na(ind$Copper.observed), c("Copper.observed", "Percent.of.trips.encounter
 
 sa4ss::table_format(x = ind,
              caption = "Number of CPFV trips sampled as part of the onboard observer survey during 2018-2019, the percent of trips with copper rockfish observed, and the total number of recorded copper rockfish by trip type and District. District 4 and 6 were combined to retain confidentiality.  No trips from District 5 were sampled.",
-             label = "onboard-trips",
+             longtable = FALSE, label = "onboard-trips",
              landscape = TRUE,
              align = 'l',
              col_names = col_names)                         
@@ -3740,7 +3558,7 @@ ind[is.na(ind)] <- 0
 sa4ss::table_format(x = ind,
              caption = "Number of CPFV logbook entries with at least one rockfish, grouped by region fished and trip type from 2018-2019.",
               align = "r",
-             label = "logbook-triptype",
+             longtable = FALSE, label = "logbook-triptype",
              col_names = col_names)                         
 ```
 
@@ -3856,7 +3674,7 @@ col_names <- c("CRFS District", "CPUE", "Area", "Percent of Area", "CPUE*Area", 
 
 sa4ss::table_format(x = tab,
              caption = "Estimated CPUE, percent habitat area, and relative abundance by CRFS District.",
-             label = "pr-split-cpue",
+             longtable = FALSE, label = "pr-split-cpue",
              align = 'l',
              col_names = col_names) #,
             # col_to_adjust = 2, 

@@ -58,17 +58,18 @@ save(model_dir, bridge_dir, doc_dir, data_dir, management_dir, north_model_dir, 
 
 setwd(file.path(doc_dir, "nca"))
 
+
 #===============================================================================
 # Compile command ----
 #===============================================================================
-if(file.exists("_main.Rmd")){
-  file.remove("_main.Rmd")
-}
+#if(file.exists("_main.Rmd")){
+#  file.remove("_main.Rmd")
+#}
 # Render the pdf
-bookdown::render_book(
-  "00a.Rmd", 
-  clean = FALSE, 
-  output_dir = doc_dir)
+#bookdown::render_book(
+#  "00a.Rmd", 
+#  clean = FALSE, 
+#  output_dir = doc_dir)
 
 #==================================================================================================
 # Function to build a single section of the document - not recently tested

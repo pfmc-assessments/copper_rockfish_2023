@@ -1,33 +1,41 @@
 delete_merged_file: true
 
-rmd_files: ['00a.Rmd',
-             '00authors.Rmd' 
- #             '00bibliography.Rmd',
- #              '01executive.Rmd'
- #           '11introduction.Rmd'
- #            '20data.Rmd',
-#              '21f-.Rmd',
-#              '21s-.Rmd',
-#              '21s-ccfrp.Rmd',
-#              '21s-rov.Rmd',
-#             '21s-ygrowth.Rmd',
-#              '21s-zsurveys_not_included.Rmd',
-#             '22biology.Rmd',
-#              '23enviro.Rmd',
-#             '40management.Rmd',
- #             '33results.Rmd',
- #            '61appendix_mrfss.Rmd',
-#            '62appendix_crfs_onboard.Rmd',
-#            '63appendix_dwv_cpfv.Rmd',
-#            '64appendix_crfs_dockside.Rmd',
-#            '65appendix_ccfrp.Rmd',
-#           '67appendix_rov.Rmd',
-#             '70appendix_cpfv.Rmd'
-#            "35model-prestar-base-results-north.Rmd",
-#            "36model-uncertainty-north.Rmd",
-#            '40management.Rmd',
-#            '41acknowledgements.Rmd',
-#           '52tables.Rmd',
-#          '53figures.Rmd',
- #          '72labels.Rmd'
+rmd_files: [
+	"00a.Rmd"	,
+  "00authors.Rmd"	,
+#	"00bibliography.Rmd"	,
+	"00title.Rmd"	,
+	"01a.Rmd"	,
+#	"01executive.Rmd"	,
+	"10a.Rmd"	,
+	"11introduction.Rmd"	,
+	"20data.Rmd",	
+	"21f-.Rmd"	,
+	"21s-.Rmd"	,
+	"21s-ccfrp.Rmd",	
+	"21s-ygrowth.Rmd"	,
+	"21s-zsurveys_not_included.Rmd"	,
+	"22biology.Rmd"	,
+	"23enviro.Rmd"	,
+	"30model.Rmd"	,
+	"31summary.Rmd"	,
+	"32structure.Rmd"	,
+	"33results.Rmd"	,
+	"34diagnostics.Rmd",	
+	"40management.Rmd"	,
+	"41acknowledgments.Rmd"	,
+#	"49bibliography.Rmd"	,
+	"52tables.Rmd",	
+	"53figures.Rmd"	,
+	"60appendix_caal.Rmd"	,
+	"62appendix_crfs_onboard.Rmd"	,
+	"63appendix_dwv_cpfv.Rmd"	,
+	"64appendix_crfs_dockside.Rmd"	,
+	"65appendix_ccfrp.Rmd"	,
+	"70appendix_cpfv.Rmd"	,
+	"71appendix_expert_info.Rmd"	,
+	"72appendix_management_split.rmd"	
+
 ]
+
+

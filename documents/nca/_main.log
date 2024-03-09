@@ -1,69 +1,40 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2024.2.26)  26 FEB 2024 11:00
- restricted system commands enabled.
-**_main.tex
-(./_main.tex
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.8)  8 MAR 2024 17:26
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex
+(c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
-Lua module: luaotfload 2024-02-14 3.27 Lua based OpenType font support
-Lua module: lualibs 2023-07-13 2.76 ConTeXt Lua standard libraries.
-Lua module: lualibs-extended 2023-07-13 2.76 ConTeXt Lua libraries -- extended collection.
-luaotfload | conf : Root cache directory is "C:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-var/luatex-cache/generic/names".
-luaotfload | init : Loading fontloader "fontloader-2023-12-28.lua" from kpse-resolved path "c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/luatex/luaotfload/fontloader-2023-12-28.lua".
-Lua-only attribute luaotfload@noligature = 1
-luaotfload | init : Context OpenType loader version 3.134
-Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
-Inserting `luaotfload.node_processor' in `hpack_filter'.
-Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
-Inserting `luaotfload.define_font' in `define_font'.
-Lua-only attribute luaotfload_color_attribute = 2
-luaotfload | conf : Root cache directory is "C:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-var/luatex-cache/generic/names".
-Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
-Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
-Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
-Inserting `luaotfload.harf.glyphstream' in `glyph_stream_provider'.
-Inserting `luaotfload.harf.finalize_vlist' in `post_linebreak_filter'.
-Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
-Inserting `luaotfload.cleanup_files' in `wrapup_run'.
-Inserting `luaotfload.harf.finalize_unicode' in `finish_pdffile'.
-Inserting `luaotfload.glyphinfo' in `glyph_info'.
-Lua-only attribute luaotfload.letterspace_done = 3
-Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
-Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
-Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
-Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
-Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
-Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
-Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
-Inserting `tracingstacklevels' in `input_level_string'. (./input_accessability.tex (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latex-lab/documentmetadata-support.ltx (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfmanagement-testphase/pdfmanagement-testphase.sty
-Package: pdfmanagement-testphase 2024-02-22 v0.96e LaTeX PDF management testphase bundle
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tagpdf/tagpdf-base.sty
-Package: tagpdf-base 2024-02-22 v0.98w part of tagpdf - provide base, no-op versions of the user commands 
-\c@g__tag_MCID_abs_int=\count186
-\c@g__tag_struct_abs_int=\count187
+(./input_accessability.tex (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latex-lab/documentmetadata-support.ltx (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfmanagement-testphase/pdfmanagement-testphase.sty
+Package: pdfmanagement-testphase 2024-03-01 v0.96f LaTeX PDF management testphase bundle
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tagpdf/tagpdf-base.sty
+Package: tagpdf-base 2024-02-29 v0.98x part of tagpdf - provide base, no-op versions of the user commands 
+\c@g__tag_MCID_abs_int=\count188
+\c@g__tag_struct_abs_int=\count189
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfmanagement-testphase/pdfmanagement-testphase.ltx
-File: pdfmanagement-testphase.ltx 2024-02-22 v0.96e PDF management code (testphase)
-\g__pdfmanagement_EmbeddedFiles_int=\count188
-\l__pdfmeta_xmp_indent_int=\count189
-))) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
-File: l3backend-luatex.def 2024-02-20 L3 backend support: PDF output (LuaTeX)
-\l__color_backend_stack_int=\count190
-Inserting `l3color' in `luaotfload.parse_color'.
-Inserting `l3opacity' in `luaotfload.parse_transparent'.
+File: pdfmanagement-testphase.ltx 2024-03-01 v0.96f PDF management code (testphase)
+\g__pdfmanagement_EmbeddedFiles_int=\count190
+\l__pdfmeta_xmp_indent_int=\count191
+))) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count192
 \l__pdf_internal_box=\box51
-) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfmanagement-testphase/l3backend-testphase-luatex.def
-File: l3backend-testphase-luatex.def 2024-02-22 LaTeX PDF management testphase bundle backend support:PDFoutput(LuaTeX)
+) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfmanagement-testphase/l3backend-testphase-pdftex.def
+File: l3backend-testphase-pdftex.def 2024-03-01 LaTeX PDF management testphase bundle backend support:PDFoutput(pdfTeX)
 \l__pdf_backend_tmpa_box=\box52
 \l__pdf_backend_tmpb_box=\box53
-\g__pdf_backend_resourceid_int=\count191
-\g__pdf_backend_name_int=\count192
-\g__pdf_backend_page_int=\count193
+\g__pdf_backend_resourceid_int=\count193
+\g__pdf_backend_name_int=\count194
+\g__pdf_backend_page_int=\count195
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latex-lab/phase-II-latex-lab-testphase.ltx
 File: phase-II-latex-lab-testphase.ltx 2023-06-15 v0.1b latex-lab wrapper phase-II
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latex-lab/latex-lab-testphase-new-or-1.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latex-lab/latex-lab-testphase-new-or-1.sty
 Package: latex-lab-testphase-new-or-1 2023-07-20 v0.85a Temporary output patches for tagging and better link support
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count194
+\etb@tempcnta=\count196
 )
 Patching header in \@outputpage
 Patching footer in \@outputpage
@@ -71,29 +42,23 @@ Patching \@makecol for tagging
 Patching \@makecol for tagging
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latex-lab/latex-lab-testphase-new-or-2.sty
 Package: latex-lab-testphase-new-or-2 2023-09-04 v0.85c Changes to the output routine
-\@outputbox@depth=\dimen139
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latex-lab/latex-lab-footnotes.ltx
+\@outputbox@depth=\dimen140
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latex-lab/latex-lab-footnotes.ltx
 File: latex-lab-footnotes.ltx 2023-09-04 v0.8c changes to the footnote interfaces
-\footnotemargin=\dimen140
+\footnotemargin=\dimen141
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tagpdf/tagpdf.sty
-Package: tagpdf 2024-02-22 v0.98w  A package to experiment with pdf tagging 
-\l__tag_tmpa_int=\count195
+Package: tagpdf 2024-02-29 v0.98x  A package to experiment with pdf tagging 
+\l__tag_tmpa_int=\count197
 \l__tag_tmpa_box=\box54
 \l__tag_tmpb_box=\box55
-\l__tag_loglevel_int=\count196
-\l__tag_tag_stop_int=\count197
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tagpdf/tagpdf-luatex.def
-File: tagpdf-luatex.def 2024-02-22 v0.98w tagpdf driver for luatex
-luaotfload | db : Font names database loaded from C:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz
-Lua module: tagpdf 2024-02-22 0.98w tagpdf lua code
-Lua-only attribute g__tag_mc_type_attr = 4
-Lua-only attribute g__tag_mc_cnt_attr = 5
-Lua-only attribute g__tag_interwordspace_attr = 6
-Lua-only attribute g__tag_interwordfont_attr = 7) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tagpdf/tagpdf-mc-code-lua.sty
-Package: tagpdf-mc-code-lua 2024-02-22 v0.98w tagpdf - mc code only for the luamode 
+\l__tag_loglevel_int=\count198
+\l__tag_tag_stop_int=\count199
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tagpdf/tagpdf-mc-code-generic.sty
+Package: tagpdf-mc-code-generic 2024-02-29 v0.98x part of tagpdf - code related to marking chunks - generic mode
+\g__tag_mc_marks=\marks4
 )
-\g__tag_tree_id_pad_int=\count198
-\c@g__tag_parenttree_obj_int=\count199
+\g__tag_tree_id_pad_int=\count266
+\c@g__tag_parenttree_obj_int=\count267
 
 Package tagpdf Info: reading namespace definitions tagpdf-ns-pdf.def
 
@@ -118,42 +83,40 @@ Package tagpdf Info: reading namespace definitions tagpdf-ns-pdf.def
 
 Package tagpdf Info: reading namespace definitions tagpdf-ns-pdf2.def
 
-\g__tag_struct_AFobj_int=\count266
-\g__tag_para_begin_int=\count267
-\g__tag_para_end_int=\count268
-\g__tag_para_main_begin_int=\count269
-\g__tag_para_main_end_int=\count270
-)
-Inserting `markspaces' in `pre_linebreak_filter'.
-Inserting `markspaces' in `hpack_filter'.) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex-dev/latex-lab/tabular-latex-lab-testphase.ltx
+\g__tag_struct_AFobj_int=\count268
+\g__tag_para_begin_int=\count269
+\g__tag_para_end_int=\count270
+\g__tag_para_main_begin_int=\count271
+\g__tag_para_main_end_int=\count272
+)) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex-dev/latex-lab/tabular-latex-lab-testphase.ltx
 File: tabular-latex-lab-testphase.ltx 2024-02-07 v0.85k latex-lab wrapper tabular
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latex-lab/latex-lab-testphase-table.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latex-lab/latex-lab-testphase-table.sty
 Package: latex-lab-testphase-table 2023-10-30 v0.85d Code related to the tagging of tables
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/array.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/array.sty
 Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen141
+\col@sep=\dimen142
 \ar@mcellbox=\box56
-\extrarowheight=\dimen142
+\extrarowheight=\dimen143
 \NC@list=\toks17
 \extratabsurround=\skip48
 \backup@length=\skip49
 \ar@cellbox=\box57
 )
-\g__tbl_missing_cells_int=\count271
-\g__tbl_col_int=\count272
-\g__tbl_row_int=\count273
+\g__tbl_missing_cells_int=\count273
+\g__tbl_col_int=\count274
+\g__tbl_row_int=\count275
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latex-lab/graphic-latex-lab-testphase.ltx
 File: graphic-latex-lab-testphase.ltx 2023-10-13 v0.80b latex-lab wrapper graphic
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latex-lab/latex-lab-testphase-graphic.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latex-lab/latex-lab-testphase-graphic.sty
 Package: latex-lab-testphase-graphic 2023-10-13 v0.80b Code related to the tagging of graphics
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3experimental/l3opacity/l3opacity.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3experimental/l3opacity/l3opacity.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2024-02-20 L3 programming layer (loader) 
 )
 Package: l3opacity 2024-02-20 L3 Experimental opacity support
 )
-\g__tag_graphic_int=\count274
+\g__tag_graphic_int=\count276
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfmanagement-testphase/pdfmanagement-firstaid.sty
-Package: pdfmanagement-firstaid 2024-02-22 v0.96e LaTeX PDF management testphase bundle / firstaid-patches
+Package: pdfmanagement-firstaid 2024-03-01 v0.96f LaTeX PDF management testphase bundle / firstaid-patches
 
 Package pdfmanagement Info: loading pdfmanagement firstaid code for pgf
 
@@ -162,96 +125,96 @@ Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size11.clo
 File: size11.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count275
-\c@section=\count276
-\c@subsection=\count277
-\c@subsubsection=\count278
-\c@paragraph=\count279
-\c@subparagraph=\count280
-\c@figure=\count281
-\c@table=\count282
+\c@part=\count277
+\c@section=\count278
+\c@subsection=\count279
+\c@subsubsection=\count280
+\c@paragraph=\count281
+\c@subparagraph=\count282
+\c@figure=\count283
+\c@table=\count284
 \abovecaptionskip=\skip50
 \belowcaptionskip=\skip51
-\bibindent=\dimen143
+\bibindent=\dimen144
 ) (./sa4ss.sty
 Package: sa4ss 2020/11/10 v0.99 sa4ss package
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks18
-\pgfutil@tempdima=\dimen144
-\pgfutil@tempdimb=\dimen145
+\pgfutil@tempdima=\dimen145
+\pgfutil@tempdimb=\dimen146
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box58
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
 Package: pgf 2023-01-15 v3.1.10 (3.1.10)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks19
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: luatex.def on input line 107.
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-def/luatex.def
-File: luatex.def 2022/09/22 v1.2d Graphics/color driver for luatex
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen146
-\Gin@req@width=\dimen147
+\Gin@req@height=\dimen147
+\Gin@req@width=\dimen148
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks20
 \pgfkeys@temptoks=\toks21
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
 \pgfkeys@tmptoks=\toks22
 ))
-\pgf@x=\dimen148
-\pgf@y=\dimen149
-\pgf@xa=\dimen150
-\pgf@ya=\dimen151
-\pgf@xb=\dimen152
-\pgf@yb=\dimen153
-\pgf@xc=\dimen154
-\pgf@yc=\dimen155
-\pgf@xd=\dimen156
-\pgf@yd=\dimen157
+\pgf@x=\dimen149
+\pgf@y=\dimen150
+\pgf@xa=\dimen151
+\pgf@ya=\dimen152
+\pgf@xb=\dimen153
+\pgf@yb=\dimen154
+\pgf@xc=\dimen155
+\pgf@yc=\dimen156
+\pgf@xd=\dimen157
+\pgf@yd=\dimen158
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count283
-\c@pgf@countb=\count284
-\c@pgf@countc=\count285
-\c@pgf@countd=\count286
+\c@pgf@counta=\count285
+\c@pgf@countb=\count286
+\c@pgf@countc=\count287
+\c@pgf@countd=\count288
 \t@pgf@toka=\toks23
 \t@pgf@tokb=\toks24
 \t@pgf@tokc=\toks25
-\pgf@sys@id@count=\count287
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+\pgf@sys@id@count=\count289
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
-Driver file for pgf: pgfsys-luatex.def
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-luatex.def
-File: pgfsys-luatex.def 2023-01-15 v3.1.10 (3.1.10)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+Driver file for pgf: pgfsys-pdftex.def
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 ))) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count288
-\pgfsyssoftpath@bigbuffer@items=\count289
+\pgfsyssoftpath@smallbuffer@items=\count290
+\pgfsyssoftpath@bigbuffer@items=\count291
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: luatex.def on input line 274.
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
 Package xcolor Info: Model `RGB' extended on input line 1366.
@@ -262,56 +225,56 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfmanagement-testphase/xcolor-patches-tmp-ltx.sty
-Package: xcolor-patches-tmp-ltx 2024-02-22 v0.96e patch xcolor for l3color
+Package: xcolor-patches-tmp-ltx 2024-03-01 v0.96f patch xcolor for l3color
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen158
-\pgfmath@count=\count290
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen159
+\pgfmath@count=\count292
 \pgfmath@box=\box59
 \pgfmath@toks=\toks26
 \pgfmath@stack@operand=\toks27
 \pgfmath@stack@operation=\toks28
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count291
+\c@pgfmathroundto@lastzeros=\count293
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen159
-\pgf@picmaxx=\dimen160
-\pgf@picminy=\dimen161
-\pgf@picmaxy=\dimen162
-\pgf@pathminx=\dimen163
-\pgf@pathmaxx=\dimen164
-\pgf@pathminy=\dimen165
-\pgf@pathmaxy=\dimen166
-\pgf@xx=\dimen167
-\pgf@xy=\dimen168
-\pgf@yx=\dimen169
-\pgf@yy=\dimen170
-\pgf@zx=\dimen171
-\pgf@zy=\dimen172
+\pgf@picminx=\dimen160
+\pgf@picmaxx=\dimen161
+\pgf@picminy=\dimen162
+\pgf@picmaxy=\dimen163
+\pgf@pathminx=\dimen164
+\pgf@pathmaxx=\dimen165
+\pgf@pathminy=\dimen166
+\pgf@pathmaxy=\dimen167
+\pgf@xx=\dimen168
+\pgf@xy=\dimen169
+\pgf@yx=\dimen170
+\pgf@yy=\dimen171
+\pgf@zx=\dimen172
+\pgf@zy=\dimen173
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen173
-\pgf@path@lasty=\dimen174
+\pgf@path@lastx=\dimen174
+\pgf@path@lasty=\dimen175
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen175
-\pgf@shorten@start@additional=\dimen176
+\pgf@shorten@end@additional=\dimen176
+\pgf@shorten@start@additional=\dimen177
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfpic=\box60
 \pgf@hbox=\box61
 \pgf@layerbox@main=\box62
-\pgf@picture@serial@count=\count292
+\pgf@picture@serial@count=\count294
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen177
+\pgflinewidth=\dimen178
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen178
-\pgf@pt@y=\dimen179
-\pgf@pt@temp=\dimen180
+\pgf@pt@x=\dimen179
+\pgf@pt@y=\dimen180
+\pgf@pt@temp=\dimen181
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
@@ -320,12 +283,12 @@ File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen181
+\pgfarrowsep=\dimen182
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen182
-\pgf@sys@shading@range@num=\count293
-\pgf@shadingcount=\count294
+\pgf@max=\dimen183
+\pgf@sys@shading@range@num=\count295
+\pgf@shadingcount=\count296
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
@@ -346,74 +309,74 @@ File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen183
-\pgf@nodesepend=\dimen184
+\pgf@nodesepstart=\dimen184
+\pgf@nodesepend=\dimen185
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/math/pgfmath.sty (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen185
-\pgffor@skip=\dimen186
+\pgffor@iter=\dimen186
+\pgffor@skip=\dimen187
 \pgffor@stack=\toks29
 \pgffor@toks=\toks30
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count295
-\pgfplotmarksize=\dimen187
+\pgf@plot@mark@count=\count297
+\pgfplotmarksize=\dimen188
 )
-\tikz@lastx=\dimen188
-\tikz@lasty=\dimen189
-\tikz@lastxsaved=\dimen190
-\tikz@lastysaved=\dimen191
-\tikz@lastmovetox=\dimen192
-\tikz@lastmovetoy=\dimen193
-\tikzleveldistance=\dimen194
-\tikzsiblingdistance=\dimen195
+\tikz@lastx=\dimen189
+\tikz@lasty=\dimen190
+\tikz@lastxsaved=\dimen191
+\tikz@lastysaved=\dimen192
+\tikz@lastmovetox=\dimen193
+\tikz@lastmovetoy=\dimen194
+\tikzleveldistance=\dimen195
+\tikzsiblingdistance=\dimen196
 \tikz@figbox=\box65
 \tikz@figbox@bg=\box66
 \tikz@tempbox=\box67
 \tikz@tempbox@bg=\box68
-\tikztreelevel=\count296
-\tikznumberofchildren=\count297
-\tikznumberofcurrentchild=\count298
-\tikz@fig@count=\count299
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+\tikztreelevel=\count298
+\tikznumberofchildren=\count299
+\tikznumberofcurrentchild=\count300
+\tikz@fig@count=\count301
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count300
-\pgfmatrixcurrentcolumn=\count301
-\pgf@matrix@numberofcolumns=\count302
+\pgfmatrixcurrentrow=\count302
+\pgfmatrixcurrentcolumn=\count303
+\pgf@matrix@numberofcolumns=\count304
 )
-\tikz@expandcount=\count303
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+\tikz@expandcount=\count305
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-\Gm@cnth=\count304
-\Gm@cntv=\count305
-\c@Gm@tempcnt=\count306
-\Gm@bindingoffset=\dimen196
-\Gm@wd@mp=\dimen197
-\Gm@odd@mp=\dimen198
-\Gm@even@mp=\dimen199
-\Gm@layoutwidth=\dimen256
-\Gm@layoutheight=\dimen257
-\Gm@layouthoffset=\dimen258
-\Gm@layoutvoffset=\dimen259
+\Gm@cnth=\count306
+\Gm@cntv=\count307
+\c@Gm@tempcnt=\count308
+\Gm@bindingoffset=\dimen197
+\Gm@wd@mp=\dimen198
+\Gm@odd@mp=\dimen199
+\Gm@even@mp=\dimen256
+\Gm@layoutwidth=\dimen257
+\Gm@layoutheight=\dimen258
+\Gm@layouthoffset=\dimen259
+\Gm@layoutvoffset=\dimen260
 \Gm@dimlist=\toks31
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lastpage/lastpage.sty
 Package: lastpage 2023/10/14 v2.0e lastpage: 2.09 or 2e? (HMM)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lastpage/lastpage2e.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lastpage/lastpage2e.sty
 Package: lastpage2e 2023/10/14 v2.0e Decide which 2e lastpage version to use (HMM)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lastpage/lastpagemodern.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lastpage/lastpagemodern.sty
 Package: lastpagemodern 2023-10-14 v2.0e Refers to last page's name (HMM; JPG)
-\c@lastpagecount=\count307
+\c@lastpagecount=\count309
 ) 
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
@@ -438,13 +401,13 @@ Package: hanging 2009/09/02 v1.2b hanging paragraphs and punctuation
 \h@ngscolonwd=\skip68
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/lscape.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count308
+\c@float@type=\count310
 \float@exts=\toks32
 \float@box=\box69
 \@float@everytoks=\toks33
@@ -454,33 +417,33 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/datetime2/datetime2.sty
 Package: datetime2 2021/03/21 v1.5.7 (NLCT) date and time formats
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tracklang/tracklang.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tracklang/tracklang.sty
 Package: tracklang 2022/12/13 v1.6.1 (NLCT) Track Languages
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/tracklang/tracklang.tex)) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/tracklang/tracklang.tex)) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks34
 \XKV@tempa@toks=\toks35
 )
-\XKV@depth=\count309
+\XKV@depth=\count311
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/datetime2-english/datetime2-english.ldf
 File: datetime2-english.ldf 2019/10/21 v1.05 (NLCT)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/datetime2-english/datetime2-english-base.ldf
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/datetime2-english/datetime2-english-base.ldf
 File: datetime2-english-base.ldf 2019/10/21 v1.05 (NLCT)
 ))) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip69
 \bibsep=\skip70
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count310
+\c@NAT@ctr=\count312
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
-\FV@CodeLineNo=\count311
+\FV@CodeLineNo=\count313
 \FV@InFile=\read3
 \FV@TabBox=\box71
-\c@FancyVerbLine=\count312
-\FV@StepNumber=\count313
+\c@FancyVerbLine=\count314
+\FV@StepNumber=\count315
 \FV@OutFile=\write4
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/alltt.sty
 Package: alltt 2021/01/29 v2.0g defines alltt environment
@@ -494,54 +457,53 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen260
-\captionmargin=\dimen261
-\caption@leftmargin=\dimen262
-\caption@rightmargin=\dimen263
-\caption@width=\dimen264
-\caption@indent=\dimen265
-\caption@parindent=\dimen266
-\caption@hangindent=\dimen267
+\caption@tempdima=\dimen261
+\captionmargin=\dimen262
+\caption@leftmargin=\dimen263
+\caption@rightmargin=\dimen264
+\caption@width=\dimen265
+\caption@indent=\dimen266
+\caption@parindent=\dimen267
+\caption@hangindent=\dimen268
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count314
-\c@continuedfloat=\count315
+\c@caption@flags=\count316
+\c@continuedfloat=\count317
 Package caption Info: float package is loaded.
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
 \@envbody=\toks37
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/accsupp/accsupp.sty
 Package: accsupp 2019/12/05 v0.6 Accessibility support by marked content (HO)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-\pdftexcmds@toks=\toks38
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-)) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/accsupp/accsupp-luatex.def
-File: accsupp-luatex.def 2019/12/05 v0.6 accsupp driver for pdfTeX (HO)
+)) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/accsupp/accsupp-pdftex.def
+File: accsupp-pdftex.def 2019/12/05 v0.6 accsupp driver for pdfTeX (HO)
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfcomment/pdfcomment.sty
 Package: pdfcomment 2018/11/01 pdfcomment.sty v2.4a - Josef Kleber (C) 2008-2012, 2015-2016, 2018
-\c@pc@count@i=\count316
-\c@pc@count@ii=\count317
-\c@pc@count@iii=\count318
-\c@pc@count@iv=\count319
+\c@pc@count@i=\count318
+\c@pc@count@ii=\count319
+\c@pc@count@iii=\count320
+\c@pc@count@iv=\count321
 \pc@mathannot@box=\box72
 \pc@nullbox=\box73
 \pc@dima=\skip71
@@ -554,13 +516,11 @@ Package: pdfcomment 2018/11/01 pdfcomment.sty v2.4a - Josef Kleber (C) 2008-2012
 \pc@box@width=\skip78
 \pc@box@height=\skip79
 \pc@box@depth=\skip80
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/luatex85/luatex85.sty
-Package: luatex85 2016/06/15 v1.4 pdftex aliases for luatex
-) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/zref/zref-savepos.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/zref/zref-savepos.sty
 Package: zref-savepos 2023-09-14 v2.35 Module savepos for zref (HO)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/zref/zref-base.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/zref/zref-base.sty
 Package: zref-base 2023-09-14 v2.35 Module base for zref (HO)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
@@ -572,66 +532,69 @@ Package zref Info: New property: default on input line 768.
 Package zref Info: New property: page on input line 769.
 )
 Package zref Info: New property list: savepos on input line 79.
-Package zref Info: New property: posx on input line 84.
-Package zref Info: New property: posy on input line 85.
+Package zref Info: New property: posx on input line 81.
+Package zref Info: New property: posy on input line 82.
 )
-\c@zref@unique=\count320
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
+\c@zref@unique=\count322
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count321
-\calc@Bcount=\count322
-\calc@Adimen=\dimen268
-\calc@Bdimen=\dimen269
+\calc@Acount=\count323
+\calc@Bcount=\count324
+\calc@Adimen=\dimen269
+\calc@Bdimen=\dimen270
 \calc@Askip=\skip81
 \calc@Bskip=\skip82
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count323
+\calc@Ccount=\count325
 \calc@Cskip=\skip83
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/marginnote/marginnote.sty
 Package: marginnote 2018/08/09 1.4b non floating margin notes for LaTeX
-\c@mn@abspage=\count324
+\c@mn@abspage=\count326
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifpdf.sty
 Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifluatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/soulpos/soulpos.sty
 Package: soulpos 2021/10/15 v1.2 Fancy underlining
-\ulp@subcnt=\count325
-\ulp@cnt=\count326
+\ulp@subcnt=\count327
+\ulp@cnt=\count328
 \ulp@out=\write5
 \ulp@in=\read4
-\ulwidth=\dimen270
+\ulwidth=\dimen271
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count327
+\c@section@level=\count329
 )
-\@linkdim=\dimen271
-\Hy@linkcounter=\count328
-\Hy@pagecounter=\count329
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
+\@linkdim=\dimen272
+\Hy@linkcounter=\count330
+\Hy@pagecounter=\count331
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count330
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
+\Hy@SavedSpaceFactor=\count332
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
 )
-\pdfmajorversion=\count331
 Package hyperref Info: Option `unicode' set `true' on input line 4062.
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
 Package hyperref Info: Hyper figures OFF on input line 4179.
@@ -641,17 +604,17 @@ Package hyperref Info: Plain pages OFF on input line 4194.
 Package hyperref Info: Backreferencing OFF on input line 4199.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4446.
-\c@Hy@tempcnt=\count332
+\c@Hy@tempcnt=\count333
 LaTeX Info: Redefining \url on input line 4784.
-\XeTeXLinkMargin=\dimen272
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
+\XeTeXLinkMargin=\dimen273
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count333
-\Field@Width=\dimen273
-\Fld@charsize=\dimen274
+\Fld@menulength=\count334
+\Field@Width=\dimen274
+\Fld@charsize=\dimen275
 Package hyperref Info: Hyper figures OFF on input line 6063.
 Package hyperref Info: Link nesting OFF on input line 6068.
 Package hyperref Info: Hyper index ON on input line 6071.
@@ -659,76 +622,79 @@ Package hyperref Info: backreferencing OFF on input line 6078.
 Package hyperref Info: Link coloring OFF on input line 6083.
 Package hyperref Info: Link coloring with OCG OFF on input line 6088.
 Package hyperref Info: PDF/A mode OFF on input line 6093.
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count334
-\c@Item=\count335
+\Hy@abspage=\count335
+\c@Item=\count336
 )
 Package hyperref Info: Driver (custom): hgeneric-testphase.
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfmanagement-testphase/hgeneric-testphase.def
-File: hgeneric-testphase.def 2024-02-22 v0.96e generic Hyperref driver for the LaTeX PDF management testphase bundle
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfmanagement-testphase/hyperref-colorschemes.def)
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfmanagement-testphase/hgeneric-testphase.def
+File: hgeneric-testphase.def 2024-03-01 v0.96f generic Hyperref driver for the LaTeX PDF management testphase bundle
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfmanagement-testphase/hyperref-colorschemes.def)
 LaTeX Info: Redefining \href on input line 275.
 LaTeX Info: Redefining \url on input line 361.
 \l__hyp_tmpa_box=\box74
-\l__hyp_tmpa_int=\count336
+\l__hyp_tmpa_int=\count337
 \l__hyp_dest_box=\box75
-\g__hyp_linknestlevel_int=\count337
-\HyAnn@Count=\count338
-\Fld@listcount=\count339
+\g__hyp_linknestlevel_int=\count338
+\HyAnn@Count=\count339
+\Fld@listcount=\count340
 \Hy@SectionHShift=\skip84
-LaTeX Info: Redefining \Hy__hypSectionAnchor on input line 3513.
+LaTeX Info: Redefining \Hy__hypSectionAnchor on input line 3537.
 )
 Package zref Info: New property list: pdfcomment on input line 2735.
 Package zref Info: New property: PCPDFOBJID on input line 2736.
+) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/luatex85/luatex85.sty
+Package: luatex85 2016/06/15 v1.4 pdftex aliases for luatex
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfpages.sty
 Package: pgfpages 2011/01/05 ver 0.02
-\pgf@logicalpages=\count340
-\pgf@firstshipout=\count341
-\pgf@lastshipout=\count342
-\pgf@currentshipout=\count343
-\pgf@cpn=\count344
-\pgf@shipoutnextto=\count345
-\pgfphysicalheight=\dimen275
-\pgfphysicalwidth=\dimen276
+\pgf@logicalpages=\count341
+\pgf@firstshipout=\count342
+\pgf@lastshipout=\count343
+\pgf@currentshipout=\count344
+\pgf@cpn=\count345
+\pgf@shipoutnextto=\count346
+\pgfphysicalheight=\dimen276
+\pgfphysicalwidth=\dimen277
 \pgfpages@shipoutbox=\box76
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/glossaries/base/glossaries.sty
 Package: glossaries 2023/09/29 v4.53 (NLCT)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
 Package: mfirstuc 2022/10/14 v2.08 (NLCT)
-\@glsmfirst=\toks39
-\@glsmrest=\toks40
+\@glsmfirst=\toks38
+\@glsmrest=\toks39
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xfor/xfor.sty
 Package: xfor 2009/02/05 v1.05 (NLCT)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/datatool/datatool-base.sty
 Package: datatool-base 2019/09/27 v2.32 (NLCT)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2023/05/13 v2.17o AMS math features
 \@mathmargin=\skip85
+
 For additional information on amsmath, use the `?' option.
 (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks41
-\ex@=\dimen277
+\@emptytoks=\toks40
+\ex@=\dimen278
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen278
+\pmbraise@=\dimen279
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 LaTeX Info: Redefining \operatorname on input line 43.
 )
-\inf@bad=\count346
-LaTeX Info: Redefining \frac on input line 236.
-\uproot@=\count347
-\leftroot@=\count348
+\inf@bad=\count347
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count348
+\leftroot@=\count349
 LaTeX Info: Redefining \overline on input line 399.
 LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count349
-\DOTSCASE@=\count350
+\classnum@=\count350
+\DOTSCASE@=\count351
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -738,57 +704,57 @@ LaTeX Info: Redefining \big on input line 722.
 LaTeX Info: Redefining \Big on input line 723.
 LaTeX Info: Redefining \bigg on input line 724.
 LaTeX Info: Redefining \Bigg on input line 725.
-\big@size=\dimen279
+\big@size=\dimen280
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count351
+\macc@depth=\count352
 LaTeX Info: Redefining \bmod on input line 905.
 LaTeX Info: Redefining \pmod on input line 910.
 LaTeX Info: Redefining \smash on input line 940.
 LaTeX Info: Redefining \relbar on input line 970.
 LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count352
+\c@MaxMatrixCols=\count353
 \dotsspace@=\muskip17
-\c@parentequation=\count353
-\dspbrk@lvl=\count354
-\tag@help=\toks42
-\row@=\count355
-\column@=\count356
-\maxfields@=\count357
-\andhelp@=\toks43
-\eqnshift@=\dimen280
-\alignsep@=\dimen281
-\tagshift@=\dimen282
-\tagwidth@=\dimen283
-\totwidth@=\dimen284
-\lineht@=\dimen285
-\@envbody=\toks44
+\c@parentequation=\count354
+\dspbrk@lvl=\count355
+\tag@help=\toks41
+\row@=\count356
+\column@=\count357
+\maxfields@=\count358
+\andhelp@=\toks42
+\eqnshift@=\dimen281
+\alignsep@=\dimen282
+\tagshift@=\dimen283
+\tagwidth@=\dimen284
+\totwidth@=\dimen285
+\lineht@=\dimen286
+\@envbody=\toks43
 \multlinegap=\skip86
 \multlinetaggap=\skip87
-\mathdisplay@stack=\toks45
+\mathdisplay@stack=\toks44
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/substr/substr.sty
 Package: substr 2009/10/20 v1.2 Handle substrings
-\c@su@anzahl=\count358
+\c@su@anzahl=\count359
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/datatool/datatool-fp.sty
 Package: datatool-fp 2019/09/27 v2.32 (NLCT)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fp/fp.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fp/fp.sty
 Package: fp 1995/04/02
-`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fp/defpattern.sty
+ `Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fp/defpattern.sty
 Package: defpattern 1994/10/12
-\actioncount=\count359
+\actioncount=\count360
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fp/fp-basic.sty
 Package: fp-basic 1996/05/13
-\FP@xs=\count360
-\FP@xia=\count361
-\FP@xib=\count362
-\FP@xfa=\count363
-\FP@xfb=\count364
-\FP@rega=\count365
-\FP@regb=\count366
-\FP@regs=\count367
-\FP@times=\count368
+\FP@xs=\count361
+\FP@xia=\count362
+\FP@xib=\count363
+\FP@xfa=\count364
+\FP@xfb=\count365
+\FP@rega=\count366
+\FP@regb=\count367
+\FP@regs=\count368
+\FP@times=\count369
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fp/fp-addons.sty
 Package: fp-addons 1995/03/15
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fp/fp-snap.sty
@@ -801,7 +767,7 @@ Package: fp-trigo 1995/04/14
 Package: fp-pas 1994/08/29
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fp/fp-random.sty
 Package: fp-random 1995/02/23
-\FPseed=\count369
+\FPseed=\count370
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fp/fp-eqn.sty
 Package: fp-eqn 1995/04/03
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fp/fp-upn.sty
@@ -809,71 +775,71 @@ Package: fp-upn 1996/10/21
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fp/fp-eval.sty
 Package: fp-eval 1995/04/03
 )))
-\@dtl@toks=\toks46
-\@dtl@tmpcount=\count370
+\@dtl@toks=\toks45
+\@dtl@tmpcount=\count371
 \dtl@tmplength=\skip88
-\dtl@sortresult=\count371
-\@dtl@numgrpsepcount=\count372
-\@dtl@datatype=\count373
-\dtl@codeA=\count374
-\dtl@codeB=\count375
-\@dtl@foreach@level=\count376
+\dtl@sortresult=\count372
+\@dtl@numgrpsepcount=\count373
+\@dtl@datatype=\count374
+\dtl@codeA=\count375
+\dtl@codeB=\count376
+\@dtl@foreach@level=\count377
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/glossaries-english/glossaries-english.ldf
 File: glossaries-english.ldf 2014/11/23 v1.0
 )
-\gls@level=\count377
-\@gls@tmpb=\toks47
+\gls@level=\count378
+\@gls@tmpb=\toks46
 \gls@tmplen=\skip89
-\glskeylisttok=\toks48
-\glslabeltok=\toks49
-\glsshorttok=\toks50
-\glslongtok=\toks51
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.sty
+\glskeylisttok=\toks47
+\glslabeltok=\toks48
+\glsshorttok=\toks49
+\glslongtok=\toks50
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.sty
 Package: glossary-hypernav 2023/09/29 v4.53 (NLCT)
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
 Package: glossary-list 2023/09/29 v4.53 (NLCT)
 \glslistdottedwidth=\skip90
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/glossaries/styles/glossary-long.sty
 Package: glossary-long 2023/09/29 v4.53 (NLCT)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
 \LTleft=\skip91
 \LTright=\skip92
 \LTpre=\skip93
 \LTpost=\skip94
-\LTchunksize=\count378
-\LTcapwidth=\dimen286
+\LTchunksize=\count379
+\LTcapwidth=\dimen287
 \LT@head=\box79
 \LT@firsthead=\box80
 \LT@foot=\box81
 \LT@lastfoot=\box82
 \LT@gbox=\box83
-\LT@cols=\count379
-\LT@rows=\count380
-\c@LT@tables=\count381
-\c@LT@chunks=\count382
-\LT@p@ftn=\toks52
+\LT@cols=\count380
+\LT@rows=\count381
+\c@LT@tables=\count382
+\c@LT@chunks=\count383
+\LT@p@ftn=\toks51
 )
 \glsdescwidth=\skip95
 \glspagelistwidth=\skip96
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
 Package: glossary-super 2023/09/29 v4.53 (NLCT)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/supertabular/supertabular.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/supertabular/supertabular.sty
 Package: supertabular 2020/02/02 v4.1g the supertabular environment
-\c@tracingst=\count383
-\ST@wd=\dimen287
+\c@tracingst=\count384
+\ST@wd=\dimen288
 \ST@rightskip=\skip97
 \ST@leftskip=\skip98
 \ST@parfillskip=\skip99
-\ST@pageleft=\dimen288
-\ST@headht=\dimen289
-\ST@tailht=\dimen290
-\ST@pagesofar=\dimen291
-\ST@pboxht=\dimen292
-\ST@lineht=\dimen293
-\ST@prevht=\dimen294
-\ST@toadd=\dimen295
-\ST@dimen=\dimen296
+\ST@pageleft=\dimen289
+\ST@headht=\dimen290
+\ST@tailht=\dimen291
+\ST@pagesofar=\dimen292
+\ST@pboxht=\dimen293
+\ST@lineht=\dimen294
+\ST@prevht=\dimen295
+\ST@toadd=\dimen296
+\ST@dimen=\dimen297
 \ST@pbox=\box84
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
 Package: glossary-tree 2023/09/29 v4.53 (NLCT)
@@ -882,47 +848,47 @@ Package: glossary-tree 2023/09/29 v4.53 (NLCT)
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen297
-\lightrulewidth=\dimen298
-\cmidrulewidth=\dimen299
-\belowrulesep=\dimen300
-\belowbottomsep=\dimen301
-\aboverulesep=\dimen302
-\abovetopsep=\dimen303
-\cmidrulesep=\dimen304
-\cmidrulekern=\dimen305
-\defaultaddspace=\dimen306
-\@cmidla=\count384
-\@cmidlb=\count385
-\@aboverulesep=\dimen307
-\@belowrulesep=\dimen308
-\@thisruleclass=\count386
-\@lastruleclass=\count387
-\@thisrulewidth=\dimen309
+\heavyrulewidth=\dimen298
+\lightrulewidth=\dimen299
+\cmidrulewidth=\dimen300
+\belowrulesep=\dimen301
+\belowbottomsep=\dimen302
+\aboverulesep=\dimen303
+\abovetopsep=\dimen304
+\cmidrulesep=\dimen305
+\cmidrulekern=\dimen306
+\defaultaddspace=\dimen307
+\@cmidla=\count385
+\@cmidlb=\count386
+\@aboverulesep=\dimen308
+\@belowrulesep=\dimen309
+\@thisruleclass=\count387
+\@lastruleclass=\count388
+\@thisrulewidth=\dimen310
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/soul/soul.sty
 Package: soul 2023-06-14 v3.1 Permit use of UTF-8 characters in soul (HO)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/soul/soul-ori.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/soul/soul-ori.sty
 Package: soul-ori 2023-06-14 v3.1 letterspacing/underlining (mf)
-\SOUL@word=\toks53
-\SOUL@lasttoken=\toks54
-\SOUL@syllable=\toks55
-\SOUL@cmds=\toks56
-\SOUL@buffer=\toks57
-\SOUL@token=\toks58
-\SOUL@syllgoal=\dimen310
-\SOUL@syllwidth=\dimen311
-\SOUL@charkern=\dimen312
-\SOUL@hyphkern=\dimen313
-\SOUL@dimen=\dimen314
-\SOUL@dimeni=\dimen315
-\SOUL@minus=\count388
-\SOUL@comma=\count389
-\SOUL@apo=\count390
-\SOUL@grave=\count391
+\SOUL@word=\toks52
+\SOUL@lasttoken=\toks53
+\SOUL@syllable=\toks54
+\SOUL@cmds=\toks55
+\SOUL@buffer=\toks56
+\SOUL@token=\toks57
+\SOUL@syllgoal=\dimen311
+\SOUL@syllwidth=\dimen312
+\SOUL@charkern=\dimen313
+\SOUL@hyphkern=\dimen314
+\SOUL@dimen=\dimen315
+\SOUL@dimeni=\dimen316
+\SOUL@minus=\count389
+\SOUL@comma=\count390
+\SOUL@apo=\count391
+\SOUL@grave=\count392
 \SOUL@spaceskip=\skip101
-\SOUL@ttwidth=\dimen316
-\SOUL@uldp=\dimen317
-\SOUL@ulht=\dimen318
+\SOUL@ttwidth=\dimen317
+\SOUL@uldp=\dimen318
+\SOUL@ulht=\dimen319
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
 Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
@@ -959,77 +925,40 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifxetex.sty
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
-) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty
-Package: unicode-math 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-luatex.sty
-Package: unicode-math-luatex 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2024-02-18 L3 Experimental document command parser
-) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-Package: l3keys2e 2024-02-18 LaTeX2e option processing using LaTeX3 keys
-) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.sty
-Package: fontspec 2024/02/13 v2.9a Font selection for XeLaTeX and LuaLaTeX
-Lua module: fontspec 2024/02/13 2.9a Font selection for XeLaTeX and LuaLaTeX (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
-Package: fontspec-luatex 2024/02/13 v2.9a Font selection for XeLaTeX and LuaLaTeX
-\l__fontspec_script_int=\count392
-\l__fontspec_language_int=\count393
-\l__fontspec_strnum_int=\count394
-\l__fontspec_tmp_int=\count395
-\l__fontspec_tmpa_int=\count396
-\l__fontspec_tmpb_int=\count397
-\l__fontspec_tmpc_int=\count398
-\l__fontspec_em_int=\count399
-\l__fontspec_emdef_int=\count400
-\l__fontspec_strong_int=\count401
-\l__fontspec_strongdef_int=\count402
-\l__fontspec_tmpa_dim=\dimen319
-\l__fontspec_tmpb_dim=\dimen320
-\l__fontspec_tmpc_dim=\dimen321
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.cfg)
-LaTeX Info: Redefining \strong on input line 3926.
-))
-PDF Management: fontspec firstaid ignored
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fix-cm.sty
-Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ts1enc.def
-File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
-)) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/lualatex/lualatex-math/lualatex-math.sty
-Package: lualatex-math 2022/01/01 v1.12 Patches for mathematics typesetting with LuaLaTeX
-Lua module: lualatex-math 2013/08/03 1.3 Patches for mathematics typesetting with LuaLaTeX)
-\g__um_fam_int=\count403
-\g__um_fonts_used_int=\count404
-\l__um_primecount_int=\count405
-\g__um_primekern_muskip=\muskip18
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex))) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
-Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 112.
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks58
+\inpenc@posthook=\toks59
+) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-)) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
+) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
+) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2023/03/13 v3.1a Micro-typographical refinements (RS)
-\MT@toks=\toks59
+\MT@toks=\toks60
 \MT@tempbox=\box85
-\MT@count=\count406
+\MT@count=\count393
 LaTeX Info: Redefining \noprotrusionifhmode on input line 1059.
 LaTeX Info: Redefining \leftprotrusion on input line 1060.
-\MT@prot@toks=\toks60
+\MT@prot@toks=\toks61
 LaTeX Info: Redefining \rightprotrusion on input line 1078.
 LaTeX Info: Redefining \textls on input line 1368.
-\MT@outer@kern=\dimen322
+\MT@outer@kern=\dimen320
 LaTeX Info: Redefining \textmicrotypecontext on input line 1988.
-\MT@listname@count=\count407
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype-luatex.def
-File: microtype-luatex.def 2023/03/13 v3.1a Definitions specific to luatex (RS)
-Lua module: microtype 2023/03/13 3.1a microtype module.
-Module microtype Info: overwriting function `keepligature' on input line 63
-LaTeX Info: Redefining \lsstyle on input line 688.
-LaTeX Info: Redefining \lslig on input line 688.
+\MT@listname@count=\count394
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2023/03/13 v3.1a Definitions specific to pdftex (RS)
+LaTeX Info: Redefining \lsstyle on input line 902.
+LaTeX Info: Redefining \lslig on input line 902.
 \MT@outer@space=\skip102
 )
 Package microtype Info: Loading configuration file microtype.cfg.
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype.cfg
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2023/03/13 v3.1a microtype main configuration file (RS)
 )) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
@@ -1038,52 +967,52 @@ Package: xurl 2022/01/09 v 0.10 modify URL breaks
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/footnotehyper/footnotehyper.sty
 Package: footnotehyper 2021/08/13 v1.1e hyperref aware footnote.sty (JFB)
 \FNH@notes=\box86
-\FNH@width=\dimen323
-\FNH@toks=\toks61
+\FNH@width=\dimen321
+\FNH@toks=\toks62
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip103
-\multirow@cntb=\count408
+\multirow@cntb=\count395
 \multirow@dima=\skip104
-\bigstrutjot=\dimen324
+\bigstrutjot=\dimen322
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen325
-\WF@size=\dimen326
-\c@WF@wrappedlines=\count409
+\wrapoverhang=\dimen323
+\WF@size=\dimen324
+\c@WF@wrappedlines=\count396
 \WF@box=\box87
-\WF@everypar=\toks62
+\WF@everypar=\toks63
 Package: wrapfig 2003/01/31  v 3.6
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2024/02/20 v1.0g Color table columns (DPC)
-\everycr=\toks63
+\everycr=\toks64
 \minrowclearance=\skip105
-\rownum=\count410
+\rownum=\count397
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tabu/tabu.sty
 Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box88
-\sift@deathcycles=\count411
-\@vwid@loff=\dimen327
-\@vwid@roff=\dimen328
+\sift@deathcycles=\count398
+\@vwid@loff=\dimen325
+\@vwid@roff=\dimen326
 )
-\c@taburow=\count412
-\tabu@nbcols=\count413
-\tabu@cnt=\count414
-\tabu@Xcol=\count415
-\tabu@alloc=\count416
-\tabu@nested=\count417
-\tabu@target=\dimen329
-\tabu@spreadtarget=\dimen330
-\tabu@naturalX=\dimen331
-\tabucolX=\dimen332
-\tabu@Xsum=\dimen333
-\extrarowdepth=\dimen334
-\abovetabulinesep=\dimen335
-\belowtabulinesep=\dimen336
-\tabustrutrule=\dimen337
-\tabu@thebody=\toks64
-\tabu@footnotes=\toks65
+\c@taburow=\count399
+\tabu@nbcols=\count400
+\tabu@cnt=\count401
+\tabu@Xcol=\count402
+\tabu@alloc=\count403
+\tabu@nested=\count404
+\tabu@target=\dimen327
+\tabu@spreadtarget=\dimen328
+\tabu@naturalX=\dimen329
+\tabucolX=\dimen330
+\tabu@Xsum=\dimen331
+\extrarowdepth=\dimen332
+\abovetabulinesep=\dimen333
+\belowtabulinesep=\dimen334
+\tabustrutrule=\dimen335
+\tabu@thebody=\toks65
+\tabu@footnotes=\toks66
 \tabu@box=\box89
 \tabu@arstrutbox=\box90
 \tabu@hleads=\box91
@@ -1099,73 +1028,67 @@ Package: threeparttablex 2013/07/23 v0.3 by daleif
 \UL@box=\box94
 \UL@hyphenbox=\box95
 \UL@skip=\skip108
-\UL@hook=\toks66
-\UL@height=\dimen338
-\UL@pe=\count418
-\UL@pixel=\dimen339
+\UL@hook=\toks67
+\UL@height=\dimen336
+\UL@pe=\count405
+\UL@pixel=\dimen337
 \ULC@box=\box96
 Package: ulem 2019/11/18
-\ULdepth=\dimen340
+\ULdepth=\dimen338
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen341
-\c@nlinenum=\count419
-\TeXr@lab=\toks67
-)
-\csllabelwidth=\skip109
-\cslhangindent=\skip110
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bookmark/bookmark.sty
+\rotheadsize=\dimen339
+\c@nlinenum=\count406
+\TeXr@lab=\toks68
+) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
-\BKM@id=\count420
+\BKM@id=\count407
 )) (./_main.aux)
-\openout1 = _main.aux
+\openout1 = `_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-Inserting `tagpdf' in `pre_shipout_filter'.
-Inserting `tagpdf' in `pre_shipout_filter'. (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count421
-\scratchdimen=\dimen342
+\scratchcounter=\count408
+\scratchdimen=\dimen340
 \scratchbox=\box97
-\nofMPsegments=\count422
-\nofMParguments=\count423
-\everyMPshowfont=\toks68
-\MPscratchCnt=\count424
-\MPscratchDim=\dimen343
-\MPnumerator=\count425
-\makeMPintoPDFobject=\count426
-\everyMPtoPDFconversion=\toks69
+\nofMPsegments=\count409
+\nofMParguments=\count410
+\everyMPshowfont=\toks69
+\MPscratchCnt=\count411
+\MPscratchDim=\dimen341
+\MPnumerator=\count412
+\makeMPintoPDFobject=\count413
+\everyMPtoPDFconversion=\toks70
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 *geometry* driver: auto-detecting
-*geometry* detected driver: luatex
+*geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
-* driver: luatex
+* driver: pdftex
 * paper: letterpaper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -1208,211 +1131,28 @@ Package caption Info: supertabular package is loaded.
 Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 147.
-LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 147.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 147.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 147.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 147.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 147.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 147.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 147.
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+Package hyperref Info: Link coloring OFF on input line 122.
+LaTeX Info: Redefining \microtypecontext on input line 122.
+Package microtype Info: Applying patch `item' on input line 122.
+Package microtype Info: Applying patch `toc' on input line 122.
+Package microtype Info: Applying patch `eqnum' on input line 122.
 
 
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+Package microtype Warning: Unable to apply patch `footnote' on input line 122.
 
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [Scale=MatchLowercase,Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,RawFeature={mathfontdimen=xetex},BoldFont={latinmodern-math.otf}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 147.
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: Font family 'latinmodern-math.otf(1)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [Scale=MatchLowercase,Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=9.3075-},{Size=6.57-9.3075,Font=latinmodern-math.otf,Style=MathScript},{Size=-6.57,Font=latinmodern-math.otf,Style=MathScriptScript}},RawFeature={mathfontdimen=xetex},BoldFont={latinmodern-math.otf}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <9.3075->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;"<6.57-9.3075>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;+ssty=0;"<-6.57>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 147.
-LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 147.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 147.
-LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 147.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 147.
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: Font family 'latinmodern-math.otf(2)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [Scale=MatchLowercase,Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=9.3075-},{Size=6.57-9.3075,Font=latinmodern-math.otf,Style=MathScript},{Size=-6.57,Font=latinmodern-math.otf,Style=MathScriptScript}},RawFeature={mathfontdimen=xetex},BoldFont={latinmodern-math.otf},RawFeature={mathfontdimen=tex2}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <9.3075->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;"<6.57-9.3075>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;+ssty=0;"<-6.57>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-
-LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 147.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 147.
-LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 147.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 147.
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
-
-
-Package fontspec Info: Font family 'latinmodern-math.otf(3)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [Scale=MatchLowercase,Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=9.3075-},{Size=6.57-9.3075,Font=latinmodern-math.otf,Style=MathScript},{Size=-6.57,Font=latinmodern-math.otf,Style=MathScriptScript}},RawFeature={mathfontdimen=xetex},BoldFont={latinmodern-math.otf},RawFeature={mathfontdimen=tex3}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <9.3075->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;"<6.57-9.3075>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;+ssty=0;"<-6.57>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-
-LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 147.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 147.
-LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 147.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 147.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.665pt on input line 147.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.475pt on input line 147.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 147.
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
-File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 147.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.665pt on input line 147.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.475pt on input line 147.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 147.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.665pt on input line 147.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.475pt on input line 147.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 147.
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 147.
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Info: Redefining \microtypecontext on input line 147.
-Package microtype Info: Applying patch `item' on input line 147.
-Package microtype Info: Applying patch `toc' on input line 147.
-Package microtype Info: Applying patch `eqnum' on input line 147.
-
-Package microtype Warning: Unable to apply patch `footnote' on input line 147.
-
-Package microtype Info: Applying patch `verbatim' on input line 147.
+Package microtype Info: Applying patch `verbatim' on input line 122.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 147.
+LaTeX Info: Redefining \showhyphens on input line 122.
 Package microtype Info: No adjustment of tracking.
-Package microtype Info: No adjustment of spacing.
-Package microtype Info: No adjustment of kerning.
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
-File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Modern Roman (RS)
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
 
 Package footnotehyper Warning: 
@@ -1430,69 +1170,689 @@ Package tagpdf Warning: Alternative text for graphic is missing.
 
 File: figure_title.png Graphicfile(typepng)
 <use figure_title.png>
-Package luatex.def Info: figure_title.png  used on input line 164.
-(luatex.def)             Requested size: 289.07487pt x 216.80615pt.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 167.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 167.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 167.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 167.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 167.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 167.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 167.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 167.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 167.
-(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
+Package pdftex.def Info: figure_title.png  used on input line 139.
+(pdftex.def)             Requested size: 289.07487pt x 216.80615pt.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 142.
+(c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 142.
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 142.
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 142.
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 142.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 142.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 142.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 142.
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 142.
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/stringenc/se-ascii-print.def
-File: se-ascii-print.def 2019/11/29 v1.12 stringenc: Printable ASCII characters
+) (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
+File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 ) [1
 
+\openout5 = `_main.upa'.
 
-\openout5 = _main.upa
-{c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./figure_title.png>]
+{c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc} <./figure_title.png>]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 156.
+ (c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
 
-LaTeX Warning: Reference `LastPage' on page ii undefined on input line 190.
+LaTeX Warning: Reference `LastPage' on page ii undefined on input line 165.
 
 [2
 
-] (./_main.toc)
+{c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
+No file _main.toc.
 \tf@toc=\write6
+\openout6 = `_main.toc'.
 
-\openout6 = _main.toc
 [3
 
 ]
 
-LaTeX Warning: Reference `fig:es-south-catch' on page i undefined on input line 246.
+LaTeX Warning: Reference `fig:ca-map' on page 1 undefined on input line 221.
 
 
-LaTeX Warning: Reference `fig:es-north-catch' on page i undefined on input line 246.
+LaTeX Warning: Hyper reference `management' on page 1 undefined on input line 221.
 
 
-LaTeX Warning: Reference `tab:south-removalsES' on page i undefined on input line 246.
+LaTeX Warning: Reference `fig:copper-smurf-length' on page 1 undefined on input line 233.
+
+[1
 
 
-LaTeX Warning: Reference `tab:north-removalsES' on page i undefined on input line 246.
+]
+Package marginnote Info: Using workaround for absolute page number on input line 234.
+ [2]
 
-(./tex_tables/south_a_Catches_ES.tex
+LaTeX Warning: Reference `tab:allcatches' on page 3 undefined on input line 249.
+
+
+LaTeX Warning: Reference `fig:catch' on page 3 undefined on input line 249.
+
+[3{c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
+
+LaTeX Warning: Reference `fig:ca-map' on page 4 undefined on input line 261.
+
+[4] [5]
+
+LaTeX Warning: Reference `tab:ca-management' on page 6 undefined on input line 277.
+
+[6]
+
+LaTeX Warning: Reference `fig:data-plot' on page 7 undefined on input line 295.
+
+
+LaTeX Warning: Reference `fig:survey-map' on page 7 undefined on input line 295.
+
+
+LaTeX Warning: Reference `assessment-model' on page 7 undefined on input line 295.
+
+[7]
+
+LaTeX Warning: Reference `tab:com-ratio' on page 8 undefined on input line 305.
+
+
+Underfull \hbox (badness 1168) in paragraph at lines 305--306
+[][][]\T1/lmr/m/n/10 (+20) Commercial land-ings prior to 1969 were ex-tracted from the South-west Fish-eries Sci-ence Cen-ter
+ []
+
+
+LaTeX Warning: Reference `tab:allcatches' on page 8 undefined on input line 309.
+
+
+LaTeX Warning: Reference `fig:catch' on page 8 undefined on input line 309.
+
+[8]
+
+LaTeX Warning: Reference `tab:dead-com-len' on page 9 undefined on input line 317.
+
+
+LaTeX Warning: Reference `tab:live-com-len' on page 9 undefined on input line 317.
+
+
+LaTeX Warning: Reference `excluded-data' on page 9 undefined on input line 317.
+
+
+LaTeX Warning: Reference `fig:com-dead-len-data' on page 9 undefined on input line 319.
+
+
+LaTeX Warning: Reference `length-data' on page 9 undefined on input line 319.
+
+
+LaTeX Warning: Reference `fig:mean-com-dead-len-data' on page 9 undefined on input line 319.
+
+
+LaTeX Warning: Reference `fig:com-dead-age-data' on page 9 undefined on input line 319.
+
+
+LaTeX Warning: Reference `fig:com-live-len-data' on page 9 undefined on input line 321.
+
+
+LaTeX Warning: Reference `fig:mean-com-live-len-data' on page 9 undefined on input line 321.
+
+[9]
+
+LaTeX Warning: Reference `tab:allcatches' on page 10 undefined on input line 339.
+
+
+LaTeX Warning: Reference `fig:catch' on page 10 undefined on input line 339.
+
+[10{c:/Users/melissa.monk/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}] [11]
+
+LaTeX Warning: Reference `fig:standardized-indices' on page 12 undefined on input line 365.
+
+
+LaTeX Warning: Reference `dwv-cpfv-index' on page 12 undefined on input line 377.
+
+
+LaTeX Warning: Reference `fig:dwv-index-main' on page 12 undefined on input line 377.
+
+[12]
+Underfull \hbox (badness 2150) in paragraph at lines 379--380
+[][][]\T1/lmr/m/n/10 (+20) The state of Cal-i-for-nia im-ple-mented a statewide on-board ob-server sam-pling pro-gram in 1999
+ []
+
+
+LaTeX Warning: Reference `fig:crfs-index-main' on page 13 undefined on input line 383.
+
+
+LaTeX Warning: Reference `onboard-cpfv-index' on page 13 undefined on input line 383.
+
+
+LaTeX Warning: Reference `crfs-pr-index' on page 13 undefined on input line 385.
+
+
+LaTeX Warning: Reference `fig:crfs-pr-index-main' on page 13 undefined on input line 385.
+
+[13]
+
+LaTeX Warning: Reference `tab:rec-len-samps' on page 14 undefined on input line 409.
+
+
+LaTeX Warning: Hyper reference `excluded-data' on page 14 undefined on input line 411.
+
+
+LaTeX Warning: Reference `fig:rec-cpfv-len-data' on page 14 undefined on input line 413.
+
+
+LaTeX Warning: Reference `fig:mean-rec-cpfv-len-data' on page 14 undefined on input line 413.
+
+
+LaTeX Warning: Reference `fig:rec-pr-len-data' on page 14 undefined on input line 413.
+
+
+LaTeX Warning: Reference `fig:mean-rec-pr-len-data' on page 14 undefined on input line 413.
+
+
+LaTeX Warning: Reference `fig:rec-cpfv-caal-data' on page 14 undefined on input line 415.
+
+
+LaTeX Warning: Reference `fig:mean-rec-cpfv-age-data' on page 14 undefined on input line 415.
+
+
+LaTeX Warning: Reference `fig:rec-cpfv-caal-data' on page 14 undefined on input line 415.
+
+
+LaTeX Warning: Reference `fig:rec-cpfv-marg-age-data' on page 14 undefined on input line 415.
+
+
+LaTeX Warning: Reference `fig:coop-len-comparison' on page 14 undefined on input line 415.
+
+
+LaTeX Warning: Reference `fig:rec-pr-caal-data' on page 14 undefined on input line 415.
+
+[14]
+
+LaTeX Warning: Reference `fig:survey-locations' on page 15 undefined on input line 421.
+
+
+LaTeX Warning: Reference `fig:ref-mpa' on page 15 undefined on input line 421.
+
+
+LaTeX Warning: Hyper reference `ccfrp-index' on page 15 undefined on input line 433.
+
+
+LaTeX Warning: Reference `fig:ccfrp-map' on page 15 undefined on input line 433.
+
+
+LaTeX Warning: Reference `fig:ccfrp-index-main' on page 15 undefined on input line 433.
+
+[15]
+
+LaTeX Warning: Reference `tab:ccfrp-samps' on page 16 undefined on input line 439.
+
+
+LaTeX Warning: Reference `fig:ccfrp-len-data' on page 16 undefined on input line 439.
+
+
+LaTeX Warning: Reference `fig:ccfrp-mean-len-data' on page 16 undefined on input line 439.
+
+
+LaTeX Warning: Reference `fig:ccfrp-age-data' on page 16 undefined on input line 439.
+
+
+LaTeX Warning: Reference `tab:growth-age-samps' on page 16 undefined on input line 443.
+
+
+LaTeX Warning: Reference `fig:growth-len-dist' on page 16 undefined on input line 443.
+
+
+LaTeX Warning: Reference `fig:growth-age-dist' on page 16 undefined on input line 443.
+
+[16]
+
+LaTeX Warning: Reference `tab:pisco-data' on page 17 undefined on input line 455.
+
+
+LaTeX Warning: Reference `fig:visual-surveys' on page 17 undefined on input line 465.
+
+[17]
+
+LaTeX Warning: Reference `fig:mrfss-cpue-county' on page 18 undefined on input line 473.
+
+[18] [19]
+
+LaTeX Warning: Reference `sensitivities' on page 20 undefined on input line 485.
+
+
+LaTeX Warning: Reference `tab:wcgbt-pos-tows' on page 20 undefined on input line 491.
+
+
+LaTeX Warning: Reference `fig:wcgbt-cpue' on page 20 undefined on input line 491.
+
+
+LaTeX Warning: Reference `fig:wcgbt-depth' on page 20 undefined on input line 491.
+
+
+LaTeX Warning: Reference `fig:wcgbt-len-age' on page 20 undefined on input line 491.
+
+
+LaTeX Warning: Hyper reference `length-at-age' on page 20 undefined on input line 491.
+
+[20]
+
+LaTeX Warning: Reference `fig:west-coast-age-density' on page 21 undefined on input line 511.
+
+[21]
+
+LaTeX Warning: Reference `fig:maturity' on page 22 undefined on input line 519.
+
+
+LaTeX Warning: Reference `fig:fecundity' on page 22 undefined on input line 521.
+
+
+LaTeX Warning: Reference `fig:frac-sex-len' on page 22 undefined on input line 525.
+
+
+LaTeX Warning: Reference `fig:weight-length' on page 22 undefined on input line 529.
+
+
+LaTeX Warning: Reference `tab:growth-age-samps' on page 22 undefined on input line 533.
+
+[22]
+
+LaTeX Warning: Reference `fig:age-error-dist' on page 23 undefined on input line 551.
+
+
+LaTeX Warning: Reference `fig:age-error' on page 23 undefined on input line 553.
+
+
+LaTeX Warning: Reference `fig:age-error-matrix' on page 23 undefined on input line 553.
+
+[23] [24]
+
+LaTeX Warning: Reference `ccfrp-index' on page 25 undefined on input line 591.
+
+[25]
+
+LaTeX Warning: Reference `fig:bridge-ssb' on page 26 undefined on input line 619.
+
+
+LaTeX Warning: Reference `fig:bridge-depl' on page 26 undefined on input line 619.
+
+[26]
+
+LaTeX Warning: Reference `fig:data-bridge-ssb-1' on page 27 undefined on input line 633.
+
+
+LaTeX Warning: Reference `fig:data-bridge-depl-2' on page 27 undefined on input line 633.
+
+
+LaTeX Warning: Reference `fig:data-bridge-ssb-1' on page 27 undefined on input line 633.
+
+
+LaTeX Warning: Reference `fig:data-bridge-depl-1' on page 27 undefined on input line 633.
+
+
+LaTeX Warning: Reference `fig:data-bridge-ssb-2' on page 27 undefined on input line 633.
+
+
+LaTeX Warning: Reference `fig:data-bridge-depl-2' on page 27 undefined on input line 633.
+
+[27]
+
+LaTeX Warning: Reference `tab:model-structure' on page 28 undefined on input line 641.
+
+[28] [29]
+
+LaTeX Warning: Reference `fig:depth-closures' on page 30 undefined on input line 663.
+
+[30]
+
+LaTeX Warning: Reference `commercial-fishery' on page 31 undefined on input line 675.
+
+
+LaTeX Warning: Reference `recreational-fishery' on page 31 undefined on input line 675.
+
+
+LaTeX Warning: Reference `tab:params' on page 31 undefined on input line 683.
+
+[31]
+
+LaTeX Warning: Reference `maturation-and-fecundity' on page 32 undefined on input line 687.
+
+
+LaTeX Warning: Reference `fig:est-len-wght' on page 32 undefined on input line 687.
+
+
+LaTeX Warning: Reference `fig:mod-est-len-age' on page 32 undefined on input line 687.
+
+
+LaTeX Warning: Reference `tab:params' on page 32 undefined on input line 693.
+
+
+LaTeX Warning: Reference `tab:north-likes' on page 32 undefined on input line 693.
+
+
+LaTeX Warning: Reference `tab:north-timeseries' on page 32 undefined on input line 693.
+
+
+LaTeX Warning: Reference `tab:params' on page 32 undefined on input line 699.
+
+
+LaTeX Warning: Reference `fig:est-selex' on page 32 undefined on input line 703.
+
+
+LaTeX Warning: Reference `fig:est-selex' on page 32 undefined on input line 705.
+
+[32]
+
+LaTeX Warning: Reference `fig:com-live-len-data' on page 33 undefined on input line 707.
+
+
+LaTeX Warning: Reference `tab:params' on page 33 undefined on input line 711.
+
+
+LaTeX Warning: Reference `fig:recruits' on page 33 undefined on input line 713.
+
+
+LaTeX Warning: Reference `fig:rec-devs' on page 33 undefined on input line 713.
+
+
+LaTeX Warning: Reference `fig:bias-adjust' on page 33 undefined on input line 713.
+
+
+LaTeX Warning: Reference `fig:bh-curve' on page 33 undefined on input line 715.
+
+
+LaTeX Warning: Reference `fig:bias-adjust' on page 33 undefined on input line 715.
+
+
+LaTeX Warning: Reference `detailed-fit-comps' on page 33 undefined on input line 721.
+
+
+LaTeX Warning: Reference `fig:len-agg-fit' on page 33 undefined on input line 721.
+
+
+LaTeX Warning: Reference `fig:com-dead-pearson' on page 33 undefined on input line 723.
+
+
+LaTeX Warning: Reference `fig:com-dead-mean-len-fit' on page 33 undefined on input line 723.
+
+
+LaTeX Warning: Reference `fig:com-dead-mean-age' on page 33 undefined on input line 723.
+
+[33]
+
+LaTeX Warning: Reference `fig:com-live-pearson' on page 34 undefined on input line 725.
+
+
+LaTeX Warning: Reference `fig:com-live-mean-len-fit' on page 34 undefined on input line 725.
+
+
+LaTeX Warning: Reference `fig:rec-cpfv-pearson' on page 34 undefined on input line 727.
+
+
+LaTeX Warning: Reference `fig:rec-cpfv-mean-len-fit' on page 34 undefined on input line 727.
+
+
+LaTeX Warning: Reference `fig:rec-cpfv-age-pearson' on page 34 undefined on input line 727.
+
+
+LaTeX Warning: Reference `fig:rec-pr-pearson' on page 34 undefined on input line 729.
+
+
+LaTeX Warning: Reference `fig:rec-pr-mean-len-fit' on page 34 undefined on input line 729.
+
+
+LaTeX Warning: Reference `fig:rec-pr-age-pearson' on page 34 undefined on input line 729.
+
+
+LaTeX Warning: Reference `fig:ccfrp-len-pearson' on page 34 undefined on input line 731.
+
+
+LaTeX Warning: Reference `fig:ccfrp-mean-len-fit' on page 34 undefined on input line 731.
+
+
+LaTeX Warning: Reference `fig:ccfrp-age-pearson' on page 34 undefined on input line 731.
+
+
+LaTeX Warning: Reference `fig:ccfrp-len-pearson' on page 34 undefined on input line 731.
+
+[34]
+
+LaTeX Warning: Reference `fig:dwv-cpfv-index-fit' on page 35 undefined on input line 737.
+
+
+LaTeX Warning: Reference `fig:crfs-cpfv-index-fit' on page 35 undefined on input line 739.
+
+
+LaTeX Warning: Reference `fig:crfs-pr-index-fit' on page 35 undefined on input line 741.
+
+
+LaTeX Warning: Reference `fig:ccfrp-index-fit' on page 35 undefined on input line 743.
+
+
+LaTeX Warning: Reference `tab:north-timeseries' on page 35 undefined on input line 747.
+
+
+LaTeX Warning: Reference `fig:ssb' on page 35 undefined on input line 747.
+
+
+LaTeX Warning: Reference `fig:tot-bio' on page 35 undefined on input line 747.
+
+
+LaTeX Warning: Reference `fig:depl' on page 35 undefined on input line 747.
+
+
+LaTeX Warning: Reference `tab:ca-status' on page 35 undefined on input line 751.
+
+
+LaTeX Warning: Reference `fig:sb-all' on page 35 undefined on input line 751.
+
+
+LaTeX Warning: Reference `fig:depl-all' on page 35 undefined on input line 751.
+
+[35]
+
+LaTeX Warning: Reference `tab:sensitivities-1' on page 36 undefined on input line 761.
+
+
+LaTeX Warning: Reference `tab:sensitivities-3' on page 36 undefined on input line 761.
+
+
+LaTeX Warning: Reference `fig:sens-structure' on page 36 undefined on input line 761.
+
+
+LaTeX Warning: Reference `fig:sens-data' on page 36 undefined on input line 761.
+
+
+LaTeX Warning: Reference `fig:sens-ssb-1' on page 36 undefined on input line 761.
+
+
+LaTeX Warning: Reference `fig:sens-depl-3' on page 36 undefined on input line 761.
+
+[36]
+
+LaTeX Warning: Reference `fig:sens-structure' on page 37 undefined on input line 815.
+
+
+LaTeX Warning: Reference `fig:sens-data' on page 37 undefined on input line 815.
+
+
+LaTeX Warning: Reference `tab:sensitivities-1' on page 37 undefined on input line 815.
+
+
+LaTeX Warning: Reference `fig:sens-ssb-1' on page 37 undefined on input line 815.
+
+
+LaTeX Warning: Reference `fig:sens-depl-1' on page 37 undefined on input line 815.
+
+
+LaTeX Warning: Reference `tab:sensitivities-1' on page 37 undefined on input line 817.
+
+
+LaTeX Warning: Reference `fig:sens-data' on page 37 undefined on input line 819.
+
+[37]
+
+LaTeX Warning: Reference `fig:retro-ssb' on page 38 undefined on input line 827.
+
+
+LaTeX Warning: Reference `fig:retro-depl' on page 38 undefined on input line 827.
+
+
+LaTeX Warning: Reference `fig:r0-profile' on page 38 undefined on input line 833.
+
+
+LaTeX Warning: Reference `fig:r0-ssb' on page 38 undefined on input line 833.
+
+
+LaTeX Warning: Reference `fig:r0-depl' on page 38 undefined on input line 833.
+
+[38]
+
+LaTeX Warning: Reference `fig:h-profile' on page 39 undefined on input line 835.
+
+
+LaTeX Warning: Reference `fig:h-ssb' on page 39 undefined on input line 835.
+
+
+LaTeX Warning: Reference `fig:h-depl' on page 39 undefined on input line 835.
+
+
+LaTeX Warning: Reference `fig:m-profile' on page 39 undefined on input line 837.
+
+
+LaTeX Warning: Reference `fig:m-ssb' on page 39 undefined on input line 837.
+
+
+LaTeX Warning: Reference `fig:m-depl' on page 39 undefined on input line 837.
+
+
+LaTeX Warning: Reference `fig:comp-assess-sb' on page 39 undefined on input line 841.
+
+
+LaTeX Warning: Reference `fig:comp-assess-depl' on page 39 undefined on input line 841.
+
+
+LaTeX Warning: Reference `fig:h-profile' on page 39 undefined on input line 843.
+
+
+LaTeX Warning: Reference `fig:h-ssb' on page 39 undefined on input line 843.
+
+
+LaTeX Warning: Reference `fig:h-depl' on page 39 undefined on input line 843.
+
+[39]
+
+LaTeX Warning: Reference `fig:m-profile' on page 40 undefined on input line 845.
+
+
+LaTeX Warning: Reference `fig:m-ssb' on page 40 undefined on input line 845.
+
+
+LaTeX Warning: Reference `fig:m-depl' on page 40 undefined on input line 845.
+
+
+LaTeX Warning: Reference `tab:south-reference' on page 40 undefined on input line 851.
+
+
+LaTeX Warning: Reference `tab:north-reference' on page 40 undefined on input line 851.
+
+
+LaTeX Warning: Reference `tab:ref-point-all' on page 40 undefined on input line 851.
+
+
+LaTeX Warning: Reference `tab:ca-status' on page 40 undefined on input line 855.
+
+
+LaTeX Warning: Reference `fig:sb-all' on page 40 undefined on input line 855.
+
+
+LaTeX Warning: Reference `fig:depl-all' on page 40 undefined on input line 855.
+
+
+LaTeX Warning: Reference `fig:1-spr' on page 40 undefined on input line 855.
+
+
+LaTeX Warning: Reference `fig:phase' on page 40 undefined on input line 855.
+
+
+LaTeX Warning: Reference `tab:south-reference' on page 40 undefined on input line 857.
+
+
+LaTeX Warning: Reference `tab:north-reference' on page 40 undefined on input line 857.
+
+
+LaTeX Warning: Reference `fig:yield-north' on page 40 undefined on input line 857.
+
+
+LaTeX Warning: Reference `fig:yield-south' on page 40 undefined on input line 857.
+
+[40]
+
+LaTeX Warning: Reference `tab:ca-proj' on page 41 undefined on input line 871.
+
+
+LaTeX Warning: Reference `tab:dec-tab' on page 41 undefined on input line 875.
+
+[41] [42] [43] [44]
+
+Package tagpdf Warning: Parent-Child 'P/pdf2' --> 'text-unit/latex'.
+(tagpdf)                Relation is not allowed (struct 712, /text --> struct
+(tagpdf)                713) on line 931
+
+
+Package tagpdf Warning: Parent-Child 'P/pdf2' --> 'text/latex'.
+(tagpdf)                Relation is not allowed (struct 713, /text-unit -->
+(tagpdf)                struct 714) on line 931
+
+
+Package tagpdf Warning: nested marked content found - mcid 491
+
+
+Package tagpdf Warning: there is no mc to end at 492
+
 ==> Table has 6 columns
---longtable--> chunk row: 0 row: 0 column: 0
-==> current cell data: 1,1,\LT@cols 
+==> saved cell data: 0,0,1 (outer level)
+==> current cell data: 1,1,1
+==> current cell data: 1,2,1
+
+Overfull \hbox (13.36198pt too wide) in paragraph at lines 937--937
+[]|\T1/lmr/m/n/10 (-20) Commercial 
+ []
+
+==> current cell data: 1,3,1
+
+Overfull \hbox (13.36198pt too wide) in paragraph at lines 937--937
+[]|\T1/lmr/m/n/10 (-20) Commercial 
+ []
+
+==> current cell data: 1,4,1
+==> current cell data: 1,5,1
+==> current cell data: 1,6,1
 ==> (@arraycr) This row needs 0 additional cell(s)
---longtable--> chunk row: 1 row: 1 column: 1
-==> stucture stored for row 1: 47,-47,-47,-47,-47,-47
---longtable--> chunk row: 1 row: 2 column: 0
+==> stucture stored for row 1: 719,720,721,722,723,724
+==> current cell data: 2,1,1
+==> current cell data: 2,2,1
+==> current cell data: 2,3,1
+==> current cell data: 2,4,1
+==> current cell data: 2,5,1
+==> current cell data: 2,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 2: 726,727,728,729,730,731
 ==> current cell data: 3,1,1
 ==> current cell data: 3,2,1
 ==> current cell data: 3,3,1
@@ -1500,20 +1860,2064 @@ LaTeX Warning: Reference `tab:north-removalsES' on page i undefined on input lin
 ==> current cell data: 3,5,1
 ==> current cell data: 3,6,1
 ==> (@arraycr) This row needs 0 additional cell(s)
---longtable--> chunk row: 2 row: 3 column: 6
-! Undefined control sequence.
-<argument> \ERROR 
-       
-l.8 \midrule
-          
+==> stucture stored for row 3: 733,734,735,736,737,738
+==> current cell data: 4,1,1
+==> current cell data: 4,2,1
+==> current cell data: 4,3,1
+==> current cell data: 4,4,1
+==> current cell data: 4,5,1
+==> current cell data: 4,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 4: 740,741,742,743,744,745
+==> current cell data: 5,1,1
+==> current cell data: 5,2,1
+==> current cell data: 5,3,1
+==> current cell data: 5,4,1
+==> current cell data: 5,5,1
+==> current cell data: 5,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 5: 747,748,749,750,751,752
+==> current cell data: 6,1,1
+==> current cell data: 6,2,1
+==> current cell data: 6,3,1
+==> current cell data: 6,4,1
+==> current cell data: 6,5,1
+==> current cell data: 6,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 6: 754,755,756,757,758,759
+==> current cell data: 7,1,1
+==> current cell data: 7,2,1
+==> current cell data: 7,3,1
+==> current cell data: 7,4,1
+==> current cell data: 7,5,1
+==> current cell data: 7,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 7: 761,762,763,764,765,766
+==> current cell data: 8,1,1
+==> current cell data: 8,2,1
+==> current cell data: 8,3,1
+==> current cell data: 8,4,1
+==> current cell data: 8,5,1
+==> current cell data: 8,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 8: 768,769,770,771,772,773
+==> current cell data: 9,1,1
+==> current cell data: 9,2,1
+==> current cell data: 9,3,1
+==> current cell data: 9,4,1
+==> current cell data: 9,5,1
+==> current cell data: 9,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 9: 775,776,777,778,779,780
+==> current cell data: 10,1,1
+==> current cell data: 10,2,1
+==> current cell data: 10,3,1
+==> current cell data: 10,4,1
+==> current cell data: 10,5,1
+==> current cell data: 10,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 10: 782,783,784,785,786,787
+==> current cell data: 11,1,1
+==> current cell data: 11,2,1
+==> current cell data: 11,3,1
+==> current cell data: 11,4,1
+==> current cell data: 11,5,1
+==> current cell data: 11,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 11: 789,790,791,792,793,794
+==> current cell data: 12,1,1
+==> current cell data: 12,2,1
+==> current cell data: 12,3,1
+==> current cell data: 12,4,1
+==> current cell data: 12,5,1
+==> current cell data: 12,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 12: 796,797,798,799,800,801
+==> current cell data: 13,1,1
+==> current cell data: 13,2,1
+==> current cell data: 13,3,1
+==> current cell data: 13,4,1
+==> current cell data: 13,5,1
+==> current cell data: 13,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 13: 803,804,805,806,807,808
+==> current cell data: 14,1,1
+==> current cell data: 14,2,1
+==> current cell data: 14,3,1
+==> current cell data: 14,4,1
+==> current cell data: 14,5,1
+==> current cell data: 14,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 14: 810,811,812,813,814,815
+==> current cell data: 15,1,1
+==> current cell data: 15,2,1
+==> current cell data: 15,3,1
+==> current cell data: 15,4,1
+==> current cell data: 15,5,1
+==> current cell data: 15,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 15: 817,818,819,820,821,822
+==> current cell data: 16,1,1
+==> current cell data: 16,2,1
+==> current cell data: 16,3,1
+==> current cell data: 16,4,1
+==> current cell data: 16,5,1
+==> current cell data: 16,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 16: 824,825,826,827,828,829
+==> current cell data: 17,1,1
+==> current cell data: 17,2,1
+==> current cell data: 17,3,1
+==> current cell data: 17,4,1
+==> current cell data: 17,5,1
+==> current cell data: 17,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 17: 831,832,833,834,835,836
+==> current cell data: 18,1,1
+==> current cell data: 18,2,1
+==> current cell data: 18,3,1
+==> current cell data: 18,4,1
+==> current cell data: 18,5,1
+==> current cell data: 18,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 18: 838,839,840,841,842,843
+==> current cell data: 19,1,1
+==> current cell data: 19,2,1
+==> current cell data: 19,3,1
+==> current cell data: 19,4,1
+==> current cell data: 19,5,1
+==> current cell data: 19,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 19: 845,846,847,848,849,850
+==> current cell data: 20,1,1
+==> current cell data: 20,2,1
+==> current cell data: 20,3,1
+==> current cell data: 20,4,1
+==> current cell data: 20,5,1
+==> current cell data: 20,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 20: 852,853,854,855,856,857
+==> current cell data: 21,1,1
+==> current cell data: 21,2,1
+==> current cell data: 21,3,1
+==> current cell data: 21,4,1
+==> current cell data: 21,5,1
+==> current cell data: 21,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 21: 859,860,861,862,863,864
+==> current cell data: 22,1,1
+==> current cell data: 22,2,1
+==> current cell data: 22,3,1
+==> current cell data: 22,4,1
+==> current cell data: 22,5,1
+==> current cell data: 22,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 22: 866,867,868,869,870,871
+==> current cell data: 23,1,1
+==> current cell data: 23,2,1
+==> current cell data: 23,3,1
+==> current cell data: 23,4,1
+==> current cell data: 23,5,1
+==> current cell data: 23,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 23: 873,874,875,876,877,878
+==> current cell data: 24,1,1
+==> current cell data: 24,2,1
+==> current cell data: 24,3,1
+==> current cell data: 24,4,1
+==> current cell data: 24,5,1
+==> current cell data: 24,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 24: 880,881,882,883,884,885
+==> current cell data: 25,1,1
+==> current cell data: 25,2,1
+==> current cell data: 25,3,1
+==> current cell data: 25,4,1
+==> current cell data: 25,5,1
+==> current cell data: 25,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 25: 887,888,889,890,891,892
+==> current cell data: 26,1,1
+==> current cell data: 26,2,1
+==> current cell data: 26,3,1
+==> current cell data: 26,4,1
+==> current cell data: 26,5,1
+==> current cell data: 26,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 26: 894,895,896,897,898,899
+==> current cell data: 27,1,1
+==> current cell data: 27,2,1
+==> current cell data: 27,3,1
+==> current cell data: 27,4,1
+==> current cell data: 27,5,1
+==> current cell data: 27,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 27: 901,902,903,904,905,906
+==> current cell data: 28,1,1
+==> current cell data: 28,2,1
+==> current cell data: 28,3,1
+==> current cell data: 28,4,1
+==> current cell data: 28,5,1
+==> current cell data: 28,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 28: 908,909,910,911,912,913
+==> current cell data: 29,1,1
+==> current cell data: 29,2,1
+==> current cell data: 29,3,1
+==> current cell data: 29,4,1
+==> current cell data: 29,5,1
+==> current cell data: 29,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 29: 915,916,917,918,919,920
+==> current cell data: 30,1,1
+==> current cell data: 30,2,1
+==> current cell data: 30,3,1
+==> current cell data: 30,4,1
+==> current cell data: 30,5,1
+==> current cell data: 30,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 30: 922,923,924,925,926,927
+==> current cell data: 31,1,1
+==> current cell data: 31,2,1
+==> current cell data: 31,3,1
+==> current cell data: 31,4,1
+==> current cell data: 31,5,1
+==> current cell data: 31,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 31: 929,930,931,932,933,934
+==> current cell data: 32,1,1
+==> current cell data: 32,2,1
+==> current cell data: 32,3,1
+==> current cell data: 32,4,1
+==> current cell data: 32,5,1
+==> current cell data: 32,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 32: 936,937,938,939,940,941
+==> current cell data: 33,1,1
+==> current cell data: 33,2,1
+==> current cell data: 33,3,1
+==> current cell data: 33,4,1
+==> current cell data: 33,5,1
+==> current cell data: 33,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 33: 943,944,945,946,947,948
+==> current cell data: 34,1,1
+==> current cell data: 34,2,1
+==> current cell data: 34,3,1
+==> current cell data: 34,4,1
+==> current cell data: 34,5,1
+==> current cell data: 34,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 34: 950,951,952,953,954,955
+==> current cell data: 35,1,1
+==> current cell data: 35,2,1
+==> current cell data: 35,3,1
+==> current cell data: 35,4,1
+==> current cell data: 35,5,1
+==> current cell data: 35,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 35: 957,958,959,960,961,962
+==> current cell data: 36,1,1
+==> current cell data: 36,2,1
+==> current cell data: 36,3,1
+==> current cell data: 36,4,1
+==> current cell data: 36,5,1
+==> current cell data: 36,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 36: 964,965,966,967,968,969
+==> current cell data: 37,1,1
+==> current cell data: 37,2,1
+==> current cell data: 37,3,1
+==> current cell data: 37,4,1
+==> current cell data: 37,5,1
+==> current cell data: 37,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 37: 971,972,973,974,975,976
+==> current cell data: 38,1,1
+==> current cell data: 38,2,1
+==> current cell data: 38,3,1
+==> current cell data: 38,4,1
+==> current cell data: 38,5,1
+==> current cell data: 38,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 38: 978,979,980,981,982,983
+==> current cell data: 39,1,1
+==> current cell data: 39,2,1
+==> current cell data: 39,3,1
+==> current cell data: 39,4,1
+==> current cell data: 39,5,1
+==> current cell data: 39,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 39: 985,986,987,988,989,990
+==> current cell data: 40,1,1
+==> current cell data: 40,2,1
+==> current cell data: 40,3,1
+==> current cell data: 40,4,1
+==> current cell data: 40,5,1
+==> current cell data: 40,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 40: 992,993,994,995,996,997
+==> current cell data: 41,1,1
+==> current cell data: 41,2,1
+==> current cell data: 41,3,1
+==> current cell data: 41,4,1
+==> current cell data: 41,5,1
+==> current cell data: 41,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 41: 999,1000,1001,1002,1003,1004
+==> current cell data: 42,1,1
+==> current cell data: 42,2,1
+==> current cell data: 42,3,1
+==> current cell data: 42,4,1
+==> current cell data: 42,5,1
+==> current cell data: 42,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 42: 1006,1007,1008,1009,1010,1011
+==> current cell data: 43,1,1
+==> current cell data: 43,2,1
+==> current cell data: 43,3,1
+==> current cell data: 43,4,1
+==> current cell data: 43,5,1
+==> current cell data: 43,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 43: 1013,1014,1015,1016,1017,1018
+==> current cell data: 44,1,1
+==> current cell data: 44,2,1
+==> current cell data: 44,3,1
+==> current cell data: 44,4,1
+==> current cell data: 44,5,1
+==> current cell data: 44,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 44: 1020,1021,1022,1023,1024,1025
+==> current cell data: 45,1,1
+==> current cell data: 45,2,1
+==> current cell data: 45,3,1
+==> current cell data: 45,4,1
+==> current cell data: 45,5,1
+==> current cell data: 45,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 45: 1027,1028,1029,1030,1031,1032
+==> current cell data: 46,1,1
+==> current cell data: 46,2,1
+==> current cell data: 46,3,1
+==> current cell data: 46,4,1
+==> current cell data: 46,5,1
+==> current cell data: 46,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 46: 1034,1035,1036,1037,1038,1039
+==> current cell data: 47,1,1
+==> current cell data: 47,2,1
+==> current cell data: 47,3,1
+==> current cell data: 47,4,1
+==> current cell data: 47,5,1
+==> current cell data: 47,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 47: 1041,1042,1043,1044,1045,1046
+==> current cell data: 48,1,1
+==> current cell data: 48,2,1
+==> current cell data: 48,3,1
+==> current cell data: 48,4,1
+==> current cell data: 48,5,1
+==> current cell data: 48,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 48: 1048,1049,1050,1051,1052,1053
+==> current cell data: 49,1,1
+==> current cell data: 49,2,1
+==> current cell data: 49,3,1
+==> current cell data: 49,4,1
+==> current cell data: 49,5,1
+==> current cell data: 49,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 49: 1055,1056,1057,1058,1059,1060
+==> current cell data: 50,1,1
+==> current cell data: 50,2,1
+==> current cell data: 50,3,1
+==> current cell data: 50,4,1
+==> current cell data: 50,5,1
+==> current cell data: 50,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 50: 1062,1063,1064,1065,1066,1067
+==> current cell data: 51,1,1
+==> current cell data: 51,2,1
+==> current cell data: 51,3,1
+==> current cell data: 51,4,1
+==> current cell data: 51,5,1
+==> current cell data: 51,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 51: 1069,1070,1071,1072,1073,1074
+==> current cell data: 52,1,1
+==> current cell data: 52,2,1
+==> current cell data: 52,3,1
+==> current cell data: 52,4,1
+==> current cell data: 52,5,1
+==> current cell data: 52,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 52: 1076,1077,1078,1079,1080,1081
+==> current cell data: 53,1,1
+==> current cell data: 53,2,1
+==> current cell data: 53,3,1
+==> current cell data: 53,4,1
+==> current cell data: 53,5,1
+==> current cell data: 53,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 53: 1083,1084,1085,1086,1087,1088
+==> current cell data: 54,1,1
+==> current cell data: 54,2,1
+==> current cell data: 54,3,1
+==> current cell data: 54,4,1
+==> current cell data: 54,5,1
+==> current cell data: 54,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 54: 1090,1091,1092,1093,1094,1095
+==> current cell data: 55,1,1
+==> current cell data: 55,2,1
+==> current cell data: 55,3,1
+==> current cell data: 55,4,1
+==> current cell data: 55,5,1
+==> current cell data: 55,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 55: 1097,1098,1099,1100,1101,1102
+==> current cell data: 56,1,1
+==> current cell data: 56,2,1
+==> current cell data: 56,3,1
+==> current cell data: 56,4,1
+==> current cell data: 56,5,1
+==> current cell data: 56,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 56: 1104,1105,1106,1107,1108,1109
+==> current cell data: 57,1,1
+==> current cell data: 57,2,1
+==> current cell data: 57,3,1
+==> current cell data: 57,4,1
+==> current cell data: 57,5,1
+==> current cell data: 57,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 57: 1111,1112,1113,1114,1115,1116
+==> current cell data: 58,1,1
+==> current cell data: 58,2,1
+==> current cell data: 58,3,1
+==> current cell data: 58,4,1
+==> current cell data: 58,5,1
+==> current cell data: 58,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 58: 1118,1119,1120,1121,1122,1123
+==> current cell data: 59,1,1
+==> current cell data: 59,2,1
+==> current cell data: 59,3,1
+==> current cell data: 59,4,1
+==> current cell data: 59,5,1
+==> current cell data: 59,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 59: 1125,1126,1127,1128,1129,1130
+==> current cell data: 60,1,1
+==> current cell data: 60,2,1
+==> current cell data: 60,3,1
+==> current cell data: 60,4,1
+==> current cell data: 60,5,1
+==> current cell data: 60,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 60: 1132,1133,1134,1135,1136,1137
+==> current cell data: 61,1,1
+==> current cell data: 61,2,1
+==> current cell data: 61,3,1
+==> current cell data: 61,4,1
+==> current cell data: 61,5,1
+==> current cell data: 61,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 61: 1139,1140,1141,1142,1143,1144
+==> current cell data: 62,1,1
+==> current cell data: 62,2,1
+==> current cell data: 62,3,1
+==> current cell data: 62,4,1
+==> current cell data: 62,5,1
+==> current cell data: 62,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 62: 1146,1147,1148,1149,1150,1151
+==> current cell data: 63,1,1
+==> current cell data: 63,2,1
+==> current cell data: 63,3,1
+==> current cell data: 63,4,1
+==> current cell data: 63,5,1
+==> current cell data: 63,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 63: 1153,1154,1155,1156,1157,1158
+==> current cell data: 64,1,1
+==> current cell data: 64,2,1
+==> current cell data: 64,3,1
+==> current cell data: 64,4,1
+==> current cell data: 64,5,1
+==> current cell data: 64,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 64: 1160,1161,1162,1163,1164,1165
+==> current cell data: 65,1,1
+==> current cell data: 65,2,1
+==> current cell data: 65,3,1
+==> current cell data: 65,4,1
+==> current cell data: 65,5,1
+==> current cell data: 65,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 65: 1167,1168,1169,1170,1171,1172
+==> current cell data: 66,1,1
+==> current cell data: 66,2,1
+==> current cell data: 66,3,1
+==> current cell data: 66,4,1
+==> current cell data: 66,5,1
+==> current cell data: 66,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 66: 1174,1175,1176,1177,1178,1179
+==> current cell data: 67,1,1
+==> current cell data: 67,2,1
+==> current cell data: 67,3,1
+==> current cell data: 67,4,1
+==> current cell data: 67,5,1
+==> current cell data: 67,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 67: 1181,1182,1183,1184,1185,1186
+==> current cell data: 68,1,1
+==> current cell data: 68,2,1
+==> current cell data: 68,3,1
+==> current cell data: 68,4,1
+==> current cell data: 68,5,1
+==> current cell data: 68,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 68: 1188,1189,1190,1191,1192,1193
+==> current cell data: 69,1,1
+==> current cell data: 69,2,1
+==> current cell data: 69,3,1
+==> current cell data: 69,4,1
+==> current cell data: 69,5,1
+==> current cell data: 69,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 69: 1195,1196,1197,1198,1199,1200
+==> current cell data: 70,1,1
+==> current cell data: 70,2,1
+==> current cell data: 70,3,1
+==> current cell data: 70,4,1
+==> current cell data: 70,5,1
+==> current cell data: 70,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 70: 1202,1203,1204,1205,1206,1207
+==> current cell data: 71,1,1
+==> current cell data: 71,2,1
+==> current cell data: 71,3,1
+==> current cell data: 71,4,1
+==> current cell data: 71,5,1
+==> current cell data: 71,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 71: 1209,1210,1211,1212,1213,1214
+==> current cell data: 72,1,1
+==> current cell data: 72,2,1
+==> current cell data: 72,3,1
+==> current cell data: 72,4,1
+==> current cell data: 72,5,1
+==> current cell data: 72,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 72: 1216,1217,1218,1219,1220,1221
+==> current cell data: 73,1,1
+==> current cell data: 73,2,1
+==> current cell data: 73,3,1
+==> current cell data: 73,4,1
+==> current cell data: 73,5,1
+==> current cell data: 73,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 73: 1223,1224,1225,1226,1227,1228
+==> current cell data: 74,1,1
+==> current cell data: 74,2,1
+==> current cell data: 74,3,1
+==> current cell data: 74,4,1
+==> current cell data: 74,5,1
+==> current cell data: 74,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 74: 1230,1231,1232,1233,1234,1235
+==> current cell data: 75,1,1
+==> current cell data: 75,2,1
+==> current cell data: 75,3,1
+==> current cell data: 75,4,1
+==> current cell data: 75,5,1
+==> current cell data: 75,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 75: 1237,1238,1239,1240,1241,1242
+==> current cell data: 76,1,1
+==> current cell data: 76,2,1
+==> current cell data: 76,3,1
+==> current cell data: 76,4,1
+==> current cell data: 76,5,1
+==> current cell data: 76,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 76: 1244,1245,1246,1247,1248,1249
+==> current cell data: 77,1,1
+==> current cell data: 77,2,1
+==> current cell data: 77,3,1
+==> current cell data: 77,4,1
+==> current cell data: 77,5,1
+==> current cell data: 77,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 77: 1251,1252,1253,1254,1255,1256
+==> current cell data: 78,1,1
+==> current cell data: 78,2,1
+==> current cell data: 78,3,1
+==> current cell data: 78,4,1
+==> current cell data: 78,5,1
+==> current cell data: 78,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 78: 1258,1259,1260,1261,1262,1263
+==> current cell data: 79,1,1
+==> current cell data: 79,2,1
+==> current cell data: 79,3,1
+==> current cell data: 79,4,1
+==> current cell data: 79,5,1
+==> current cell data: 79,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 79: 1265,1266,1267,1268,1269,1270
+==> current cell data: 80,1,1
+==> current cell data: 80,2,1
+==> current cell data: 80,3,1
+==> current cell data: 80,4,1
+==> current cell data: 80,5,1
+==> current cell data: 80,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 80: 1272,1273,1274,1275,1276,1277
+==> current cell data: 81,1,1
+==> current cell data: 81,2,1
+==> current cell data: 81,3,1
+==> current cell data: 81,4,1
+==> current cell data: 81,5,1
+==> current cell data: 81,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 81: 1279,1280,1281,1282,1283,1284
+==> current cell data: 82,1,1
+==> current cell data: 82,2,1
+==> current cell data: 82,3,1
+==> current cell data: 82,4,1
+==> current cell data: 82,5,1
+==> current cell data: 82,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 82: 1286,1287,1288,1289,1290,1291
+==> current cell data: 83,1,1
+==> current cell data: 83,2,1
+==> current cell data: 83,3,1
+==> current cell data: 83,4,1
+==> current cell data: 83,5,1
+==> current cell data: 83,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 83: 1293,1294,1295,1296,1297,1298
+==> current cell data: 84,1,1
+==> current cell data: 84,2,1
+==> current cell data: 84,3,1
+==> current cell data: 84,4,1
+==> current cell data: 84,5,1
+==> current cell data: 84,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 84: 1300,1301,1302,1303,1304,1305
+==> current cell data: 85,1,1
+==> current cell data: 85,2,1
+==> current cell data: 85,3,1
+==> current cell data: 85,4,1
+==> current cell data: 85,5,1
+==> current cell data: 85,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 85: 1307,1308,1309,1310,1311,1312
+==> current cell data: 86,1,1
+==> current cell data: 86,2,1
+==> current cell data: 86,3,1
+==> current cell data: 86,4,1
+==> current cell data: 86,5,1
+==> current cell data: 86,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 86: 1314,1315,1316,1317,1318,1319
+==> current cell data: 87,1,1
+==> current cell data: 87,2,1
+==> current cell data: 87,3,1
+==> current cell data: 87,4,1
+==> current cell data: 87,5,1
+==> current cell data: 87,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 87: 1321,1322,1323,1324,1325,1326
+==> current cell data: 88,1,1
+==> current cell data: 88,2,1
+==> current cell data: 88,3,1
+==> current cell data: 88,4,1
+==> current cell data: 88,5,1
+==> current cell data: 88,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 88: 1328,1329,1330,1331,1332,1333
+==> current cell data: 89,1,1
+==> current cell data: 89,2,1
+==> current cell data: 89,3,1
+==> current cell data: 89,4,1
+==> current cell data: 89,5,1
+==> current cell data: 89,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 89: 1335,1336,1337,1338,1339,1340
+==> current cell data: 90,1,1
+==> current cell data: 90,2,1
+==> current cell data: 90,3,1
+==> current cell data: 90,4,1
+==> current cell data: 90,5,1
+==> current cell data: 90,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 90: 1342,1343,1344,1345,1346,1347
+==> current cell data: 91,1,1
+==> current cell data: 91,2,1
+==> current cell data: 91,3,1
+==> current cell data: 91,4,1
+==> current cell data: 91,5,1
+==> current cell data: 91,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 91: 1349,1350,1351,1352,1353,1354
+==> current cell data: 92,1,1
+==> current cell data: 92,2,1
+==> current cell data: 92,3,1
+==> current cell data: 92,4,1
+==> current cell data: 92,5,1
+==> current cell data: 92,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 92: 1356,1357,1358,1359,1360,1361
+==> current cell data: 93,1,1
+==> current cell data: 93,2,1
+==> current cell data: 93,3,1
+==> current cell data: 93,4,1
+==> current cell data: 93,5,1
+==> current cell data: 93,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 93: 1363,1364,1365,1366,1367,1368
+==> current cell data: 94,1,1
+==> current cell data: 94,2,1
+==> current cell data: 94,3,1
+==> current cell data: 94,4,1
+==> current cell data: 94,5,1
+==> current cell data: 94,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 94: 1370,1371,1372,1373,1374,1375
+==> current cell data: 95,1,1
+==> current cell data: 95,2,1
+==> current cell data: 95,3,1
+==> current cell data: 95,4,1
+==> current cell data: 95,5,1
+==> current cell data: 95,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 95: 1377,1378,1379,1380,1381,1382
+==> current cell data: 96,1,1
+==> current cell data: 96,2,1
+==> current cell data: 96,3,1
+==> current cell data: 96,4,1
+==> current cell data: 96,5,1
+==> current cell data: 96,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 96: 1384,1385,1386,1387,1388,1389
+==> current cell data: 97,1,1
+==> current cell data: 97,2,1
+==> current cell data: 97,3,1
+==> current cell data: 97,4,1
+==> current cell data: 97,5,1
+==> current cell data: 97,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 97: 1391,1392,1393,1394,1395,1396
+==> current cell data: 98,1,1
+==> current cell data: 98,2,1
+==> current cell data: 98,3,1
+==> current cell data: 98,4,1
+==> current cell data: 98,5,1
+==> current cell data: 98,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 98: 1398,1399,1400,1401,1402,1403
+==> current cell data: 99,1,1
+==> current cell data: 99,2,1
+==> current cell data: 99,3,1
+==> current cell data: 99,4,1
+==> current cell data: 99,5,1
+==> current cell data: 99,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 99: 1405,1406,1407,1408,1409,1410
+==> current cell data: 100,1,1
+==> current cell data: 100,2,1
+==> current cell data: 100,3,1
+==> current cell data: 100,4,1
+==> current cell data: 100,5,1
+==> current cell data: 100,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 100: 1412,1413,1414,1415,1416,1417
+==> current cell data: 101,1,1
+==> current cell data: 101,2,1
+==> current cell data: 101,3,1
+==> current cell data: 101,4,1
+==> current cell data: 101,5,1
+==> current cell data: 101,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 101: 1419,1420,1421,1422,1423,1424
+==> current cell data: 102,1,1
+==> current cell data: 102,2,1
+==> current cell data: 102,3,1
+==> current cell data: 102,4,1
+==> current cell data: 102,5,1
+==> current cell data: 102,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 102: 1426,1427,1428,1429,1430,1431
+==> current cell data: 103,1,1
+==> current cell data: 103,2,1
+==> current cell data: 103,3,1
+==> current cell data: 103,4,1
+==> current cell data: 103,5,1
+==> current cell data: 103,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 103: 1433,1434,1435,1436,1437,1438
+==> current cell data: 104,1,1
+==> current cell data: 104,2,1
+==> current cell data: 104,3,1
+==> current cell data: 104,4,1
+==> current cell data: 104,5,1
+==> current cell data: 104,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 104: 1440,1441,1442,1443,1444,1445
+==> current cell data: 105,1,1
+==> current cell data: 105,2,1
+==> current cell data: 105,3,1
+==> current cell data: 105,4,1
+==> current cell data: 105,5,1
+==> current cell data: 105,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 105: 1447,1448,1449,1450,1451,1452
+==> current cell data: 106,1,1
+==> current cell data: 106,2,1
+==> current cell data: 106,3,1
+==> current cell data: 106,4,1
+==> current cell data: 106,5,1
+==> current cell data: 106,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 106: 1454,1455,1456,1457,1458,1459
+==> current cell data: 107,1,1
+==> current cell data: 107,2,1
+==> current cell data: 107,3,1
+==> current cell data: 107,4,1
+==> current cell data: 107,5,1
+==> current cell data: 107,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 107: 1461,1462,1463,1464,1465,1466
+==> current cell data: 108,1,1
+==> current cell data: 108,2,1
+==> current cell data: 108,3,1
+==> current cell data: 108,4,1
+==> current cell data: 108,5,1
+==> current cell data: 108,6,1
+==> (@arraycr) This row needs 0 additional cell(s)
+==> stucture stored for row 108: 1468,1469,1470,1471,1472,1473
+[45
 
-Here is how much of LuaTeX's memory you used:
- 52879 strings out of 476468
- 125297,1977958 words of node,token memory allocated
- 27280 words of node memory still in use:
-   69 hlist, 8 vlist, 28 rule, 166 disc, 13 local_par, 2 dir, 2 math, 476 glue, 155 kern, 48 penalty, 11 unset, 14 margin_kern, 2045 glyph, 6 align_record, 1 span, 2008 attribute, 90 glue_spec, 494 attribute_list, 4 temp, 1 align_stack, 11 write, 6 pdf_dest, 2 pdf_colorstack nodes
-   avail lists: 2:2,3:108,4:47,5:30,6:17,7:317,8:5,9:76,10:19,11:47
- 73779 multiletter control sequences out of 65536+600000
- 67 fonts using 19570827 bytes
- 117i,11n,128p,2374b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
-!  ==> Fatal error occurred, no output PDF file produced!
+] [46]
+==> Table has 4 columns
+--longtable--> chunk row: 0 row: 0 column: 0
+==> current cell data: 1,1,\LT@cols 
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 1 row: 1 column: 1
+==> stucture stored for row 1: 1477,-1477,-1477,-1477
+--longtable--> chunk row: 1 row: 2 column: 0
+==> current cell data: 3,1,1
+==> current cell data: 3,2,1
+==> current cell data: 3,3,1
+==> current cell data: 3,4,1
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 2 row: 3 column: 4
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1059: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1059 \midrule
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+--longtable--> chunk row: 2 row: 4 column: 0
+==> current cell data: 5,1,1
+--longtable--> chunk row: 200 row: 5 column: 1
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1060: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1060 \endfirsthead
+                    
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+--longtable--> chunk row: 200 row: 5 column: 0
+--longtable--> chunk row: 0 row: 5 column: 0
+==> current cell data: 6,1,\LT@cols 
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 1 row: 6 column: 1
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1062: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1062 \toprule
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+--longtable--> chunk row: 1 row: 7 column: 0
+==> current cell data: 8,1,1
+==> current cell data: 8,2,1
+==> current cell data: 8,3,1
+==> current cell data: 8,4,1
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 2 row: 8 column: 4
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1064: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1064 \midrule
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+--longtable--> chunk row: 2 row: 9 column: 0
+==> current cell data: 10,1,1
+--longtable--> chunk row: 200 row: 10 column: 1
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1065: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1065 \endhead
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+--longtable--> chunk row: 200 row: 10 column: 0
+--longtable--> chunk row: 0 row: 10 column: 0
+==> current cell data: 11,1,1
+--longtable--> chunk row: 200 row: 11 column: 1
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1067: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1067 \endfoot
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+--longtable--> chunk row: 200 row: 11 column: 0
+--longtable--> chunk row: 0 row: 11 column: 0
+--longtable--> chunk row: 0 row: 12 column: 0
+==> current cell data: 13,1,1
+--longtable--> chunk row: 200 row: 13 column: 1
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1069: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1069 \endlastfoot
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+--longtable--> chunk row: 200 row: 13 column: 0
+--longtable--> chunk row: 0 row: 13 column: 0
+==> current cell data: 14,1,1
+==> current cell data: 14,2,1
+==> current cell data: 14,3,1
+==> current cell data: 14,4,1
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 1 row: 14 column: 4
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1071: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1071 2
+        013 & 148.0 & 123.4 & 105.2\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+==> current cell data: 15,1,1
+==> current cell data: 15,2,1
+==> current cell data: 15,3,1
+==> current cell data: 15,4,1
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 2 row: 15 column: 4
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1072: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1072 2
+        014 & 148.0 & 123.4 & 98.7\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+==> current cell data: 16,1,1
+==> current cell data: 16,2,1
+==> current cell data: 16,3,1
+==> current cell data: 16,4,1
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 3 row: 16 column: 4
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1073: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1073 2
+        015 & 303.8 & 277.3 & 147.6\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+==> current cell data: 17,1,1
+==> current cell data: 17,2,1
+==> current cell data: 17,3,1
+==> current cell data: 17,4,1
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 4 row: 17 column: 4
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1074: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1074 2
+        016 & 286.9 & 262.0 & 165.3\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+==> current cell data: 18,1,1
+==> current cell data: 18,2,1
+==> current cell data: 18,3,1
+==> current cell data: 18,4,1
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 5 row: 18 column: 4
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1075: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1075 2
+        017 & 313.7 & 286.4 & 225.5\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+==> current cell data: 19,1,1
+==> current cell data: 19,2,1
+==> current cell data: 19,3,1
+==> current cell data: 19,4,1
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 6 row: 19 column: 4
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1076: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1076 2
+        018 & 319.6 & 291.8 & 203.7\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+==> current cell data: 20,1,1
+==> current cell data: 20,2,1
+==> current cell data: 20,3,1
+==> current cell data: 20,4,1
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 7 row: 20 column: 4
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1077: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1077 2
+        019 & 325.1 & 296.8 & 182.6\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+==> current cell data: 21,1,1
+==> current cell data: 21,2,1
+==> current cell data: 21,3,1
+==> current cell data: 21,4,1
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 8 row: 21 column: 4
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1078: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1078 2
+        020 & 330.4 & 301.6 & 173.4\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+==> current cell data: 22,1,1
+==> current cell data: 22,2,1
+==> current cell data: 22,3,1
+==> current cell data: 22,4,1
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 9 row: 22 column: 4
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1079: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1079 2
+        021 & 249.8 & 206.4 & 127.8\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+==> current cell data: 23,1,1
+==> current cell data: 23,2,1
+==> current cell data: 23,3,1
+==> current cell data: 23,4,1
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 10 row: 23 column: 4
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1080: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1080 2
+        022 & 249.5 & 204.0 & 66.7\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+==> current cell data: 24,1,1
+==> current cell data: 24,2,1
+==> current cell data: 24,3,1
+==> current cell data: 24,4,1
+==> (@arraycr) This row needs 0 additional cell(s)
+--longtable--> chunk row: 11 row: 24 column: 4
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Undefined control sequence.
+<argument> \ERROR 
+                  
+l.1081 \end
+           {table}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+==> current cell data: 25,1,1
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.1081 \end{table}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing } inserted.
+<inserted text> 
+                }
+l.1081 \end{table}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing } inserted.
+<inserted text> 
+                }
+l.1081 \end{table}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing } inserted.
+<inserted text> 
+                }
+l.1081 \end{table}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing { inserted.
+<inserted text> 
+                {
+l.1081 \end{table}
+                  
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing { inserted.
+<inserted text> 
+                {
+l.1081 \end{table}
+                  
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing } inserted.
+<inserted text> 
+                }
+l.1081 \end{table}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing } inserted.
+<inserted text> 
+                }
+l.1081 \end{table}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing } inserted.
+<inserted text> 
+                }
+l.1081 \end{table}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+I'm guessing that you meant to end an alignment here.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Misplaced \cr.
+<inserted text> \cr 
+                    
+l.1081 \end{table}
+                  
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.1081 \end{table}
+                  
+(That makes 100 errors; please try again.) 
+Here is how much of TeX's memory you used:
+ 56484 strings out of 474115
+ 1179306 string characters out of 5732607
+ 2136190 words of memory out of 5000000
+ 77556 multiletter control sequences out of 15000+600000
+ 627331 words of font info for 161 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 117i,11n,131p,2801b,732s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+c:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/nca/_main.tex:1081:  ==> Fatal error occurred, no output PDF file produced!

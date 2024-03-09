@@ -38,7 +38,7 @@ col_names <- c("CRFS District", "CPUE", "Area", "Percent of Area", "CPUE*Area", 
 
 sa4ss::table_format(x = tab,
              caption = "Estimated CPUE, percent habitat area, and relative abundance by CRFS District.",
-             label = "pr-split-cpue",
+             longtable = FALSE, label = "pr-split-cpue",
              align = 'l',
              col_names = col_names) #,
             # col_to_adjust = 2, 

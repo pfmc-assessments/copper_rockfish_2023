@@ -83,6 +83,7 @@ and Figure \@ref(fig:deb-index)).
 
 
 ```{r, results = 'asis'}
+library(dplyr)
 ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard", "error_removed",
                      "percent_pos.csv")) %>%
   mutate(percentpos = scales::percent(round(percentpos, 3)))
@@ -93,26 +94,14 @@ col_names <- c(
 )
 sa4ss::table_format(x = ind,
              caption = "Number of samples and percent positive for Deb Wilson-Vandenberg's onboard observer survey.",
-             label = "deb-percentpos",
+             longtable = FALSE, label = "deb-percentpos",
              col_names = col_names,
              align = "r")                         
 ```
 
-\newpage
-
-```{r, results = 'asis'}
-#ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard", "north",
-#                    "model_selection.csv"))
-#col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
-
-#sa4ss::table_format(x = ind,
-#             caption = "Data filtering steps for the onboard CPFV survey.",
-#             label = "deb-filter",
-#             col_names = col_names)                         
-```
 
 
-\newpage
+
 
 ```{r, results = 'asis'}
 
@@ -123,12 +112,12 @@ col_names = c("Year", "Estimate", "logSE")
 
 sa4ss::table_format(x = ind,
              caption = "Estimated relative index of abundance for the onboard CPFV survey.",
-             label = "deb-index",
+             longtable = FALSE, label = "deb-index",
              col_names = col_names,
              digits = 4)                         
 ```
 
-\newpage
+
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
@@ -139,7 +128,7 @@ col_names = c("Filter",	"Description",	"Number of Samples", "Positive Samples")
 sa4ss::table_format(
     x = ind,
     caption = "Data filtering steps for the onboard CPFV survey.",
-    label = "deb-filter",
+    longtable = FALSE, label = "deb-filter",
     col_names = col_names,
     font_size = 9,
     landscape = TRUE,
@@ -150,27 +139,27 @@ sa4ss::table_format(
     width = c("8cm"))                         
 ```
 
-\newpage
+
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
                    "deltagamma", "index.png"), 
 caption = "Index for the onboard CPFV survey.",
+alt_caption = "The index for the onboard commercial passenger fishing vessel survey from 1989 to 1999",
 label = 'deb-index')
 ```
 
-\newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard", 
                    "deltagamma", "qq.png"), 
 caption = "Q-Q plot for the onboard CPFV survey.",
+alt_caption = "The q q plot indicates a decent fit to the data",
 label = 'deb-qq')
 ```
 
-\newpage
 
 
 ```{r, results = 'asis'}
@@ -178,20 +167,21 @@ sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
                    "average_cpue_by_reef.png"), 
 caption = "Average CPUE by region prior to standardization.",
+alt_caption = "The average catch per unit effort is similar across regions",
 label = 'deb-regioncpue')
 ```
 
-\newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
                    "percent_gfish.png"), 
 caption = "Percent of catch by trip that consisted of groundfish.",
+alt_caption = "A large percentage of trips encountered groundfish",
 label = 'deb-percent-gfish')
 ```
 
-\newpage
+
 
 
 ```{r, results = 'asis'}
@@ -199,8 +189,7 @@ sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "debwv_cpfv_onboard",
                    "depth_by_reef.png"), 
 caption = "Stacked bar plot of the depth of observed copper rockfish by region.",
+alt_caption = "Copper rockfish are observed in the expected depth from the fleet",
 label = 'deb-depths')
 ```
-
-\newpage
 

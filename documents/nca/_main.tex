@@ -87,31 +87,6 @@
 
 %Define cslreferences environment, required by pandoc 2.8
 %https://github.com/rstudio/rmarkdown/issues/1649
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-% for Pandoc 2.8 to 2.10.1
-\newenvironment{cslreferences}%
-  {}%
-  {\par}
-% For Pandoc 2.11+
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
-  \fi
- }%
- {}
-\usepackage{calc}  % for \widthof, \maxof in minipage
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 
 \providecommand{\tightlist}{%
@@ -134,7 +109,7 @@
 \date{}
 \newcommand{\trTitle}{Status of copper rockfish (\emph{Sebastes caurinus}) along the U.S. California coast north of Point Conception in 2023}
 \newcommand{\trYear}{2024}
-\newcommand{\trMonth}{February}
+\newcommand{\trMonth}{March}
 \newcommand{\trAuthsLong}{truetruetrue}
 \newcommand{\trAuthsBack}{Monk, M.H., C.R. Wetzel, J. H. Coates}
 \newcommand{\trCitation}{
@@ -232,439 +207,6 @@ Please cite this publication as
 
 \pagebreak
 
-\section*{Executive summary}\label{executive-summary}
-\addcontentsline{toc}{section}{Executive summary}
-
-\subsection*{Stock}\label{stock}
-\addcontentsline{toc}{subsection}{Stock}
-
-This assessment reports the status of copper rockfish (\emph{Sebastes caurinus}) off the California coast in U.S. waters, using data through 2022. The stock of copper rockfish in California waters was assessed using two sub-area models that captured distinct inter-stock dynamics split north and south of Point Conception, $34^\circ 27^\prime$ N. lat. The estimated dynamics for each assessed sub-area area described here along with the combined stock status for the California stock. This assessment does not account for populations located in Mexican waters or other areas off the U.S. West Coast and assumes that these southern and northern populations do not contribute to nor take from the population being assessed here.
-
-\subsection*{Catches}\label{catches}
-\addcontentsline{toc}{subsection}{Catches}
-
-Catches of copper rockfish off the coast of California began slowly in the 1910s with catches steadily increasing in the 1940s north of Point Conception and with catches ramping up south of Point Conception in the 1960s (Figures \ref{fig:es-south-catch} and \ref{fig:es-north-catch}). The recreational fishery in California is the primary source of mortality for copper rockfish where private/rental (PR) vessels are the primary source of historical removals across the state. Catches by commercial passenger fishing vessels (CPFV) ramped up between the 1960s to the 1980s across the state. In recent years, the recreational removals in the north of Point Conception have been split between CPFV and PR vessels. In contrast, the CPFV fleet south of Point Conception is the primary source of mortality for copper rockfish. Since 2013, catches south of Point Conception peaked in 2018 and sharply declined in 2022 due to the sub-bag limit of one copper rockfish in response to the 2021 assessments of copper rockfish in California waters (Table \ref{tab:south-removalsES}). North of Point Conception total catch has fluctuated with the lowest catches in 2013 of just over 25 mt, a peak in 2017 at greater than 138 mt, and decreased removals in 2022 due to the sub-bag limit of one copper rockfish implemented in January 2022 (Table \ref{tab:north-removalsES}).
-
-\input{tex_tables/south_a_Catches_ES.tex}
-
-\input{tex_tables/north_a_Catches_ES.tex}
-
-\begin{figure}
-{\centering
-\includegraphics[alt=See Table 1.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/sca/15.0_south_post_star_base/plots/catch2 landings stacked.png}
-}
-\caption{Catches by fleet used in the base model for the area south of Point Conception where catches in metric tons by fleet are stacked.\label{fig:es-south-catch}}
-\end{figure}
-
-\begin{figure}
-{\centering
-\includegraphics[alt=See Table 1 in status of copper rockfish along the U.S. California coast north of Point Conception in 2023 document.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/models/nca/10.0_north_post_star_base/plots/catch2 landings stacked.png}
-}
-\caption{Catches by fleet used in the base model for the area north of Point Conception where catches in metric tons by fleet are stacked.\label{fig:es-north-catch}}
-\end{figure}
-
-\pagebreak
-
-\subsection*{Data and Assessment}\label{data-and-assessment}
-\addcontentsline{toc}{subsection}{Data and Assessment}
-
-Length-based data-moderate assessments were conducted in 2021 for copper rockfish off the U.S. West Coast. The population was assessed regionally with four separate population models for Washington, Oregon, and south and north of Point Conception in California. Only the stock off the coast of California is being assessed in 2023 with two sub-area models split at Point Conception ($34^\circ 27^\prime$ N. lat.). This assessment uses Stock Synthesis 3 (version 3.30.21.00). Each assessment model is a two-sex age-structured model operating on an annual time step covering the period 1916 to 2022, with a twelve-year projection, and assumes an unfished population prior to 1916. Population dynamics are modeled for ages 0 through 50, with age 50 being the accumulator age. The model is conditioned on catch from two sectors, commercial and recreational, divided among four fleets, and is informed by both fishery-dependent and fishery-independent indices of abundance. The sub-area models are fit to length composition data from fishery-independent and fishery-dependent sources, as well as age compositions conditioned on length. Discards from the commercial and recreational fleets were estimated externally and added to landings to represent total catch. The commercial fishery is sub-divided based on the landed condition of copper rockfish, live or dead. The recreational fishery is split into two fleets, a PR and the CPFV boat modes. The model also incorporates an updated length-based maturity schedule and externally estimated length-weight relationship and fecundity-at-length function. The assessment fixes values for natural mortality of females and males at the median of the prior (0.108 yr\textsuperscript{-1}) and estimates sex-specific growth parameters. Year-class strength is estimated as deviations from a Beverton-Holt stock-recruitment relationship beginning in 1965 in the south and in 1970 north of Point Conception. Steepness of the Beverton-Holt stock-recruitment relationship is fixed at the mean of the prior, 0.72.
-
-All the data sources included in each sub-area model for copper rockfish in California have been re-evaluated for these assessments, including improvements and updates in the data (and associated analyses) that were used in the previous assessments. New data types and sources were included in these assessment compared to the 2021 assessments which included a limited scope of data types and sources. One fishery-independent data source was added to these assessments, the California Collaborative Fisheries Research Program (CCFRP) Hook and Line survey. The CCFRP Hook and Line survey data (indices, lengths, and ages) have been included in other nearshore assessments in the past (e.g., vermilion rockfish). These assessments also include fishery-dependent indices of abundance from the CPFV and PR fleets, north and south of Point Conception, that were not included in the 2021 assessments. Finally, this is the first assessment to include age composition data to support estimates of growth and population dynamics within the base models.
-
-Within model uncertainty is explicitly included in this assessment by parameter estimation uncertainty, while among model uncertainty is explored through sensitivity analyses addressing alternative input assumptions such as data treatment and weighted, and model specification sensitivity to the treatment of life history parameters, selectivity, and recruitment. Base models were selected that best fit the observed data while concomitantly balancing the desire to capture the central tendency across those sources of uncertainty, ensure model realism and tractability, and promote robustness to potential model mis-specification.
-
-\subsection*{Stock Output and Dynamics}\label{stock-output-and-dynamics}
-\addcontentsline{toc}{subsection}{Stock Output and Dynamics}
-
-Spawning output of copper rockfish was estimated within each sub-area model and is reported here for each area (Tables \ref{tab:south-ssbES} and \ref{tab:north-ssbES}) and the combined estimates for the California stock (Table \ref{tab:es-ca-status}). Uncertainty is estimated within each model and is reported for the model area results south and north of Point Conception. The spawning output, in terms of billions of eggs, south of Point Conception was estimated at 32.06 in 2023 and an unfished spawning output of 201.06. The spawning output north of Point Conception was estimated at 208.74 in 2023 and unfished spawning output of 456.05. Across California the stock for copper rockfish has a combined spawning output of 240.8, unfished spawning output of 657.11, and a relative spawning output of 36.6 percent. The stock is estimated to be above the management target at the start of 2023 (Figures \ref{fig:es-sb-all} and \ref{fig:es-depl-all}).
-
-The spawning output declined for each sub-area from the early 1970s through the mid-1990s (Figures \ref{fig:es-sb} and \ref{fig:es-depl}). South of Point Conception, the population remained at very low levels until the early 2000s at which point the population began slowly increasing up until 2019, with the spawning output declining in the final years of the time series. In contrast, the portion of the stock north of Point Conception has been continually increasing since the sub-area low point in spawning output in the 1990s.
-
-\input{tex_tables/south_b_SSB_ES.tex}
-
-\input{tex_tables/north_b_SSB_ES.tex}
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}}
-\caption{\label{tab:es-ca-status}The estimated total biomass (mt), total biomass age 3+ (mt), age-0 recruits, and spawning ouput in number of billions of eggs across California and fraction unfished by year.}\\
-\toprule
-Year & Total Biomass (mt) & Total Biomass 3+ (mt) & Age-0 Recruits & Spawning Output & Fraction Unfished\\
-\midrule
-\endfirsthead
-\caption[]{The estimated total biomass (mt), total biomass age 3+ (mt), age-0 recruits, and spawning ouput in number of billions of eggs across California and fraction unfished by year. (\textit{continued)}}\\
-\toprule
-Year & Total Biomass (mt) & Total Biomass 3+ (mt) & Age-0 Recruits & Spawning Output & Fraction Unfished\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-2013 & 2289.25 & 2253.87 & 947.06 & 181.77 & 0.277\\
-2014 & 2428.11 & 2379.05 & 532.16 & 192.38 & 0.293\\
-2015 & 2575.68 & 2525.46 & 561.77 & 206.95 & 0.315\\
-2016 & 2668.29 & 2640.24 & 378.21 & 218.64 & 0.333\\
-2017 & 2720.50 & 2693.81 & 813.33 & 228.21 & 0.347\\
-2018 & 2687.50 & 2662.11 & 589.84 & 230.28 & 0.350\\
-2019 & 2649.99 & 2612.81 & 364.71 & 232.40 & 0.354\\
-2020 & 2620.84 & 2594.05 & 559.06 & 233.14 & 0.355\\
-2021 & 2591.82 & 2570.81 & 639.19 & 232.01 & 0.353\\
-2022 & 2601.31 & 2571.41 & 636.27 & 233.63 & 0.356\\
-2023 & 2672.65 & 2638.28 & 638.71 & 240.80 & 0.366\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\begin{figure}
-{\centering
-\includegraphics[alt=See Table 23.,width=1\textwidth,height=1\textheight]{C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/spawning_output_combined.png}
-}
-\caption{Estimated combined time series of spawning output for copper rockfish in California waters.\label{fig:es-sb-all}}
-\end{figure}
-
-\begin{figure}
-{\centering
-\includegraphics[alt=See Table 23.,width=1\textwidth,height=1\textheight]{C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/depletion_combined.png}
-}
-\caption{Estimated combined time series of fraction of relative spawning output for copper rockfish in California waters.\label{fig:es-depl-all}}
-\end{figure}
-
-\begin{figure}
-{\centering
-\includegraphics[alt=See Table 22 in this document and Table 15 in the north of Point Conception assessment document.,width=1\textwidth,height=1\textheight]{C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/compare2_spawnbio_uncertainty.png}
-}
-\caption{Estimated time series of spawning output (circles and line: median; light broken lines: 95 percent intervals) for the model areas south and north of Point Conception.\label{fig:es-sb}}
-\end{figure}
-
-\begin{figure}
-{\centering
-\includegraphics[alt=See Table 22 in this document and Table 15 in the north of Point Conception assessment document.,width=1\textwidth,height=1\textheight]{C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/compare4_Bratio_uncertainty.png}
-}
-\caption{Estimated time series of fraction of relative spawning output (circles and line: median; light broken lines: 95 percent intervals) for the model areas south and north of Point Conception.\label{fig:es-depl}}
-\end{figure}
-
-\pagebreak
-
-\subsection*{Recruitment}\label{recruitment}
-\addcontentsline{toc}{subsection}{Recruitment}
-
-Recruitment deviations were estimated from 1965-2020 south of Point Conception and from 1970-2019 north of Point Conception. The estimated magnitude of recruitment deviations and years of strong or weak recruitment varied for each sub-area. The base model south of Point Conception estimated strong recruitment in 2009, 2010, and 2013 with multiple poor recruitment years at the end of the time series (Table \ref{tab:south-recrES} and Figures \ref{fig:es-recruits} and \ref{fig:es-rec-devs}). The sub-area model north of Point Conception estimated the largest recent recruitment deviations in 2007, 2009, and 2017 with series of poor recruitment occurring in the late 1990s and early 2000s (Table \ref{tab:north-recrES} and Figures \ref{fig:es-recruits} and \ref{fig:es-rec-devs}). The magnitude of overall estimated relative recruitment variation, highs and lows, was greater in the sub-area south of Point Conception compared to the sub-area north of Point Conception.
-
-\input{tex_tables/south_c_Recr_ES.tex}
-
-\newpage
-
-\input{tex_tables/north_c_Recr_ES.tex}
-
-\begin{figure}
-{\centering
-\includegraphics[alt=See Table 22 in this document and Table 15 in the north of Point Conception assessment document.,width=1\textwidth,height=1\textheight]{C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/compare10_recruits_uncertainty.png}
-}
-\caption{Estimated time series of age-0 recruits (1000s) for the model areas south and north of Point Conception with 95 percent intervals.\label{fig:es-recruits}}
-\end{figure}
-
-\begin{figure}
-{\centering
-\includegraphics[alt=See Table vi and vii.,width=1\textwidth,height=1\textheight]{C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/compare12_recdevs_uncertainty.png}
-}
-\caption{Estimated time series of recruitment deviations for the model areas south and north of Point Conception.\label{fig:es-rec-devs}}
-\end{figure}
-
-\clearpage
-
-\subsection*{Exploitation status}\label{exploitation-status}
-\addcontentsline{toc}{subsection}{Exploitation status}
-
-Trends in fishing intensity (1 - SPR) for both sub-areas dramatically increased in the 1970s, exceeded the management target \(\text{SPR}_{50\%}\), and remained high until at least the late 1990s (Figure \ref{fig:es-1-spr}). The fishing intensity south of Point Conception declined in the early 2000s but remained above the target for the rest of the time series except for 2006 (Table \ref{tab:south-exploitES}). The fishing intensity sharply decreased around 2000 north of Point Conception with fishing intensity remaining below the management target since, excluding a recent spike in 2017 (Table \ref{tab:north-exploitES}).
-
-As a percentage of biomass (ages 3+), harvest rates south of Point Conception between 2013-2021 ranged between 0.13-0.19, with harvest rates declining in 2022 to 0.06 based on inseason management actions by California Department of Fish and Wildlife (CDFW) that reduced the sub-bag limit for copper rockfish to one fish across the state (Table \ref{tab:south-exploitES}). The harvest rates in the sub-area north of Point Conception since 2013 have ranged between 0.01-0.07 (Table \ref{tab:north-exploitES}).
-
-\input{tex_tables/south_d_SPR_ES.tex}
-
-\newpage
-
-\input{tex_tables/north_d_SPR_ES.tex}
-
-\begin{figure}
-{\centering
-\includegraphics[alt=See Table 22 in this document and Table 15 in the north of Point Conception assessment document.,width=1\textwidth,height=1\textheight]{C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/compare6_SPRratio_uncertainty.png}
-}
-\caption{Estimated 1 - relative spawning ratio (SPR) by year for the model areas south and north of Point Conception. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate.\label{fig:es-1-spr}}
-\end{figure}
-
-\pagebreak
-
-\subsection*{Ecosystem considerations}\label{ecosystem-considerations}
-\addcontentsline{toc}{subsection}{Ecosystem considerations}
-
-This stock assessment does not explicitly incorporate trophic interactions, habitat factors (other than as they inform relative abundance indices) or environmental factors into the assessment model, but a brief description of likely or potential ecosystem considerations is provided below.
-
-As with most other rockfish and groundfish in the California Current, recruitment or cohort (year-class) strength appears to be highly variable for copper rockfish, with only a modest apparent relationship to estimated levels of spawning output. Oceanographic and ecosystem factors are widely recognized to be key drivers of recruitment variability for most species of groundfish, as well as most elements of California Current food webs. Empirical estimates of recruitment from pelagic juvenile rockfish surveys have been used to inform incoming year class strength for some of these stocks, however copper rockfish are infrequently encountered in these surveys. Between 1998 and 2013 the California Cooperative Oceanic Fisheries Investigation (CalCOFI) survey had 34 positive observations of copper rockfish out of over 500 bongo net tows.
-
-\subsection*{Reference points}\label{reference-points}
-\addcontentsline{toc}{subsection}{Reference points}
-
-Reference points were calculated using the estimated selectivities and catch distribution among fleets in the final year of each sub-area model, 2022. Reference points are presented in Tables \ref{tab:south-referenceES} and \ref{tab:north-referenceES} for each sub-model area and are informational only. Copper rockfish off the California coast are managed as a single stock by the Pacific Fishery Management Council. Combined reference point quantities for the California stock are shown in Table \ref{tab:ref-point-all-es}.
-
-Sustainable total yield (landings plus discards) across California is estimated to 164.24 mt when using an \(\text{SPR}_{50\%}\) reference harvest rate. The spawning output equivalent to 40 percent of the unfished level (\(\text{SO}_{40\%}\)) was 262.8 billions of eggs.
-
-The 2022 combined California spawning output relative to unfished equilibrium spawning biomass is at 36.6 percent of unfished, below the management target of 40 percent (Table \ref{tab:es-ca-status}). The fishing intensity, \(1-\text{SPR}\), for each model area varied where the portion of the stock north of Point Conception has been below that target in recent years (Figures \ref{fig:es-1-spr} and \ref{fig:es-phase}). In contrast, the fishing intensity south of Point Conception has been estimated to be above the target in recent years.
-
-Tables \ref{tab:south-referenceES} and \ref{tab:north-referenceES} show the full suite of estimated reference points for each sub-area model and Figures \ref{fig:south-es-yield} and \ref{fig:north-es-yield} show the equilibrium yield curves and net production based on a steepness value fixed at 0.72.
-
-\newpage
-
-\input{tex_tables/south_e_ReferencePoints_ES.tex}
-
-\newpage
-
-\input{tex_tables/north_e_ReferencePoints_ES.tex}
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{>{\raggedright\arraybackslash}p{6cm}l}
-\caption{\label{tab:ref-point-all-es}Summary of reference points and management quantities for copper rockfish in California waters}\\
-\toprule
-Quantity & Estimate\\
-\midrule
-\endfirsthead
-\caption[]{Summary of reference points and management quantities for copper rockfish in California waters (\textit{continued)}}\\
-\toprule
-Quantity & Estimate\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-Unfished Spawning Output & 657.11\\
-Unfished Age 3+ Biomass (mt) & 6430.7\\
-Unfished Recruitment & 775.36\\
-Spawning Output (2023) & 240.8\\
-Relative Spawning Ouput (2023) & 0.366\\
-Proxy Spawning Output (SO40\%) & 262.84\\
-Yield with SPR Based on SO40\% (mt) & 171.92\\
-Proxy Spawning Output (SPR50) & 293.17\\
-Yield with SPR50 (mt) & 164.24\\
-Spawning Output at MSY & 181.31\\
-MSY (mt) & 182.14\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\begin{figure}
-{\centering
-\includegraphics[alt=See Table 22 in this document and Table 15 in the north of Point Conception assessment document.,width=1\textwidth,height=1\textheight]{C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/compare15_phase_plot.png}
-}
-\caption{Phase plot of estimated 1-SPR versus fraction unfished for the model areas south and north of Point Conception.\label{fig:es-phase}}
-\end{figure}
-
-\begin{figure}
-{\centering
-\includegraphics[alt=Equilibrium curve peaks around 0.30 fraction of unfished with the estimated current fraction of unfished at 0.16.,width=1\textwidth,height=1\textheight]{C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/south_yield2_yield_curve_with_refpoints.png}
-}
-\caption{Equilibrium yield curve for the base case model south of Point Conception. Values are based on the 2022
-fishery selectivities and with steepness fixed at 0.72.\label{fig:south-es-yield}}
-\end{figure}
-
-\begin{figure}
-{\centering
-\includegraphics[alt=Equilibrium curve peaks around 0.30 fraction of unfished with the estimated current fraction of unfished at 0.46.,width=1\textwidth,height=1\textheight]{C:/Users/melissa.monk/Documents/GitHub/copper_rockfish_2023/documents/shared_figures/north_yield2_yield_curve_with_refpoints.png}
-}
-\caption{Equilibrium yield curve for the base case model north of Point Conception. Values are based on the 2022
-fishery selectivities and with steepness fixed at 0.72.\label{fig:north-es-yield}}
-\end{figure}
-
-\pagebreak
-
-\subsection*{Management performance}\label{management-performance}
-\addcontentsline{toc}{subsection}{Management performance}
-
-Copper rockfish are currently managed within two Nearshore Rockfish Complexes, split north and south of 40\(^\circ\) 10' N. lat. The complexes are managed based on overfishing limits (OFL) and annual catch limits (ACL) that are determined by summing the species-specific OFLs and ACLs (ACLs set equal to the Acceptable Biological Catches {[}ABCs{]}) contributions for all stocks managed in the complexes. Limits are shared among all commercial and recreational fleets with the various management procedures intended to maintain removals below the total OFL and ACL for the Nearshore Rockfish north and south complexes as a whole, rather than on a species by species basis.
-
-The species-specific OFL and ACL contribution for copper rockfish that is allocated to California waters, Nearshore Rockfish South and 25 percent of the Nearshore Rockfish North, is shown in Table \ref{tab:es-ca-management} as well as the total catch across California. Over the last ten years the catches of copper rockfish have been below the species-specific ACLs in California. In 2021 all U.S. West Coast stocks of copper rockfish were assessed that informed the 2023-24 harvest specifications species-specific OFLs and ACLs. In California waters the new OFLs and ACLs for the 2023-24 management cycle were significantly lower than early years, resulting in in-season management action by CDFW for 2022 to reduce removals based on the latest stock assessment.
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:es-ca-management}The species-specific Overfishing Limit (OFL) and Annual Catch Limit (ACL) allocated to California and the total catch (mt) in California waters by year.}\\
-\toprule
-Year & OFL (mt) & ACL (mt) & Catch (mt)\\
-\midrule
-\endfirsthead
-\caption[]{The species-specific Overfishing Limit (OFL) and Annual Catch Limit (ACL) allocated to California and the total catch (mt) in California waters by year. (\textit{continued)}}\\
-\toprule
-Year & OFL (mt) & ACL (mt) & Catch (mt)\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-2012 & 163.2 & 136.2 & 86.0\\
-2013 & 148.0 & 123.4 & 105.2\\
-2014 & 148.0 & 123.4 & 98.7\\
-2015 & 303.8 & 277.3 & 147.6\\
-2016 & 286.9 & 262.0 & 165.3\\
-2017 & 313.7 & 286.4 & 225.5\\
-2018 & 319.6 & 291.8 & 203.7\\
-2019 & 325.1 & 296.8 & 182.6\\
-2020 & 330.4 & 301.6 & 173.4\\
-2021 & 249.8 & 206.4 & 127.8\\
-2022 & 249.5 & 204.0 & 66.7\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\subsection*{Unresolved problems and major uncertainties}\label{unresolved-problems-and-major-uncertainties}
-\addcontentsline{toc}{subsection}{Unresolved problems and major uncertainties}
-
-This assessment models the sub-areas north and south of Point Conception as separate non-mixing sub-populations, but there is likely larval or juvenile dispersal, and potentially some adult movement among these areas. Dispersal and movement rates are not well known. Improved understanding around the dispersal rates of copper rockfish across California, particularly around Point Conception, are needed to support spatial modeling of the stock.
-
-The primary fishery-independent survey for West Coast groundfish, the Northwest Fisheries Science Center (NWFSC) West Coast Groundfish Bottom Trawl (WCGBT) survey, does not sample rocky habitats where most copper rockfish are found, and thus does not provide a robust index of abundance. An alternative survey, the CCFRP Hook and Line survey, provides a reasonable signal for copper rockfish, including relative abundance and demographic structure inside and outside a number of Marine Protect Areas (MPAs).
-
-Age data are limited and consequently growth estimates are uncertain and the available age data contained little to no information to support the estimation of natural mortality. There is some tension among limited data sources and types inferred by the likelihood profiles, with age data suggesting a higher natural mortality rate and length data suggesting a lower value, particularly for the area north of Point Conception. Conflicting signals in the information between length and age data is commonly encountered for many West Coast groundfish stock assessments. The mechanisms driving these differences are uncertain.
-
-Each of the sub-area models estimates high recruitment events over the most recent decade, especially relative to previous time periods. The base model for the sub-area north of Point Conception estimated overall lower variation in recruitment relative to the model south of Point Conception. Oceanographic conditions likely drive periods of either poor or above average recruitment, particularly for rockfish species. However, it is unclear what conditions may be contributing to the differing levels of recruitment variation across the California coast.
-
-\subsection*{Decision table and projections}\label{decision-table-and-projections}
-\addcontentsline{toc}{subsection}{Decision table and projections}
-
-Both sub-area models for the California stock of copper rockfish was assigned a category 1 determination by the Scientific and Statistical Committee to the PFMC. A ten-year projection using the combined estimates from each sub-area base model, south and north of Point Conception in California, with catches equal to the estimated Annual Catch Limit (ACL) based on the category 1 time-varying \(\sigma\) with \(P^*\) = 0.45 for years 2025-2034 is shown in Table \ref{tab:es-ca-proj} (i.e., termed the ``buffer''). The removals in 2023 and 2024 were set equal to the portion of copper rockfish species-specific adopted ACLs for California determined by summing the adopted ACLs south of $40^\circ 10^\prime$ N. lat. and the portion of the north of $40^\circ 10^\prime$ N. lat. allocated to California (25 percent - PFMC Groundfish Management Team pers. comm.). The portion of ACL to allocate to each sub-area for 2023-24 was determined based on the proportion of the total removals by area in 2022 (71 percent north and 29 percent south) as recommended by the GMT (Mel Mandrup, CDFW, personal communication). The projections were conducted in an iterative fashion based on the combined estimates of spawning output, relative spawning output, OFL, ABC, and ACL for each year. The estimated proportion of the ACL removed from each sub-area model was based on the proportion of the contribution to the total annual OFL estimate. The allocation of the OFL, ABC, and ACL north and south of $40^\circ 10^\prime$ N. lat. based on the estimates of rocky habitat and the density of copper rockfish in the area are given in Table \ref{tab:es-ca-proj-split}.
-
-At the end of the projection period, 2034, the projected ACL removals result in the California stock increasing to be above the biomass target at 40.9 percent of the relative spawning output, with the portion of the stock south at 24.5 percent of the sub-area estimated relative spawning output and north of Point Conception at 48.2 percent.
-
-The axes of uncertainty in the decision table are based on the uncertainty around steepness. The estimated uncertainty around the 2023 OFL was used to identify the low and high states of nature that would align with the 12.5 and 87.5 percentiles from the base model where the base model is assigned a 50 percent probability of being the true state of nature and both the low and high states of nature being assigned a 25 percent probability. A search across steepness (\(h\)) values for each sub-area model was conducted to identify the corresponding steepness values that would create the low and high states of nature relative to the base model. The sub-area north of Point Conception applied values of \(h\) of: 0.655, 0.72, and 0.859. The sub-area south of Point Conception applied values of \(h\) of: 0.54, 0.72, and 0.929. The proposed decision table assumes full ACL removal during the projection period under P* alternative catch stream (Table \ref{tab:dec-tab-es}).
-
-\begingroup\fontsize{9}{11}\selectfont
-
-\begin{landscape}\begingroup\fontsize{9}{11}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.3cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.4cm}>{\centering\arraybackslash}p{1.4cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.3cm}}
-\caption{\label{tab:es-ca-proj}The estimated OFL (mt), ABC (mt), ACL (mt), buffer, spawning output in billions of eggs across California, and relative spawning outut by year along with the sub-area allocations of the ACL south of Point Conception (south, $34^\circ 27^\prime$ N. lat.), north of Point Conception to $40^\circ 10^\prime$ N. lat. (central), and $40^\circ 10^\prime$ to $42^\circ$ N. lat. (north).}\\
-\toprule
-Year & Assumed Catch (mt) & OFL (mt) & ABC (mt) & ACL (mt) & Buffer & Spawning Output & Fraction Unfished & Sub-ACL South (mt) & Sub-ACL Central (mt) & Sub-ACL North (mt)\\
-\midrule
-\endfirsthead
-\caption[]{The estimated OFL (mt), ABC (mt), ACL (mt), buffer, spawning output in billions of eggs across California, and relative spawning outut by year along with the sub-area allocations of the ACL south of Point Conception (south, $34^\circ 27^\prime$ N. lat.), north of Point Conception to $40^\circ 10^\prime$ N. lat. (central), and $40^\circ 10^\prime$ to $42^\circ$ N. lat. (north). (\textit{continued)}}\\
-\toprule
-Year & Assumed Catch (mt) & OFL (mt) & ABC (mt) & ACL (mt) & Buffer & Spawning Output & Fraction Unfished & Sub-ACL South (mt) & Sub-ACL Central (mt) & Sub-ACL North (mt)\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-2023 & 91.5 & - & - & - & - & 240.80 & 0.366 & - & - & -\\
-2024 & 94.7 & - & - & - & - & 245.88 & 0.374 & - & - & -\\
-2025 & - & 143.5 & 134.1 & 131.9 & 0.935 & 250.60 & 0.381 & 15.8 & 109.2 & 6.8\\
-2026 & - & 145.3 & 135.2 & 133.1 & 0.93 & 251.62 & 0.383 & 18 & 108.4 & 6.7\\
-2027 & - & 147.2 & 136.3 & 134.5 & 0.926 & 252.91 & 0.385 & 20.1 & 107.7 & 6.7\\
-2028 & - & 148.9 & 137.3 & 135.8 & 0.922 & 254.64 & 0.388 & 22 & 107.1 & 6.7\\
-2029 & - & 150.4 & 137.9 & 136.7 & 0.917 & 256.75 & 0.391 & 23.5 & 106.6 & 6.6\\
-2030 & - & 151.6 & 138.5 & 137.7 & 0.913 & 259.10 & 0.394 & 24.8 & 106.3 & 6.6\\
-2031 & - & 152.8 & 138.9 & 138.6 & 0.909 & 261.54 & 0.398 & 26 & 106 & 6.6\\
-2032 & - & 153.9 & 139.1 & 139.1 & 0.904 & 264.02 & 0.402 & 27 & 105.6 & 6.6\\
-2033 & - & 155 & 139.5 & 139.5 & 0.9 & 266.52 & 0.406 & 27.9 & 105.1 & 6.5\\
-2034 & - & 156.2 & 139.9 & 139.9 & 0.896 & 269.04 & 0.409 & 28.8 & 104.6 & 6.5\\*
-\end{longtable}
-\endgroup{}
-\end{landscape}
-\endgroup{}
-
-\pagebreak
-
-'
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.3 cm}>{\centering\arraybackslash}p{1.3 cm}>{\centering\arraybackslash}p{1.3 cm}>{\centering\arraybackslash}p{1.3 cm}>{\centering\arraybackslash}p{1.3 cm}>{\centering\arraybackslash}p{1.3 cm}>{\centering\arraybackslash}p{1.3 cm}}
-\caption{\label{tab:es-ca-proj-split}The estimated California OFL (mt), ABC (mt), and ACL (mt) split south and north $40^\circ 10^\prime$ N. lat. The estimated percent allocated to the north $40^\circ 10^\prime$ N. lat. in California is 5.86 percent based on estimates of rocky habitat and density of copper rockfish in the area.}\\
-\toprule
-Year & Assumed Catch (mt) & South OFL (mt) & South ABC (mt) & South ACL (mt) & North OFL (mt) & North ABC (mt) & North ACL (mt)\\
-\midrule
-\endfirsthead
-\caption[]{The estimated California OFL (mt), ABC (mt), and ACL (mt) split south and north $40^\circ 10^\prime$ N. lat. The estimated percent allocated to the north $40^\circ 10^\prime$ N. lat. in California is 5.86 percent based on estimates of rocky habitat and density of copper rockfish in the area. (\textit{continued)}}\\
-\toprule
-Year & Assumed Catch (mt) & South OFL (mt) & South ABC (mt) & South ACL (mt) & North OFL (mt) & North ABC (mt) & North ACL (mt)\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-2023 & 91.5 & - & - & - & - & - & -\\
-2024 & 94.7 & - & - & - & - & - & -\\
-2025 & - & 136.06 & 127.22 & 125.08 & 7.4 & 6.92 & 6.8\\
-2026 & - & 137.97 & 128.31 & 126.33 & 7.37 & 6.85 & 6.75\\
-2027 & - & 139.91 & 129.55 & 127.79 & 7.34 & 6.8 & 6.7\\
-2028 & - & 141.63 & 130.58 & 129.11 & 7.32 & 6.74 & 6.67\\
-2029 & - & 143.09 & 131.21 & 130.1 & 7.3 & 6.69 & 6.64\\
-2030 & - & 144.36 & 131.8 & 131.1 & 7.28 & 6.65 & 6.61\\
-2031 & - & 145.53 & 132.28 & 131.99 & 7.28 & 6.61 & 6.6\\
-2032 & - & 146.65 & 132.57 & 132.57 & 7.27 & 6.57 & 6.57\\
-2033 & - & 147.77 & 132.99 & 132.99 & 7.27 & 6.54 & 6.54\\
-2034 & - & 148.92 & 133.43 & 133.43 & 7.27 & 6.51 & 6.51\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\pagebreak
-
-\input{tex_tables/decision_table_es.tex}
-
-\pagebreak
-
-\subsection*{Scientific uncertainty}\label{scientific-uncertainty}
-\addcontentsline{toc}{subsection}{Scientific uncertainty}
-
-The model estimated uncertainty around the 2023 spawning output for the sub-area model south of Point Conception is \(\sigma\) = 0.3 and the uncertainty for the sub-area model north of Point Conception is \(\sigma\) = 0.31. The uncertainty around the OFL south and north of Point Conception was \(\sigma\) = 0.28 and 0.3, respectively. Each of these are likely underestimates of overall uncertainty due to the necessity to fix several key population dynamics parameters (e.g., steepness, recruitment variance, natural mortality) and also because there is no explicit incorporation of model structural uncertainty (although see the decision table for alternative states of nature).
-
-\subsection*{Research and data needs}\label{research-and-data-needs}
-\addcontentsline{toc}{subsection}{Research and data needs}
-
-There were some major sources of uncertainty within the assessments for copper rockfish. To improve our understanding of the copper rockfish stock in California waters the following research and data collection should be prioritized:
-
-\begin{enumerate}
-
-    \item  The NWFSC Hook and Line survey is the only long-term fishery-independent survey in rocky (untrawlable) habitat in the Southern California Bight. Efforts should continue to explore how best to model hook and line catch data to develop indices of abundance. We also recommend evaluating how to structure the NWFSC Hook and Line survey index, given its expansion into the CCAs and increase in sites within designated MPAs, and independent analysis of information content in NWFSC Hook and Line survey across observed species. Finally, increased spatiotemporal sampling around Point Conception would aid in identifying stock boundaries.
-
-    \item The assessment area south of Point Conception appears to have a mixture of observations from areas experiencing variable fishing mortality. In the region there are likely a mixture of areas: open access rocky reefs that are close to port that are heavily fished, open access rocky reefs that are inaccessible via day-trips that are fished but likely at lower levels, and rocky reefs that fall within marine protected areas (MPAs). A spatially-explicit assessment model may be able to capture this complexity but will require data (indices of abundance and composition data) from each of the regions. 
-    
-    \item Future nearshore assessments would greatly benefit from additional CDFW ROV surveys which could increase the power of these data to inform assessments.
-
-    \item There are very limited age data for copper rockfish across California arising from fishery-dependent sources. Establishing regular collections of otoliths from the recreational fishery, a large source of mortality, would support future assessments and would improve the understanding of the population structure and life history of copper rockfish. 
-
-    \item There is limited information for copper rockfish on maturity and fecundity and the variability of these parameters with increasing latitude.  The NWFSC WCGBT and Hook and Line surveys provided the only available information on the maturity ogive and the timing of these surveys does not overlap with the expected peak spawning season. The Southwest Fisheries Science Center has egg samples from a total of ten copper rockfish, which is too few to draw conclusions regarding fecundity.
-
-    \item Some of the PR mode recreational data that should be available via RecFIN were found to contain information in that database inconsistent with datasheets available from CDFW. There is also a question if length data collected by the Deb Wilson-Vandenberg onboard observer survey is duplicated within RecFIN and attributed to MRFSS dockside samples of the CPFV fleet.
-
-    \item The interpreted substrate data for the areas north of Point Conception within state waters is incomplete. Additional data needs include high resolution interpreted substrate maps for areas outside of state waters. The available interpreted bathymetry data from south of Point Conception is incomplete within state waters  around the northern and southern Channel Islands. This poses a challenge for estimating available rocky substrate both by district and also inside and outside closed areas. 
-
-    \item The genetic stock structure of copper rockfish warrants further investigation to ensure appropriate management of copper rockfish along the West Coast. 
-
-    \item The Marine Recreational Fisheries Statistics Survey (MRFSS) index was excluded from both California assessment models. The standardized trends in abundance were marked by extreme peaks in the data throughout the time series. The STAT was unable to identify what may driving extreme changes fishing behavior in these select years. These data should be reviewed to better understand whether these data reflect true changes in fishing behavior in those years or errors in data collection. 
-
-    \item Additional research on the effect of the MPA network on copper rockfish and other nearshore rockfish species needs to be conducted. The trend inside the MPAs in northern California exhibited an increasing trend compared to outside the MPAs, similar to what was observed during the 2021 assessment of vermilion/sunset rockfish. However, the trends inside MPAs south of Point Conception varied by location with a number of sites showing flat or declining trends.  
-
-    \item Further investigations of other available fishery-independent data such as the Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO) kelp forest index would benefit future assessments of nearshore species, including copper rockfish. 
-
-    \item Larval and smaller young-of-the-year copper rockfish can only be identified with certainty genetically. Existing sources of data (CalCOFI and Standard Monitoring Units for the Recruitment of Fishes [SMURFs]) where genetic samples can be analyzed would provide key information to inform spawning output estimates for copper rockfish.
- 
-    \item Continue to improve historical catch reconstructions, including attempting to quantify uncertainty with these and other historical data.
-  
-    \item Existing catch estimates within Recreational Fisheries Information Network (RecFIN) that are currently assigned only to "rockfish, general" should be investigated to determine if these removals can be assigned to specific species.
-
-\end{enumerate}
-
 \pagebreak
 \setlength{\parskip}{5mm plus1mm minus1mm}
 \pagenumbering{arabic}
@@ -696,7 +238,7 @@ Copper rockfish are opportunistic carnivores and commonly consume crustaceans, m
 
 There is currently little evidence of significant stock structure from genetic studies of copper rockfish across the west coast. @buonaccorsi\_population\_2002 looked at genetic variation across six micosatellite DNA loci from samples ranging from British Columbia to southern California. Significant population subdivision was detected between the Puget Sound and coastal samples which supports the model of isolation-by-distance for copper rockfish. @sivasundar\_life\_2010 conducted a genetic study to determine the potential for biogeographic boundaries to prohibit gene flow for 15 \emph{Sebastes} species. The study included 45 observations of copper rockfish with samples from Oregon (N = 18), Monterey Bay (N = 18), and Santa Barbara (N = 9). @sivasundar\_life\_2010 used mtDNA and could differentiate samples from Santa Barbara from those collected in Oregon and Monterey Bay, but the Monterey Bay and Oregon samples could not be distinguished. Micosatellite data did not reveal any genetic differentiation among the samples from the three locations for copper rockfish and suggests low genetic differentiation coastwide. An earlier genetic analysis of copper rockfish was conducted by @johansson\_influence\_2008. The study included 749 samples from along the west coast ranging from Neah Bay, Washington to San Diego, California with the majority of sampling locations clustered north of Cape Mendocino in northern California. The study included 185 samples collected within California. Eleven microsatellite DNA loci were analyzed. The study found significant evidence to support isolation by distance at the coast wide scale. Weak, but significant, genetic structure was identified from samples collected along the Oregon coast suggesting that habitat barriers may limit larval dispersal.
 
-\subsection{Ecosystem Considerations}\label{ecosystem-considerations-1}
+\subsection{Ecosystem Considerations}\label{ecosystem-considerations}
 
 This stock assessment does not explicitly incorporate trophic interactions, habitat factors (other than as they inform relative abundance indices) or environmental factors into the assessment model, but a brief description of likely or potential ecosystem considerations is provided below.
 
@@ -1304,7 +846,7 @@ The profile over female natural mortality suggested the negative log-likelihood 
 
 \section{Management}\label{management}
 
-\subsection{Reference Points}\label{reference-points-1}
+\subsection{Reference Points}\label{reference-points}
 
 Reference points were calculated using the estimated selectivities and catch distribution among fleets in the final year of each sub-area model, 2022. Reference points are presented in Tables \ref{tab:south-reference} and \ref{tab:north-reference} for each sub-model area and are informational only. Copper rockfish off the California coast are managed as a single stock by the Pacific Fishery Management Council. Combined reference point quantities for the California stock are shown in Table \ref{tab:ref-point-all}.
 
@@ -1314,7 +856,7 @@ The 2022 combined California spawning biomass relative to unfished equilibrium s
 
 Tables \ref{tab:south-reference} and \ref{tab:north-reference} shows the full suite of estimated reference points for each sub-area model and Figures \ref{fig:yield-north} and \ref{fig:yield-south} show the equilibrium yield curves and net production based on a steepness value fixed at 0.72.
 
-\subsection{Unresolved Problems and Major Uncertainties}\label{unresolved-problems-and-major-uncertainties-1}
+\subsection{Unresolved Problems and Major Uncertainties}\label{unresolved-problems-and-major-uncertainties}
 
 This assessment models the sub-areas north and south of Point Conception as separate non-mixing sub-populations, but there is likely larval or juvenile dispersal, and potentially some adult movement among these areas. Dispersal and movement rates are not well known. Improved understanding around the dispersal rates of copper rockfish across California, particularly around Point Conception, are needed to support spatial modeling of the stock.
 
@@ -1336,7 +878,7 @@ The axes of uncertainty in the decision table are based on the uncertainty aroun
 
 The model estimated uncertainty around the 2023 spawning output for the sub-area model south of Point Conception is \(\sigma\) = 0.3 and the uncertainty for the sub-area model north of Point Conception is \(\sigma\) = 0.31. The uncertainty around the OFL south and north of Point Conception was \(\sigma\) = 0.28 and 0.3, respectively. Each of these are likely underestimates of overall uncertainty due to the necessity to fix several key population dynamics parameters (e.g., steepness, recruitment variance, natural mortality) and also because there is no explicit incorporation of model structural uncertainty (although see the decision table for alternative states of nature).
 
-\subsection{Research and Data Needs}\label{research-and-data-needs-1}
+\subsection{Research and Data Needs}\label{research-and-data-needs}
 
 There were some major sources of uncertainty within the assessments for copper rockfish. To improve our understanding of the copper rockfish stock in California waters the following research and data collection should be prioritized:
 
@@ -1382,34 +924,18 @@ The assessment was greatly improved through the streamlining of data processing 
 
 \clearpage
 
-\section{References}\label{references}
-
-\phantomsection\label{refs}
-\begin{CSLReferences}{0}{1}
-\end{CSLReferences}
-
-\clearpage
-
 \section{Tables}\label{tables}
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}}
-\caption{\label{tab:allcatches}Removals (mt) by fleet and the summed total landings (mt).}\\
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:allcatches}Removals (mt) by fleet and the summed total landings (mt).}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}}
 \toprule
 Year & Commercial Dead & Commercial Live & CPFV & PR & Total Landings\\
 \midrule
-\endfirsthead
-\caption[]{Removals (mt) by fleet and the summed total landings (mt). (\textit{continued)}}\\
-\toprule
-Year & Commercial Dead & Commercial Live & CPFV & PR & Total Landings\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 1916 & 4.0 & 0.0 & 0.0 & 0.0 & 4.0\\
 1917 & 6.2 & 0.0 & 0.0 & 0.0 & 6.2\\
 1918 & 7.5 & 0.0 & 0.0 & 0.0 & 7.5\\
@@ -1516,10 +1042,10 @@ Year & Commercial Dead & Commercial Live & CPFV & PR & Total Landings\\
 2019 & 2.5 & 6.9 & 39.2 & 53.4 & 101.9\\
 2020 & 3.9 & 7.5 & 36.5 & 55.2 & 103.2\\
 2021 & 3.1 & 7.5 & 25.0 & 41.4 & 77.1\\
-2022 & 1.2 & 1.9 & 11.5 & 32.5 & 47.1\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
+2022 & 1.2 & 1.9 & 11.5 & 32.5 & 47.1\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \newpage
 
@@ -1551,8 +1077,8 @@ Year & OFL (mt) & ACL (mt) & Catch (mt)\\
 2019 & 325.1 & 296.8 & 182.6\\
 2020 & 330.4 & 301.6 & 173.4\\
 2021 & 249.8 & 206.4 & 127.8\\
-2022 & 249.5 & 204.0 & 66.7\\*
-\end{longtable}
+2022 & 249.5 & 204.0 & 66.7\\
+\end{table}
 \endgroup{}
 \endgroup{}
 
@@ -1571,7 +1097,7 @@ Year & OFL (mt) & ACL (mt) & Catch (mt)\\
 \begingroup\fontsize{8}{10}\selectfont
 \begingroup\fontsize{8}{10}\selectfont
 
-\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}}
+\begin{table}[t]{l>{\raggedright\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}}
 \caption{\label{tab:rec-len-samps}Summary of the recreational length samples and estimated trips for the CPFV and PR fleets.}\\
 \toprule
 Year & Source & CPFV Trips & CPFV Samples & PR Trips & PR Samples\\
@@ -1647,8 +1173,8 @@ Year & Source & CPFV Trips & CPFV Samples & PR Trips & PR Samples\\
 2018 & CRFS & 128 & 808 & 477 & 2226\\
 2019 & CRFS & 143 & 723 & 483 & 2099\\
 2021 & CRFS & 81 & 249 & 268 & 1014\\
-2022 & CRFS & 106 & 279 & 430 & 1278\\*
-\end{longtable}
+2022 & CRFS & 106 & 279 & 430 & 1278\\
+\end{table}
 \endgroup{}
 \endgroup{}
 
@@ -1660,24 +1186,16 @@ Year & Source & CPFV Trips & CPFV Samples & PR Trips & PR Samples\\
 
 \newpage
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{4cm}l}
-\caption{\label{tab:growth-age-samps}Available age data by year and source used in the growth fleets.}\\
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:growth-age-samps}Available age data by year and source used in the growth fleets.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{4cm}l}
 \toprule
 Year & Source & Number of Ages\\
 \midrule
-\endfirsthead
-\caption[]{Available age data by year and source used in the growth fleets. (\textit{continued)}}\\
-\toprule
-Year & Source & Number of Ages\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 2001 & Pearson Research & 3\\
 2002 & Pearson Research & 68\\
 2003 & Pearson Research & 260\\
@@ -1704,31 +1222,23 @@ Year & Source & Number of Ages\\
 2019 & NWFSC WCGBT & 10\\
 2021 & CDFW & 15\\
 2021 & NWFSC WCGBT & 14\\
-2022 & NWFSC WCGBT & 13\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
+2022 & NWFSC WCGBT & 13\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \newpage
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.6cm}}
-\caption{\label{tab:pisco-data}All and filtered observations by year and sampling institution for PISCO.}\\
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:pisco-data}All and filtered observations by year and sampling institution for PISCO.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.6cm}}
 \toprule
 Year & UCSC Raw Count & UCSC Filtered Count & UCSB Raw Count & UCSB Filtered Count\\
 \midrule
-\endfirsthead
-\caption[]{All and filtered observations by year and sampling institution for PISCO. (\textit{continued)}}\\
-\toprule
-Year & UCSC Raw Count & UCSC Filtered Count & UCSB Raw Count & UCSB Filtered Count\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 1999 & 2 & NA & 7 & NA\\
 2000 & 1 & NA & 11 & NA\\
 2001 & 6 & 4 & 4 & NA\\
@@ -1751,10 +1261,10 @@ Year & UCSC Raw Count & UCSC Filtered Count & UCSB Raw Count & UCSB Filtered Cou
 2018 & 37 & 15 & 42 & 28\\
 2019 & 26 & 15 & 41 & 37\\
 2020 & 58 & 26 & 35 & 29\\
-2021 & 23 & 12 & 37 & 27\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
+2021 & 23 & 12 & 37 & 27\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \newpage
 
@@ -1770,7 +1280,7 @@ Year & UCSC Raw Count & UCSC Filtered Count & UCSB Raw Count & UCSB Filtered Cou
 
 \begin{landscape}\begingroup\fontsize{9}{11}\selectfont
 
-\begin{longtable}[t]{>{\raggedright\arraybackslash}p{7.5cm}lllll>{\raggedright\arraybackslash}p{3.5cm}}
+\begin{table}[t]{>{\raggedright\arraybackslash}p{7.5cm}lllll>{\raggedright\arraybackslash}p{3.5cm}}
 \caption{\label{tab:params}List of parameters used in the base model, including estimated values and standard deviations (SD), bounds (minimum and maximum), estimation phase (negative values not estimated), status (indicates if parameters are near bounds), and prior type information (mean and SD).}\\
 \toprule
 Parameter & Value & Phase & Bounds & Status & SD & Prior (Exp.Val, SD)\\
@@ -1994,8 +1504,8 @@ Size DblN end logit Rec PR(4) BLK2repl 1916 & 0.689 & -5 & (-10, 10) & NA & NA &
 Size DblN end logit Rec PR(4) BLK2repl 2002 & -0.856 & 5 & (-10, 10) & OK & 0.230 & None\\
 Size DblN top logit CCFRP(5) BLK3repl 1916 & -6.798 & -4 & (-7, 7) & NA & NA & None\\
 Size DblN descend se CCFRP(5) BLK3repl 1916 & 4.846 & -4 & (-10, 10) & NA & NA & None\\
-Size DblN end logit CCFRP(5) BLK3repl 1916 & -1.835 & -5 & (-10, 10) & NA & NA & None\\*
-\end{longtable}
+Size DblN end logit CCFRP(5) BLK3repl 1916 & -1.835 & -5 & (-10, 10) & NA & NA & None\\
+\end{table}
 \endgroup{}
 \end{landscape}
 \endgroup{}
@@ -2006,24 +1516,16 @@ Size DblN end logit CCFRP(5) BLK3repl 1916 & -1.835 & -5 & (-10, 10) & NA & NA &
 
 \newpage
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.6cm}}
-\caption{\label{tab:dw}Suggested data weights for each data weighting methodology by fleet and data type.}\\
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:dw}Suggested data weights for each data weighting methodology by fleet and data type.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.6cm}}
 \toprule
 Fleet & Data Type & Francis & MI & Dirichlet\\
 \midrule
-\endfirsthead
-\caption[]{Suggested data weights for each data weighting methodology by fleet and data type. (\textit{continued)}}\\
-\toprule
-Fleet & Data Type & Francis & MI & Dirichlet\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 Commercial Dead & Lengths & 0.20 & 0.23 & 0.97\\
 Commercial Live & Lengths & 0.29 & 0.57 & 0.99\\
 CPFV & Lengths & 0.33 & 0.24 & 0.99\\
@@ -2033,10 +1535,10 @@ Commercial Dead & Ages & 0.17 & 0.60 & 0.99\\
 CPFV & Ages & 0.21 & 0.21 & 0.99\\
 PR & Ages & 0.56 & 0.56 & 0.99\\
 CCFRP & Ages & 0.53 & 0.76 & 0.99\\
-Growth & Ages & 0.40 & 0.47 & 0.99\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
+Growth & Ages & 0.40 & 0.47 & 0.99\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \newpage
 
@@ -2047,7 +1549,7 @@ Growth & Ages & 0.40 & 0.47 & 0.99\\*
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}}
+\begin{table}[t]{c>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}}
 \caption{\label{tab:ca-status}The estimated total biomass (mt), total biomass age 3+ (mt), age-0 recruits, and spawning ouput in number of billions of eggs across California and fraction unfished by year.}\\
 \toprule
 Year & Total Biomass (mt) & Total Biomass 3+ (mt) & Age-0 Recruits & Spawning Output & Fraction Unfished\\
@@ -2169,8 +1671,8 @@ Year & Total Biomass (mt) & Total Biomass 3+ (mt) & Age-0 Recruits & Spawning Ou
 2020 & 2620.84 & 2594.05 & 559.06 & 233.14 & 0.355\\
 2021 & 2591.82 & 2570.81 & 639.19 & 232.01 & 0.353\\
 2022 & 2601.31 & 2571.41 & 636.27 & 233.63 & 0.356\\
-2023 & 2672.65 & 2638.28 & 638.71 & 240.80 & 0.366\\*
-\end{longtable}
+2023 & 2672.65 & 2638.28 & 638.71 & 240.80 & 0.366\\
+\end{table}
 \endgroup{}
 \endgroup{}
 
@@ -2199,7 +1701,7 @@ Year & Total Biomass (mt) & Total Biomass 3+ (mt) & Age-0 Recruits & Spawning Ou
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{>{\raggedright\arraybackslash}p{6cm}l}
+\begin{table}[t]{>{\raggedright\arraybackslash}p{6cm}l}
 \caption{\label{tab:ref-point-all}Summary of reference points and management quantities for copper rockfish in California waters.}\\
 \toprule
 Quantity & Estimate\\
@@ -2224,8 +1726,8 @@ Yield with SPR Based on SB40\% (mt) & 171.92\\
 Proxy Spawning Output (SPR50) & 293.17\\
 Yield with SPR50 (mt) & 164.24\\
 Spawning Output at MSY & 181.31\\
-MSY (mt) & 182.14\\*
-\end{longtable}
+MSY (mt) & 182.14\\
+\end{table}
 \endgroup{}
 \endgroup{}
 
@@ -2235,7 +1737,7 @@ MSY (mt) & 182.14\\*
 
 \begin{landscape}\begingroup\fontsize{9}{11}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.3cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.4cm}>{\centering\arraybackslash}p{1.4cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.3cm}}
+\begin{table}[t]{c>{\centering\arraybackslash}p{1.3cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.4cm}>{\centering\arraybackslash}p{1.4cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.3cm}}
 \caption{\label{tab:ca-proj}The estimated OFL (mt), ABC (mt), ACL (mt), buffer, spawning output in billions of eggs across California, and relative spawning outut by year along with the sub-area allocations of the ACL south of Point Conception (south, $34^\circ 27^\prime$ N. lat.), north of Point Conception to $40^\circ 10^\prime$ N. lat. (central), and $40^\circ 10^\prime$ to $42^\circ$ N. lat. (north).}\\
 \toprule
 Year & Assumed Catch (mt) & OFL (mt) & ABC (mt) & ACL (mt) & Buffer & Spawning Output & Fraction Unfished & Sub-ACL South (mt) & Sub-ACL Central (mt) & Sub-ACL North (mt)\\
@@ -2261,8 +1763,8 @@ Year & Assumed Catch (mt) & OFL (mt) & ABC (mt) & ACL (mt) & Buffer & Spawning O
 2031 & - & 152.8 & 138.9 & 138.6 & 0.909 & 261.54 & 0.398 & 26 & 106 & 6.6\\
 2032 & - & 153.9 & 139.1 & 139.1 & 0.904 & 264.02 & 0.402 & 27 & 105.6 & 6.6\\
 2033 & - & 155 & 139.5 & 139.5 & 0.9 & 266.52 & 0.406 & 27.9 & 105.1 & 6.5\\
-2034 & - & 156.2 & 139.9 & 139.9 & 0.896 & 269.04 & 0.409 & 28.8 & 104.6 & 6.5\\*
-\end{longtable}
+2034 & - & 156.2 & 139.9 & 139.9 & 0.896 & 269.04 & 0.409 & 28.8 & 104.6 & 6.5\\
+\end{table}
 \endgroup{}
 \end{landscape}
 \endgroup{}
@@ -2763,7 +2265,7 @@ Year & Assumed Catch (mt) & OFL (mt) & ABC (mt) & ACL (mt) & Buffer & Spawning O
 
 \pagebreak
 
-\subsubsection{Recruitment}\label{recruitment-1}
+\subsubsection{Recruitment}\label{recruitment}
 
 \begin{figure}
 {\centering
@@ -3462,24 +2964,16 @@ The covariates explored for model selection included year and four categorical r
 
 Indices were fit via MLE from the sdmTMB package in R. The Q-Q plot for the negative binomial model indicated a poor fit to the data, which as not surprising given the low percent of observed drifts encountering copper rockfish. A delta-Lognormal was selected over a delta-gamma by a delta AIC of 487. The Q-Q plot indicated a much improved fit compared to the negative binomial model (Table \ref{fig:onboard-qq}). The relative abundance is predominantly flat during the time series, with a visible increase in CPUE in 2017 when deeper waters opened in portions of northern California after a 17 year closure (Table \ref{tab:onboard-index} and Figure \ref{fig:onboard-index}).
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:onboard-keepdiscard}Number of observed copper rockfish retained and discarded by year.}\\
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:onboard-keepdiscard}Number of observed copper rockfish retained and discarded by year.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
 \toprule
 Year & Number Kept & Number Discarded & Proprtion Discarded\\
 \midrule
-\endfirsthead
-\caption[]{Number of observed copper rockfish retained and discarded by year. (\textit{continued)}}\\
-\toprule
-Year & Number Kept & Number Discarded & Proprtion Discarded\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 1999 & 43 & 0 & 0.0\%\\
 2000 & 44 & 0 & 0.0\%\\
 2001 & 66 & 2 & 2.9\%\\
@@ -3500,59 +2994,39 @@ Year & Number Kept & Number Discarded & Proprtion Discarded\\
 2016 & 404 & 12 & 2.9\%\\
 2017 & 823 & 5 & 0.6\%\\
 2018 & 584 & 7 & 1.2\%\\
-2019 & 398 & 7 & 1.7\%\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:onboard-waterarea}Number of observed drifts inside and outside of state waters by district, summed across years.}\\
-\toprule
-District & Inside State Waters & Outside State Waters & Percent Inside\\
-\midrule
-\endfirsthead
-\caption[]{Number of observed drifts inside and outside of state waters by district, summed across years. (\textit{continued)}}\\
-\toprule
-District & Inside State Waters & Outside State Waters & Percent Inside\\
-\midrule
-\endhead
-
-\endfoot
+2019 & 398 & 7 & 1.7\%\\
 \bottomrule
-\endlastfoot
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:onboard-waterarea}Number of observed drifts inside and outside of state waters by district, summed across years.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\toprule
+District & Inside State Waters & Outside State Waters & Percent Inside\\
+\midrule
 3 & 2486 & 416 & 85.7\%\\
 4 & 386 & 74 & 83.9\%\\
 5 & 24 & 0 & 100.0\%\\
-6 & 17 & 0 & 100.0\%\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}}
-\caption{\label{tab:onboard-percentpos}Number of samples with and without copper rockfish.}\\
-\toprule
-year & tripsWithTarget & tripsWOTarget & totalTrips & percentpos\\
-\midrule
-\endfirsthead
-\caption[]{Number of samples with and without copper rockfish. (\textit{continued)}}\\
-\toprule
-year & tripsWithTarget & tripsWOTarget & totalTrips & percentpos\\
-\midrule
-\endhead
-
-\endfoot
+6 & 17 & 0 & 100.0\%\\
 \bottomrule
-\endlastfoot
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:onboard-percentpos}Number of samples with and without copper rockfish.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{c>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}}
+\toprule
+year & tripsWithTarget & tripsWOTarget & totalTrips & percentpos\\
+\midrule
 1999 & 14 & 167 & 181 & 7.70\%\\
 2000 & 13 & 90 & 103 & 12.60\%\\
 2001 & 31 & 168 & 199 & 15.60\%\\
@@ -3573,33 +3047,21 @@ year & tripsWithTarget & tripsWOTarget & totalTrips & percentpos\\
 2016 & 221 & 1017 & 1238 & 17.90\%\\
 2017 & 240 & 650 & 890 & 27.00\%\\
 2018 & 170 & 547 & 717 & 23.70\%\\
-2019 & 178 & 621 & 799 & 22.30\%\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:onboard-index}Estimated relative index of abundance for the onboard CPFV survey.}\\
-\toprule
-Year & Estimate & logSE\\
-\midrule
-\endfirsthead
-\caption[]{Estimated relative index of abundance for the onboard CPFV survey. (\textit{continued)}}\\
-\toprule
-Year & Estimate & logSE\\
-\midrule
-\endhead
-
-\endfoot
+2019 & 178 & 621 & 799 & 22.30\%\\
 \bottomrule
-\endlastfoot
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:onboard-index}Estimated relative index of abundance for the onboard CPFV survey.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\toprule
+Year & Estimate & logSE\\
+\midrule
 2004 & 0.0072 & 0.1027\\
 2005 & 0.0083 & 0.0960\\
 2006 & 0.0078 & 0.0948\\
@@ -3615,32 +3077,21 @@ Year & Estimate & logSE\\
 2016 & 0.0113 & 0.0865\\
 2017 & 0.0108 & 0.0870\\
 2018 & 0.0102 & 0.0916\\
-2019 & 0.0100 & 0.0885\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{landscape}\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{8cm}cc}
-\caption{\label{tab:onboard-filter}Data filtering steps for the onboard CPFV survey.}\\
-\toprule
-Filter & Description & Number of Samples & Positive Samples\\
-\midrule
-\endfirsthead
-\caption[]{Data filtering steps for the onboard CPFV survey. (\textit{continued)}}\\
-\toprule
-Filter & Description & Number of Samples & Positive Samples\\
-\midrule
-\endhead
-
-\endfoot
+2019 & 0.0100 & 0.0885\\
 \bottomrule
-\endlastfoot
+\end{tabular}
+\end{table}
+
+\begin{landscape}\begin{table}[H]
+\centering
+\caption{\label{tab:onboard-filter}Data filtering steps for the onboard CPFV survey.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{c>{\centering\arraybackslash}p{8cm}cc}
+\toprule
+Filter & Description & Number of Samples & Positive Samples\\
+\midrule
 All data & All data & 28,554 & 4,551\\
 Years & Start time series in 2004 due to sparse data & 25,267 & 4,291\\
 Errors and Missing Data & Remove drifts with missing data and identified errors & 25,107 & 4,288\\
@@ -3651,15 +3102,11 @@ Observed anglers & Remove upper and lower \$2.5\%\$ of observed anglers;  Remain
 Time fished & Remove upper and lower \$2.5\%\$ time fished and
                                          time fished; Remaining drifts with 5-73 minutes time fished & 19,406 & 3,797\\
 Distance from rocky substrate & After removing observations further
-than 0.5km from rocky substrate, keep 95\% of the data; drifts within 10.1 m of rocky substrate & 17,458 & 3,403\\*
-\end{longtable}
-\endgroup{}
+than 0.5km from rocky substrate, keep 95\% of the data; drifts within 10.1 m of rocky substrate & 17,458 & 3,403\\
+\bottomrule
+\end{tabular}
+\end{table}
 \end{landscape}
-\endgroup{}
-
-\newpage
-
-\newpage
 
 \begin{figure}
 {\centering
@@ -3668,8 +3115,6 @@ than 0.5km from rocky substrate, keep 95\% of the data; drifts within 10.1 m of 
 \caption{Index for the onboard CPFV survey.\label{fig:onboard-index}}
 \end{figure}
 
-\newpage
-
 \begin{figure}
 {\centering
 \includegraphics[alt=The q q plot shows a decent fit to the data.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/start2004/deltalogn/qq.png}
@@ -3677,16 +3122,12 @@ than 0.5km from rocky substrate, keep 95\% of the data; drifts within 10.1 m of 
 \caption{Q-Q plot for the onboard CPFV survey.\label{fig:onboard-qq}}
 \end{figure}
 
-\newpage
-
 \begin{figure}
 {\centering
-\includegraphics[alt=Average CPUE by district whosing that the trends across district are similar.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/start2004/average_cpue_by_district.png}
+\includegraphics[alt=Average catch per unit effort by district showing that the trends across district are similar.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/start2004/average_cpue_by_district.png}
 }
 \caption{Average CPUE by district prior to standardization.\label{fig:onboard-regioncpue}}
 \end{figure}
-
-\newpage
 
 \begin{figure}
 {\centering
@@ -3695,16 +3136,12 @@ than 0.5km from rocky substrate, keep 95\% of the data; drifts within 10.1 m of 
 \caption{Distribution by year of depths where copper rockfish observed.\label{fig:onboard-depths}}
 \end{figure}
 
-\newpage
-
 \begin{figure}
 {\centering
 \includegraphics[alt=Number of drifts with copper rockfish by depth indicating copper rockfish are mostly found shallower than 300 feet.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_cpfv_onboard/north/start2004/drifts_by_depth_district.png}
 }
 \caption{Depths of observed copper rockfish by district.\label{fig:onboard-depths2}}
 \end{figure}
-
-\newpage
 
 \subsubsection{Deb Wilson-Vandenberg Onboard CPFV Index of Abundance}\label{dwv-cpfv-index}
 
@@ -3724,24 +3161,16 @@ Trends in the average CPUE by region were similar in the filtered data set (Figu
 
 Indices were fit via MLE from the sdmTMB package in R. The Q-Q plot for the negative binoimal model indicated a poor fit to the data, which as not surprising given the low percent of observed drifts encountering copper rockfish. A delta-gamma was selected over a delta-lognormal by a delta AIC of 43. The Q-Q plot indicated a much improved fit compared to the negative binomial model (Table \ref{fig:onboard-qq}). The relative abundance indicates a decreasing trend during the time series (Table \ref{tab:deb-index} and Figure \ref{fig:deb-index}).
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{1.6cm}>{\raggedleft\arraybackslash}p{1.6cm}>{\raggedleft\arraybackslash}p{1.6cm}>{\raggedleft\arraybackslash}p{1.6cm}}
-\caption{\label{tab:deb-percentpos}Number of samples and percent positive for Deb Wilson-Vandenberg's onboard observer survey.}\\
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:deb-percentpos}Number of samples and percent positive for Deb Wilson-Vandenberg's onboard observer survey.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{r>{\raggedleft\arraybackslash}p{1.6cm}>{\raggedleft\arraybackslash}p{1.6cm}>{\raggedleft\arraybackslash}p{1.6cm}>{\raggedleft\arraybackslash}p{1.6cm}}
 \toprule
 Year & Trips with Target & Trips without Target & Total trips & Percent with Target\\
 \midrule
-\endfirsthead
-\caption[]{Number of samples and percent positive for Deb Wilson-Vandenberg's onboard observer survey. (\textit{continued)}}\\
-\toprule
-Year & Trips with Target & Trips without Target & Total trips & Percent with Target\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 1988 & 114 & 276 & 390 & 29.2\%\\
 1989 & 162 & 247 & 409 & 39.6\%\\
 1990 & 50 & 63 & 113 & 44.2\%\\
@@ -3752,33 +3181,21 @@ Year & Trips with Target & Trips without Target & Total trips & Percent with Tar
 1995 & 216 & 622 & 838 & 25.8\%\\
 1996 & 194 & 830 & 1024 & 18.9\%\\
 1997 & 202 & 1119 & 1321 & 15.3\%\\
-1998 & 127 & 831 & 958 & 13.3\%\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:deb-index}Estimated relative index of abundance for the onboard CPFV survey.}\\
-\toprule
-Year & Estimate & logSE\\
-\midrule
-\endfirsthead
-\caption[]{Estimated relative index of abundance for the onboard CPFV survey. (\textit{continued)}}\\
-\toprule
-Year & Estimate & logSE\\
-\midrule
-\endhead
-
-\endfoot
+1998 & 127 & 831 & 958 & 13.3\%\\
 \bottomrule
-\endlastfoot
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:deb-index}Estimated relative index of abundance for the onboard CPFV survey.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\toprule
+Year & Estimate & logSE\\
+\midrule
 1988 & 0.0770 & 0.1418\\
 1989 & 0.1147 & 0.1183\\
 1990 & 0.1123 & 0.2016\\
@@ -3789,90 +3206,67 @@ Year & Estimate & logSE\\
 1995 & 0.0684 & 0.1139\\
 1996 & 0.0545 & 0.1192\\
 1997 & 0.0479 & 0.1263\\
-1998 & 0.0414 & 0.1356\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{9}{11}\selectfont
-
-\begin{landscape}\begingroup\fontsize{9}{11}\selectfont
-
-\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{8cm}ll}
-\caption{\label{tab:deb-filter}Data filtering steps for the onboard CPFV survey.}\\
-\toprule
-Filter & Description & Number of Samples & Positive Samples\\
-\midrule
-\endfirsthead
-\caption[]{Data filtering steps for the onboard CPFV survey. (\textit{continued)}}\\
-\toprule
-Filter & Description & Number of Samples & Positive Samples\\
-\midrule
-\endhead
-
-\endfoot
+1998 & 0.0414 & 0.1356\\
 \bottomrule
-\endlastfoot
+\end{tabular}
+\end{table}
+
+\begin{landscape}\begin{table}[H]
+\centering
+\caption{\label{tab:deb-filter}Data filtering steps for the onboard CPFV survey.}
+\centering
+\fontsize{9}{11}\selectfont
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{8cm}ll}
+\toprule
+Filter & Description & Number of Samples & Positive Samples\\
+\midrule
 All & None & 7,569 & 1,634\\
 No catch & Remove no catch trips & 7,569 & 1,634\\
 Only sampled Monterey & Remove 1987 and depths >80fm & 7,053 & 1,612\\
 Time fished & Remove upper and lower 2.5\% of time fished; keep 6-218 minutes & 6,714 & 1,488\\
 Observed anglers & Remove upper and lower 2.5\% of observed anglers; keep 4-15 & 6,490 & 1,428\\
 Depth & Retain drifts between 8-56 fm & 5,692 & 1,401\\
-Target & Retain trips with at least 71.5\% groundfish catch (97.5\% of trips) & 5,546 & 1,380\\*
-\end{longtable}
-\endgroup{}
+Target & Retain trips with at least 71.5\% groundfish catch (97.5\% of trips) & 5,546 & 1,380\\
+\bottomrule
+\end{tabular}
+\end{table}
 \end{landscape}
-\endgroup{}
-
-\newpage
 
 \begin{figure}
 {\centering
-\includegraphics[alt=.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/deltagamma/index.png}
+\includegraphics[alt=The index for the onboard commercial passenger fishing vessel survey from 1989 to 1999.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/deltagamma/index.png}
 }
 \caption{Index for the onboard CPFV survey.\label{fig:deb-index}}
 \end{figure}
 
-\newpage
-
 \begin{figure}
 {\centering
-\includegraphics[alt=.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/deltagamma/qq.png}
+\includegraphics[alt=The q q plot indicates a decent fit to the data.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/deltagamma/qq.png}
 }
 \caption{Q-Q plot for the onboard CPFV survey.\label{fig:deb-qq}}
 \end{figure}
 
-\newpage
-
 \begin{figure}
 {\centering
-\includegraphics[alt=.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/average_cpue_by_reef.png}
+\includegraphics[alt=The average catch per unit effort is similar across regions.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/average_cpue_by_reef.png}
 }
 \caption{Average CPUE by region prior to standardization.\label{fig:deb-regioncpue}}
 \end{figure}
 
-\newpage
-
 \begin{figure}
 {\centering
-\includegraphics[alt=.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/percent_gfish.png}
+\includegraphics[alt=A large percentage of trips encountered groundfish.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/percent_gfish.png}
 }
 \caption{Percent of catch by trip that consisted of groundfish.\label{fig:deb-percent-gfish}}
 \end{figure}
 
-\newpage
-
 \begin{figure}
 {\centering
-\includegraphics[alt=.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/depth_by_reef.png}
+\includegraphics[alt=Copper rockfish are observed in the expected depth from the fleet.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/debwv_cpfv_onboard/depth_by_reef.png}
 }
 \caption{Stacked bar plot of the depth of observed copper rockfish by region.\label{fig:deb-depths}}
 \end{figure}
-
-\newpage
 
 \subsubsection{CRFS PR Dockside Index of Abundance}\label{crfs-pr-index}
 
@@ -3888,26 +3282,16 @@ We modeled retained catch per angler days with a negative binomial GLM in the R 
 
 Based on AICc values from maximum likelihood fits Table \ref{tab:pr-modelselect}, a main effects model including year, district and a year and district interaction. Month and primary target species were modeled as categorical covariates (Table \ref{tab:pr-index} and Figure \ref{fig:pr-index}).
 
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{1.33cm}>{\raggedleft\arraybackslash}p{1.33cm}>{\raggedleft\arraybackslash}p{1.33cm}>{\raggedleft\arraybackslash}p{1.33cm}>{\raggedleft\arraybackslash}p{1.33cm}}
-\caption{\label{tab:pr-cpue}Summary values of the copper rockfish retained per angler (CPUE) to look at the effects of the sub-bag limit.}\\
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:pr-cpue}Summary values of the copper rockfish retained per angler (CPUE) to look at the effects of the sub-bag limit.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{r>{\raggedleft\arraybackslash}p{1.33cm}>{\raggedleft\arraybackslash}p{1.33cm}>{\raggedleft\arraybackslash}p{1.33cm}>{\raggedleft\arraybackslash}p{1.33cm}>{\raggedleft\arraybackslash}p{1.33cm}}
 \toprule
 Year & Minimum & 25th Quantile & Median & 75th Quantile & Maximum\\
 \midrule
-\endfirsthead
-\caption[]{Summary values of the copper rockfish retained per angler (CPUE) to look at the effects of the sub-bag limit. (\textit{continued)}}\\
-\toprule
-Year & Minimum & 25th Quantile & Median & 75th Quantile & Maximum\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 2015 & 0.125 & 0.500 & 0.667 & 1.25 & 10.000\\
 2016 & 0.143 & 0.500 & 0.667 & 1.50 & 10.000\\
 2017 & 0.111 & 0.500 & 1.000 & 2.00 & 10.000\\
@@ -3915,33 +3299,22 @@ Year & Minimum & 25th Quantile & Median & 75th Quantile & Maximum\\
 2019 & 0.111 & 0.500 & 0.917 & 1.50 & 10.000\\
 2020 & 0.167 & 0.500 & 0.667 & 1.00 & 7.500\\
 2021 & 0.111 & 0.500 & 0.667 & 1.25 & 8.571\\
-2022 & 0.125 & 0.333 & 0.500 & 1.00 & 6.333\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
-\caption{\label{tab:pr-rfgen}Summary of the number of speciated and unspeciated (RFGEN) rockfish 
-  per year across all of California.}\\
-\toprule
-Year & Unspeciated & Speciated & Percent unspeciated\\
-\midrule
-\endfirsthead
-\caption[]{Summary of the number of speciated and unspeciated (RFGEN) rockfish 
-  per year across all of California. (\textit{continued)}}\\
-\toprule
-Year & Unspeciated & Speciated & Percent unspeciated\\
-\midrule
-\endhead
-
-\endfoot
+2022 & 0.125 & 0.333 & 0.500 & 1.00 & 6.333\\
 \bottomrule
-\endlastfoot
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:pr-rfgen}Summary of the number of speciated and unspeciated (RFGEN) rockfish 
+  per year across all of California.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
+\toprule
+Year & Unspeciated & Speciated & Percent unspeciated\\
+\midrule
 2,015 & 5,816 & 93,285 & 5.9\%\\
 2,016 & 5,153 & 71,835 & 6.7\%\\
 2,017 & 6,015 & 80,123 & 7.0\%\\
@@ -3949,31 +3322,21 @@ Year & Unspeciated & Speciated & Percent unspeciated\\
 2,019 & 3,597 & 92,228 & 3.8\%\\
 2,020 & 27,522 & 59,999 & 31.4\%\\
 2,021 & 13,439 & 90,050 & 13.0\%\\
-2,022 & 3,559 & 83,804 & 4.1\%\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}}
-\caption{\label{tab:pr-percentpos}Number of samples and percent positive for the dockside PR survey.}\\
-\toprule
-Year & Trips with Target & Trips without Target & Total trips & Percent with Target\\
-\midrule
-\endfirsthead
-\caption[]{Number of samples and percent positive for the dockside PR survey. (\textit{continued)}}\\
-\toprule
-Year & Trips with Target & Trips without Target & Total trips & Percent with Target\\
-\midrule
-\endhead
-
-\endfoot
+2,022 & 3,559 & 83,804 & 4.1\%\\
 \bottomrule
-\endlastfoot
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:pr-percentpos}Number of samples and percent positive for the dockside PR survey.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{c>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}}
+\toprule
+Year & Trips with Target & Trips without Target & Total trips & Percent with Target\\
+\midrule
 2,004 & 340 & 2,929 & 3,269 & 10.4\%\\
 2,005 & 563 & 4,284 & 4,847 & 11.6\%\\
 2,006 & 941 & 4,860 & 5,801 & 16.2\%\\
@@ -3991,32 +3354,21 @@ Year & Trips with Target & Trips without Target & Total trips & Percent with Tar
 2,018 & 1,647 & 3,298 & 4,945 & 33.3\%\\
 2,019 & 1,814 & 3,113 & 4,927 & 36.8\%\\
 2,021 & 1,395 & 3,370 & 4,765 & 29.3\%\\
-2,022 & 1,287 & 3,466 & 4,753 & 27.1\%\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{9}{11}\selectfont
-
-\begin{landscape}\begingroup\fontsize{9}{11}\selectfont
-
-\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{8cm}ll}
-\caption{\label{tab:pr-filter}Data filtering steps for the CRFS PR dockside survey.}\\
-\toprule
-Filter & Description & Number of Samples & Positive Samples\\
-\midrule
-\endfirsthead
-\caption[]{Data filtering steps for the CRFS PR dockside survey. (\textit{continued)}}\\
-\toprule
-Filter & Description & Number of Samples & Positive Samples\\
-\midrule
-\endhead
-
-\endfoot
+2,022 & 1,287 & 3,466 & 4,753 & 27.1\%\\
 \bottomrule
-\endlastfoot
+\end{tabular}
+\end{table}
+
+\begin{landscape}\begin{table}[H]
+\centering
+\caption{\label{tab:pr-filter}Data filtering steps for the CRFS PR dockside survey.}
+\centering
+\fontsize{9}{11}\selectfont
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{8cm}ll}
+\toprule
+Filter & Description & Number of Samples & Positive Samples\\
+\midrule
 All data & All data & 169,912 & 19,931\\
 Year & Remove 2020-2022 due to COVID sampling restrictions 
                                          and avoidance & 149,516 & 16,522\\
@@ -4025,32 +3377,22 @@ Gear & Retain trips with primary gear of hook-and-line or troll & 135,339 & 16,0
 Months fished & Remove Jan-March; recreational rockfish fishery closed & 135,079 & 16,000\\
 Target species & Retain trips with primary target of 
 rockfish or bottomfish target; or as secondary target species for trips identified in 
-the previous table & 75,307 & 15,549\\*
-\end{longtable}
-\endgroup{}
-\end{landscape}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{8}{10}\selectfont
-\begingroup\fontsize{8}{10}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}}
-\caption{\label{tab:pr-modelselect}Model selection for the dockside PR survey.}\\
-\toprule
-Intercept & District & Month & Target Species & Year & District:Year & Offset & DF & AICc & Delta AICc\\
-\midrule
-\endfirsthead
-\caption[]{Model selection for the dockside PR survey. (\textit{continued)}}\\
-\toprule
-Intercept & District & Month & Target Species & Year & District:Year & Offset & DF & AICc & Delta AICc\\
-\midrule
-\endhead
-
-\endfoot
+the previous table & 75,307 & 15,549\\
 \bottomrule
-\endlastfoot
+\end{tabular}
+\end{table}
+\end{landscape}
+
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:pr-modelselect}Model selection for the dockside PR survey.}
+\centering
+\fontsize{8}{10}\selectfont
+\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{c>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}>{\centering\arraybackslash}p{0.8cm}}
+\toprule
+Intercept & District & Month & Target Species & Year & District:Year & Offset & DF & AICc & Delta AICc\\
+\midrule
 -2.52 & + & + & + & + & + & + & 75 & 123549.8 & 0.00\\
 -2.53 & + & NA & + & + & + & + & 67 & 123623.0 & 73.20\\
 -2.08 & + & + & NA & + & + & + & 73 & 123952.7 & 402.93\\
@@ -4062,31 +3404,21 @@ Intercept & District & Month & Target Species & Year & District:Year & Offset & 
 -3.26 & NA & + & + & + & NA & + & 27 & 125356.2 & 1806.36\\
 -3.38 & NA & NA & + & + & NA & + & 19 & 125462.5 & 1912.71\\
 -2.34 & NA & + & NA & + & NA & + & 25 & 127208.7 & 3658.87\\
--2.56 & NA & NA & NA & + & NA & + & 17 & 127440.6 & 3890.82\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:pr-index}Estimated relative index of abundance for the dockside PR survey.}\\
-\toprule
-Year & Estimate & logSE\\
-\midrule
-\endfirsthead
-\caption[]{Estimated relative index of abundance for the dockside PR survey. (\textit{continued)}}\\
-\toprule
-Year & Estimate & logSE\\
-\midrule
-\endhead
-
-\endfoot
+-2.56 & NA & NA & NA & + & NA & + & 17 & 127440.6 & 3890.82\\
 \bottomrule
-\endlastfoot
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:pr-index}Estimated relative index of abundance for the dockside PR survey.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\toprule
+Year & Estimate & logSE\\
+\midrule
 2004 & 5.0643 & 0.0901\\
 2005 & 7.5953 & 0.0820\\
 2006 & 10.0948 & 0.0770\\
@@ -4102,12 +3434,10 @@ Year & Estimate & logSE\\
 2016 & 22.0089 & 0.0743\\
 2017 & 49.5223 & 0.0790\\
 2018 & 33.0939 & 0.0745\\
-2019 & 35.3609 & 0.0733\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\newpage
+2019 & 35.3609 & 0.0733\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}
 {\centering
@@ -4118,16 +3448,12 @@ Year & Estimate & logSE\\
   limit implemented in 2022.\label{fig:pr-bag}}
 \end{figure}
 
-\newpage
-
 \begin{figure}
 {\centering
 \includegraphics[alt=The average CPUE by district shows a trend of increasing average CPUE and higher CPUE in district four.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/north/rm_last2yrs_area_weighted/average_cpue_by_cnty.png}
 }
 \caption{Average CPUE by district prior to standardization.\label{fig:pr-districtcpue}}
 \end{figure}
-
-\newpage
 
 \begin{figure}
 {\centering
@@ -4136,8 +3462,6 @@ Year & Estimate & logSE\\
 \caption{Index for the dockside PR survey.\label{fig:pr-index}}
 \end{figure}
 
-\newpage
-
 \begin{figure}
 {\centering
 \includegraphics[alt=The predicted proportion of zeroes is within 0.5 percent of the data.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/north/rm_last2yrs_area_weighted/negbin_prop_zero_main_effects.png}
@@ -4145,16 +3469,12 @@ Year & Estimate & logSE\\
 \caption{Predicted proportion of zeroes from the Bayesian fit to the main effects model.\label{fig:pr-prop-zero}}
 \end{figure}
 
-\newpage
-
 \begin{figure}
 {\centering
 \includegraphics[alt=The qq plot indicates a relatively good fit with some diversion of the 1 to 1 line on the upper quantiles.,width=1\textwidth,height=1\textheight]{S:/copper_rockfish_2023/data/rec_indices/crfs_pr_dockside/north/rm_last2yrs_area_weighted/qq.png}
 }
 \caption{Q-Q plot for the dockside PR survey.\label{fig:pr-qq}}
 \end{figure}
-
-\newpage
 
 \subsubsection{CCFRP Index of Abundance}\label{ccfrp-index}
 
@@ -4172,25 +3492,16 @@ A negative binomial model was fit to the drift-level data (catch with a log offs
 
 Based on work completed at the SWFSC, we estimate that the percent of rocky reef habitat from Point Conception to the California/Oregon border within California state waters is 892 \(km^2\), of which approximately 23\% is in MPAs that prohibit the harvest of groundfish (pers comm. Rebecca Miller, UCSC). There is recreational fishing outside of state waters, but habitat maps are not available at the same 2-m resolution and do not allow for direct comparisons. The final index was weighted, giving 20\% of the model weight to MPAs and 80\% of model weight to the ``open'' areas within the state.
 
-\begingroup\fontsize{7}{9}\selectfont
-
-\begin{landscape}\begingroup\fontsize{7}{9}\selectfont
-
-\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}}
-\caption{\label{tab:ccfrp-data-filter}Data filtering for the CCFRP survey.}\\
+\begin{landscape}\begin{table}[H]
+\centering
+\caption{\label{tab:ccfrp-data-filter}Data filtering for the CCFRP survey.}
+\centering
+\fontsize{7}{9}\selectfont
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}}
 \toprule
 Filter & Description & Samples & Positive\_Samples\\
 \midrule
-\endfirsthead
-\caption[]{Data filtering for the CCFRP survey. (\textit{continued)}}\\
-\toprule
-Filter & Description & Samples & Positive\_Samples\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 All data &  & 8770 & 1979\\
 Sampling frequency & Remove locations and cells not well 
                                           sampled and drifts marked for exclusion & 7850 & 1773\\
@@ -4198,33 +3509,24 @@ Location & Remove grid cells that never observed
                                            the target species & 7205 & 1773\\
 Time fished & Remove drifts less than two minutes 
                                           and cells fished less than 15 minutes
-                                          during a sampling event & 7078 & 1757\\*
-\end{longtable}
-\endgroup{}
+                                          during a sampling event & 7078 & 1757\\
+\bottomrule
+\end{tabular}
+\end{table}
 \end{landscape}
-\endgroup{}
 
 \newpage
 
-\begingroup\fontsize{7}{9}\selectfont
-
-\begin{landscape}\begingroup\fontsize{7}{9}\selectfont
-
-\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}}
-\caption{\label{tab:ccfrp-model-selection}Model selection for the CCFRP survey.}\\
+\begin{landscape}\begin{table}[H]
+\centering
+\caption{\label{tab:ccfrp-model-selection}Model selection for the CCFRP survey.}
+\centering
+\fontsize{7}{9}\selectfont
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{1cm}}
 \toprule
 Depth & Depth.Squared & Mpaorref & Region & Year & Interaction & Effort.Offset & Df & Log.Likelihood & AICc & Delta\\
 \midrule
-\endfirsthead
-\caption[]{Model selection for the CCFRP survey. (\textit{continued)}}\\
-\toprule
-Depth & Depth.Squared & Mpaorref & Region & Year & Interaction & Effort.Offset & Df & Log.Likelihood & AICc & Delta\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 0.402 & -0.008 & + & + & + & + & + & 36 & -5319.3 & 10710.9 & 0.0\\
 0.393 & -0.008 & + & NA & + & + & + & 35 & -5321.0 & 10712.3 & 1.4\\
 0.406 & -0.008 & + & + & + & NA & + & 21 & -5351.1 & 10744.4 & 33.5\\
@@ -4242,32 +3544,24 @@ NA & NA & + & + & + & + & + & 34 & -5632.2 & 11332.7 & 621.8\\
 NA & NA & + & NA & + & NA & + & 18 & -5661.2 & 11358.4 & 647.5\\
 NA & NA & + & + & + & NA & + & 19 & -5660.7 & 11359.5 & 648.6\\
 NA & NA & NA & NA & + & NA & + & 17 & -5815.9 & 11665.8 & 954.9\\
-NA & NA & NA & + & + & NA & + & 18 & -5815.3 & 11666.8 & 955.9\\*
-\end{longtable}
-\endgroup{}
+NA & NA & NA & + & + & NA & + & 18 & -5815.3 & 11666.8 & 955.9\\
+\bottomrule
+\end{tabular}
+\end{table}
 \end{landscape}
-\endgroup{}
 
 \newpage
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:ccfrp-index}Estimated relative index of abundance for the CCFRP survey.}\\
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:ccfrp-index}Estimated relative index of abundance for the CCFRP survey.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
 \toprule
 Year & Estimate & logSE\\
 \midrule
-\endfirsthead
-\caption[]{Estimated relative index of abundance for the CCFRP survey. (\textit{continued)}}\\
-\toprule
-Year & Estimate & logSE\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 2007 & 0.0582160 & 0.1394863\\
 2008 & 0.0275242 & 0.1493542\\
 2009 & 0.0599728 & 0.1562757\\
@@ -4283,10 +3577,10 @@ Year & Estimate & logSE\\
 2019 & 0.1284849 & 0.0884973\\
 2020 & 0.1693210 & 0.0947559\\
 2021 & 0.1546231 & 0.0894429\\
-2022 & 0.1363272 & 0.0914945\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
+2022 & 0.1363272 & 0.0914945\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \newpage
 
@@ -4371,138 +3665,97 @@ To account for the differences in the the differences in catch rates and size co
 
 \pagebreak
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
-\caption{\label{tab:catch-example}Total mortality in metric tons of copper rockfish from 2018 and 2019 from the CPFV fleet by CRFS District.}\\
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:catch-example}Total mortality in metric tons of copper rockfish from 2018 and 2019 from the CPFV fleet by CRFS District.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
 \toprule
 District & 2018 & 2019 & Total\\
 \midrule
-\endfirsthead
-\caption[]{Total mortality in metric tons of copper rockfish from 2018 and 2019 from the CPFV fleet by CRFS District. (\textit{continued)}}\\
-\toprule
-District & 2018 & 2019 & Total\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 1 & 9.2 & 23.1 & 32.3\\
 2 & 87.0 & 51.8 & 138.8\\
 3 & 49.3 & 44.3 & 93.6\\
 4 & 30.0 & 27.9 & 57.9\\
 5 & 7.7 & 13.1 & 20.7\\
-6 & 6.0 & 7.3 & 13.2\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
-\caption{\label{tab:onboard-coppers}Number of copper rockfish observed during the CPFV trips sampled onboard by district and trip type from 2018-2019.}\\
-\toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips\\
-\midrule
-\endfirsthead
-\caption[]{Number of copper rockfish observed during the CPFV trips sampled onboard by district and trip type from 2018-2019. (\textit{continued)}}\\
-\toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips\\
-\midrule
-\endhead
-
-\endfoot
+6 & 6.0 & 7.3 & 13.2\\
 \bottomrule
-\endlastfoot
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:onboard-coppers}Number of copper rockfish observed during the CPFV trips sampled onboard by district and trip type from 2018-2019.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
+\toprule
+District & 1/2 day trips & 3/4-1 day trips & Overnight trips\\
+\midrule
 1 & 111 & 123 & 62\\
 2 & 136 & 588 & 59\\
 3 & 140 & 351 & NA\\
-4 and 6 & 12 & 138 & NA\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
-\caption{\label{tab:copper-lengths}Number of copper rockfish measured by district and trip type from the angler interviews in 2018-2019.}\\
-\toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips\\
-\midrule
-\endfirsthead
-\caption[]{Number of copper rockfish measured by district and trip type from the angler interviews in 2018-2019. (\textit{continued)}}\\
-\toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips\\
-\midrule
-\endhead
-
-\endfoot
+4 and 6 & 12 & 138 & NA\\
 \bottomrule
-\endlastfoot
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:copper-lengths}Number of copper rockfish measured by district and trip type from the angler interviews in 2018-2019.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
+\toprule
+District & 1/2 day trips & 3/4-1 day trips & Overnight trips\\
+\midrule
 1 & 240 & 240 & 69\\
 2 & 388 & 1311 & 189\\
 3 & 313 & 664 & NA\\
-4 and 6 & 12 & 302 & NA\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
+4 and 6 & 12 & 302 & NA\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \pagebreak
 
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{landscape}\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}}
-\caption{\label{tab:onboard-trips}Number of CPFV trips sampled as part of the onboard observer survey during 2018-2019, the percent of trips with copper rockfish observed, and the total number of recorded copper rockfish by trip type and District. District 4 and 6 were combined to retain confidentiality.  No trips from District 5 were sampled.}\\
+\begin{landscape}\begin{table}[H]
+\centering
+\caption{\label{tab:onboard-trips}Number of CPFV trips sampled as part of the onboard observer survey during 2018-2019, the percent of trips with copper rockfish observed, and the total number of recorded copper rockfish by trip type and District. District 4 and 6 were combined to retain confidentiality.  No trips from District 5 were sampled.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}}
 \toprule
 District & 1/2 day trips & 3/4-1 day trips & Overnight trips & Percent trips with copper rockfish & Total number of copper rockfishobserved\\
 \midrule
-\endfirsthead
-\caption[]{Number of CPFV trips sampled as part of the onboard observer survey during 2018-2019, the percent of trips with copper rockfish observed, and the total number of recorded copper rockfish by trip type and District. District 4 and 6 were combined to retain confidentiality.  No trips from District 5 were sampled. (\textit{continued)}}\\
-\toprule
-District & 1/2 day trips & 3/4-1 day trips & Overnight trips & Percent trips with copper rockfish & Total number of copper rockfishobserved\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 1 & 435 & 119 & 5 & 21\% & 296\\
 2 & 36 & 93 & 4 & 72\% & 783\\
 3 & 86 & 55 & 0 & 67\% & 864\\
 4 and 6 & 10 & 69 & 0 & 61\% & 150\\
 Percent of trips encountering copper rockfish & 26\% & 60\% & 89\% & - & -\\
-Copper rockfish observed & 399 & 1,200 & 121 & - & -\\*
-\end{longtable}
-\endgroup{}
+Copper rockfish observed & 399 & 1,200 & 121 & - & -\\
+\bottomrule
+\end{tabular}
+\end{table}
 \end{landscape}
-\endgroup{}
 
 \pagebreak
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
-\caption{\label{tab:logbook-triptype}Number of CPFV logbook entries with at least one rockfish, grouped by region fished and trip type from 2018-2019.}\\
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:logbook-triptype}Number of CPFV logbook entries with at least one rockfish, grouped by region fished and trip type from 2018-2019.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{r>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}}
 \toprule
 Region & Multi-day & Single-day\\
 \midrule
-\endfirsthead
-\caption[]{Number of CPFV logbook entries with at least one rockfish, grouped by region fished and trip type from 2018-2019. (\textit{continued)}}\\
-\toprule
-Region & Multi-day & Single-day\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 Mexico & 223 & 636\\
 District 1 mainland & 0 & 8324\\
 Southern Channel Islands & 1170 & 1572\\
@@ -4512,10 +3765,10 @@ Southern CA Offshore & 119 & 2243\\
 District 3 & 58 & 5195\\
 District 4 & 0 & 3156\\
 District 5 & 0 & 1051\\
-District 6 & 0 & 1189\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
+District 6 & 0 & 1189\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \pagebreak
 
@@ -4591,29 +3844,21 @@ We modeled CPUE (copper rockfish per angler trip) using a Bayesian negative bino
 
 When CPUE is multiplied by the percentage of habitat area north of $40^\circ 10^\prime$ N. lat. latitude, the expected percentage of the stock that occurs north of Cape Mendocino is 5.86\% (Table \ref{tab:pr-split-cpue}).
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}}
-\caption{\label{tab:pr-split-cpue}Estimated CPUE, percent habitat area, and relative abundance by CRFS District.}\\
+\begin{table}[H]
+\centering\centering\centering
+\caption{\label{tab:pr-split-cpue}Estimated CPUE, percent habitat area, and relative abundance by CRFS District.}
+\centering
+\fontsize{10}{12}\selectfont
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}>{\raggedright\arraybackslash}p{1.33cm}}
 \toprule
 CRFS District & CPUE & Area & Percent of Area & CPUE*Area & Relative Abundance\\
 \midrule
-\endfirsthead
-\caption[]{Estimated CPUE, percent habitat area, and relative abundance by CRFS District. (\textit{continued)}}\\
-\toprule
-CRFS District & CPUE & Area & Percent of Area & CPUE*Area & Relative Abundance\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
 Central & 0.438 & 272.707 & 32.30\% & 0.142 & 29.71\%\\
 Bay & 0.857 & 271.279 & 32.10\% & 0.275 & 57.53\%\\
 Wine & 0.202 & 136.937 & 16.20\% & 0.033 & 6.90\%\\
-Redwood & 0.142 & 164.193 & 19.40\% & 0.028 & 5.86\%\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
+Redwood & 0.142 & 164.193 & 19.40\% & 0.028 & 5.86\%\\
+\bottomrule
+\end{tabular}
+\end{table}
 \end{document}

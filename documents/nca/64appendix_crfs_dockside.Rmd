@@ -62,7 +62,7 @@ Month and primary target species were modeled as categorical covariates
 
 <!--Tables -->
 
-\newpage
+
 
 ```{r, results = 'asis'}
 library(dplyr)
@@ -77,13 +77,13 @@ col_names <- c("Year", "Minimum", "25th Quantile", "Median", "75th Quantile", "M
 sa4ss::table_format(
   x = ind,
   caption = "Summary values of the copper rockfish retained per angler (CPUE) to look at the effects of the sub-bag limit.",
-  label = "pr-cpue",
+  longtable = FALSE, label = "pr-cpue",
   col_names = col_names,
   align = "r"
 )
 ```
 
-\newpage
+
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(
@@ -97,14 +97,14 @@ sa4ss::table_format(
   x = ind,
   caption = "Summary of the number of speciated and unspeciated (RFGEN) rockfish 
   per year across all of California.",
-  label = "pr-rfgen",
+  longtable = FALSE, label = "pr-rfgen",
   col_names = col_names,
   align = "r",
   format.args = list(big.mark = ",")
 )
 ```
 
-\newpage
+
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(
@@ -120,13 +120,13 @@ col_names <- c(
 sa4ss::table_format(
   x = ind,
   caption = "Number of samples and percent positive for the dockside PR survey.",
-  label = "pr-percentpos",
+  longtable = FALSE, label = "pr-percentpos",
   col_names = col_names,
   format.args = list(big.mark = ",")
 )
 ```
 
-\newpage
+
 
 
 ```{r, results = 'asis'}
@@ -139,7 +139,7 @@ col_names <- c("Filter", "Description", "Number of Samples", "Positive Samples")
 sa4ss::table_format(
   x = ind,
   caption = "Data filtering steps for the CRFS PR dockside survey.",
-  label = "pr-filter",
+  longtable = FALSE, label = "pr-filter",
   col_names = col_names,
   font_size = 9,
   landscape = TRUE,
@@ -151,7 +151,7 @@ sa4ss::table_format(
 )
 ```
 
-\newpage
+
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(
@@ -164,7 +164,7 @@ col_names <- c("Intercept",	"District",	"Month",	"Target Species",
 sa4ss::table_format(
   x = ind,
   caption = "Model selection for the dockside PR survey.",
-  label = "pr-modelselect",
+  longtable = FALSE, label = "pr-modelselect",
   digits = 2,
   font_size = 8,
   col_names = col_names
@@ -172,7 +172,7 @@ sa4ss::table_format(
 ```
 
 
-\newpage
+
 
 ```{r, results = 'asis'}
 ind <- read.csv(file.path(
@@ -185,15 +185,13 @@ col_names <- c("Year", "Estimate", "logSE")
 sa4ss::table_format(
   x = ind,
   caption = "Estimated relative index of abundance for the dockside PR survey.",
-  label = "pr-index",
+  longtable = FALSE, label = "pr-index",
   col_names = col_names,
   digits = 4
 )
 ```
 
-\newpage
 
-<!--Figures -->
 
 
 ```{r, results = 'asis'}
@@ -210,7 +208,6 @@ sa4ss::add_figure(
 )
 ```
 
-\newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -225,7 +222,7 @@ sa4ss::add_figure(
 ```
 
 
-\newpage
+
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -237,7 +234,6 @@ sa4ss::add_figure(
 )
 ```
 
-\newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -254,7 +250,6 @@ sa4ss::add_figure(
 
 
 
-\newpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -263,10 +258,9 @@ sa4ss::add_figure(
     "rm_last2yrs_area_weighted", "qq.png"
   ),
   caption = "Q-Q plot for the dockside PR survey.",
-    alt_caption = "The qq plot indicates a relatively good fit with some diversion of the 1 to 1 line on the upper quantiles.",
+  alt_caption = "The qq plot indicates a relatively good fit with some diversion of the 1 to 1 line on the upper quantiles.",
   label = "pr-qq"
 )
 ```
 
-\newpage
 

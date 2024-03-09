@@ -57,7 +57,7 @@ sa4ss::table_format(x = tab,
              caption = "Data filtering for the CCFRP survey.",
              label = "ccfrp-data-filter",
              align = 'l',
-             longtable = TRUE,
+             longtable = FALSE,
              font_size = 7,
              landscape = TRUE)                         
 ```
@@ -72,7 +72,7 @@ sa4ss::table_format(x = tab,
              caption = "Model selection for the CCFRP survey.",
              label = "ccfrp-model-selection",
              align = 'l',
-             longtable = TRUE,
+             longtable = FALSE,
              font_size = 7,
              landscape = TRUE)                         
 ```
@@ -87,7 +87,7 @@ col_names = c("Year", "Estimate", "logSE")
 
 sa4ss::table_format(x = ind,
              caption = "Estimated relative index of abundance for the CCFRP survey.",
-             label = "ccfrp-index",
+             longtable = FALSE, label = "ccfrp-index",
              col_names = col_names)                         
 ```
 
