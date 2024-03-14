@@ -248,7 +248,7 @@ sa4ss::add_figure(
     "rm_last2yrs_area_weighted", "negbin_prop_zero_main_effects.png"
   ),
   caption = "Predicted proportion of zeroes from the Bayesian fit to the main effects model.",
-    alt_caption = "The predicted proportion of zeroes is within 0.5% of the data.",
+    alt_caption = "The predicted proportion of zeroes is within 0.5 percent of the data.",
   label = "pr-prop-zero"
 )
 ```

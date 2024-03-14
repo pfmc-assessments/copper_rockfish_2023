@@ -44,7 +44,7 @@ The lengths in Table \@ref(tab:copper-lengths) are currently all weighted equall
 sa4ss::add_figure(
 filein = file.path(data_dir, "rec_indices", "cpfv_logbook_summaries", "crfs_districts.png"), 
 caption = "Map of the CDFW CRFS sampling Districts.",
-alt_caption = "A map showing the six sampling districts, with district one and two south of Point Conception.",
+alt_caption = "A map showing the six sampling districts with district one and two south of Point Conception.",
 label = 'crfs-districts')
 ```
 

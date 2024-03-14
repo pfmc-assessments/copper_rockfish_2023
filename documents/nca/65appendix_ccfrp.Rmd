@@ -111,7 +111,7 @@ sa4ss::table_format(x = ind,
 sa4ss::add_figure(
 filein = file.path(data_dir, "survey_indices", "ccfrp", "north", "mpa_site_cpue.png"), 
 caption = "Average CPUE by site with trends prior to standardization in the MPA and REF areas.",
-alt_caption = "The average CPUE is higher in the MPAs at Piedras Blancas, Point Lobos and Stewarts Point.",
+alt_caption = "The average CPUE is higher in the MPAs at Piedras Blancas Point Lobos and Stewarts Point.",
 label = 'ccfrp-avg-cpue')
 ```
 
