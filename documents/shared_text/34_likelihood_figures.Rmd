@@ -2,6 +2,7 @@
 add_figure(
 filein = file.path(profile_dir, paste0(profile_name, "_profile_SR_LN(R0)_prior_like_0"),  "piner_panel_SR_LN(R0).png"), 
 caption = "Change in the negative log-likelihood across a range of log(R~0~) values",
+alt_caption = "The lowest log-likelihood is found at the model estimated log(R~0~) value.",
 label = 'r0-profile')
 ```
 
@@ -11,6 +12,7 @@ label = 'r0-profile')
 add_figure(
 filein = file.path(profile_dir, paste0(profile_name, "_profile_SR_LN(R0)_prior_like_0"),  "SR_LN(R0)_trajectories_compare1_spawnbio.png"), 
 caption = "Change in the estimate of spawning output across a range of log(R~0~) values",
+alt_caption = "Varying log(R~0~) values impacts the initial spawning output with more limited impact on the final estimates.",
 label = 'r0-ssb')
 ```
 
@@ -20,6 +22,7 @@ label = 'r0-ssb')
 add_figure(
 filein = file.path(profile_dir, paste0(profile_name, "_profile_SR_LN(R0)_prior_like_0"),  "SR_LN(R0)_trajectories_compare3_Bratio.png"), 
 caption = "Change in the estimate of fraction unfished across a range of log(R~0~) values",
+alt_caption = "The estimates of fraction unfished vary based on the log(R~0~).",
 label = 'r0-depl')
 ```
 
@@ -29,6 +32,7 @@ label = 'r0-depl')
 add_figure(
 filein = file.path(profile_dir, paste0(profile_name, "_profile_SR_BH_steep_prior_like_1"),  "piner_panel_SR_BH_steep.png"), 
 caption = "Change in the negative log-likelihood across a range of steepness (h) values",
+alt_caption = "The negative log-likelihood was minimized around a steepness value of 0.72.",
 label = 'h-profile')
 ```
 
@@ -38,6 +42,7 @@ label = 'h-profile')
 add_figure(
 filein = file.path(profile_dir, paste0(profile_name, "_profile_SR_BH_steep_prior_like_1"),  "SR_BH_steep_trajectories_compare1_spawnbio.png"), 
 caption = "Change in the estimate of spawning output across a range of steepness (h) values",
+alt_caption = "Varying the steepness value impacts the initial spawning output with more limited impact on the final estimates.",
 label = 'h-ssb')
 ```
 
@@ -47,6 +52,7 @@ label = 'h-ssb')
 add_figure(
 filein = file.path(profile_dir, paste0(profile_name, "_profile_SR_BH_steep_prior_like_1"),  "SR_BH_steep_trajectories_compare3_Bratio.png"), 
 caption = "Change in the estimate of fraction unfished across a range of steepness (h) values",
+alt_caption = "Varying the steepness value had limited impact on the estimated fraction unfished relative to the base model",
 label = 'h-depl')
 ```
 
@@ -56,6 +62,7 @@ label = 'h-depl')
 add_figure(
 filein = file.path(profile_dir, paste0(profile_name, "_profile_NatM_uniform_Fem_GP_1_prior_like_1"),  "piner_panel_NatM_uniform_Fem_GP_1.png"), 
 caption = "Change in the negative log-likelihood across a range of female natural mortality (M) values",
+alt_caption = "The negative log-likelihood was minimized around a natural moratlity value at 0.09.",
 label = 'm-profile')
 ```
 
@@ -66,6 +73,7 @@ label = 'm-profile')
 add_figure(
 filein = file.path(profile_dir, paste0(profile_name, "_profile_NatM_uniform_Fem_GP_1_prior_like_1"),  "NatM_uniform_Fem_GP_1_trajectories_compare1_spawnbio.png"), 
 caption = "Change in the estimate of spawning output across a range of female natural mortality (M) values",
+alt_caption = "Varying the natural mortality value impacts the initial spawning output with more limited impact on the final estimates.",
 label = 'm-ssb')
 ```
 
@@ -76,6 +84,7 @@ label = 'm-ssb')
 add_figure(
 filein = file.path(profile_dir, paste0(profile_name, "_profile_NatM_uniform_Fem_GP_1_prior_like_1"),  "NatM_uniform_Fem_GP_1_trajectories_compare3_Bratio.png"), 
 caption = "Change in the estimate of fraction unfished across a range of female natural mortality (M) values",
+alt_caption = "Varying the natural mortality value had limited impact on the estimated fraction unfished relative to the base model",
 label = 'm-depl')
 ```
 
