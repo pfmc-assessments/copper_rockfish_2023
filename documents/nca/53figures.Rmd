@@ -937,7 +937,7 @@ alt_caption = "There are no clear patters in the residuals in the observed fits.
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_DWV_CPFV.png"), 
-caption = "Fit to log index data on log scale for Deb Wilson-Vandenberg CPFV survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
+caption = "Fit to log index data on log scale for Deb Wilson-Vandenberg CPFV survey. Lines indicate 95 percent uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
 alt_caption = "The index was generally fit well but the model did not capture the observed decrfease in the index from 1996-1998.", label = 'dwv-cpfv-index-fit')
 ```
 
@@ -946,7 +946,7 @@ alt_caption = "The index was generally fit well but the model did not capture th
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_CRFS_CPFV.png"), 
-caption = "Fit to log index data on log scale for CRFS CPFV survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
+caption = "Fit to log index data on log scale for CRFS CPFV survey. Lines indicate 95 percent uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
 alt_caption = "The model fit the index well and fit the index well capturing the increase in 2016.", label = 'crfs-cpfv-index-fit')
 ```
 
@@ -955,7 +955,7 @@ alt_caption = "The model fit the index well and fit the index well capturing the
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_PR.png"), 
-caption = "Fit to log index data on log scale for recreational (CRFS) PR. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
+caption = "Fit to log index data on log scale for recreational (CRFS) PR. Lines indicate 95 percent uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
 alt_caption = "The general trend in the index was fit well but did not capture the increase in 2017.", label = 'crfs-pr-index-fit')
 ```
 
@@ -975,7 +975,7 @@ alt_caption = "The general trend in the index was fit well but did not capture t
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_CCFRP.png"), 
-caption = "Fit to log index data on log scale for CCFRP survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
+caption = "Fit to log index data on log scale for CCFRP survey. Lines indicate 95 percent uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter",
 alt_caption = "The CCFRP survey index was fit well by the model.  Only one year 2013 did not intersect with the increased estimated uncertainty.", label = 'ccfrp-index-fit')
 ```
 
@@ -1194,7 +1194,8 @@ alt_caption = "The retrospective estimates fall within the estimated base model 
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "north_assess_compare_compare4_Bratio_uncertainty.png"),
 caption = "Comparison of the estimated fraction unfished for the base model to previous assessment in 2021.",
-alt_caption = "The retrospective estimates fall within the estimated base model uncertainty.", label = 'comp-assess-depl')
+alt_caption = "The retrospective estimates fall within the estimated base model uncertainty.", 
+label = 'comp-assess-depl')
 ```
 
 \newpage
@@ -1219,7 +1220,8 @@ alt_caption = "The estimated fishing rate exceeded the target for nearly all yea
 add_figure(
 filein = file.path(doc_dir, "shared_figures", "compare15_phase_plot.png"), 
 caption = "Phase plot of the relative biomass (also referred to as fraction unfished) versus the SPR ratio where each point represents the biomass ratio at the start of the year and the relative fishing intensity in that same year. Lines through the final point show the 95 percent intervals based on the asymptotic uncertainty for each dimension. The shaded ellipse is a 95 percent region which accounts for the estimated correlations between the biomass ratio and SPR ratio",
-alt_caption = "The estimated fishing rate is below the target and the stock is estimated to be above the refrence point target in northern California.", label = 'phase')
+alt_caption = "The estimated fishing rate is below the target and the stock is estimated to be above the refrence point target in northern California.", 
+label = 'phase')
 ```
 
 \pagebreak
@@ -1229,7 +1231,8 @@ add_figure(
 filein = file.path(doc_dir, "shared_figures", "north_yield2_yield_curve_with_refpoints.png"), 
 caption = "Equilibrium yield curve for the base case model north of Point Conception. Values are based on the 2022
 fishery selectivities and with steepness fixed at 0.72",
-alt_caption = "Equilibrium curve peaks around 0.30 fraction of unfished with the estimated current fraction of unfished at 0.46", label = 'yield-north')
+alt_caption = "Equilibrium curve peaks around 0.30 fraction of unfished with the estimated current fraction of unfished at 0.46", 
+label = 'yield-north')
 ```
 
 \pagebreak
@@ -1239,7 +1242,8 @@ add_figure(
 filein = file.path(doc_dir, "shared_figures", "south_yield2_yield_curve_with_refpoints.png"), 
 caption = "Equilibrium yield curve for the base case model south of Point Conception. Values are based on the 2022
 fishery selectivities and with steepness fixed at 0.72",
-alt_caption = "Equilibrium curve peaks around 0.30 fraction of unfished with the estimated current fraction of unfished at 0.16", label = 'yield-south')
+alt_caption = "Equilibrium curve peaks around 0.30 fraction of unfished with the estimated current fraction of unfished at 0.16", 
+label = 'yield-south')
 ```
 
 

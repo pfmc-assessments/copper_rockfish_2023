@@ -118,7 +118,7 @@ for (a in plot.vec){
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(model_dir, "plots", "index5_logcpuefit_Rec_CPFV.png"), 
-caption = "Implied fit to log index data on log scale for the recreational (MRFSS) CPFV index of abundance. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
+caption = "Implied fit to log index data on log scale for the recreational (MRFSS) CPFV index of abundance. Lines indicate 95 percent uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.",
 label = 'mrfss-cpfv-index-fit')
 ```
 
