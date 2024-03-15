@@ -3,8 +3,9 @@
 # devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 library(sa4ss)
 library(here)
-devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/sa4ss")
-devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
+library(r4ss)
+#devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/sa4ss")
+#devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 
 # Specify the directory for the document
 south_model_name <- "15.0_south_post_star_base"
